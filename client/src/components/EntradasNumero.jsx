@@ -16,7 +16,7 @@ const EntradasNumero = () => {
 
     useEffect(() => {
 
-        fetch("http://localhost:3000/vendas").then((res) => {
+        fetch("https://sistemacomercialserver.onrender.com/vendas").then((res) => {
 
             return res.json()
 
@@ -43,7 +43,7 @@ const EntradasNumero = () => {
 
             if (result.isConfirmed) {
 
-                fetch("http://localhost:3000/vendas/" + id, {
+                fetch("https://sistemacomercialserver.onrender.com/vendas/" + id, {
 
                     method: "DELETE"
 
@@ -109,7 +109,7 @@ const EntradasNumero = () => {
 
             const cadobj = { nome, total, data, preco, vendan, troco, valorpag }
 
-            fetch("http://localhost:3000/vendas", {
+            fetch("https://sistemacomercialserver.onrender.com/vendas", {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(cadobj)
@@ -138,7 +138,7 @@ const EntradasNumero = () => {
             const numero = buscanumero;
             const register = { numero }
 
-            fetch("http://localhost:3000/atual", {
+            fetch("https://sistemacomercialserver.onrender.com/atual", {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(register)

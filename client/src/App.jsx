@@ -10,7 +10,6 @@ import UsuarioCategoria from './components/UsuarioCategoria';
 import Produtos from './components/Produtos';
 import CadProdutos from './components/CadProdutos';
 import ProdutosNome from './components/ProdutosNome';
-import Vendas from './components/Vendas';
 import EditarProduto from './components/EditarProduto';
 import Entradas from './components/Entradas';
 import Home from './components/Home';
@@ -81,8 +80,7 @@ function App() {
     <Route path='/produtos/cat' element={<PrivateRoutes><ProdutosCat /></PrivateRoutes>}></Route>
     <Route path='/produto/cadcat' element={<PrivateRoutes><CadCatProd /></PrivateRoutes>}></Route>
     <Route path='/produtos/categoria/lista' element={<PrivateRoutes><CatProdutos/></PrivateRoutes>}></Route>
-    <Route path='/produto/categoria/editar/:catcod' element={<PrivateRoutes><ProdutoCatEditar/></PrivateRoutes>}></Route>
-    <Route path='/vendas' element={<PrivateRoutes><Vendas /></PrivateRoutes>}></Route>  
+    <Route path='/produto/categoria/editar/:catcod' element={<PrivateRoutes><ProdutoCatEditar/></PrivateRoutes>}></Route>    
     <Route path='/venda/troco' element={<PrivateRoutes><VendaTroco /></PrivateRoutes>}></Route> 
     <Route path='/venda/desconto' element={<PrivateRoutes><VendaDesconto /></PrivateRoutes>}></Route>     
     <Route path='/entradas' element={<PrivateRoutes><Entradas /></PrivateRoutes>}></Route>

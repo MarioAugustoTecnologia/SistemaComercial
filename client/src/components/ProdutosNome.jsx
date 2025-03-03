@@ -20,7 +20,7 @@ const ProdutosNome = () => {
   
   useEffect(() => {
 
-    fetch("http://localhost:3000/produtos").then((res) => {
+    fetch("https://sistemacomercialserver.onrender.com/produtos").then((res) => {
 
     return res.json()
 
@@ -52,7 +52,7 @@ const ProdutosNome = () => {
        
              if (result.isConfirmed) {
        
-               fetch("http://localhost:3000/produtos/" + id, {
+               fetch("https://sistemacomercialserver.onrender.com/produtos/" + id, {
        
                  method: "DELETE"
        

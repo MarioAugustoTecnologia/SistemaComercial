@@ -12,7 +12,7 @@ const Resultado = () => {
 
   useEffect(() => {
 
-    fetch("http://localhost:3000/resultados", {
+    fetch("https://sistemacomercialserver.onrender.com/resultados", {
 
       method: "GET",
       headers: { 'content-type': 'application/json' }
@@ -44,7 +44,7 @@ const Resultado = () => {
 
       if (result.isConfirmed) {
 
-        fetch("http://localhost:3000/resultados/" + id, {
+        fetch("https://sistemacomercialserver.onrender.com/resultados/" + id, {
 
           method: "DELETE"
 
@@ -78,7 +78,7 @@ const Resultado = () => {
 
         for (let id = 0; id <= result.length; id++) {
 
-          fetch("http://localhost:3000/resultados/" + id, {
+          fetch("https://sistemacomercialserver.onrender.com/resultados/" + id, {
     
             method: "DELETE"
     

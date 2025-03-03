@@ -23,7 +23,7 @@ const CadCompras = () => {
  
 
   useEffect(() => {
-    fetch("http://localhost:3000/fornecedor").then((res) => {
+    fetch("https://sistemacomercialserver.onrender.com/fornecedor").then((res) => {
 
     return res.json()
 
@@ -181,7 +181,7 @@ function mudacorMes(){
                          
                  if (result.isConfirmed) {
 
-                  fetch("http://localhost:3000/compras", {
+                  fetch("https://sistemacomercialserver.onrender.com/compras", {
                     method: "POST",
                     headers: {'content-type':'application/json'},
                     body: JSON.stringify(cadobj)
@@ -225,7 +225,7 @@ function mudacorMes(){
                           
                   if (result.isConfirmed) {
 
-                    fetch("http://localhost:3000/compras", {
+                    fetch("https://sistemacomercialserver.onrender.com/compras", {
                       method: "POST",
                       headers: {'content-type':'application/json'},
                       body: JSON.stringify(cadobj)
@@ -285,7 +285,7 @@ function mudacorMes(){
                         
                 if (result.isConfirmed) {
 
-                       fetch("http://localhost:3000/compras", {
+                       fetch("https://sistemacomercialserver.onrender.com/compras", {
                        method: "POST",
                        headers: {'content-type':'application/json'},
                        body: JSON.stringify(cadobj)

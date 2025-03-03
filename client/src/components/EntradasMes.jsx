@@ -18,7 +18,7 @@ const EntradasMes = () => {
   
   useEffect(() => {
 
-    fetch("http://localhost:3000/vendas").then((res) => {
+    fetch("https://sistemacomercialserver.onrender.com/vendas").then((res) => {
 
     return res.json()
 
@@ -46,7 +46,7 @@ const EntradasMes = () => {
          if (result.isConfirmed) {
    
    
-           fetch("http://localhost:3000/vendas/" + id, {
+           fetch("https://sistemacomercialserver.onrender.com/vendas/" + id, {
    
              method: "DELETE"
    
@@ -103,7 +103,7 @@ function formataData(){
   
   const cadobj = {nome, total, data, preco, mes, vendan, troco, valorpag}  
   
-   fetch("http://localhost:3000/vendas", {
+   fetch("https://sistemacomercialserver.onrender.com/vendas", {
      method: "POST",
      headers: {'content-type':'application/json'},
      body: JSON.stringify(cadobj)

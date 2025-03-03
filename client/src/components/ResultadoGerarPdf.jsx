@@ -11,7 +11,7 @@ const ResultadoGerarPdf = () => {
 
   useEffect(() => {
 
-    fetch("http://localhost:3000/resultados", {
+    fetch("https://sistemacomercialserver.onrender.com/resultados", {
 
       method: "GET",
       headers: {'content-type':'application/json'} }

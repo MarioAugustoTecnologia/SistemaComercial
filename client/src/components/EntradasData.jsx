@@ -18,7 +18,7 @@ const EntradasData = () => {
   
   useEffect(() => {
 
-    fetch("http://localhost:3000/vendas").then((res) => {
+    fetch("https://sistemacomercialserver.onrender.com/vendas").then((res) => {
 
     return res.json()
 
@@ -43,10 +43,9 @@ const EntradasData = () => {
           denyButtonText: `Não Excluir`
         }).then((result) => {
     
-          if (result.isConfirmed) {
+          if (result.isConfirmed) {    
     
-    
-            fetch("http://localhost:3000/vendas/" + id, {
+            fetch("https://sistemacomercialserver.onrender.com/vendas/" + id, {
     
               method: "DELETE"
     

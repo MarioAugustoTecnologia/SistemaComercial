@@ -10,7 +10,7 @@ const EditarDespesa = () => {
   const { despesacod } = useParams()
 
   useEffect(() => {
-    fetch("http://localhost:3000/despesas/" + despesacod).then((res) => {
+    fetch("https://sistemacomercialserver.onrender.com/despesas/" + despesacod).then((res) => {
       return res.json();
     }).then((resp) => {
       idchange(resp.id);
@@ -91,7 +91,7 @@ const EditarDespesa = () => {
 
         if (result.isConfirmed) {
 
-          fetch("http://localhost:3000/despesas/" + despesacod, {
+          fetch("https://sistemacomercialserver.onrender.com/despesas/" + despesacod, {
             method: "PUT",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(edtobj)

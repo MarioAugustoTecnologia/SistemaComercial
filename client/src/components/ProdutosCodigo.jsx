@@ -3,18 +3,22 @@ import {Link, Outlet, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Swal from 'sweetalert2';
+import useScanDetecion from 'use-scan-detection-react18';
 
-const ProdutosCodigo = () => {
-  
+const ProdutosCodigo = () => {  
 
 
    const [produtocod, setProdutoCod] = useState([]);
    const [buscarap, setBuscaRap] = useState('');  
     
-   var table = produtocod.filter(item => item.codigo.includes(buscarap))
- 
+   var table = produtocod.filter(item => item.codigo.includes(buscarap)) 
  
    const navigate = useNavigate();
+
+   useScanDetecion({
+    onComplete: setBuscaRap,
+    minLength: 13 
+   })
 
   
    useEffect(() => {
@@ -219,7 +223,7 @@ const logout = () => {
            <div className="px-5 mt-5">
                <div className="mb3">
                   <label htmlFor="Id" className="Id" style={{fontFamily: 'arial', fontSize:'22px'}}>Busca por codigo de venda:</label><br />
-                  <input style={{fontFamily: 'arial', fontSize:'22px', width:'100px'}} type="search" autoFocus='true' className="consultaid" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)}/>                  
+                  <input style={{fontFamily: 'arial', fontSize:'22px', width:'100px'}} type="search" className="consultaid" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)}/>                  
                   <Link to="/entradas" className="btn" style={{color: 'white', backgroundColor:'green', margin: '0 58px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Entradas:</Link> 
                   
                 </div><br />             

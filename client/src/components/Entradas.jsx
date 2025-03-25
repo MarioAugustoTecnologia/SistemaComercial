@@ -232,7 +232,7 @@ const Entradas = () => {
               <Link to="/entradas/data" className="btn" style={{ color: 'white', backgroundColor: 'yellowgreen', margin: '0 3px', fontSize: '18px', fontFamily: 'arial' }}>Consulta por data:</Link>
               <Link to="/entradas/mes" className="btn" style={{ color: 'white', backgroundColor: 'DarkSlateBlue', margin: '0 25px', fontSize: '18px', fontFamily: 'arial' }}>Consulta por mes:</Link>
               <Link to="/entradas/numero" className="btn" style={{ color: 'white', backgroundColor: 'DeepSkyBlue', margin: '0 2px', fontSize: '18px', fontFamily: 'arial' }}>Consulta por numero:</Link>
-              <Link to="/entradas/ultima" className="btn" style={{ color: 'white', backgroundColor: 'Crimson', margin: '0 20px', fontSize: '18px', fontFamily: 'arial' }}>Ultima Venda:</Link>
+              <Link to="/entradas/ultima" className="btn" style={{ color: 'white', backgroundColor: 'Crimson', margin: '0 20px', fontSize: '18px', fontFamily: 'arial' }}>Venda Atual:</Link>
               <Link className="btn" style={{ color: 'white', backgroundColor: 'red', margin: '0 5px', fontSize: '18px', fontFamily: 'arial' }} onClick={deleteall}>Excluir Todos:</Link>
             </div><br /><br />
             <div>

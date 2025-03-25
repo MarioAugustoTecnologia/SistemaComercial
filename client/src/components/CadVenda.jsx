@@ -30,34 +30,60 @@ const CadVenda = () => {
     })
   }, []);
 
-  const [id, Idchange] = useState("");
+  const [id, Idchange] = useState("")
   const [nome, nomechange] = useState("")
   const [preco, precochange] = useState("")
-  const [formapag, formapagchange] = useState("")
-  const [mes, meschange] = useState("")
+  const [formapag, formapagchange] = useState("")  
   const [estoque, qtdchange] = useState("")
   const [quant, quantchange] = useState("")
   const [parcelamento, parcelamentochange] = useState("")
   const [parcela, parcelachange] = useState("")
   const [parcelan, parcelanchange] = useState("")
   const [valorpag, valorpagchange] = useState("")
-  const [vendan, vendanchange] = useState("")
-  const [codigo, Codigochange] = useState("");
-  const [categoria, Categoriachange] = useState("");
-  const [data_cadastro, DataCadchange] = useState("");
+  const [codigo, Codigochange] = useState("")
+  const [categoria, Categoriachange] = useState("")
+  const [data_cadastro, DataCadchange] = useState("")
+  const [desc, descchange] = useState("")
+  const [entradadata, setEntradadata] = useState([])
+  const [mesatual, setMesAtual] = useState([])
 
+  useEffect(() => {
 
+    fetch("https://sistemacomercialserver.onrender.com/atual").then((res) => {
 
+      return res.json()
+
+    }).then((resp) => {
+
+      setEntradadata(resp)
+
+    }).catch((err) => {
+      console.log(err.message)
+    })
+
+  }, [])
+
+  useEffect(() => {
+
+    fetch("https://sistemacomercialserver.onrender.com/mesatual").then((res) => {
+
+      return res.json()
+
+    }).then((resp) => {
+
+      setMesAtual(resp)
+
+    }).catch((err) => {
+      console.log(err.message)
+    })
+
+  }, [])
 
   const isValidate = () => {
     let isproceed = true
     let errormessage = "Campos não podem estar vazio  !"
 
-    if (vendan === null || vendan === '') {
-      document.getElementById('vendan').style.borderColor = 'red';
-      isproceed = false
-      //errormessage += 'Nome Completo:' 
-    }
+
 
     if (nome === null || nome === '') {
       isproceed = false
@@ -74,11 +100,6 @@ const CadVenda = () => {
       //errormessage += 'Telefone:' 
     }
 
-    if (mes === null || mes === '') {
-      document.getElementById('mes').style.borderColor = 'red';
-      isproceed = false
-      //errormessage += 'Telefone:' 
-    }
     if (document.getElementById('total').value === null || document.getElementById('total').value === '') {
 
       document.getElementById('total').style.borderColor = 'red';
@@ -95,13 +116,23 @@ const CadVenda = () => {
   }
 
 
-
   function calcular() {
 
     const total = (quant * preco).toFixed(2);
     console.log(total)
     document.getElementById('total').value = total;
 
+
+  }
+
+  function desconto() {
+
+    var total = document.getElementById('total').value;
+
+    const desconto = (desc * total).toFixed(2);
+    console.log(desconto)
+    const novototal = total - desconto;
+    document.getElementById('total').value = novototal;
 
   }
 
@@ -124,13 +155,14 @@ const CadVenda = () => {
       document.getElementById('valorpag').value = 0;
     }
 
-
     if (parcelamento === "" || parcelamento === null && parcela === "" || parcela === null && parcelan === "" || parcelan === null) {
 
-      //const dataInput = datacad;         
+
       var total = document.getElementById('total').value;
       const valorpag = parseFloat(document.getElementById('valorpag').value);
 
+      var vendan = document.getElementById('vendan').innerHTML;
+      var mes = document.getElementById('mesatual').innerHTML;
 
       if (valorpag > total) {
 
@@ -158,8 +190,7 @@ const CadVenda = () => {
                 toast.success('Cadastrado com Sucesso !')
                 nomechange('')
                 precochange('')
-                formapagchange('')
-                meschange('')
+                formapagchange('')     
                 qtdchange('')
                 parcelamentochange('')
                 parcelachange('')
@@ -260,6 +291,9 @@ const CadVenda = () => {
 
     } else {
 
+      var vendan = document.getElementById('vendan').value;
+      var mes = document.getElementById('mesatual').innerHTML;
+
       if (isValidate()) {
 
         Swal.fire({
@@ -317,13 +351,6 @@ const CadVenda = () => {
 
       }
     }
-
-  }
-
-
-  function mudacorVendan() {
-
-    document.getElementById('vendan').style.borderColor = 'Gainsboro';
 
   }
 
@@ -456,7 +483,6 @@ const CadVenda = () => {
                 </Link>
               </li>
 
-
               <li className="w-100" onClick={logout}>
                 <Link to="/"
                   className="nav-link px-0 align-middle text-white"
@@ -479,7 +505,24 @@ const CadVenda = () => {
               <form action='' onSubmit={cadastrar}>
                 <div className='mb-3'>
                   <label htmlFor='compran' style={{ fontSize: '20px', margin: '0 115px' }}>Venda nº:</label>
-                  <input type='number' onSelect={mudacorVendan} value={vendan} onChange={e => vendanchange(e.target.value)} style={{ fontSize: '20px', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='vendan' id='vendan' />
+                  <table className="table" style={{ fontFamily: 'arial', fontSize: '20px', width: '5%', margin: '0 120px' }}>
+                    <thead hidden='true'>
+                      <tr>
+                        <th className="th" scope="col" >Id:</th>
+                        <th className="th" scope="col">Venda nº:</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        entradadata.map(item => (
+                          <tr key={item.id}>
+                            <td className="td" hidden='true'>{item.id}</td>
+                            <td className="td" style={{ fontSize: '20px' }} id='vendan'>{item.numero}</td>
+                          </tr>
+                        ))
+                      }
+                    </tbody>                  
+                  </table>
                 </div>
                 <div className='mb-3'>
                   <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px' }}>Nome:</label>
@@ -488,8 +531,10 @@ const CadVenda = () => {
                 <div className='mb-3'>
                   <label htmlFor='qtd' style={{ fontSize: '20px', margin: '0 115px' }}>Quantidade:</label>
                   <label htmlFor='total' style={{ fontSize: '20px', margin: '0 75px' }}>Total c/s Desconto:</label>
+                  <label htmlFor='total' style={{ fontSize: '20px' }}>Desconto:</label>
                   <input type='number' onSelect={mudacorquant} value={quant} onChange={e => quantchange(e.target.value)} style={{ fontSize: '20px', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='qtd' id='quant' />
                   <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='total' id='total' />
+                  <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 655px', marginTop: '-42px' }} className='form-control rounded-0' name='desconto' id='desconto' value={desc} onChange={e => descchange(e.target.value)} />
                 </div>
                 <div className='mb-3'>
                   <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px' }}>Custo:</label>
@@ -562,22 +607,25 @@ const CadVenda = () => {
                   </select>
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 115px' }}>Mês:</label>
-                  <select style={{ fontSize: '20px', width: 225, margin: '0 115px' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
-                    <option value=""></option>
-                    <option value="Janeiro">Janeiro</option>
-                    <option value="Fevereiro">Fevereiro</option>
-                    <option value="Março">Março</option>
-                    <option value="Abril">Abril</option>
-                    <option value="Maio">Maio</option>
-                    <option value="Junho">Junho</option>
-                    <option value="Julho">Julho</option>
-                    <option value="Agosto">Agosto</option>
-                    <option value="Setembro">Setembro</option>
-                    <option value="Outubro">Outubro</option>
-                    <option value="Novembro">Novembro</option>
-                    <option value="Dezembro">Dezembro</option>
-                  </select>
+                <label htmlFor='mesatual' style={{ fontSize: '20px', margin: '0 115px' }}>Mes:</label>
+                  <table className="table" style={{ fontFamily: 'arial', fontSize: '20px', width: '5%', margin: '0 120px' }}>
+                    <thead hidden='true'>
+                      <tr>
+                        <th className="th" scope="col" >Id:</th>
+                        <th className="th" scope="col">Venda nº:</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        mesatual.map(item => (
+                          <tr key={item.id}>
+                            <td className="td" hidden='true'>{item.id}</td>
+                            <td className="td" style={{ fontSize: '20px' }} id='mesatual'>{item.mes}</td>
+                          </tr>
+                        ))
+                      }
+                    </tbody>                
+                  </table>
                 </div><br />
 
                 <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 120px', marginTop: '-19px', fontSize: '16px' }}>Cadastrar:</button>
@@ -585,7 +633,7 @@ const CadVenda = () => {
               </form>
               <div className='mb3' style={{ margin: '0 242px', marginTop: '-40px' }}>
                 <button className='btn btn-primary border rounded-0' onClick={calcular} style={{ width: 100, margin: '0 0px', fontSize: '16px' }}>Total:</button>
-                <Link to='/venda/desconto' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'Indigo', margin: '0 20px', fontSize: '16px', width: 100 }}>Desconto:</Link>
+                <Link onClick={desconto} className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'Indigo', margin: '0 20px', fontSize: '16px', width: 100 }}>Desconto:</Link>
                 <Link to='/produtos/codigo' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 2px', fontSize: '16px', width: 100 }}>Voltar:</Link>
 
               </div>

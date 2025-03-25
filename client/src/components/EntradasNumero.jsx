@@ -298,7 +298,7 @@ const EntradasNumero = () => {
                             <input type="search" autoFocus='true' className="consultanumero" value={buscanumero} onChange={(e) => setBuscaNumero(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', width: '100px' }} id="numero" />
                             <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 50px', backgroundColor: 'orange' }}>Voltar:</Link>
                             <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 -15px', fontSize: '18px' }}>Total Venda:</Link>
-                            <Link onClick={GerarUltima} className="btn" style={{ color: 'white', backgroundColor: 'blue', margin: '0 45px', fontSize: '18px' }}>Controle Venda:</Link>
+                            <Link onClick={GerarUltima} className="btn" style={{ color: 'white', backgroundColor: 'blue', margin: '0 45px', fontSize: '18px' }}>Proxima Venda:</Link>
                         </div><br />
                         <h4 style={{ textAlign: 'center', color: 'Red', fontSize: '25px', marginRight: '-225px' }}><strong>Entradas:</strong></h4>
                         <br />

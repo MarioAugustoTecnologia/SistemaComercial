@@ -44,7 +44,7 @@ const EntradasNumeroEditar = () => {
   const [parcelamento, parcelamentochange] = useState("")
   const [parcela, parcelachange] = useState("")
   const [parcelan, parcelanchange] = useState("")
-
+  const [desconto, descontochange] = useState("")
 
   const isValidate = () => {
     let isproceed = true
@@ -109,21 +109,29 @@ const EntradasNumeroEditar = () => {
     return `${dia}/${mes}/${ano}`;
   }
 
+  function Desconto(){
+    var desc = (desconto * total).toFixed(2);
+    const novototal = total - desc;
+    console.log(novototal)
+    document.getElementById('ntotal').value = novototal;
+      
+
+  }  
 
 
   const atualizar = (e) => {
 
     e.preventDefault();
+    
 
     if (parcelamento === "" || parcelamento === null && parcela === "" || parcela === null && parcelan === "" || parcelan === null) {
 
       const data = formataData()
-
+        
 
       if (valorpag > total) {
-
-        //document.getElementById('troco').value = parseFloat((valorpag - total).toFixed(2));     
-
+        
+        
         const edtobj = { nome, vendan, preco, total, valorpag, mes, data, formapag, troco, quant }
 
 
@@ -492,7 +500,6 @@ const EntradasNumeroEditar = () => {
                   </span>
                 </Link>
               </li>
-
               <li className="w-100">
                 <Link
                   to="/painel/email_servico"
@@ -539,12 +546,14 @@ const EntradasNumeroEditar = () => {
                   <label htmlFor='vendan' style={{ fontSize: '20px', margin: '0 115px' }}>Venda nº:</label>
                   <label htmlFor='preco' hidden style={{ fontSize: '20px', margin: '0 -70px' }}>Preço:</label>
                   <label htmlFor='quant' hidden style={{ fontSize: '20px', margin: '0 180px' }}>Qtd:</label>
+                  <label htmlFor='Desconto' style={{ fontSize: '20px', margin: '0 -50px' }}>Desconto:</label>
                   <input type='text' value={vendan} onChange={e => vendanchange(e.target.value)} style={{ fontSize: '20px', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='vendan' />
+                  <input type='decimal' value={desconto} onChange={e => descontochange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 260px', marginTop:'-44px'}} className='form-control rounded-0' name='desc' id='desc' />
                   <input type='decimal' hidden value={preco} onChange={e => precochange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 240px', marginTop: '-43px' }} className='form-control rounded-0' name='preco' />
                   <input type='text' hidden value={quant} onChange={e => quantchange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 410px', marginTop: '-43px' }} className='form-control rounded-0' name='quant' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='total' style={{ fontSize: '20px', margin: '0 115px' }}>Total c/s Desconto:</label>
+                  <label htmlFor='total' style={{ fontSize: '20px', margin: '0 115px' }}>Total s/c Desconto:</label>
                   <label htmlFor='parcela' style={{ fontSize: '20px', margin: '0 -78px' }}>Valor Pago:</label>
                   <label htmlFor='parcela' style={{ fontSize: '20px', margin: "0 130px" }}>Parcelamento:</label>
                   <input type="decimal" value={total} onChange={e => totalchange(e.target.value)} style={{ fontSize: '20px', width: 130, margin: '0 115px' }} className='form-control rounded-0' name='total' id='total' />
@@ -563,6 +572,10 @@ const EntradasNumeroEditar = () => {
                     <option value="11x">11x</option>
                     <option value="12x">12x</option>
                   </select>
+                </div>
+                <div className='mb-3'>
+                <label htmlFor='total' style={{ fontSize: '20px', margin: '0 115px' }}>Novo Total c/ Desconto:</label>
+                <input type="decimal" style={{ fontSize: '20px', width: 130, margin: '0 115px' }} className='form-control rounded-0' name='ntotal' id='ntotal' /> 
                 </div>
                 <div className='mb-3'>
                   <label htmlFor='formapaga' style={{ fontSize: '20px', margin: '0 115px' }}>Forma de Pagamento:</label>
@@ -607,13 +620,11 @@ const EntradasNumeroEditar = () => {
                     <option value="12ª">12ª</option>
                   </select>
 
-                </div>
-
-
+                </div>                
                 <div className='mb-3'>
-                  <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 115px' }}>Mês:</label>
-                  <label htmlFor='troco' style={{ fontSize: '20px', margin: '0 80px' }}>Troco:</label>
-                  <select style={{ fontSize: '20px', width: 150, margin: '0 115px' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
+                    <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 115px' }}>Mês:</label>
+                    <label htmlFor='troco' style={{ fontSize: '20px', margin: '0 80px' }}>Troco:</label>
+                   <select style={{ fontSize: '20px', width: 150, margin: '0 115px' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
                     <option value=""></option>
                     <option value="Janeiro">Janeiro</option>
                     <option value="Fevereiro">Fevereiro</option>
@@ -634,7 +645,7 @@ const EntradasNumeroEditar = () => {
 
                 <div className='mb-3'>
                   <button type='submit' className='btn btn-success border rounded-0' style={{ width: 120, margin: '0 115px', fontSize: '16px' }}>Atualizar:</button>
-                  <Link to='/venda/desconto' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'Indigo', margin: '0 -100px', fontSize: '16px', width: 120 }}>Desconto:</Link>
+                  <Link className="btn border rounded-0" onClick={Desconto} style={{ color: 'white', backgroundColor: 'Indigo', margin: '0 -100px', fontSize: '16px', width: 120 }}>Desconto:</Link>
                   <Link to='/venda/troco' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 115px', fontSize: '16px', width: 120 }}>Troco:</Link>
                   <Link to='/entradas/numero' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 520px', marginTop: '-62px', fontSize: '16px', width: 120 }}>Voltar:</Link>
 

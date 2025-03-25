@@ -54,6 +54,7 @@ import FornecedorCatEditar from './components/FornecedorCatEditar';
 import ProdutoCatEditar from './components/ProdutoCatEditar';
 import VendaDesconto from './components/VendaDesconto';
 import ProdutosCat from './components/ProdutosCat';
+import MesAtual from './components/MesAtual';
 
 
 //8=> Criação do json server com o comando: npx json-server db.json
@@ -118,6 +119,8 @@ function App() {
     <Route path='/cadcatforn' element={<PrivateRoutes><CadCatForn /></PrivateRoutes>}></Route>
     <Route path='/fornecedores/categoria/lista' element={<PrivateRoutes><CatFornecedores /></PrivateRoutes>}></Route>
     <Route path='/fornecedor/categoria/editar/:catcod' element={<PrivateRoutes><FornecedorCatEditar /></PrivateRoutes>}></Route>
+    <Route path='/mesatual' element={<PrivateRoutes><MesAtual /></PrivateRoutes>}></Route>
+
     </Routes>
     </BrowserRouter>
    </div>

@@ -673,5 +673,65 @@
     }  ],
   "mesatual": [
  
+  ],
+  "despesas": [
+    {
+      "nome": "Água",
+      "custo": "75.00",
+      "data_pgto": "15/03/2025",
+      "data_cad": "15/03/2025",
+      "total": "75.00",
+      "id": 1
+    },
+    {
+      "nome": "Luz",
+      "custo": "60.00",
+      "data_pgto": "10/03/2025",
+      "data_cad": "15/03/2025",
+      "total": "60.00",
+      "id": 2
+    },
+    {
+      "nome": "Telefone e Internet ",
+      "custo": "100",
+      "data_pgto": "12/03/2025",
+      "data_cad": "15/03/2025",
+      "total": "100",
+      "id": 3
+    },
+    {
+      "nome": "Imposto",
+      "custo": "123.00",
+      "data_pgto": "14/03/2025",
+      "data_cad": "15/03/2025",
+      "total": "123.00",
+      "id": 4
+    },
+    {
+      "nome": "Funcionarios",
+      "custo": "3050.00",
+      "data_pgto": "10/03/2025",
+      "data_cad": "15/03/2025",
+      "total": "3050.00",
+      "id": 5
+    },
+    {
+      "nome": "Outros Serviços",
+      "custo": "500.00",
+      "data_pgto": "06/03/2025",
+      "data_cad": "15/03/2025",
+      "total": "500.00",
+      "id": 6
+    },
+    {
+      "nome": "Total das despesas:",
+      "total": "3908.00",
+      "custo": null,
+      "data_cad": "15/03/2025",
+      "id": 7
+    }
+  
+ 
   ]
+ 
 }

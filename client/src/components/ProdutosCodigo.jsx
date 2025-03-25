@@ -223,7 +223,7 @@ const logout = () => {
            <div className="px-5 mt-5">
                <div className="mb3">
                   <label htmlFor="Id" className="Id" style={{fontFamily: 'arial', fontSize:'22px'}}>Busca por codigo de venda:</label><br />
-                  <input style={{fontFamily: 'arial', fontSize:'22px', width:'100px'}} type="search" className="consultaid" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)}/>                  
+                  <input autoFocus={true} style={{fontFamily: 'arial', fontSize:'22px', width:'100px'}} type="search" className="consultaid" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)}/>                  
                   <Link to="/entradas" className="btn" style={{color: 'white', backgroundColor:'green', margin: '0 58px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Entradas:</Link> 
                   
                 </div><br />             

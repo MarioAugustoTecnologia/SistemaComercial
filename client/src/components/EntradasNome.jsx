@@ -11,9 +11,11 @@ const EntradasNome = () => {
   const [vendadata, setVendadata] = useState([]);
   const [buscanome, setBuscaNome] = React.useState("")
 
+
   const buscarap = buscanome.toLowerCase()
 
-  var table = vendadata.filter(item => item.nome.toLowerCase().includes(buscarap))
+
+  var table = vendadata.filter(item => item.nome.toLowerCase().includes(buscarap)) 
 
 
   useEffect(() => {
@@ -72,7 +74,7 @@ const EntradasNome = () => {
       toast.warning("O campo busca por nome está vazio !")
     } else {   
 
-        let valores = [];
+      let valores = [];
 
         table.map(item => {
           valores.push(item.total)
@@ -80,15 +82,15 @@ const EntradasNome = () => {
         )
 
         let soma = valores.reduce((previous_value, current_value) => {
+              
           return parseFloat(previous_value) + parseFloat(current_value);
         })
 
         const total = soma.toFixed(2);
-        document.getElementById('total').innerHTML = total;      
+        document.getElementById('total').innerHTML = total;   
 
 
     }
-
   }
 
   const logout = () => {
@@ -231,7 +233,7 @@ const EntradasNome = () => {
           <Outlet />
           <div className="px-5 mt-5">
             <div className="mb3">
-              <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px' }}>Busca por nome:</label><br />
+              <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px' }}>Busca por nome:</label><br />                       
               <input type="search" autoFocus='true' className="consultanome" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px' }} />
               <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 20px' }}>Voltar:</Link>
               <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '18px' }}>Total Entradas:</Link>
@@ -276,7 +278,7 @@ const EntradasNome = () => {
                         <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.troco)}</td>
                         <td className="td">{item.parcelamento}</td>
                         <td className="td">{item.parcelan}</td>
-                        <td className="td" id="mes">{item.mes}</td>
+                        <td className="td">{item.mes}</td>
                         <td className="td">{item.data}</td>
 
                         <td className="td" >

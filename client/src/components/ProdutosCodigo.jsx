@@ -11,16 +11,19 @@ const ProdutosCodigo = () => {
    const [produtocod, setProdutoCod] = useState([]);
    const [buscarap, setBuscaRap] = useState('');  
     
-   var table = produtocod.filter(item => item.codigo.includes(buscarap)) 
+   var table = produtocod.filter(item => item.codigo.includes(buscarap))
+ 
  
    const navigate = useNavigate();
+
+   //const [value, setValue] = useState("");
 
    useScanDetecion({
     onComplete: setBuscaRap,
     minLength: 13 
    })
 
-  
+
    useEffect(() => {
 
      fetch("https://sistemacomercialserver.onrender.com/produtos").then((res) => {
@@ -35,8 +38,7 @@ const ProdutosCodigo = () => {
       console.log(err.message)
     }) 
    
-  }, []) 
-
+  }, [])
 
 
   const LoadEdit = (id) => {
@@ -82,11 +84,18 @@ const handleInsert = (id) => {
 
 } 
 
+const handleInsertBuy = (id) => {
+    
+  navigate("/cadcompras/" + id);  
+
+} 
+
 const logout = () => {
   localStorage.clear()
   console.clear();
   
 }
+
 
     
   return (
@@ -216,25 +225,29 @@ const logout = () => {
          </div>
        </div>
        <div className="col p-0 m-0">
-           <div className="p-2 d-flex justify-content-center shadow text-white" style={{backgroundColor:'blue', fontFamily:'arial', width:'125%'}}>
+           <div className="p-2 d-flex justify-content-center shadow text-white" style={{backgroundColor:'blue', fontFamily:'arial', width:'140%'}}>
                <h4><strong>Sistema de Gestão Comercial</strong></h4>
            </div>
            <Outlet />
            <div className="px-5 mt-5">
                <div className="mb3">
                   <label htmlFor="Id" className="Id" style={{fontFamily: 'arial', fontSize:'22px'}}>Busca por codigo de venda:</label><br />
-                  <input autoFocus={true} style={{fontFamily: 'arial', fontSize:'22px', width:'100px'}} type="search" className="consultaid" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)}/>                  
-                  <Link to="/entradas" className="btn" style={{color: 'white', backgroundColor:'green', margin: '0 58px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Entradas:</Link> 
+                  
+                  <input style={{fontFamily: 'arial', fontSize:'22px', width:'200px'}} type="search" className="consultaid" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)} id="busca" autoFocus='true'/>                  
+                  <Link to="/entradas" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 58px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Entradas:</Link>
+                  <Link to="/compras/numero" className="btn" style={{color: 'white', backgroundColor:'green', margin: '0 -20px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Saidas:</Link> 
+                  
                   
                 </div><br />             
                       <h4><strong style={{color:'red', margin:'0 680px', fontSize:'25px'}}>Produtos:</strong></h4>                         
                      <br />
                     <div className="mt-3">
-                    <table className="table" style={{margin:'0 -30px', fontFamily:'arial', fontSize:'20px', width:'130%'}} id="table">
+                    <table className="table" style={{margin:'0 -30px', fontFamily:'arial', fontSize:'20px', width:'145%'}} id="table">
                               <thead>
                                   <tr>
                                   <th scope="col" className="th">Id:</th>
                                   <th scope="col" className="th">Nome:</th>
+                                  <th scope="col" className="th">Custo:</th>
                                   <th scope="col" className="th">Preço:</th>
                                   <th scope="col" className="th">Categoria:</th> 
                                   <th scope="col" className="th">Data de Cadastro:</th>
@@ -249,6 +262,7 @@ const logout = () => {
                                     <tr key={item.id}>
                                            <td className="td">{item.id}</td>
                                            <td className="td">{item.nome}</td>
+                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.custo)}</td> 
                                            <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.preco)}</td> 
                                            <td className="td">{item.categoria}</td> 
                                            <td className="td">{item.data_cadastro}</td>
@@ -257,7 +271,8 @@ const logout = () => {
                                            <td className="td"  >   
                                            <button className="editar" onClick={() => {LoadEdit(item.id)}} style={{color:'white', backgroundColor:'blue', border:'none', borderRadius:'5px'}}>Editar:</button>                                 
                                            <button className="excluir" onClick={() => {handleDelete(item.id)}} style={{color:'white', backgroundColor:'red', border:'none', borderRadius:'5px'}}>Excluir:</button>
-                                           <button className="vender"  onClick={() => {handleInsert(item.id)}} style={{color:'white', backgroundColor:'orange', border:'none', borderRadius:'5px'}}>Vender:</button>                                                         
+                                           <button className="vender"  onClick={() => {handleInsert(item.id)}} style={{color:'white', backgroundColor:'orange', border:'none', borderRadius:'5px'}}>Vender:</button>
+                                           <button className="comprar"  onClick={() => {handleInsertBuy(item.id)}} style={{color:'white', backgroundColor:'green', border:'none', borderRadius:'5px'}}>Comprar:</button>                                                         
                                            </td> 
 
                                     </tr>

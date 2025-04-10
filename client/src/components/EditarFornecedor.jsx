@@ -237,7 +237,7 @@ const isValidate = () => {
                                     const catforn = document.getElementById('categoria').value;              
                                     const data = new Date();
                                     const datacad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-                                    const edtobj = { nome, endereco, comp, cep, cidade, email, fone, datacad, catforn, numero }
+                                    const edtobj = {id, nome, endereco, comp, cep, cidade, email, fone, datacad, catforn, numero }
                             
                                     fetch("https://sistemacomercialserver.onrender.com/fornecedor/" + forcod, {
                                       method: "PUT",

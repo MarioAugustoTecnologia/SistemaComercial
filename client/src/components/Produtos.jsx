@@ -208,8 +208,6 @@ const Produtos = () => {
                   </span>
                 </Link>
               </li>
-
-
               <li className="w-100" onClick={logout}>
                 <Link
                   to="/"
@@ -223,7 +221,7 @@ const Produtos = () => {
           </div>
         </div>
         <div className="col p-0 m-0">
-          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', fontFamily: 'arial', width: '120%' }}>
+          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', fontFamily: 'arial', width: '125%' }}>
             <h4><strong>Sistema de Gestão Comercial</strong></h4>
           </div>
           <Outlet />
@@ -241,11 +239,12 @@ const Produtos = () => {
               <h4 className="h4" ><strong className="strong" style={{ color: 'red', margin: '0 680px', fontSize: '25px' }}>Produtos:</strong></h4>
               <br />
               <div className="mt-3">
-                <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: '125%' }}>
+                <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: '130%' }}>
                   <thead>
                     <tr>
                       <th className="th" scope="col">Id:</th>
                       <th className="th" scope="col">Nome:</th>
+                      <th className="th" scope="col">Custo:</th>
                       <th className="th" scope="col">Preço:</th>
                       <th className="th" scope="col">Categoria:</th>
                       <th className="th" scope="col">Data de Cadastro:</th>
@@ -260,13 +259,14 @@ const Produtos = () => {
                         <tr key={item.id}>
                           <td className="td">{item.id}</td>
                           <td className="td">{item.nome}</td>
+                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.custo)}</td>
                           <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.preco)}</td>
                           <td className="td">{item.categoria}</td>
                           <td className="td">{item.data_cadastro}</td>
                           <td className="td">{item.qtd}</td>
                           <td className="td">{item.codigo}</td>
                           <td className="td" >
-                            <button className="editar" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Editar:</button>
+                            <button className="editar" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px'}}>Editar:</button>
                             <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
 
                           </td>

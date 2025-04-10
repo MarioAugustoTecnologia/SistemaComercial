@@ -208,7 +208,7 @@ const logout = () => {
          </div>
        </div>
        <div className="col p-0 m-0">
-           <div className="p-2 d-flex justify-content-center shadow text-white" style={{backgroundColor:'blue', fontFamily:'arial', width:'120%'}}>
+           <div className="p-2 d-flex justify-content-center shadow text-white" style={{backgroundColor:'blue', fontFamily:'arial', width:'125%'}}>
                <h4><strong>Sistema de Gestão Comercial</strong></h4>
            </div>
            <Outlet />
@@ -224,11 +224,12 @@ const logout = () => {
                       <h4><strong style={{color:'red', margin:'0 680px', fontSize:'25px'}}>Produtos:</strong></h4>                         
                      <br />
                     <div className="mt-3">
-                    <table className="table" style={{margin:'0 -30px', fontFamily:'arial', fontSize:'20px', width:'125%'}} id="table">
+                    <table className="table" style={{margin:'0 -30px', fontFamily:'arial', fontSize:'20px', width:'130%'}} id="table">
                               <thead>
                                   <tr>
                                   <th scope="col" className="th">Id:</th>
                                   <th scope="col" className="th">Nome:</th>
+                                  <th scope="col" className="th">Custo:</th>
                                   <th scope="col" className="th">Preço:</th>
                                   <th scope="col" className="th">Categoria:</th> 
                                   <th scope="col" className="th">Data de Cadastro:</th>
@@ -243,6 +244,7 @@ const logout = () => {
                                     <tr key={item.id}>
                                            <td className="td">{item.id}</td>
                                            <td className="td" id="nome">{item.nome}</td>
+                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.custo)}</td>
                                            <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.preco)}</td> 
                                            <td className="td">{item.categoria}</td> 
                                            <td className="td">{item.data_cadastro}</td>

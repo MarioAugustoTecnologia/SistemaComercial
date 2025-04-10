@@ -17,25 +17,23 @@ const ComprasNumeroEditar = () => {
       compranchange(resp.compran);
       nomechange(resp.nome);
       qtdchange(resp.qtd);
-      precochange(resp.preco);
+      custochange(resp.custo);
       totalchange(resp.total);
       meschange(resp.mes);
       formapagchange(resp.formapag);
       valorpagchange(resp.valorpag);
       trocochange(resp.troco);
       parcelamentochange(resp.parcelamento);
-      parcelanchange(resp.parcelan);
-
+      parcelanchange(resp.parcelan);     
 
     }).catch((err) => {
       console.log(err.message);
     })
   }, []);
 
-
   const [compran, compranchange] = useState("")
   const [nome, nomechange] = useState("")
-  const [preco, precochange] = useState("")
+  const [custo, custochange] = useState("")
   const [qtd, qtdchange] = useState("")
   const [total, totalchange] = useState("")
   const [valorpag, valorpagchange] = useState("")
@@ -46,6 +44,7 @@ const ComprasNumeroEditar = () => {
   const [parcela, parcelachange] = useState("")
   const [parcelan, parcelanchange] = useState("")
   const [forname, fornamechange] = useState([])
+
 
 
   useEffect(() => {
@@ -66,7 +65,6 @@ const ComprasNumeroEditar = () => {
     id: ''
   })
 
-
   const isValidate = () => {
     let isproceed = true
     let errormessage = "Campos devem conter os dados corretos  !"
@@ -80,7 +78,7 @@ const ComprasNumeroEditar = () => {
       // errormessage += 'Email:' 
     }
 
-    if (preco === null || preco === '') {
+    if (custo === null || custo === '') {
       isproceed = false
       //errormessage += 'Telefone:' 
     }
@@ -126,6 +124,7 @@ const ComprasNumeroEditar = () => {
 
     return isproceed
   }
+ 
 
 
   function formataData() {
@@ -155,11 +154,34 @@ const ComprasNumeroEditar = () => {
   function MudaCorValorPag() {
     document.getElementById('valorpag').style.borderColor = 'GainsBoro';
   }
+  
+
+  function Frete(){   
+  
+    const totalfrete = (parseFloat(total) + parseFloat(custo)).toFixed(2);  
+    document.getElementById('tfrete').value = totalfrete;
+
+  }
+
+  
+  function Troco(){ 
+
+
+    if(document.getElementById('tfrete').value !== ''){
+
+      var total = document.getElementById('tfrete').value;
+      const troco = (parseFloat(valorpag) - parseFloat(total)).toFixed(2);  
+      document.getElementById('dif').value = troco;
+
+    }
+ 
+
+  }
 
 
   const atualizar = (e) => {
 
-    e.preventDefault();
+    e.preventDefault(); 
 
     Swal.fire({
       title: "Deseja salvar ?",
@@ -182,7 +204,7 @@ const ComprasNumeroEditar = () => {
             const troco = document.getElementById('troco').value;
             const fornecedor = document.getElementById('forname').value;
 
-            const edtobj = { nome, compran, preco, total, valorpag, mes, data_cad, formapag, qtd, troco, fornecedor }
+            const edtobj = { nome, compran, custo, total, valorpag, mes, data_cad, formapag, qtd, troco, fornecedor }
 
 
             if (isValidate()) {
@@ -195,7 +217,7 @@ const ComprasNumeroEditar = () => {
                 toast.success('Concluido com Sucesso !')
                 nomechange('')
                 compranchange('')
-                precochange('')
+                custochange('')
                 totalchange('')
                 valorpagchange('')
                 meschange('')
@@ -209,7 +231,7 @@ const ComprasNumeroEditar = () => {
           } else {
 
             const fornecedor = document.getElementById('forname').value;
-            const edtobj = { nome, compran, preco, total, valorpag, mes, data_cad, formapag, qtd, troco, fornecedor }
+            const edtobj = { nome, compran, custo, total, valorpag, mes, data_cad, formapag, qtd, troco, fornecedor }
 
 
             if (isValidate()) {
@@ -222,7 +244,7 @@ const ComprasNumeroEditar = () => {
                 toast.success('Concluido com Sucesso !')
                 nomechange('')
                 compranchange('')
-                precochange('')
+                custochange('')
                 totalchange('')
                 valorpagchange('')
                 meschange('')
@@ -244,7 +266,7 @@ const ComprasNumeroEditar = () => {
           const fornecedor = document.getElementById('forname').value;
 
 
-          const edtobj = { nome, compran, preco, total, valorpag, mes, data_cad, parcelamento, parcelan, formapag, qtd, troco, fornecedor }
+          const edtobj = { nome, compran, custo, total, valorpag, mes, data_cad, parcelamento, parcelan, formapag, qtd, troco, fornecedor }
 
 
           if (isValidate()) {
@@ -271,7 +293,7 @@ const ComprasNumeroEditar = () => {
           const fornecedor = document.getElementById('forname').value;
 
 
-          const edtobj = { nome, compran, preco, total, valorpag, mes, data_cad, parcelamento, parcelan, formapag, qtd, troco, fornecedor }
+          const edtobj = { nome, compran, custo, total, valorpag, mes, data_cad, parcelamento, parcelan, formapag, qtd, troco, fornecedor }
 
           if (isValidate()) {
 
@@ -297,7 +319,7 @@ const ComprasNumeroEditar = () => {
           const fornecedor = document.getElementById('forname').value;
 
 
-          const edtobj = { nome, compran, preco, total, valorpag, mes, data_cad, parcelamento, parcelan, formapag, qtd, troco, fornecedor }
+          const edtobj = { nome, compran, custo, total, valorpag, mes, data_cad, parcelamento, parcelan, formapag, qtd, troco, fornecedor }
 
           if (isValidate()) {
 
@@ -324,7 +346,7 @@ const ComprasNumeroEditar = () => {
           console.log(valorpag)
           const fornecedor = document.getElementById('forname').value;
 
-          const cadobj = { nome, compran, preco, total, valorpag, mes, data_cad, parcelamento, parcelan, formapag, qtd, troco, fornecedor }
+          const cadobj = { nome, compran, custo, total, valorpag, mes, data_cad, parcelamento, parcelan, formapag, qtd, troco, fornecedor }
 
           if (isValidate()) {
 
@@ -351,9 +373,7 @@ const ComprasNumeroEditar = () => {
         Swal.fire("Nada salvo", "", "info");
       }
     });
-
-
-
+    
   }
 
 
@@ -478,25 +498,7 @@ const ComprasNumeroEditar = () => {
                   </span>
                 </Link>
               </li>
-
-              <li className="w-100">
-                <Link
-                  to="/painel/email_servico"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <i className="fs-4 bi-envelope-at ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Serviços de Email:</span>
-                </Link>
-              </li>
-              <li className="w-100">
-                <Link
-                  to="/painel/Whatsapp"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <i className="fs-4 bi-whatsapp ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Whatsapp:</span>
-                </Link>
-              </li>
+             
               <li className="w-100" onClick={logout}>
                 <Link to="/"
                   className="nav-link px-0 align-middle text-white"
@@ -523,17 +525,17 @@ const ComprasNumeroEditar = () => {
                 </div>
                 <div className='mb-3'>
                   <label htmlFor='vendan' style={{ fontSize: '20px', margin: '0 115px' }}>Compra nº:</label>
-                  <label htmlFor='preco' hidden style={{ fontSize: '20px', margin: '0 -90px' }}>Preço:</label>
+              
                   <label htmlFor='qtd' hidden style={{ fontSize: '20px', margin: '0 200px' }}>Qtd:</label>
                   <input type='text' value={compran} onChange={e => compranchange(e.target.value)} style={{ fontSize: '20px', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='vendan' />
-                  <input type='decimal' hidden value={preco} onChange={e => precochange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 240px', marginTop: '-43px' }} className='form-control rounded-0' name='preco' />
+                  
                   <input type='text' hidden value={qtd} onChange={e => qtdchange(e.target.value)} style={{ fontSize: '20px', width: 80, margin: '0 403px', marginTop: '-43px' }} className='form-control rounded-0' name='qtd' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='total' style={{ fontSize: '20px', margin: '0 115px' }}>Total:</label>
-                  <label htmlFor='parcela' style={{ fontSize: '20px' }}>Valor Pago:</label>
-                  <label htmlFor='parcela' style={{ fontSize: '20px', margin: "0 60px" }}>Parcelamento:</label>
-                  <input type="decimal" value={total} onChange={e => totalchangechange(e.target.value)} style={{ fontSize: '20px', width: 130, margin: '0 115px' }} className='form-control rounded-0' name='total' id='total' />
+                  <label htmlFor='total' style={{ fontSize: '20px', margin: '0 115px' }}>Total Geral:</label>
+                  <label htmlFor='parcela' style={{ fontSize: '20px', margin:'0 -43px' }}>Valor Pago:</label>
+                  <label htmlFor='parcela' style={{ fontSize: '20px', margin: "0 95px" }}>Parcelamento:</label>     
+                  <input type="decimal" value={total} onChange={e => totalchange(e.target.value)} style={{ fontSize: '20px', width: 130, margin: '0 115px' }} className='form-control rounded-0' name='total' id='total' />
                   <input type="decimal" onKeyUp={MudaCorValorPag} value={valorpag} onChange={e => valorpagchange(e.target.value)} style={{ fontSize: '20px', width: 130, margin: '0 280px', marginTop: '-43px' }} className='form-control rounded-0' name='valorpag' id='valorpag' />
                   <select value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 440px', marginTop: '-43px' }} className='form-select' name='parcela' id='parcela'>
                     <option value=""></option>
@@ -548,9 +550,15 @@ const ComprasNumeroEditar = () => {
                     <option value="10x">10x</option>
                     <option value="11x">11x</option>
                     <option value="12x">12x</option>
-                  </select>
-                </div>
-                <div className='mb-3'>
+                </select><br />
+                  <label htmlFor='frete' style={{ fontSize: '20px', margin: "0 120px" }}>Frete:</label>
+                  <label htmlFor='tfrete' style={{ fontSize: '20px', margin: "0 2px" }}>Total c/Frete:</label>
+                  <label htmlFor='tfrete' style={{ fontSize: '20px', margin: "0 48px" }}>Diferença:</label>
+                  <input type="decimal" value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '20px', width: 130, margin:'0 120px'}} className='form-control rounded-0' name='frete' id='frete' />
+                  <input type="decimal" style={{ fontSize: '20px', width: 130, margin:'0 290px', marginTop:'-45px'}} className='form-control rounded-0' name='tfrete' id='tfrete' />
+                  <input type="decimal" style={{ fontSize: '20px', width: 130, margin:'0 460px', marginTop:'-45px'}} className='form-control rounded-0' name='dif' id='dif' />
+                 </div>
+                 <div className='mb-3'>
                   <label htmlFor='formapaga' style={{ fontSize: '20px', margin: '0 115px' }}>Forma de Pagamento:</label>
                   <label htmlFor='parcela' style={{ fontSize: '20px', marginLeft: '-72px' }}>Parcelas:</label>
                   <label htmlFor='parcelan' style={{ fontSize: '20px', marginLeft: '60px' }}>Parcela:</label>
@@ -626,10 +634,10 @@ const ComprasNumeroEditar = () => {
                 </div>
 
                 <div className='mb-3'>
-                  <button type='submit' className='btn btn-success border rounded-0' style={{ width: 150, margin: '0 115px', fontSize: '16px' }}>Concluir:</button>
-
-                  <Link to='/compras/troco' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '0 -90px', fontSize: '16px', width: 150 }}>Troco:</Link>
-                  <Link to='/compras/numero' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 110px', fontSize: '16px', width: 150 }}>Voltar:</Link>
+                  <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px', fontSize: '16px' }}>Concluir:</button>
+                  <Link onClick={Frete} className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '0 -90px', fontSize: '16px', width: 100 }}>Frete:</Link> 
+                  <Link className="btn border rounded-0" onClick={Troco} style={{ color: 'white', backgroundColor: 'gray', margin: '0 110px', fontSize: '16px', width: 100 }}>Troco:</Link>
+                  <Link to='/compras/numero' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 480px', marginTop:'-60px' ,fontSize: '16px', width: 100 }}>Voltar:</Link>
                 </div>
                 <ToastContainer />
               </form>

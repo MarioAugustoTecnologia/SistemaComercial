@@ -71,6 +71,12 @@ const ClientesCpf = () => {
 
   }
 
+  const logout = () => {
+    localStorage.clear()
+    console.clear();
+
+}
+
   
   return (
     <div className="container-fluid">
@@ -185,7 +191,15 @@ const ClientesCpf = () => {
                     Resultado:
                   </span>
                 </Link>
-              </li>         
+              </li> 
+              <li className="w-100" onClick={logout} >
+                <Link to='/'
+                  className="nav-link px-0 align-middle text-white"
+                >
+                  <i className="fs-4 bi-power ms-2"></i>
+                  <span className="ms-2 d-none d-sm-inline">Logout</span>
+                </Link>
+              </li>        
             </ul>
           </div>
         </div>

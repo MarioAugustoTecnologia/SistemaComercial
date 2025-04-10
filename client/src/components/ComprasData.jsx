@@ -212,14 +212,15 @@ const logout = () => {
                  <h4 style={{textAlign: 'center', color: 'Red', fontSize: '25px', marginRight: '-470px'}}><strong>Compras:</strong></h4>                         
                      <br />
                     <div className="mt-3">
-                        <table className="table" id="table" style={{margin:'0 -30px', fontFamily:'arial', fontSize:'19px', width: 2600}}>
+                        <table className="table" id="table" style={{margin:'0 -30px', fontFamily:'arial', fontSize:'20px', width: 2600}}>
                               <thead>
                                   <tr>
                                   <th className="th" scope="col">Id:</th>
                                   <th className="th" scope="col">Nome:</th>
                                   <th className="th" scope="col">Qtd:</th>
-                                  <th className="th" scope="col">Custo:</th> 
-                                  <th className="th" scope="col">Total:</th>                       
+                                  <th className="th" scope="col">Custo/ Frete:</th>
+                                  <th className="th" scope="col">Frete:</th>  
+                                  <th className="th" scope="col">Total Geral:</th>                                       
                                   <th className="th" scope="col">Saidas:</th>
                                   <th className="th" scope="col">Troco:</th>
                                   <th className="th" scope="col">Forma de Pagamento:</th>
@@ -238,8 +239,9 @@ const logout = () => {
                                            <td className="td">{item.id}</td>
                                            <td className="td">{item.nome}</td>
                                            <td className="td">{item.qtd}</td>
-                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.preco)}</td>
-                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.total)}</td>
+                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.custo)}</td>
+                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.vfrete)}</td>
+                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.total)}</td>                                
                                            <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.valorpag)}</td>
                                            <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.troco)}</td>
                                            <td className="td">{item.formapag}</td>                              

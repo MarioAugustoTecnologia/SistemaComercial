@@ -89,7 +89,7 @@ const CadClientes = () => {
 
   const data = new Date();
   const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-  //console.log(datanascimento);
+
 
   const cadastrar = (e) => {
 
@@ -253,8 +253,6 @@ const CadClientes = () => {
                   </span>
                 </Link>
               </li>
-
-
               <li className="w-100" onClick={logout}>
                 <Link to="/"
                   className="nav-link px-0 align-middle text-white"

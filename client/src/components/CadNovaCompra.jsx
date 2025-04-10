@@ -1,48 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Swal from 'sweetalert2';
 
 
-const CadCompras = () => {
-
-  const { pcod } = useParams();
- // const navigate = useNavigate();
-
-  useEffect(() => {
-    fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod).then((res) => {
-      return res.json();
-    }).then((resp) => {
-      Idchange(resp.id);
-      nomechange(resp.nome);
-      precochange(resp.preco);
-      custochange(resp.custo)
-      qtdchange(resp.qtd);
-      Categoriachange(resp.categoria);
-      DataCadchange(resp.data_cadastro);
-      Codigochange(resp.codigo);
+const CadNovaCompra = () => {
 
 
-
-    }).catch((err) => {
-      console.log(err.message);
-    })
-  }, []);
-
-  const [id, Idchange] = useState("")
   const [nome, nomechange] = useState("")
-  const [estoque, qtdchange] = useState("")
-  const [preco, precochange] = useState("")
   const [custo, custochange] = useState("")
-  const [categoria, Categoriachange] = useState("")
-  const [data_cadastro, DataCadchange] = useState("")
-  const [codigo, Codigochange] = useState("")
   const [formapag, formapagchange] = useState("")
   const [forname, fornamechange] = useState([])
   const [datacad, datacadchange] = useState("")
-  const [quant, quantchange] = useState("")
+  const [qtd, qtdchange] = useState("")
   const [parcelamento, parcelamentochange] = useState("")
   const [parcela, parcelachange] = useState("")
   const [parcelan, parcelanchange] = useState("")
@@ -51,7 +23,6 @@ const CadCompras = () => {
   const [mescompraatual, setMesCompraAtual] = useState([])
   const [vfrete, setVFrete] = useState("")
 
-  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -121,7 +92,7 @@ const CadCompras = () => {
       // errormessage += 'Email:' 
     }
 
-    if (quant === null || quant === '') {
+    if (qtd === null || qtd === '') {
       document.getElementById('qtd').style.borderColor = 'red';
       isproceed = false
       //errormessage += 'Telefone:' 
@@ -143,6 +114,9 @@ const CadCompras = () => {
       isproceed = false
       //errormessage += 'Telefone:' 
     }
+
+
+
 
     if (!isproceed) {
       toast.warning(errormessage)
@@ -176,75 +150,77 @@ const CadCompras = () => {
     document.getElementById('datacad').style.borderColor = 'Gainsboro';
 
   }
+  function mudacorFrete() {
+
+    document.getElementById('vfrete').style.borderColor = 'Gainsboro';
+
+  }
 
 
   function calcular() {
 
-    const total = (quant * custo).toFixed(2);
+    const total = (qtd * custo).toFixed(2);
     console.log(total)
     document.getElementById('total').value = total;
     document.getElementById('total').style.borderColor = 'Gainsboro';
 
-
   }
 
-  const IsValidate2 = () => {
-      
-    let isproceed = true
-    let errormessage = "Campo valor frete não pode estar vazio  !"
-
-    if (vfrete === null || vfrete === '') {
-      document.getElementById('vfrete').style.borderColor = 'red';
-      isproceed = false
-      //errormessage += 'Nome Completo:' 
+   const IsValidate2 = () => {
+        
+      let isproceed = true
+      let errormessage = "Campo valor frete não pode estar vazio  !"
+  
+      if (vfrete === null || vfrete === '') {
+        document.getElementById('vfrete').style.borderColor = 'red';
+        isproceed = false
+        //errormessage += 'Nome Completo:' 
+      }
+  
+      if (!isproceed) {
+        toast.warning(errormessage)
+      }
+  
+      return isproceed
     }
 
-    if (!isproceed) {
-      toast.warning(errormessage)
+
+    function totalFrete() {
+
+      if (IsValidate2()) {
+  
+        var total = document.getElementById('total').value;
+        var tfrete = (parseFloat(total) + parseFloat(vfrete)).toFixed(2);
+        document.getElementById('total').value = tfrete;
+        document.getElementById('total').style.borderColor = 'Gainsboro';
+      }
+  
     }
 
-    return isproceed
-  }
-
-  function totalFrete() {
-
-    if (IsValidate2()) {
-
-      var total = document.getElementById('total').value;
-      var tfrete = (parseFloat(total) + parseFloat(vfrete)).toFixed(2);
-      document.getElementById('total').value = tfrete;
-      document.getElementById('total').style.borderColor = 'Gainsboro';
-    }   
-
-  }
 
   const cadastrar = (e) => {
 
     e.preventDefault();
 
-    if (isValidate()) {
-
-    if (valorpag === '') {
-      document.getElementById('valorpag').value = 0;
-    }
+    if (isValidate()) {   
 
     if (parcelamento === "" || parcelamento === null && parcela === "" || parcela === null && parcelan === "" || parcelan === null) {
 
       const dataInput = datacad;
       const data = new Date(dataInput);
-      const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });     
-      const fornecedor = document.getElementById('forname').value;
+      const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+      var total = document.getElementById('total').value;
+      var fornecedor = document.getElementById('forname').value;
       var compran = document.getElementById('compran').innerHTML;
-      var mes = document.getElementById('mescompraatual').innerHTML;
-      var qtd = quant;
-      var total = document.getElementById('total').value;     
+      var mes = document.getElementById('mescompraatual').innerHTML;   
+    
 
-      if (valorpag > total) {
+      if (valorpag > total) { 
 
         const troco = parseFloat((valorpag - total).toFixed(2));
         const vfrete = document.getElementById('vfrete').value;
 
-        const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpag, vfrete }  
+        const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpag, vfrete }       
 
           Swal.fire({
             title: "Deseja salvar ?",
@@ -264,33 +240,14 @@ const CadCompras = () => {
                 toast.success('Cadastrado com Sucesso !')
                 nomechange('')
                 custochange('')
-                formapagchange('')          
+                formapagchange('')
                 datacadchange('')
                 qtdchange('')
                 parcelamentochange('')
                 parcelachange('')
                 valorpagchange('')
-                document.getElementById('qtd').style.borderColor = 'Gainsboro';
-
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-
-              function Add() {
-                return parseInt(estoque) + parseInt(quant);
-              }
-
-              const qtd = Add();
-
-              const edtobj = { id, nome, custo, preco, qtd, categoria, data_cadastro, codigo }
-
-              fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
-                method: "PUT",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(edtobj)
-              }).then((res) => {
-                console.log(qtd);
-
+                setVFrete('')
+                //document.getElementById('qtd').style.borderColor = 'Gainsboro';
               }).catch((err) => {
                 toast.error('Erro ! :' + err.message)
               })
@@ -305,9 +262,11 @@ const CadCompras = () => {
         if (valorpag === total) {
 
           var troco = 0;
-          const vfrete = document.getElementById('vfrete').value;   
+          const vfrete = document.getElementById('vfrete').value;
 
           const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpag, troco, vfrete }
+
+          if (isValidate()) {
 
             Swal.fire({
               title: "Deseja salvar ?",
@@ -335,100 +294,75 @@ const CadCompras = () => {
                   setVFrete('')
 
                   document.getElementById('qtd').style.borderColor = 'Gainsboro';
+
                 }).catch((err) => {
                   toast.error('Erro ! :' + err.message)
                 })
-
-                function Add() {
-                  return parseInt(estoque) + parseInt(quant);
-                }
-  
-                const qtd = Add();
-  
-                const edtobj = { id, nome, custo, preco, qtd, categoria, data_cadastro, codigo }
-  
-                fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
-                  method: "PUT",
-                  headers: { 'content-type': 'application/json' },
-                  body: JSON.stringify(edtobj)
-                }).then((res) => {
-                  console.log(qtd);
-  
-                }).catch((err) => {
-                  toast.error('Erro ! :' + err.message)
-                })           
 
               } else if (result.isDenied) {
                 Swal.fire("Nada salvo", "", "info");
               }
             });
-           
-          }else {
-                   
-                  var troco = 0;
-                  var vfrete = 0;            
-        
-                  const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpag, troco, vfrete }    
-                     
-                    Swal.fire({
-                      title: "Deseja salvar ?",
-                      showDenyButton: true,
-                      showCancelButton: true,
-                      confirmButtonText: "Salvar",
-                      denyButtonText: `Não salvar`
-                    }).then((result) => {
-        
-                      if (result.isConfirmed) {
-        
-                        fetch("https://sistemacomercialserver.onrender.com/compras", {
-                          method: "POST",
-                          headers: { 'content-type': 'application/json' },
-                          body: JSON.stringify(cadobj)
-                        }).then((res) => {
-                          toast.success('Cadastrado com Sucesso !')
-                          nomechange('')
-                          custochange('')
-                          formapagchange('')
-                          qtdchange('')
-                          parcelamentochange('')
-                          parcelachange('')
-                          valorpagchange('')
-                          setVFrete('')
-                          navigate('/produtos/codigo')                               
-                                          
-        
-                        }).catch((err) => {
-                          toast.error('Erro ! :' + err.message)
-                        })
 
-                        function Add() {
-                          return parseInt(estoque) + parseInt(quant);
-                        }
-          
-                        const qtd = Add();
-          
-                        const edtobj = { id, nome, custo, preco, qtd, categoria, data_cadastro, codigo }
-          
-                        fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
-                          method: "PUT",
-                          headers: { 'content-type': 'application/json' },
-                          body: JSON.stringify(edtobj)
-                        }).then((res) => {
-                          console.log(qtd);
-          
-                        }).catch((err) => {
-                          toast.error('Erro ! :' + err.message)
-                        })
-        
-                      } else if (result.isDenied) {
-                        Swal.fire("Nada salvo", "", "info");
-                      }                    
+          }
 
-                    });  
-                          
-        
-                } 
-  } else {
+        }else{
+
+          if(valorpag === ''){
+
+            const valorpag = 0;
+            var troco = 0;
+            const vfrete = 0;
+
+             total = document.getElementById('total').value;
+
+             const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpag, troco, vfrete }
+
+           if (isValidate()) {
+
+              Swal.fire({
+              title: "Deseja salvar ?",
+              showDenyButton: true,
+              showCancelButton: true,
+              confirmButtonText: "Salvar",
+              denyButtonText: `Não salvar`
+             }).then((result) => {
+
+               if (result.isConfirmed) {
+
+                fetch("https://sistemacomercialserver.onrender.com/compras", {
+                  method: "POST",
+                  headers: { 'content-type': 'application/json' },
+                  body: JSON.stringify(cadobj)
+                }).then((res) => {
+                  toast.success('Cadastrado com Sucesso !')
+                  nomechange('')
+                  custochange('')
+                  formapagchange('')
+                  qtdchange('')
+                  parcelamentochange('')
+                  parcelachange('')
+                  valorpagchange('')
+                  setVFrete('')
+
+                  document.getElementById('qtd').style.borderColor = 'Gainsboro';
+
+                }).catch((err) => {
+                  toast.error('Erro ! :' + err.message)
+                })
+
+              } else if (result.isDenied) {
+                Swal.fire("Nada salvo", "", "info");
+              }
+            });
+
+          }
+
+          }         
+
+        }
+
+    } else {
 
       var compran = document.getElementById('compran').innerHTML;
       var mes = document.getElementById('mescompraatual').innerHTML;
@@ -443,10 +377,11 @@ const CadCompras = () => {
       const valorpag = (total / parcela).toFixed(2);
       console.log(valorpag)
       var troco = 0;
-      var qtd = quant;
       const vfrete = document.getElementById('vfrete').value;
 
       const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpag, formapag, parcelamento, parcelan, mes, fornecedor, troco, vfrete }
+
+      if (isValidate()) {
 
         Swal.fire({
           title: "Deseja salvar ?",
@@ -464,27 +399,6 @@ const CadCompras = () => {
               body: JSON.stringify(cadobj)
             }).then((res) => {
               toast.success('Cadastrado com Sucesso !')
-              document.getElementById('qtd').style.borderColor = 'Gainsboro';
-
-
-            }).catch((err) => {
-              toast.error('Erro ! :' + err.message)
-            })
-
-            function Add() {
-              return parseInt(estoque) + parseInt(quant);
-            }
-
-            const qtd = Add();
-
-            const edtobj = { id, nome, custo, preco, qtd, categoria, data_cadastro, codigo }
-
-            fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
-              method: "PUT",
-              headers: { 'content-type': 'application/json' },
-              body: JSON.stringify(edtobj)
-            }).then((res) => {
-              console.log(qtd);
 
             }).catch((err) => {
               toast.error('Erro ! :' + err.message)
@@ -495,8 +409,9 @@ const CadCompras = () => {
           }
         });
 
- 
+      }
     }
+
   }
 
   }
@@ -622,8 +537,6 @@ const CadCompras = () => {
                   </span>
                 </Link>
               </li>
-
-
               <li className="w-100" onClick={logout}>
                 <Link to="/"
                   className="nav-link px-0 align-middle text-white"
@@ -672,7 +585,7 @@ const CadCompras = () => {
                 <div className='mb-3'>
                   <label htmlFor='qtd' style={{ fontSize: '20px', margin: '0 115px' }}>Quantidade:</label>
                   <label htmlFor='total' style={{ fontSize: '20px', margin: '0 75px' }}>Total Geral:</label>
-                  <input type='number' onKeyUp={mudacorqtd} onSelect={mudacorqtd} value={quant} onChange={e => quantchange(e.target.value)} style={{ fontSize: '20px', width: 90, margin: '0 115px' }} className='form-control rounded-0' name='qtd' id='qtd' />
+                  <input type='number' onKeyUp={mudacorqtd} onSelect={mudacorqtd} value={qtd} onChange={e => qtdchange(e.target.value)} style={{ fontSize: '20px', width: 90, margin: '0 115px' }} className='form-control rounded-0' name='qtd' id='qtd' />
                   <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='total' id='total' />
                 </div>
                 <div className='mb-3'>
@@ -681,8 +594,7 @@ const CadCompras = () => {
                   <input type="decimal" onKeyUp={mudacorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' id='custo' />
                   <input type="decimal" value={valorpag} onChange={e => valorpagchange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='valorpag' id='valorpag' /> <br />
                   <label htmlFor='valorfrete' style={{ fontSize: '20px', margin: '0 124px' }}>Valor Frete:</label>
-                  <input type="decimal" value={vfrete} onChange={e => setVFrete(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o frete:' className='form-control rounded-0' name='vfrete' id='vfrete' /> <br />
-                
+                  <input type="decimal" onKeyUp={mudacorFrete} value={vfrete} onChange={e => setVFrete(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o frete:' className='form-control rounded-0' name='vfrete' id='vfrete' /> <br />
                 </div>
                 <div className='mb-3'>
                   <label htmlFor='parcela' style={{ fontSize: '20px', margin: "0 415px" }}>Parcelamento:</label>
@@ -784,15 +696,15 @@ const CadCompras = () => {
                   <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px', fontSize: '16px' }}>Cadastrar:</button>
                   <Link className="btn border rounded-0" onClick={totalFrete} style={{ color: 'white', backgroundColor: 'gray', margin: '0 36px', fontSize: '16px', width: 115 }}>Total c/frete:</Link>
 
-
                 </div>
                 <ToastContainer />
               </form>
               <button className='btn btn-primary border rounded-0' onClick={calcular} style={{ width: 100, margin: '0 240px', marginTop: '-94px', fontSize: '16px' }}>Total:</button>
-              <Link to='/produtos/codigo' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 510px', fontSize: '16px', width: 100, marginTop: '-140px' }}>Voltar:</Link>
-
+              <Link to='/compras' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 510px', marginTop: '-140px', fontSize: '16px', width: 100 }}>Voltar:</Link>
             </div>
           </div>
+
+
         </div>
       </div>
     </div>
@@ -800,4 +712,4 @@ const CadCompras = () => {
   )
 }
 
-export default CadCompras
+export default CadNovaCompra

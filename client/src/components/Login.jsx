@@ -93,12 +93,14 @@ function MostraSenha() {
 
 function MostraTexto(){
 
+  
   var inputPass = document.getElementById('senha');
   var btnshowPass = document.getElementById('mostrasenha')
 
   if(inputPass.type === 'password'){
     inputPass.setAttribute('type','text')
     btnshowPass.classList.replace('bi-eye-fill','bi-eye-slash')
+  
   }
   else{
     inputPass.setAttribute('type','password')
@@ -130,7 +132,8 @@ function MostraTexto(){
               <div className='d-flex'> 
                   <input type="password" placeholder='Entre com a senha:'
                   className='form-control rounded-0' style={{width:320, margin:'0 40px', fontSize:20}}
-                  value={senha} onChange={e => setSenha(e.target.value)} id='senha' onKeyUp={MostraSenha}                  
+                  value={senha} onChange={e => setSenha(e.target.value)} id='senha' onKeyUp={MostraSenha} 
+
               />
               <i class="bi bi-eye-fill" id='mostrasenha' onClick={MostraTexto} style={{fontSize:25}}></i> 
               </div>

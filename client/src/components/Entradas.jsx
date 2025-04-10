@@ -26,6 +26,8 @@ const Entradas = () => {
 
   }, [])
 
+   
+
 
   const handleDelete = (id) => {
 
@@ -234,6 +236,7 @@ const Entradas = () => {
               <Link to="/entradas/numero" className="btn" style={{ color: 'white', backgroundColor: 'DeepSkyBlue', margin: '0 2px', fontSize: '18px', fontFamily: 'arial' }}>Consulta por numero:</Link>
               <Link to="/entradas/ultima" className="btn" style={{ color: 'white', backgroundColor: 'Crimson', margin: '0 20px', fontSize: '18px', fontFamily: 'arial' }}>Venda Atual:</Link>
               <Link className="btn" style={{ color: 'white', backgroundColor: 'red', margin: '0 5px', fontSize: '18px', fontFamily: 'arial' }} onClick={deleteall}>Excluir Todos:</Link>
+              
             </div><br /><br />
             <div>
               <h4 className="h4"><strong className="strong" style={{ color: 'red', fontSize: '25px', textAlign: 'center', margin: '0 980px' }}>Entradas:</strong></h4>

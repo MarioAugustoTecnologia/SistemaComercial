@@ -1,59 +1,56 @@
 import React, { useEffect, useState } from "react";
 import {Link, Outlet } from "react-router-dom";
-import generatePDF, { Margin } from 'react-to-pdf';
+import { ToastContainer, toast } from 'react-toastify';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 
-const ResultadoGerarPdf = () => {
+const MesCompraAtual = () => {
 
-  const [result, setResult] = useState([])
+  const [mescompraatual, setMesCompraAtual] = useState([])
 
 
   useEffect(() => {
 
-    fetch("https://sistemacomercialserver.onrender.com/resultados", {
+    fetch("https://sistemacomercialserver.onrender.com/mescompraatual").then((res) => {
 
-      method: "GET",
-      headers: {'content-type':'application/json'} }
-      
-    ).then((res) => {
-
-    return res.json()   
+        return res.json()
 
     }).then((resp) => {
 
-      setResult(resp)
+        setMesCompraAtual(resp)
 
     }).catch((err) => {
-      console.log(err.message)
-    }) 
-  }, [])
-  
-  const GerarPdf = () => document.getElementById('conteudo');
-  const personalizacao = {
-     method: 'open',
-     page: {
-    // margin is in MM, default is Margin.NONE = 0
-    margin: Margin.MEDIUM,
-    // default is 'A4'
-    format: 'A4',
-    // default is 'portrait'
-    orientation: 'portrait',
- },
+        console.log(err.message)
+    })
+
+}, []) 
+
+const handleDelete = (id) => {    
+
+  fetch("https://sistemacomercialserver.onrender.com/mescompraatual/" + id , {
+
+      method: "DELETE"    
+
+  }).then((res) => {           
+                       
+     window.location.reload();     
+                
+  }).catch((err) => {
+    toast.error('Erro ! :' +err.message)
+  })
+
 }
-
-
 
   const logout = () => {
     localStorage.clear()
-    console.clear();
-    
-  } 
-
+    console.clear();    
+  }
   
-  return (
-    <div className="container-fluid">
-    <div className="row flex-nowrap">
+  
+return (
+
+<div className="container-fluid">
+  <div className="row flex-nowrap">
     <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary" style={{fontFamily:'arial', fontSize:'19px'}}>
           <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
             <Link
@@ -85,17 +82,6 @@ const ResultadoGerarPdf = () => {
                   <i className="fs-4 bi-people ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
                     Usuarios:
-                  </span>
-                </Link>
-              </li>
-              <li className="w-100">
-                <Link
-                  to="/entradas"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <i className="fs-4 bi bi-cash-coin ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Vendas:
                   </span>
                 </Link>
               </li>
@@ -153,7 +139,19 @@ const ResultadoGerarPdf = () => {
                     Clientes:
                   </span>
                 </Link>
-              </li>        
+              </li> 
+              <li className="w-100">
+                <Link
+                  to="/resultado"
+                  className="nav-link px-0 align-middle text-white"
+                >
+                  <i className="fs-4 bi bi-bank ms-2"></i>
+                  <span className="ms-2 d-none d-sm-inline">
+                     Resultado:
+                  </span>
+                </Link>
+              </li>     
+              
               <li className="w-100" onClick={logout}>
                 <Link
                   to="/"
@@ -166,69 +164,53 @@ const ResultadoGerarPdf = () => {
             </ul>
           </div>
         </div>
-       <div className="col p-0 m-0">
+       <div className="col p-0 m-0" style={{fontFamily:'arial'}}>
            <div className="p-2 d-flex justify-content-center shadow text-white" style={{backgroundColor:'blue'}}>
-               <h4><strong style={{fontFamily:'arial', margin:'0 600px '}}>Sistema de Gestão Comercial:</strong></h4>
+               <h4><strong style={{fontFamily:'arial'}}>Sistema de Gestão Comercial:</strong></h4>
            </div>
            <Outlet />
-           <div className="px-5 mt-5">                  
-                <div id="conteudo">
-                      <h4 className="h4" ><strong className="strong" style={{color:'red', margin:'0 680px', fontSize:'25px'}}>Resultados:</strong></h4>                         
-                     <br />
+              <div className="px-5 mt-5">                 
+                  
                     <div className="mt-3">
-                          <table className="table" id="table" style={{margin:'0 300px', fontFamily:'arial', fontSize:'20px', width:900}}>
-                              <thead>
+                          <table className="table" id="table" style={{fontFamily:'arial', fontSize:'20px', width:'20%'}}>
+                              <thead hidden='true'>
                                   <tr>
-                                  <th className="th" scope="col">Id:</th>                                 
-                                  <th className="th" scope="col">Total das Entradas:</th>
-                                  <th className="th" scope="col">Total das Saidas:</th>  
-                                  <th className="th" scope="col">Resultado:</th>  
-                                  <th className="th" scope="col">Mês:</th>                                                                                                
-                                                          
+                                  <th className="th" scope="col" >Id:</th>
+                                  <th className="th" scope="col">Mes Atual:</th>                                
+                                  <th className="th" scope="col">Ação:</th>                       
                                   </tr> 
                               </thead>
                               <tbody>                                
-                                { result &&
-                                    result.map(item => (
+                                { 
+                                    mescompraatual.map(item => (
                                     <tr key={item.id}>
-                                           <td className="td">{item.id}</td>                                      
-                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.entradas)}</td>
-                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.saidas)}</td>
-                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.resultado)}</td> 
-                                           <td className="td">{item.mes}</td>                                                                                                                                                   
-                                           
-
+                                           <td className="td" hidden='true'>{item.id}</td>
+                                           <td className="td" style={{color:'blue', fontSize:'50px'}}><strong>{item.mes}</strong></td>
+                                           <td className="td"><button className="excluir" onClick={() => {handleDelete(item.id)}} style={{color:'white', backgroundColor:'red', border:'none', borderRadius:'5px', fontSize:'23px', marginTop:'25px'}}>Excluir:</button></td>                                    
                                     </tr>
                                   ))
                                                                                                      
-                                }   
-                                                                       
+                                } 
+                                                                      
                               </tbody>
-                        
+                              <ToastContainer/> 
                 
-                          </table>                                                                          
-                                                                                                                                                                                                                                                                                                             
-                                                                                                   
-                                     
-
-                                   
+                          </table> 
            
                     </div>
-                  </div><br /><br /> 
-                  <div className="mb3">
-                   <button style={{margin: '0 25px', backgroundColor: 'LimeGreen', color: 'white', fontSize:'18px', fontFamily:'arial'}} className="btn" onClick={() => generatePDF(GerarPdf, personalizacao)} >Gerar PDF:</button>
-                   <Link to="/resultado" className="btn" style={{fontSize: '18px', fontFamily:'arial', color:'white', backgroundColor:'orange', width:'8%'}}>Voltar:</Link>                        
-                 </div>                                                 
+                  </div><br /> 
+                
+                 
                  
                 </div> 
           
        </div> 
                  
     </div>
- </div>
+
  
 
   )
 }
 
-export default ResultadoGerarPdf
+export default MesCompraAtual

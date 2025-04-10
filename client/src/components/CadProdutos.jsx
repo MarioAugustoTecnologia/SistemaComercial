@@ -16,7 +16,7 @@ const CadProdutos = () => {
     }).then((resp) => {
       idchange(resp.id);
       nomechange(resp.nome);
-      precochange(resp.preco);     
+      custochange(resp.custo);     
       qtdchange(resp.qtd);
        
     }).catch((err) => {
@@ -27,12 +27,12 @@ const CadProdutos = () => {
   
   const [id, idchange] = useState("") 
   const [nome, nomechange] = useState("") 
-  const [preco, precochange] = useState("")
+  const [custo, custochange] = useState("")
   const [catprod, catprodchange] = useState([])
   const [datacad, datacadchange] = useState("")
   const [qtd, qtdchange] = useState("")
   const [codigo, codigochange] = useState("")
-
+  const [preco, precochange] = useState("")
 
   useEffect(() => {
     fetch("https://sistemacomercialserver.onrender.com/catproduto").then((res) => {
@@ -66,6 +66,12 @@ const CadProdutos = () => {
       document.getElementById('nome').style.borderColor = 'red';
       isproceed = false
       //errormessage += 'Nome Completo:' 
+    }
+
+    if(custo === null || custo === ''){
+      document.getElementById('custo').style.borderColor = 'red';
+      isproceed = false
+     // errormessage += 'Email:' 
     }
 
     if(preco === null || preco === ''){
@@ -107,6 +113,10 @@ function MudaCorData(){
   document.getElementById('datacad').style.borderColor = 'Gainsboro'
 }
 
+function MudaCorCusto(){
+  document.getElementById('custo').style.borderColor = 'Gainsboro'
+}
+
 function MudaCorPreco(){
   document.getElementById('preco').style.borderColor = 'Gainsboro'
 }
@@ -125,7 +135,7 @@ function MudaCorNome(){
       const data_cadastro = data.toLocaleDateString('pt-BR', {timeZone: 'UTC'}); 
       const categoria = document.getElementById('categoria').value;    
      
-      const cadobj = {qtd, nome, preco, categoria, data_cadastro, codigo}
+      const cadobj = {qtd, nome, custo, categoria, data_cadastro, codigo, preco}
     //console.log(cadobj)  
 
     if(isValidate()){
@@ -148,9 +158,10 @@ function MudaCorNome(){
                                toast.success('Cadastrado com Sucesso !')      
                                qtdchange('')
                                nomechange('')
-                               precochange('')   
+                               custochange('')   
                                datacadchange('') 
-                               codigochange('')        
+                               codigochange('') 
+                               precochange('')       
        
                               }).catch((err) => {
                               toast.error('Erro ! :' +err.message)
@@ -321,8 +332,10 @@ const logout = () => {
                <input type='text' onKeyUp={MudaCorNome} placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{fontSize:'20px', width:580, margin:'0 115px'}} className='form-control rounded-0' name='nome' id='nome'/>                   
                </div>           
                <div className='mb-3'>           
-               <label htmlFor='preco' style={{fontSize:'20px', margin:'0 115px'}}>Preço:</label>
-               <input type="decimal" onKeyUp={MudaCorPreco} value={preco} onChange={e => precochange(e.target.value)} style={{fontSize:'20px', width:200, margin:'0 115px'}} placeholder='Entre com o preço:' className='form-control rounded-0' name='preco' id='preco'/>
+               <label htmlFor='custo' style={{fontSize:'20px', margin:'0 115px'}}>Custo:</label>
+               <label htmlFor='preco' style={{fontSize:'20px', margin:'0 100px'}}>Preço de Venda:</label>
+               <input type="decimal" onKeyUp={MudaCorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{fontSize:'20px', width:200, margin:'0 115px'}} className='form-control rounded-0' name='custo' id='custo'/>
+               <input type="decimal" onKeyUp={MudaCorPreco} value={preco} onChange={e => precochange(e.target.value)} style={{fontSize:'20px', width:200, margin:'0 385px', marginTop:'-42px'}} placeholder='Entre com o preço:' className='form-control rounded-0' name='preco' id='preco'/>
                </div>           
                <div className='mb-3'>
                   <label htmlFor='categoria' className='form-label' style={{fontSize:'20px', margin:'0 115px'}}>

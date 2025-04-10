@@ -20,10 +20,12 @@ const CadVenda = () => {
       Idchange(resp.id);
       nomechange(resp.nome);
       precochange(resp.preco);
+      custochange(resp.custo)
       qtdchange(resp.qtd);
       Categoriachange(resp.categoria);
       DataCadchange(resp.data_cadastro);
       Codigochange(resp.codigo);
+      
 
     }).catch((err) => {
       console.log(err.message);
@@ -33,6 +35,7 @@ const CadVenda = () => {
   const [id, Idchange] = useState("")
   const [nome, nomechange] = useState("")
   const [preco, precochange] = useState("")
+  const [custo, custochange] = useState("")
   const [formapag, formapagchange] = useState("")  
   const [estoque, qtdchange] = useState("")
   const [quant, quantchange] = useState("")
@@ -206,7 +209,7 @@ const CadVenda = () => {
 
               const qtd = Subtract();
 
-              const edtobj = { id, nome, preco, qtd, categoria, data_cadastro, codigo }
+              const edtobj = { id, nome, preco, qtd, categoria, data_cadastro, codigo, custo }
 
               fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
                 method: "PUT",
@@ -267,7 +270,7 @@ const CadVenda = () => {
 
               const qtd = Subtract();
 
-              const edtobj = { id, nome, preco, qtd, categoria, data_cadastro, codigo }
+              const edtobj = { id, nome, preco, qtd, categoria, data_cadastro, codigo, custo }
 
               fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
                 method: "PUT",
@@ -332,7 +335,7 @@ const CadVenda = () => {
 
             const qtd = Subtract();
 
-            const edtobj = { id, nome, preco, qtd, categoria, data_cadastro, codigo }
+            const edtobj = { id, nome, preco, qtd, categoria, data_cadastro, codigo, custo }
 
             fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
               method: "PUT",

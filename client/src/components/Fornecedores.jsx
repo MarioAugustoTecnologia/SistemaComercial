@@ -75,7 +75,7 @@ const deleteall = (id) => {
       
       for (let id = 0; id <= fornecedores.length; id++) {
     
-     fetch("https://sistemacomercialserver.onrender.com/fornecedor/" + id, {
+     fetch("/fornecedor/" + id, {
 
       method: "DELETE"    
 
@@ -222,7 +222,7 @@ const deleteall = (id) => {
           </div>
         </div>
        <div className="col p-0 m-0">
-           <div className="p-2 d-flex justify-content-center shadow text-white" style={{backgroundColor:'blue', fontFamily:'arial', width:'145%'}}>
+           <div className="p-2 d-flex justify-content-center shadow text-white" style={{backgroundColor:'blue', fontFamily:'arial', width:'137%'}}>
                <h4><strong>Sistema de Gestão Comercial</strong></h4>
            </div>
            <Outlet />

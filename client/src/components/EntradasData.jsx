@@ -43,7 +43,8 @@ const EntradasData = () => {
           denyButtonText: `Não Excluir`
         }).then((result) => {
     
-          if (result.isConfirmed) {    
+          if (result.isConfirmed) {
+    
     
             fetch("https://sistemacomercialserver.onrender.com/vendas/" + id, {
     

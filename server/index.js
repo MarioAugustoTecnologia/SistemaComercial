@@ -8,7 +8,7 @@ const cors = require('cors');
 server.use(middlewares);
 server.use(router);
 
-server.use(cors({origin: ["https://sistemacomercial-5t1i.onrender.com"], 
+server.use(cors({origin: ["https://sistemacomercial-5t1i.onrender.com/"], 
     methods: ["GET","POST", "PUT", "DELETE"],
     credentials: true 
     }));

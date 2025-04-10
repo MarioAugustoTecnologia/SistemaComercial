@@ -10,7 +10,6 @@ const Compras = () => {
   const [compras, setCompras] = useState([])
   const navigate = useNavigate()
 
-
   useEffect(() => {
 
     fetch("https://sistemacomercialserver.onrender.com/compras", {
@@ -101,12 +100,9 @@ const Compras = () => {
 
   }
 
-
   const handleCad = (id) => {
     navigate('/cadprodutos/' + id)
-
   }
-
 
   const logout = () => {
     localStorage.clear()
@@ -231,18 +227,18 @@ const Compras = () => {
           </div>
         </div>
         <div className="col p-0 m-0" style={{ fontFamily: 'arial' }} >
-          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: '138%' }}>
+          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: '143%' }}>
             <h4><strong style={{ margin: '0 600px ' }}>Sistema de Gestão Comercial</strong></h4>
           </div>
           <Outlet />
           <div className="px-5 mt-5">
             <div className="mb3">
-              <Link to="/cadcompras" className="btn btn-success" style={{ fontSize: '18px', fontFamily: 'arial' }}>Adicionar Compra:</Link>
+              <Link to="/cadnovascompras" className="btn btn-success" style={{ fontSize: '18px', fontFamily: 'arial' }}>Adicionar Compra:</Link>
               <Link to="/compras/nome" className="btn" style={{ color: 'white', backgroundColor: 'Orange', margin: '0 25px', fontSize: '18px', fontFamily: 'arial' }}>Consulta por nome:</Link>
               <Link to="/compras/data" className="btn" style={{ color: 'white', backgroundColor: 'yellowgreen', margin: '0 3px', fontSize: '18px', fontFamily: 'arial' }}>Consulta por data:</Link>
               <Link to="/compras/numero" className="btn" style={{ color: 'white', backgroundColor: 'DeepSkyBlue', margin: '0 25px', fontSize: '18px', fontFamily: 'arial' }}>Consulta por numero:</Link>
               <Link to="/compras/mes" className="btn" style={{ color: 'white', backgroundColor: 'blue', margin: '0 5px', fontSize: '18px', fontFamily: 'arial' }}>Consulta por mês:</Link>
-              <Link to="/compras/ultima" className="btn" style={{ color: 'white', backgroundColor: 'Crimson', margin: '0 20px', fontSize: '18px', fontFamily: 'arial' }}>Ultima Compra:</Link>
+              <Link to="/compras/ultima" className="btn" style={{ color: 'white', backgroundColor: 'Crimson', margin: '0 20px', fontSize: '18px', fontFamily: 'arial' }}>Compra Atual:</Link>
               <Link className="btn" style={{ color: 'white', backgroundColor: 'red', margin: '0 5px', fontSize: '18px', fontFamily: 'arial' }} onClick={deleteall}>Excluir Todos:</Link>
 
             </div><br /><br />
@@ -250,15 +246,16 @@ const Compras = () => {
               <h4 style={{ textAlign: 'center', color: 'Red', fontSize: '25px', marginRight: '-470px' }}><strong>Compras:</strong></h4>
               <br />
               <div className="mt-3">
-                <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '19px', width: 2600 }}>
+                <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: 2700 }}>
                   <thead>
                     <tr>
                       <th className="th" scope="col">Id:</th>
                       <th className="th" scope="col">Compra nº:</th>
                       <th className="th" scope="col">Nome:</th>
                       <th className="th" scope="col">Qtd:</th>
-                      <th className="th" scope="col">Custo:</th>
-                      <th className="th" scope="col">Total:</th>
+                      <th className="th" scope="col">Custo/Frete:</th>
+                      <th className="th" scope="col">Frete:</th>
+                      <th className="th" scope="col">Total Geral:</th>                
                       <th className="th" scope="col">Saidas:</th>
                       <th className="th" scope="col">Troco:</th>
                       <th className="th" scope="col">Forma Paga:</th>
@@ -278,8 +275,9 @@ const Compras = () => {
                           <td className="td">{item.compran}</td>
                           <td className="td">{item.nome}</td>
                           <td className="td">{item.qtd}</td>
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.preco)}</td>
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.total)}</td>
+                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.custo)}</td>
+                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.vfrete)}</td>
+                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.total)}</td>                   
                           <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.valorpag)}</td>
                           <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.troco)}</td>
                           <td className="td">{item.formapag}</td>

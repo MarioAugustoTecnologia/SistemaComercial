@@ -103,14 +103,13 @@ const ComprasNumero = () => {
             const nome = 'Total da compra nº:' + document.getElementById('numero').value;
             const total = parseFloat(soma.toFixed(2));
             const data_cad = formataData();
-            const preco = 0;          
+            const custo = 0;          
             const compran = document.getElementById('numero').value;
             const troco = 0;
             const valorpag = 0;
-            //const parcelamento = '.';
-            //const parcelan = '.';
+            const vfrete = 0;           
     
-            const cadobj = { nome, total, data_cad, preco, compran, troco, valorpag }
+            const cadobj = { nome, total, data_cad, custo, compran, troco, valorpag, vfrete }
     
             fetch("https://sistemacomercialserver.onrender.com/compras", {
                 method: "POST",
@@ -128,9 +127,7 @@ const ComprasNumero = () => {
            
     
 
-        }
-
-      
+        }      
     }
 
     function GerarUltima() {
@@ -291,7 +288,7 @@ const ComprasNumero = () => {
                             </li>
                           
                              <li className="w-100" onClick={logout}>
-                                <Link
+                                <Link to="/"
                                     className="nav-link px-0 align-middle text-white"
                                 >
                                     <i className="fs-4 bi-power ms-2"></i>
@@ -302,7 +299,7 @@ const ComprasNumero = () => {
                     </div>
                 </div>
                 <div className="col p-0 m-0">
-                    <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width:'138%' }}>
+                    <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width:'143%' }}>
                     <h4><strong>Sistema de Gestão Comercial</strong></h4>
                     </div>
                     <Outlet />
@@ -312,20 +309,21 @@ const ComprasNumero = () => {
                             <input type="search" autoFocus='true' onKeyUp={MudaCorCampo} className="consultanumero" value={buscanumero} onChange={(e) => setBuscaNumero(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', width:'100px'}} id="numero" />
                             <Link to="/compras" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 50px' }}>Voltar:</Link>
                             <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 -15px', fontSize: '18px' }}>Total Compra:</Link>
-                            <Link onClick={GerarUltima} className="btn" style={{ color: 'white', backgroundColor: 'blue', margin: '0 45px', fontSize: '18px' }}>Controle Compra:</Link>
+                            <Link onClick={GerarUltima} className="btn" style={{ color: 'white', backgroundColor: 'blue', margin: '0 45px', fontSize: '18px' }}>Próxima Compra:</Link>
                         </div><br />   
                         <h4 style={{ textAlign: 'center', color: 'Red', fontSize: '25px', marginRight:'-225px' }}><strong>Compras:</strong></h4>
                         <br />
                         <div className="mt-3">
-                            <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '19px', width: 2600 }}>
+                            <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: 2700 }}>
                                 <thead>
                                 <tr>
                                 <th className="th" scope="col">Id:</th>
                                   <th className="th" scope="col">Compra nº:</th>                                 
                                   <th className="th" scope="col">Nome:</th>
                                   <th className="th" scope="col">Qtd:</th>
-                                  <th className="th" scope="col">Custo:</th>  
-                                  <th className="th" scope="col">Total:</th>
+                                  <th className="th" scope="col">Custo/ Frete:</th> 
+                                  <th className="th" scope="col">Frete:</th>  
+                                  <th className="th" scope="col">Total Geral:</th>                    
                                   <th className="th" scope="col">Saidas:</th>                                
                                   <th className="th" scope="col">Troco:</th> 
                                   <th className="th" scope="col">Forma Paga:</th>                                                            
@@ -345,7 +343,8 @@ const ComprasNumero = () => {
                                            <td className="td">{item.compran}</td>
                                            <td className="td">{item.nome}</td>
                                            <td className="td">{item.qtd}</td>
-                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.preco)}</td>
+                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.custo)}</td>
+                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.vfrete)}</td>
                                            <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.total)}</td>
                                            <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.valorpag)}</td>
                                            <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.troco)}</td>

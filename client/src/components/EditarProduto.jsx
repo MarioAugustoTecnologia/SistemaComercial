@@ -17,10 +17,9 @@ const EditarProduto = () => {
       idchange(resp.id);
       nomechange(resp.nome);
       precochange(resp.preco);
-      //datacadchange(resp.data_cadastro);
+      custochange(resp.custo)
       qtdchange(resp.qtd);
       codchange(resp.codigo);
-
 
     }).catch((err) => {
       console.log(err.message);
@@ -36,6 +35,7 @@ const EditarProduto = () => {
   const [qtdcur, qtdchange] = useState("")
   const [entrada, entradachange] = useState("")
   const [codigo, codchange] = useState("")
+  const [custo, custochange] = useState("")
 
   useEffect(() => {
     fetch("https://sistemacomercialserver.onrender.com/catproduto").then((res) => {
@@ -79,6 +79,12 @@ const EditarProduto = () => {
       // errormessage += 'Email:' 
     }
 
+    if (custo === null || custo === '') {
+      document.getElementById('custo').style.borderColor = 'red';
+      isproceed = false
+      // errormessage += 'Email:' 
+    }
+
     if (datacad === null || datacad === '') {
       document.getElementById('datacad').style.borderColor = 'red';
       isproceed = false
@@ -106,6 +112,10 @@ const EditarProduto = () => {
     document.getElementById('preco').style.borderColor = 'gainsboro';
   }
 
+  function MudacorCusto() {
+    document.getElementById('custo').style.borderColor = 'gainsboro';
+  }
+
   function MudacorDataCad() {
     document.getElementById('datacad').style.borderColor = 'gainsboro';
   }
@@ -126,7 +136,7 @@ const EditarProduto = () => {
       const data_cadastro = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
       const qtd = qtdcur;
       const categoria = document.getElementById('categoria').value;
-      const edtobj = { id, qtd, nome, preco, categoria, data_cadastro, codigo }
+      const edtobj = { id, qtd, nome, preco, custo, categoria, data_cadastro, codigo}
       //console.log(cadobj)  
 
       if (isValidate()) {
@@ -153,6 +163,7 @@ const EditarProduto = () => {
               precochange('');
               datacadchange('');
               codchange('');
+              custochange('');
 
             }).catch((err) => {
               toast.error('Erro ! :' + err.message)
@@ -173,7 +184,7 @@ const EditarProduto = () => {
       const qtd = total;
       console.log(qtd);
       const catproduto = document.getElementById('categoria').value;
-      const edtobj = { id, qtd, nome, preco, catproduto, data_cadastro, codigo }
+      const edtobj = { id, qtd, nome, preco, custo, catproduto, data_cadastro, codigo }
       //console.log(cadobj)  
 
       if (isValidate()) {
@@ -198,6 +209,7 @@ const EditarProduto = () => {
               qtdchange('')
               nomechange('')
               precochange('')
+              custochange('')
               datacadchange('')
               entradachange('')
               codchange('')
@@ -383,9 +395,13 @@ const EditarProduto = () => {
                   <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 500, margin: '0 115px' }} className='form-control rounded-0' name='nome' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='preco' style={{ fontSize: '20px', margin: '0 115px' }}>Preço:</label>
+                  <label htmlFor='preco' style={{ fontSize: '20px', margin: '0 115px' }}>Preço:</label>                 
                   <input type="decimal" onKeyUp={MudacorPreco} value={preco} onChange={e => precochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o preço:' className='form-control rounded-0' name='preco' id="preco" />
 
+                </div>
+                <div className='mb-3'>
+                  <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px' }}>Custo:</label>
+                  <input type="decimal" onKeyUp={MudacorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' id="custo" />
                 </div>
 
                 <div className='mb-3'>

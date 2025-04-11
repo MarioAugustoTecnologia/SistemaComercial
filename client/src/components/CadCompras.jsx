@@ -237,12 +237,14 @@ const CadCompras = () => {
       var compran = document.getElementById('compran').innerHTML;
       var mes = document.getElementById('mescompraatual').innerHTML;
       var qtd = quant;
-      var total = document.getElementById('total').value;     
+      var total = parseFloat(document.getElementById('total').value);
+      const valorpag = parseFloat(document.getElementById('valorpag').value);
+         
 
       if (valorpag > total) {
 
         const troco = parseFloat((valorpag - total).toFixed(2));
-        const vfrete = document.getElementById('vfrete').value;
+        const vfrete = parseFloat(document.getElementById('vfrete').value);
 
         const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpag, vfrete }  
 
@@ -305,7 +307,7 @@ const CadCompras = () => {
         if (valorpag === total) {
 
           var troco = 0;
-          const vfrete = document.getElementById('vfrete').value;   
+          const vfrete = parseFloat(document.getElementById('vfrete').value);   
 
           const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpag, troco, vfrete }
 
@@ -437,14 +439,14 @@ const CadCompras = () => {
       const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
       const fornecedor = document.getElementById('forname').value;
 
-      const total = document.getElementById('total').value;
+      const total = parseFloat(document.getElementById('total').value);
       console.log(total)
 
       const valorpag = (total / parcela).toFixed(2);
       console.log(valorpag)
       var troco = 0;
       var qtd = quant;
-      const vfrete = document.getElementById('vfrete').value;
+      const vfrete = parseFloat(document.getElementById('vfrete').value);
 
       const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpag, formapag, parcelamento, parcelan, mes, fornecedor, troco, vfrete }
 

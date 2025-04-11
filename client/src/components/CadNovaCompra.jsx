@@ -18,7 +18,7 @@ const CadNovaCompra = () => {
   const [parcelamento, parcelamentochange] = useState("")
   const [parcela, parcelachange] = useState("")
   const [parcelan, parcelanchange] = useState("")
-  const [valorpag, valorpagchange] = useState("")
+  const [valorpagto, valorpagchange] = useState("")
   const [compradata, setCompradata] = useState([])
   const [mescompraatual, setMesCompraAtual] = useState([])
   const [vfrete, setVFrete] = useState("")
@@ -209,16 +209,17 @@ const CadNovaCompra = () => {
       const dataInput = datacad;
       const data = new Date(dataInput);
       const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-      var total = document.getElementById('total').value;
+      var total = parseFloat(document.getElementById('total').value);
       var fornecedor = document.getElementById('forname').value;
       var compran = document.getElementById('compran').innerHTML;
-      var mes = document.getElementById('mescompraatual').innerHTML;   
+      var mes = document.getElementById('mescompraatual').innerHTML;
+      const valorpag = parseFloat(document.getElementById('valorpag').value);   
     
 
       if (valorpag > total) { 
 
         const troco = parseFloat((valorpag - total).toFixed(2));
-        const vfrete = document.getElementById('vfrete').value;
+        const vfrete = parseFloat(document.getElementById('vfrete').value);
 
         const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpag, vfrete }       
 
@@ -262,7 +263,7 @@ const CadNovaCompra = () => {
         if (valorpag === total) {
 
           var troco = 0;
-          const vfrete = document.getElementById('vfrete').value;
+          const vfrete = parseFloat(document.getElementById('vfrete').value);
 
           const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpag, troco, vfrete }
 
@@ -308,13 +309,13 @@ const CadNovaCompra = () => {
 
         }else{
 
-          if(valorpag === ''){
+          if(valorpagto === ''){
 
             const valorpag = 0;
             var troco = 0;
             const vfrete = 0;
 
-             total = document.getElementById('total').value;
+            total = parseFloat(document.getElementById('total').value);
 
              const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpag, troco, vfrete }
 
@@ -371,13 +372,13 @@ const CadNovaCompra = () => {
       const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
       const fornecedor = document.getElementById('forname').value;
 
-      const total = document.getElementById('total').value;
+      const total = parseFloat(document.getElementById('total').value);
       console.log(total)
 
       const valorpag = (total / parcela).toFixed(2);
       console.log(valorpag)
       var troco = 0;
-      const vfrete = document.getElementById('vfrete').value;
+      const vfrete = parseFloat(document.getElementById('vfrete').value);
 
       const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpag, formapag, parcelamento, parcelan, mes, fornecedor, troco, vfrete }
 
@@ -592,7 +593,7 @@ const CadNovaCompra = () => {
                   <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px' }}>Custo:</label>
                   <label htmlFor='valorpag' style={{ fontSize: '20px', margin: '0 124px' }}>Valor Pago:</label>
                   <input type="decimal" onKeyUp={mudacorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' id='custo' />
-                  <input type="decimal" value={valorpag} onChange={e => valorpagchange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='valorpag' id='valorpag' /> <br />
+                  <input type="decimal" value={valorpagto} onChange={e => valorpagchange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='valorpag' id='valorpag' /> <br />
                   <label htmlFor='valorfrete' style={{ fontSize: '20px', margin: '0 124px' }}>Valor Frete:</label>
                   <input type="decimal" onKeyUp={mudacorFrete} value={vfrete} onChange={e => setVFrete(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o frete:' className='form-control rounded-0' name='vfrete' id='vfrete' /> <br />
                 </div>

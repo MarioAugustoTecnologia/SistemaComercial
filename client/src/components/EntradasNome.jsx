@@ -76,8 +76,10 @@ const EntradasNome = () => {
 
       let valores = [];
 
+
         table.map(item => {
-          valores.push(item.total)
+          valores.push(item.total)        
+          
         }
         )
 

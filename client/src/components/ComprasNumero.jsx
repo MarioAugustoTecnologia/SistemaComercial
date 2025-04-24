@@ -89,15 +89,16 @@ const ComprasNumero = () => {
         }
         else{
             let valores = [];
+        
 
             table.map(item => {
                 valores.push(item.total)
             })    
-            //console.log(valores)
-    
+           
             let soma = valores.reduce((previous_value, current_value) => {       // método que faz a soma
                 return parseFloat(previous_value) + parseFloat(current_value);     // converte de string para number
             })
+           
     
             //console.log(soma.toFixed(2));    // deixa com apenas 2 casas decimais 
             const nome = 'Total da compra nº:' + document.getElementById('numero').value;
@@ -107,9 +108,10 @@ const ComprasNumero = () => {
             const compran = document.getElementById('numero').value;
             const troco = 0;
             const valorpag = 0;
-            const vfrete = 0;           
+            const vf = 0;
+                 
     
-            const cadobj = { nome, total, data_cad, custo, compran, troco, valorpag, vfrete }
+            const cadobj = { nome, total, data_cad, custo, compran, troco, valorpag, vf }
     
             fetch("https://sistemacomercialserver.onrender.com/compras", {
                 method: "POST",
@@ -321,8 +323,7 @@ const ComprasNumero = () => {
                                   <th className="th" scope="col">Compra nº:</th>                                 
                                   <th className="th" scope="col">Nome:</th>
                                   <th className="th" scope="col">Qtd:</th>
-                                  <th className="th" scope="col">Custo/ Frete:</th> 
-                                  <th className="th" scope="col">Frete:</th>  
+                                  <th className="th" scope="col">Custo:</th>                                                                
                                   <th className="th" scope="col">Total Geral:</th>                    
                                   <th className="th" scope="col">Saidas:</th>                                
                                   <th className="th" scope="col">Troco:</th> 
@@ -343,8 +344,7 @@ const ComprasNumero = () => {
                                            <td className="td">{item.compran}</td>
                                            <td className="td">{item.nome}</td>
                                            <td className="td">{item.qtd}</td>
-                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.custo)}</td>
-                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.vfrete)}</td>
+                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.custo)}</td>                                                                                     
                                            <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.total)}</td>
                                            <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.valorpag)}</td>
                                            <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.troco)}</td>

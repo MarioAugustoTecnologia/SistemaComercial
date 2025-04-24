@@ -41,7 +41,6 @@ import EntradasNumero from './components/EntradasNumero';
 import EntradasNumeroEditar from './components/EntradasNumeroEditar';
 import CatProdutos from './components/CatProdutos';
 import ResultadoGerarPdf from './components/ResultadoGerarPdf';
-import VendaTroco from './components/VendaTroco';
 import EntradasUltima from './components/EntradasUltima';
 import ClientesCpf from './components/ClientesCpf';
 import ComprasNumero from './components/ComprasNumero';
@@ -51,7 +50,6 @@ import ComprasMes from './components/ComprasMes';
 import CadVenda from './components/CadVenda';
 import FornecedorCatEditar from './components/FornecedorCatEditar';
 import ProdutoCatEditar from './components/ProdutoCatEditar';
-import VendaDesconto from './components/VendaDesconto';
 import ProdutosCat from './components/ProdutosCat';
 import MesAtual from './components/MesAtual';
 import MesComprasAtual from './components/MesComprasAtual';
@@ -81,9 +79,7 @@ function App() {
     <Route path='/produtos/cat' element={<PrivateRoutes><ProdutosCat /></PrivateRoutes>}></Route>
     <Route path='/produto/cadcat' element={<PrivateRoutes><CadCatProd /></PrivateRoutes>}></Route>
     <Route path='/produtos/categoria/lista' element={<PrivateRoutes><CatProdutos/></PrivateRoutes>}></Route>
-    <Route path='/produto/categoria/editar/:catcod' element={<PrivateRoutes><ProdutoCatEditar/></PrivateRoutes>}></Route>  
-    <Route path='/venda/troco' element={<PrivateRoutes><VendaTroco /></PrivateRoutes>}></Route> 
-    <Route path='/venda/desconto' element={<PrivateRoutes><VendaDesconto /></PrivateRoutes>}></Route>     
+    <Route path='/produto/categoria/editar/:catcod' element={<PrivateRoutes><ProdutoCatEditar/></PrivateRoutes>}></Route>       
     <Route path='/entradas' element={<PrivateRoutes><Entradas /></PrivateRoutes>}></Route>
     <Route path='/entradas/nome' element={<PrivateRoutes><EntradasNome /></PrivateRoutes>}></Route>
     <Route path='/entradas/data' element={<PrivateRoutes><EntradasData /></PrivateRoutes>}></Route>
@@ -120,7 +116,8 @@ function App() {
     <Route path='/fornecedores/categoria/lista' element={<PrivateRoutes><CatFornecedores /></PrivateRoutes>}></Route>
     <Route path='/fornecedor/categoria/editar/:catcod' element={<PrivateRoutes><FornecedorCatEditar /></PrivateRoutes>}></Route>
     <Route path='/mesatual' element={<PrivateRoutes><MesAtual /></PrivateRoutes>}></Route>
-    <Route path='/mescompraatual' element={<PrivateRoutes><MesComprasAtual /></PrivateRoutes>}></Route>  
+    <Route path='/mescompraatual' element={<PrivateRoutes><MesComprasAtual /></PrivateRoutes>}></Route>
+  
     </Routes>
     </BrowserRouter>
    </div>

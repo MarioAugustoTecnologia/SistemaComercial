@@ -89,7 +89,7 @@ const CadClientes = () => {
 
   const data = new Date();
   const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-
+  //console.log(datanascimento);
 
   const cadastrar = (e) => {
 

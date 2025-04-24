@@ -535,12 +535,12 @@ const CadVenda = () => {
                   <label htmlFor='qtd' style={{ fontSize: '20px', margin: '0 115px' }}>Quantidade:</label>
                   <label htmlFor='total' style={{ fontSize: '20px', margin: '0 75px' }}>Total c/s Desconto:</label>
                   <label htmlFor='total' style={{ fontSize: '20px' }}>Desconto:</label>
-                  <input type='number' onSelect={mudacorquant} value={quant} onChange={e => quantchange(e.target.value)} style={{ fontSize: '20px', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='qtd' id='quant' />
+                  <input type='number'  autoFocus={true} onSelect={mudacorquant} value={quant} onChange={e => quantchange(e.target.value)} style={{ fontSize: '20px', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='qtd' id='quant' />
                   <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='total' id='total' />
                   <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 655px', marginTop: '-42px' }} className='form-control rounded-0' name='desconto' id='desconto' value={desc} onChange={e => descchange(e.target.value)} />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px' }}>Custo:</label>
+                  <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px' }}>Preço:</label>
                   <label htmlFor='valorpag' style={{ fontSize: '20px', margin: '0 124px' }}>Valor Pago:</label>
                   <input type="decimal" value={preco} onChange={e => precochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' />
                   <input type="decimal" value={valorpag} onChange={e => valorpagchange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='valorpag' id='valorpag' />

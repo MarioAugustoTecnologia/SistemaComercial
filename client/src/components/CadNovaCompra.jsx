@@ -21,7 +21,7 @@ const CadNovaCompra = () => {
   const [valorpagto, valorpagchange] = useState("")
   const [compradata, setCompradata] = useState([])
   const [mescompraatual, setMesCompraAtual] = useState([])
-  const [vfrete, setVFrete] = useState("")
+  const [vf, vfchange] = useState("")
 
 
 
@@ -152,17 +152,27 @@ const CadNovaCompra = () => {
   }
   function mudacorFrete() {
 
-    document.getElementById('vfrete').style.borderColor = 'Gainsboro';
+    document.getElementById('vf').style.borderColor = 'Gainsboro';
 
   }
 
 
   function calcular() {
 
+    if(custo == ''){
+      toast.warning('Campo custo em branco !')
+      document.getElementById('custo').style.borderColor = 'red';
+
+    }else{
+      
+    const custo = parseFloat(document.getElementById('custo').value);
     const total = (qtd * custo).toFixed(2);
     console.log(total)
     document.getElementById('total').value = total;
     document.getElementById('total').style.borderColor = 'Gainsboro';
+
+    }
+
 
   }
 
@@ -171,8 +181,8 @@ const CadNovaCompra = () => {
       let isproceed = true
       let errormessage = "Campo valor frete não pode estar vazio  !"
   
-      if (vfrete === null || vfrete === '') {
-        document.getElementById('vfrete').style.borderColor = 'red';
+      if (vf === null || vf === '') {
+        document.getElementById('vf').style.borderColor = 'red';
         isproceed = false
         //errormessage += 'Nome Completo:' 
       }
@@ -190,9 +200,11 @@ const CadNovaCompra = () => {
       if (IsValidate2()) {
   
         var total = document.getElementById('total').value;
-        var tfrete = (parseFloat(total) + parseFloat(vfrete)).toFixed(2);
-        document.getElementById('total').value = tfrete;
-        document.getElementById('total').style.borderColor = 'Gainsboro';
+        var tfrete = (parseFloat(total) + parseFloat(vf)).toFixed(2);        
+        document.getElementById('total').value = tfrete;      
+        document.getElementById('total').style.borderColor = 'Gainsboro';       
+        
+
       }
   
     }
@@ -213,15 +225,14 @@ const CadNovaCompra = () => {
       var fornecedor = document.getElementById('forname').value;
       var compran = document.getElementById('compran').innerHTML;
       var mes = document.getElementById('mescompraatual').innerHTML;
-      const valorpag = parseFloat(document.getElementById('valorpag').value);   
+      const valorpag = parseFloat(document.getElementById('valorpag').value); 
+      const custo = parseFloat(document.getElementById('custo').value);       
     
-
       if (valorpag > total) { 
 
-        const troco = parseFloat((valorpag - total).toFixed(2));
-        const vfrete = parseFloat(document.getElementById('vfrete').value);
+        const troco = parseFloat((valorpag - total).toFixed(2));     
 
-        const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpag, vfrete }       
+        const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpag }       
 
           Swal.fire({
             title: "Deseja salvar ?",
@@ -239,16 +250,15 @@ const CadNovaCompra = () => {
                 body: JSON.stringify(cadobj)
               }).then((res) => {
                 toast.success('Cadastrado com Sucesso !')
-                nomechange('')
-                custochange('')
+                nomechange('')               
                 formapagchange('')
                 datacadchange('')
                 qtdchange('')
                 parcelamentochange('')
                 parcelachange('')
                 valorpagchange('')
-                setVFrete('')
-                //document.getElementById('qtd').style.borderColor = 'Gainsboro';
+           
+               
               }).catch((err) => {
                 toast.error('Erro ! :' + err.message)
               })
@@ -262,10 +272,9 @@ const CadNovaCompra = () => {
       } else
         if (valorpag === total) {
 
-          var troco = 0;
-          const vfrete = parseFloat(document.getElementById('vfrete').value);
+          var troco = 0;          
 
-          const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpag, troco, vfrete }
+          const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpag, troco }
 
           if (isValidate()) {
 
@@ -285,14 +294,12 @@ const CadNovaCompra = () => {
                   body: JSON.stringify(cadobj)
                 }).then((res) => {
                   toast.success('Cadastrado com Sucesso !')
-                  nomechange('')
-                  custochange('')
+                  nomechange('')         
                   formapagchange('')
                   qtdchange('')
                   parcelamentochange('')
                   parcelachange('')
-                  valorpagchange('')
-                  setVFrete('')
+                  valorpagchange('')         
 
                   document.getElementById('qtd').style.borderColor = 'Gainsboro';
 
@@ -312,12 +319,11 @@ const CadNovaCompra = () => {
           if(valorpagto === ''){
 
             const valorpag = 0;
-            var troco = 0;
-            const vfrete = 0;
+            var troco = 0;             
 
-            total = parseFloat(document.getElementById('total').value);
+             total = parseFloat(document.getElementById('total').value);
 
-             const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpag, troco, vfrete }
+             const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpag, troco }
 
            if (isValidate()) {
 
@@ -338,13 +344,11 @@ const CadNovaCompra = () => {
                 }).then((res) => {
                   toast.success('Cadastrado com Sucesso !')
                   nomechange('')
-                  custochange('')
                   formapagchange('')
                   qtdchange('')
                   parcelamentochange('')
                   parcelachange('')
-                  valorpagchange('')
-                  setVFrete('')
+                  valorpagchange('')               
 
                   document.getElementById('qtd').style.borderColor = 'Gainsboro';
 
@@ -377,10 +381,10 @@ const CadNovaCompra = () => {
 
       const valorpag = (total / parcela).toFixed(2);
       console.log(valorpag)
-      var troco = 0;
-      const vfrete = parseFloat(document.getElementById('vfrete').value);
+      var troco = 0;   
+      const custo = parseFloat(document.getElementById('custo').value);          
 
-      const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpag, formapag, parcelamento, parcelan, mes, fornecedor, troco, vfrete }
+      const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpag, formapag, parcelamento, parcelan, mes, fornecedor, troco }
 
       if (isValidate()) {
 
@@ -592,10 +596,10 @@ const CadNovaCompra = () => {
                 <div className='mb-3'>
                   <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px' }}>Custo:</label>
                   <label htmlFor='valorpag' style={{ fontSize: '20px', margin: '0 124px' }}>Valor Pago:</label>
-                  <input type="decimal" onKeyUp={mudacorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' id='custo' />
+                  <input type="decimal" value={custo} onChange={e => custochange(e.target.value)} onKeyUp={mudacorCusto} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' id='custo' />
                   <input type="decimal" value={valorpagto} onChange={e => valorpagchange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='valorpag' id='valorpag' /> <br />
-                  <label htmlFor='valorfrete' style={{ fontSize: '20px', margin: '0 124px' }}>Valor Frete:</label>
-                  <input type="decimal" onKeyUp={mudacorFrete} value={vfrete} onChange={e => setVFrete(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o frete:' className='form-control rounded-0' name='vfrete' id='vfrete' /> <br />
+                  <label htmlFor='vf' style={{ fontSize: '20px', margin: '0 124px' }}>Frete:</label>
+                  <input type="decimal" onKeyUp={mudacorFrete} value={vf} onChange={e => vfchange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o frete:' className='form-control rounded-0' name='vf' id='vf' /> <br />
                 </div>
                 <div className='mb-3'>
                   <label htmlFor='parcela' style={{ fontSize: '20px', margin: "0 415px" }}>Parcelamento:</label>

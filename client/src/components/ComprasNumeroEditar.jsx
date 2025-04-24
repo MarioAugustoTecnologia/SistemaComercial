@@ -17,14 +17,14 @@ const ComprasNumeroEditar = () => {
       compranchange(resp.compran);
       nomechange(resp.nome);
       qtdchange(resp.qtd);
-      custochange(resp.custo);
+      custochange(resp.custo);  
       totalchange(resp.total);
       meschange(resp.mes);
       formapagchange(resp.formapag);
       valorpagchange(resp.valorpag);
       trocochange(resp.troco);
       parcelamentochange(resp.parcelamento);
-      parcelanchange(resp.parcelan);     
+      parcelanchange(resp.parcelan);         
 
     }).catch((err) => {
       console.log(err.message);
@@ -44,6 +44,7 @@ const ComprasNumeroEditar = () => {
   const [parcela, parcelachange] = useState("")
   const [parcelan, parcelanchange] = useState("")
   const [forname, fornamechange] = useState([])
+  const [vf, vfchange] = useState("")
 
 
 
@@ -77,11 +78,7 @@ const ComprasNumeroEditar = () => {
       isproceed = false
       // errormessage += 'Email:' 
     }
-
-    if (custo === null || custo === '') {
-      isproceed = false
-      //errormessage += 'Telefone:' 
-    }
+ 
 
     if (total === null || total === '') {
       isproceed = false
@@ -154,29 +151,23 @@ const ComprasNumeroEditar = () => {
   function MudaCorValorPag() {
     document.getElementById('valorpag').style.borderColor = 'GainsBoro';
   }
-  
 
-  function Frete(){   
   
-    const totalfrete = (parseFloat(total) + parseFloat(custo)).toFixed(2);  
-    document.getElementById('tfrete').value = totalfrete;
+  function Troco(){   
+
+       var total = parseFloat(document.getElementById('total').value);
+       const troco = (parseFloat(valorpag) - total).toFixed(2);  
+       document.getElementById('dif').value = troco;
 
   }
 
-  
-  function Troco(){ 
+  function TotalFrete(){   
 
+    var total = parseFloat(document.getElementById('total').value);
+    const result = (parseFloat(vf) + total).toFixed(2);  
+    document.getElementById('tf').value = result;
 
-    if(document.getElementById('tfrete').value !== ''){
-
-      var total = document.getElementById('tfrete').value;
-      const troco = (parseFloat(valorpag) - parseFloat(total)).toFixed(2);  
-      document.getElementById('dif').value = troco;
-
-    }
- 
-
-  }
+}    
 
 
   const atualizar = (e) => {
@@ -197,11 +188,14 @@ const ComprasNumeroEditar = () => {
         if (parcelamento === "" || parcelamento === null && parcela === "" || parcela === null && parcelan === "" || parcelan === null) {
 
           const data_cad = formataData()
+          const valorpag = parseFloat(document.getElementById('valorpag').value) 
+          const total = parseFloat(document.getElementById('total').value)
+          //const vf = parseFloat(document.getElementById('frete').value);                
 
 
           if (valorpag > total) {
 
-            const troco = document.getElementById('troco').value;
+            const troco = parseFloat(document.getElementById('troco').value);           
             const fornecedor = document.getElementById('forname').value;
 
             const edtobj = { nome, compran, custo, total, valorpag, mes, data_cad, formapag, qtd, troco, fornecedor }
@@ -550,18 +544,21 @@ const ComprasNumeroEditar = () => {
                     <option value="10x">10x</option>
                     <option value="11x">11x</option>
                     <option value="12x">12x</option>
-                </select><br />
-                  <label htmlFor='frete' style={{ fontSize: '20px', margin: "0 120px" }}>Frete:</label>
-                  <label htmlFor='tfrete' style={{ fontSize: '20px', margin: "0 2px" }}>Total c/Frete:</label>
-                  <label htmlFor='tfrete' style={{ fontSize: '20px', margin: "0 48px" }}>Diferença:</label>
-                  <input type="decimal" value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '20px', width: 130, margin:'0 120px'}} className='form-control rounded-0' name='frete' id='frete' />
-                  <input type="decimal" style={{ fontSize: '20px', width: 130, margin:'0 290px', marginTop:'-45px'}} className='form-control rounded-0' name='tfrete' id='tfrete' />
-                  <input type="decimal" style={{ fontSize: '20px', width: 130, margin:'0 460px', marginTop:'-45px'}} className='form-control rounded-0' name='dif' id='dif' />
+                </select><br />                 
+                   <div>
+                   <label htmlFor='dif' style={{ fontSize: '20px', margin: "0 120px" }}>Diferença:</label>   
+                   <label htmlFor='frete' style={{ fontSize: '20px', margin: "0 -25px" }}>Frete:</label>
+                   <label htmlFor='tf' style={{ fontSize: '20px', margin: "0 120px" }}>Total Frete:</label>                    
+                   <input type="decimal" style={{ fontSize: '20px', width: 130, margin:'0 120px'}} className='form-control rounded-0' name='dif' id='dif' />
+                   <input type="decimal" value={vf} onChange={e => vfchange(e.target.value) } style={{ fontSize: '20px', width: 130, margin:'0 300px', marginTop:'-42px'}} className='form-control rounded-0' name='frete' id='frete' />
+                   <input type="decimal" style={{ fontSize: '20px', width: 130, margin:'0 460px', marginTop:'-42px'}} className='form-control rounded-0' name='tf' id='tf' />
+                   </div>            
+                 
                  </div>
-                 <div className='mb-3'>
-                  <label htmlFor='formapaga' style={{ fontSize: '20px', margin: '0 115px' }}>Forma de Pagamento:</label>
-                  <label htmlFor='parcela' style={{ fontSize: '20px', marginLeft: '-72px' }}>Parcelas:</label>
-                  <label htmlFor='parcelan' style={{ fontSize: '20px', marginLeft: '60px' }}>Parcela:</label>
+                  <div className='mb-3'>
+                   <label htmlFor='formapaga' style={{ fontSize: '20px', margin: '0 115px' }}>Forma de Pagamento:</label>
+                   <label htmlFor='parcela' style={{ fontSize: '20px', marginLeft: '-72px' }}>Parcelas:</label>
+                   <label htmlFor='parcelan' style={{ fontSize: '20px', marginLeft: '60px' }}>Parcela:</label>
                   <select onMouseDown={MudaCorForma} style={{ fontSize: '20px', width: 130, margin: '0 115px' }} name='formapag' id='formapag' className='form-select' value={formapag} onChange={e => formapagchange(e.target.value)}>
                     <option value=""></option>
                     <option value="Dinheiro">Dinheiro</option>
@@ -634,10 +631,10 @@ const ComprasNumeroEditar = () => {
                 </div>
 
                 <div className='mb-3'>
-                  <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px', fontSize: '16px' }}>Concluir:</button>
-                  <Link onClick={Frete} className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '0 -90px', fontSize: '16px', width: 100 }}>Frete:</Link> 
-                  <Link className="btn border rounded-0" onClick={Troco} style={{ color: 'white', backgroundColor: 'gray', margin: '0 110px', fontSize: '16px', width: 100 }}>Troco:</Link>
-                  <Link to='/compras/numero' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 480px', marginTop:'-60px' ,fontSize: '16px', width: 100 }}>Voltar:</Link>
+                  <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px', fontSize: '16px' }}>Concluir:</button>                   
+                  <Link className="btn border rounded-0" onClick={Troco} style={{ color: 'white', backgroundColor: 'gray', margin: '0 -90px', fontSize: '16px', width: 100 }}>Troco:</Link>
+                  <Link onClick={TotalFrete} className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '0 115px', fontSize: '16px', width: 115 }}>Total c/frete:</Link>
+                  <Link to='/compras/numero' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 500px', fontSize: '16px', width: 100, marginTop:'-60px'}}>Voltar:</Link>
                 </div>
                 <ToastContainer />
               </form>

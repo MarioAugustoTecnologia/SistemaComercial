@@ -85,6 +85,17 @@ return (
                   </span>
                 </Link>
               </li>
+               <li className="w-100">
+               <Link
+                to="/entradas"
+                className="nav-link px-0 align-middle text-white"
+                >
+               <i className="fs-4 bi bi-cash-coin ms-2"></i>
+               <span className="ms-2 d-none d-sm-inline">
+                Vendas:
+                </span>
+                </Link>
+              </li>                             
               <li className="w-100">
                 <Link
                   to="/compras"

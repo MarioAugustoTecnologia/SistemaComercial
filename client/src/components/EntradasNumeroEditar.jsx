@@ -116,13 +116,20 @@ const EntradasNumeroEditar = () => {
     document.getElementById('ntotal').value = novototal;
       
 
-  }  
+  }
+    
+  function Troco(){   
+
+    var t = parseFloat(total);
+    const troco = (parseFloat(valorpag) - t).toFixed(2);  
+    document.getElementById('dif').value = troco;
+
+  }
 
 
   const atualizar = (e) => {
 
-    e.preventDefault();
-    
+    e.preventDefault();    
 
     if (parcelamento === "" || parcelamento === null && parcela === "" || parcela === null && parcelan === "" || parcelan === null) {
 
@@ -575,7 +582,9 @@ const EntradasNumeroEditar = () => {
                 </div>
                 <div className='mb-3'>
                 <label htmlFor='total' style={{ fontSize: '20px', margin: '0 115px' }}>Novo Total c/ Desconto:</label>
-                <input type="decimal" style={{ fontSize: '20px', width: 130, margin: '0 115px' }} className='form-control rounded-0' name='ntotal' id='ntotal' /> 
+                <label htmlFor='dif' style={{ fontSize: '20px', margin: '0 -40px' }}>Diferença:</label>
+                <input type="decimal" style={{ fontSize: '20px', width: 130, margin: '0 115px' }} className='form-control rounded-0' name='ntotal' id='ntotal' />
+                <input type="decimal" style={{ fontSize: '20px', width: 130, margin: '0 400px', marginTop:'-45px' }} className='form-control rounded-0' name='dif' id='dif' /> 
                 </div>
                 <div className='mb-3'>
                   <label htmlFor='formapaga' style={{ fontSize: '20px', margin: '0 115px' }}>Forma de Pagamento:</label>
@@ -642,20 +651,16 @@ const EntradasNumeroEditar = () => {
                   <input value={troco} onChange={e => trocochange(e.target.value)} type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 360px', marginTop: '-43px' }} className='form-control rounded-0' id='troco' />
 
                 </div>
-
                 <div className='mb-3'>
                   <button type='submit' className='btn btn-success border rounded-0' style={{ width: 120, margin: '0 115px', fontSize: '16px' }}>Atualizar:</button>
                   <Link className="btn border rounded-0" onClick={Desconto} style={{ color: 'white', backgroundColor: 'Indigo', margin: '0 -100px', fontSize: '16px', width: 120 }}>Desconto:</Link>
-                  <Link to='/venda/troco' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 115px', fontSize: '16px', width: 120 }}>Troco:</Link>
+                  <Link onClick={Troco} className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 115px', fontSize: '16px', width: 120 }}>Troco:</Link>
                   <Link to='/entradas/numero' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 520px', marginTop: '-62px', fontSize: '16px', width: 120 }}>Voltar:</Link>
-
                 </div>
                 <ToastContainer />
               </form>
             </div>
           </div>
-
-
         </div>
       </div>
     </div>

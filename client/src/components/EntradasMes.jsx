@@ -159,6 +159,7 @@ const EntradasMes = () => {
 
   }
 
+
   return (
     <div className="container-fluid" style={{ fontFamily: 'arial' }}>
       <div className="row flex-nowrap">

@@ -68,7 +68,7 @@ const CadCatProd = () => {
                        
                       }).catch((err) => {
                         toast.error('Erro ! :' +err.message)
-                      })    
+                      }) 
       
                      
                     } else if (result.isDenied) {

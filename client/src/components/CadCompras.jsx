@@ -23,9 +23,6 @@ const CadCompras = () => {
       Categoriachange(resp.categoria);
       DataCadchange(resp.data_cadastro);
       Codigochange(resp.codigo);
-
-
-
     }).catch((err) => {
       console.log(err.message);
     })
@@ -49,7 +46,8 @@ const CadCompras = () => {
   const [valorpag, valorpagchange] = useState("")
   const [compradata, setCompradata] = useState([])
   const [mescompraatual, setMesCompraAtual] = useState([])
-  const [vfrete, setVFrete] = useState("")
+  const [vf, vfchange] = useState("")
+
 
   const navigate = useNavigate();
 
@@ -176,47 +174,63 @@ const CadCompras = () => {
     document.getElementById('datacad').style.borderColor = 'Gainsboro';
 
   }
+  function mudacorFrete() {
+
+    document.getElementById('vf').style.borderColor = 'Gainsboro';
+
+  }
 
 
   function calcular() {
 
-    const total = (quant * custo).toFixed(2);
-    console.log(total)
-    document.getElementById('total').value = total;
-    document.getElementById('total').style.borderColor = 'Gainsboro';
+    if(quant == ''){
+          toast.warning('Campo quantidade em branco !')
+          document.getElementById('qtd').style.borderColor = 'red';
+    
+        }else{
 
+          const total = (quant * custo).toFixed(2);
+          console.log(total)
+          document.getElementById('total').value = total;
+          document.getElementById('total').style.borderColor = 'Gainsboro';
 
-  }
-
-  const IsValidate2 = () => {
-      
-    let isproceed = true
-    let errormessage = "Campo valor frete não pode estar vazio  !"
-
-    if (vfrete === null || vfrete === '') {
-      document.getElementById('vfrete').style.borderColor = 'red';
-      isproceed = false
-      //errormessage += 'Nome Completo:' 
-    }
-
-    if (!isproceed) {
-      toast.warning(errormessage)
-    }
-
-    return isproceed
-  }
-
-  function totalFrete() {
-
-    if (IsValidate2()) {
-
-      var total = document.getElementById('total').value;
-      var tfrete = (parseFloat(total) + parseFloat(vfrete)).toFixed(2);
-      document.getElementById('total').value = tfrete;
-      document.getElementById('total').style.borderColor = 'Gainsboro';
-    }   
+        } 
 
   }
+
+    const IsValidate2 = () => {
+          
+        let isproceed = true
+        let errormessage = "Campo frete não pode estar vazio  !"
+    
+        if (vf === null || vf === '') {
+          document.getElementById('vf').style.borderColor = 'red';
+          isproceed = false
+          //errormessage += 'Nome Completo:' 
+        }
+    
+        if (!isproceed) {
+          toast.warning(errormessage)
+        }
+    
+        return isproceed
+      }
+  
+  
+      function totalFrete() {
+  
+        if (IsValidate2()) {
+    
+          var total = document.getElementById('total').value;
+          var tfrete = (parseFloat(total) + parseFloat(vf)).toFixed(2);        
+          document.getElementById('total').value = tfrete;      
+          document.getElementById('total').style.borderColor = 'Gainsboro';       
+          
+  
+        }
+    
+      }
+  
 
   const cadastrar = (e) => {
 
@@ -239,14 +253,14 @@ const CadCompras = () => {
       var qtd = quant;
       var total = parseFloat(document.getElementById('total').value);
       const valorpag = parseFloat(document.getElementById('valorpag').value);
-         
+
 
       if (valorpag > total) {
 
         const troco = parseFloat((valorpag - total).toFixed(2));
-        const vfrete = parseFloat(document.getElementById('vfrete').value);
+     
 
-        const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpag, vfrete }  
+        const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpag }  
 
           Swal.fire({
             title: "Deseja salvar ?",
@@ -306,10 +320,9 @@ const CadCompras = () => {
       } else
         if (valorpag === total) {
 
-          var troco = 0;
-          const vfrete = parseFloat(document.getElementById('vfrete').value);   
+          var troco = 0;       
 
-          const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpag, troco, vfrete }
+          const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpag, troco }
 
             Swal.fire({
               title: "Deseja salvar ?",
@@ -334,7 +347,7 @@ const CadCompras = () => {
                   parcelamentochange('')
                   parcelachange('')
                   valorpagchange('')
-                  setVFrete('')
+                  vfchange('')
 
                   document.getElementById('qtd').style.borderColor = 'Gainsboro';
                 }).catch((err) => {
@@ -367,10 +380,9 @@ const CadCompras = () => {
            
           }else {
                    
-                  var troco = 0;
-                  var vfrete = 0;            
+                  var troco = 0;            
         
-                  const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpag, troco, vfrete }    
+                  const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpag, troco }    
                      
                     Swal.fire({
                       title: "Deseja salvar ?",
@@ -394,8 +406,7 @@ const CadCompras = () => {
                           qtdchange('')
                           parcelamentochange('')
                           parcelachange('')
-                          valorpagchange('')
-                          setVFrete('')
+                          valorpagchange('')                  
                           navigate('/produtos/codigo')                               
                                           
         
@@ -445,10 +456,9 @@ const CadCompras = () => {
       const valorpag = (total / parcela).toFixed(2);
       console.log(valorpag)
       var troco = 0;
-      var qtd = quant;
-      const vfrete = parseFloat(document.getElementById('vfrete').value);
+      var qtd = quant;     
 
-      const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpag, formapag, parcelamento, parcelan, mes, fornecedor, troco, vfrete }
+      const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpag, formapag, parcelamento, parcelan, mes, fornecedor, troco }
 
         Swal.fire({
           title: "Deseja salvar ?",
@@ -681,10 +691,10 @@ const CadCompras = () => {
                   <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px' }}>Custo:</label>
                   <label htmlFor='valorpag' style={{ fontSize: '20px', margin: '0 124px' }}>Valor Pago:</label>
                   <input type="decimal" onKeyUp={mudacorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' id='custo' />
-                  <input type="decimal" value={valorpag} onChange={e => valorpagchange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='valorpag' id='valorpag' /> <br />
-                  <label htmlFor='valorfrete' style={{ fontSize: '20px', margin: '0 124px' }}>Valor Frete:</label>
-                  <input type="decimal" value={vfrete} onChange={e => setVFrete(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o frete:' className='form-control rounded-0' name='vfrete' id='vfrete' /> <br />
-                
+                  <input type="decimal" value={valorpag} onChange={e => valorpagchange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='valorpag' id='valorpag' /> <br /> 
+                  <label htmlFor='vf' style={{ fontSize: '20px', margin: '0 120px' }}>Frete:</label>                 
+                  <input type="decimal" onKeyUp={mudacorFrete} value={vf} onChange={e => vfchange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 120px' }} className='form-control rounded-0' name='vf' id='vf' />
+                                 
                 </div>
                 <div className='mb-3'>
                   <label htmlFor='parcela' style={{ fontSize: '20px', margin: "0 415px" }}>Parcelamento:</label>
@@ -784,14 +794,13 @@ const CadCompras = () => {
                 </div>
                 <div className='mb-3'>
                   <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px', fontSize: '16px' }}>Cadastrar:</button>
-                  <Link className="btn border rounded-0" onClick={totalFrete} style={{ color: 'white', backgroundColor: 'gray', margin: '0 36px', fontSize: '16px', width: 115 }}>Total c/frete:</Link>
-
-
+                  <Link onClick={totalFrete} className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 36px', fontSize: '16px', width: 115 }}>Total c/frete:</Link>
                 </div>
                 <ToastContainer />
               </form>
               <button className='btn btn-primary border rounded-0' onClick={calcular} style={{ width: 100, margin: '0 240px', marginTop: '-94px', fontSize: '16px' }}>Total:</button>
-              <Link to='/produtos/codigo' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 510px', fontSize: '16px', width: 100, marginTop: '-140px' }}>Voltar:</Link>
+              
+              <Link to='/produtos/codigo' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 506px', fontSize: '16px', width: 100, marginTop: '-142px'  }}>Voltar:</Link>
 
             </div>
           </div>

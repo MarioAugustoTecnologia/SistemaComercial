@@ -273,9 +273,8 @@ const ComprasMes = () => {
                   </span>
                 </Link>
               </li>
-
               <li className="w-100" onClick={logout}>
-                <Link
+                <Link to="/"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-power ms-2"></i>
@@ -328,8 +327,8 @@ const ComprasMes = () => {
                     <th className="th" scope="col">Id:</th>
                     <th className="th" scope="col">Compra nº:</th>
                     <th className="th" scope="col">Nome:</th>
-                    <th className="th" scope="col">Custo/ Frete:</th>
-                    <th className="th" scope="col">Frete:</th>
+                    <th className="th" scope="col">Qtd:</th>
+                    <th className="th" scope="col">Custo:</th>                 
                     <th className="th" scope="col">Total Geral:</th>                   
                     <th className="th" scope="col">Forma Paga:</th>
                     <th className="th" scope="col">Saidas:</th>
@@ -348,8 +347,8 @@ const ComprasMes = () => {
                         <td className="td">{item.id}</td>
                         <td className="td">{item.compran}</td>
                         <td className="td">{item.nome}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.custo)}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.vfrete)}</td>
+                        <td className="td">{item.qtd}</td>
+                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.custo)}</td>                          
                         <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.total)}</td>         
                         <td className="td">{item.formapag}</td>
                         <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.valorpag)}</td>

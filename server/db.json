@@ -1,1248 +1,1299 @@
 {
-  "usuarios": [
-    {
-      "id": "User",
-      "cod": "1",
-      "email": "user@email.com",
-      "hashedPassword": "$2a$10$fNUKpSPps.c1DNCzrFjQCueVHKSO3ywBFcEewADmAEItxAIcxA/a2",
-      "fone": "15 33662014",
-      "datanascimento": "20/01/1991",
-      "categoria": "Administrador"
-    }
-  ],
-  "vendas": [
-    {
-      "vendan": "1",
-      "nome": "Achocolatado Toddy 370 g",
-      "quant": "1",
-      "preco": "12.60",
-      "total": "12.60",
-      "data": "08/04/2025",
-      "formapag": "Dinheiro",
-      "mes": "Abril",
-      "troco": 0.4,
-      "valorpag": 13,
-      "id": 1
-    },
-    {
-      "nome": "Leite gege 1 Litro ",
-      "vendan": "2",
-      "preco": "10.80",
-      "total": "20.520000000000003",
-      "valorpag": 20.52,
-      "mes": "Abril",
-      "data": "09/04/2025",
-      "formapag": "Pix",
-      "troco": 0,
-      "quant": "2",
-      "id": 2
-    },
-    {
-      "vendan": "3",
-      "nome": "Achocolatado Toddy 370 g",
-      "quant": "1",
-      "preco": "12.60",
-      "total": "12.60",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 3
-    },
-    {
-      "vendan": "3",
-      "nome": "Leite gege 1 Litro ",
-      "quant": "2",
-      "preco": "10.80",
-      "total": "21.60",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 4
-    },
-    {
-      "vendan": "3",
-      "nome": "Papel Higienico Mili ",
-      "quant": "1",
-      "preco": "20.00",
-      "total": "20.00",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 5
-    },
-    {
-      "vendan": "3",
-      "nome": "Coca Cola 1 Litro Casco ",
-      "quant": "1",
-      "preco": "20.00",
-      "total": "20.00",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 6
-    },
-    {
-      "vendan": "3",
-      "nome": "Detergente Ype Amarelo ",
-      "quant": "2",
-      "preco": "15.25",
-      "total": "30.50",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 7
-    },
-    {
-      "vendan": "3",
-      "nome": "Detergente Ype Verde ",
-      "quant": "2",
-      "preco": "19.00",
-      "total": "38.00",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 8
-    },
-    {
-      "vendan": "3",
-      "nome": "Agua Sanitaria Kiboa ",
-      "quant": "1",
-      "preco": "29.75",
-      "total": "29.75",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 9
-    },
-    {
-      "vendan": "3",
-      "nome": "Arroz Tio João 5 kg ",
-      "quant": "1",
-      "preco": "20.00",
-      "total": "20.00",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 10
-    },
-    {
-      "vendan": "3",
-      "nome": "Feijão Ubirama 2 kg ",
-      "quant": "2",
-      "preco": "14.80",
-      "total": "29.60",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 11
-    },
-    {
-      "vendan": "3",
-      "nome": "Macarrão Renata Parafuso ",
-      "quant": "1",
-      "preco": "16.50",
-      "total": "16.50",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 12
-    },
-    {
-      "vendan": "3",
-      "nome": "Aveia em Flocos Finos Siamar",
-      "quant": "2",
-      "preco": "26.84",
-      "total": "53.68",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 13
-    },
-    {
-      "nome": "Total da venda nº:3",
-      "vendan": "3",
-      "preco": 0,
-      "total": "292.23",
-      "valorpag": "292.23",
-      "mes": "Maio",
-      "data": "09/04/2025",
-      "formapag": "Crédito",
-      "troco": 0,
-      "id": 14
-    },
-    {
-      "vendan": "4",
-      "nome": "Achocolatado Toddy 370 g",
-      "quant": "2",
-      "preco": "12.60",
-      "total": "25.20",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 15
-    },
-    {
-      "vendan": "4",
-      "nome": "Leite gege 1 Litro ",
-      "quant": "2",
-      "preco": "10.80",
-      "total": "21.60",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 16
-    },
-    {
-      "nome": "Total da venda nº:4",
-      "vendan": "4",
-      "preco": 0,
-      "total": "46.80",
-      "valorpag": "50.00",
-      "mes": "Abril",
-      "data": "09/04/2025",
-      "formapag": "Dinheiro",
-      "troco": "3.20",
-      "id": 17
-    },
-    {
-      "vendan": "5",
-      "nome": "Agua Sanitaria Kiboa ",
-      "quant": "1",
-      "preco": "29.75",
-      "total": "29.75",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 18
-    },
-    {
-      "vendan": "5",
-      "nome": "Arroz Tio João 5 kg ",
-      "quant": "3",
-      "preco": "20.00",
-      "total": "60.00",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 19
-    },
-    {
-      "vendan": "5",
-      "nome": "Macarrão Renata Spagueti ",
-      "quant": "2",
-      "preco": "10.76",
-      "total": "21.52",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 20
-    },
-    {
-      "nome": "Total da venda nº:5",
-      "vendan": "5",
-      "preco": 0,
-      "total": "111.27",
-      "valorpag": "22.25",
-      "mes": "Abril",
-      "data": "09/04/2025",
-      "parcelamento": "5x",
-      "parcelan": "1ª",
-      "formapag": "Crédito",
-      "troco": 0,
-      "id": 21
-    },
-    {
-      "vendan": "6",
-      "nome": "Macarrão Renata Parafuso ",
-      "quant": "3",
-      "preco": "16.50",
-      "total": "49.50",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 22
-    },
-    {
-      "vendan": "6",
-      "nome": "Aveia em Flocos Finos Siamar",
-      "quant": "3",
-      "preco": "26.84",
-      "total": "80.52",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 23
-    },
-    {
-      "vendan": "6",
-      "nome": "Detergente Ype Verde ",
-      "quant": "4",
-      "preco": "19.00",
-      "total": "76.00",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 24
-    },
-    {
-      "nome": "Total da venda nº:6",
-      "vendan": "6",
-      "preco": 0,
-      "total": "195.72",
-      "valorpag": "200.00",
-      "mes": "Abril",
-      "data": "09/04/2025",
-      "formapag": "Dinheiro",
-      "troco": "4.28",
-      "id": 25
-    },
-    {
-      "vendan": "7",
-      "nome": "Achocolatado Toddy 370 g",
-      "quant": "2",
-      "preco": "12.60",
-      "total": "25.20",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 26
-    },
-    {
-      "vendan": "7",
-      "nome": "Leite gege 1 Litro ",
-      "quant": "4",
-      "preco": "10.80",
-      "total": "43.20",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 27
-    },
-    {
-      "vendan": "7",
-      "nome": "Coca Cola 2 Litros Descartavel ",
-      "quant": "1",
-      "preco": "21.65",
-      "total": "21.65",
-      "data": "09/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "valorpag": 0,
-      "troco": 0,
-      "id": 28
-    },
-    {
-      "nome": "Total da venda nº:7",
-      "vendan": "7",
-      "preco": 0,
-      "total": "85.55",
-      "valorpag": "85.55",
-      "mes": "Abril",
-      "data": "09/04/2025",
-      "formapag": "Pix",
-      "troco": 0,
-      "id": 29
-    }
-  ],
-  "atual": [
-    {
-      "numero": "7",
-      "id": 5
-    }
-  ],
-  "catproduto": [
-    {
-      "nome": "Alimentos Perecíveis",
-      "id": 1
-    },
-    {
-      "nome": "Alimentos não Pereciveis",
-      "id": 2
-    },
-    {
-      "nome": "Bebidas",
-      "id": 3
-    },
-    {
-      "nome": "Higiene Pessoal",
-      "id": 4
-    },
-    {
-      "nome": "Limpeza",
-      "id": 5
-    },
-    {
-      "nome": "Hortifruit",
-      "id": 6
-    },
-    {
-      "nome": "Carnes e Frios",
-      "id": 7
-    },
-    {
-      "nome": "Laticinios ",
-      "id": 8
-    },
-    {
-      "nome": "Padaria",
-      "id": 9
-    },
-    {
-      "nome": "Peixes",
-      "id": 10
-    }
-  ],
-  "produtos": [
-    {
-      "id": 1,
-      "nome": "Achocolatado Toddy 370 g",
-      "preco": "12.60",
-      "qtd": 594,
-      "categoria": "Alimentos Perecíveis",
-      "data_cadastro": "09/04/2025",
-      "codigo": "01",
-      "custo": "10.00"
-    },
-    {
-      "id": 2,
-      "nome": "Leite gege 1 Litro ",
-      "preco": "10.80",
-      "qtd": 40,
-      "categoria": "Laticinios ",
-      "data_cadastro": "09/04/2025",
-      "codigo": "02",
-      "custo": "7.62"
-    },
-    {
-      "id": 3,
-      "nome": "Coca Cola 1 Litro Casco ",
-      "preco": "20.00",
-      "qtd": 249,
-      "categoria": "Bebidas",
-      "data_cadastro": "09/04/2025",
-      "codigo": "04",
-      "custo": "15"
-    },
-    {
-      "id": 4,
-      "nome": "Coca Cola lata 250 ml ",
-      "preco": "8.00",
-      "qtd": 169,
-      "categoria": "Bebidas",
-      "data_cadastro": "07/04/2025",
-      "codigo": "05",
-      "custo": "6.50"
-    },
-    {
-      "id": 5,
-      "nome": "Papel Higienico Mili ",
-      "preco": "20.00",
-      "qtd": 399,
-      "categoria": "Higiene Pessoal",
-      "data_cadastro": "09/04/2025",
-      "codigo": "03",
-      "custo": "17.53"
-    },
-    {
-      "id": 6,
-      "nome": "Coca Cola 2 Litros Descartavel ",
-      "preco": "21.65",
-      "qtd": 399,
-      "categoria": "Bebidas",
-      "data_cadastro": "07/04/2025",
-      "codigo": "06",
-      "custo": "18.30"
-    },
-    {
-      "id": 7,
-      "nome": "Detergente Ype Amarelo ",
-      "preco": "15.25",
-      "qtd": 298,
-      "categoria": "Limpeza",
-      "data_cadastro": "09/04/2025",
-      "codigo": "08",
-      "custo": "13.20"
-    },
-    {
-      "id": 8,
-      "nome": "Detergente Ype Verde ",
-      "preco": "19.00",
-      "qtd": 254,
-      "categoria": "Limpeza",
-      "data_cadastro": "09/04/2025",
-      "codigo": "09",
-      "custo": "16.50"
-    },
-    {
-      "id": 9,
-      "qtd": "300",
-      "nome": "Detergente Ype Branco",
-      "preco": "18.60",
-      "custo": "16.50",
-      "categoria": "Limpeza",
-      "data_cadastro": "09/04/2025",
-      "codigo": "10"
-    },
-    {
-      "id": 10,
-      "nome": "Agua Sanitaria Kiboa ",
-      "preco": "29.75",
-      "qtd": 198,
-      "categoria": "Limpeza",
-      "data_cadastro": "09/04/2025",
-      "codigo": "11",
-      "custo": "26.35"
-    },
-    {
-      "id": 11,
-      "nome": "Arroz Tio João 5 kg ",
-      "preco": "20.00",
-      "qtd": 446,
-      "categoria": "Alimentos não Pereciveis",
-      "data_cadastro": "07/04/2025",
-      "codigo": "13",
-      "custo": "15.00"
-    },
-    {
-      "id": 12,
-      "nome": "Feijão Ubirama 2 kg ",
-      "preco": "14.80",
-      "qtd": 298,
-      "categoria": "Alimentos não Pereciveis",
-      "data_cadastro": "07/04/2025",
-      "codigo": "14",
-      "custo": "12.60"
-    },
-    {
-      "id": 13,
-      "nome": "Macarrão Renata Parafuso ",
-      "preco": "16.50",
-      "qtd": 396,
-      "categoria": "Alimentos não Pereciveis",
-      "data_cadastro": "07/04/2025",
-      "codigo": "15",
-      "custo": "13.62"
-    },
-    {
-      "id": 14,
-      "nome": "Macarrão Renata Spagueti ",
-      "preco": "10.76",
-      "qtd": 498,
-      "categoria": "Alimentos não Pereciveis",
-      "data_cadastro": "07/04/2025",
-      "codigo": "16",
-      "custo": "8.65"
-    },
-    {
-      "id": 15,
-      "nome": "Aveia em Flocos Finos Siamar",
-      "preco": "26.84",
-      "qtd": 305,
-      "categoria": "Alimentos Perecíveis",
-      "data_cadastro": "08/04/2025",
-      "codigo": "17",
-      "custo": "23.56"
-    }
-  ],
-  "despesas": [],
-  "compras": [
-    {
-      "compran": "1",
-      "nome": "Achocolatado Toddy 370 g",
-      "qtd": "600",
-      "custo": "10.00",
-      "total": "6035.56",
-      "data_cad": "03/04/2025",
-      "formapag": "Dinheiro",
-      "mes": "Abril",
-      "fornecedor": "São João Comercio de Alimentos ",
-      "troco": 14.44,
-      "valorpag": "6050.00",
-      "vfrete": "35.56",
-      "id": 1
-    },
-    {
-      "compran": "2",
-      "nome": "Leite gege 1 Litro ",
-      "qtd": "50",
-      "custo": "7.62",
-      "total": "416.40",
-      "data_cad": "07/04/2025",
-      "formapag": "Pix",
-      "mes": "Abril",
-      "fornecedor": "Laticinios Gege s/a",
-      "valorpag": "416.40",
-      "troco": 0,
-      "vfrete": "35.40",
-      "id": 2
-    },
-    {
-      "nome": "Papel Higienico Mili ",
-      "compran": "3",
-      "custo": "17.53",
-      "total": "7037.00",
-      "valorpag": "1172.83",
-      "mes": "Maio",
-      "data_cad": "07/04/2025",
-      "parcelamento": "6x",
-      "parcelan": "1ª",
-      "formapag": "Crédito",
-      "qtd": "400",
-      "troco": 0,
-      "fornecedor": "São Gabriel Produtos Pessoais s/a",
-      "id": 3
-    },
-    {
-      "compran": "4",
-      "nome": "Coca Cola 1 Litro Casco ",
-      "qtd": "250",
-      "custo": "15",
-      "total": "3750.00",
-      "data_cad": "07/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "Coca Cola s/a",
-      "valorpag": 0,
-      "troco": 0,
-      "vfrete": 0,
-      "id": 4
-    },
-    {
-      "compran": "4",
-      "nome": "Coca Cola lata 250 ml ",
-      "qtd": "150",
-      "custo": "6.50",
-      "total": "975.00",
-      "data_cad": "07/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "Coca Cola s/a",
-      "valorpag": 0,
-      "troco": 0,
-      "vfrete": 0,
-      "id": 5
-    },
-    {
-      "compran": "4",
-      "nome": "Coca Cola 2 Litros Descartavel ",
-      "qtd": "400",
-      "custo": "18.30",
-      "total": "7320.00",
-      "data_cad": "07/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "Coca Cola s/a",
-      "valorpag": 0,
-      "troco": 0,
-      "vfrete": 0,
-      "id": 6
-    },
-    {
-      "nome": "Total da compra nº:4",
-      "compran": "4",
-      "custo": "25.00",
-      "total": "12070.00",
-      "valorpag": "12100.00",
-      "mes": "Abril",
-      "data_cad": "07/04/2025",
-      "formapag": "Dinheiro",
-      "troco": "30.00",
-      "fornecedor": "Coca Cola s/a",
-      "id": 7
-    },
-    {
-      "compran": "5",
-      "nome": "Detergente Ype Amarelo ",
-      "qtd": "200",
-      "custo": "13.20",
-      "total": "2640.00",
-      "data_cad": "07/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "Casa da Limpeza s/a ",
-      "valorpag": 0,
-      "troco": 0,
-      "vfrete": 0,
-      "id": 8
-    },
-    {
-      "compran": "5",
-      "nome": "Detergente Ype Verde ",
-      "qtd": "200",
-      "custo": "16.50",
-      "total": "3300.00",
-      "data_cad": "07/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "Casa da Limpeza s/a ",
-      "valorpag": 0,
-      "troco": 0,
-      "vfrete": 0,
-      "id": 9
-    },
-    {
-      "compran": "5",
-      "nome": "Detergente Ype Branco",
-      "qtd": "200",
-      "custo": "16.50",
-      "total": "3300.00",
-      "data_cad": "07/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "Casa da Limpeza s/a ",
-      "valorpag": 0,
-      "troco": 0,
-      "vfrete": 0,
-      "id": 10
-    },
-    {
-      "compran": "5",
-      "nome": "Agua Sanitaria Kiboa ",
-      "qtd": "160",
-      "custo": "26.35",
-      "total": "4216.00",
-      "data_cad": "07/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "Casa da Limpeza s/a ",
-      "valorpag": 0,
-      "troco": 0,
-      "vfrete": 0,
-      "id": 11
-    },
-    {
-      "nome": "Total da compra nº:5",
-      "compran": "5",
-      "custo": "45.60",
-      "total": "13501.60",
-      "valorpag": "13501.60",
-      "mes": "Maio",
-      "data_cad": "07/04/2025",
-      "formapag": "Crédito",
-      "troco": 0,
-      "fornecedor": "Casa da Limpeza s/a ",
-      "id": 12
-    },
-    {
-      "compran": "6",
-      "nome": "Arroz Tio João 5 kg ",
-      "qtd": "300",
-      "custo": "15.00",
-      "total": "4500.00",
-      "data_cad": "07/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "São João Comercio de Alimentos ",
-      "valorpag": 0,
-      "troco": 0,
-      "vfrete": 0,
-      "id": 13
-    },
-    {
-      "compran": "6",
-      "nome": "Feijão Ubirama 2 kg ",
-      "qtd": "250",
-      "custo": "12.60",
-      "total": "3150.00",
-      "data_cad": "07/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "São João Comercio de Alimentos ",
-      "valorpag": 0,
-      "troco": 0,
-      "vfrete": 0,
-      "id": 14
-    },
-    {
-      "compran": "6",
-      "nome": "Macarrão Renata Parafuso ",
-      "qtd": "350",
-      "custo": "13.62",
-      "total": "4767.00",
-      "data_cad": "07/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "São João Comercio de Alimentos ",
-      "valorpag": 0,
-      "troco": 0,
-      "vfrete": 0,
-      "id": 15
-    },
-    {
-      "compran": "6",
-      "nome": "Macarrão Renata Spagueti ",
-      "qtd": "300",
-      "custo": "8.65",
-      "total": "2595.00",
-      "data_cad": "07/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "São João Comercio de Alimentos ",
-      "valorpag": 0,
-      "troco": 0,
-      "vfrete": 0,
-      "id": 16
-    },
-    {
-      "compran": "6",
-      "nome": "Aveia em Flocos Finos Siamar",
-      "qtd": "260",
-      "custo": "23.56",
-      "total": "6125.60",
-      "data_cad": "07/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "São João Comercio de Alimentos ",
-      "valorpag": 0,
-      "troco": 0,
-      "vfrete": 0,
-      "id": 17
-    },
-    {
-      "nome": "Total da compra nº:6",
-      "compran": "6",
-      "custo": "45.65",
-      "total": "21183.25",
-      "valorpag": 2647.91,
-      "mes": "Maio",
-      "data_cad": "07/04/2025",
-      "parcelamento": "8x",
-      "parcelan": "1ª",
-      "formapag": "Crédito",
-      "troco": 0,
-      "fornecedor": "São João Comercio de Alimentos ",
-      "id": 18
-    },
-    {
-      "compran": "7",
-      "nome": "Coca Cola lata 250 ml ",
-      "qtd": "20",
-      "custo": "6.50",
-      "total": "155.00",
-      "data_cad": "07/04/2025",
-      "formapag": "Dinheiro",
-      "mes": "Abril",
-      "fornecedor": "Coca Cola s/a",
-      "troco": 45,
-      "valorpag": "200.00",
-      "vfrete": "25.00",
-      "id": 19
-    },
-    {
-      "compran": "8",
-      "nome": "Detergente Ype Amarelo ",
-      "qtd": "50",
-      "custo": "13.20",
-      "total": "695.23",
-      "data_cad": "03/04/2025",
-      "formapag": "Débito",
-      "mes": "Abril",
-      "fornecedor": "Casa da Limpeza s/a ",
-      "valorpag": "695.23",
-      "troco": 0,
-      "vfrete": "35.23",
-      "id": 20
-    },
-    {
-      "compran": "9",
-      "nome": "Feijão Ubirama 2 kg ",
-      "qtd": "50",
-      "custo": "12.60",
-      "total": "630.00",
-      "data_cad": "08/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "São João Comercio de Alimentos ",
-      "valorpag": "",
-      "troco": 0,
-      "vfrete": 0,
-      "id": 21
-    },
-    {
-      "compran": "9",
-      "nome": "Arroz Tio João 5 kg ",
-      "qtd": "150",
-      "custo": "15.00",
-      "total": "2250.00",
-      "data_cad": "08/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "São João Comercio de Alimentos ",
-      "valorpag": "",
-      "troco": 0,
-      "vfrete": 0,
-      "id": 22
-    },
-    {
-      "compran": "9",
-      "nome": "Macarrão Renata Spagueti ",
-      "qtd": "120",
-      "custo": "8.65",
-      "total": "1038.00",
-      "data_cad": "08/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "São João Comercio de Alimentos ",
-      "valorpag": "",
-      "troco": 0,
-      "vfrete": 0,
-      "id": 23
-    },
-    {
-      "nome": "Total da compra nº:9",
-      "compran": "9",
-      "custo": "25",
-      "total": "3943.00",
-      "valorpag": 657.17,
-      "mes": "Maio",
-      "data_cad": "08/04/2025",
-      "parcelamento": "6x",
-      "parcelan": "2ª",
-      "formapag": "Crédito",
-      "troco": 0,
-      "fornecedor": "São João Comercio de Alimentos ",
-      "id": 24
-    },
-    {
-      "compran": "10",
-      "nome": "Aveia em Flocos Finos Siamar",
-      "qtd": "50",
-      "custo": "23.56",
-      "total": "1203.00",
-      "data_cad": "08/04/2025",
-      "formapag": "Dinheiro",
-      "mes": "Abril",
-      "fornecedor": "São João Comercio de Alimentos ",
-      "troco": 7,
-      "valorpag": "1210.00",
-      "vfrete": "25.00",
-      "id": 25
-    },
-    {
-      "compran": "11",
-      "nome": "Detergente Ype Verde ",
-      "qtd": "60",
-      "custo": "16.50",
-      "total": "1015.00",
-      "data_cad": "08/04/2025",
-      "formapag": "Boleto",
-      "mes": "Abril",
-      "fornecedor": "Casa da Limpeza s/a ",
-      "valorpag": "1015.00",
-      "troco": 0,
-      "vfrete": "25.00",
-      "id": 26
-    },
-    {
-      "compran": "12",
-      "nome": "Detergente Ype Branco",
-      "qtd": "100",
-      "custo": "16.50",
-      "total": "1650.00",
-      "data_cad": "08/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "Casa da Limpeza s/a ",
-      "valorpag": "",
-      "troco": 0,
-      "vfrete": 0,
-      "id": 27
-    },
-    {
-      "compran": "12",
-      "nome": "Agua Sanitaria Kiboa ",
-      "qtd": "40",
-      "custo": "26.35",
-      "total": "1054.00",
-      "data_cad": "08/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "Casa da Limpeza s/a ",
-      "valorpag": "",
-      "troco": 0,
-      "vfrete": 0,
-      "id": 28
-    },
-    {
-      "nome": "Total da compra nº:12",
-      "compran": "12",
-      "custo": "42.56",
-      "total": "2746.56",
-      "valorpag": "2746.56",
-      "mes": "Maio",
-      "data_cad": "08/04/2025",
-      "formapag": "Crédito",
-      "troco": 0,
-      "fornecedor": "Casa da Limpeza s/a ",
-      "id": 29
-    },
-    {
-      "compran": "13",
-      "nome": "Macarrão Renata Parafuso ",
-      "qtd": "50",
-      "custo": "13.62",
-      "total": "681.00",
-      "data_cad": "08/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "São João Comercio de Alimentos ",
-      "valorpag": "",
-      "troco": 0,
-      "vfrete": 0,
-      "id": 30
-    },
-    {
-      "compran": "13",
-      "nome": "Macarrão Renata Spagueti ",
-      "qtd": "80",
-      "custo": "8.65",
-      "total": "692.00",
-      "data_cad": "08/04/2025",
-      "formapag": "",
-      "mes": "Abril",
-      "fornecedor": "São João Comercio de Alimentos ",
-      "valorpag": "",
-      "troco": 0,
-      "vfrete": 0,
-      "id": 31
-    },
-    {
-      "nome": "Total da compra nº:13",
-      "compran": "13",
-      "custo": "36.41",
-      "total": "1409.41",
-      "valorpag": 704.71,
-      "mes": "Abril",
-      "data_cad": "08/04/2025",
-      "parcelamento": "2x",
-      "parcelan": "1ª",
-      "formapag": "Crédito",
-      "troco": 0,
-      "fornecedor": "São João Comercio de Alimentos ",
-      "id": 32
-    }
-  ],
-  "compraatual": [
-    {
-      "numero": "13",
-      "id": 13
-    }
-  ],
-  "resultados": [],
-  "clientes": [
-    {
-      "nome": "Joel",
-      "email": "joellima@email.com",
-      "fone": "14 996663325",
-      "data_cad": "24/02/2025",
-      "bairro": "Vila Paulista",
-      "endereco": "Avenida Dante Delmanto - 500",
-      "cpf": "33555853897",
-      "id": 1
-    },
-    {
-      "nome": "Fernando",
-      "email": "fernando@email.com",
-      "fone": "14 333333",
-      "data_cad": "24/02/2025",
-      "bairro": "Vila Paulista",
-      "endereco": "Rua Jose Thiago",
-      "cpf": "335556214589",
-      "id": 2
-    }
-  ],
-  "fornecedor": [
-    {
-      "nome": "Seara  s/a ",
-      "endereco": "Rua Jose da Silva Pinto - Consolação ",
-      "numero": "500",
-      "cep": "202000",
-      "cidade": "São Paulo SP",
-      "email": "searacomercial@email.com",
-      "fone": "11 33662255",
-      "datacad": "06/04/2025",
-      "catforn": "Alimentos Perecíveis",
-      "id": 1
-    },
-    {
-      "nome": "São João Comercio de Alimentos ",
-      "endereco": "Avenida do Estado - Jardim Esperança ",
-      "numero": "200",
-      "cep": "20563214",
-      "cidade": "São Paulo SP",
-      "email": "saojoaovendas@email.com",
-      "fone": "11 30256985",
-      "datacad": "06/04/2025",
-      "catforn": "Alimentos não Perecíveis ",
-      "id": 2
-    },
-    {
-      "nome": "Coca Cola s/a",
-      "endereco": "Avenida dos Bentivis - Centro ",
-      "comp": "A - 56",
-      "cep": "56321458",
-      "cidade": "Curitiba PR ",
-      "email": "cocacolavenda@email.com",
-      "fone": "41 66996325",
-      "datacad": "06/04/2025",
-      "catforn": "Bebidas",
-      "id": 3
-    },
-    {
-      "nome": "Laticinios Gege s/a",
-      "endereco": "Rua Projetada - Centro s/n",
-      "numero": "0",
-      "cep": "12365214",
-      "cidade": "Pardinho SP",
-      "email": "gegelaticions@email.com",
-      "fone": "14 336622558",
-      "datacad": "06/04/2025",
-      "catforn": "Laticínios",
-      "id": 4
-    },
-    {
-      "nome": "São Gabriel Produtos Pessoais s/a",
-      "endereco": "Avenida dos Pintasilgos - Vila Dona Leonora ",
-      "numero": "214",
-      "cep": "123456789",
-      "cidade": "Bauru SP",
-      "email": "saogabrielcomercio@email.com",
-      "fone": "14 33662254",
-      "datacad": "06/04/2025",
-      "catforn": "Higiene Pessoal",
-      "id": 5
-    },
-    {
-      "nome": "Casa da Limpeza s/a ",
-      "endereco": "Rua Angelino Simonetti - Jardim Paraiso ",
-      "numero": "502",
-      "cep": "12333325",
-      "cidade": "Botucatu SP",
-      "email": "casalimpeza@email.com",
-      "fone": "14 33225569",
-      "datacad": "06/04/2025",
-      "catforn": "Limpeza",
-      "id": 6
-    },
-    {
-      "nome": "São Miguel Distribuidora de Carnes e Frios",
-      "endereco": "Rua Castro Alves - Vila Antartica",
-      "numero": "203",
-      "cep": "20145569",
-      "cidade": "Botucatu SP",
-      "email": "saomiguelcomercio@email.com",
-      "fone": "14 33662259",
-      "datacad": "06/04/2025",
-      "catforn": "Carnes e Frios ",
-      "id": 7
-    },
-    {
-      "nome": "Akimoto Comercio de Peixes s/a",
-      "endereco": "Rua Doutor Cardoso de Almeida - Centro",
-      "numero": "300",
-      "cep": "20336614",
-      "cidade": "Botucatu SP",
-      "email": "peixescomercial@email.com",
-      "fone": "14 6633259",
-      "datacad": "06/04/2025",
-      "catforn": "Peixes ",
-      "id": 8
-    }
-  ],
-  "catfornecedor": [
-    {
-      "nome": "Alimentos Perecíveis",
-      "id": 1
-    },
-    {
-      "nome": "Alimentos não Perecíveis ",
-      "id": 2
-    },
-    {
-      "nome": "Bebidas",
-      "id": 3
-    },
-    {
-      "nome": "Higiene Pessoal",
-      "id": 4
-    },
-    {
-      "nome": "Limpeza",
-      "id": 5
-    },
-    {
-      "nome": "Hortifruti ",
-      "id": 6
-    },
-    {
-      "nome": "Carnes e Frios ",
-      "id": 7
-    },
-    {
-      "nome": "Laticínios",
-      "id": 8
-    },
-    {
-      "nome": "Padaria ",
-      "id": 9
-    },
-    {
-      "nome": "Peixes ",
-      "id": 10
-    }
-  ],
-  "mesatual": [
-    {
-      "mes": "Abril",
-      "id": 1
-    }
-  ],
-  "mescompraatual": [
-    {
-      "mes": "Abril",
-      "id": 1
-    }
-  ]
-}
+    "usuarios": [
+      {
+        "id": "User",
+        "cod": "1",
+        "email": "user@email.com",
+        "hashedPassword": "$2a$10$fNUKpSPps.c1DNCzrFjQCueVHKSO3ywBFcEewADmAEItxAIcxA/a2",
+        "fone": "15 33662014",
+        "datanascimento": "20/01/1991",
+        "categoria": "Administrador"
+      }
+    ],
+    "vendas": [
+      {
+        "vendan": "1",
+        "nome": "Cimento Votoran  50 kg ",
+        "quant": "40",
+        "preco": "37.90",
+        "total": "1516.00",
+        "data": "21/04/2025",
+        "formapag": "Dinheiro",
+        "mes": "Abril",
+        "troco": 4,
+        "valorpag": 1520,
+        "id": 1
+      },
+      {
+        "vendan": "2",
+        "nome": "Cal Hidratada 30kg ",
+        "quant": "25",
+        "preco": "31.50",
+        "total": "787.50",
+        "data": "21/04/2025",
+        "formapag": "Pix",
+        "mes": "Abril",
+        "valorpag": 787.5,
+        "troco": 0,
+        "id": 2
+      },
+      {
+        "nome": "Tijolos a vista ",
+        "vendan": "3",
+        "preco": "12.65",
+        "total": "12650.00",
+        "valorpag": "6325.00",
+        "mes": "Abril",
+        "data": "21/04/2025",
+        "parcelamento": "2x",
+        "parcelan": "1ª",
+        "formapag": "Crédito",
+        "troco": 0,
+        "quant": "1000",
+        "id": 3
+      },
+      {
+        "vendan": "4",
+        "nome": "Cimento Votoran  50 kg ",
+        "quant": "40",
+        "preco": "37.90",
+        "total": "1516.00",
+        "data": "22/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 4
+      },
+      {
+        "vendan": "4",
+        "nome": "Cimento Votoran  25 kg ",
+        "quant": "30",
+        "preco": "30.60",
+        "total": "918.00",
+        "data": "22/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 5
+      },
+      {
+        "vendan": "4",
+        "nome": "Cal Hidratada 30kg ",
+        "quant": "25",
+        "preco": "31.50",
+        "total": "787.50",
+        "data": "22/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 6
+      },
+      {
+        "nome": "Total da venda nº:4",
+        "vendan": "4",
+        "preco": 0,
+        "total": "3221.50",
+        "valorpag": "3230.00",
+        "mes": "Abril",
+        "data": "22/04/2025",
+        "formapag": "Dinheiro",
+        "troco": "8.50",
+        "id": 7
+      },
+      {
+        "vendan": "5",
+        "nome": "Argamassa ACI 20 kg Topex ",
+        "quant": "1",
+        "preco": "12.00",
+        "total": "12.00",
+        "data": "22/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 8
+      },
+      {
+        "vendan": "5",
+        "nome": "Argamassa Votomassa 20 kg",
+        "quant": "1",
+        "preco": "13.00",
+        "total": "13.00",
+        "data": "22/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 9
+      },
+      {
+        "vendan": "5",
+        "nome": "Argamassa Inovatte 20 kg",
+        "quant": "2",
+        "preco": "25.90",
+        "total": "51.80",
+        "data": "22/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 10
+      },
+      {
+        "nome": "Total da venda nº:5",
+        "vendan": "5",
+        "preco": 0,
+        "total": "76.80",
+        "valorpag": "76.80",
+        "mes": "Abril",
+        "data": "22/04/2025",
+        "formapag": "Pix",
+        "troco": 0,
+        "id": 11
+      },
+      {
+        "vendan": "6",
+        "nome": "Cimento Votoran  50 kg ",
+        "quant": "20",
+        "preco": "37.90",
+        "total": "758.00",
+        "data": "22/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 12
+      },
+      {
+        "vendan": "6",
+        "nome": "Cal Hidratada 30kg ",
+        "quant": "20",
+        "preco": "31.50",
+        "total": "630.00",
+        "data": "22/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 13
+      },
+      {
+        "vendan": "6",
+        "nome": "Tijolos a vista ",
+        "quant": "400",
+        "preco": "12.65",
+        "total": "5060.00",
+        "data": "22/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 14
+      },
+      {
+        "vendan": "6",
+        "nome": "Argamassa ACI 20 kg Topex ",
+        "quant": "6",
+        "preco": "12.00",
+        "total": "72.00",
+        "data": "22/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 15
+      },
+      {
+        "nome": "Total da venda nº:6",
+        "vendan": "6",
+        "preco": 0,
+        "total": "6520.00",
+        "valorpag": "2173.33",
+        "mes": "Abril",
+        "data": "22/04/2025",
+        "parcelamento": "3x",
+        "parcelan": "1ª",
+        "formapag": "Crédito",
+        "troco": 0,
+        "id": 16
+      },
+      {
+        "vendan": "7",
+        "nome": "Cal Hidratada 30kg ",
+        "quant": "5",
+        "preco": "31.50",
+        "total": "149.62",
+        "data": "23/04/2025",
+        "formapag": "Dinheiro",
+        "mes": "Abril",
+        "troco": 0.38,
+        "valorpag": 150,
+        "id": 17
+      },
+      {
+        "vendan": "8",
+        "nome": "Azulejos ",
+        "quant": "70",
+        "preco": "20.60",
+        "total": "1369.9",
+        "data": "23/04/2025",
+        "formapag": "Pix",
+        "mes": "Abril",
+        "valorpag": 1369.9,
+        "troco": 0,
+        "id": 18
+      },
+      {
+        "vendan": "9",
+        "nome": "Cimento Votoran  50 kg ",
+        "quant": "40",
+        "preco": "37.90",
+        "total": "1516.00",
+        "data": "23/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 19
+      },
+      {
+        "vendan": "9",
+        "nome": "Cimento Votoran  25 kg ",
+        "quant": "40",
+        "preco": "30.60",
+        "total": "1224.00",
+        "data": "23/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 20
+      },
+      {
+        "vendan": "9",
+        "nome": "Cal Hidratada 30kg ",
+        "quant": "25",
+        "preco": "31.50",
+        "total": "787.50",
+        "data": "23/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 21
+      },
+      {
+        "vendan": "9",
+        "nome": "Tijolos a vista ",
+        "quant": "450",
+        "preco": "12.65",
+        "total": "5692.50",
+        "data": "23/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 22
+      },
+      {
+        "vendan": "9",
+        "nome": "Argamassa Votomassa 20 kg",
+        "quant": "15",
+        "preco": "13.00",
+        "total": "195.00",
+        "data": "23/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 23
+      },
+      {
+        "vendan": "9",
+        "nome": "Aditivo Impermeabilizante 18 Litros Vedacit",
+        "quant": "6",
+        "preco": "115.85",
+        "total": "695.10",
+        "data": "23/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 24
+      },
+      {
+        "vendan": "9",
+        "nome": "Azulejos ",
+        "quant": "100",
+        "preco": "20.60",
+        "total": "2060.00",
+        "data": "23/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 25
+      },
+      {
+        "vendan": "9",
+        "nome": "Pisos Cerâmico ",
+        "quant": "90",
+        "preco": "18.65",
+        "total": "1678.50",
+        "data": "23/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 26
+      },
+      {
+        "nome": "Total da venda nº:9",
+        "vendan": "9",
+        "preco": 0,
+        "total": "13156.17",
+        "valorpag": "13200.00",
+        "mes": "Abril",
+        "data": "23/04/2025",
+        "formapag": "Dinheiro",
+        "troco": "43.83",
+        "id": 27
+      },
+      {
+        "vendan": "10",
+        "nome": "Cimento Votoran  50 kg ",
+        "quant": "20",
+        "preco": "37.90",
+        "total": "758.00",
+        "data": "23/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 28
+      },
+      {
+        "vendan": "10",
+        "nome": "Cal Hidratada 30kg ",
+        "quant": "30",
+        "preco": "31.50",
+        "total": "945.00",
+        "data": "23/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 29
+      },
+      {
+        "vendan": "10",
+        "nome": "Argamassa Votomassa 20 kg",
+        "quant": "6",
+        "preco": "13.00",
+        "total": "78.00",
+        "data": "23/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 30
+      },
+      {
+        "nome": "Total da venda nº:10",
+        "vendan": "10",
+        "preco": 0,
+        "total": "1424.8",
+        "valorpag": "1424.8",
+        "mes": "Abril",
+        "data": "23/04/2025",
+        "formapag": "Débito",
+        "troco": 0,
+        "id": 31
+      },
+      {
+        "nome": "Total das entradas no mes:",
+        "total": "30257.33",
+        "data": "23/04/2025",
+        "preco": 0,
+        "mes": "Abril",
+        "vendan": "0",
+        "troco": 0,
+        "valorpag": 0,
+        "id": 32
+      },
+      {
+        "nome": "Cimento Votoran  50 kg ",
+        "vendan": "11",
+        "preco": "37.90",
+        "total": "36",
+        "valorpag": 36,
+        "mes": "Maio",
+        "data": "23/04/2025",
+        "formapag": "Crédito",
+        "troco": 0,
+        "quant": "1",
+        "id": 33
+      }
+    ],
+    "atual": [
+      {
+        "numero": "11",
+        "id": 1
+      },
+      {
+        "numero": "12",
+        "id": 2
+      }
+    ],
+    "catproduto": [
+      {
+        "nome": "Cimento e Cal",
+        "id": 1
+      },
+      {
+        "id": 2,
+        "nome": "Areia e Pedra Brita"
+      },
+      {
+        "nome": "Aço",
+        "id": 4
+      },
+      {
+        "nome": "Madeira",
+        "id": 5
+      },
+      {
+        "nome": "Argamassa",
+        "id": 6
+      },
+      {
+        "nome": "Telhas",
+        "id": 7
+      },
+      {
+        "nome": "Tijolos",
+        "id": 8
+      },
+      {
+        "nome": "Pisos e Revestimentos",
+        "id": 9
+      },
+      {
+        "nome": "Materiais Elétricos",
+        "id": 10
+      },
+      {
+        "nome": "Materiais Hidráulicos",
+        "id": 11
+      },
+      {
+        "nome": "Impermeabilizantes ",
+        "id": 12
+      }
+    ],
+    "produtos": [
+      {
+        "id": 1,
+        "nome": "Cimento Votoran  50 kg ",
+        "preco": "37.90",
+        "qtd": 1739,
+        "categoria": "Cimento e Cal",
+        "data_cadastro": "23/04/2025",
+        "codigo": "01",
+        "custo": "32.90"
+      },
+      {
+        "id": 2,
+        "nome": "Cal Hidratada 30kg ",
+        "preco": "31.50",
+        "qtd": 1080,
+        "categoria": "Cimento e Cal",
+        "data_cadastro": "17/04/2025",
+        "codigo": "02",
+        "custo": 26.87
+      },
+      {
+        "id": 3,
+        "nome": "Tijolos a vista ",
+        "preco": "12.65",
+        "qtd": 3150,
+        "categoria": "Tijolos",
+        "data_cadastro": "17/04/2025",
+        "codigo": "03",
+        "custo": 8.6
+      },
+      {
+        "id": 4,
+        "nome": "Argamassa ACI 20 kg Topex ",
+        "preco": "12.00",
+        "qtd": 613,
+        "categoria": "Argamassa",
+        "data_cadastro": "17/04/2025",
+        "codigo": "04",
+        "custo": 7.9
+      },
+      {
+        "id": 5,
+        "nome": "Argamassa Votomassa 20 kg",
+        "preco": "13.00",
+        "qtd": 598,
+        "categoria": "Argamassa",
+        "data_cadastro": "17/04/2025",
+        "codigo": "05",
+        "custo": 10
+      },
+      {
+        "id": 6,
+        "nome": "Argamassa Inovatte 20 kg",
+        "preco": "25.90",
+        "qtd": 598,
+        "categoria": "Argamassa",
+        "data_cadastro": "17/04/2025",
+        "codigo": "06",
+        "custo": 22.89
+      },
+      {
+        "id": 7,
+        "nome": "Aditivo Impermeabilizante 18 Litros Vedacit",
+        "preco": "115.85",
+        "qtd": 294,
+        "categoria": "Impermeabilizantes ",
+        "data_cadastro": "17/04/2025",
+        "codigo": "08",
+        "custo": 85.8
+      },
+      {
+        "id": 8,
+        "nome": "Manta Liquida Acrílica Vedapen 18 kg Vedacit",
+        "custo": "244.60",
+        "preco": "285.70",
+        "qtd": 100,
+        "categoria": "Impermeabilizantes ",
+        "data_cadastro": "17/04/2025",
+        "codigo": "09"
+      },
+      {
+        "id": 9,
+        "nome": "Pisos Cerâmico ",
+        "preco": "18.65",
+        "qtd": 110,
+        "categoria": "Pisos e Revestimentos",
+        "data_cadastro": "17/04/2025",
+        "codigo": "11",
+        "custo": 15.34
+      },
+      {
+        "id": 10,
+        "nome": "Azulejos ",
+        "preco": "20.60",
+        "qtd": 340,
+        "categoria": "Pisos e Revestimentos",
+        "data_cadastro": "17/04/2025",
+        "codigo": "12",
+        "custo": 16.33
+      },
+      {
+        "id": 11,
+        "nome": "Cimento Votoran  25 kg ",
+        "preco": "30.60",
+        "qtd": 1880,
+        "categoria": "Cimento e Cal",
+        "data_cadastro": "21/04/2025",
+        "codigo": "14",
+        "custo": 26.5
+      }
+    ],
+    "despesas": [
+      {
+        "nome": "Agua ",
+        "custo": "117.00",
+        "data_pgto": "10/04/2025",
+        "data_cad": "23/04/2025",
+        "total": "117.00",
+        "id": 1
+      },
+      {
+        "nome": "Energia Elétrica",
+        "custo": "120.87",
+        "data_pgto": "15/04/2025",
+        "data_cad": "23/04/2025",
+        "total": "120.87",
+        "id": 2
+      },
+      {
+        "nome": "Telefone e Internet ",
+        "custo": "100.00",
+        "data_pgto": "10/04/2025",
+        "data_cad": "23/04/2025",
+        "total": "100.00",
+        "id": 3
+      },
+      {
+        "nome": "Outros Serviços",
+        "custo": "1400.00",
+        "data_pgto": "15/04/2025",
+        "data_cad": "23/04/2025",
+        "total": "1400.00",
+        "id": 4
+      },
+      {
+        "nome": "Total das despesas:",
+        "total": "1737.87",
+        "custo": null,
+        "data_cad": "23/04/2025",
+        "id": 5
+      }
+    ],
+    "compras": [
+      {
+        "compran": "1",
+        "nome": "Cimento Votoran  50 kg ",
+        "qtd": "1000",
+        "custo": 32.9,
+        "total": 32945.6,
+        "data_cad": "16/04/2025",
+        "formapag": "Dinheiro",
+        "mes": "Abril",
+        "fornecedor": "Votoran s/a",
+        "troco": 4.4,
+        "valorpag": 32950,
+        "id": 1
+      },
+      {
+        "compran": "2",
+        "nome": "Cal Hidratada 30kg ",
+        "qtd": "850",
+        "custo": 26.87,
+        "total": 22886.02,
+        "data_cad": "17/04/2025",
+        "formapag": "Crédito",
+        "mes": "Abril",
+        "fornecedor": "São Gabriel s/a",
+        "valorpag": 22886.02,
+        "troco": 0,
+        "id": 2
+      },
+      {
+        "compran": "3",
+        "nome": "Tijolos a vista ",
+        "qtd": "5000",
+        "custo": 8.6,
+        "total": 43045.63,
+        "data_cad": "17/04/2025",
+        "valorpag": "3587.14",
+        "formapag": "Crédito",
+        "parcelamento": "12x",
+        "parcelan": "1ª",
+        "mes": "Abril",
+        "fornecedor": "Sales s/a",
+        "troco": 0,
+        "id": 3
+      },
+      {
+        "compran": "4",
+        "nome": "Argamassa ACI 20 kg Topex ",
+        "qtd": "500",
+        "custo": 7.9,
+        "total": 3950,
+        "data_cad": "17/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "fornecedor": "Argamassas e Companhia s/a",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 4
+      },
+      {
+        "compran": "4",
+        "nome": "Argamassa Votomassa 20 kg",
+        "qtd": "500",
+        "custo": 10,
+        "total": 5000,
+        "data_cad": "17/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "fornecedor": "Argamassas e Companhia s/a",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 5
+      },
+      {
+        "compran": "4",
+        "nome": "Argamassa Inovatte 20 kg",
+        "qtd": "450",
+        "custo": 22.89,
+        "total": 10300.5,
+        "data_cad": "17/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "fornecedor": "Argamassas e Companhia s/a",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 6
+      },
+      {
+        "nome": "Total da compra nº:4",
+        "compran": "4",
+        "custo": 0,
+        "total": "19297.02",
+        "valorpag": "19300.00",
+        "mes": "Abril",
+        "data_cad": "20/04/2025",
+        "formapag": "Dinheiro",
+        "troco": "2.98",
+        "fornecedor": "Argamassas e Companhia s/a",
+        "id": 7
+      },
+      {
+        "compran": "5",
+        "nome": "Aditivo Impermeabilizante 18 Litros Vedacit",
+        "qtd": "250",
+        "custo": 85.8,
+        "total": 21450,
+        "data_cad": "17/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "fornecedor": "Sika s/a",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 8
+      },
+      {
+        "compran": "5",
+        "nome": "Manta Liquida Acrílica Vedapen 18 kg Vedacit",
+        "qtd": "60",
+        "custo": 244.6,
+        "total": 14676,
+        "data_cad": "17/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "fornecedor": "Sika s/a",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 9
+      },
+      {
+        "nome": "Total da compra nº:5",
+        "compran": "5",
+        "custo": 0,
+        "total": "36161.64",
+        "valorpag": "36161.64",
+        "mes": "Abril",
+        "data_cad": "20/04/2025",
+        "formapag": "Pix",
+        "troco": 0,
+        "fornecedor": "Sika s/a",
+        "id": 10
+      },
+      {
+        "compran": "6",
+        "nome": "Pisos Cerâmico ",
+        "qtd": "200",
+        "custo": 15.34,
+        "total": 3068,
+        "data_cad": "17/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "fornecedor": "São Judas Pisos e Azulejos s/a",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 11
+      },
+      {
+        "compran": "6",
+        "nome": "Azulejos ",
+        "qtd": "350",
+        "custo": 16.33,
+        "total": 5715.5,
+        "data_cad": "17/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "fornecedor": "São Judas Pisos e Azulejos s/a",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 12
+      },
+      {
+        "nome": "Total da compra nº:6",
+        "compran": "6",
+        "custo": 0,
+        "total": "8835.85",
+        "valorpag": 1472.64,
+        "mes": "Abril",
+        "data_cad": "20/04/2025",
+        "parcelamento": "6x",
+        "parcelan": "1ª",
+        "formapag": "Crédito",
+        "troco": 0,
+        "fornecedor": "São Judas Pisos e Azulejos s/a",
+        "id": 13
+      },
+      {
+        "compran": "7",
+        "nome": "Cimento Votoran  25 kg ",
+        "qtd": "1000",
+        "custo": 26.5,
+        "total": 26535.44,
+        "data_cad": "21/04/2025",
+        "formapag": "Boleto",
+        "mes": "Abril",
+        "fornecedor": "Votoran s/a",
+        "valorpag": 26535.44,
+        "troco": 0,
+        "id": 14
+      },
+      {
+        "compran": "8",
+        "nome": "Cimento Votoran  50 kg ",
+        "qtd": "500",
+        "custo": "32.90",
+        "total": 16486.62,
+        "data_cad": "21/04/2025",
+        "formapag": "Dinheiro",
+        "mes": "Abril",
+        "fornecedor": "Votoran s/a",
+        "troco": 13.38,
+        "valorpag": 16500,
+        "id": 15
+      },
+      {
+        "compran": "9",
+        "nome": "Cimento Votoran  25 kg ",
+        "qtd": "550",
+        "custo": 26.5,
+        "total": 14611.62,
+        "data_cad": "21/04/2025",
+        "formapag": "Boleto",
+        "mes": "Abril",
+        "fornecedor": "Votoran s/a",
+        "valorpag": 14611.62,
+        "troco": 0,
+        "id": 16
+      },
+      {
+        "compran": "10",
+        "nome": "Azulejos ",
+        "qtd": "160",
+        "custo": 16.33,
+        "total": 2637.8,
+        "data_cad": "21/04/2025",
+        "valorpag": "879.27",
+        "formapag": "Crédito",
+        "parcelamento": "3x",
+        "parcelan": "1ª",
+        "mes": "Abril",
+        "fornecedor": "São Judas Pisos e Azulejos s/a",
+        "troco": 0,
+        "id": 17
+      },
+      {
+        "compran": "11",
+        "nome": "Cimento Votoran  50 kg ",
+        "qtd": "400",
+        "custo": "32.90",
+        "total": 13160,
+        "data_cad": "21/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "fornecedor": "São Gabriel s/a",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 18
+      },
+      {
+        "compran": "11",
+        "nome": "Cimento Votoran  25 kg ",
+        "qtd": "400",
+        "custo": 26.5,
+        "total": 10600,
+        "data_cad": "21/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "fornecedor": "São Gabriel s/a",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 19
+      },
+      {
+        "compran": "11",
+        "nome": "Cal Hidratada 30kg ",
+        "qtd": "360",
+        "custo": 26.87,
+        "total": 9673.2,
+        "data_cad": "21/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "fornecedor": "São Gabriel s/a",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 20
+      },
+      {
+        "nome": "Total da compra nº:11",
+        "compran": "11",
+        "custo": 0,
+        "total": "33489.80",
+        "valorpag": "33500.00",
+        "mes": "Abril",
+        "data_cad": "21/04/2025",
+        "formapag": "Dinheiro",
+        "troco": "10.20",
+        "fornecedor": "São Gabriel s/a",
+        "id": 21
+      },
+      {
+        "compran": "12",
+        "nome": "Argamassa ACI 20 kg Topex ",
+        "qtd": "120",
+        "custo": 7.9,
+        "total": 948,
+        "data_cad": "21/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "fornecedor": "Argamassas e Companhia s/a",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 22
+      },
+      {
+        "compran": "12",
+        "nome": "Argamassa Votomassa 20 kg",
+        "qtd": "120",
+        "custo": 10,
+        "total": 1200,
+        "data_cad": "21/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "fornecedor": "Argamassas e Companhia s/a",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 23
+      },
+      {
+        "compran": "12",
+        "nome": "Argamassa Inovatte 20 kg",
+        "qtd": "150",
+        "custo": 22.89,
+        "total": 3433.5,
+        "data_cad": "21/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "fornecedor": "Argamassas e Companhia s/a",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 24
+      },
+      {
+        "nome": "Total da compra nº:12",
+        "compran": "12",
+        "custo": 0,
+        "total": "5618.46",
+        "valorpag": "5618.46",
+        "mes": "Abril",
+        "data_cad": "21/04/2025",
+        "formapag": "Pix",
+        "troco": 0,
+        "fornecedor": "Argamassas e Companhia s/a",
+        "id": 25
+      },
+      {
+        "compran": "13",
+        "nome": "Aditivo Impermeabilizante 18 Litros Vedacit",
+        "qtd": "50",
+        "custo": 85.8,
+        "total": 4290,
+        "data_cad": "21/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "fornecedor": "Sika s/a",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 26
+      },
+      {
+        "compran": "13",
+        "nome": "Manta Liquida Acrílica Vedapen 18 kg Vedacit",
+        "qtd": "40",
+        "custo": "244.60",
+        "total": 9784,
+        "data_cad": "21/04/2025",
+        "formapag": "",
+        "mes": "Abril",
+        "fornecedor": "Sika s/a",
+        "valorpag": 0,
+        "troco": 0,
+        "id": 27
+      },
+      {
+        "nome": "Total da compra nº:13",
+        "compran": "13",
+        "custo": 0,
+        "total": "14100.45",
+        "valorpag": 1410.05,
+        "mes": "Abril",
+        "data_cad": "21/04/2025",
+        "parcelamento": "10x",
+        "parcelan": "1ª",
+        "formapag": "Crédito",
+        "troco": 0,
+        "fornecedor": "Sika s/a",
+        "id": 28
+      },
+      {
+        "nome": "Total das compras no mes:",
+        "total": "215412.28",
+        "data_cad": "23/04/2025",
+        "custo": 0,
+        "mes": "Abril",
+        "compran": "0",
+        "troco": 0,
+        "valorpag": 0,
+        "id": 29
+      }
+    ],
+    "compraatual": [
+      {
+        "numero": "13",
+        "id": 7
+      }
+    ],
+    "resultados": [
+      {
+        "resultado": "-186892.82",
+        "entradas": "30257.33",
+        "saidas": "217150.15",
+        "data_cad": "23/04/2025",
+        "mes": "Abril",
+        "id": 1
+      }
+    ],
+    "clientes": [
+      {
+        "nome": "Joel",
+        "email": "joellima@email.com",
+        "fone": "14 996663325",
+        "data_cad": "24/02/2025",
+        "bairro": "Vila Paulista",
+        "endereco": "Avenida Dante Delmanto - 500",
+        "cpf": "33555853897",
+        "id": 1
+      },
+      {
+        "nome": "Fernando",
+        "email": "fernando@email.com",
+        "fone": "14 333333",
+        "data_cad": "24/02/2025",
+        "bairro": "Vila Paulista",
+        "endereco": "Rua Jose Thiago",
+        "cpf": "335556214589",
+        "id": 2
+      }
+    ],
+    "fornecedor": [
+      {
+        "nome": "Votoran s/a",
+        "endereco": "Rua José da Silva - Centro ",
+        "numero": "500",
+        "cep": "20245-900",
+        "cidade": "São José do Rio Preto SP",
+        "email": "votorancomercio@email.com",
+        "fone": "17 33652149",
+        "datacad": "17/04/2025",
+        "catforn": "Cimento e Cal",
+        "id": 1
+      },
+      {
+        "nome": "São Gabriel s/a",
+        "endereco": "Rua Luis Souza Filho - Vila Souto ",
+        "comp": "RB - 54",
+        "cep": "12569842",
+        "cidade": "Bauru SP",
+        "email": "saogabrielvendas@email.com",
+        "fone": "14 33652897",
+        "datacad": "17/04/2025",
+        "catforn": "Cimento e Cal",
+        "id": 2
+      },
+      {
+        "nome": "Constru +",
+        "endereco": "Avenida Ricardo Cintra Cavalcante - Centro ",
+        "numero": "256",
+        "cep": "1548723",
+        "cidade": "Avaré SP",
+        "email": "construmais@email.com",
+        "fone": "14 55669982",
+        "datacad": "17/04/2025",
+        "catforn": "Areia e Pedra Brita",
+        "id": 3
+      },
+      {
+        "nome": "Super Aço s/a ",
+        "endereco": "Rua Castro Alves - Vila Antartica",
+        "numero": "156",
+        "cep": "46857921",
+        "cidade": "Botucatu SP",
+        "email": "superacovendas@email.com",
+        "fone": "14 35128976",
+        "datacad": "17/04/2025",
+        "catforn": "Aço",
+        "id": 4
+      },
+      {
+        "nome": "Madeirão s/a ",
+        "endereco": "Rua Capitão José Paes de Almeida - Boa Vista",
+        "numero": "256",
+        "cep": "236985412",
+        "cidade": "Botucatu SP",
+        "email": "madeiraocomercial@email.com",
+        "fone": "14 33225569",
+        "datacad": "17/04/2025",
+        "catforn": "Madeira",
+        "id": 5
+      },
+      {
+        "nome": "Argamassas e Companhia s/a",
+        "endereco": "Rua Antonio Luis Agapto Simonetti - Vila Camargo",
+        "numero": "202",
+        "cep": "20361456",
+        "cidade": "Arandu SP",
+        "email": "argamassascomercial@email.com",
+        "fone": "14 55662248",
+        "datacad": "18/04/2025",
+        "catforn": "Argamassa",
+        "id": 6
+      },
+      {
+        "nome": "São Judas Pisos e Azulejos s/a",
+        "endereco": "Avenida Dante Delmanto - Vila Paulista ",
+        "numero": "504",
+        "cep": "19605123",
+        "cidade": "Botucatu SP",
+        "email": "saojudaspisos@email.colm",
+        "fone": "14 33558972",
+        "datacad": "18/04/2025",
+        "catforn": "Pisos e Revestimentos",
+        "id": 7
+      },
+      {
+        "nome": "Ribeiro Telhas e Tijolos s/a",
+        "endereco": "Rua Claudio Castro - Vila Guilherme ",
+        "numero": "205",
+        "cep": "20365489",
+        "cidade": "São Paulo SP",
+        "email": "ribeirocomercio@email.com",
+        "fone": "11 33665248",
+        "datacad": "18/04/2025",
+        "catforn": "Telha",
+        "id": 8
+      },
+      {
+        "nome": "Souza Materiais Elétricos s/a",
+        "endereco": "Avenida Alselmo Dias - Centro ",
+        "numero": "1235",
+        "cep": "12365897",
+        "cidade": "Jau SP",
+        "email": "souzaeletricos@email.com",
+        "fone": "15 66332259",
+        "datacad": "18/04/2025",
+        "catforn": "Materiais elétricos",
+        "id": 9
+      },
+      {
+        "nome": "Mega Hidraulica s/a",
+        "endereco": "Rua Antonio Nunes da Silva Sobrinho - Jardim Paraiso ",
+        "numero": "459",
+        "cep": "18400100",
+        "cidade": "Botucatu SP",
+        "email": "megahidraulicacomercial@email.com",
+        "fone": "14 99886457",
+        "datacad": "18/04/2025",
+        "catforn": "Materiais Hidraulicos",
+        "id": 10
+      },
+      {
+        "nome": "Sika s/a",
+        "endereco": "Rua Luis Souza - Centro ",
+        "numero": "153",
+        "cep": "456982165",
+        "cidade": "Campinas SP",
+        "email": "sikavendas@email.com",
+        "fone": "19 33662254",
+        "datacad": "18/04/2025",
+        "catforn": "Impermeabilizantes ",
+        "id": 11
+      },
+      {
+        "nome": "Sales s/a",
+        "endereco": "Avenida Dante Delmanto - Vila Paulista ",
+        "numero": "1250",
+        "cep": "20563121",
+        "cidade": "Botucatu SP",
+        "email": "salesvendas@email.com",
+        "fone": "14 66332259",
+        "datacad": "18/04/2025",
+        "catforn": "Tijolos",
+        "id": 12
+      }
+    ],
+    "catfornecedor": [
+      {
+        "id": 1,
+        "nome": "Cimento e Cal"
+      },
+      {
+        "id": 2,
+        "nome": "Areia e Pedra Brita"
+      },
+      {
+        "nome": "Aço",
+        "id": 5
+      },
+      {
+        "id": 6,
+        "nome": "Madeira"
+      },
+      {
+        "nome": "Argamassa",
+        "id": 7
+      },
+      {
+        "nome": "Telha",
+        "id": 8
+      },
+      {
+        "nome": "Pisos e Revestimentos",
+        "id": 9
+      },
+      {
+        "id": 10,
+        "nome": "Materiais elétricos"
+      },
+      {
+        "nome": "Materiais Hidraulicos",
+        "id": 11
+      },
+      {
+        "nome": "Tijolos",
+        "id": 12
+      },
+      {
+        "nome": "Impermeabilizantes ",
+        "id": 13
+      }
+    ],
+    "mesatual": [
+      {
+        "mes": "Abril",
+        "id": 1
+      }
+    ],
+    "mescompraatual": [
+      {
+        "mes": "Abril",
+        "id": 1
+      }
+    ]
+  }

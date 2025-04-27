@@ -109,19 +109,19 @@ const EntradasNumeroEditar = () => {
     return `${dia}/${mes}/${ano}`;
   }
 
-  function Desconto(){
+  function Desconto() {
     var desc = (desconto * total).toFixed(2);
     const novototal = total - desc;
     console.log(novototal)
     document.getElementById('ntotal').value = novototal;
-      
+
 
   }
-    
-  function Troco(){   
+
+  function Troco() {
 
     var t = parseFloat(total);
-    const troco = (parseFloat(valorpag) - t).toFixed(2);  
+    const troco = (parseFloat(valorpag) - t).toFixed(2);
     document.getElementById('dif').value = troco;
 
   }
@@ -129,16 +129,16 @@ const EntradasNumeroEditar = () => {
 
   const atualizar = (e) => {
 
-    e.preventDefault();    
+    e.preventDefault();
 
     if (parcelamento === "" || parcelamento === null && parcela === "" || parcela === null && parcelan === "" || parcelan === null) {
 
       const data = formataData()
-        
+
 
       if (valorpag > total) {
-        
-        
+
+
         const edtobj = { nome, vendan, preco, total, valorpag, mes, data, formapag, troco, quant }
 
 
@@ -503,7 +503,18 @@ const EntradasNumeroEditar = () => {
                 >
                   <i className="fs-4 bi bi-bank ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    Resultado:
+                    Resultados:
+                  </span>
+                </Link>
+              </li>
+              <li className="w-100" style={{ margin: "0 7px" }}>
+                <Link
+                  to=""
+                  className="nav-link px-0 align-middle text-white"
+                >
+                  <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
+                  <span className="ms-2 d-none d-sm-inline">
+                    Orçamentos:
                   </span>
                 </Link>
               </li>
@@ -555,7 +566,7 @@ const EntradasNumeroEditar = () => {
                   <label htmlFor='quant' hidden style={{ fontSize: '20px', margin: '0 180px' }}>Qtd:</label>
                   <label htmlFor='Desconto' style={{ fontSize: '20px', margin: '0 -50px' }}>Desconto:</label>
                   <input type='text' value={vendan} onChange={e => vendanchange(e.target.value)} style={{ fontSize: '20px', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='vendan' />
-                  <input type='decimal' value={desconto} onChange={e => descontochange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 260px', marginTop:'-44px'}} className='form-control rounded-0' name='desc' id='desc' />
+                  <input type='decimal' value={desconto} onChange={e => descontochange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 260px', marginTop: '-44px' }} className='form-control rounded-0' name='desc' id='desc' />
                   <input type='decimal' hidden value={preco} onChange={e => precochange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 240px', marginTop: '-43px' }} className='form-control rounded-0' name='preco' />
                   <input type='text' hidden value={quant} onChange={e => quantchange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 410px', marginTop: '-43px' }} className='form-control rounded-0' name='quant' />
                 </div>
@@ -581,10 +592,10 @@ const EntradasNumeroEditar = () => {
                   </select>
                 </div>
                 <div className='mb-3'>
-                <label htmlFor='total' style={{ fontSize: '20px', margin: '0 115px' }}>Novo Total c/ Desconto:</label>
-                <label htmlFor='dif' style={{ fontSize: '20px', margin: '0 -40px' }}>Diferença:</label>
-                <input type="decimal" style={{ fontSize: '20px', width: 130, margin: '0 115px' }} className='form-control rounded-0' name='ntotal' id='ntotal' />
-                <input type="decimal" style={{ fontSize: '20px', width: 130, margin: '0 400px', marginTop:'-45px' }} className='form-control rounded-0' name='dif' id='dif' /> 
+                  <label htmlFor='total' style={{ fontSize: '20px', margin: '0 115px' }}>Novo Total c/ Desconto:</label>
+                  <label htmlFor='dif' style={{ fontSize: '20px', margin: '0 -40px' }}>Diferença:</label>
+                  <input type="decimal" style={{ fontSize: '20px', width: 130, margin: '0 115px' }} className='form-control rounded-0' name='ntotal' id='ntotal' />
+                  <input type="decimal" style={{ fontSize: '20px', width: 130, margin: '0 400px', marginTop: '-45px' }} className='form-control rounded-0' name='dif' id='dif' />
                 </div>
                 <div className='mb-3'>
                   <label htmlFor='formapaga' style={{ fontSize: '20px', margin: '0 115px' }}>Forma de Pagamento:</label>
@@ -629,11 +640,11 @@ const EntradasNumeroEditar = () => {
                     <option value="12ª">12ª</option>
                   </select>
 
-                </div>                
+                </div>
                 <div className='mb-3'>
-                    <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 115px' }}>Mês:</label>
-                    <label htmlFor='troco' style={{ fontSize: '20px', margin: '0 80px' }}>Troco:</label>
-                   <select style={{ fontSize: '20px', width: 150, margin: '0 115px' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
+                  <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 115px' }}>Mês:</label>
+                  <label htmlFor='troco' style={{ fontSize: '20px', margin: '0 80px' }}>Troco:</label>
+                  <select style={{ fontSize: '20px', width: 150, margin: '0 115px' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
                     <option value=""></option>
                     <option value="Janeiro">Janeiro</option>
                     <option value="Fevereiro">Fevereiro</option>

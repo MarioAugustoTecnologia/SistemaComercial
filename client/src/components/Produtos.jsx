@@ -95,7 +95,7 @@ const Produtos = () => {
       } else if (result.isDenied) {
         Swal.fire("Nada excluido", "", "info");
       }
-    });   
+    });
 
   }
 
@@ -204,7 +204,18 @@ const Produtos = () => {
                 >
                   <i className="fs-4 bi bi-bank ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    Resultado:
+                    Resultados:
+                  </span>
+                </Link>
+              </li>
+              <li className="w-100" style={{ margin: "0 7px" }}>
+                <Link
+                  to=""
+                  className="nav-link px-0 align-middle text-white"
+                >
+                  <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
+                  <span className="ms-2 d-none d-sm-inline">
+                    Orçamentos:
                   </span>
                 </Link>
               </li>
@@ -266,7 +277,7 @@ const Produtos = () => {
                           <td className="td">{item.qtd}</td>
                           <td className="td">{item.codigo}</td>
                           <td className="td" >
-                            <button className="editar" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px'}}>Editar:</button>
+                            <button className="editar" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Editar:</button>
                             <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
 
                           </td>

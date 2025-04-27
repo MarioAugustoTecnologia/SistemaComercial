@@ -79,18 +79,18 @@ const Resultado = () => {
         for (let id = 0; id <= result.length; id++) {
 
           fetch("https://sistemacomercialserver.onrender.com/resultados/" + id, {
-    
+
             method: "DELETE"
-    
+
           }).then((res) => {
-    
+
             window.location.reload();
             //toast.success('Excluido com sucesso !')    
-    
+
           }).catch((err) => {
             toast.error('Erro ! :' + err.message)
           })
-    
+
         }
 
       } else if (result.isDenied) {
@@ -210,7 +210,17 @@ const Resultado = () => {
                   </span>
                 </Link>
               </li>
-
+              <li className="w-100" style={{ margin: "0 7px" }}>
+                <Link
+                  to=""
+                  className="nav-link px-0 align-middle text-white"
+                >
+                  <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
+                  <span className="ms-2 d-none d-sm-inline">
+                    Orçamentos:
+                  </span>
+                </Link>
+              </li>
               <li className="w-100" onClick={logout}>
                 <Link
                   to="/"

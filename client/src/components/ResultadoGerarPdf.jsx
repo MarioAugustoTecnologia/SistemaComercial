@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Link, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import generatePDF, { Margin } from 'react-to-pdf';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -14,11 +14,12 @@ const ResultadoGerarPdf = () => {
     fetch("https://sistemacomercialserver.onrender.com/resultados", {
 
       method: "GET",
-      headers: {'content-type':'application/json'} }
-      
+      headers: { 'content-type': 'application/json' }
+    }
+
     ).then((res) => {
 
-    return res.json()   
+      return res.json()
 
     }).then((resp) => {
 
@@ -26,42 +27,42 @@ const ResultadoGerarPdf = () => {
 
     }).catch((err) => {
       console.log(err.message)
-    }) 
+    })
   }, [])
-  
+
   const GerarPdf = () => document.getElementById('conteudo');
   const personalizacao = {
-     method: 'open',
-     page: {
-    // margin is in MM, default is Margin.NONE = 0
-    margin: Margin.MEDIUM,
-    // default is 'A4'
-    format: 'A4',
-    // default is 'portrait'
-    orientation: 'portrait',
- },
-}
+    method: 'open',
+    page: {
+      // margin is in MM, default is Margin.NONE = 0
+      margin: Margin.MEDIUM,
+      // default is 'A4'
+      format: 'A4',
+      // default is 'portrait'
+      orientation: 'portrait',
+    },
+  }
 
 
 
   const logout = () => {
     localStorage.clear()
     console.clear();
-    
-  } 
 
-  
+  }
+
+
   return (
     <div className="container-fluid">
-    <div className="row flex-nowrap">
-    <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary" style={{fontFamily:'arial', fontSize:'19px'}}>
+      <div className="row flex-nowrap">
+        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary" style={{ fontFamily: 'arial', fontSize: '19px' }}>
           <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
             <Link
               to=""
               className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none"
             >
               <span className="fs-5 fw-bolder d-none d-sm-inline">
-               Opções:
+                Opções:
               </span>
             </Link>
             <ul
@@ -69,14 +70,14 @@ const ResultadoGerarPdf = () => {
               id="menu"
             >
               <li className="w-100">
-                  <Link
-                    to="/home"
-                    className="nav-link text-white px-0 align-middle"
-                  >
-                    <i className="fs-4 bi-speedometer2 ms-2"></i>
-                    <span className="ms-2 d-none d-sm-inline">Painel:</span>
-                  </Link>
-                </li>
+                <Link
+                  to="/home"
+                  className="nav-link text-white px-0 align-middle"
+                >
+                  <i className="fs-4 bi-speedometer2 ms-2"></i>
+                  <span className="ms-2 d-none d-sm-inline">Painel:</span>
+                </Link>
+              </li>
               <li className="w-100">
                 <Link
                   to="/usuarios"
@@ -109,7 +110,7 @@ const ResultadoGerarPdf = () => {
                     Compras:
                   </span>
                 </Link>
-              </li> 
+              </li>
               <li className="w-100">
                 <Link
                   to="/despesas"
@@ -120,7 +121,7 @@ const ResultadoGerarPdf = () => {
                     Despesas:
                   </span>
                 </Link>
-              </li>  
+              </li>
               <li className="w-100">
                 <Link
                   to="/produtos"
@@ -128,7 +129,7 @@ const ResultadoGerarPdf = () => {
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                   Produtos:
+                    Produtos:
                   </span>
                 </Link>
               </li>
@@ -139,7 +140,7 @@ const ResultadoGerarPdf = () => {
                 >
                   <i className="fs-4 bi bi-truck ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                 Fornecedores:
+                    Fornecedores:
                   </span>
                 </Link>
               </li>
@@ -153,7 +154,18 @@ const ResultadoGerarPdf = () => {
                     Clientes:
                   </span>
                 </Link>
-              </li>        
+              </li>
+              <li className="w-100" style={{ margin: "0 7px" }}>
+                <Link
+                  to=""
+                  className="nav-link px-0 align-middle text-white"
+                >
+                  <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
+                  <span className="ms-2 d-none d-sm-inline">
+                    Orçamentos:
+                  </span>
+                </Link>
+              </li>
               <li className="w-100" onClick={logout}>
                 <Link
                   to="/"
@@ -166,67 +178,67 @@ const ResultadoGerarPdf = () => {
             </ul>
           </div>
         </div>
-       <div className="col p-0 m-0">
-           <div className="p-2 d-flex justify-content-center shadow text-white" style={{backgroundColor:'blue'}}>
-               <h4><strong style={{fontFamily:'arial', margin:'0 600px '}}>Sistema de Gestão Comercial:</strong></h4>
-           </div>
-           <Outlet />
-           <div className="px-5 mt-5">                  
-                <div id="conteudo">
-                      <h4 className="h4" ><strong className="strong" style={{color:'red', margin:'0 680px', fontSize:'25px'}}>Resultados:</strong></h4>                         
-                     <br />
-                    <div className="mt-3">
-                          <table className="table" id="table" style={{margin:'0 300px', fontFamily:'arial', fontSize:'20px', width:900}}>
-                              <thead>
-                                  <tr>
-                                  <th className="th" scope="col">Id:</th>                                 
-                                  <th className="th" scope="col">Total das Entradas:</th>
-                                  <th className="th" scope="col">Total das Saidas:</th>  
-                                  <th className="th" scope="col">Resultado:</th>  
-                                  <th className="th" scope="col">Mês:</th>                                                                                                
-                                                          
-                                  </tr> 
-                              </thead>
-                              <tbody>                                
-                                { result &&
-                                    result.map(item => (
-                                    <tr key={item.id}>
-                                           <td className="td">{item.id}</td>                                      
-                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.entradas)}</td>
-                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.saidas)}</td>
-                                           <td className="td">{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(item.resultado)}</td> 
-                                           <td className="td">{item.mes}</td>                                                                                                                                                   
-                                           
+        <div className="col p-0 m-0">
+          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue' }}>
+            <h4><strong style={{ fontFamily: 'arial', margin: '0 600px ' }}>Sistema de Gestão Comercial:</strong></h4>
+          </div>
+          <Outlet />
+          <div className="px-5 mt-5">
+            <div id="conteudo">
+              <h4 className="h4" ><strong className="strong" style={{ color: 'red', margin: '0 680px', fontSize: '25px' }}>Resultados:</strong></h4>
+              <br />
+              <div className="mt-3">
+                <table className="table" id="table" style={{ margin: '0 300px', fontFamily: 'arial', fontSize: '20px', width: 900 }}>
+                  <thead>
+                    <tr>
+                      <th className="th" scope="col">Id:</th>
+                      <th className="th" scope="col">Total das Entradas:</th>
+                      <th className="th" scope="col">Total das Saidas:</th>
+                      <th className="th" scope="col">Resultado:</th>
+                      <th className="th" scope="col">Mês:</th>
 
-                                    </tr>
-                                  ))
-                                                                                                     
-                                }   
-                                                                       
-                              </tbody>
-                        
-                
-                          </table>                                                                          
-                                                                                                                                                                                                                                                                                                             
-                                                                                                   
-                                     
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result &&
+                      result.map(item => (
+                        <tr key={item.id}>
+                          <td className="td">{item.id}</td>
+                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.entradas)}</td>
+                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.saidas)}</td>
+                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.resultado)}</td>
+                          <td className="td">{item.mes}</td>
 
-                                   
-           
-                    </div>
-                  </div><br /><br /> 
-                  <div className="mb3">
-                   <button style={{margin: '0 25px', backgroundColor: 'LimeGreen', color: 'white', fontSize:'18px', fontFamily:'arial'}} className="btn" onClick={() => generatePDF(GerarPdf, personalizacao)} >Gerar PDF:</button>
-                   <Link to="/resultado" className="btn" style={{fontSize: '18px', fontFamily:'arial', color:'white', backgroundColor:'orange', width:'8%'}}>Voltar:</Link>                        
-                 </div>                                                 
-                 
-                </div> 
-          
-       </div> 
-                 
+
+                        </tr>
+                      ))
+
+                    }
+
+                  </tbody>
+
+
+                </table>
+
+
+
+
+
+
+              </div>
+            </div><br /><br />
+            <div className="mb3">
+              <button style={{ margin: '0 25px', backgroundColor: 'LimeGreen', color: 'white', fontSize: '18px', fontFamily: 'arial' }} className="btn" onClick={() => generatePDF(GerarPdf, personalizacao)} >Gerar PDF:</button>
+              <Link to="/resultado" className="btn" style={{ fontSize: '18px', fontFamily: 'arial', color: 'white', backgroundColor: 'orange', width: '8%' }}>Voltar:</Link>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
     </div>
- </div>
- 
+
 
   )
 }

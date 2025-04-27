@@ -120,38 +120,38 @@ const EntradasMes = () => {
   }
 
   const cadastrar = (e) => {
-  
-      e.preventDefault();
-  
-      const cadobj = { mes }    
-  
-        Swal.fire({
-          title: "Deseja salvar ?",
-          showDenyButton: true,
-          showCancelButton: true,
-          confirmButtonText: "Salvar",
-          denyButtonText: `Não salvar`
-        }).then((result) => {
-  
-          if (result.isConfirmed) {
-  
-            fetch("https://sistemacomercialserver.onrender.com/mesatual", {
-              method: "POST",
-              headers: { 'content-type': 'application/json' },
-              body: JSON.stringify(cadobj)
-            }).then((res) => {
-              toast.success('Cadastrado com sucesso !')              
-  
-            }).catch((err) => {
-              toast.error('Erro ! :' + err.message)
-            })
-          }
-          else if (result.isDenied) {
-            Swal.fire("Nada salvo", "", "info");
-          }
+
+    e.preventDefault();
+
+    const cadobj = { mes }
+
+    Swal.fire({
+      title: "Deseja salvar ?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Salvar",
+      denyButtonText: `Não salvar`
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+
+        fetch("https://sistemacomercialserver.onrender.com/mesatual", {
+          method: "POST",
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(cadobj)
+        }).then((res) => {
+          toast.success('Cadastrado com sucesso !')
+
+        }).catch((err) => {
+          toast.error('Erro ! :' + err.message)
         })
-      
-    }  
+      }
+      else if (result.isDenied) {
+        Swal.fire("Nada salvo", "", "info");
+      }
+    })
+
+  }
 
   const logout = () => {
     localStorage.clear()
@@ -270,11 +270,21 @@ const EntradasMes = () => {
                 >
                   <i className="fs-4 bi bi-bank ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    Resultado:
+                    Resultados:
                   </span>
                 </Link>
               </li>
-
+              <li className="w-100" style={{ margin: "0 7px" }}>
+                <Link
+                  to=""
+                  className="nav-link px-0 align-middle text-white"
+                >
+                  <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
+                  <span className="ms-2 d-none d-sm-inline">
+                    Orçamentos:
+                  </span>
+                </Link>
+              </li>
               <li className="w-100" onClick={logout}>
                 <Link
                   className="nav-link px-0 align-middle text-white"
@@ -294,34 +304,34 @@ const EntradasMes = () => {
           <div className="px-5 mt-5">
             <form action="" onSubmit={cadastrar} >
               <div className="mb3">
-              <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px' }}>Busca por mes:</label>
-              <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px', margin: '0 500px' }}>Mes atual:</label><br />
-              <input type="search" autoFocus='true' className="consultames" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px' }} />
-              <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 20px' }}>Voltar:</Link>
-              <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '18px' }}>Total Entradas:</Link>
-              <select value={mes} onChange={e => setMes(e.target.value)} style={{ fontSize: '20px', width: 160, margin:'0 650px', marginTop:'-40px' }} name='mes' id='mes' className='form-select'>
-                <option value=""></option>
-                <option value="Janeiro">Janeiro</option>
-                <option value="Fevereiro">Fevereiro</option>
-                <option value="Março">Março</option>
-                <option value="Abril">Abril</option>
-                <option value="Maio">Maio</option>
-                <option value="Junho">Junho</option>
-                <option value="Julho">Julho</option>
-                <option value="Agosto">Agosto</option>
-                <option value="Setembro">Setembro</option>
-                <option value="Outubro">Outubro</option>
-                <option value="Novembro">Novembro</option>
-                <option value="Dezembro">Dezembro</option>
-              </select>
-               <button type="submit" className="btn btn-success" style={{margin:'0 840px', fontSize:'18px', marginTop:'-69px'}}>Cadastrar:</button>
-              <Link to="/mesatual" className="btn btn-primary" style={{ fontSize: '18px', width: '140px', margin: '0 980px', marginTop:'-114px' }}>Mes atual:</Link>
+                <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px' }}>Busca por mes:</label>
+                <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px', margin: '0 500px' }}>Mes atual:</label><br />
+                <input type="search" autoFocus='true' className="consultames" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px' }} />
+                <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 20px' }}>Voltar:</Link>
+                <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '18px' }}>Total Entradas:</Link>
+                <select value={mes} onChange={e => setMes(e.target.value)} style={{ fontSize: '20px', width: 160, margin: '0 650px', marginTop: '-40px' }} name='mes' id='mes' className='form-select'>
+                  <option value=""></option>
+                  <option value="Janeiro">Janeiro</option>
+                  <option value="Fevereiro">Fevereiro</option>
+                  <option value="Março">Março</option>
+                  <option value="Abril">Abril</option>
+                  <option value="Maio">Maio</option>
+                  <option value="Junho">Junho</option>
+                  <option value="Julho">Julho</option>
+                  <option value="Agosto">Agosto</option>
+                  <option value="Setembro">Setembro</option>
+                  <option value="Outubro">Outubro</option>
+                  <option value="Novembro">Novembro</option>
+                  <option value="Dezembro">Dezembro</option>
+                </select>
+                <button type="submit" className="btn btn-success" style={{ margin: '0 840px', fontSize: '18px', marginTop: '-69px' }}>Cadastrar:</button>
+                <Link to="/mesatual" className="btn btn-primary" style={{ fontSize: '18px', width: '140px', margin: '0 980px', marginTop: '-114px' }}>Mes atual:</Link>
               </div>
-             </form>
-             <br />
-             <h4 style={{ textAlign: 'center', color: 'Red', fontSize: '25px', margin: '0 980px' }}><strong>Entradas:</strong></h4>
-             <br />
-             <div className="mt-3">
+            </form>
+            <br />
+            <h4 style={{ textAlign: 'center', color: 'Red', fontSize: '25px', margin: '0 980px' }}><strong>Entradas:</strong></h4>
+            <br />
+            <div className="mt-3">
               <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: '120%' }}>
                 <thead>
                   <tr>

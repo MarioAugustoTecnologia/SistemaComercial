@@ -15,7 +15,7 @@ const EntradasNome = () => {
   const buscarap = buscanome.toLowerCase()
 
 
-  var table = vendadata.filter(item => item.nome.toLowerCase().includes(buscarap)) 
+  var table = vendadata.filter(item => item.nome.toLowerCase().includes(buscarap))
 
 
   useEffect(() => {
@@ -72,24 +72,24 @@ const EntradasNome = () => {
 
     if (buscanome === "" || buscanome === null) {
       toast.warning("O campo busca por nome está vazio !")
-    } else {   
+    } else {
 
       let valores = [];
 
 
-        table.map(item => {
-          valores.push(item.total)        
-          
-        }
-        )
+      table.map(item => {
+        valores.push(item.total)
 
-        let soma = valores.reduce((previous_value, current_value) => {
-              
-          return parseFloat(previous_value) + parseFloat(current_value);
-        })
+      }
+      )
 
-        const total = soma.toFixed(2);
-        document.getElementById('total').innerHTML = total;   
+      let soma = valores.reduce((previous_value, current_value) => {
+
+        return parseFloat(previous_value) + parseFloat(current_value);
+      })
+
+      const total = soma.toFixed(2);
+      document.getElementById('total').innerHTML = total;
 
 
     }
@@ -212,11 +212,21 @@ const EntradasNome = () => {
                 >
                   <i className="fs-4 bi bi-bank ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    Resultado:
+                    Resultados:
                   </span>
                 </Link>
               </li>
-
+              <li className="w-100" style={{ margin: "0 7px" }}>
+                <Link
+                  to=""
+                  className="nav-link px-0 align-middle text-white"
+                >
+                  <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
+                  <span className="ms-2 d-none d-sm-inline">
+                    Orçamentos:
+                  </span>
+                </Link>
+              </li>
               <li className="w-100" onClick={logout}>
                 <Link
                   className="nav-link px-0 align-middle text-white"
@@ -235,7 +245,7 @@ const EntradasNome = () => {
           <Outlet />
           <div className="px-5 mt-5">
             <div className="mb3">
-              <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px' }}>Busca por nome:</label><br />                       
+              <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px' }}>Busca por nome:</label><br />
               <input type="search" autoFocus='true' className="consultanome" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px' }} />
               <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 20px' }}>Voltar:</Link>
               <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '18px' }}>Total Entradas:</Link>

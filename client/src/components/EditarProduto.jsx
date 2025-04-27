@@ -136,7 +136,7 @@ const EditarProduto = () => {
       const data_cadastro = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
       const qtd = qtdcur;
       const categoria = document.getElementById('categoria').value;
-      const edtobj = { id, qtd, nome, preco, custo, categoria, data_cadastro, codigo}
+      const edtobj = { id, qtd, nome, preco, custo, categoria, data_cadastro, codigo }
       //console.log(cadobj)  
 
       if (isValidate()) {
@@ -213,11 +213,11 @@ const EditarProduto = () => {
               datacadchange('')
               entradachange('')
               codchange('')
-    
+
             }).catch((err) => {
               toast.error('Erro ! :' + err.message)
             })
-    
+
 
 
           } else if (result.isDenied) {
@@ -225,7 +225,7 @@ const EditarProduto = () => {
           }
         })
 
-       
+
       }
 
     }
@@ -348,7 +348,18 @@ const EditarProduto = () => {
                 >
                   <i className="fs-4 bi bi-bank ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    Resultado:
+                    Resultados:
+                  </span>
+                </Link>
+              </li>
+              <li className="w-100" style={{ margin: "0 7px" }}>
+                <Link
+                  to=""
+                  className="nav-link px-0 align-middle text-white"
+                >
+                  <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
+                  <span className="ms-2 d-none d-sm-inline">
+                    Orçamentos:
                   </span>
                 </Link>
               </li>
@@ -395,7 +406,7 @@ const EditarProduto = () => {
                   <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 500, margin: '0 115px' }} className='form-control rounded-0' name='nome' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='preco' style={{ fontSize: '20px', margin: '0 115px' }}>Preço:</label>                 
+                  <label htmlFor='preco' style={{ fontSize: '20px', margin: '0 115px' }}>Preço:</label>
                   <input type="decimal" onKeyUp={MudacorPreco} value={preco} onChange={e => precochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o preço:' className='form-control rounded-0' name='preco' id="preco" />
 
                 </div>

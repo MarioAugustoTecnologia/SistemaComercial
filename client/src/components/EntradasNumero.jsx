@@ -271,11 +271,21 @@ const EntradasNumero = () => {
                                 >
                                     <i className="fs-4 bi bi-bank ms-2"></i>
                                     <span className="ms-2 d-none d-sm-inline">
-                                        Resultado:
+                                        Resultados:
                                     </span>
                                 </Link>
                             </li>
-
+                            <li className="w-100" style={{ margin: "0 7px" }}>
+                                <Link
+                                    to=""
+                                    className="nav-link px-0 align-middle text-white"
+                                >
+                                    <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
+                                    <span className="ms-2 d-none d-sm-inline">
+                                        Orçamentos:
+                                    </span>
+                                </Link>
+                            </li>
                             <li className="w-100" onClick={logout}>
                                 <Link
                                     className="nav-link px-0 align-middle text-white"

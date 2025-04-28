@@ -516,27 +516,12 @@ const CadOrcVenda = () => {
             <div className='bg-white p-4 rounded border' style={{ width: '61%' }}>
               <h4><center>Cadastrar Orçamento de Venda:</center></h4><br />
               <form action='' onSubmit={cadastrar}>
-                <div className='mb-3'>
-                  <label htmlFor='compran' style={{ fontSize: '20px', margin: '0 115px' }}>Orçamento nº:</label>
-                  <table className="table" style={{ fontFamily: 'arial', fontSize: '20px', width: '5%', margin: '0 120px' }}>
-                    <thead hidden='true'>
-                      <tr>
-                        <th className="th" scope="col" >Id:</th>
-                        <th className="th" scope="col">Venda nº:</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {
-                        entradadata.map(item => (
-                          <tr key={item.id}>
-                            <td className="td" hidden='true'>{item.id}</td>
-                            <td className="td" style={{ fontSize: '20px' }} id='vendan'>{item.numero}</td>
-                          </tr>
-                        ))
-                      }
-                    </tbody>                  
-                  </table>
-                </div>
+
+              <div className='mb-3'>
+                 <label htmlFor="orcn" style={{ fontSize: '20px', margin: '0 115px' }}>Orçamento n°:</label>
+                 <input type='number' style={{ fontSize: '20px', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='ordem' id='ordem' />                
+               </div>
+          
                 <div className='mb-3'>
                   <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px' }}>Nome:</label>
                   <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 560, margin: '0 115px' }} className='form-control rounded-0' name='nome' />
@@ -569,6 +554,7 @@ const CadOrcVenda = () => {
 
             </div>
           </div>
+      
 
 
         </div>

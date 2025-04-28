@@ -80,7 +80,7 @@ const ProdutoCodOrc = () => {
 
 const handleInsert = (id) => {
     
-      navigate("/entradas/cadastrar/" + id);  
+      navigate("/entradas/cadastrar/orc/:pcod" + id);  
 
 } 
 

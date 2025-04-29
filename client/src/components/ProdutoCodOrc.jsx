@@ -80,7 +80,7 @@ const ProdutoCodOrc = () => {
 
 const handleInsert = (id) => {
     
-      navigate("/entradas/cadastrar/orc/:pcod" + id);  
+  navigate("/entradas/cadastrar/orc/:pcod" + id);  
 
 } 
 
@@ -245,7 +245,7 @@ const logout = () => {
                   <label htmlFor="Id" className="Id" style={{fontFamily: 'arial', fontSize:'22px'}}>Busca por codigo de venda:</label><br />
                   
                   <input style={{fontFamily: 'arial', fontSize:'22px', width:'200px'}} type="search" className="consultaid" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)} id="busca" autoFocus='true'/>                  
-                  <Link to="/entradas" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 58px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Entradas:</Link>
+                  <Link to="/orcvendas" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 58px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Entradas:</Link>
                   <Link to="/compras/numero" className="btn" style={{color: 'white', backgroundColor:'green', margin: '0 -20px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Saidas:</Link> 
                   
                   

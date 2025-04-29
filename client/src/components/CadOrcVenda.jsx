@@ -19,12 +19,7 @@ const CadOrcVenda = () => {
     }).then((resp) => {
       Idchange(resp.id);
       nomechange(resp.nome);
-      precochange(resp.preco);
-      custochange(resp.custo)
-      qtdchange(resp.qtd);
-      Categoriachange(resp.categoria);
-      DataCadchange(resp.data_cadastro);
-      Codigochange(resp.codigo);
+      precochange(resp.preco);    
       
 
     }).catch((err) => {
@@ -32,55 +27,14 @@ const CadOrcVenda = () => {
     })
   }, []);
 
-  const [id, Idchange] = useState("")
+  const [id, Idchange] = useState("")  
   const [nome, nomechange] = useState("")
-  const [preco, precochange] = useState("")
-  const [custo, custochange] = useState("")
-  const [formapag, formapagchange] = useState("")  
-  const [estoque, qtdchange] = useState("")
+  const [preco, precochange] = useState("") 
   const [quant, quantchange] = useState("")
-  const [parcelamento, parcelamentochange] = useState("")
-  const [parcela, parcelachange] = useState("")
-  const [parcelan, parcelanchange] = useState("")
-  const [valorpag, valorpagchange] = useState("")
-  const [codigo, Codigochange] = useState("")
-  const [categoria, Categoriachange] = useState("")
-  const [data_cadastro, DataCadchange] = useState("")
-  const [desc, descchange] = useState("")
-  const [entradadata, setEntradadata] = useState([])
-  const [mesatual, setMesAtual] = useState([])
+  const [orcn, orcnchange] = useState("")
+  const [desc, descchange] = useState("")  
 
-  useEffect(() => {
-
-    fetch("http://localhost:3000/atual").then((res) => {
-
-      return res.json()
-
-    }).then((resp) => {
-
-      setEntradadata(resp)
-
-    }).catch((err) => {
-      console.log(err.message)
-    })
-
-  }, [])
-
-  useEffect(() => {
-
-    fetch("http://localhost:3000/mesatual").then((res) => {
-
-      return res.json()
-
-    }).then((resp) => {
-
-      setMesAtual(resp)
-
-    }).catch((err) => {
-      console.log(err.message)
-    })
-
-  }, [])
+ 
 
   const isValidate = () => {
     let isproceed = true
@@ -134,227 +88,54 @@ const CadOrcVenda = () => {
 
     const desconto = (desc * total).toFixed(2);
     console.log(desconto)
+    document.getElementById('valordesc').value = desconto;
+
     const novototal = total - desconto;
-    document.getElementById('total').value = novototal;
+    document.getElementById('total').value = (novototal).toFixed(2);
 
   }
-
-  function formataData() {
-    let data = new Date(),
-      dia = data.getDate().toString().padStart(2, '0'),
-      mes = (data.getMonth() + 1).toString().padStart(2, '0'),
-      ano = data.getFullYear();
-    return `${dia}/${mes}/${ano}`;
-  }
-
-  const data = formataData();
 
 
   const cadastrar = (e) => {
 
     e.preventDefault();
+    var total = document.getElementById('total').value;
 
-    if (valorpag === '') {
-      document.getElementById('valorpag').value = 0;
-    }
+    if(orcn !== null || orcn !== ""){
 
-    if (parcelamento === "" || parcelamento === null && parcela === "" || parcela === null && parcelan === "" || parcelan === null) {
+      const cadobj = {orcn, nome, quant, preco, total }
 
-
-      var total = document.getElementById('total').value;
-      const valorpag = parseFloat(document.getElementById('valorpag').value);
-
-      var vendan = document.getElementById('vendan').innerHTML;
-      var mes = document.getElementById('mesatual').innerHTML;
-
-      if (valorpag > total) {
-
-        const troco = parseFloat((valorpag - total).toFixed(2));
-
-        const cadobj = { vendan, nome, quant, preco, total, data, formapag, mes, troco, valorpag }
-
-        if (isValidate()) {
-
-          Swal.fire({
-            title: "Deseja salvar ?",
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: "Salvar",
-            denyButtonText: `Não salvar`
-          }).then((result) => {
-
-            if (result.isConfirmed) {
-
-              fetch("http://localhost:3000/vendas", {
-                method: "POST",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(cadobj)
-              }).then((res) => {
-                toast.success('Cadastrado com Sucesso !')
-                nomechange('')
-                precochange('')
-                formapagchange('')     
-                qtdchange('')
-                parcelamentochange('')
-                parcelachange('')
-                valorpagchange('')
-
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-
-              function Subtract() {
-                return estoque - quant;
-              }
-
-              const qtd = Subtract();
-
-              const edtobj = { id, nome, preco, qtd, categoria, data_cadastro, codigo, custo }
-
-              fetch("http://localhost:3000/produtos/" + pcod, {
-                method: "PUT",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(edtobj)
-              }).then((res) => {
-                console.log(qtd);
-
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-
-            } else if (result.isDenied) {
-              Swal.fire("Nada salvo", "", "info");
-            }
-          });
-        }
-
-      } else {
-        var troco = 0;
-        const cadobj = { vendan, nome, quant, preco, total, data, formapag, mes, valorpag, troco }
-
-        if (isValidate()) {
-
-          Swal.fire({
-            title: "Deseja salvar ?",
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: "Salvar",
-            denyButtonText: `Não salvar`
-          }).then((result) => {
-
-            if (result.isConfirmed) {
-
-              fetch("http://localhost:3000/vendas", {
-                method: "POST",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(cadobj)
-              }).then((res) => {
-                toast.success('Cadastrado com Sucesso !')
-                nomechange('')
-                precochange('')
-                formapagchange('')
-                qtdchange('')
-                parcelamentochange('')
-                parcelachange('')
-                valorpagchange('')
-                navigate('/produtos/codigo')
-
-
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-
-              function Subtract() {
-                return estoque - quant;
-              }
-
-              const qtd = Subtract();
-
-              const edtobj = { id, nome, preco, qtd, categoria, data_cadastro, codigo, custo }
-
-              fetch("http://localhost:3000/produtos/" + pcod, {
-                method: "PUT",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(edtobj)
-              }).then((res) => {
-                console.log(qtd);
-
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-
-            } else if (result.isDenied) {
-              Swal.fire("Nada salvo", "", "info");
-            }
-          });
-
-        }
-
-      }
-
-    } else {
-
-      var vendan = document.getElementById('vendan').value;
-      var mes = document.getElementById('mesatual').innerHTML;
-
-      if (isValidate()) {
-
-        Swal.fire({
-          title: "Deseja salvar ?",
-          showDenyButton: true,
-          showCancelButton: true,
-          confirmButtonText: "Salvar",
-          denyButtonText: `Não salvar`
-        }).then((result) => {
-
-          if (result.isConfirmed) {
-
-            const total = (qtd * preco).toFixed(2);
-            console.log(total)
-
-            const valorpag = (total / parcela).toFixed(2);
-            console.log(valorpag)
-
-            const cadobj = { vendan, nome, quant, preco, total, data, valorpag, formapag, parcelamento, parcelan, mes }
-
-            fetch("http://localhost:3000/vendas", {
-              method: "POST",
-              headers: { 'content-type': 'application/json' },
-              body: JSON.stringify(cadobj)
-            }).then((res) => {
-              toast.success('Cadastrado com Sucesso !')
-
-
-            }).catch((err) => {
-              toast.error('Erro ! :' + err.message)
-            })
-
-            function Subtract() {
-              return estoque - quant;
-            }
-
-            const qtd = Subtract();
-
-            const edtobj = { id, nome, preco, qtd, categoria, data_cadastro, codigo, custo }
-
-            fetch("http://localhost:3000/produtos/" + pcod, {
-              method: "PUT",
-              headers: { 'content-type': 'application/json' },
-              body: JSON.stringify(edtobj)
-            }).then((res) => {
-              console.log(qtd);
-
-            }).catch((err) => {
-              toast.error('Erro ! :' + err.message)
-            })
-          } else if (result.isDenied) {
-            Swal.fire("Nada salvo", "", "info");
+    
+            if (isValidate()) {
+    
+              Swal.fire({
+                title: "Deseja salvar ?",
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Salvar",
+                denyButtonText: `Não salvar`
+              }).then((result) => {
+    
+                if (result.isConfirmed) {
+    
+                  fetch("http://localhost:3000/orcvenda", {
+                    method: "POST",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(cadobj)
+                  }).then((res) => {
+                    toast.success('Cadastrado com Sucesso !')                                   
+                        
+                  }).catch((err) => {
+                    toast.error('Erro ! :' + err.message)
+                  })          
+                    
+                   
+                }
+              });
+            }    
           }
-        });
 
-      }
-    }
-
+    
   }
 
   function mudacorquant() {
@@ -516,12 +297,10 @@ const CadOrcVenda = () => {
             <div className='bg-white p-4 rounded border' style={{ width: '61%' }}>
               <h4><center>Cadastrar Orçamento de Venda:</center></h4><br />
               <form action='' onSubmit={cadastrar}>
-
-              <div className='mb-3'>
+               <div className='mb-3'>
                  <label htmlFor="orcn" style={{ fontSize: '20px', margin: '0 115px' }}>Orçamento n°:</label>
-                 <input type='number' style={{ fontSize: '20px', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='ordem' id='ordem' />                
+                 <input type='number' value={orcn} onChange={e => orcnchange(e.target.value)} style={{ fontSize: '20px', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='ordem' id='ordem' />                
                </div>
-          
                 <div className='mb-3'>
                   <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px' }}>Nome:</label>
                   <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 560, margin: '0 115px' }} className='form-control rounded-0' name='nome' />
@@ -538,8 +317,8 @@ const CadOrcVenda = () => {
                   <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px' }}>Preço:</label>
                   <label htmlFor='valorpag' style={{ fontSize: '20px', margin: '0 124px' }}>Valor Desconto:</label>
                   <input type="decimal" value={preco} onChange={e => precochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' />
-                  <input type="decimal" value={valorpag} onChange={e => valorpagchange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='valorpag' id='valorpag' />
-                </div><br /><br />            
+                  <input type="decimal" style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='valordesc' id='valordesc' />
+                </div><br /><br />           
 
                 <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 120px', marginTop: '-19px', fontSize: '16px' }}>Cadastrar:</button>
                 <ToastContainer />
@@ -554,7 +333,6 @@ const CadOrcVenda = () => {
 
             </div>
           </div>
-      
 
 
         </div>

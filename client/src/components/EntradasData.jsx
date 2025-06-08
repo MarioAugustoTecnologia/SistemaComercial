@@ -13,7 +13,7 @@ const EntradasData = () => {
 
   //const buscarap = buscanome.toLowerCase() 
 
-  var table = entradadata.filter(item => item.data.includes(buscadata))
+  var table = entradadata.filter(item => item.data_cad.includes(buscadata))
 
 
   useEffect(() => {
@@ -78,9 +78,9 @@ const EntradasData = () => {
       let valores = [];
 
       table.map(item => {
-        valores.push(item.valorpag)
+        valores.push(item.valorpagto)
       })
-
+      
       let soma = valores.reduce((previous_value, current_value) => {
         return parseFloat(previous_value) + parseFloat(current_value);
       })
@@ -216,7 +216,7 @@ const EntradasData = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -225,6 +225,7 @@ const EntradasData = () => {
                   </span>
                 </Link>
               </li>
+
               <li className="w-100" onClick={logout}>
                 <Link to='/'
                   className="nav-link px-0 align-middle text-white"
@@ -243,8 +244,8 @@ const EntradasData = () => {
           <Outlet />
           <div className="px-5 mt-5">
             <div className="mb3">
-              <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px' }}>Busca por data:</label><br />
-              <input type="search" autoFocus='true' className="consultadata" value={buscadata} onChange={(e) => setBuscaData(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px' }} />
+              <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold' }}>Busca por data:</label><br />
+              <input type="search" autoFocus='true' className="consultadata" value={buscadata} onChange={(e) => setBuscaData(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold', color:'navy' }} />
               <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 20px' }}>Voltar:</Link>
               <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '18px' }}>Total Entradas:</Link>
               <strong style={{ fontSize: '30px' }}>Total:</strong>
@@ -261,10 +262,13 @@ const EntradasData = () => {
                     <th className="th" scope="col">Nome:</th>
                     <th className="th" scope="col">Qtd:</th>
                     <th className="th" scope="col">Preço:</th>
-                    <th className="th" scope="col">Total c/s Desconto:</th>
+                    <th className="th" scope="col">Total:</th>
+                    <th className="th" scope="col">Desconto:</th>
+                    <th className="th" scope="col">Valor Desconto:</th>
+                    <th className="th" scope="col">Total c/Desconto:</th>
                     <th className="th" scope="col">Forma Paga:</th>
                     <th className="th" scope="col">Entradas:</th>
-                    <th className="th" scope="col">Troco:</th>
+                    <th className="th" scope="col">Troco:</th>                   
                     <th className="th" scope="col">Parcelamento:</th>
                     <th className="th" scope="col">Parcela:</th>
                     <th className="th" scope="col">Mês:</th>
@@ -280,28 +284,28 @@ const EntradasData = () => {
                         <td className="td">{item.vendan}</td>
                         <td className="td">{item.nome}</td>
                         <td className="td">{item.quant}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.preco)}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.total)}</td>
+                        <td className="td">{item.preco}</td>
+                        <td className="td">{item.total}</td>
+                        <td className="td">{item.desconto}</td>
+                        <td className="td">{item.valordesc}</td>
+                        <td className="td">{item.totaldesc}</td>
                         <td className="td">{item.formapag}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.valorpag)}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.troco)}</td>
+                        <td className="td">{item.valorpagto}</td>
+                        <td className="td">{item.troco}</td>                       
                         <td className="td">{item.parcelamento}</td>
                         <td className="td">{item.parcelan}</td>
                         <td className="td">{item.mes}</td>
-                        <td className="td">{item.data}</td>
-
+                        <td className="td">{item.data_cad}</td>
                         <td className="td" >
-
                           <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-
                         </td>
-
                       </tr>
                     ))
 
                   }
 
                 </tbody>
+
                 <ToastContainer />
 
               </table>

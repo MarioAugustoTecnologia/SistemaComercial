@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {Link, Outlet, useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
 import "bootstrap-icons/font/bootstrap-icons.css";
-import Swal from 'sweetalert2';
 import useScanDetecion from 'use-scan-detection-react18';
+
 
 const ProdutoCodOrc = () => { 
 
@@ -26,7 +25,7 @@ const ProdutoCodOrc = () => {
 
    useEffect(() => {
 
-     fetch("http://localhost:3000/produtos").then((res) => {
+     fetch("https://sistemacomercialserver.onrender.com/produtos").then((res) => {
 
       return res.json()
 
@@ -38,64 +37,22 @@ const ProdutoCodOrc = () => {
       console.log(err.message)
     }) 
    
-  }, [])
+  }, [])  
 
-
-  const LoadEdit = (id) => {
-    navigate("/produtos/editar/" + id); 
-  }
-  
-  const handleDelete = (id) => {  
-
-    Swal.fire({
-         title: "Deseja Excluir ?",
-         showDenyButton: true,
-         showCancelButton: true,
-         confirmButtonText: "Excluir",
-         denyButtonText: `Não Excluir`
-       }).then((result) => {
-   
-         if (result.isConfirmed) {
-   
-           fetch("http://localhost:3000/produtos/" + id, {
-   
-             method: "DELETE"
-   
-           }).then((res) => {
-   
-             window.location.reload();
-             //toast.success('Excluido com sucesso !')    
-   
-           }).catch((err) => {
-             toast.error('Erro ! :' + err.message)
-           })
-   
-         } else if (result.isDenied) {
-           Swal.fire("Nada excluido", "", "info");
-         }
-       });
- 
-  
-}
 
 const handleInsert = (id) => {
     
-  navigate("/entradas/cadastrar/orc/:pcod" + id);  
+  navigate("/entradas/cadastrar/orc/" + id);  
 
 } 
 
-const handleInsertBuy = (id) => {
-    
-  navigate("/cadcompras/" + id);  
 
-} 
 
 const logout = () => {
   localStorage.clear()
   console.clear();
   
 }
-
 
     
   return (
@@ -211,18 +168,7 @@ const logout = () => {
                      Resultados:
                   </span>
                 </Link>
-              </li>  
-              <li className="w-100" style={{ margin: "0 7px" }}>
-                <Link
-                  to=""
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Orçamentos:
-                  </span>
-                </Link>
-              </li>      
+              </li>             
              
              <li className="w-100" onClick={logout}>
                 <Link to='/'
@@ -242,13 +188,12 @@ const logout = () => {
            <Outlet />
            <div className="px-5 mt-5">
                <div className="mb3">
-                  <label htmlFor="Id" className="Id" style={{fontFamily: 'arial', fontSize:'22px'}}>Busca por codigo de venda:</label><br />
+                  <label htmlFor="Id" className="Id" style={{fontFamily: 'arial', fontSize:'22px', fontWeight:'bold'}}>Busca por codigo de venda:</label><br />
                   
-                  <input style={{fontFamily: 'arial', fontSize:'22px', width:'200px'}} type="search" className="consultaid" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)} id="busca" autoFocus='true'/>                  
-                  <Link to="/orcvendas" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 58px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Entradas:</Link>
-                  <Link to="/compras/numero" className="btn" style={{color: 'white', backgroundColor:'green', margin: '0 -20px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Saidas:</Link> 
-                  
-                  
+                  <input style={{fontFamily: 'arial', fontSize:'22px', width:'200px', fontWeight:'bold', color:'navy'}} type="search" className="consultaid" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)} id="busca" autoFocus='true'/>                  
+                  <Link to="/orcvendas" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 58px', fontSize:'18px', fontFamily:'arial', width:'240px'}}>Orçamento de Venda:</Link>
+                   
+                                    
                 </div><br />             
                       <h4><strong style={{color:'red', margin:'0 680px', fontSize:'25px'}}>Produtos:</strong></h4>                         
                      <br />
@@ -279,9 +224,10 @@ const logout = () => {
                                            <td className="td">{item.data_cadastro}</td>
                                            <td className="td">{item.qtd}</td>                                                                                                        
                                            <td className="td">{item.codigo}</td>                                                                                                                                                                                                                                                                                                               
-                                           <td className="td"  >                                             
-                                           <button className="vender"  onClick={() => {handleInsert(item.id)}} style={{color:'white', backgroundColor:'orange', border:'none', borderRadius:'5px'}}>Orc Venda:</button>
-                                           <button className="comprar"  onClick={() => {handleInsertBuy(item.id)}} style={{color:'white', backgroundColor:'green', border:'none', borderRadius:'5px'}}>Orc Compra:</button>                                                         
+                                           <td className="td"  > 
+                                           
+                                           <button className="vender"  onClick={() => {handleInsert(item.id)}} style={{color:'white', backgroundColor:'green', border:'none', borderRadius:'5px'}}>Orc Venda:</button>
+                                                                                                   
                                            </td> 
 
                                     </tr>

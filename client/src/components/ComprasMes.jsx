@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Swal from 'sweetalert2';
@@ -32,6 +32,14 @@ const ComprasMes = () => {
     })
 
   }, [])
+
+  const navigate = useNavigate()
+
+  const handleEdit = (id) => {
+
+     navigate('/compras/numero/editar/' + id)
+
+  }
 
 
   const handleDelete = (id) => {
@@ -85,23 +93,21 @@ const ComprasMes = () => {
       let valores = [];
 
       table.map(item => {
-        valores.push(item.valorpag)
+        valores.push(item.valorpagto)
       })
 
       let soma = valores.reduce((previous_value, current_value) => {       // método que faz a soma
         return parseFloat(previous_value) + parseFloat(current_value);     // converte de string para number
       })
 
-      const nome = 'Total das compras no mes:';
+      const nome = 'Total das compras no mes de ' + buscames;
       const total = soma.toFixed(2);
-      const data_cad = formataData();
-      const custo = 0;
-      const compran = "0";
+      const data_cad = formataData();     
+      const valorpagto = 0;     
       const mes = buscames;
-      const troco = 0;
-      const valorpag = 0;
-
-      const cadobj = { nome, total, data_cad, custo, mes, compran, troco, valorpag }
+      const compran = '0';
+      
+      const cadobj = { nome, total, data_cad, mes, valorpagto, compran }
 
       fetch("https://sistemacomercialserver.onrender.com/compras", {
         method: "POST",
@@ -275,7 +281,7 @@ const ComprasMes = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -303,12 +309,12 @@ const ComprasMes = () => {
           <div className="px-5 mt-5">
           <form action="" onSubmit={cadastrar} >
             <div className="mb3">
-              <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px' }}>Busca por mes:</label>
-              <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px', margin: '0 500px' }}>Mes atual:</label><br />
-              <input type="search" autoFocus='true' className="consultames" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px' }} />
+              <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold'}}>Busca por mes:</label>
+              <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px', margin: '0 500px', fontWeight:'bold'}}>Mes atual:</label><br />
+              <input type="search" autoFocus='true' className="consultames" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold', color:'navy' }} />
               <Link to="/compras" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 20px' }}>Voltar:</Link>
-              <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '18px' }}>Total Compras:</Link>
-              <select value={mes} onChange={e => setMes(e.target.value)} style={{ fontSize: '20px', width: 160, margin: '0 650px', marginTop: '-40px' }} name='mes' id='mes' className='form-select'>
+              <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 2px', fontSize: '18px' }}>Total Compras:</Link>
+              <select value={mes} onChange={e => setMes(e.target.value)} style={{ fontSize: '20px', width: 160, margin: '0 650px', marginTop: '-40px', color:'navy', fontWeight:'bold'}} name='mes' id='mes' className='form-select'>
                 <option value=""></option>
                 <option value="Janeiro">Janeiro</option>
                 <option value="Fevereiro">Fevereiro</option>
@@ -333,54 +339,56 @@ const ComprasMes = () => {
             <br />
             <div className="mt-3">
               <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: '140%' }}>
-                <thead>
-                  <tr>
-                    <th className="th" scope="col">Id:</th>
-                    <th className="th" scope="col">Compra nº:</th>
-                    <th className="th" scope="col">Nome:</th>
-                    <th className="th" scope="col">Qtd:</th>
-                    <th className="th" scope="col">Custo:</th>                 
-                    <th className="th" scope="col">Total Geral:</th>                   
-                    <th className="th" scope="col">Forma Paga:</th>
-                    <th className="th" scope="col">Saidas:</th>
-                    <th className="th" scope="col">Troco:</th>
-                    <th className="th" scope="col">Parcelamento:</th>
-                    <th className="th" scope="col">Parcela:</th>
-                    <th className="th" scope="col">Mês:</th>
-                    <th className="th" scope="col">Data de Cadastro:</th>
-                    <th className="th" scope="col">Ação:</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    table.map(item => (
-                      <tr key={item.id}>
-                        <td className="td">{item.id}</td>
-                        <td className="td">{item.compran}</td>
-                        <td className="td">{item.nome}</td>
-                        <td className="td">{item.qtd}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.custo)}</td>                          
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.total)}</td>         
-                        <td className="td">{item.formapag}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.valorpag)}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.troco)}</td>
-                        <td className="td">{item.parcelamento}</td>
-                        <td className="td">{item.parcelan}</td>
-                        <td className="td">{item.mes}</td>
-                        <td className="td">{item.data_cad}</td>
+              <thead>
+                    <tr>
+                      <th className="th" scope="col">Id:</th>
+                      <th className="th" scope="col">Compra nº:</th>
+                      <th className="th" scope="col">Nome:</th>
+                      <th className="th" scope="col">Qtd:</th>
+                      <th className="th" scope="col">Custo:</th>                                 
+                      <th className="th" scope="col">Total:</th>
+                      <th className="th" scope="col">Total c/Frete:</th>                
+                      <th className="th" scope="col">Saidas:</th>
+                      <th className="th" scope="col">Troco:</th>
+                      <th className="th" scope="col">Frete:</th>
+                      <th className="th" scope="col">Forma Paga:</th>
+                      <th className="th" scope="col">Parcelas:</th>
+                      <th className="th" scope="col">Parcela:</th>
+                      <th className="th" scope="col">Mês:</th>
+                      <th className="th" scope="col">Data de Cadastro:</th>
+                      <th className="th" scope="col">Fornecedor:</th>
+                      <th className="th" scope="col">Ação:</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      table.map(item => (
+                        <tr key={item.id}>
+                          <td className="td">{item.id}</td>
+                          <td className="td">{item.compran}</td>
+                          <td className="td">{item.nome}</td>
+                          <td className="td">{item.qtd}</td>
+                          <td className="td">{item.custo}</td>                                         
+                          <td className="td">{item.total}</td>
+                          <td className="td">{item.totalfrete}</td>                  
+                          <td className="td">{item.valorpagto}</td>
+                          <td className="td">{item.troco}</td>
+                          <td className="td">{item.vf}</td>
+                          <td className="td">{item.formapag}</td>
+                          <td className="td">{item.parcelamento}</td>
+                          <td className="td">{item.parcelan}</td>
+                          <td className="td">{item.mes}</td>
+                          <td className="td">{item.data_cad}</td>
+                          <td className="td">{item.fornecedor}</td>
+                          <td className="td">
+                            <button className="editar" onClick={() => { handleEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Editar:</button>                            
+                            <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                          </td>
+                        </tr>
+                      ))
+                    }
 
-                        <td className="td" >
-
-                          <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-
-                        </td>
-
-                      </tr>
-                    ))
-
-                  }
-
-                </tbody>
+                  </tbody>              
 
               </table>
             </div>

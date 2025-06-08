@@ -14,360 +14,53 @@ const ComprasNumeroEditar = () => {
     fetch("https://sistemacomercialserver.onrender.com/compras/" + compracod).then((res) => {
       return res.json();
     }).then((resp) => {
-      compranchange(resp.compran);
-      nomechange(resp.nome);
-      qtdchange(resp.qtd);
-      custochange(resp.custo);  
-      totalchange(resp.total);
       meschange(resp.mes);
-      formapagchange(resp.formapag);
-      valorpagchange(resp.valorpag);
-      trocochange(resp.troco);
-      parcelamentochange(resp.parcelamento);
-      parcelanchange(resp.parcelan);         
+      parcelanchange(resp.parcelan);
 
     }).catch((err) => {
       console.log(err.message);
     })
   }, []);
 
-  const [compran, compranchange] = useState("")
-  const [nome, nomechange] = useState("")
-  const [custo, custochange] = useState("")
-  const [qtd, qtdchange] = useState("")
-  const [total, totalchange] = useState("")
-  const [valorpag, valorpagchange] = useState("")
+
   const [mes, meschange] = useState("")
-  const [formapag, formapagchange] = useState("")
-  const [troco, trocochange] = useState("")
-  const [parcelamento, parcelamentochange] = useState("")
-  const [parcela, parcelachange] = useState("")
   const [parcelan, parcelanchange] = useState("")
-  const [forname, fornamechange] = useState([])
-  const [vf, vfchange] = useState("")
-
-
-
-  useEffect(() => {
-    fetch("https://sistemacomercialserver.onrender.com/fornecedor").then((res) => {
-
-      return res.json()
-
-    }).then((resp) => {
-
-      fornamechange(resp)
-
-    }).catch((err) => {
-      console.log(err.message)
-    })
-  }, [])
-
-  const [values, setValues] = useState({
-    id: ''
-  })
-
-  const isValidate = () => {
-    let isproceed = true
-    let errormessage = "Campos devem conter os dados corretos  !"
-
-    if (nome === null || nome === '') {
-      isproceed = false
-      //errormessage += 'Nome Completo:' 
-    }
-    if (compran === null || compran === '') {
-      isproceed = false
-      // errormessage += 'Email:' 
-    }
- 
-
-    if (total === null || total === '') {
-      isproceed = false
-      //errormessage += 'Telefone:' 
-    }
-    if (valorpag === null || valorpag === '') {
-      document.getElementById('valorpag').style.borderColor = 'red'
-      isproceed = false
-      //errormessage += 'Telefone:' 
-    }
-
-    if (mes === null || mes === '') {
-      document.getElementById('mes').style.borderColor = 'red'
-      isproceed = false
-      //errormessage += 'Telefone:' 
-    }
-    if (formapag === null || formapag === '') {
-      document.getElementById('formapag').style.borderColor = 'red'
-      isproceed = false
-      //errormessage += 'Telefone:' 
-    }
-    if (troco === null || troco === '') {
-      document.getElementById('troco').style.borderColor = 'red'
-      isproceed = false
-      //errormessage += 'Telefone:' 
-    }
-    if (qtd === null || qtd === '') {
-      isproceed = false
-      //errormessage += 'Telefone:' 
-    }
-    if (document.getElementById('forname').value === null || document.getElementById('forname').value === '') {
-      document.getElementById('forname').style.borderColor = 'red';
-      isproceed = false
-      //errormessage += 'Telefone:' 
-    }
-
-    if (!isproceed) {
-      toast.warning(errormessage)
-    }
-
-    return isproceed
-  }
- 
-
-
-  function formataData() {
-    let data = new Date(),
-      dia = data.getDate().toString().padStart(2, '0'),
-      mes = (data.getMonth() + 1).toString().padStart(2, '0'),
-      ano = data.getFullYear();
-    return `${dia}/${mes}/${ano}`;
-  }
-
-  function MudaCorFor() {
-    document.getElementById('forname').style.borderColor = 'GainsBoro';
-  }
-
-  function MudaCorForma() {
-    document.getElementById('formapag').style.borderColor = 'GainsBoro';
-  }
-
-  function MudaCorMes() {
-    document.getElementById('mes').style.borderColor = 'GainsBoro';
-  }
-
-  function MudaCorTroco() {
-    document.getElementById('troco').style.borderColor = 'GainsBoro';
-  }
-
-  function MudaCorValorPag() {
-    document.getElementById('valorpag').style.borderColor = 'GainsBoro';
-  }
-
-  
-  function Troco(){   
-
-       var total = parseFloat(document.getElementById('total').value);
-       const troco = (parseFloat(valorpag) - total).toFixed(2);  
-       document.getElementById('dif').value = troco;
-
-  }
-
-  function TotalFrete(){   
-
-    var total = parseFloat(document.getElementById('total').value);
-    const result = (parseFloat(vf) + total).toFixed(2);  
-    document.getElementById('tf').value = result;
-
-}    
 
 
   const atualizar = (e) => {
 
-    e.preventDefault(); 
+    e.preventDefault();
 
-    Swal.fire({
-      title: "Deseja salvar ?",
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: "Salvar",
-      denyButtonText: `Não salvar`
-    }).then((result) => {
+    const edtobj = {mes, parcelan }   
 
-      if (result.isConfirmed) {
-
-
-        if (parcelamento === "" || parcelamento === null && parcela === "" || parcela === null && parcelan === "" || parcelan === null) {
-
-          const data_cad = formataData()
-          const valorpag = parseFloat(document.getElementById('valorpag').value) 
-          const total = parseFloat(document.getElementById('total').value)
-          //const vf = parseFloat(document.getElementById('frete').value);                
-
-
-          if (valorpag > total) {
-
-            const troco = parseFloat(document.getElementById('troco').value);           
-            const fornecedor = document.getElementById('forname').value;
-
-            const edtobj = { nome, compran, custo, total, valorpag, mes, data_cad, formapag, qtd, troco, fornecedor }
-
-
-            if (isValidate()) {
-
-              fetch("https://sistemacomercialserver.onrender.com/compras/" + compracod, {
-                method: "PUT",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(edtobj)
-              }).then((res) => {
-                toast.success('Concluido com Sucesso !')
-                nomechange('')
-                compranchange('')
-                custochange('')
-                totalchange('')
-                valorpagchange('')
-                meschange('')
-
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-
-            }
-
-          } else {
-
-            const fornecedor = document.getElementById('forname').value;
-            const edtobj = { nome, compran, custo, total, valorpag, mes, data_cad, formapag, qtd, troco, fornecedor }
-
-
-            if (isValidate()) {
-
-              fetch("https://sistemacomercialserver.onrender.com/compras/" + compracod, {
-                method: "PUT",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(edtobj)
-              }).then((res) => {
-                toast.success('Concluido com Sucesso !')
-                nomechange('')
-                compranchange('')
-                custochange('')
-                totalchange('')
-                valorpagchange('')
-                meschange('')
-
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-
-            }
-
-          }
-        } else if (parcelan == '1ª' && valorpag == 0) {
-
-          const data_cad = formataData()
-
-
-          const valorpag = parseFloat((total / parcela).toFixed(2));
-          console.log(valorpag)
-          const fornecedor = document.getElementById('forname').value;
-
-
-          const edtobj = { nome, compran, custo, total, valorpag, mes, data_cad, parcelamento, parcelan, formapag, qtd, troco, fornecedor }
-
-
-          if (isValidate()) {
-
-            {
-              fetch("https://sistemacomercialserver.onrender.com/compras/" + compracod, {
-                method: "PUT",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(edtobj)
-              }).then((res) => {
-                toast.success('Parcela Gerada com Sucesso !')
-
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-
-            }
-          }
-
-
-        } else if (parcelan == '1ª' && valorpag !== 0) {
-
-          const data_cad = formataData()
-          const fornecedor = document.getElementById('forname').value;
-
-
-          const edtobj = { nome, compran, custo, total, valorpag, mes, data_cad, parcelamento, parcelan, formapag, qtd, troco, fornecedor }
-
-          if (isValidate()) {
-
-            {
-              fetch("https://sistemacomercialserver.onrender.com/compras/" + compracod, {
-                method: "PUT",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(edtobj)
-              }).then((res) => {
-                toast.success('Concluido com Sucesso !')
-
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-
-            }
-          }
-
-
-        } else if (parcelan !== '1ª' && valorpag !== 0) {
-
-          const data_cad = formataData()
-          const fornecedor = document.getElementById('forname').value;
-
-
-          const edtobj = { nome, compran, custo, total, valorpag, mes, data_cad, parcelamento, parcelan, formapag, qtd, troco, fornecedor }
-
-          if (isValidate()) {
-
-            {
-              fetch("https://sistemacomercialserver.onrender.com/compras/" + compracod, {
-                method: "PUT",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(edtobj)
-              }).then((res) => {
-                toast.success('Concluido com Sucesso !')
-
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-
-            }
-          }
-
-        } else if (parcelan !== '1ª' && valorpag == 0) {
-
-          const data_cad = formataData()
-
-          const valorpag = parseFloat((total / parcela).toFixed(2));
-          console.log(valorpag)
-          const fornecedor = document.getElementById('forname').value;
-
-          const cadobj = { nome, compran, custo, total, valorpag, mes, data_cad, parcelamento, parcelan, formapag, qtd, troco, fornecedor }
-
-          if (isValidate()) {
-
-            {
-              fetch("https://sistemacomercialserver.onrender.com/compras", {
-                method: "POST",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(cadobj)
-              }).then((res) => {
-                toast.success('Parcela Gerada com Sucesso !')
-
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-
-            }
-          }
-
-        }
-
-
-      }
-      else if (result.isDenied) {
-        Swal.fire("Nada salvo", "", "info");
-      }
-    });
+          Swal.fire({
+            title: "Deseja salvar ?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Salvar",
+            denyButtonText: `Não salvar`
+          }).then((result) => {
     
+            if (result.isConfirmed) {
+    
+              fetch("https://sistemacomercialserver.onrender.com/compras/" + compracod, {
+                method: "PATCH",
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(edtobj)
+              }).then((res) => {
+                toast.success('Atualizado com sucesso !')
+                meschange('')
+                parcelanchange('')   
+    
+              }).catch((err) => {
+                toast.error('Erro ! :' + err.message)
+              })
+            }
+            else if (result.isDenied) {
+              Swal.fire("Nada salvo", "", "info");
+            }
+          })
+
   }
 
 
@@ -494,7 +187,7 @@ const ComprasNumeroEditar = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -502,7 +195,7 @@ const ComprasNumeroEditar = () => {
                     Orçamentos:
                   </span>
                 </Link>
-              </li>             
+              </li>
               <li className="w-100" onClick={logout}>
                 <Link to="/"
                   className="nav-link px-0 align-middle text-white"
@@ -519,139 +212,49 @@ const ComprasNumeroEditar = () => {
             <h4><strong>Sistema de Gestão Comercial:</strong></h4>
           </div>
           <Outlet /><br /><br /><br />
-          <div className='d-flex justify-content-center align-items-center vh-90'>
+          <div className='d-flex justify-content-center align-items-center' style={{fontFamily:'arial'}}>
             <div className='bg-white p-4 rounded border' style={{ width: '50%' }}>
-              <h4><center>Concluir Compra:</center></h4><br />
-              <form action='' onSubmit={atualizar}>
-                <div className='mb-3'>
-                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px' }}>Nome:</label>
-                  <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 370, margin: '0 115px' }} className='form-control rounded-0' name='nome' />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='vendan' style={{ fontSize: '20px', margin: '0 115px' }}>Compra nº:</label>
-              
-                  <label htmlFor='qtd' hidden style={{ fontSize: '20px', margin: '0 200px' }}>Qtd:</label>
-                  <input type='text' value={compran} onChange={e => compranchange(e.target.value)} style={{ fontSize: '20px', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='vendan' />
-                  
-                  <input type='text' hidden value={qtd} onChange={e => qtdchange(e.target.value)} style={{ fontSize: '20px', width: 80, margin: '0 403px', marginTop: '-43px' }} className='form-control rounded-0' name='qtd' />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='total' style={{ fontSize: '20px', margin: '0 115px' }}>Total Geral:</label>
-                  <label htmlFor='parcela' style={{ fontSize: '20px', margin:'0 -43px' }}>Valor Pago:</label>
-                  <label htmlFor='parcela' style={{ fontSize: '20px', margin: "0 95px" }}>Parcelamento:</label>     
-                  <input type="decimal" value={total} onChange={e => totalchange(e.target.value)} style={{ fontSize: '20px', width: 130, margin: '0 115px' }} className='form-control rounded-0' name='total' id='total' />
-                  <input type="decimal" onKeyUp={MudaCorValorPag} value={valorpag} onChange={e => valorpagchange(e.target.value)} style={{ fontSize: '20px', width: 130, margin: '0 280px', marginTop: '-43px' }} className='form-control rounded-0' name='valorpag' id='valorpag' />
-                  <select value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 440px', marginTop: '-43px' }} className='form-select' name='parcela' id='parcela'>
-                    <option value=""></option>
-                    <option value="2x">2x</option>
-                    <option value="3x">3x</option>
-                    <option value="4x">4x</option>
-                    <option value="5x">5x</option>
-                    <option value="6x">6x</option>
-                    <option value="7x">7x</option>
-                    <option value="8x">8x</option>
-                    <option value="9x">9x</option>
-                    <option value="10x">10x</option>
-                    <option value="11x">11x</option>
-                    <option value="12x">12x</option>
-                </select><br />                 
-                   <div>
-                   <label htmlFor='dif' style={{ fontSize: '20px', margin: "0 120px" }}>Diferença:</label>   
-                   <label htmlFor='frete' style={{ fontSize: '20px', margin: "0 -25px" }}>Frete:</label>
-                   <label htmlFor='tf' style={{ fontSize: '20px', margin: "0 120px" }}>Total Frete:</label>                    
-                   <input type="decimal" style={{ fontSize: '20px', width: 130, margin:'0 120px'}} className='form-control rounded-0' name='dif' id='dif' />
-                   <input type="decimal" value={vf} onChange={e => vfchange(e.target.value) } style={{ fontSize: '20px', width: 130, margin:'0 300px', marginTop:'-42px'}} className='form-control rounded-0' name='frete' id='frete' />
-                   <input type="decimal" style={{ fontSize: '20px', width: 130, margin:'0 460px', marginTop:'-42px'}} className='form-control rounded-0' name='tf' id='tf' />
-                   </div>            
-                 
-                 </div>
-                  <div className='mb-3'>
-                   <label htmlFor='formapaga' style={{ fontSize: '20px', margin: '0 115px' }}>Forma de Pagamento:</label>
-                   <label htmlFor='parcela' style={{ fontSize: '20px', marginLeft: '-72px' }}>Parcelas:</label>
-                   <label htmlFor='parcelan' style={{ fontSize: '20px', marginLeft: '60px' }}>Parcela:</label>
-                  <select onMouseDown={MudaCorForma} style={{ fontSize: '20px', width: 130, margin: '0 115px' }} name='formapag' id='formapag' className='form-select' value={formapag} onChange={e => formapagchange(e.target.value)}>
-                    <option value=""></option>
-                    <option value="Dinheiro">Dinheiro</option>
-                    <option value="Pix">Pix</option>
-                    <option value="Débito">Débito</option>
-                    <option value="Crédito">Crédito</option>
-                    <option value="Boleto">Boleto</option>
-                  </select>
-                  <select value={parcela} onChange={e => parcelachange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 355px', marginTop: '-43px' }} className='form-select' name='parcela' id='parcela'>
-                    <option value=""></option>
-
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                  </select>
-                  <select value={parcelan} onChange={e => parcelanchange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 495px', marginTop: '-43px' }} className='form-select' name='parcelan' id='parcela'>
-                    <option value=""></option>
-                    <option value="1ª">1ª</option>
-                    <option value="2ª">2ª</option>
-                    <option value="3ª">3ª</option>
-                    <option value="4ª">4ª</option>
-                    <option value="5ª">5ª</option>
-                    <option value="6ª">6ª</option>
-                    <option value="7ª">7ª</option>
-                    <option value="8ª">8ª</option>
-                    <option value="9ª">9ª</option>
-                    <option value="10ª">10ª</option>
-                    <option value="11ª">11ª</option>
-                    <option value="12ª">12ª</option>
-                  </select>
-
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='formapag' style={{ fontSize: '20px', margin: '0 115px' }}>Fornecedor:</label>
-                  <select style={{ fontSize: '20px', width: 420, margin: '0 115px' }} id='forname' className='form-select' onChange={(e) => setValues({ ...values, id: e.target.value })} onMouseUp={MudaCorFor}>
-                    <option></option>
-                    {forname.map(val => {
-                      return <option value={val.nome}>{val.nome}</option>
-                    })}
-                  </select>
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 115px' }}>Mês:</label>
-                  <label htmlFor='troco' style={{ fontSize: '20px', margin: '0 80px' }}>Troco:</label>
-                  <select onMouseDown={MudaCorMes} style={{ fontSize: '20px', width: 150, margin: '0 115px' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
-                    <option value=""></option>
-                    <option value="Janeiro">Janeiro</option>
-                    <option value="Fevereiro">Fevereiro</option>
-                    <option value="Março">Março</option>
-                    <option value="Abril">Abril</option>
-                    <option value="Maio">Maio</option>
-                    <option value="Junho">Junho</option>
-                    <option value="Julho">Julho</option>
-                    <option value="Agosto">Agosto</option>
-                    <option value="Setembro">Setembro</option>
-                    <option value="Outubro">Outubro</option>
-                    <option value="Novembro">Novembro</option>
-                    <option value="Dezembro">Dezembro</option>
-                  </select>
-                  <input type='decimal' onKeyUp={MudaCorTroco} style={{ fontSize: '20px', width: 150, margin: '0 360px', marginTop: '-43px' }} className='form-control rounded-0' id='troco' value={troco} onChange={e => trocochange(e.target.value)} />
-
-                </div>
-
-                <div className='mb-3'>
-                  <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px', fontSize: '16px' }}>Concluir:</button>                   
-                  <Link className="btn border rounded-0" onClick={Troco} style={{ color: 'white', backgroundColor: 'gray', margin: '0 -90px', fontSize: '16px', width: 100 }}>Troco:</Link>
-                  <Link onClick={TotalFrete} className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '0 115px', fontSize: '16px', width: 115 }}>Total c/frete:</Link>
-                  <Link to='/compras/numero' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 500px', fontSize: '16px', width: 100, marginTop:'-60px'}}>Voltar:</Link>
-                </div>
-                <ToastContainer />
+              <form onSubmit={atualizar}> 
+              <label htmlFor="mes" style={{ fontSize: '22px', fontWeight:'bold'}}>Mes:</label>
+              <label htmlFor="parcelan" style={{ fontSize: '22px', margin: '0 150px', fontWeight:'bold'}}>Parcela nº:</label>
+              <select style={{ fontSize: '20px', width: 150, color:'navy', fontWeight:'bold'}} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
+                <option value=""></option>
+                <option value="Janeiro">Janeiro</option>
+                <option value="Fevereiro">Fevereiro</option>
+                <option value="Março">Março</option>
+                <option value="Abril">Abril</option>
+                <option value="Maio">Maio</option>
+                <option value="Junho">Junho</option>
+                <option value="Julho">Julho</option>
+                <option value="Agosto">Agosto</option>
+                <option value="Setembro">Setembro</option>
+                <option value="Outubro">Outubro</option>
+                <option value="Novembro">Novembro</option>
+                <option value="Dezembro">Dezembro</option>
+              </select>
+              <select className="form-control rounded-0" value={parcelan} onChange={e => parcelanchange(e.target.value)} style={{ width: '20%', height: '42px', fontSize: '20px', margin: '0 200px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} id="parcelan" >
+                <option value=""></option>
+                <option value="1ª">1ª</option>
+                <option value="2ª">2ª</option>
+                <option value="3ª">3ª</option>
+                <option value="4ª">4ª</option>
+                <option value="5ª">5ª</option>
+                <option value="6ª">6ª</option>
+                <option value="7ª">7ª</option>
+                <option value="8ª">8ª</option>
+                <option value="9ª">9ª</option>
+                <option value="10ª">10ª</option>
+                <option value="11ª">11ª</option>
+                <option value="12ª">12ª</option>
+              </select><br />
+              <button type="submit" className="btn" style={{ color: 'white', backgroundColor: 'navy', fontSize: '18px', width: 120 }}>Atualizar</button>
+              <ToastContainer/>
+              <Link to="/compras/numero/" className="btn" style={{ fontSize: '18px', width: 120, color:'white', backgroundColor:'orange', margin:'0 200px', marginTop:'-63px'}}>Voltar:</Link>
               </form>
+
+
             </div>
           </div>
-
-
         </div>
       </div>
     </div>

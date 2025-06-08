@@ -194,7 +194,7 @@ const ClientesCpf = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -266,8 +266,8 @@ const ClientesCpf = () => {
               </div>
             </div><br />
             <div className="mb3" style={{ fontFamily: 'arial', fontSize: '22px' }}>
-              <label htmlFor="Cpf" className="Cpf" >Busca por cpf:</label><br />
-              <input className="consultacpf" type="search" value={buscacpf} onChange={(e) => setBuscaCpf(e.target.value)} />
+              <label htmlFor="Cpf" className="Cpf" style={{fontWeight:'bold'}} >Busca por cpf:</label><br />
+              <input className="consultacpf" type="search" value={buscacpf} onChange={(e) => setBuscaCpf(e.target.value)} style={{fontWeight:'bold', color:'navy'}} />
               <Link to="/clientes" className="btn" style={{ color: 'white', backgroundColor: 'orange', margin: '0 20px', fontSize: '18px', fontFamily: 'arial', width: '140px' }}>Voltar:</Link>
             </div>
           </div>

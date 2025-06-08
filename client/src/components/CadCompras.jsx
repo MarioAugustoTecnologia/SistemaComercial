@@ -9,7 +9,6 @@ import Swal from 'sweetalert2';
 const CadCompras = () => {
 
   const { pcod } = useParams();
- // const navigate = useNavigate();
 
   useEffect(() => {
     fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod).then((res) => {
@@ -17,12 +16,9 @@ const CadCompras = () => {
     }).then((resp) => {
       Idchange(resp.id);
       nomechange(resp.nome);
-      precochange(resp.preco);
       custochange(resp.custo)
       qtdchange(resp.qtd);
-      Categoriachange(resp.categoria);
-      DataCadchange(resp.data_cadastro);
-      Codigochange(resp.codigo);
+
     }).catch((err) => {
       console.log(err.message);
     })
@@ -31,11 +27,7 @@ const CadCompras = () => {
   const [id, Idchange] = useState("")
   const [nome, nomechange] = useState("")
   const [estoque, qtdchange] = useState("")
-  const [preco, precochange] = useState("")
   const [custo, custochange] = useState("")
-  const [categoria, Categoriachange] = useState("")
-  const [data_cadastro, DataCadchange] = useState("")
-  const [codigo, Codigochange] = useState("")
   const [formapag, formapagchange] = useState("")
   const [forname, fornamechange] = useState([])
   const [datacad, datacadchange] = useState("")
@@ -43,7 +35,6 @@ const CadCompras = () => {
   const [parcelamento, parcelamentochange] = useState("")
   const [parcela, parcelachange] = useState("")
   const [parcelan, parcelanchange] = useState("")
-  const [valorpag, valorpagchange] = useState("")
   const [compradata, setCompradata] = useState([])
   const [mescompraatual, setMesCompraAtual] = useState([])
   const [vf, vfchange] = useState("")
@@ -180,57 +171,64 @@ const CadCompras = () => {
 
   }
 
+  function MudaCorValorPag() {
 
-  function calcular() {
-
-    if(quant == ''){
-          toast.warning('Campo quantidade em branco !')
-          document.getElementById('qtd').style.borderColor = 'red';
-    
-        }else{
-
-          const total = (quant * custo).toFixed(2);
-          console.log(total)
-          document.getElementById('total').value = total;
-          document.getElementById('total').style.borderColor = 'Gainsboro';
-
-        } 
+    document.getElementById('valorpago').style.borderColor = 'Gainsboro';
 
   }
 
-    const IsValidate2 = () => {
-          
-        let isproceed = true
-        let errormessage = "Campo frete não pode estar vazio  !"
-    
-        if (vf === null || vf === '') {
-          document.getElementById('vf').style.borderColor = 'red';
-          isproceed = false
-          //errormessage += 'Nome Completo:' 
-        }
-    
-        if (!isproceed) {
-          toast.warning(errormessage)
-        }
-    
-        return isproceed
-      }
-  
-  
-      function totalFrete() {
-  
-        if (IsValidate2()) {
-    
-          var total = document.getElementById('total').value;
-          var tfrete = (parseFloat(total) + parseFloat(vf)).toFixed(2);        
-          document.getElementById('total').value = tfrete;      
-          document.getElementById('total').style.borderColor = 'Gainsboro';       
-          
-  
-        }
-    
-      }
-  
+
+  function calcular() {
+
+    if (custo == '') {
+      toast.warning('Campo custo em branco !')
+      document.getElementById('custo').style.borderColor = 'red';
+
+    } else {
+
+      const custo = parseFloat(document.getElementById('custo').value);
+      const total = (quant * custo).toFixed(2);
+      console.log(total)
+      document.getElementById('total').value = total;
+      document.getElementById('total').style.borderColor = 'Gainsboro';
+
+    }
+
+
+  }
+
+  const IsValidate2 = () => {
+
+    let isproceed = true
+    let errormessage = "Campo frete não pode estar vazio  !"
+
+    if (vf === null || vf === '') {
+      document.getElementById('vf').style.borderColor = 'red';
+      isproceed = false
+      //errormessage += 'Nome Completo:' 
+    }
+
+    if (!isproceed) {
+      toast.warning(errormessage)
+    }
+
+    return isproceed
+  }
+
+
+  function totalFrete() {
+
+    if (IsValidate2()) {
+
+      var total = document.getElementById('total').value;
+      var tfrete = (parseFloat(total) + parseFloat(vf)).toFixed(2);
+      document.getElementById('totalfrete').value = tfrete;
+      document.getElementById('valorpago').value = tfrete;
+      document.getElementById('total').style.borderColor = 'Gainsboro';
+
+    }
+
+  }
 
   const cadastrar = (e) => {
 
@@ -238,91 +236,31 @@ const CadCompras = () => {
 
     if (isValidate()) {
 
-    if (valorpag === '') {
-      document.getElementById('valorpag').value = 0;
-    }
+      if (parcelamento === "" || parcelamento === null && parcela === "" || parcela === null && parcelan === "" || parcelan === null) {
 
-    if (parcelamento === "" || parcelamento === null && parcela === "" || parcela === null && parcelan === "" || parcelan === null) {
+        if (document.getElementById('vf').value !== "" && document.getElementById('totalfrete').value !== '' && document.getElementById('valorpago').value !== '') {
 
-      const dataInput = datacad;
-      const data = new Date(dataInput);
-      const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });     
-      const fornecedor = document.getElementById('forname').value;
-      var compran = document.getElementById('compran').innerHTML;
-      var mes = document.getElementById('mescompraatual').innerHTML;
-      var qtd = quant;
-      var total = parseFloat(document.getElementById('total').value);
-      const valorpag = parseFloat(document.getElementById('valorpag').value);
+          const dataInput = datacad;
+          const data = new Date(dataInput);
+          const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+          var total = parseFloat(document.getElementById('total').value).toFixed(2);
+          var totalfrete = parseFloat(document.getElementById('totalfrete').value).toFixed(2)
+          var fornecedor = document.getElementById('forname').value;
+          var compran = document.getElementById('compran').innerHTML;
+          var mes = document.getElementById('mescompraatual').innerHTML;
+          var valorpagto = parseFloat(document.getElementById('valorpago').value).toFixed(2);
+          var vp = valorpagto;
+          var vf = parseFloat(document.getElementById('vf').value).toFixed(2)
+          var custo = parseFloat(document.getElementById('custo').value).toFixed(2);
+          var qtd = document.getElementById('qtd').value;    
 
+          if (valorpagto > totalfrete) {
 
-      if (valorpag > total) {
+            const t = parseFloat((valorpagto - totalfrete).toFixed(2));
+            const troco = (t).toFixed(2)
+            valorpagto = parseFloat(valorpagto).toFixed(2);
 
-        const troco = parseFloat((valorpag - total).toFixed(2));
-     
-
-        const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpag }  
-
-          Swal.fire({
-            title: "Deseja salvar ?",
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: "Salvar",
-            denyButtonText: `Não salvar`
-          }).then((result) => {
-
-            if (result.isConfirmed) {
-
-              fetch("https://sistemacomercialserver.onrender.com/compras", {
-                method: "POST",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(cadobj)
-              }).then((res) => {
-                toast.success('Cadastrado com Sucesso !')
-                nomechange('')
-                custochange('')
-                formapagchange('')          
-                datacadchange('')
-                qtdchange('')
-                parcelamentochange('')
-                parcelachange('')
-                valorpagchange('')
-                document.getElementById('qtd').style.borderColor = 'Gainsboro';
-
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-
-              function Add() {
-                return parseInt(estoque) + parseInt(quant);
-              }
-
-              const qtd = Add();
-
-              const edtobj = { id, nome, custo, preco, qtd, categoria, data_cadastro, codigo }
-
-              fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
-                method: "PUT",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(edtobj)
-              }).then((res) => {
-                console.log(qtd);
-
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-
-            } else if (result.isDenied) {
-              Swal.fire("Nada salvo", "", "info");
-            }
-          });
-        
-
-      } else
-        if (valorpag === total) {
-
-          var troco = 0;       
-
-          const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpag, troco }
+            const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpagto, totalfrete, vf, vp }
 
             Swal.fire({
               title: "Deseja salvar ?",
@@ -340,176 +278,229 @@ const CadCompras = () => {
                   body: JSON.stringify(cadobj)
                 }).then((res) => {
                   toast.success('Cadastrado com Sucesso !')
-                  nomechange('')
-                  custochange('')
-                  formapagchange('')
-                  qtdchange('')
-                  parcelamentochange('')
-                  parcelachange('')
-                  valorpagchange('')
-                  vfchange('')
+                  function Add() {
+                    return parseInt(estoque) + parseInt(quant);
+                  }
 
-                  document.getElementById('qtd').style.borderColor = 'Gainsboro';
+                  const qtd = Add();
+
+                  const edtobj = { id, qtd }
+
+                  fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
+                    method: "PATCH",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(edtobj)
+                  }).then((res) => {
+                    console.log(qtd);
+
+                  }).catch((err) => {
+                    toast.error('Erro ! :' + err.message)
+                  })
+
+
                 }).catch((err) => {
                   toast.error('Erro ! :' + err.message)
                 })
-
-                function Add() {
-                  return parseInt(estoque) + parseInt(quant);
-                }
-  
-                const qtd = Add();
-  
-                const edtobj = { id, nome, custo, preco, qtd, categoria, data_cadastro, codigo }
-  
-                fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
-                  method: "PUT",
-                  headers: { 'content-type': 'application/json' },
-                  body: JSON.stringify(edtobj)
-                }).then((res) => {
-                  console.log(qtd);
-  
-                }).catch((err) => {
-                  toast.error('Erro ! :' + err.message)
-                })           
 
               } else if (result.isDenied) {
                 Swal.fire("Nada salvo", "", "info");
               }
             });
-           
-          }else {
-                   
-                  var troco = 0;            
-        
-                  const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpag, troco }    
-                     
-                    Swal.fire({
-                      title: "Deseja salvar ?",
-                      showDenyButton: true,
-                      showCancelButton: true,
-                      confirmButtonText: "Salvar",
-                      denyButtonText: `Não salvar`
-                    }).then((result) => {
-        
-                      if (result.isConfirmed) {
-        
-                        fetch("https://sistemacomercialserver.onrender.com/compras", {
-                          method: "POST",
-                          headers: { 'content-type': 'application/json' },
-                          body: JSON.stringify(cadobj)
-                        }).then((res) => {
-                          toast.success('Cadastrado com Sucesso !')
-                          nomechange('')
-                          custochange('')
-                          formapagchange('')
-                          qtdchange('')
-                          parcelamentochange('')
-                          parcelachange('')
-                          valorpagchange('')                  
-                          navigate('/produtos/codigo')                               
-                                          
-        
-                        }).catch((err) => {
-                          toast.error('Erro ! :' + err.message)
-                        })
-
-                        function Add() {
-                          return parseInt(estoque) + parseInt(quant);
-                        }
-          
-                        const qtd = Add();
-          
-                        const edtobj = { id, nome, custo, preco, qtd, categoria, data_cadastro, codigo }
-          
-                        fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
-                          method: "PUT",
-                          headers: { 'content-type': 'application/json' },
-                          body: JSON.stringify(edtobj)
-                        }).then((res) => {
-                          console.log(qtd);
-          
-                        }).catch((err) => {
-                          toast.error('Erro ! :' + err.message)
-                        })
-        
-                      } else if (result.isDenied) {
-                        Swal.fire("Nada salvo", "", "info");
-                      }                    
-
-                    });  
-                          
-        
-                } 
-  } else {
-
-      var compran = document.getElementById('compran').innerHTML;
-      var mes = document.getElementById('mescompraatual').innerHTML;
-      const dataInput = datacad;
-      const data = new Date(dataInput);
-      const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-      const fornecedor = document.getElementById('forname').value;
-
-      const total = parseFloat(document.getElementById('total').value);
-      console.log(total)
-
-      const valorpag = (total / parcela).toFixed(2);
-      console.log(valorpag)
-      var troco = 0;
-      var qtd = quant;     
-
-      const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpag, formapag, parcelamento, parcelan, mes, fornecedor, troco }
-
-        Swal.fire({
-          title: "Deseja salvar ?",
-          showDenyButton: true,
-          showCancelButton: true,
-          confirmButtonText: "Salvar",
-          denyButtonText: `Não salvar`
-        }).then((result) => {
-
-          if (result.isConfirmed) {
-
-            fetch("https://sistemacomercialserver.onrender.com/compras", {
-              method: "POST",
-              headers: { 'content-type': 'application/json' },
-              body: JSON.stringify(cadobj)
-            }).then((res) => {
-              toast.success('Cadastrado com Sucesso !')
-              document.getElementById('qtd').style.borderColor = 'Gainsboro';
 
 
-            }).catch((err) => {
-              toast.error('Erro ! :' + err.message)
-            })
+          } else
+            if (valorpagto === totalfrete) {
 
-            function Add() {
-              return parseInt(estoque) + parseInt(quant);
+              const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpagto, totalfrete, vf, vp }
+
+              if (isValidate()) {
+
+                Swal.fire({
+                  title: "Deseja salvar ?",
+                  showDenyButton: true,
+                  showCancelButton: true,
+                  confirmButtonText: "Salvar",
+                  denyButtonText: `Não salvar`
+                }).then((result) => {
+
+                  if (result.isConfirmed) {
+
+                    fetch("https://sistemacomercialserver.onrender.com/compras", {
+                      method: "POST",
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(cadobj)
+                    }).then((res) => {
+                      toast.success('Cadastrado com Sucesso !')
+                      function Add() {
+                        return parseInt(estoque) + parseInt(quant);
+                      }
+
+                      const qtd = Add();
+
+                      const edtobj = { id, qtd }
+
+                      fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
+                        method: "PATCH",
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(edtobj)
+                      }).then((res) => {
+                        console.log(qtd);
+
+                      }).catch((err) => {
+                        toast.error('Erro ! :' + err.message)
+                      })
+
+
+                      document.getElementById('qtd').style.borderColor = 'Gainsboro';
+
+                    }).catch((err) => {
+                      toast.error('Erro ! :' + err.message)
+                    })
+
+                  } else if (result.isDenied) {
+                    Swal.fire("Nada salvo", "", "info");
+                  }
+                });
+
+              }
+
             }
 
-            const qtd = Add();
+        }
+        else {
 
-            const edtobj = { id, nome, custo, preco, qtd, categoria, data_cadastro, codigo }
+          const dataInput = datacad;
+          const data = new Date(dataInput);
+          const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+          var total = parseFloat(document.getElementById('total').value).toFixed(2);
+          var fornecedor = document.getElementById('forname').value;
+          var compran = document.getElementById('compran').innerHTML;
+          var mes = document.getElementById('mescompraatual').innerHTML;
+          var custo = parseFloat(document.getElementById('custo').value).toFixed(2);
+          const valorpagto = 0;
+          vp = total;
+          var qtd = document.getElementById('qtd').value;
 
-            fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
-              method: "PUT",
-              headers: { 'content-type': 'application/json' },
-              body: JSON.stringify(edtobj)
-            }).then((res) => {
-              console.log(qtd);
+          const cadobj = { compran, nome, qtd, custo, total, data_cad, mes, fornecedor, valorpagto, vp }
 
-            }).catch((err) => {
-              toast.error('Erro ! :' + err.message)
-            })
+          if (isValidate()) {
 
-          } else if (result.isDenied) {
-            Swal.fire("Nada salvo", "", "info");
+            Swal.fire({
+              title: "Deseja salvar ?",
+              showDenyButton: true,
+              showCancelButton: true,
+              confirmButtonText: "Salvar",
+              denyButtonText: `Não salvar`
+            }).then((result) => {
+
+              if (result.isConfirmed) {
+
+                fetch("https://sistemacomercialserver.onrender.com/compras", {
+                  method: "POST",
+                  headers: { 'content-type': 'application/json' },
+                  body: JSON.stringify(cadobj)
+                }).then((res) => {
+                                   
+                  function Add() {
+                    return parseInt(estoque) + parseInt(quant);
+                  }
+                  const qtd = Add();
+
+                  const edtobj = { id, qtd }
+
+                  fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
+                    method: "PATCH",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(edtobj)
+                  }).then((res) => {
+                    console.log(qtd);
+
+                  }).catch((err) => {
+                    toast.error('Erro ! :' + err.message)
+                  })
+                  navigate('/produtos/codigo')
+
+                }).catch((err) => {
+                  toast.error('Erro ! :' + err.message)
+                })
+
+              } else if (result.isDenied) {
+                Swal.fire("Nada salvo", "", "info");
+              }
+            });
+
           }
-        });
+        }
 
- 
+      } else {
+
+        var compran = document.getElementById('compran').innerHTML;
+        var mes = document.getElementById('mescompraatual').innerHTML;
+        const dataInput = datacad;
+        const data = new Date(dataInput);
+        const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+        const fornecedor = document.getElementById('forname').value;
+        const total = parseFloat(document.getElementById('total').value).toFixed(2);
+        const totalfrete = parseFloat(document.getElementById('totalfrete').value).toFixed(2);
+        var vf = parseFloat(document.getElementById('vf').value).toFixed(2);
+        var custo = parseFloat(document.getElementById('custo').value).toFixed(2);
+        var qtd = document.getElementById('qtd').value;
+
+        const valorpagto = (totalfrete / parcela).toFixed(2);
+        vp = valorpagto;
+
+        const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes, fornecedor, totalfrete, vf, vp }
+
+        if (isValidate()) {
+
+          Swal.fire({
+            title: "Deseja salvar ?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Salvar",
+            denyButtonText: `Não salvar`
+          }).then((result) => {
+
+            if (result.isConfirmed) {
+
+              fetch("https://sistemacomercialserver.onrender.com/compras", {
+                method: "POST",
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(cadobj)
+              }).then((res) => {
+                toast.success('Cadastrado com Sucesso !')
+                function Add() {
+                  return parseInt(estoque) + parseInt(quant);
+                }
+
+                const qtd = Add();
+
+                const edtobj = { id, qtd }
+
+                fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
+                  method: "PATCH",
+                  headers: { 'content-type': 'application/json' },
+                  body: JSON.stringify(edtobj)
+                }).then((res) => {
+                  console.log(qtd);
+
+                }).catch((err) => {
+                  toast.error('Erro ! :' + err.message)
+                })
+
+              }).catch((err) => {
+                toast.error('Erro ! :' + err.message)
+              })
+
+            } else if (result.isDenied) {
+              Swal.fire("Nada salvo", "", "info");
+            }
+          });
+
+        }
+      }
+
     }
-  }
 
   }
 
@@ -636,7 +627,7 @@ const CadCompras = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -663,10 +654,10 @@ const CadCompras = () => {
           <Outlet /><br /><br />
           <div className='d-flex justify-content-center align-items-center vh-90'>
             <div className='bg-white p-4 rounded border' style={{ width: '45%' }}>
-              <h4><center>Cadastrar Compra:</center></h4><br />
+              <h4><center><strong>Cadastrar Compra:</strong></center></h4><br />
               <form action='' onSubmit={cadastrar}>
                 <div className='mb-3'>
-                  <label htmlFor='compran' style={{ fontSize: '20px', margin: '0 115px' }}>Compra nº:</label>
+                  <label htmlFor='compran' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Compra nº:</label>
                   <table className="table" style={{ fontFamily: 'arial', fontSize: '20px', width: '5%', margin: '0 120px' }}>
                     <thead hidden='true'>
                       <tr>
@@ -679,7 +670,7 @@ const CadCompras = () => {
                         compradata.map(item => (
                           <tr key={item.id}>
                             <td className="td" hidden='true'>{item.id}</td>
-                            <td className="td" style={{ fontSize: '20px' }} id='compran'>{item.numero}</td>
+                            <td className="td" style={{ fontSize: '20px', fontWeight:'bold', color:'navy'}} id='compran'>{item.numero}</td>
                           </tr>
                         ))
                       }
@@ -687,27 +678,28 @@ const CadCompras = () => {
                   </table>
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px' }}>Nome:</label>
-                  <input type='text' onKeyUp={mudacorNome} placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 540, margin: '0 115px' }} className='form-control rounded-0' name='nome' id='nome' />
+                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Nome:</label>
+                  <input type='text' onKeyUp={mudacorNome} placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 540, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='nome' id='nome' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='qtd' style={{ fontSize: '20px', margin: '0 115px' }}>Quantidade:</label>
-                  <label htmlFor='total' style={{ fontSize: '20px', margin: '0 75px' }}>Total Geral:</label>
-                  <input type='number' onKeyUp={mudacorqtd} onSelect={mudacorqtd} value={quant} onChange={e => quantchange(e.target.value)} style={{ fontSize: '20px', width: 90, margin: '0 115px' }} className='form-control rounded-0' name='qtd' id='qtd' />
-                  <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='total' id='total' />
+                  <label htmlFor='qtd' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Quantidade:</label>
+                  <label htmlFor='total' style={{ fontSize: '20px', margin: '0 75px', fontWeight:'bold' }}>Total:</label>
+                  <input type='number' onKeyUp={mudacorqtd} onSelect={mudacorqtd} value={quant} onChange={e => quantchange(e.target.value)} style={{ fontSize: '20px', width: 90, margin: '0 115px', fontWeight:'bold', color:'navy' }} className='form-control rounded-0' name='qtd' id='qtd' />
+                  <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px', fontWeight:'bold', color:'navy' }} className='form-control rounded-0' name='total' id='total' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px' }}>Custo:</label>
-                  <label htmlFor='valorpag' style={{ fontSize: '20px', margin: '0 124px' }}>Valor Pago:</label>
-                  <input type="decimal" onKeyUp={mudacorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' id='custo' />
-                  <input type="decimal" value={valorpag} onChange={e => valorpagchange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='valorpag' id='valorpag' /> <br /> 
-                  <label htmlFor='vf' style={{ fontSize: '20px', margin: '0 120px' }}>Frete:</label>                 
-                  <input type="decimal" onKeyUp={mudacorFrete} value={vf} onChange={e => vfchange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 120px' }} className='form-control rounded-0' name='vf' id='vf' />
-                                 
+                  <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Custo:</label>
+                  <label htmlFor='valorpag' style={{ fontSize: '20px', margin: '0 120px', fontWeight:'bold' }}>Total c/Frete:</label>
+                  <input type="decimal" value={custo} onChange={e => custochange(e.target.value)} onKeyUp={mudacorCusto} style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight:'bold', color:'navy'}} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' id='custo' />
+                  <input type="decimal" style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px', fontWeight:'bold', color:'navy' }} className='form-control rounded-0' name='totalfrete' id='totalfrete' /> <br />
+                  <label htmlFor='vf' style={{ fontSize: '20px', margin: '0 124px', fontWeight:'bold' }}>Frete:</label>
+                  <label htmlFor='valorpago' style={{ fontSize: '20px', margin: '0 120px', fontWeight:'bold' }}>Valor Pago:</label>
+                  <input type="decimal" onKeyUp={mudacorFrete} value={vf} onChange={e => vfchange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight:'bold', color:'navy' }} placeholder='Entre com o frete:' className='form-control rounded-0' name='vf' id='vf' />
+                  <input type="decimal" onKeyDown={MudaCorValorPag} style={{ fontSize: '20px', width: 150, margin: '0 420px', marginTop: '-42px', fontWeight:'bold', color:'navy' }} className='form-control rounded-0' name='valorpago' id='valorpago' /> <br />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='parcela' style={{ fontSize: '20px', margin: "0 415px" }}>Parcelamento:</label>
-                  <select value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 415px', marginTop: '-1px' }} className='form-select' name='parcela' id='parcela'>
+                  <label htmlFor='parcela' style={{ fontSize: '20px', margin: "0 415px", fontWeight:'bold' }}>Parcelamento:</label>
+                  <select value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 415px', marginTop: '-1px', fontWeight:'bold', color:'navy'}} className='form-select' name='parcela' id='parcela'>
                     <option value=""></option>
                     <option value="2x">2x</option>
                     <option value="3x">3x</option>
@@ -723,9 +715,9 @@ const CadCompras = () => {
                   </select>
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='formapag' style={{ fontSize: '20px', margin: '0 115px' }}>Forma de Pagamento:</label>
-                  <label htmlFor='parcela' style={{ fontSize: '20px', marginLeft: '-12px' }}>Parcelas:</label>
-                  <select style={{ fontSize: '20px', width: 130, margin: '0 115px' }} name='formapag' id='formapag' className='form-select' value={formapag} onChange={e => formapagchange(e.target.value)}>
+                  <label htmlFor='formapag' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Forma de Pagamento:</label>
+                  <label htmlFor='parcela' style={{ fontSize: '20px', marginLeft: '-12px', fontWeight:'bold' }}>Parcelas:</label>
+                  <select style={{ fontSize: '20px', width: 130, margin: '0 115px', fontWeight:'bold', color:'navy' }} name='formapag' id='formapag' className='form-select' value={formapag} onChange={e => formapagchange(e.target.value)}>
                     <option value=""></option>
                     <option value="Dinheiro">Dinheiro</option>
                     <option value="Pix">Pix</option>
@@ -733,7 +725,7 @@ const CadCompras = () => {
                     <option value="Crédito">Crédito</option>
                     <option value="Boleto">Boleto</option>
                   </select>
-                  <select value={parcela} onChange={e => parcelachange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 415px', marginTop: '-42px' }} className='form-select' name='parcela' id='parcela'>
+                  <select value={parcela} onChange={e => parcelachange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 415px', marginTop: '-42px', fontWeight:'bold', color:'navy' }} className='form-select' name='parcela' id='parcela'>
                     <option value=""></option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -747,14 +739,12 @@ const CadCompras = () => {
                     <option value="11">11</option>
                     <option value="12">12</option>
                   </select>
-
                 </div>
-
                 <div className='mb-3'>
-                  <label htmlFor='datapag' style={{ fontSize: '20px', margin: '0 115px' }}>Data de Cadastro:</label>
-                  <label htmlFor='parcelan' style={{ fontSize: '20px', marginLeft: '20px' }}>Parcela:</label>
-                  <input type='date' onKeyUp={mudacorData} onSelect={mudacorData} value={datacad} onChange={e => datacadchange(e.target.value)} style={{ fontSize: '20px', width: 190, margin: '0 115px' }} className='form-control rounded-0' name='datacad' id='datacad' />
-                  <select value={parcelan} onChange={e => parcelanchange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 415px', marginTop: '-42px' }} className='form-select' name='parcelan' id='parcela'>
+                  <label htmlFor='datapag' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Data de Cadastro:</label>
+                  <label htmlFor='parcelan' style={{ fontSize: '20px', marginLeft: '20px', fontWeight:'bold' }}>Parcela:</label>
+                  <input type='date' onKeyUp={mudacorData} onSelect={mudacorData} value={datacad} onChange={e => datacadchange(e.target.value)} style={{ fontSize: '20px', width: 190, margin: '0 115px', fontWeight:'bold', color:'navy' }} className='form-control rounded-0' name='datacad' id='datacad' />
+                  <select value={parcelan} onChange={e => parcelanchange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 415px', marginTop: '-42px', fontWeight:'bold', color:'navy' }} className='form-select' name='parcelan' id='parcela'>
                     <option value=""></option>
                     <option value="1ª">1ª</option>
                     <option value="2ª">2ª</option>
@@ -771,7 +761,7 @@ const CadCompras = () => {
                   </select>
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 115px' }}>Mês:</label>
+                  <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Mês:</label>
                   <table className="table" style={{ fontFamily: 'arial', fontSize: '20px', width: '5%', margin: '0 120px' }}>
                     <thead hidden='true'>
                       <tr>
@@ -784,7 +774,7 @@ const CadCompras = () => {
                         mescompraatual.map(item => (
                           <tr key={item.id}>
                             <td className="td" hidden='true'>{item.id}</td>
-                            <td className="td" style={{ fontSize: '20px' }} id='mescompraatual'>{item.mes}</td>
+                            <td className="td" style={{ fontSize: '20px', fontWeight:'bold', color:'navy' }} id='mescompraatual'>{item.mes}</td>
                           </tr>
                         ))
                       }
@@ -793,8 +783,8 @@ const CadCompras = () => {
 
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='formapag' style={{ fontSize: '20px', margin: '0 115px' }}>Fornecedor:</label>
-                  <select style={{ fontSize: '20px', width: 420, margin: '0 115px' }} id='forname' className='form-select' onChange={(e) => setValues({ ...values, id: e.target.value })}>
+                  <label htmlFor='formapag' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Fornecedor:</label>
+                  <select style={{ fontSize: '20px', width: 420, margin: '0 115px', fontWeight:'bold', color:'navy' }} id='forname' className='form-select' onChange={(e) => setValues({ ...values, id: e.target.value })}>
                     <option></option>
                     {forname.map(val => {
                       return <option value={val.nome}>{val.nome}</option>
@@ -803,14 +793,13 @@ const CadCompras = () => {
                 </div>
                 <div className='mb-3'>
                   <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px', fontSize: '16px' }}>Cadastrar:</button>
-                  <Link onClick={totalFrete} className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 36px', fontSize: '16px', width: 115 }}>Total c/frete:</Link>
+                  <Link className="btn border rounded-0" onClick={totalFrete} style={{ color: 'white', backgroundColor: 'gray', margin: '0 36px', fontSize: '16px', width: 115 }}>Total c/frete:</Link>
+
                 </div>
                 <ToastContainer />
               </form>
               <button className='btn btn-primary border rounded-0' onClick={calcular} style={{ width: 100, margin: '0 240px', marginTop: '-94px', fontSize: '16px' }}>Total:</button>
-              
-              <Link to='/produtos/codigo' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 506px', fontSize: '16px', width: 100, marginTop: '-142px'  }}>Voltar:</Link>
-
+              <Link to='/produtos/codigo' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 510px', marginTop: '-140px', fontSize: '16px', width: 100 }}>Voltar:</Link>
             </div>
           </div>
         </div>

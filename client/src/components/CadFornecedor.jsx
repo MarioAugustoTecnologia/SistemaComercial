@@ -462,10 +462,10 @@ function mudacorCat(){
                     Resultados:
                   </span>
                 </Link>
-              </li>
+              </li> 
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -473,7 +473,7 @@ function mudacorCat(){
                     Orçamentos:
                   </span>
                 </Link>
-              </li>             
+              </li>            
               <li className="w-100" onClick={logout}>
                 <Link to="/"
                   className="nav-link px-0 align-middle text-white"
@@ -493,25 +493,25 @@ function mudacorCat(){
 
           <div className='d-flex justify-content-center align-items-center vh-100'>
             <div className='bg-white p-4 rounded w-42 border'>
-              <h4><center>Cadastrar Fornecedor:</center></h4><br />
+              <h4><center><strong>Cadastrar Fornecedor:</strong></center></h4><br />
               <form action='' onSubmit={cadastrar}>
 
                 <div className='mb-3'>
-                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px' }}>Nome:</label>
-                  <input type='text' placeholder='Entre com o nome' value={nome} onChange={e => nomechange(e.target.value)} onKeyUp={mudacor} style={{ fontSize: '20px', width: 400, margin: '0 115px' }} className='form-control rounded-0' name='nome' id='nome' />
+                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Nome:</label>
+                  <input type='text' placeholder='Entre com o nome' value={nome} onChange={e => nomechange(e.target.value)} onKeyUp={mudacor} style={{ fontSize: '20px', width: 400, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='nome' id='nome' />
 
                 </div>
 
                 <div className='mb-3'>
-                  <label htmlFor='endereco' style={{ fontSize: '20px', margin: '0 115px' }}>Endereço:</label>
-                  <input type="text" value={endereco} onChange={e => enderecochange(e.target.value)} style={{ fontSize: '20px', width: 630, margin: '0 115px' }} onKeyUp={mudacorEnd} placeholder='Entre com o endereço:' className='form-control rounded-0' name='endereco' id='endereco' />
+                  <label htmlFor='endereco' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Endereço:</label>
+                  <input type="text" value={endereco} onChange={e => enderecochange(e.target.value)} style={{ fontSize: '20px', width: 630, margin: '0 115px', fontWeight:'bold', color:'navy'}} onKeyUp={mudacorEnd} placeholder='Entre com o endereço:' className='form-control rounded-0' name='endereco' id='endereco' />
 
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='numero' style={{ fontSize: '20px', margin: '0 115px' }}>Numero:</label>
-                  <label htmlFor='categoria' style={{ fontSize: '20px', margin: '0 -52px' }}>Categoria:</label>
-                  <input type='number' value={numero} onChange={e => numerochange(e.target.value)} style={{ width: 100, margin: '0 115px', fontSize: '20px' }} onKeyUp={mudacorNumero} className='form-control rounded-0' name='numero' id='numero' />
-                   <select onSelect={mudacorCat} style={{ width: 270, margin: '0 250px', marginTop: '-42px', fontSize: '20px' }} className='form-select' name='catforn' id='catforn' onChange={(e) => setValues({ ...values, id: e.target.value })} >
+                  <label htmlFor='numero' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Numero:</label>
+                  <label htmlFor='categoria' style={{ fontSize: '20px', margin: '0 -52px', fontWeight:'bold'}}>Categoria:</label>
+                  <input type='number' value={numero} onChange={e => numerochange(e.target.value)} style={{ width: 100, margin: '0 115px', fontSize: '20px', fontWeight:'bold', color:'navy'}} onKeyUp={mudacorNumero} className='form-control rounded-0' name='numero' id='numero' />
+                   <select onSelect={mudacorCat} style={{ width: 270, margin: '0 250px', marginTop: '-42px', fontSize: '20px', fontWeight:'bold', color:'navy'}} className='form-select' name='catforn' id='catforn' onChange={(e) => setValues({ ...values, id: e.target.value })} >
                     <option value=""></option>
                     {catforn.map(val => {
                       return <option value={val.nome}>{val.nome}</option>
@@ -519,28 +519,28 @@ function mudacorCat(){
                    </select>
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='comp' style={{ fontSize: '20px', margin: '0 115px' }}>Complemento:</label>
-                  <input type='text' value={comp} onChange={e => compchange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 115px' }} onKeyUp={mudacorComp} className='form-control rounded-0' name='comp' id='comp' />
+                  <label htmlFor='comp' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Complemento:</label>
+                  <input type='text' value={comp} onChange={e => compchange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 115px', fontWeight:'bold', color:'navy'}} onKeyUp={mudacorComp} className='form-control rounded-0' name='comp' id='comp' />
 
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='cep' style={{ fontSize: '20px', margin: '0 115px' }}>Cep:</label>
-                  <input type='text' placeholder='Entre com o cep:' value={cep} onChange={e => cepchange(e.target.value)} onKeyUp={mudacorCep} style={{ fontSize: '20px', width: 225, margin: '0 115px' }} className='form-control rounded-0' name='cep' id='cep' />
+                  <label htmlFor='cep' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Cep:</label>
+                  <input type='text' placeholder='Entre com o cep:' value={cep} onChange={e => cepchange(e.target.value)} onKeyUp={mudacorCep} style={{ fontSize: '20px', width: 225, margin: '0 115px', fontWeight:'bold', color:'navy' }} className='form-control rounded-0' name='cep' id='cep' />
 
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='cidade' style={{ fontSize: '20px', margin: '0 115px' }}>Cidade:</label>
-                  <input type='text' placeholder='Entre com a cidade:' value={cidade} onChange={e => cidadechange(e.target.value)} onKeyUp={mudacorCidade} style={{ fontSize: '20px', width: 350, margin: '0 115px' }} className='form-control rounded-0' name='cidade' id='cidade' />
+                  <label htmlFor='cidade' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Cidade:</label>
+                  <input type='text' placeholder='Entre com a cidade:' value={cidade} onChange={e => cidadechange(e.target.value)} onKeyUp={mudacorCidade} style={{ fontSize: '20px', width: 350, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='cidade' id='cidade' />
 
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='email' style={{ fontSize: '20px', margin: '0 115px' }}>Email:</label>
-                  <input type='email' placeholder='Entre com o email:' value={email} onChange={e => emailchange(e.target.value)} style={{ fontSize: '20px', width: 350, margin: '0 115px'}} onKeyUp={mudacorEmail} className='form-control rounded-0' name='email' id='email' />
+                  <label htmlFor='email' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Email:</label>
+                  <input type='email' placeholder='Entre com o email:' value={email} onChange={e => emailchange(e.target.value)} style={{ fontSize: '20px', width: 350, margin: '0 115px', fontWeight:'bold', color:'navy'}} onKeyUp={mudacorEmail} className='form-control rounded-0' name='email' id='email' />
 
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='fone' style={{ fontSize: '20px', margin: '0 115px' }}>Telefone:</label>
-                  <input type='text' placeholder='Entre com o telefone:' value={fone} onChange={e => fonechange(e.target.value)} onKeyUp={mudacorFone} style={{ fontSize: '20px', width: 225, margin: '0 115px' }} className='form-control rounded-0' name='fone' id='fone' />
+                  <label htmlFor='fone' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Telefone:</label>
+                  <input type='text' placeholder='Entre com o telefone:' value={fone} onChange={e => fonechange(e.target.value)} onKeyUp={mudacorFone} style={{ fontSize: '20px', width: 225, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='fone' id='fone' />
 
                 </div><br />
                 <div className='mb-3'>

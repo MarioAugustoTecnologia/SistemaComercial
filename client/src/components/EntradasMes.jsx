@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
-import { toast } from 'react-toastify';
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from 'react-toastify';
 import Swal from 'sweetalert2';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -86,23 +86,24 @@ const EntradasMes = () => {
       let valores = [];
 
       table.map(item => {
-        valores.push(item.valorpag)
+        valores.push(item.valorpagto)
       })
 
       let soma = valores.reduce((previous_value, current_value) => {       // método que faz a soma
         return parseFloat(previous_value) + parseFloat(current_value);     // converte de string para number
       })
 
-      const nome = 'Total das entradas no mes:';
+      const nome = 'Total das entradas no mes de  '  +   buscames;
       const total = soma.toFixed(2);
-      const data = formataData();
+      const data_cad = formataData();
       const preco = 0;
       const vendan = "0";
       const mes = buscames;
       const troco = 0;
-      const valorpag = 0;
+      const valorpagto = 0;
+ 
 
-      const cadobj = { nome, total, data, preco, mes, vendan, troco, valorpag }
+      const cadobj = { nome, total, preco, mes, vendan, troco, valorpagto, data_cad }
 
       fetch("https://sistemacomercialserver.onrender.com/vendas", {
         method: "POST",
@@ -120,38 +121,38 @@ const EntradasMes = () => {
   }
 
   const cadastrar = (e) => {
-
-    e.preventDefault();
-
-    const cadobj = { mes }
-
-    Swal.fire({
-      title: "Deseja salvar ?",
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: "Salvar",
-      denyButtonText: `Não salvar`
-    }).then((result) => {
-
-      if (result.isConfirmed) {
-
-        fetch("https://sistemacomercialserver.onrender.com/mesatual", {
-          method: "POST",
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify(cadobj)
-        }).then((res) => {
-          toast.success('Cadastrado com sucesso !')
-
-        }).catch((err) => {
-          toast.error('Erro ! :' + err.message)
+  
+      e.preventDefault();
+  
+      const cadobj = { mes }    
+  
+        Swal.fire({
+          title: "Deseja salvar ?",
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: "Salvar",
+          denyButtonText: `Não salvar`
+        }).then((result) => {
+  
+          if (result.isConfirmed) {
+  
+            fetch("https://sistemacomercialserver.onrender.com/mesatual", {
+              method: "POST",
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify(cadobj)
+            }).then((res) => {
+              toast.success('Cadastrado com sucesso !')              
+  
+            }).catch((err) => {
+              toast.error('Erro ! :' + err.message)
+            })
+          }
+          else if (result.isDenied) {
+            Swal.fire("Nada salvo", "", "info");
+          }
         })
-      }
-      else if (result.isDenied) {
-        Swal.fire("Nada salvo", "", "info");
-      }
-    })
-
-  }
+      
+    }  
 
   const logout = () => {
     localStorage.clear()
@@ -159,7 +160,14 @@ const EntradasMes = () => {
 
   }
 
+  const navigate = useNavigate()
 
+  const handleEdit = (id) => {
+    
+   navigate('/entradas/numero/editar/' + id) 
+    
+  }
+  
   return (
     <div className="container-fluid" style={{ fontFamily: 'arial' }}>
       <div className="row flex-nowrap">
@@ -276,7 +284,7 @@ const EntradasMes = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -285,8 +293,9 @@ const EntradasMes = () => {
                   </span>
                 </Link>
               </li>
+
               <li className="w-100" onClick={logout}>
-                <Link
+                <Link to="/"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-power ms-2"></i>
@@ -297,91 +306,94 @@ const EntradasMes = () => {
           </div>
         </div>
         <div className="col p-0 m-0">
-          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: '115%' }}>
+          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: '132%' }}>
             <h4><strong>Sistema de Gestão Comercial</strong></h4>
           </div>
           <Outlet />
           <div className="px-5 mt-5">
             <form action="" onSubmit={cadastrar} >
               <div className="mb3">
-                <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px' }}>Busca por mes:</label>
-                <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px', margin: '0 500px' }}>Mes atual:</label><br />
-                <input type="search" autoFocus='true' className="consultames" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px' }} />
-                <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 20px' }}>Voltar:</Link>
-                <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '18px' }}>Total Entradas:</Link>
-                <select value={mes} onChange={e => setMes(e.target.value)} style={{ fontSize: '20px', width: 160, margin: '0 650px', marginTop: '-40px' }} name='mes' id='mes' className='form-select'>
-                  <option value=""></option>
-                  <option value="Janeiro">Janeiro</option>
-                  <option value="Fevereiro">Fevereiro</option>
-                  <option value="Março">Março</option>
-                  <option value="Abril">Abril</option>
-                  <option value="Maio">Maio</option>
-                  <option value="Junho">Junho</option>
-                  <option value="Julho">Julho</option>
-                  <option value="Agosto">Agosto</option>
-                  <option value="Setembro">Setembro</option>
-                  <option value="Outubro">Outubro</option>
-                  <option value="Novembro">Novembro</option>
-                  <option value="Dezembro">Dezembro</option>
-                </select>
-                <button type="submit" className="btn btn-success" style={{ margin: '0 840px', fontSize: '18px', marginTop: '-69px' }}>Cadastrar:</button>
-                <Link to="/mesatual" className="btn btn-primary" style={{ fontSize: '18px', width: '140px', margin: '0 980px', marginTop: '-114px' }}>Mes atual:</Link>
+              <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold'}}>Busca por mes:</label>
+              <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px', margin: '0 500px', fontWeight:'bold' }}>Mes atual:</label><br />
+              <input type="search" autoFocus='true' className="consultames" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold', color:'navy' }} />
+              <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 20px' }}>Voltar:</Link>
+              <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 5px', fontSize: '18px' }}>Total Entradas:</Link>
+              <select value={mes} onChange={e => setMes(e.target.value)} style={{ fontSize: '20px', width: 160, margin:'0 650px', marginTop:'-40px', fontWeight:'bold', color:'navy' }} name='mes' id='mes' className='form-select'>
+                <option value=""></option>
+                <option value="Janeiro">Janeiro</option>
+                <option value="Fevereiro">Fevereiro</option>
+                <option value="Março">Março</option>
+                <option value="Abril">Abril</option>
+                <option value="Maio">Maio</option>
+                <option value="Junho">Junho</option>
+                <option value="Julho">Julho</option>
+                <option value="Agosto">Agosto</option>
+                <option value="Setembro">Setembro</option>
+                <option value="Outubro">Outubro</option>
+                <option value="Novembro">Novembro</option>
+                <option value="Dezembro">Dezembro</option>
+              </select>
+               <button type="submit" className="btn btn-success" style={{margin:'0 840px', fontSize:'18px', marginTop:'-69px'}}>Cadastrar:</button>
+              <Link to="/mesatual" className="btn btn-primary" style={{ fontSize: '18px', width: '140px', margin: '0 980px', marginTop:'-114px' }}>Mes atual:</Link>
               </div>
-            </form>
-            <br />
-            <h4 style={{ textAlign: 'center', color: 'Red', fontSize: '25px', margin: '0 980px' }}><strong>Entradas:</strong></h4>
-            <br />
-            <div className="mt-3">
-              <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: '120%' }}>
-                <thead>
-                  <tr>
-                    <th className="th" scope="col">Id:</th>
-                    <th className="th" scope="col">Venda nº:</th>
-                    <th className="th" scope="col">Nome:</th>
-                    <th className="th" scope="col">Qtd:</th>
-                    <th className="th" scope="col">Preço:</th>
-                    <th className="th" scope="col">Total c/s Desconto:</th>
-                    <th className="th" scope="col">Forma Paga:</th>
-                    <th className="th" scope="col">Entradas:</th>
-                    <th className="th" scope="col">Troco:</th>
-                    <th className="th" scope="col">Parcelamento:</th>
-                    <th className="th" scope="col">Parcela:</th>
-                    <th className="th" scope="col">Mês:</th>
-                    <th className="th" scope="col">Data de Cadastro:</th>
-                    <th className="th" scope="col">Ação:</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    table.map(item => (
-                      <tr key={item.id}>
-                        <td className="td">{item.id}</td>
-                        <td className="td">{item.vendan}</td>
-                        <td className="td">{item.nome}</td>
-                        <td className="td">{item.quant}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.preco)}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.total)}</td>
-                        <td className="td">{item.formapag}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.valorpag)}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.troco)}</td>
-                        <td className="td">{item.parcelamento}</td>
-                        <td className="td">{item.parcelan}</td>
-                        <td className="td">{item.mes}</td>
-                        <td className="td">{item.data}</td>
-
-                        <td className="td" >
-
+             </form>
+             <br />
+             <h4 style={{ textAlign: 'center', color: 'Red', fontSize: '25px', margin: '0 980px' }}><strong>Entradas:</strong></h4>
+             <br />
+             <div className="mt-3">
+              <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: '137%' }}>
+               <thead>
+                    <tr>
+                      <th className="th" scope="col">Id:</th>
+                      <th className="th" scope="col">Venda nº:</th>
+                      <th className="th" scope="col">Nome:</th>
+                      <th className="th" scope="col">Qtd:</th>
+                      <th className="th" scope="col">Preço:</th>
+                      <th className="th" scope="col">Total:</th>
+                      <th className="th" scope="col">Desconto:</th>
+                      <th className="th" scope="col">Valor Desconto:</th>
+                      <th className="th" scope="col">Total c/Desconto:</th>
+                      <th className="th" scope="col">Forma Paga:</th>
+                      <th className="th" scope="col">Entradas:</th>
+                      <th className="th" scope="col">Troco:</th>                    
+                      <th className="th" scope="col">Parcelamento:</th>
+                      <th className="th" scope="col">Parcela:</th>
+                      <th className="th" scope="col">Mês:</th>
+                      <th className="th" scope="col">Data de Cadastro:</th>
+                      <th className="th" scope="col">Ação:</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      table.map(item => (
+                        <tr key={item.id}>
+                          <td className="td">{item.id}</td>
+                          <td className="td">{item.vendan}</td>
+                          <td className="td">{item.nome}</td>
+                          <td className="td">{item.quant}</td>
+                          <td className="td">{item.preco}</td>
+                          <td className="td">{item.total}</td>
+                          <td className="td">{item.desconto}</td>
+                          <td className="td">{item.valordesc}</td>
+                          <td className="td">{item.totaldesc}</td>
+                          <td className="td">{item.formapag}</td>
+                          <td className="td">{item.valorpagto}</td>
+                          <td className="td">{item.troco}</td>              
+                          <td className="td">{item.parcelamento}</td>
+                          <td className="td">{item.parcelan}</td>
+                          <td className="td">{item.mes}</td>
+                          <td className="td">{item.data_cad}</td>
+                          <td className="td" >
+                          <button className="editar" onClick={() => { handleEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Editar:</button>  
                           <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                          </td>
+                        </tr>
+                      ))
 
-                        </td>
+                    }
 
-                      </tr>
-                    ))
-
-                  }
-
-                </tbody>
-
+                  </tbody>
+                    <ToastContainer />
               </table>
             </div>
             <br />

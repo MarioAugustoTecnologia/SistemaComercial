@@ -262,7 +262,7 @@ const CadDespesas = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -290,22 +290,22 @@ const CadDespesas = () => {
 
           <div className='d-flex justify-content-center align-items-center vh-100'>
             <div className='bg-white p-4 rounded w-50 border'>
-              <h4><center>Cadastrar Despesa:</center></h4><br />
+              <h4><center><strong>Cadastrar Despesa:</strong></center></h4><br />
               <form action='' onSubmit={cadastrar}>
 
                 <div className='mb-3'>
-                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px' }}>Nome:</label>
-                  <input type='text' onKeyUp={MostraNome} id='nome' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 370, margin: '0 115px' }} className='form-control rounded-0' name='nome' />
+                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Nome:</label>
+                  <input type='text' onKeyUp={MostraNome} id='nome' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 370, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='nome' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px' }}>Custo:</label>
-                  <input type="decimal" onKeyUp={MostraCusto} id='custo' value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' />
+                  <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Custo:</label>
+                  <input type="decimal" onKeyUp={MostraCusto} id='custo' value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight:'bold', color:'navy'}} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' />
 
                 </div>
 
                 <div className='mb-3'>
-                  <label htmlFor='datapagamento' style={{ fontSize: '20px', margin: '0 115px' }}>Data de Pagamento:</label>
-                  <input type='date' value={datapag} onChange={e => datapagchange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px' }} className='form-control rounded-0' name='datapag' />
+                  <label htmlFor='datapagamento' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Data de Pagamento:</label>
+                  <input type='date' value={datapag} onChange={e => datapagchange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='datapag' />
                 </div>
                 <div className='mb-3'>
                   <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px', fontSize: '16px' }} >Cadastrar:</button>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Link, Outlet } from "react-router-dom";
+import {Link, Outlet, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -7,6 +7,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 const ComprasUltima = () => {
 
   const [saidadata, setSaidadata] = useState([])
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -38,6 +39,12 @@ const handleDelete = (id) => {
   }).catch((err) => {
     toast.error('Erro ! :' +err.message)
   })
+
+}
+
+const handleReturn = () => {    
+
+navigate('/compras')
 
 }
 
@@ -164,7 +171,7 @@ return (
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -172,7 +179,7 @@ return (
                     Orçamentos:
                   </span>
                 </Link>
-              </li>    
+              </li>  
               
               <li className="w-100" onClick={logout}>
                 <Link
@@ -208,7 +215,8 @@ return (
                                     <tr key={item.id}>
                                            <td className="td" hidden='true'>{item.id}</td>
                                            <td className="td" style={{color:'blue', fontSize:'50px'}}><strong>{item.numero}</strong></td>
-                                           <td className="td"><button className="excluir" onClick={() => {handleDelete(item.id)}} style={{color:'white', backgroundColor:'red', border:'none', borderRadius:'5px', fontSize:'23px', marginTop:'25px'}}>Excluir:</button></td>                                    
+                                           <td className="td"><button className="excluir" onClick={() => {handleDelete(item.id)}} style={{color:'white', backgroundColor:'red', border:'none', borderRadius:'5px', fontSize:'23px', marginTop:'25px'}}>Excluir:</button></td> 
+                                           <td className="td"><button className="excluir" onClick={() => {handleReturn(item.id)}} style={{color:'white', backgroundColor:'orange', border:'none', borderRadius:'5px', fontSize:'23px', marginTop:'25px'}}>Voltar:</button></td>                                    
                                     </tr>
                                   ))
                                                                                                      

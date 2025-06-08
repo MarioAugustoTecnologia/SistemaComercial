@@ -271,10 +271,10 @@ const logout = () => {
                      Resultados:
                   </span>
                 </Link>
-              </li> 
+              </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -282,7 +282,7 @@ const logout = () => {
                     Orçamentos:
                   </span>
                 </Link>
-              </li>
+              </li>   
                           
                 <li className="w-100" onClick={logout}>
                   <Link to="/"
@@ -303,46 +303,46 @@ const logout = () => {
         
       <div className='d-flex justify-content-center align-items-center vh-100'>       
         <div className='bg-white p-4 rounded w-42 border'>
-        <h4><center>Cadastrar novo Usuario:</center></h4><br /> 
+        <h4><center><strong>Cadastrar novo Usuario:</strong></center></h4><br /> 
            <form action='' onSubmit={cadastrar}>
 
            <div className='mb-3'>      
-              <label htmlFor='cod' style={{fontSize:'20px', margin:'0 115px'}}>Cod:</label>
-              <input type='number' onSelect={MostraCod} value={cod} onChange={e => codchange(e.target.value)} style={{fontSize:'20px', width:85, margin:'0 115px'}} className='form-control rounded-0' name='cod' id='cod'/>
+              <label htmlFor='cod' style={{fontSize:'20px', margin:'0 115px', fontWeight:'bold'}}>Cod:</label>
+              <input type='number' onSelect={MostraCod} value={cod} onChange={e => codchange(e.target.value)} style={{fontSize:'20px', width:85, margin:'0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='cod' id='cod'/>
                  
            </div>
 
            <div className='mb-3'>      
-            <label htmlFor='id' style={{fontSize:'20px', margin:'0 115px'}}>Nome:</label>
-            <input type='text' onKeyUp={MostraNome} value={id} onChange={e => idchange(e.target.value)} style={{fontSize:'20px', width:150, margin:'0 115px'}} className='form-control rounded-0' name='id' id='id'/>
+            <label htmlFor='id' style={{fontSize:'20px', margin:'0 115px', fontWeight:'bold'}}>Nome:</label>
+            <input type='text' onKeyUp={MostraNome} value={id} onChange={e => idchange(e.target.value)} style={{fontSize:'20px', width:150, margin:'0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='id' id='id'/>
                  
             </div>          
            
             <div className='mb-3'>           
-            <label htmlFor='email' style={{fontSize:'20px', margin:'0 115px'}}>Email:</label>
-            <input type="email" onKeyUp={MostraEmail} value={email} onChange={e => emailchange(e.target.value)} style={{fontSize:'20px', width:330, margin:'0 115px'}} placeholder='Entre com o email:' className='form-control rounded-0' name='email' id='email'/>
+            <label htmlFor='email' style={{fontSize:'20px', margin:'0 115px', fontWeight:'bold'}}>Email:</label>
+            <input type="email" onKeyUp={MostraEmail} value={email} onChange={e => emailchange(e.target.value)} style={{fontSize:'20px', width:330, margin:'0 115px', fontWeight:'bold', color:'navy'}} placeholder='Entre com o email:' className='form-control rounded-0' name='email' id='email'/>
       
             </div>
             <div className='mb-3'>           
-            <label htmlFor='senha' style={{fontSize:'20px', margin:'0 115px'}}>Senha:</label>
-            <input type='password' onKeyUp={MostraSenha} value={senha} onChange={e => senhachange(e.target.value)}  style={{width:300, margin:'0 115px', fontSize: '20px'}} placeholder='Entre com a senha:' className='form-control rounded-0' name='senha' id='senha'/> 
+            <label htmlFor='senha' style={{fontSize:'20px', margin:'0 115px', fontWeight:'bold'}}>Senha:</label>
+            <input type='password' onKeyUp={MostraSenha} value={senha} onChange={e => senhachange(e.target.value)}  style={{width:300, margin:'0 115px', fontSize: '20px', fontWeight:'bold', color:'navy'}} placeholder='Entre com a senha:' className='form-control rounded-0' name='senha' id='senha'/> 
           
             </div>
             <div className='mb-3'>           
-            <label htmlFor='fone' style={{fontSize:'20px', margin:'0 115px'}}>Telefone:</label>
-            <input type='text' value={fone} onChange={e => fonechange(e.target.value)} style={{fontSize:'20px', width:225, margin:'0 115px'}} placeholder='Entre com o telefone:' className='form-control rounded-0' name='fone'/>
+            <label htmlFor='fone' style={{fontSize:'20px', margin:'0 115px', fontWeight:'bold'}}>Telefone:</label>
+            <input type='text' value={fone} onChange={e => fonechange(e.target.value)} style={{fontSize:'20px', width:225, margin:'0 115px', fontWeight:'bold', color:'navy'}} placeholder='Entre com o telefone:' className='form-control rounded-0' name='fone'/>
                   
             </div>
             <div className='mb-3'>           
-            <label htmlFor='data' style={{fontSize:'20px', margin:'0 115px'}}>Data de Nascimento:</label>
-            <input type='date' onKeyUp={MostraDataNascimento} value={data_nascimento} onChange={e => data_nascimentochange(e.target.value)} style={{fontSize:'20px', width:225, margin:'0 115px'}} className='form-control rounded-0' name='data_nascimento' id='data_nascimento'/> 
+            <label htmlFor='data' style={{fontSize:'20px', margin:'0 115px', fontWeight:'bold'}}>Data de Nascimento:</label>
+            <input type='date' onKeyUp={MostraDataNascimento} value={data_nascimento} onChange={e => data_nascimentochange(e.target.value)} style={{fontSize:'20px', width:225, margin:'0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='data_nascimento' id='data_nascimento'/> 
               
             </div>
             <div className='mb-3'>
-                  <label htmlFor='categoria' className='form-label' style={{fontSize:'20px', margin:'0 115px'}}>
+                  <label htmlFor='categoria' className='form-label' style={{fontSize:'20px', margin:'0 115px', fontWeight:'bold'}}>
                     Categoria: 
                   </label>
-                  <select style={{fontSize:'20px', width:225, margin:'0 115px'}} name='categoria' id='categoria' className='form-select' value={categoria} onChange={e => categoriachange(e.target.value)}>
+                  <select style={{fontSize:'20px', width:225, margin:'0 115px', fontWeight:'bold', color:'navy'}} name='categoria' id='categoria' className='form-select' value={categoria} onChange={e => categoriachange(e.target.value)}>
                     <option value=""></option>    
                     <option value="Administrador">Administrador</option>
                     <option value="Programador">Programador</option>

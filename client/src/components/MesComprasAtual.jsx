@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import {Link, Outlet, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -13,52 +13,58 @@ const MesCompraAtual = () => {
 
     fetch("https://sistemacomercialserver.onrender.com/mescompraatual").then((res) => {
 
-      return res.json()
+        return res.json()
 
     }).then((resp) => {
 
-      setMesCompraAtual(resp)
+        setMesCompraAtual(resp)
 
     }).catch((err) => {
-      console.log(err.message)
+        console.log(err.message)
     })
 
-  }, [])
+}, []) 
 
-  const handleDelete = (id) => {
+const handleDelete = (id) => {    
 
-    fetch("https://sistemacomercialserver.onrender.com/mescompraatual/" + id, {
+  fetch("https://sistemacomercialserver.onrender.com/mescompraatual/" + id , {
 
-      method: "DELETE"
+      method: "DELETE"    
 
-    }).then((res) => {
+  }).then((res) => {           
+                       
+     window.location.reload();     
+                
+  }).catch((err) => {
+    toast.error('Erro ! :' +err.message)
+  })
 
-      window.location.reload();
+}
 
-    }).catch((err) => {
-      toast.error('Erro ! :' + err.message)
-    })
+const navigate = useNavigate()
 
-  }
+function Return(){
+navigate('/compras/mes')
+}
 
   const logout = () => {
     localStorage.clear()
-    console.clear();
+    console.clear();    
   }
+  
+  
+return (
 
-
-  return (
-
-    <div className="container-fluid">
-      <div className="row flex-nowrap">
-        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary" style={{ fontFamily: 'arial', fontSize: '19px' }}>
+<div className="container-fluid">
+  <div className="row flex-nowrap">
+    <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary" style={{fontFamily:'arial', fontSize:'19px'}}>
           <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
             <Link
               to=""
               className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none"
             >
               <span className="fs-5 fw-bolder d-none d-sm-inline">
-                Opções:
+               Opções:
               </span>
             </Link>
             <ul
@@ -66,14 +72,14 @@ const MesCompraAtual = () => {
               id="menu"
             >
               <li className="w-100">
-                <Link
-                  to="/home"
-                  className="nav-link text-white px-0 align-middle"
-                >
-                  <i className="fs-4 bi-speedometer2 ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Painel:</span>
-                </Link>
-              </li>
+                  <Link
+                    to="/home"
+                    className="nav-link text-white px-0 align-middle"
+                  >
+                    <i className="fs-4 bi-speedometer2 ms-2"></i>
+                    <span className="ms-2 d-none d-sm-inline">Painel:</span>
+                  </Link>
+                </li>
               <li className="w-100">
                 <Link
                   to="/usuarios"
@@ -95,7 +101,7 @@ const MesCompraAtual = () => {
                     Compras:
                   </span>
                 </Link>
-              </li>
+              </li> 
               <li className="w-100">
                 <Link
                   to="/despesas"
@@ -106,7 +112,7 @@ const MesCompraAtual = () => {
                     Despesas:
                   </span>
                 </Link>
-              </li>
+              </li>  
               <li className="w-100">
                 <Link
                   to="/produtos"
@@ -114,7 +120,7 @@ const MesCompraAtual = () => {
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    Produtos:
+                   Produtos:
                   </span>
                 </Link>
               </li>
@@ -125,7 +131,7 @@ const MesCompraAtual = () => {
                 >
                   <i className="fs-4 bi bi-truck ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    Fornecedores:
+                 Fornecedores:
                   </span>
                 </Link>
               </li>
@@ -139,7 +145,7 @@ const MesCompraAtual = () => {
                     Clientes:
                   </span>
                 </Link>
-              </li>
+              </li> 
               <li className="w-100">
                 <Link
                   to="/resultado"
@@ -147,13 +153,13 @@ const MesCompraAtual = () => {
                 >
                   <i className="fs-4 bi bi-bank ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    Resultados:
+                     Resultados:
                   </span>
                 </Link>
-              </li>
+              </li> 
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -161,8 +167,8 @@ const MesCompraAtual = () => {
                     Orçamentos:
                   </span>
                 </Link>
-              </li>
-
+              </li>    
+              
               <li className="w-100" onClick={logout}>
                 <Link
                   to="/"
@@ -175,51 +181,52 @@ const MesCompraAtual = () => {
             </ul>
           </div>
         </div>
-        <div className="col p-0 m-0" style={{ fontFamily: 'arial' }}>
-          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue' }}>
-            <h4><strong style={{ fontFamily: 'arial' }}>Sistema de Gestão Comercial:</strong></h4>
-          </div>
-          <Outlet />
-          <div className="px-5 mt-5">
-
-            <div className="mt-3">
-              <table className="table" id="table" style={{ fontFamily: 'arial', fontSize: '20px', width: '20%' }}>
-                <thead hidden='true'>
-                  <tr>
-                    <th className="th" scope="col" >Id:</th>
-                    <th className="th" scope="col">Mes Atual:</th>
-                    <th className="th" scope="col">Ação:</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    mescompraatual.map(item => (
-                      <tr key={item.id}>
-                        <td className="td" hidden='true'>{item.id}</td>
-                        <td className="td" style={{ color: 'blue', fontSize: '50px' }}><strong>{item.mes}</strong></td>
-                        <td className="td"><button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px', fontSize: '23px', marginTop: '25px' }}>Excluir:</button></td>
-                      </tr>
-                    ))
-
-                  }
-
-                </tbody>
-                <ToastContainer />
-
-              </table>
-
-            </div>
-          </div><br />
-
-
-
-        </div>
-
-      </div>
-
+       <div className="col p-0 m-0" style={{fontFamily:'arial'}}>
+           <div className="p-2 d-flex justify-content-center shadow text-white" style={{backgroundColor:'blue'}}>
+               <h4><strong style={{fontFamily:'arial'}}>Sistema de Gestão Comercial:</strong></h4>
+           </div>
+           <Outlet />
+              <div className="px-5 mt-5">                 
+                  
+                    <div className="mt-3">
+                          <table className="table" id="table" style={{fontFamily:'arial', fontSize:'20px', width:'20%'}}>
+                              <thead hidden='true'>
+                                  <tr>
+                                  <th className="th" scope="col" >Id:</th>
+                                  <th className="th" scope="col">Mes Atual:</th>                                
+                                  <th className="th" scope="col">Ação:</th>                       
+                                  </tr> 
+                              </thead>
+                              <tbody>                                
+                                { 
+                                    mescompraatual.map(item => (
+                                    <tr key={item.id}>
+                                           <td className="td" hidden='true'>{item.id}</td>
+                                           <td className="td" style={{color:'blue', fontSize:'50px'}}><strong>{item.mes}</strong></td>
+                                           <td className="td"><button className="excluir" onClick={() => {handleDelete(item.id)}} style={{color:'white', backgroundColor:'red', border:'none', borderRadius:'5px', fontSize:'23px', marginTop:'25px'}}>Excluir:</button></td>
+                                           <td className="td"><button className="voltar" onClick={Return} style={{color:'white', backgroundColor:'orange', border:'none', borderRadius:'5px', fontSize:'23px', marginTop:'25px'}}>Voltar:</button></td>                                    
+                                    </tr>
+                                  ))
+                                                                                                     
+                                } 
+                                                                      
+                              </tbody>
+                              <ToastContainer/> 
+                
+                          </table> 
+           
+                    </div>
+                  </div><br /> 
+                
+                 
+                 
+                </div> 
+          
+       </div> 
+                 
     </div>
 
-
+ 
 
   )
 }

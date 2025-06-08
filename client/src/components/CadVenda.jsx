@@ -8,7 +8,6 @@ import Swal from 'sweetalert2';
 
 const CadVenda = () => {
 
-
   const { pcod } = useParams();
   const navigate = useNavigate();
 
@@ -20,12 +19,7 @@ const CadVenda = () => {
       Idchange(resp.id);
       nomechange(resp.nome);
       precochange(resp.preco);
-      custochange(resp.custo)
       qtdchange(resp.qtd);
-      Categoriachange(resp.categoria);
-      DataCadchange(resp.data_cadastro);
-      Codigochange(resp.codigo);
-      
 
     }).catch((err) => {
       console.log(err.message);
@@ -35,18 +29,12 @@ const CadVenda = () => {
   const [id, Idchange] = useState("")
   const [nome, nomechange] = useState("")
   const [preco, precochange] = useState("")
-  const [custo, custochange] = useState("")
-  const [formapag, formapagchange] = useState("")  
+  const [formapag, formapagchange] = useState("")
   const [estoque, qtdchange] = useState("")
   const [quant, quantchange] = useState("")
   const [parcelamento, parcelamentochange] = useState("")
   const [parcela, parcelachange] = useState("")
   const [parcelan, parcelanchange] = useState("")
-  const [valorpag, valorpagchange] = useState("")
-  const [codigo, Codigochange] = useState("")
-  const [categoria, Categoriachange] = useState("")
-  const [data_cadastro, DataCadchange] = useState("")
-  const [desc, descchange] = useState("")
   const [entradadata, setEntradadata] = useState([])
   const [mesatual, setMesAtual] = useState([])
 
@@ -66,6 +54,8 @@ const CadVenda = () => {
 
   }, [])
 
+
+
   useEffect(() => {
 
     fetch("https://sistemacomercialserver.onrender.com/mesatual").then((res) => {
@@ -82,17 +72,40 @@ const CadVenda = () => {
 
   }, [])
 
+  const isValidate2 = () => {
+
+    let isproceed = true
+    let errormessage = "Campo(s) não pode(m) estar vazio  !"
+
+    if (document.getElementById('desconto').value === null || document.getElementById('desconto').value === '') {
+      document.getElementById('desconto').style.borderColor = 'red';
+      isproceed = false
+      //errormessage += 'Nome Completo:' 
+    }
+    if (document.getElementById('total').value === null || document.getElementById('total').value === '') {
+      document.getElementById('total').style.borderColor = 'red';
+      isproceed = false
+      // errormessage += 'Email:' 
+    }
+
+    if (!isproceed) {
+      toast.warning(errormessage)
+    }
+
+    return isproceed
+  }
+
   const isValidate = () => {
     let isproceed = true
     let errormessage = "Campos não podem estar vazio  !"
 
-
-
     if (nome === null || nome === '') {
+      document.getElementById('nome').style.borderColor = 'red';
       isproceed = false
       //errormessage += 'Nome Completo:' 
     }
     if (preco === null || preco === '') {
+      document.getElementById('preco').style.borderColor = 'red';
       isproceed = false
       // errormessage += 'Email:' 
     }
@@ -110,6 +123,33 @@ const CadVenda = () => {
       //errormessage += 'Telefone:' 
     }
 
+    if (!isproceed) {
+      toast.warning(errormessage)
+    }
+
+    return isproceed
+  }
+
+  const isValidate3 = () => {
+    let isproceed = true
+    let errormessage = "Campos não podem estar vazio  !"
+
+    if (nome === null || nome === '') {
+      document.getElementById('nome').style.borderColor = 'red';
+      isproceed = false
+      //errormessage += 'Nome Completo:' 
+    }
+    if (preco === null || preco === '') {
+      document.getElementById('preco').style.borderColor = 'red';
+      isproceed = false
+      // errormessage += 'Email:' 
+    }
+
+    if (quant === null || quant === '') {
+      document.getElementById('quant').style.borderColor = 'red';
+      isproceed = false
+      //errormessage += 'Telefone:' 
+    }
 
     if (!isproceed) {
       toast.warning(errormessage)
@@ -121,21 +161,34 @@ const CadVenda = () => {
 
   function calcular() {
 
-    const total = (quant * preco).toFixed(2);
-    console.log(total)
-    document.getElementById('total').value = total;
+    if (isValidate3()) {
+
+      const total = (quant * preco).toFixed(2);
+      console.log(total)
+      document.getElementById('total').value = total;
+
+    }
+
 
 
   }
 
   function desconto() {
 
-    var total = document.getElementById('total').value;
+    if (isValidate2()) {
 
-    const desconto = (desc * total).toFixed(2);
-    console.log(desconto)
-    const novototal = total - desconto;
-    document.getElementById('total').value = novototal;
+      var total = document.getElementById('total').value;
+      var desc = document.getElementById('desconto').value;
+
+      const desconto = parseFloat(desc * total).toFixed(2);
+      console.log(desconto)
+      const novototal = total - desconto;
+      document.getElementById('totaldesc').value = novototal;
+      document.getElementById('valordesc').value = desconto;
+      document.getElementById('desconto').value = (desc * 100) + '%';
+      document.getElementById('valorpago').value = novototal;
+
+    }
 
   }
 
@@ -147,90 +200,318 @@ const CadVenda = () => {
     return `${dia}/${mes}/${ano}`;
   }
 
-  const data = formataData();
-
+  function MudaCorDesc() {
+    document.getElementById('desconto').style.borderColor = 'GainsBoro'
+  }   
 
   const cadastrar = (e) => {
 
-    e.preventDefault();
-
-    if (valorpag === '') {
-      document.getElementById('valorpag').value = 0;
-    }
-
-    if (parcelamento === "" || parcelamento === null && parcela === "" || parcela === null && parcelan === "" || parcelan === null) {
+    e.preventDefault(); 
 
 
-      var total = document.getElementById('total').value;
-      const valorpag = parseFloat(document.getElementById('valorpag').value);
+    if (isValidate()) {
 
-      var vendan = document.getElementById('vendan').innerHTML;
-      var mes = document.getElementById('mesatual').innerHTML;
+      if (parcelamento === "" || parcelamento === null && parcela === "" || parcela === null && parcelan === "" || parcelan === null) {
 
-      if (valorpag > total) {
+        if (document.getElementById('desconto').value !== "" && document.getElementById('totaldesc').value !== '' && document.getElementById('valorpago').value !== '' && document.getElementById('valordesc').value !== '') {
 
-        const troco = parseFloat((valorpag - total).toFixed(2));
+          const data_cad = formataData();
+          var total = parseFloat(document.getElementById('total').value).toFixed(2);
+          var totaldesc = parseFloat(document.getElementById('totaldesc').value).toFixed(2)
+          var vendan = document.getElementById('vendan').innerHTML;
+          var mes = document.getElementById('mesatual').innerHTML;
+          var valorpagto = parseFloat(document.getElementById('valorpago').value).toFixed(2);
+          var desconto = document.getElementById('desconto').value;
+          var valordesc = parseFloat(document.getElementById('valordesc').value).toFixed(2);
+          var vp = valorpagto;
 
-        const cadobj = { vendan, nome, quant, preco, total, data, formapag, mes, troco, valorpag }
+          if (valorpagto > totaldesc) {
 
-        if (isValidate()) {
+            const t = parseFloat((valorpagto - totaldesc).toFixed(2));
+            const troco = (t).toFixed(2)
+            valorpagto = parseFloat(valorpagto).toFixed(2);
 
-          Swal.fire({
-            title: "Deseja salvar ?",
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: "Salvar",
-            denyButtonText: `Não salvar`
-          }).then((result) => {
+            const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, troco, valorpagto, totaldesc, desconto, valordesc, vp }
 
-            if (result.isConfirmed) {
+            Swal.fire({
+              title: "Deseja salvar ?",
+              showDenyButton: true,
+              showCancelButton: true,
+              confirmButtonText: "Salvar",
+              denyButtonText: `Não salvar`
+            }).then((result) => {
 
-              fetch("https://sistemacomercialserver.onrender.com/vendas", {
-                method: "POST",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(cadobj)
-              }).then((res) => {
-                toast.success('Cadastrado com Sucesso !')
-                nomechange('')
-                precochange('')
-                formapagchange('')     
-                qtdchange('')
-                parcelamentochange('')
-                parcelachange('')
-                valorpagchange('')
+              if (result.isConfirmed) {
 
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
+                fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                  method: "POST",
+                  headers: { 'content-type': 'application/json' },
+                  body: JSON.stringify(cadobj)
+                }).then((res) => {
+                  toast.success('Cadastrado com Sucesso !')
 
-              function Subtract() {
-                return estoque - quant;
+                  function Subtract() {
+                    return estoque - quant;
+                  }
+                  const qtd = Subtract();
+                  const edtobj = { id, qtd }
+
+                  fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
+                    method: "PATCH",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(edtobj)
+                  }).then((res) => {
+                    console.log(qtd);
+
+                  }).catch((err) => {
+                    toast.error('Erro ! :' + err.message)
+                  })
+
+                }).catch((err) => {
+                  toast.error('Erro ! :' + err.message)
+                })
+
+              } else if (result.isDenied) {
+                Swal.fire("Nada salvo", "", "info");
+              }
+            });
+
+          } else
+            if (valorpagto === totaldesc) {
+
+              const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, valorpagto, totaldesc, desconto, valordesc, vp }
+
+              if (isValidate()) {
+
+                Swal.fire({
+                  title: "Deseja salvar ?",
+                  showDenyButton: true,
+                  showCancelButton: true,
+                  confirmButtonText: "Salvar",
+                  denyButtonText: `Não salvar`
+                }).then((result) => {
+
+                  if (result.isConfirmed) {
+
+                    fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                      method: "POST",
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(cadobj)
+                    }).then((res) => {
+                      toast.success('Cadastrado com Sucesso !')
+
+                      function Subtract() {
+                        return estoque - quant;
+                      }
+                      const qtd = Subtract();
+                      const edtobj = { id, qtd }
+
+                      fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
+                        method: "PATCH",
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(edtobj)
+                      }).then((res) => {
+                        console.log(qtd);
+
+                      }).catch((err) => {
+                        toast.error('Erro ! :' + err.message)
+                      })
+                    }).catch((err) => {
+                      toast.error('Erro ! :' + err.message)
+                    })
+
+                  } else if (result.isDenied) {
+                    Swal.fire("Nada salvo", "", "info");
+                  }
+                });
+
               }
 
-              const qtd = Subtract();
-
-              const edtobj = { id, nome, preco, qtd, categoria, data_cadastro, codigo, custo }
-
-              fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
-                method: "PUT",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(edtobj)
-              }).then((res) => {
-                console.log(qtd);
-
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-
-            } else if (result.isDenied) {
-              Swal.fire("Nada salvo", "", "info");
             }
-          });
-        }
+
+        } else
+          if (document.getElementById('desconto').value === "" && document.getElementById('totaldesc').value === '' && document.getElementById('valorpago').value !== '' && document.getElementById('valordesc').value === '') {
+
+
+            const data_cad = formataData();
+            var total = parseFloat(document.getElementById('total').value).toFixed(2);
+            var vendan = document.getElementById('vendan').innerHTML;
+            var mes = document.getElementById('mesatual').innerHTML;
+            var valorpagto = parseFloat(document.getElementById('valorpago').value).toFixed(2);
+            vp = valorpagto;            
+
+            if (valorpagto > total) {
+
+              const t = parseFloat((valorpagto - total).toFixed(2));
+              const troco = (t).toFixed(2)
+              valorpagto = parseFloat(valorpagto).toFixed(2);
+
+              const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, troco, valorpagto, vp }
+
+              Swal.fire({
+                title: "Deseja salvar ?",
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Salvar",
+                denyButtonText: `Não salvar`
+              }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                  fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                    method: "POST",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(cadobj)
+                  }).then((res) => {
+                    toast.success('Cadastrado com Sucesso !')
+
+                    function Subtract() {
+                      return estoque - quant;
+                    }
+                    const qtd = Subtract();
+                    const edtobj = { id, qtd }
+
+                    fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
+                      method: "PATCH",
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(edtobj)
+                    }).then((res) => {
+                      console.log(qtd);
+
+                    }).catch((err) => {
+                      toast.error('Erro ! :' + err.message)
+                    })
+
+                  }).catch((err) => {
+                    toast.error('Erro ! :' + err.message)
+                  })
+
+                } else if (result.isDenied) {
+                  Swal.fire("Nada salvo", "", "info");
+                }
+              });
+
+            } else
+              if (valorpagto === total) {
+
+                const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, valorpagto, vp }
+
+                if (isValidate()) {
+
+                  Swal.fire({
+                    title: "Deseja salvar ?",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "Salvar",
+                    denyButtonText: `Não salvar`
+                  }).then((result) => {
+
+                    if (result.isConfirmed) {
+
+                      fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                        method: "POST",
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(cadobj)
+                      }).then((res) => {
+                        toast.success('Cadastrado com Sucesso !')
+
+                        function Subtract() {
+                          return estoque - quant;
+                        }
+                        const qtd = Subtract();
+                        const edtobj = { id, qtd }
+
+                        fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
+                          method: "PATCH",
+                          headers: { 'content-type': 'application/json' },
+                          body: JSON.stringify(edtobj)
+                        }).then((res) => {
+                          console.log(qtd);
+
+                        }).catch((err) => {
+                          toast.error('Erro ! :' + err.message)
+                        })
+                      }).catch((err) => {
+                        toast.error('Erro ! :' + err.message)
+                      })
+
+                    } else if (result.isDenied) {
+                      Swal.fire("Nada salvo", "", "info");
+                    }
+                  });
+                }
+              }
+
+          } else if (document.getElementById('desconto').value === "" && document.getElementById('totaldesc').value === '' && document.getElementById('valorpago').value === '' && document.getElementById('valordesc').value === '') {
+
+
+            var total = parseFloat(document.getElementById('total').value).toFixed(2);
+            var vendan = document.getElementById('vendan').innerHTML;
+            var mes = document.getElementById('mesatual').innerHTML;
+            const data_cad = formataData();
+            const valorpagto = 0;
+            vp = total;
+
+            const cadobj = { vendan, nome, quant, preco, total, data_cad, mes, valorpagto, vp }
+
+            if (isValidate()) {
+
+              Swal.fire({
+                title: "Deseja salvar ?",
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Salvar",
+                denyButtonText: `Não salvar`
+              }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                  fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                    method: "POST",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(cadobj)
+                  }).then((res) => {
+
+                    function Subtract() {
+                      return estoque - quant;
+                    }
+                    const qtd = Subtract();
+                    const edtobj = { id, qtd }
+
+                    fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
+                      method: "PATCH",
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(edtobj)
+                    }).then((res) => {
+                      console.log(qtd);
+
+                    }).catch((err) => {
+                      toast.error('Erro ! :' + err.message)
+                    })
+                    navigate('/produtos/codigo')
+
+                  }).catch((err) => {
+                    toast.error('Erro ! :' + err.message)
+                  })
+
+                } else if (result.isDenied) {
+                  Swal.fire("Nada salvo", "", "info");
+                }
+              });
+            }
+          }
 
       } else {
-        var troco = 0;
-        const cadobj = { vendan, nome, quant, preco, total, data, formapag, mes, valorpag, troco }
+
+        var vendan = document.getElementById('vendan').innerHTML;    
+        var data_cad = formataData()
+        var total = parseFloat(document.getElementById('total').value).toFixed(2);
+        var parcelas = parcela;       
+        var valorpagto = (total / parcelas).toFixed(2);
+        vp = valorpagto;
+        var mes = document.getElementById('mesatual').innerHTML;
+
+        const cadobj = { vendan, nome, quant, preco, total, valorpagto, parcelamento, parcelan, formapag, mes, data_cad, vp }
 
         if (isValidate()) {
 
@@ -250,34 +531,23 @@ const CadVenda = () => {
                 body: JSON.stringify(cadobj)
               }).then((res) => {
                 toast.success('Cadastrado com Sucesso !')
-                nomechange('')
-                precochange('')
-                formapagchange('')
-                qtdchange('')
-                parcelamentochange('')
-                parcelachange('')
-                valorpagchange('')
-                navigate('/produtos/codigo')
 
+                function Subtract() {
+                  return estoque - quant;
+                }
+                const qtd = Subtract();
+                const edtobj = { id, qtd }
 
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
+                fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
+                  method: "PATCH",
+                  headers: { 'content-type': 'application/json' },
+                  body: JSON.stringify(edtobj)
+                }).then((res) => {
+                  console.log(qtd);
 
-              function Subtract() {
-                return estoque - quant;
-              }
-
-              const qtd = Subtract();
-
-              const edtobj = { id, nome, preco, qtd, categoria, data_cadastro, codigo, custo }
-
-              fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
-                method: "PUT",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(edtobj)
-              }).then((res) => {
-                console.log(qtd);
+                }).catch((err) => {
+                  toast.error('Erro ! :' + err.message)
+                })
 
               }).catch((err) => {
                 toast.error('Erro ! :' + err.message)
@@ -289,70 +559,8 @@ const CadVenda = () => {
           });
 
         }
-
       }
 
-    } else {
-
-      var vendan = document.getElementById('vendan').value;
-      var mes = document.getElementById('mesatual').innerHTML;
-
-      if (isValidate()) {
-
-        Swal.fire({
-          title: "Deseja salvar ?",
-          showDenyButton: true,
-          showCancelButton: true,
-          confirmButtonText: "Salvar",
-          denyButtonText: `Não salvar`
-        }).then((result) => {
-
-          if (result.isConfirmed) {
-
-            const total = (qtd * preco).toFixed(2);
-            console.log(total)
-
-            const valorpag = (total / parcela).toFixed(2);
-            console.log(valorpag)
-
-            const cadobj = { vendan, nome, quant, preco, total, data, valorpag, formapag, parcelamento, parcelan, mes }
-
-            fetch("https://sistemacomercialserver.onrender.com/vendas", {
-              method: "POST",
-              headers: { 'content-type': 'application/json' },
-              body: JSON.stringify(cadobj)
-            }).then((res) => {
-              toast.success('Cadastrado com Sucesso !')
-
-
-            }).catch((err) => {
-              toast.error('Erro ! :' + err.message)
-            })
-
-            function Subtract() {
-              return estoque - quant;
-            }
-
-            const qtd = Subtract();
-
-            const edtobj = { id, nome, preco, qtd, categoria, data_cadastro, codigo, custo }
-
-            fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
-              method: "PUT",
-              headers: { 'content-type': 'application/json' },
-              body: JSON.stringify(edtobj)
-            }).then((res) => {
-              console.log(qtd);
-
-            }).catch((err) => {
-              toast.error('Erro ! :' + err.message)
-            })
-          } else if (result.isDenied) {
-            Swal.fire("Nada salvo", "", "info");
-          }
-        });
-
-      }
     }
 
   }
@@ -362,6 +570,8 @@ const CadVenda = () => {
     document.getElementById('quant').style.borderColor = 'Gainsboro';
 
   }
+
+
 
 
   const logout = () => {
@@ -487,7 +697,7 @@ const CadVenda = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -496,7 +706,6 @@ const CadVenda = () => {
                   </span>
                 </Link>
               </li>
-
               <li className="w-100" onClick={logout}>
                 <Link to="/"
                   className="nav-link px-0 align-middle text-white"
@@ -514,11 +723,11 @@ const CadVenda = () => {
           </div>
           <Outlet /><br /><br />
           <div className='d-flex justify-content-center align-items-center vh-90'>
-            <div className='bg-white p-4 rounded border' style={{ width: '61%' }}>
-              <h4><center>Cadastrar Venda:</center></h4><br />
+            <div className='bg-white p-4 rounded border' style={{ width: '80%' }}>
+              <h4><center><strong>Cadastrar Venda:</strong></center></h4><br />
               <form action='' onSubmit={cadastrar}>
                 <div className='mb-3'>
-                  <label htmlFor='compran' style={{ fontSize: '20px', margin: '0 115px' }}>Venda nº:</label>
+                  <label htmlFor='compran' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Venda nº:</label>
                   <table className="table" style={{ fontFamily: 'arial', fontSize: '20px', width: '5%', margin: '0 120px' }}>
                     <thead hidden='true'>
                       <tr>
@@ -531,34 +740,49 @@ const CadVenda = () => {
                         entradadata.map(item => (
                           <tr key={item.id}>
                             <td className="td" hidden='true'>{item.id}</td>
-                            <td className="td" style={{ fontSize: '20px' }} id='vendan'>{item.numero}</td>
+                            <td className="td" style={{ fontSize: '20px', fontWeight:'bold', color:'navy'}} id='vendan'>{item.numero}</td>
                           </tr>
                         ))
                       }
-                    </tbody>                  
+                    </tbody>
                   </table>
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px' }}>Nome:</label>
-                  <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 560, margin: '0 115px' }} className='form-control rounded-0' name='nome' />
+                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Nome:</label>
+                  <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 560, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='nome' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='qtd' style={{ fontSize: '20px', margin: '0 115px' }}>Quantidade:</label>
-                  <label htmlFor='total' style={{ fontSize: '20px', margin: '0 75px' }}>Total c/s Desconto:</label>
-                  <label htmlFor='total' style={{ fontSize: '20px' }}>Desconto:</label>
-                  <input type='number'  autoFocus={true} onSelect={mudacorquant} value={quant} onChange={e => quantchange(e.target.value)} style={{ fontSize: '20px', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='qtd' id='quant' />
-                  <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='total' id='total' />
-                  <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 655px', marginTop: '-42px' }} className='form-control rounded-0' name='desconto' id='desconto' value={desc} onChange={e => descchange(e.target.value)} />
+                  <label htmlFor='qtd' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Quantidade:</label>
+                  <label htmlFor='total' style={{ fontSize: '20px', margin: '0 -50px', fontWeight:'bold' }}>Total:</label>
+                  <label htmlFor='totaldesc' style={{ fontSize: '20px', margin: '0 200px', fontWeight:'bold' }}>Total c/Desconto:</label>
+                  <label htmlFor='desconto' style={{ fontSize: '20px', margin: '0 -160px', fontWeight:'bold' }}>Desconto:</label>
+                  <input type='number' autoFocus={true} onSelect={mudacorquant} value={quant} onChange={e => quantchange(e.target.value)} style={{ fontSize: '20px', width: 85, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='qtd' id='quant' />
+                  <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 300px', marginTop: '-43px', fontWeight:'bold', color:'navy' }} className='form-control rounded-0' name='total' id='total' />
+                  <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 500px', marginTop: '-43px', fontWeight:'bold', color:'navy' }} className='form-control rounded-0' name='totaldesc' id='totaldesc' />
+                  <input type='text' onKeyDown={MudaCorDesc} style={{ fontSize: '20px', width: 150, margin: '0 700px', marginTop: '-43px', fontWeight:'bold', color:'navy' }} className='form-control rounded-0' name='desconto' id='desconto' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px' }}>Preço:</label>
-                  <label htmlFor='valorpag' style={{ fontSize: '20px', margin: '0 124px' }}>Valor Pago:</label>
-                  <input type="decimal" value={preco} onChange={e => precochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' />
-                  <input type="decimal" value={valorpag} onChange={e => valorpagchange(e.target.value)} style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='valorpag' id='valorpag' />
+                  <label htmlFor='preco' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Preço:</label>
+                  <label htmlFor='valorpag' style={{ fontSize: '20px', margin: '0 90px', fontWeight:'bold'}}>Valor Pago:</label>
+                  <label htmlFor='valordesc' style={{ fontSize: '20px', margin: '0 -5px', fontWeight:'bold'}}>Valor Desconto:</label>
+                  <input type="decimal" value={preco} onChange={e => precochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight:'bold', color:'navy'}} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' />
+                  <input type="decimal" style={{ fontSize: '20px', width: 150, margin: '0 380px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='valorpago' id='valorpago' />
+                  <input type="decimal" style={{ fontSize: '20px', width: 150, margin: '0 570px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='valordesc' id='valordesc' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='parcela' style={{ fontSize: '20px', margin: "0 415px" }} hidden>Parcelamento:</label>
-                  <select value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 415px', marginTop: '-1px' }} className='form-select' name='parcela' id='parcela' hidden>
+                  <label htmlFor='formapag' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Forma de Pagamento:</label>
+                  <label htmlFor='parcelamento' style={{ fontSize: '20px', margin: '0 -47px', fontWeight:'bold'}}>Parcelamento:</label>
+                  <label htmlFor='parcelan' style={{ fontSize: '20px', margin: '0 80px', fontWeight:'bold'}}>Parcela n°:</label>
+                  <label htmlFor='parcelas' style={{ fontSize: '20px', margin: '0 -10px', fontWeight:'bold' }}>Parcelas:</label>
+                  <select style={{ fontSize: '20px', width: 130, margin: '0 115px', marginTop: '0px', fontWeight:'bold', color:'navy' }} name='formapag' id='formapag' className='form-select' value={formapag} onChange={e => formapagchange(e.target.value)}>
+                    <option value=""></option>
+                    <option value="Dinheiro">Dinheiro</option>
+                    <option value="Pix">Pix</option>
+                    <option value="Débito">Débito</option>
+                    <option value="Crédito">Crédito</option>
+                    <option value="Boleto">Boleto</option>
+                  </select>
+                  <select value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 392px', marginTop: '-42px', fontWeight:'bold', color:'navy' }} className='form-select' name='parcela' id='parcela'>
                     <option value=""></option>
                     <option value="2x">2x</option>
                     <option value="3x">3x</option>
@@ -572,39 +796,7 @@ const CadVenda = () => {
                     <option value="11x">11x</option>
                     <option value="12x">12x</option>
                   </select>
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='formapag' style={{ fontSize: '20px', margin: '0 115px' }}>Forma de Pagamento:</label>
-                  <label htmlFor='parcela' style={{ fontSize: '20px', marginLeft: '-12px' }} hidden>Parcelas:</label>
-                  <select style={{ fontSize: '20px', width: 130, margin: '0 115px' }} name='formapag' id='formapag' className='form-select' value={formapag} onChange={e => formapagchange(e.target.value)}>
-                    <option value=""></option>
-                    <option value="Dinheiro">Dinheiro</option>
-                    <option value="Pix">Pix</option>
-                    <option value="Débito">Débito</option>
-                    <option value="Crédito">Crédito</option>
-                    <option value="Boleto">Boleto</option>
-                  </select>
-                  <select value={parcela} hidden onChange={e => parcelachange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 415px', marginTop: '-42px' }} className='form-select' name='parcela' id='parcela'>
-                    <option value=""></option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                  </select>
-
-                </div>
-
-                <div className='mb-3'>
-                  <label htmlFor='parcelan' style={{ fontSize: '20px', margin: '0 415px' }} hidden>Parcela:</label>
-
-                  <select value={parcelan} onChange={e => parcelanchange(e.target.value)} hidden style={{ fontSize: '20px', width: 120, margin: '0 415px', marginTop: '0px' }} className='form-select' name='parcelan' id='parcela'>
+                  <select value={parcelan} onChange={e => parcelanchange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 550px', marginTop: '-42px', fontWeight:'bold', color:'navy' }} className='form-select' name='parcelan' id='parcela'>
                     <option value=""></option>
                     <option value="1ª">1ª</option>
                     <option value="2ª">2ª</option>
@@ -619,10 +811,24 @@ const CadVenda = () => {
                     <option value="11ª">11ª</option>
                     <option value="12ª">12ª</option>
                   </select>
+                  <select value={parcela} onChange={e => parcelachange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 730px', marginTop: '-42px', fontWeight:'bold', color:'navy' }} className='form-select' name='parcela' id='parcela'>
+                    <option value=""></option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
                 </div>
                 <div className='mb-3'>
-                <label htmlFor='mesatual' style={{ fontSize: '20px', margin: '0 115px' }}>Mes:</label>
-                  <table className="table" style={{ fontFamily: 'arial', fontSize: '20px', width: '5%', margin: '0 120px' }}>
+                  <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 120px', fontWeight:'bold' }}>Mes:</label>
+                  <table className="table" style={{ fontFamily: 'arial', fontSize: '20px', width: '5%', margin: '0 120px', fontWeight:'bold', color:'navy' }}>
                     <thead hidden='true'>
                       <tr>
                         <th className="th" scope="col" >Id:</th>
@@ -634,13 +840,13 @@ const CadVenda = () => {
                         mesatual.map(item => (
                           <tr key={item.id}>
                             <td className="td" hidden='true'>{item.id}</td>
-                            <td className="td" style={{ fontSize: '20px' }} id='mesatual'>{item.mes}</td>
+                            <td className="td" style={{ fontSize: '20px', fontWeight:'bold', color:'navy' }} id='mesatual'>{item.mes}</td>
                           </tr>
                         ))
                       }
-                    </tbody>                
+                    </tbody>
                   </table>
-                </div><br />
+                </div><br /><br />
 
                 <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 120px', marginTop: '-19px', fontSize: '16px' }}>Cadastrar:</button>
                 <ToastContainer />
@@ -651,8 +857,6 @@ const CadVenda = () => {
                 <Link to='/produtos/codigo' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 2px', fontSize: '16px', width: 100 }}>Voltar:</Link>
 
               </div>
-
-
             </div>
           </div>
 

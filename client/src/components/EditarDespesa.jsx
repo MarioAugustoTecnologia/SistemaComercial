@@ -251,7 +251,7 @@ const EditarDespesa = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -260,6 +260,7 @@ const EditarDespesa = () => {
                   </span>
                 </Link>
               </li>
+
               <li className="w-100" onClick={logout}>
                 <Link to='/'
                   className="nav-link px-0 align-middle text-white"
@@ -280,23 +281,23 @@ const EditarDespesa = () => {
           <br />
           <div className='d-flex justify-content-center align-items-center vh-100'>
             <div className='bg-white p-4 rounded w-50 border'>
-              <h4><center>Editar Despesa:</center></h4><br />
+              <h4><center><strong>Editar Despesa:</strong></center></h4><br />
               <form action='' onSubmit={editar}>
                 <div className='mb-3'>
-                  <label htmlFor='id' style={{ fontSize: '20px', margin: '0 115px' }}>Id:</label>
-                  <input type='number' onSelect={MostraId} id="id" value={id} onChange={e => idchange(e.target.value)} style={{ fontSize: '20px', width: 80, margin: '0 115px' }} className='form-control rounded-0' name='id' />
+                  <label htmlFor='id' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Id:</label>
+                  <input type='number' onSelect={MostraId} id="id" value={id} onChange={e => idchange(e.target.value)} style={{ fontSize: '20px', width: 80, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='id' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px' }}>Nome:</label>
-                  <input type='text' onKeyUp={MostraNome} id='nome' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 370, margin: '0 115px' }} className='form-control rounded-0' name='nome' />
+                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Nome:</label>
+                  <input type='text' onKeyUp={MostraNome} id='nome' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 370, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='nome' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='preco' style={{ fontSize: '20px', margin: '0 115px' }}>Preço:</label>
-                  <input type="decimal" onKeyUp={MostraPreco} id="custo" value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o preço:' className='form-control rounded-0' name='custo' />
+                  <label htmlFor='preco' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Preço:</label>
+                  <input type="decimal" onKeyUp={MostraPreco} id="custo" value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight:"bold", color:"navy"}} placeholder='Entre com o preço:' className='form-control rounded-0' name='custo' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='datacadastro' style={{ fontSize: '20px', margin: '0 115px' }}>Data de Pagamento:</label>
-                  <input type='date' value={datapgto} onChange={e => datapagchange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px' }} className='form-control rounded-0' name='data_pgto' />
+                  <label htmlFor='datacadastro' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Data de Pagamento:</label>
+                  <input type='date' value={datapgto} onChange={e => datapagchange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='data_pgto' />
                 </div>
                 <div className="mb-3">
                   <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px', fontSize: '16px' }} >Atualizar:</button>

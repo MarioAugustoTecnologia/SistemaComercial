@@ -76,7 +76,7 @@ const Compras = () => {
 
       if (result.isConfirmed) {
 
-        for (let id = 0; id <= compras.length; id++) {
+        for (id = 0; id <= compras.length; id++) {
 
           fetch("https://sistemacomercialserver.onrender.com/compras/" + id, {
 
@@ -215,7 +215,7 @@ const Compras = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -223,7 +223,7 @@ const Compras = () => {
                     Orçamentos:
                   </span>
                 </Link>
-              </li>
+              </li>            
 
               <li className="w-100" onClick={logout}>
                 <Link
@@ -265,9 +265,11 @@ const Compras = () => {
                       <th className="th" scope="col">Nome:</th>
                       <th className="th" scope="col">Qtd:</th>
                       <th className="th" scope="col">Custo:</th>                                 
-                      <th className="th" scope="col">Total Geral:</th>                
+                      <th className="th" scope="col">Total:</th>
+                      <th className="th" scope="col">Total c/Frete:</th>                
                       <th className="th" scope="col">Saidas:</th>
                       <th className="th" scope="col">Troco:</th>
+                      <th className="th" scope="col">Frete:</th>
                       <th className="th" scope="col">Forma Paga:</th>
                       <th className="th" scope="col">Parcelas:</th>
                       <th className="th" scope="col">Parcela:</th>
@@ -285,10 +287,12 @@ const Compras = () => {
                           <td className="td">{item.compran}</td>
                           <td className="td">{item.nome}</td>
                           <td className="td">{item.qtd}</td>
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.custo)}</td>                                         
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.total)}</td>                   
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.valorpag)}</td>
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.troco)}</td>
+                          <td className="td">{item.custo}</td>                                         
+                          <td className="td">{item.total}</td>
+                          <td className="td">{item.totalfrete}</td>                  
+                          <td className="td">{item.valorpagto}</td>
+                          <td className="td">{item.troco}</td>
+                          <td className="td">{item.vf}</td>
                           <td className="td">{item.formapag}</td>
                           <td className="td">{item.parcelamento}</td>
                           <td className="td">{item.parcelan}</td>

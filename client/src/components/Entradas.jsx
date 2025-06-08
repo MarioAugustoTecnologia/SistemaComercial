@@ -24,9 +24,7 @@ const Entradas = () => {
       console.log(err.message)
     })
 
-  }, [])
-
-
+  }, [])   
 
 
   const handleDelete = (id) => {
@@ -75,7 +73,7 @@ const Entradas = () => {
       if (result.isConfirmed) {
 
 
-        for (let id = 0; id <= vendasdata.length; id++) {
+        for (id = 0; id <= vendasdata.length; id++) {
 
           fetch("https://sistemacomercialserver.onrender.com/vendas/" + id, {
 
@@ -98,8 +96,6 @@ const Entradas = () => {
     });
 
   }
-
-
 
   const logout = () => {
     localStorage.clear()
@@ -211,7 +207,7 @@ const Entradas = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -233,7 +229,7 @@ const Entradas = () => {
           </div>
         </div>
         <div className="col p-0 m-0" style={{ fontFamily: 'arial' }}>
-          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: '115%' }}>
+          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: '120%' }}>
             <h4><strong style={{ fontFamily: 'arial', margin: '0 600px ' }}>Sistema de Gestão Comercial:</strong></h4>
           </div>
           <Outlet />
@@ -246,13 +242,13 @@ const Entradas = () => {
               <Link to="/entradas/numero" className="btn" style={{ color: 'white', backgroundColor: 'DeepSkyBlue', margin: '0 2px', fontSize: '18px', fontFamily: 'arial' }}>Consulta por numero:</Link>
               <Link to="/entradas/ultima" className="btn" style={{ color: 'white', backgroundColor: 'Crimson', margin: '0 20px', fontSize: '18px', fontFamily: 'arial' }}>Venda Atual:</Link>
               <Link className="btn" style={{ color: 'white', backgroundColor: 'red', margin: '0 5px', fontSize: '18px', fontFamily: 'arial' }} onClick={deleteall}>Excluir Todos:</Link>
-
+              
             </div><br /><br />
             <div>
               <h4 className="h4"><strong className="strong" style={{ color: 'red', fontSize: '25px', textAlign: 'center', margin: '0 980px' }}>Entradas:</strong></h4>
               <br />
               <div className="mt-3">
-                <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: '120%' }}>
+                <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: '125%' }}>
                   <thead>
                     <tr>
                       <th className="th" scope="col">Id:</th>
@@ -260,7 +256,10 @@ const Entradas = () => {
                       <th className="th" scope="col">Nome:</th>
                       <th className="th" scope="col">Qtd:</th>
                       <th className="th" scope="col">Preço:</th>
-                      <th className="th" scope="col">Total c/s Desconto:</th>
+                      <th className="th" scope="col">Total:</th>
+                      <th className="th" scope="col">Desconto:</th>
+                      <th className="th" scope="col">Valor Desconto:</th>
+                      <th className="th" scope="col">Total c/Desconto:</th>
                       <th className="th" scope="col">Forma Paga:</th>
                       <th className="th" scope="col">Entradas:</th>
                       <th className="th" scope="col">Troco:</th>
@@ -279,22 +278,21 @@ const Entradas = () => {
                           <td className="td">{item.vendan}</td>
                           <td className="td">{item.nome}</td>
                           <td className="td">{item.quant}</td>
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.preco)}</td>
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.total)}</td>
+                          <td className="td">{item.preco}</td>
+                          <td className="td">{item.total}</td>
+                          <td className="td">{item.desconto}</td>
+                          <td className="td">{item.valordesc}</td>
+                          <td className="td">{item.totaldesc}</td>
                           <td className="td">{item.formapag}</td>
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.valorpag)}</td>
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.troco)}</td>
+                          <td className="td">{item.valorpagto}</td>
+                          <td className="td">{item.troco}</td>
                           <td className="td">{item.parcelamento}</td>
                           <td className="td">{item.parcelan}</td>
                           <td className="td">{item.mes}</td>
-                          <td className="td">{item.data}</td>
-
+                          <td className="td">{item.data_cad}</td>
                           <td className="td" >
-
-                            <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-
+                          <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
                           </td>
-
                         </tr>
                       ))
 

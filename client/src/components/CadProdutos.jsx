@@ -133,7 +133,8 @@ function MudaCorNome(){
       const dataInput = datacad;
       const data = new Date(dataInput);
       const data_cadastro = data.toLocaleDateString('pt-BR', {timeZone: 'UTC'}); 
-      const categoria = document.getElementById('categoria').value;    
+      const categoria = document.getElementById('categoria').value;
+      const preco = parseFloat(document.getElementById('preco').value).toFixed(2);   
      
       const cadobj = {qtd, nome, custo, categoria, data_cadastro, codigo, preco}
     //console.log(cadobj)  
@@ -296,10 +297,10 @@ const logout = () => {
                      Resultados:
                   </span>
                 </Link>
-              </li> 
+              </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -327,32 +328,32 @@ const logout = () => {
               <Outlet /><br/>            
           <div className='d-flex justify-content-center align-items-center vh-100'>       
           <div className='bg-white p-4 rounded w-50 border'>
-             <h4><center>Cadastrar Produto:</center></h4><br /> 
+             <h4><center><strong>Cadastrar Produto:</strong></center></h4><br /> 
 
             <form action='' onSubmit={cadastrar}>
                <div className='mb-3'>
-               <label htmlFor='estoque' style={{fontSize:'20px', margin:'0 115px'}}>Estoque:</label>
-               <label htmlFor='id' style={{fontSize:'20px', margin:'0 -42px'}}>Id:</label> 
-               <label htmlFor='cod' style={{fontSize:'20px', margin:'0 153px'}}>Codigo de Venda:</label> 
-               <input type='number' value={qtd} onChange={e => qtdchange(e.target.value)} style={{fontSize:'20px', width:100, margin:'0 115px'}} className='form-control rounded-0' name='estoque'/>
-               <input type='number' value={id} onChange={e => idchange(e.target.value)} style={{fontSize:'20px', width:100, margin:'0 260px', marginTop:'-43px'}} className='form-control rounded-0' name='id'/>
-               <input type='text' onKeyUp={MudaCorCodigo} value={codigo} onChange={e => codigochange(e.target.value)} style={{fontSize:'20px', width:100, margin:'0 400px', marginTop:'-43px'}} className='form-control rounded-0' name='codigo' id='codigo'/>             
+               <label htmlFor='estoque' style={{fontSize:'20px', margin:'0 115px', fontWeight:'bold'}}>Estoque:</label>
+               <label htmlFor='id' style={{fontSize:'20px', margin:'0 -42px', fontWeight:'bold'}}>Id:</label> 
+               <label htmlFor='cod' style={{fontSize:'20px', margin:'0 153px', fontWeight:'bold'}}>Codigo de Venda:</label> 
+               <input type='number' value={qtd} onChange={e => qtdchange(e.target.value)} style={{fontSize:'20px', width:100, margin:'0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='estoque'/>
+               <input type='number' value={id} onChange={e => idchange(e.target.value)} style={{fontSize:'20px', width:100, margin:'0 260px', marginTop:'-43px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='id'/>
+               <input type='text' onKeyUp={MudaCorCodigo} value={codigo} onChange={e => codigochange(e.target.value)} style={{fontSize:'20px', width:100, margin:'0 400px', marginTop:'-43px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='codigo' id='codigo'/>             
                </div>        
                <div className='mb-3'>      
-               <label htmlFor='nome' style={{fontSize:'20px', margin:'0 115px'}}>Nome:</label>
-               <input type='text' onKeyUp={MudaCorNome} placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{fontSize:'20px', width:580, margin:'0 115px'}} className='form-control rounded-0' name='nome' id='nome'/>                   
+                <label htmlFor='nome' style={{fontSize:'20px', margin:'0 115px', fontWeight:'bold'}}>Nome:</label>
+                <input type='text' onKeyUp={MudaCorNome} placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{fontSize:'20px', width:580, margin:'0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='nome' id='nome'/>                   
                </div>           
                <div className='mb-3'>           
-               <label htmlFor='custo' style={{fontSize:'20px', margin:'0 115px'}}>Custo:</label>
-               <label htmlFor='preco' style={{fontSize:'20px', margin:'0 100px'}}>Preço de Venda:</label>
-               <input type="decimal" onKeyUp={MudaCorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{fontSize:'20px', width:200, margin:'0 115px'}} className='form-control rounded-0' name='custo' id='custo'/>
-               <input type="decimal" onKeyUp={MudaCorPreco} value={preco} onChange={e => precochange(e.target.value)} style={{fontSize:'20px', width:200, margin:'0 385px', marginTop:'-42px'}} placeholder='Entre com o preço:' className='form-control rounded-0' name='preco' id='preco'/>
+               <label htmlFor='custo' style={{fontSize:'20px', margin:'0 115px', fontWeight:'bold'}}>Custo:</label>
+               <label htmlFor='preco' style={{fontSize:'20px', margin:'0 100px', fontWeight:'bold'}}>Preço de Venda:</label>
+               <input type="decimal" onKeyUp={MudaCorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{fontSize:'20px', width:200, margin:'0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='custo' id='custo'/>
+               <input type="decimal" onKeyUp={MudaCorPreco} value={preco} onChange={e => precochange(e.target.value)} style={{fontSize:'20px', width:200, margin:'0 385px', marginTop:'-42px', fontWeight:'bold', color:'navy'}} placeholder='Entre com o preço:' className='form-control rounded-0' name='preco' id='preco'/>
                </div>           
                <div className='mb-3'>
-                  <label htmlFor='categoria' className='form-label' style={{fontSize:'20px', margin:'0 115px'}}>
+                  <label htmlFor='categoria' className='form-label' style={{fontSize:'20px', margin:'0 115px', fontWeight:'bold'}}>
                     Categoria: 
                   </label>
-                  <select style={{fontSize:'20px', width:280, margin:'0 115px'}} name='catprod' id='categoria' className='form-select' onChange={(e) => setValues({...values, id: e.target.value})}>
+                  <select style={{fontSize:'20px', width:280, margin:'0 115px', fontWeight:'bold', color:'navy'}} name='catprod' id='categoria' className='form-select' onChange={(e) => setValues({...values, id: e.target.value})}>
                      <option value=""></option>  
                         {catprod.map(val =>{
                             return <option value={val.nome}>{val.nome}</option>
@@ -360,8 +361,8 @@ const logout = () => {
                   </select>  
              </div>          
              <div className='mb-3'>           
-                <label htmlFor='datacadastro' style={{fontSize:'20px', margin:'0 115px'}}>Data de Cadastro:</label>
-                <input type='date' onKeyUp={MudaCorData} onSelect={MudaCorData} value={datacad} onChange={e => datacadchange(e.target.value)} style={{fontSize:'20px', width:225, margin:'0 115px'}} className='form-control rounded-0' name='datacad' id='datacad'/>              
+                <label htmlFor='datacadastro' style={{fontSize:'20px', margin:'0 115px', fontWeight:'bold'}}>Data de Cadastro:</label>
+                <input type='date' onKeyUp={MudaCorData} onSelect={MudaCorData} value={datacad} onChange={e => datacadchange(e.target.value)} style={{fontSize:'20px', width:225, margin:'0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='datacad' id='datacad'/>              
              </div>          
              <div className='mb-3'>
              <button type='submit' className='btn btn-success border rounded-0' style={{width:100, margin:'0 115px', fontSize:'16px'}} >Cadastrar:</button>

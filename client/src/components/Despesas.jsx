@@ -72,7 +72,7 @@ const Despesas = () => {
     }).then((result) => {
 
       if (result.isConfirmed) {
-        for (let id = 0; id <= despesas.length; id++) {
+        for (id = 0; id <= despesas.length; id++) {
 
           fetch("https://sistemacomercialserver.onrender.com/despesas/" + id, {
 
@@ -247,7 +247,7 @@ const Despesas = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -256,6 +256,8 @@ const Despesas = () => {
                   </span>
                 </Link>
               </li>
+
+
               <li className="w-100" onClick={logout}>
                 <Link
                   to="/"

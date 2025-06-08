@@ -231,7 +231,7 @@ const CadResultado = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -259,21 +259,21 @@ const CadResultado = () => {
           <Outlet /><br />
           <div className='d-flex justify-content-center align-items-center'>
             <div className='bg-white p-4 rounded border' style={{ width: '45%', marginTop: '200px' }}>
-              <h4><center>Cadastrar novo Resultado:</center></h4><br />
+              <h4><center><strong>Cadastrar novo Resultado:</strong></center></h4><br />
               <form action='' onSubmit={cadastrar}>
                 <div className='mb-3'>
-                  <label htmlFor='entradas' style={{ fontSize: '20px', margin: '0 115px' }}>Total de Entradas:</label>
-                  <input type='decimal' onKeyUp={MostraEntradas} placeholder='Entre com o total:' value={entradas} onChange={e => entradaschange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} className='form-control rounded-0' name='entradas' id='entradas' />
+                  <label htmlFor='entradas' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Total de Entradas:</label>
+                  <input type='decimal' onKeyUp={MostraEntradas} placeholder='Entre com o total:' value={entradas} onChange={e => entradaschange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='entradas' id='entradas' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='saidas' style={{ fontSize: '20px', margin: '0 115px' }}>Total de Saídas:</label>
-                  <label htmlFor='resultado' style={{ fontSize: '20px', margin: '0 42px' }}>Resultado:</label>
-                  <input type='decimal' onKeyUp={MostraSaidas} placeholder='Entre com o total:' value={saidas} onChange={e => saidaschange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} className='form-control rounded-0' name='saidas' id='saidas' />
-                  <input type='decimal' style={{ fontSize: '20px', width: 200, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='resultado' id='resultado' />
+                  <label htmlFor='saidas' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Total de Saídas:</label>
+                  <label htmlFor='resultado' style={{ fontSize: '20px', margin: '0 42px', fontWeight:'bold'}}>Resultado:</label>
+                  <input type='decimal' onKeyUp={MostraSaidas} placeholder='Entre com o total:' value={saidas} onChange={e => saidaschange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='saidas' id='saidas' />
+                  <input type='decimal' style={{ fontSize: '20px', width: 200, margin: '0 415px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='resultado' id='resultado' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 115px' }}>Mês:</label>
-                  <select style={{ fontSize: '20px', width: 150, margin: '0 115px' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
+                  <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Mês:</label>
+                  <select style={{ fontSize: '20px', width: 150, margin: '0 115px', color:'navy', fontWeight:'bold'}} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
                     <option value=""></option>
                     <option value="Janeiro">Janeiro</option>
                     <option value="Fevereiro">Fevereiro</option>

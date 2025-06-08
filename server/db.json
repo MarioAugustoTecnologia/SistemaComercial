@@ -1,1299 +1,1623 @@
 {
-    "usuarios": [
-      {
-        "id": "User",
-        "cod": "1",
-        "email": "user@email.com",
-        "hashedPassword": "$2a$10$fNUKpSPps.c1DNCzrFjQCueVHKSO3ywBFcEewADmAEItxAIcxA/a2",
-        "fone": "15 33662014",
-        "datanascimento": "20/01/1991",
-        "categoria": "Administrador"
-      }
-    ],
-    "vendas": [
-      {
-        "vendan": "1",
-        "nome": "Cimento Votoran  50 kg ",
-        "quant": "40",
-        "preco": "37.90",
-        "total": "1516.00",
-        "data": "21/04/2025",
-        "formapag": "Dinheiro",
-        "mes": "Abril",
-        "troco": 4,
-        "valorpag": 1520,
-        "id": 1
-      },
-      {
-        "vendan": "2",
-        "nome": "Cal Hidratada 30kg ",
-        "quant": "25",
-        "preco": "31.50",
-        "total": "787.50",
-        "data": "21/04/2025",
-        "formapag": "Pix",
-        "mes": "Abril",
-        "valorpag": 787.5,
-        "troco": 0,
-        "id": 2
-      },
-      {
-        "nome": "Tijolos a vista ",
-        "vendan": "3",
-        "preco": "12.65",
-        "total": "12650.00",
-        "valorpag": "6325.00",
-        "mes": "Abril",
-        "data": "21/04/2025",
-        "parcelamento": "2x",
-        "parcelan": "1ª",
-        "formapag": "Crédito",
-        "troco": 0,
-        "quant": "1000",
-        "id": 3
-      },
-      {
-        "vendan": "4",
-        "nome": "Cimento Votoran  50 kg ",
-        "quant": "40",
-        "preco": "37.90",
-        "total": "1516.00",
-        "data": "22/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 4
-      },
-      {
-        "vendan": "4",
-        "nome": "Cimento Votoran  25 kg ",
-        "quant": "30",
-        "preco": "30.60",
-        "total": "918.00",
-        "data": "22/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 5
-      },
-      {
-        "vendan": "4",
-        "nome": "Cal Hidratada 30kg ",
-        "quant": "25",
-        "preco": "31.50",
-        "total": "787.50",
-        "data": "22/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 6
-      },
-      {
-        "nome": "Total da venda nº:4",
-        "vendan": "4",
-        "preco": 0,
-        "total": "3221.50",
-        "valorpag": "3230.00",
-        "mes": "Abril",
-        "data": "22/04/2025",
-        "formapag": "Dinheiro",
-        "troco": "8.50",
-        "id": 7
-      },
-      {
-        "vendan": "5",
-        "nome": "Argamassa ACI 20 kg Topex ",
-        "quant": "1",
-        "preco": "12.00",
-        "total": "12.00",
-        "data": "22/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 8
-      },
-      {
-        "vendan": "5",
-        "nome": "Argamassa Votomassa 20 kg",
-        "quant": "1",
-        "preco": "13.00",
-        "total": "13.00",
-        "data": "22/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 9
-      },
-      {
-        "vendan": "5",
-        "nome": "Argamassa Inovatte 20 kg",
-        "quant": "2",
-        "preco": "25.90",
-        "total": "51.80",
-        "data": "22/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 10
-      },
-      {
-        "nome": "Total da venda nº:5",
-        "vendan": "5",
-        "preco": 0,
-        "total": "76.80",
-        "valorpag": "76.80",
-        "mes": "Abril",
-        "data": "22/04/2025",
-        "formapag": "Pix",
-        "troco": 0,
-        "id": 11
-      },
-      {
-        "vendan": "6",
-        "nome": "Cimento Votoran  50 kg ",
-        "quant": "20",
-        "preco": "37.90",
-        "total": "758.00",
-        "data": "22/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 12
-      },
-      {
-        "vendan": "6",
-        "nome": "Cal Hidratada 30kg ",
-        "quant": "20",
-        "preco": "31.50",
-        "total": "630.00",
-        "data": "22/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 13
-      },
-      {
-        "vendan": "6",
-        "nome": "Tijolos a vista ",
-        "quant": "400",
-        "preco": "12.65",
-        "total": "5060.00",
-        "data": "22/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 14
-      },
-      {
-        "vendan": "6",
-        "nome": "Argamassa ACI 20 kg Topex ",
-        "quant": "6",
-        "preco": "12.00",
-        "total": "72.00",
-        "data": "22/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 15
-      },
-      {
-        "nome": "Total da venda nº:6",
-        "vendan": "6",
-        "preco": 0,
-        "total": "6520.00",
-        "valorpag": "2173.33",
-        "mes": "Abril",
-        "data": "22/04/2025",
-        "parcelamento": "3x",
-        "parcelan": "1ª",
-        "formapag": "Crédito",
-        "troco": 0,
-        "id": 16
-      },
-      {
-        "vendan": "7",
-        "nome": "Cal Hidratada 30kg ",
-        "quant": "5",
-        "preco": "31.50",
-        "total": "149.62",
-        "data": "23/04/2025",
-        "formapag": "Dinheiro",
-        "mes": "Abril",
-        "troco": 0.38,
-        "valorpag": 150,
-        "id": 17
-      },
-      {
-        "vendan": "8",
-        "nome": "Azulejos ",
-        "quant": "70",
-        "preco": "20.60",
-        "total": "1369.9",
-        "data": "23/04/2025",
-        "formapag": "Pix",
-        "mes": "Abril",
-        "valorpag": 1369.9,
-        "troco": 0,
-        "id": 18
-      },
-      {
-        "vendan": "9",
-        "nome": "Cimento Votoran  50 kg ",
-        "quant": "40",
-        "preco": "37.90",
-        "total": "1516.00",
-        "data": "23/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 19
-      },
-      {
-        "vendan": "9",
-        "nome": "Cimento Votoran  25 kg ",
-        "quant": "40",
-        "preco": "30.60",
-        "total": "1224.00",
-        "data": "23/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 20
-      },
-      {
-        "vendan": "9",
-        "nome": "Cal Hidratada 30kg ",
-        "quant": "25",
-        "preco": "31.50",
-        "total": "787.50",
-        "data": "23/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 21
-      },
-      {
-        "vendan": "9",
-        "nome": "Tijolos a vista ",
-        "quant": "450",
-        "preco": "12.65",
-        "total": "5692.50",
-        "data": "23/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 22
-      },
-      {
-        "vendan": "9",
-        "nome": "Argamassa Votomassa 20 kg",
-        "quant": "15",
-        "preco": "13.00",
-        "total": "195.00",
-        "data": "23/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 23
-      },
-      {
-        "vendan": "9",
-        "nome": "Aditivo Impermeabilizante 18 Litros Vedacit",
-        "quant": "6",
-        "preco": "115.85",
-        "total": "695.10",
-        "data": "23/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 24
-      },
-      {
-        "vendan": "9",
-        "nome": "Azulejos ",
-        "quant": "100",
-        "preco": "20.60",
-        "total": "2060.00",
-        "data": "23/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 25
-      },
-      {
-        "vendan": "9",
-        "nome": "Pisos Cerâmico ",
-        "quant": "90",
-        "preco": "18.65",
-        "total": "1678.50",
-        "data": "23/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 26
-      },
-      {
-        "nome": "Total da venda nº:9",
-        "vendan": "9",
-        "preco": 0,
-        "total": "13156.17",
-        "valorpag": "13200.00",
-        "mes": "Abril",
-        "data": "23/04/2025",
-        "formapag": "Dinheiro",
-        "troco": "43.83",
-        "id": 27
-      },
-      {
-        "vendan": "10",
-        "nome": "Cimento Votoran  50 kg ",
-        "quant": "20",
-        "preco": "37.90",
-        "total": "758.00",
-        "data": "23/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 28
-      },
-      {
-        "vendan": "10",
-        "nome": "Cal Hidratada 30kg ",
-        "quant": "30",
-        "preco": "31.50",
-        "total": "945.00",
-        "data": "23/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 29
-      },
-      {
-        "vendan": "10",
-        "nome": "Argamassa Votomassa 20 kg",
-        "quant": "6",
-        "preco": "13.00",
-        "total": "78.00",
-        "data": "23/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 30
-      },
-      {
-        "nome": "Total da venda nº:10",
-        "vendan": "10",
-        "preco": 0,
-        "total": "1424.8",
-        "valorpag": "1424.8",
-        "mes": "Abril",
-        "data": "23/04/2025",
-        "formapag": "Débito",
-        "troco": 0,
-        "id": 31
-      },
-      {
-        "nome": "Total das entradas no mes:",
-        "total": "30257.33",
-        "data": "23/04/2025",
-        "preco": 0,
-        "mes": "Abril",
-        "vendan": "0",
-        "troco": 0,
-        "valorpag": 0,
-        "id": 32
-      },
-      {
-        "nome": "Cimento Votoran  50 kg ",
-        "vendan": "11",
-        "preco": "37.90",
-        "total": "36",
-        "valorpag": 36,
-        "mes": "Maio",
-        "data": "23/04/2025",
-        "formapag": "Crédito",
-        "troco": 0,
-        "quant": "1",
-        "id": 33
-      }
-    ],
-    "atual": [
-      {
-        "numero": "11",
-        "id": 1
-      },
-      {
-        "numero": "12",
-        "id": 2
-      }
-    ],
-    "catproduto": [
-      {
-        "nome": "Cimento e Cal",
-        "id": 1
-      },
-      {
-        "id": 2,
-        "nome": "Areia e Pedra Brita"
-      },
-      {
-        "nome": "Aço",
-        "id": 4
-      },
-      {
-        "nome": "Madeira",
-        "id": 5
-      },
-      {
-        "nome": "Argamassa",
-        "id": 6
-      },
-      {
-        "nome": "Telhas",
-        "id": 7
-      },
-      {
-        "nome": "Tijolos",
-        "id": 8
-      },
-      {
-        "nome": "Pisos e Revestimentos",
-        "id": 9
-      },
-      {
-        "nome": "Materiais Elétricos",
-        "id": 10
-      },
-      {
-        "nome": "Materiais Hidráulicos",
-        "id": 11
-      },
-      {
-        "nome": "Impermeabilizantes ",
-        "id": 12
-      }
-    ],
-    "produtos": [
-      {
-        "id": 1,
-        "nome": "Cimento Votoran  50 kg ",
-        "preco": "37.90",
-        "qtd": 1739,
-        "categoria": "Cimento e Cal",
-        "data_cadastro": "23/04/2025",
-        "codigo": "01",
-        "custo": "32.90"
-      },
-      {
-        "id": 2,
-        "nome": "Cal Hidratada 30kg ",
-        "preco": "31.50",
-        "qtd": 1080,
-        "categoria": "Cimento e Cal",
-        "data_cadastro": "17/04/2025",
-        "codigo": "02",
-        "custo": 26.87
-      },
-      {
-        "id": 3,
-        "nome": "Tijolos a vista ",
-        "preco": "12.65",
-        "qtd": 3150,
-        "categoria": "Tijolos",
-        "data_cadastro": "17/04/2025",
-        "codigo": "03",
-        "custo": 8.6
-      },
-      {
-        "id": 4,
-        "nome": "Argamassa ACI 20 kg Topex ",
-        "preco": "12.00",
-        "qtd": 613,
-        "categoria": "Argamassa",
-        "data_cadastro": "17/04/2025",
-        "codigo": "04",
-        "custo": 7.9
-      },
-      {
-        "id": 5,
-        "nome": "Argamassa Votomassa 20 kg",
-        "preco": "13.00",
-        "qtd": 598,
-        "categoria": "Argamassa",
-        "data_cadastro": "17/04/2025",
-        "codigo": "05",
-        "custo": 10
-      },
-      {
-        "id": 6,
-        "nome": "Argamassa Inovatte 20 kg",
-        "preco": "25.90",
-        "qtd": 598,
-        "categoria": "Argamassa",
-        "data_cadastro": "17/04/2025",
-        "codigo": "06",
-        "custo": 22.89
-      },
-      {
-        "id": 7,
-        "nome": "Aditivo Impermeabilizante 18 Litros Vedacit",
-        "preco": "115.85",
-        "qtd": 294,
-        "categoria": "Impermeabilizantes ",
-        "data_cadastro": "17/04/2025",
-        "codigo": "08",
-        "custo": 85.8
-      },
-      {
-        "id": 8,
-        "nome": "Manta Liquida Acrílica Vedapen 18 kg Vedacit",
-        "custo": "244.60",
-        "preco": "285.70",
-        "qtd": 100,
-        "categoria": "Impermeabilizantes ",
-        "data_cadastro": "17/04/2025",
-        "codigo": "09"
-      },
-      {
-        "id": 9,
-        "nome": "Pisos Cerâmico ",
-        "preco": "18.65",
-        "qtd": 110,
-        "categoria": "Pisos e Revestimentos",
-        "data_cadastro": "17/04/2025",
-        "codigo": "11",
-        "custo": 15.34
-      },
-      {
-        "id": 10,
-        "nome": "Azulejos ",
-        "preco": "20.60",
-        "qtd": 340,
-        "categoria": "Pisos e Revestimentos",
-        "data_cadastro": "17/04/2025",
-        "codigo": "12",
-        "custo": 16.33
-      },
-      {
-        "id": 11,
-        "nome": "Cimento Votoran  25 kg ",
-        "preco": "30.60",
-        "qtd": 1880,
-        "categoria": "Cimento e Cal",
-        "data_cadastro": "21/04/2025",
-        "codigo": "14",
-        "custo": 26.5
-      }
-    ],
-    "despesas": [
-      {
-        "nome": "Agua ",
-        "custo": "117.00",
-        "data_pgto": "10/04/2025",
-        "data_cad": "23/04/2025",
-        "total": "117.00",
-        "id": 1
-      },
-      {
-        "nome": "Energia Elétrica",
-        "custo": "120.87",
-        "data_pgto": "15/04/2025",
-        "data_cad": "23/04/2025",
-        "total": "120.87",
-        "id": 2
-      },
-      {
-        "nome": "Telefone e Internet ",
-        "custo": "100.00",
-        "data_pgto": "10/04/2025",
-        "data_cad": "23/04/2025",
-        "total": "100.00",
-        "id": 3
-      },
-      {
-        "nome": "Outros Serviços",
-        "custo": "1400.00",
-        "data_pgto": "15/04/2025",
-        "data_cad": "23/04/2025",
-        "total": "1400.00",
-        "id": 4
-      },
-      {
-        "nome": "Total das despesas:",
-        "total": "1737.87",
-        "custo": null,
-        "data_cad": "23/04/2025",
-        "id": 5
-      }
-    ],
-    "compras": [
-      {
-        "compran": "1",
-        "nome": "Cimento Votoran  50 kg ",
-        "qtd": "1000",
-        "custo": 32.9,
-        "total": 32945.6,
-        "data_cad": "16/04/2025",
-        "formapag": "Dinheiro",
-        "mes": "Abril",
-        "fornecedor": "Votoran s/a",
-        "troco": 4.4,
-        "valorpag": 32950,
-        "id": 1
-      },
-      {
-        "compran": "2",
-        "nome": "Cal Hidratada 30kg ",
-        "qtd": "850",
-        "custo": 26.87,
-        "total": 22886.02,
-        "data_cad": "17/04/2025",
-        "formapag": "Crédito",
-        "mes": "Abril",
-        "fornecedor": "São Gabriel s/a",
-        "valorpag": 22886.02,
-        "troco": 0,
-        "id": 2
-      },
-      {
-        "compran": "3",
-        "nome": "Tijolos a vista ",
-        "qtd": "5000",
-        "custo": 8.6,
-        "total": 43045.63,
-        "data_cad": "17/04/2025",
-        "valorpag": "3587.14",
-        "formapag": "Crédito",
-        "parcelamento": "12x",
-        "parcelan": "1ª",
-        "mes": "Abril",
-        "fornecedor": "Sales s/a",
-        "troco": 0,
-        "id": 3
-      },
-      {
-        "compran": "4",
-        "nome": "Argamassa ACI 20 kg Topex ",
-        "qtd": "500",
-        "custo": 7.9,
-        "total": 3950,
-        "data_cad": "17/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "fornecedor": "Argamassas e Companhia s/a",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 4
-      },
-      {
-        "compran": "4",
-        "nome": "Argamassa Votomassa 20 kg",
-        "qtd": "500",
-        "custo": 10,
-        "total": 5000,
-        "data_cad": "17/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "fornecedor": "Argamassas e Companhia s/a",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 5
-      },
-      {
-        "compran": "4",
-        "nome": "Argamassa Inovatte 20 kg",
-        "qtd": "450",
-        "custo": 22.89,
-        "total": 10300.5,
-        "data_cad": "17/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "fornecedor": "Argamassas e Companhia s/a",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 6
-      },
-      {
-        "nome": "Total da compra nº:4",
-        "compran": "4",
-        "custo": 0,
-        "total": "19297.02",
-        "valorpag": "19300.00",
-        "mes": "Abril",
-        "data_cad": "20/04/2025",
-        "formapag": "Dinheiro",
-        "troco": "2.98",
-        "fornecedor": "Argamassas e Companhia s/a",
-        "id": 7
-      },
-      {
-        "compran": "5",
-        "nome": "Aditivo Impermeabilizante 18 Litros Vedacit",
-        "qtd": "250",
-        "custo": 85.8,
-        "total": 21450,
-        "data_cad": "17/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "fornecedor": "Sika s/a",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 8
-      },
-      {
-        "compran": "5",
-        "nome": "Manta Liquida Acrílica Vedapen 18 kg Vedacit",
-        "qtd": "60",
-        "custo": 244.6,
-        "total": 14676,
-        "data_cad": "17/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "fornecedor": "Sika s/a",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 9
-      },
-      {
-        "nome": "Total da compra nº:5",
-        "compran": "5",
-        "custo": 0,
-        "total": "36161.64",
-        "valorpag": "36161.64",
-        "mes": "Abril",
-        "data_cad": "20/04/2025",
-        "formapag": "Pix",
-        "troco": 0,
-        "fornecedor": "Sika s/a",
-        "id": 10
-      },
-      {
-        "compran": "6",
-        "nome": "Pisos Cerâmico ",
-        "qtd": "200",
-        "custo": 15.34,
-        "total": 3068,
-        "data_cad": "17/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "fornecedor": "São Judas Pisos e Azulejos s/a",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 11
-      },
-      {
-        "compran": "6",
-        "nome": "Azulejos ",
-        "qtd": "350",
-        "custo": 16.33,
-        "total": 5715.5,
-        "data_cad": "17/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "fornecedor": "São Judas Pisos e Azulejos s/a",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 12
-      },
-      {
-        "nome": "Total da compra nº:6",
-        "compran": "6",
-        "custo": 0,
-        "total": "8835.85",
-        "valorpag": 1472.64,
-        "mes": "Abril",
-        "data_cad": "20/04/2025",
-        "parcelamento": "6x",
-        "parcelan": "1ª",
-        "formapag": "Crédito",
-        "troco": 0,
-        "fornecedor": "São Judas Pisos e Azulejos s/a",
-        "id": 13
-      },
-      {
-        "compran": "7",
-        "nome": "Cimento Votoran  25 kg ",
-        "qtd": "1000",
-        "custo": 26.5,
-        "total": 26535.44,
-        "data_cad": "21/04/2025",
-        "formapag": "Boleto",
-        "mes": "Abril",
-        "fornecedor": "Votoran s/a",
-        "valorpag": 26535.44,
-        "troco": 0,
-        "id": 14
-      },
-      {
-        "compran": "8",
-        "nome": "Cimento Votoran  50 kg ",
-        "qtd": "500",
-        "custo": "32.90",
-        "total": 16486.62,
-        "data_cad": "21/04/2025",
-        "formapag": "Dinheiro",
-        "mes": "Abril",
-        "fornecedor": "Votoran s/a",
-        "troco": 13.38,
-        "valorpag": 16500,
-        "id": 15
-      },
-      {
-        "compran": "9",
-        "nome": "Cimento Votoran  25 kg ",
-        "qtd": "550",
-        "custo": 26.5,
-        "total": 14611.62,
-        "data_cad": "21/04/2025",
-        "formapag": "Boleto",
-        "mes": "Abril",
-        "fornecedor": "Votoran s/a",
-        "valorpag": 14611.62,
-        "troco": 0,
-        "id": 16
-      },
-      {
-        "compran": "10",
-        "nome": "Azulejos ",
-        "qtd": "160",
-        "custo": 16.33,
-        "total": 2637.8,
-        "data_cad": "21/04/2025",
-        "valorpag": "879.27",
-        "formapag": "Crédito",
-        "parcelamento": "3x",
-        "parcelan": "1ª",
-        "mes": "Abril",
-        "fornecedor": "São Judas Pisos e Azulejos s/a",
-        "troco": 0,
-        "id": 17
-      },
-      {
-        "compran": "11",
-        "nome": "Cimento Votoran  50 kg ",
-        "qtd": "400",
-        "custo": "32.90",
-        "total": 13160,
-        "data_cad": "21/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "fornecedor": "São Gabriel s/a",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 18
-      },
-      {
-        "compran": "11",
-        "nome": "Cimento Votoran  25 kg ",
-        "qtd": "400",
-        "custo": 26.5,
-        "total": 10600,
-        "data_cad": "21/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "fornecedor": "São Gabriel s/a",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 19
-      },
-      {
-        "compran": "11",
-        "nome": "Cal Hidratada 30kg ",
-        "qtd": "360",
-        "custo": 26.87,
-        "total": 9673.2,
-        "data_cad": "21/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "fornecedor": "São Gabriel s/a",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 20
-      },
-      {
-        "nome": "Total da compra nº:11",
-        "compran": "11",
-        "custo": 0,
-        "total": "33489.80",
-        "valorpag": "33500.00",
-        "mes": "Abril",
-        "data_cad": "21/04/2025",
-        "formapag": "Dinheiro",
-        "troco": "10.20",
-        "fornecedor": "São Gabriel s/a",
-        "id": 21
-      },
-      {
-        "compran": "12",
-        "nome": "Argamassa ACI 20 kg Topex ",
-        "qtd": "120",
-        "custo": 7.9,
-        "total": 948,
-        "data_cad": "21/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "fornecedor": "Argamassas e Companhia s/a",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 22
-      },
-      {
-        "compran": "12",
-        "nome": "Argamassa Votomassa 20 kg",
-        "qtd": "120",
-        "custo": 10,
-        "total": 1200,
-        "data_cad": "21/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "fornecedor": "Argamassas e Companhia s/a",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 23
-      },
-      {
-        "compran": "12",
-        "nome": "Argamassa Inovatte 20 kg",
-        "qtd": "150",
-        "custo": 22.89,
-        "total": 3433.5,
-        "data_cad": "21/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "fornecedor": "Argamassas e Companhia s/a",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 24
-      },
-      {
-        "nome": "Total da compra nº:12",
-        "compran": "12",
-        "custo": 0,
-        "total": "5618.46",
-        "valorpag": "5618.46",
-        "mes": "Abril",
-        "data_cad": "21/04/2025",
-        "formapag": "Pix",
-        "troco": 0,
-        "fornecedor": "Argamassas e Companhia s/a",
-        "id": 25
-      },
-      {
-        "compran": "13",
-        "nome": "Aditivo Impermeabilizante 18 Litros Vedacit",
-        "qtd": "50",
-        "custo": 85.8,
-        "total": 4290,
-        "data_cad": "21/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "fornecedor": "Sika s/a",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 26
-      },
-      {
-        "compran": "13",
-        "nome": "Manta Liquida Acrílica Vedapen 18 kg Vedacit",
-        "qtd": "40",
-        "custo": "244.60",
-        "total": 9784,
-        "data_cad": "21/04/2025",
-        "formapag": "",
-        "mes": "Abril",
-        "fornecedor": "Sika s/a",
-        "valorpag": 0,
-        "troco": 0,
-        "id": 27
-      },
-      {
-        "nome": "Total da compra nº:13",
-        "compran": "13",
-        "custo": 0,
-        "total": "14100.45",
-        "valorpag": 1410.05,
-        "mes": "Abril",
-        "data_cad": "21/04/2025",
-        "parcelamento": "10x",
-        "parcelan": "1ª",
-        "formapag": "Crédito",
-        "troco": 0,
-        "fornecedor": "Sika s/a",
-        "id": 28
-      },
-      {
-        "nome": "Total das compras no mes:",
-        "total": "215412.28",
-        "data_cad": "23/04/2025",
-        "custo": 0,
-        "mes": "Abril",
-        "compran": "0",
-        "troco": 0,
-        "valorpag": 0,
-        "id": 29
-      }
-    ],
-    "compraatual": [
-      {
-        "numero": "13",
-        "id": 7
-      }
-    ],
-    "resultados": [
-      {
-        "resultado": "-186892.82",
-        "entradas": "30257.33",
-        "saidas": "217150.15",
-        "data_cad": "23/04/2025",
-        "mes": "Abril",
-        "id": 1
-      }
-    ],
-    "clientes": [
-      {
-        "nome": "Joel",
-        "email": "joellima@email.com",
-        "fone": "14 996663325",
-        "data_cad": "24/02/2025",
-        "bairro": "Vila Paulista",
-        "endereco": "Avenida Dante Delmanto - 500",
-        "cpf": "33555853897",
-        "id": 1
-      },
-      {
-        "nome": "Fernando",
-        "email": "fernando@email.com",
-        "fone": "14 333333",
-        "data_cad": "24/02/2025",
-        "bairro": "Vila Paulista",
-        "endereco": "Rua Jose Thiago",
-        "cpf": "335556214589",
-        "id": 2
-      }
-    ],
-    "fornecedor": [
-      {
-        "nome": "Votoran s/a",
-        "endereco": "Rua José da Silva - Centro ",
-        "numero": "500",
-        "cep": "20245-900",
-        "cidade": "São José do Rio Preto SP",
-        "email": "votorancomercio@email.com",
-        "fone": "17 33652149",
-        "datacad": "17/04/2025",
-        "catforn": "Cimento e Cal",
-        "id": 1
-      },
-      {
-        "nome": "São Gabriel s/a",
-        "endereco": "Rua Luis Souza Filho - Vila Souto ",
-        "comp": "RB - 54",
-        "cep": "12569842",
-        "cidade": "Bauru SP",
-        "email": "saogabrielvendas@email.com",
-        "fone": "14 33652897",
-        "datacad": "17/04/2025",
-        "catforn": "Cimento e Cal",
-        "id": 2
-      },
-      {
-        "nome": "Constru +",
-        "endereco": "Avenida Ricardo Cintra Cavalcante - Centro ",
-        "numero": "256",
-        "cep": "1548723",
-        "cidade": "Avaré SP",
-        "email": "construmais@email.com",
-        "fone": "14 55669982",
-        "datacad": "17/04/2025",
-        "catforn": "Areia e Pedra Brita",
-        "id": 3
-      },
-      {
-        "nome": "Super Aço s/a ",
-        "endereco": "Rua Castro Alves - Vila Antartica",
-        "numero": "156",
-        "cep": "46857921",
-        "cidade": "Botucatu SP",
-        "email": "superacovendas@email.com",
-        "fone": "14 35128976",
-        "datacad": "17/04/2025",
-        "catforn": "Aço",
-        "id": 4
-      },
-      {
-        "nome": "Madeirão s/a ",
-        "endereco": "Rua Capitão José Paes de Almeida - Boa Vista",
-        "numero": "256",
-        "cep": "236985412",
-        "cidade": "Botucatu SP",
-        "email": "madeiraocomercial@email.com",
-        "fone": "14 33225569",
-        "datacad": "17/04/2025",
-        "catforn": "Madeira",
-        "id": 5
-      },
-      {
-        "nome": "Argamassas e Companhia s/a",
-        "endereco": "Rua Antonio Luis Agapto Simonetti - Vila Camargo",
-        "numero": "202",
-        "cep": "20361456",
-        "cidade": "Arandu SP",
-        "email": "argamassascomercial@email.com",
-        "fone": "14 55662248",
-        "datacad": "18/04/2025",
-        "catforn": "Argamassa",
-        "id": 6
-      },
-      {
-        "nome": "São Judas Pisos e Azulejos s/a",
-        "endereco": "Avenida Dante Delmanto - Vila Paulista ",
-        "numero": "504",
-        "cep": "19605123",
-        "cidade": "Botucatu SP",
-        "email": "saojudaspisos@email.colm",
-        "fone": "14 33558972",
-        "datacad": "18/04/2025",
-        "catforn": "Pisos e Revestimentos",
-        "id": 7
-      },
-      {
-        "nome": "Ribeiro Telhas e Tijolos s/a",
-        "endereco": "Rua Claudio Castro - Vila Guilherme ",
-        "numero": "205",
-        "cep": "20365489",
-        "cidade": "São Paulo SP",
-        "email": "ribeirocomercio@email.com",
-        "fone": "11 33665248",
-        "datacad": "18/04/2025",
-        "catforn": "Telha",
-        "id": 8
-      },
-      {
-        "nome": "Souza Materiais Elétricos s/a",
-        "endereco": "Avenida Alselmo Dias - Centro ",
-        "numero": "1235",
-        "cep": "12365897",
-        "cidade": "Jau SP",
-        "email": "souzaeletricos@email.com",
-        "fone": "15 66332259",
-        "datacad": "18/04/2025",
-        "catforn": "Materiais elétricos",
-        "id": 9
-      },
-      {
-        "nome": "Mega Hidraulica s/a",
-        "endereco": "Rua Antonio Nunes da Silva Sobrinho - Jardim Paraiso ",
-        "numero": "459",
-        "cep": "18400100",
-        "cidade": "Botucatu SP",
-        "email": "megahidraulicacomercial@email.com",
-        "fone": "14 99886457",
-        "datacad": "18/04/2025",
-        "catforn": "Materiais Hidraulicos",
-        "id": 10
-      },
-      {
-        "nome": "Sika s/a",
-        "endereco": "Rua Luis Souza - Centro ",
-        "numero": "153",
-        "cep": "456982165",
-        "cidade": "Campinas SP",
-        "email": "sikavendas@email.com",
-        "fone": "19 33662254",
-        "datacad": "18/04/2025",
-        "catforn": "Impermeabilizantes ",
-        "id": 11
-      },
-      {
-        "nome": "Sales s/a",
-        "endereco": "Avenida Dante Delmanto - Vila Paulista ",
-        "numero": "1250",
-        "cep": "20563121",
-        "cidade": "Botucatu SP",
-        "email": "salesvendas@email.com",
-        "fone": "14 66332259",
-        "datacad": "18/04/2025",
-        "catforn": "Tijolos",
-        "id": 12
-      }
-    ],
-    "catfornecedor": [
-      {
-        "id": 1,
-        "nome": "Cimento e Cal"
-      },
-      {
-        "id": 2,
-        "nome": "Areia e Pedra Brita"
-      },
-      {
-        "nome": "Aço",
-        "id": 5
-      },
-      {
-        "id": 6,
-        "nome": "Madeira"
-      },
-      {
-        "nome": "Argamassa",
-        "id": 7
-      },
-      {
-        "nome": "Telha",
-        "id": 8
-      },
-      {
-        "nome": "Pisos e Revestimentos",
-        "id": 9
-      },
-      {
-        "id": 10,
-        "nome": "Materiais elétricos"
-      },
-      {
-        "nome": "Materiais Hidraulicos",
-        "id": 11
-      },
-      {
-        "nome": "Tijolos",
-        "id": 12
-      },
-      {
-        "nome": "Impermeabilizantes ",
-        "id": 13
-      }
-    ],
-    "mesatual": [
-      {
-        "mes": "Abril",
-        "id": 1
-      }
-    ],
-    "mescompraatual": [
-      {
-        "mes": "Abril",
-        "id": 1
-      }
-    ]
-  }
+  "usuarios": [
+    {
+      "id": "User",
+      "cod": "1",
+      "email": "user@email.com",
+      "hashedPassword": "$2a$10$HhwTMGfI3.fg/U7fD0.FAOsWgLrZlyCUtm8ixSAYZumSrryXqPiFy",
+      "fone": "14 998216619",
+      "datanascimento": "30/07/1982",
+      "categoria": "Administrador"
+    }
+  ],
+  "vendas": [
+    {
+      "vendan": "1",
+      "nome": "Cimento Votoran 50Kg ",
+      "quant": "40",
+      "preco": "14.60",
+      "total": "584.00",
+      "data_cad": "02/06/2025",
+      "formapag": "Dinheiro",
+      "mes": "Junho",
+      "troco": "16.00",
+      "valorpagto": "600.00",
+      "vp": "600.00",
+      "id": 1
+    },
+    {
+      "vendan": "2",
+      "nome": "Cimento Votoran 20 kg",
+      "quant": "40",
+      "preco": "13.90",
+      "total": "556.00",
+      "data_cad": "02/06/2025",
+      "formapag": "Pix",
+      "mes": "Junho",
+      "valorpagto": "556.00",
+      "vp": "556.00",
+      "id": 2
+    },
+    {
+      "vendan": "3",
+      "nome": "Cal Hidratada 30kg",
+      "quant": "5",
+      "preco": "10.60",
+      "total": "53.00",
+      "valorpagto": "26.50",
+      "parcelamento": "2x",
+      "parcelan": "1ª",
+      "formapag": "Crédito",
+      "mes": "Junho",
+      "data_cad": "02/06/2025",
+      "vp": "26.50",
+      "id": 3
+    },
+    {
+      "vendan": "4",
+      "nome": "Argamassa Inovatte 20 kg",
+      "quant": "4",
+      "preco": "20.60",
+      "total": "82.40",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "82.40",
+      "id": 4
+    },
+    {
+      "vendan": "4",
+      "nome": "Argamassa Votorantin Votoran 20kg",
+      "quant": "2",
+      "preco": "30.00",
+      "total": "60.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "60.00",
+      "id": 5
+    },
+    {
+      "vendan": "4",
+      "nome": "Piso Porcelanato 1",
+      "quant": "200",
+      "preco": "12.80",
+      "total": "2560.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "2560.00",
+      "id": 6
+    },
+    {
+      "vendan": "4",
+      "nome": "Azulejo Branco Claro ",
+      "quant": "130",
+      "preco": "15.00",
+      "total": "1950.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "1950.00",
+      "id": 7
+    },
+    {
+      "vendan": "4",
+      "nome": "Impermeabilizante Vedacit ",
+      "quant": "3",
+      "preco": "14.80",
+      "total": "44.40",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "44.40",
+      "id": 8
+    },
+    {
+      "vendan": "4",
+      "total": "4696.80",
+      "nome": "Total da venda nº:4",
+      "valorpagto": "4700.00",
+      "mes": "Junho",
+      "formapag": "Dinheiro",
+      "troco": "3.20",
+      "data_cad": "02/06/2025",
+      "vp": 0,
+      "id": 9
+    },
+    {
+      "vendan": "5",
+      "nome": "Cimento Votoran 50Kg ",
+      "quant": "20",
+      "preco": "14.60",
+      "total": "292.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "292.00",
+      "id": 10
+    },
+    {
+      "vendan": "5",
+      "nome": "Cimento Votoran 20 kg",
+      "quant": "20",
+      "preco": "13.90",
+      "total": "278.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "278.00",
+      "id": 11
+    },
+    {
+      "vendan": "5",
+      "nome": "Cal Hidratada 30kg",
+      "quant": "2",
+      "preco": "10.60",
+      "total": "21.20",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "21.20",
+      "id": 12
+    },
+    {
+      "vendan": "5",
+      "nome": "Argamassa Inovatte 20 kg",
+      "quant": "4",
+      "preco": "20.60",
+      "total": "82.40",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "82.40",
+      "id": 13
+    },
+    {
+      "vendan": "5",
+      "nome": "Argamassa Votorantin Votoran 20kg",
+      "quant": "5",
+      "preco": "30.00",
+      "total": "150.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "150.00",
+      "id": 14
+    },
+    {
+      "vendan": "5",
+      "nome": "Piso Porcelanato 2",
+      "quant": "256",
+      "preco": "11.50",
+      "total": "2944.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "2944.00",
+      "id": 15
+    },
+    {
+      "vendan": "5",
+      "nome": "Azulejo Cobalto",
+      "quant": "260",
+      "preco": "15.70",
+      "total": "4082.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "4082.00",
+      "id": 16
+    },
+    {
+      "vendan": "5",
+      "nome": "Tijolos a vista ",
+      "quant": "600",
+      "preco": "10.95",
+      "total": "6570.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "6570.00",
+      "id": 17
+    },
+    {
+      "vendan": "5",
+      "nome": "Telhas Base",
+      "quant": "400",
+      "preco": "13.00",
+      "total": "5200.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "5200.00",
+      "id": 18
+    },
+    {
+      "vendan": "5",
+      "total": "19619.60",
+      "nome": "Total da venda nº:5",
+      "valorpagto": "19619.60",
+      "mes": "Junho",
+      "formapag": "Boleto",
+      "data_cad": "02/06/2025",
+      "vp": 0,
+      "id": 19
+    },
+    {
+      "vendan": "6",
+      "nome": "Cimento Votoran 50Kg ",
+      "quant": "25",
+      "preco": "14.60",
+      "total": "365.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "365.00",
+      "id": 20
+    },
+    {
+      "vendan": "6",
+      "nome": "Cimento Votoran 20 kg",
+      "quant": "20",
+      "preco": "13.90",
+      "total": "278.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "278.00",
+      "id": 21
+    },
+    {
+      "vendan": "6",
+      "nome": "Cal Hidratada 30kg",
+      "quant": "2",
+      "preco": "10.60",
+      "total": "21.20",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "21.20",
+      "id": 22
+    },
+    {
+      "vendan": "6",
+      "nome": "Argamassa Inovatte 50kg ",
+      "quant": "8",
+      "preco": "18.90",
+      "total": "151.20",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "151.20",
+      "id": 23
+    },
+    {
+      "vendan": "6",
+      "nome": "Argamassa ACI Cerâmica 20kg",
+      "quant": "8",
+      "preco": "19.65",
+      "total": "157.20",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "157.20",
+      "id": 24
+    },
+    {
+      "vendan": "6",
+      "nome": "Piso Porcelanato 2",
+      "quant": "160",
+      "preco": "11.50",
+      "total": "1840.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "1840.00",
+      "id": 25
+    },
+    {
+      "vendan": "6",
+      "nome": "Azulejo Cobalto",
+      "quant": "120",
+      "preco": "15.70",
+      "total": "1884.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "1884.00",
+      "id": 26
+    },
+    {
+      "vendan": "6",
+      "nome": "Impermeabilizante TotalMax   ",
+      "quant": "5",
+      "preco": "12.55",
+      "total": "62.75",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "62.75",
+      "id": 27
+    },
+    {
+      "vendan": "6",
+      "nome": "Tijolos a vista ",
+      "quant": "400",
+      "preco": "10.95",
+      "total": "4380.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "4380.00",
+      "id": 28
+    },
+    {
+      "vendan": "6",
+      "nome": "Total da venda nº:6",
+      "total": "9139.35",
+      "parcelamento": "3x",
+      "parcelan": "1ª",
+      "formapag": "Crédito",
+      "valorpagto": "3046.45",
+      "mes": "Junho",
+      "data_cad": "02/06/2025",
+      "vp": 0,
+      "id": 29
+    },
+    {
+      "vendan": "7",
+      "nome": "Piso Ceramico",
+      "quant": "150",
+      "preco": "13.50",
+      "total": "2025.00",
+      "data_cad": "02/06/2025",
+      "formapag": "Dinheiro",
+      "mes": "Junho",
+      "troco": "1.25",
+      "valorpagto": "1925.00",
+      "totaldesc": "1923.75",
+      "desconto": "5%",
+      "valordesc": "101.25",
+      "vp": "1925.00",
+      "id": 30
+    },
+    {
+      "vendan": "8",
+      "nome": "Argamassa Votorantin Votoran 20kg",
+      "quant": "3",
+      "preco": "30.00",
+      "total": "90.00",
+      "data_cad": "02/06/2025",
+      "formapag": "Pix",
+      "mes": "Junho",
+      "valorpagto": "85.50",
+      "totaldesc": "85.50",
+      "desconto": "5%",
+      "valordesc": "4.50",
+      "vp": "85.50",
+      "id": 31
+    },
+    {
+      "vendan": "9",
+      "nome": "Impermeabilizante Vedacit ",
+      "quant": "3",
+      "preco": "14.80",
+      "total": "44.40",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "44.40",
+      "id": 32
+    },
+    {
+      "vendan": "9",
+      "nome": "Impermeabilizante TotalMax   ",
+      "quant": "3",
+      "preco": "12.55",
+      "total": "37.65",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "37.65",
+      "id": 33
+    },
+    {
+      "vendan": "9",
+      "nome": "Impermeabilizante Sol ",
+      "quant": "2",
+      "preco": "16.89",
+      "total": "33.78",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "33.78",
+      "id": 34
+    },
+    {
+      "vendan": "9",
+      "nome": "Manta Liquida Acrílica Vedapen 18 kg Vedacit",
+      "quant": "2",
+      "preco": "12.75",
+      "total": "25.50",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "25.50",
+      "id": 35
+    },
+    {
+      "vendan": "9",
+      "total": "141.33",
+      "nome": "Total da venda nº:9",
+      "totaldesc": "134.26",
+      "valorpagto": "135.00",
+      "desconto": "5%",
+      "valordesc": "7.07",
+      "mes": "Junho",
+      "formapag": "Dinheiro",
+      "troco": "0.74",
+      "data_cad": "02/06/2025",
+      "vp": 0,
+      "id": 36
+    },
+    {
+      "vendan": "10",
+      "nome": "Piso Porcelanato 2",
+      "quant": "100",
+      "preco": "11.50",
+      "total": "1150.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "1150.00",
+      "id": 37
+    },
+    {
+      "vendan": "10",
+      "nome": "Piso Porcelanato 1",
+      "quant": "80",
+      "preco": "12.80",
+      "total": "1024.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "1024.00",
+      "id": 38
+    },
+    {
+      "vendan": "10",
+      "nome": "Piso Ceramico",
+      "quant": "70",
+      "preco": "13.50",
+      "total": "945.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "945.00",
+      "id": 39
+    },
+    {
+      "vendan": "10",
+      "nome": "Azulejo Cobalto",
+      "quant": "120",
+      "preco": "15.70",
+      "total": "1884.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "1884.00",
+      "id": 40
+    },
+    {
+      "vendan": "10",
+      "nome": "Azulejo Branco Claro ",
+      "quant": "120",
+      "preco": "15.00",
+      "total": "1800.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "vp": "1800.00",
+      "id": 41
+    },
+    {
+      "vendan": "10",
+      "total": "6803.00",
+      "nome": "Total da venda nº:10",
+      "totaldesc": "5442.40",
+      "valorpagto": "5442.40",
+      "desconto": "20%",
+      "valordesc": "1360.60",
+      "mes": "Junho",
+      "formapag": "Crédito",
+      "data_cad": "02/06/2025",
+      "vp": 0,
+      "id": 42
+    },
+    {
+      "nome": "Total das entradas no mes de  Junho",
+      "total": "36136.45",
+      "preco": 0,
+      "mes": "Junho",
+      "vendan": "0",
+      "troco": 0,
+      "valorpagto": 0,
+      "data_cad": "04/06/2025",
+      "id": 43
+    }
+  ],
+  "atual": [
+    {
+      "numero": "11",
+      "id": 10
+    }
+  ],
+  "catproduto": [
+    {
+      "nome": "Cimento e Cal",
+      "id": 1
+    },
+    {
+      "nome": "Areia e Pedra Brita ",
+      "id": 2
+    },
+    {
+      "nome": "Aço",
+      "id": 3
+    },
+    {
+      "nome": "Madeira",
+      "id": 4
+    },
+    {
+      "nome": "Argamassa",
+      "id": 5
+    },
+    {
+      "nome": "Telha",
+      "id": 6
+    },
+    {
+      "nome": "Pisos e Revestimentos",
+      "id": 7
+    },
+    {
+      "nome": "Materiais Elétricos ",
+      "id": 8
+    },
+    {
+      "nome": "Materiais Hidráulicos",
+      "id": 9
+    },
+    {
+      "nome": "Tijolos",
+      "id": 10
+    },
+    {
+      "nome": "Impermeabilizantes",
+      "id": 11
+    }
+  ],
+  "produtos": [
+    {
+      "qtd": 1915,
+      "nome": "Cimento Votoran 50Kg ",
+      "custo": "12.60",
+      "categoria": "Cimento e Cal",
+      "data_cadastro": "01/06/2025",
+      "codigo": "01",
+      "preco": "14.60",
+      "id": 1
+    },
+    {
+      "qtd": 1920,
+      "nome": "Cimento Votoran 20 kg",
+      "custo": "10.65",
+      "categoria": "Cimento e Cal",
+      "data_cadastro": "01/06/2025",
+      "codigo": "02",
+      "preco": "13.90",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "qtd": 1200,
+      "nome": "Cal Hidratada 30kg",
+      "preco": "10.60",
+      "custo": "7.80",
+      "categoria": "Cimento e Cal",
+      "data_cadastro": "02/06/2025",
+      "codigo": "03"
+    },
+    {
+      "qtd": 1042,
+      "nome": "Argamassa Inovatte 20 kg",
+      "custo": "15.60",
+      "categoria": "Argamassa",
+      "data_cadastro": "01/06/2025",
+      "codigo": "04",
+      "preco": "20.60",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "qtd": 1540,
+      "nome": "Argamassa Votorantin Votoran 20kg",
+      "preco": "30.00",
+      "custo": "25.00",
+      "categoria": "Argamassa",
+      "data_cadastro": "02/06/2025",
+      "codigo": "05"
+    },
+    {
+      "qtd": 1052,
+      "nome": "Argamassa Inovatte 50kg ",
+      "custo": "13.85",
+      "categoria": "Argamassa",
+      "data_cadastro": "01/06/2025",
+      "codigo": "06",
+      "preco": "18.90",
+      "id": 6
+    },
+    {
+      "qtd": 1032,
+      "nome": "Argamassa ACI Cerâmica 20kg",
+      "custo": "15.85",
+      "categoria": "Argamassa",
+      "data_cadastro": "01/06/2025",
+      "codigo": "07",
+      "preco": "19.65",
+      "id": 7
+    },
+    {
+      "qtd": 720,
+      "nome": "Piso Porcelanato 1",
+      "custo": "9.90",
+      "categoria": "Pisos e Revestimentos",
+      "data_cadastro": "02/06/2025",
+      "codigo": "09",
+      "preco": "12.80",
+      "id": 8
+    },
+    {
+      "qtd": 484,
+      "nome": "Piso Porcelanato 2",
+      "custo": "8.50",
+      "categoria": "Pisos e Revestimentos",
+      "data_cadastro": "02/06/2025",
+      "codigo": "10",
+      "preco": "11.50",
+      "id": 9
+    },
+    {
+      "qtd": 480,
+      "nome": "Piso Ceramico",
+      "custo": "11.54",
+      "categoria": "Pisos e Revestimentos",
+      "data_cadastro": "02/06/2025",
+      "codigo": "11",
+      "preco": "13.50",
+      "id": 10
+    },
+    {
+      "qtd": 100,
+      "nome": "Azulejo Cobalto",
+      "custo": "13.65",
+      "categoria": "Pisos e Revestimentos",
+      "data_cadastro": "02/06/2025",
+      "codigo": "12",
+      "preco": "15.70",
+      "id": 11
+    },
+    {
+      "qtd": 400,
+      "nome": "Azulejo Branco Claro ",
+      "custo": "12.98",
+      "categoria": "Pisos e Revestimentos",
+      "data_cadastro": "02/06/2025",
+      "codigo": "13",
+      "preco": "15.00",
+      "id": 12
+    },
+    {
+      "qtd": 254,
+      "nome": "Impermeabilizante Vedacit ",
+      "custo": "12.60",
+      "categoria": "Impermeabilizantes",
+      "data_cadastro": "02/06/2025",
+      "codigo": "15",
+      "preco": "14.80",
+      "id": 13
+    },
+    {
+      "qtd": 242,
+      "nome": "Impermeabilizante TotalMax   ",
+      "custo": "8.45",
+      "categoria": "Impermeabilizantes",
+      "data_cadastro": "02/06/2025",
+      "codigo": "16",
+      "preco": "12.55",
+      "id": 14
+    },
+    {
+      "qtd": 338,
+      "nome": "Impermeabilizante Sol ",
+      "custo": "13.54",
+      "categoria": "Impermeabilizantes",
+      "data_cadastro": "02/06/2025",
+      "codigo": "17",
+      "preco": "16.89",
+      "id": 15
+    },
+    {
+      "qtd": 538,
+      "nome": "Manta Liquida Acrílica Vedapen 18 kg Vedacit",
+      "custo": "9.68",
+      "categoria": "Impermeabilizantes",
+      "data_cadastro": "02/06/2025",
+      "codigo": "18",
+      "preco": "12.75",
+      "id": 16
+    },
+    {
+      "qtd": 1000,
+      "nome": "Tijolos a vista ",
+      "custo": "7.95",
+      "categoria": "Tijolos",
+      "data_cadastro": "02/06/2025",
+      "codigo": "20",
+      "preco": "10.95",
+      "id": 17
+    },
+    {
+      "qtd": 1600,
+      "nome": "Telhas Base",
+      "custo": "9.95",
+      "categoria": "Telha",
+      "data_cadastro": "02/06/2025",
+      "codigo": "21",
+      "preco": "13.00",
+      "id": 18
+    }
+  ],
+  "despesas": [
+    {
+      "nome": "Agua ",
+      "custo": "85.60",
+      "data_pgto": "10/06/2025",
+      "data_cad": "06/06/2025",
+      "total": "85.60",
+      "id": 1
+    },
+    {
+      "nome": "Luz",
+      "custo": "140.00",
+      "data_pgto": "10/06/2025",
+      "data_cad": "06/06/2025",
+      "total": "140.00",
+      "id": 2
+    },
+    {
+      "nome": "Telefone e Internet",
+      "custo": "100.00",
+      "data_pgto": "10/06/2025",
+      "data_cad": "06/06/2025",
+      "total": "100.00",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "nome": "Outras despesas ",
+      "custo": "750.00",
+      "data_pgto": "18/06/2025",
+      "total": "750.00",
+      "data_cad": "06/06/2025"
+    },
+    {
+      "nome": "Total das despesas:",
+      "total": "1075.60",
+      "custo": null,
+      "data_cad": "06/06/2025",
+      "id": 5
+    }
+  ],
+  "compras": [
+    {
+      "compran": "1",
+      "nome": "Cimento Votoran 50Kg ",
+      "qtd": "1000",
+      "custo": "12.60",
+      "total": "12600.00",
+      "data_cad": "01/06/2025",
+      "formapag": "Dinheiro",
+      "mes": "Junho",
+      "fornecedor": "Votoran s/a",
+      "troco": "4.40",
+      "valorpagto": "12650.00",
+      "totalfrete": "12645.60",
+      "vf": "45.60",
+      "vp": "12650.00",
+      "id": 1
+    },
+    {
+      "compran": "2",
+      "nome": "Cimento Votoran 20 kg",
+      "qtd": "1000",
+      "custo": "10.65",
+      "total": "10650.00",
+      "data_cad": "01/06/2025",
+      "formapag": "Pix",
+      "mes": "Junho",
+      "fornecedor": "São Gabriel s/a",
+      "valorpagto": "10685.60",
+      "totalfrete": "10685.60",
+      "vf": "35.60",
+      "vp": "10685.60",
+      "id": 2
+    },
+    {
+      "compran": "3",
+      "nome": "Cal Hidratada 30kg",
+      "qtd": "15",
+      "custo": "7.80",
+      "total": "117.00",
+      "data_cad": "01/06/2025",
+      "valorpagto": "71.00",
+      "formapag": "Crédito",
+      "parcelamento": "2x",
+      "parcelan": "1ª",
+      "mes": "Junho",
+      "fornecedor": "São Gabriel s/a",
+      "totalfrete": "142.00",
+      "vf": "25.00",
+      "vp": "71.00",
+      "id": 3
+    },
+    {
+      "compran": "4",
+      "nome": "Argamassa Inovatte 20 kg",
+      "qtd": "50",
+      "custo": "15.60",
+      "total": "780.00",
+      "data_cad": "01/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Argamassas e Companhia s/a",
+      "valorpagto": 0,
+      "vp": "780.00",
+      "id": 4
+    },
+    {
+      "compran": "4",
+      "nome": "Argamassa Votorantin Votoran 20kg",
+      "qtd": "50",
+      "custo": "25.00",
+      "total": "1250.00",
+      "data_cad": "01/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Argamassas e Companhia s/a",
+      "valorpagto": 0,
+      "vp": "1250.00",
+      "id": 5
+    },
+    {
+      "compran": "4",
+      "nome": "Argamassa Inovatte 50kg ",
+      "qtd": "60",
+      "custo": "13.85",
+      "total": "831.00",
+      "data_cad": "01/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Argamassas e Companhia s/a",
+      "valorpagto": 0,
+      "vp": "831.00",
+      "id": 6
+    },
+    {
+      "compran": "4",
+      "nome": "Argamassa ACI Cerâmica 20kg",
+      "qtd": "40",
+      "custo": "15.85",
+      "total": "634.00",
+      "data_cad": "01/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Argamassas e Companhia s/a",
+      "valorpagto": 0,
+      "vp": "634.00",
+      "id": 7
+    },
+    {
+      "compran": "4",
+      "nome": "Total da compra nº:4",
+      "total": "3495.00",
+      "data_cad": "01/06/2025",
+      "formapag": "Dinheiro",
+      "mes": "Junho",
+      "fornecedor": "Argamassas e Companhia s/a",
+      "troco": "9.70",
+      "valorpagto": "3550.00",
+      "totalfrete": "3540.30",
+      "vf": "45.30",
+      "vp": 0,
+      "id": 8
+    },
+    {
+      "compran": "5",
+      "nome": "Piso Porcelanato 1",
+      "qtd": "1000",
+      "custo": "9.90",
+      "total": "9900.00",
+      "data_cad": "01/06/2025",
+      "mes": "Junho",
+      "fornecedor": "São Judas Pisos e Azulejos s/a",
+      "valorpagto": 0,
+      "vp": "9900.00",
+      "id": 9
+    },
+    {
+      "compran": "5",
+      "nome": "Piso Porcelanato 2",
+      "qtd": "1000",
+      "custo": "8.50",
+      "total": "8500.00",
+      "data_cad": "01/06/2025",
+      "mes": "Junho",
+      "fornecedor": "São Judas Pisos e Azulejos s/a",
+      "valorpagto": 0,
+      "vp": "8500.00",
+      "id": 10
+    },
+    {
+      "compran": "5",
+      "nome": "Piso Ceramico",
+      "qtd": "700",
+      "custo": "11.54",
+      "total": "8078.00",
+      "data_cad": "01/06/2025",
+      "mes": "Junho",
+      "fornecedor": "São Judas Pisos e Azulejos s/a",
+      "valorpagto": 0,
+      "vp": "8078.00",
+      "id": 11
+    },
+    {
+      "compran": "5",
+      "nome": "Azulejo Cobalto",
+      "qtd": "600",
+      "custo": "13.65",
+      "total": "8190.00",
+      "data_cad": "01/06/2025",
+      "mes": "Junho",
+      "fornecedor": "São Judas Pisos e Azulejos s/a",
+      "valorpagto": 0,
+      "vp": "8190.00",
+      "id": 12
+    },
+    {
+      "compran": "5",
+      "nome": "Azulejo Branco Claro ",
+      "qtd": "650",
+      "custo": "12.98",
+      "total": "8437.00",
+      "data_cad": "01/06/2025",
+      "mes": "Junho",
+      "fornecedor": "São Judas Pisos e Azulejos s/a",
+      "valorpagto": 0,
+      "vp": "8437.00",
+      "id": 13
+    },
+    {
+      "compran": "5",
+      "nome": "Total da compra nº:5",
+      "total": "43105.00",
+      "data_cad": "01/06/2025",
+      "formapag": "Boleto",
+      "mes": "Junho",
+      "fornecedor": "São Judas Pisos e Azulejos s/a",
+      "valorpagto": "43140.60",
+      "totalfrete": "43140.60",
+      "vf": "35.60",
+      "vp": 0,
+      "id": 14
+    },
+    {
+      "compran": "6",
+      "nome": "Impermeabilizante Vedacit ",
+      "qtd": "60",
+      "custo": "12.60",
+      "total": "756.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Sika s/a",
+      "valorpagto": 0,
+      "vp": "756.00",
+      "id": 15
+    },
+    {
+      "compran": "6",
+      "nome": "Impermeabilizante TotalMax   ",
+      "qtd": "50",
+      "custo": "8.45",
+      "total": "422.50",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Sika s/a",
+      "valorpagto": 0,
+      "vp": "422.50",
+      "id": 16
+    },
+    {
+      "compran": "6",
+      "nome": "Impermeabilizante Sol ",
+      "qtd": "40",
+      "custo": "13.54",
+      "total": "541.60",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Sika s/a",
+      "valorpagto": 0,
+      "vp": "541.60",
+      "id": 17
+    },
+    {
+      "compran": "6",
+      "nome": "Manta Liquida Acrílica Vedapen 18 kg Vedacit",
+      "qtd": "40",
+      "custo": "9.68",
+      "total": "387.20",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Sika s/a",
+      "valorpagto": 0,
+      "vp": "387.20",
+      "id": 18
+    },
+    {
+      "compran": "6",
+      "nome": "Total da compra nº:6",
+      "total": "2107.30",
+      "data_cad": "02/06/2025",
+      "valorpagto": "359.37",
+      "formapag": "Crédito",
+      "parcelamento": "6x",
+      "parcelan": "1ª",
+      "mes": "Junho",
+      "fornecedor": "Sika s/a",
+      "totalfrete": "2156.20",
+      "vf": "48.90",
+      "vp": 0,
+      "id": 19
+    },
+    {
+      "compran": "7",
+      "nome": "Tijolos a vista ",
+      "qtd": "2000",
+      "custo": "7.95",
+      "total": "15900.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Ribeiro Telhas e Tijolos s/a",
+      "valorpagto": 0,
+      "vp": "15900.00",
+      "id": 20
+    },
+    {
+      "compran": "7",
+      "nome": "Telhas Base",
+      "qtd": "2000",
+      "custo": "9.95",
+      "total": "19900.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Ribeiro Telhas e Tijolos s/a",
+      "valorpagto": 0,
+      "vp": "19900.00",
+      "id": 21
+    },
+    {
+      "compran": "7",
+      "nome": "Total da compra nº:7",
+      "total": "35800.00",
+      "data_cad": "02/06/2025",
+      "formapag": "Débito",
+      "mes": "Junho",
+      "fornecedor": "Ribeiro Telhas e Tijolos s/a",
+      "valorpagto": "35838.00",
+      "totalfrete": "35838.00",
+      "vf": "38.00",
+      "vp": 0,
+      "id": 22
+    },
+    {
+      "compran": "8",
+      "nome": "Cal Hidratada 30kg",
+      "qtd": "940",
+      "custo": "7.80",
+      "total": "7332.00",
+      "data_cad": "02/06/2025",
+      "formapag": "Dinheiro",
+      "mes": "Junho",
+      "fornecedor": "São Gabriel s/a",
+      "troco": "31.02",
+      "valorpagto": "7400.00",
+      "totalfrete": "7368.98",
+      "vf": "36.98",
+      "vp": "7400.00",
+      "id": 23
+    },
+    {
+      "compran": "9",
+      "nome": "Cal Hidratada 30kg",
+      "qtd": "54",
+      "custo": "7.80",
+      "total": "421.20",
+      "data_cad": "02/06/2025",
+      "formapag": "Pix",
+      "mes": "Junho",
+      "fornecedor": "Votoran s/a",
+      "valorpagto": "446.80",
+      "totalfrete": "446.80",
+      "vf": "25.60",
+      "vp": "446.80",
+      "id": 24
+    },
+    {
+      "compran": "10",
+      "nome": "Argamassa Votorantin Votoran 20kg",
+      "qtd": "500",
+      "custo": "25.00",
+      "total": "12500.00",
+      "data_cad": "02/06/2025",
+      "valorpagto": "2087.50",
+      "formapag": "Crédito",
+      "parcelamento": "6x",
+      "parcelan": "1ª",
+      "mes": "Junho",
+      "fornecedor": "Argamassas e Companhia s/a",
+      "totalfrete": "12525.00",
+      "vf": "25.00",
+      "vp": "2087.50",
+      "id": 25
+    },
+    {
+      "compran": "11",
+      "nome": "Cal Hidratada 30kg",
+      "qtd": "200",
+      "custo": "7.80",
+      "total": "1560.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Votoran s/a",
+      "valorpagto": 0,
+      "vp": "1560.00",
+      "id": 26
+    },
+    {
+      "compran": "11",
+      "nome": "Cimento Votoran 20 kg",
+      "qtd": "1000",
+      "custo": "10.65",
+      "total": "10650.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Votoran s/a",
+      "valorpagto": 0,
+      "vp": "10650.00",
+      "id": 27
+    },
+    {
+      "compran": "11",
+      "nome": "Cimento Votoran 50Kg ",
+      "qtd": "1000",
+      "custo": "12.60",
+      "total": "12600.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Votoran s/a",
+      "valorpagto": 0,
+      "vp": "12600.00",
+      "id": 28
+    },
+    {
+      "compran": "11",
+      "nome": "Total da compra nº:11",
+      "total": "24810.00",
+      "data_cad": "02/06/2025",
+      "formapag": "Dinheiro",
+      "mes": "Junho",
+      "fornecedor": "Votoran s/a",
+      "troco": "40.00",
+      "valorpagto": "24900.00",
+      "totalfrete": "24860.00",
+      "vf": "50.00",
+      "vp": 0,
+      "id": 29
+    },
+    {
+      "compran": "12",
+      "nome": "Impermeabilizante Vedacit ",
+      "qtd": "200",
+      "custo": "12.60",
+      "total": "2520.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Sika s/a",
+      "valorpagto": 0,
+      "vp": "2520.00",
+      "id": 30
+    },
+    {
+      "compran": "12",
+      "nome": "Impermeabilizante TotalMax   ",
+      "qtd": "200",
+      "custo": "8.45",
+      "total": "1690.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Sika s/a",
+      "valorpagto": 0,
+      "vp": "1690.00",
+      "id": 31
+    },
+    {
+      "compran": "12",
+      "nome": "Impermeabilizante Sol ",
+      "qtd": "300",
+      "custo": "13.54",
+      "total": "4062.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Sika s/a",
+      "valorpagto": 0,
+      "vp": "4062.00",
+      "id": 32
+    },
+    {
+      "compran": "12",
+      "nome": "Manta Liquida Acrílica Vedapen 18 kg Vedacit",
+      "qtd": "500",
+      "custo": "9.68",
+      "total": "4840.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Sika s/a",
+      "valorpagto": 0,
+      "vp": "4840.00",
+      "id": 33
+    },
+    {
+      "compran": "12",
+      "nome": "Total da compra nº:12",
+      "total": "13112.00",
+      "data_cad": "02/06/2025",
+      "formapag": "Débito",
+      "mes": "Junho",
+      "fornecedor": "Sika s/a",
+      "valorpagto": "13166.60",
+      "totalfrete": "13166.60",
+      "vf": "54.60",
+      "vp": 0,
+      "id": 34
+    },
+    {
+      "compran": "13",
+      "nome": "Argamassa Inovatte 20 kg",
+      "qtd": "1000",
+      "custo": "15.60",
+      "total": "15600.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Argamassas e Companhia s/a",
+      "valorpagto": 0,
+      "vp": "15600.00",
+      "id": 35
+    },
+    {
+      "compran": "13",
+      "nome": "Argamassa Votorantin Votoran 20kg",
+      "qtd": "1000",
+      "custo": "25.00",
+      "total": "25000.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Argamassas e Companhia s/a",
+      "valorpagto": 0,
+      "vp": "25000.00",
+      "id": 36
+    },
+    {
+      "compran": "13",
+      "nome": "Argamassa Inovatte 50kg ",
+      "qtd": "1000",
+      "custo": "13.85",
+      "total": "13850.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Sika s/a",
+      "valorpagto": 0,
+      "vp": "13850.00",
+      "id": 37
+    },
+    {
+      "compran": "13",
+      "nome": "Argamassa ACI Cerâmica 20kg",
+      "qtd": "1000",
+      "custo": "15.85",
+      "total": "15850.00",
+      "data_cad": "02/06/2025",
+      "mes": "Junho",
+      "fornecedor": "Sika s/a",
+      "valorpagto": 0,
+      "vp": "15850.00",
+      "id": 38
+    },
+    {
+      "compran": "13",
+      "nome": "Total da compra nº:13",
+      "total": "70300.00",
+      "data_cad": "02/06/2025",
+      "valorpagto": "7035.56",
+      "formapag": "Crédito",
+      "parcelamento": "10x",
+      "parcelan": "1ª",
+      "mes": "Junho",
+      "fornecedor": "Argamassas e Companhia s/a",
+      "totalfrete": "70355.64",
+      "vf": "55.64",
+      "vp": 0,
+      "id": 39
+    },
+    {
+      "nome": "Total das compras no mes de Junho",
+      "total": "161331.03",
+      "data_cad": "04/06/2025",
+      "mes": "Junho",
+      "valorpagto": 0,
+      "compran": "0",
+      "id": 40
+    }
+  ],
+  "compraatual": [
+    {
+      "numero": "14",
+      "id": 14
+    }
+  ],
+  "resultados": [
+    {
+      "resultado": "-126270.18",
+      "entradas": "36136.45",
+      "saidas": "162406.63",
+      "data_cad": "06/06/2025",
+      "mes": "Junho",
+      "id": 1
+    }
+  ],
+  "clientes": [
+    {
+      "nome": "Joel",
+      "email": "joellima@email.com",
+      "fone": "14 996663325",
+      "data_cad": "24/02/2025",
+      "bairro": "Vila Paulista",
+      "endereco": "Avenida Dante Delmanto - 500",
+      "cpf": "33555853897",
+      "id": 1
+    },
+    {
+      "nome": "Fernando",
+      "email": "fernando@email.com",
+      "fone": "14 333333",
+      "data_cad": "24/02/2025",
+      "bairro": "Vila Paulista",
+      "endereco": "Rua Jose Thiago",
+      "cpf": "335556214589",
+      "id": 2
+    }
+  ],
+  "fornecedor": [
+    {
+      "nome": "Votoran s/a",
+      "endereco": "Rua José da Silva - Centro ",
+      "numero": "500",
+      "cep": "20245-900",
+      "cidade": "São José do Rio Preto SP",
+      "email": "votorancomercio@email.com",
+      "fone": "17 33652149",
+      "datacad": "17/04/2025",
+      "catforn": "Cimento e Cal",
+      "id": 1
+    },
+    {
+      "nome": "São Gabriel s/a",
+      "endereco": "Rua Luis Souza Filho - Vila Souto ",
+      "comp": "RB - 54",
+      "cep": "12569842",
+      "cidade": "Bauru SP",
+      "email": "saogabrielvendas@email.com",
+      "fone": "14 33652897",
+      "datacad": "17/04/2025",
+      "catforn": "Cimento e Cal",
+      "id": 2
+    },
+    {
+      "nome": "Constru +",
+      "endereco": "Avenida Ricardo Cintra Cavalcante - Centro ",
+      "numero": "256",
+      "cep": "1548723",
+      "cidade": "Avaré SP",
+      "email": "construmais@email.com",
+      "fone": "14 55669982",
+      "datacad": "17/04/2025",
+      "catforn": "Areia e Pedra Brita",
+      "id": 3
+    },
+    {
+      "nome": "Super Aço s/a ",
+      "endereco": "Rua Castro Alves - Vila Antartica",
+      "numero": "156",
+      "cep": "46857921",
+      "cidade": "Botucatu SP",
+      "email": "superacovendas@email.com",
+      "fone": "14 35128976",
+      "datacad": "17/04/2025",
+      "catforn": "Aço",
+      "id": 4
+    },
+    {
+      "nome": "Madeirão s/a ",
+      "endereco": "Rua Capitão José Paes de Almeida - Boa Vista",
+      "numero": "256",
+      "cep": "236985412",
+      "cidade": "Botucatu SP",
+      "email": "madeiraocomercial@email.com",
+      "fone": "14 33225569",
+      "datacad": "17/04/2025",
+      "catforn": "Madeira",
+      "id": 5
+    },
+    {
+      "nome": "Argamassas e Companhia s/a",
+      "endereco": "Rua Antonio Luis Agapto Simonetti - Vila Camargo",
+      "numero": "202",
+      "cep": "20361456",
+      "cidade": "Arandu SP",
+      "email": "argamassascomercial@email.com",
+      "fone": "14 55662248",
+      "datacad": "18/04/2025",
+      "catforn": "Argamassa",
+      "id": 6
+    },
+    {
+      "nome": "São Judas Pisos e Azulejos s/a",
+      "endereco": "Avenida Dante Delmanto - Vila Paulista ",
+      "numero": "504",
+      "cep": "19605123",
+      "cidade": "Botucatu SP",
+      "email": "saojudaspisos@email.colm",
+      "fone": "14 33558972",
+      "datacad": "18/04/2025",
+      "catforn": "Pisos e Revestimentos",
+      "id": 7
+    },
+    {
+      "nome": "Ribeiro Telhas e Tijolos s/a",
+      "endereco": "Rua Claudio Castro - Vila Guilherme ",
+      "numero": "205",
+      "cep": "20365489",
+      "cidade": "São Paulo SP",
+      "email": "ribeirocomercio@email.com",
+      "fone": "11 33665248",
+      "datacad": "18/04/2025",
+      "catforn": "Telha",
+      "id": 8
+    },
+    {
+      "nome": "Souza Materiais Elétricos s/a",
+      "endereco": "Avenida Alselmo Dias - Centro ",
+      "numero": "1235",
+      "cep": "12365897",
+      "cidade": "Jau SP",
+      "email": "souzaeletricos@email.com",
+      "fone": "15 66332259",
+      "datacad": "18/04/2025",
+      "catforn": "Materiais elétricos",
+      "id": 9
+    },
+    {
+      "nome": "Mega Hidraulica s/a",
+      "endereco": "Rua Antonio Nunes da Silva Sobrinho - Jardim Paraiso ",
+      "numero": "459",
+      "cep": "18400100",
+      "cidade": "Botucatu SP",
+      "email": "megahidraulicacomercial@email.com",
+      "fone": "14 99886457",
+      "datacad": "18/04/2025",
+      "catforn": "Materiais Hidraulicos",
+      "id": 10
+    },
+    {
+      "nome": "Sika s/a",
+      "endereco": "Rua Luis Souza - Centro ",
+      "numero": "153",
+      "cep": "456982165",
+      "cidade": "Campinas SP",
+      "email": "sikavendas@email.com",
+      "fone": "19 33662254",
+      "datacad": "18/04/2025",
+      "catforn": "Impermeabilizantes ",
+      "id": 11
+    },
+    {
+      "nome": "Sales s/a",
+      "endereco": "Avenida Dante Delmanto - Vila Paulista ",
+      "numero": "1250",
+      "cep": "20563121",
+      "cidade": "Botucatu SP",
+      "email": "salesvendas@email.com",
+      "fone": "14 66332259",
+      "datacad": "18/04/2025",
+      "catforn": "Tijolos",
+      "id": 12
+    }
+  ],
+  "catfornecedor": [
+    {
+      "id": 1,
+      "nome": "Cimento e Cal"
+    },
+    {
+      "id": 2,
+      "nome": "Areia e Pedra Brita"
+    },
+    {
+      "nome": "Aço",
+      "id": 5
+    },
+    {
+      "id": 6,
+      "nome": "Madeira"
+    },
+    {
+      "nome": "Argamassa",
+      "id": 7
+    },
+    {
+      "nome": "Telha",
+      "id": 8
+    },
+    {
+      "nome": "Pisos e Revestimentos",
+      "id": 9
+    },
+    {
+      "id": 10,
+      "nome": "Materiais elétricos"
+    },
+    {
+      "nome": "Materiais Hidraulicos",
+      "id": 11
+    },
+    {
+      "nome": "Tijolos",
+      "id": 12
+    },
+    {
+      "nome": "Impermeabilizantes ",
+      "id": 13
+    }
+  ],
+  "mesatual": [
+    {
+      "mes": "Junho",
+      "id": 1
+    }
+  ],
+  "mescompraatual": [
+    {
+      "mes": "Junho",
+      "id": 1
+    }
+  ],
+  "orcvenda": []
+}

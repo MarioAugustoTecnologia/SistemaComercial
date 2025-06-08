@@ -198,7 +198,7 @@ const ProdutosCat = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -225,8 +225,8 @@ const ProdutosCat = () => {
           <Outlet />
           <div className="px-5 mt-5">
             <div className="mb3">
-              <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px' }}>Busca por categoria:</label><br />
-              <input style={{ fontFamily: 'arial', fontSize: '22px' }} type="search" autoFocus='true' className="consultanome" value={buscacat} onChange={(e) => setBuscaCat(e.target.value)} />
+              <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold'}}>Busca por categoria:</label><br />
+              <input style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold', color:'navy'}} type="search" autoFocus='true' className="consultanome" value={buscacat} onChange={(e) => setBuscaCat(e.target.value)} />
 
               <Link to="/produtos" className="btn" style={{ color: 'white', backgroundColor: 'orange', margin: '0 20px', fontSize: '18px', fontFamily: 'arial', width: '140px' }}>Voltar:</Link>
             </div><br />
@@ -254,8 +254,8 @@ const ProdutosCat = () => {
                       <tr key={item.id}>
                         <td className="td">{item.id}</td>
                         <td className="td" id="nome">{item.nome}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.custo)}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.preco)}</td>
+                        <td className="td">{item.custo}</td>
+                        <td className="td">{item.preco}</td>
                         <td className="td">{item.categoria}</td>
                         <td className="td">{item.data_cadastro}</td>
                         <td className="td">{item.qtd}</td>

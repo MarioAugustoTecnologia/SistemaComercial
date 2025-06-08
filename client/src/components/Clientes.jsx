@@ -175,7 +175,7 @@ const Clientes = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -184,7 +184,6 @@ const Clientes = () => {
                   </span>
                 </Link>
               </li>
-
               <li className="w-100" onClick={logout} >
                 <Link to='/'
                   className="nav-link px-0 align-middle text-white"

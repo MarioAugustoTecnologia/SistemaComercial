@@ -7,8 +7,7 @@ import Swal from 'sweetalert2';
 
 const Resultado = () => {
 
-  const [result, setResult] = useState([])
-
+  const [resultado, setResultado] = useState([])
 
   useEffect(() => {
 
@@ -24,7 +23,7 @@ const Resultado = () => {
 
     }).then((resp) => {
 
-      setResult(resp)
+      setResultado(resp)
 
     }).catch((err) => {
       console.log(err.message)
@@ -76,28 +75,27 @@ const Resultado = () => {
 
       if (result.isConfirmed) {
 
-        for (let id = 0; id <= result.length; id++) {
+        for (id = 0; id <= resultado.length; id++) {
 
           fetch("https://sistemacomercialserver.onrender.com/resultados/" + id, {
-
+    
             method: "DELETE"
-
+    
           }).then((res) => {
-
+    
             window.location.reload();
             //toast.success('Excluido com sucesso !')    
-
+    
           }).catch((err) => {
             toast.error('Erro ! :' + err.message)
           })
-
+    
         }
 
       } else if (result.isDenied) {
         Swal.fire("Nada excluido", "", "info");
       }
     });
-
 
   }
 
@@ -212,7 +210,7 @@ const Resultado = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -256,13 +254,13 @@ const Resultado = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {result &&
-                      result.map(item => (
+                    {resultado &&
+                      resultado.map(item => (
                         <tr key={item.id}>
                           <td className="td">{item.id}</td>
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.entradas)}</td>
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.saidas)}</td>
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.resultado)}</td>
+                          <td className="td">{item.entradas}</td>
+                          <td className="td">{item.saidas}</td>
+                          <td className="td">{item.resultado}</td>
                           <td className="td">{item.mes}</td>
                           <td className="td">{item.data_cad}</td>
                           <td className="td" >
@@ -271,19 +269,12 @@ const Resultado = () => {
 
                         </tr>
                       ))
-
                     }
 
                   </tbody>
                   <ToastContainer />
 
                 </table>
-
-
-
-
-
-
               </div>
             </div><br /><br />
             <div className="mb3">

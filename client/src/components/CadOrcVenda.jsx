@@ -14,7 +14,7 @@ const CadOrcVenda = () => {
 
 
   useEffect(() => {
-    fetch("http://localhost:3000/produtos/" + pcod).then((res) => {
+    fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod).then((res) => {
       return res.json();
     }).then((resp) => {
       Idchange(resp.id);
@@ -32,14 +32,12 @@ const CadOrcVenda = () => {
   const [preco, precochange] = useState("") 
   const [quant, quantchange] = useState("")
   const [orcn, orcnchange] = useState("")
-  const [desc, descchange] = useState("")  
-
+  const [desc, descchange] = useState("") 
  
 
   const isValidate = () => {
     let isproceed = true
     let errormessage = "Campos não podem estar vazio  !"
-
 
 
     if (nome === null || nome === '') {
@@ -78,6 +76,7 @@ const CadOrcVenda = () => {
     const total = (quant * preco).toFixed(2);
     console.log(total)
     document.getElementById('total').value = total;
+    document.getElementById('total').style.borderColor = 'GainsBoro';
 
 
   }
@@ -91,7 +90,7 @@ const CadOrcVenda = () => {
     document.getElementById('valordesc').value = desconto;
 
     const novototal = total - desconto;
-    document.getElementById('total').value = (novototal).toFixed(2);
+    document.getElementById('totaldesc').value = (novototal).toFixed(2);
 
   }
 
@@ -103,38 +102,108 @@ const CadOrcVenda = () => {
 
     if(orcn !== null || orcn !== ""){
 
-      const cadobj = {orcn, nome, quant, preco, total }
+      if(desc === null || desc === ""){
 
+        if (isValidate()) {
+
+       
+
+          const cadobj = {orcn, nome, quant, preco, total }
     
-            if (isValidate()) {
-    
-              Swal.fire({
-                title: "Deseja salvar ?",
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: "Salvar",
-                denyButtonText: `Não salvar`
-              }).then((result) => {
-    
-                if (result.isConfirmed) {
-    
-                  fetch("http://localhost:3000/orcvenda", {
-                    method: "POST",
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(cadobj)
-                  }).then((res) => {
-                    toast.success('Cadastrado com Sucesso !')                                   
-                        
-                  }).catch((err) => {
-                    toast.error('Erro ! :' + err.message)
-                  })          
+          Swal.fire({
+            title: "Deseja salvar ?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Salvar",
+            denyButtonText: `Não salvar`
+          }).then((result) => {
+
+            if (result.isConfirmed) {
+
+              fetch("https://sistemacomercialserver.onrender.com/orcvenda", {
+                method: "POST",
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(cadobj)
+              }).then((res) => {
+                toast.success('Cadastrado com Sucesso !')  
+                orcnchange('');
+                navigate('/produto/codorc');                    
+              }).catch((err) => {
+                toast.error('Erro ! :' + err.message)
+              })          
+                
+               
+            }
+          });
+        }
+
+      }else{
+
+        if (isValidate()) {
+
+
+          const valordesc = document.getElementById('valordesc').value;
+          const desconto = (desc * 100) + '%'; 
+          const totaldesc = document.getElementById('totaldesc').value;
+          const cadobj = {orcn, nome, quant, preco, total, desconto, valordesc, totaldesc }
+          
+          Swal.fire({
+            title: "Deseja salvar ?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Salvar",
+            denyButtonText: `Não salvar`
+          }).then((result) => {
+
+            if (result.isConfirmed) {
+
+              fetch("https://sistemacomercialserver.onrender.com/orcvenda", {
+                method: "POST",
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(cadobj)
+              }).then((res) => {
+                toast.success('Cadastrado com Sucesso !')                                   
                     
-                   
-                }
-              });
-            }    
-          }
+              }).catch((err) => {
+                toast.error('Erro ! :' + err.message)
+              })         
+               
+               
+            }
+          });
+        }
+      }   
+     }else{
+      if (isValidate()) {       
 
+          const cadobj = {nome, quant, preco, total }
+  
+        Swal.fire({
+          title: "Deseja salvar ?",
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: "Salvar",
+          denyButtonText: `Não salvar`
+        }).then((result) => {
+
+          if (result.isConfirmed) {
+
+            fetch("https://sistemacomercialserver.onrender.com/orcvenda", {
+              method: "POST",
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify(cadobj)
+            }).then((res) => {
+              toast.success('Cadastrado com Sucesso !')                                   
+                  
+            }).catch((err) => {
+              toast.error('Erro ! :' + err.message)
+            })          
+              
+             
+          }
+        });
+      }
+     }
     
   }
 
@@ -268,7 +337,7 @@ const CadOrcVenda = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -295,31 +364,35 @@ const CadOrcVenda = () => {
           <Outlet /><br /><br />
           <div className='d-flex justify-content-center align-items-center vh-90'>
             <div className='bg-white p-4 rounded border' style={{ width: '61%' }}>
-              <h4><center>Cadastrar Orçamento de Venda:</center></h4><br />
+              <h4><center><strong>Cadastrar Orçamento de Venda:</strong></center></h4><br />
               <form action='' onSubmit={cadastrar}>
                <div className='mb-3'>
-                 <label htmlFor="orcn" style={{ fontSize: '20px', margin: '0 115px' }}>Orçamento n°:</label>
-                 <input type='number' value={orcn} onChange={e => orcnchange(e.target.value)} style={{ fontSize: '20px', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='ordem' id='ordem' />                
+                 <label htmlFor="orcn" style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Orçamento n°:</label>
+                 <input type='number' value={orcn} onChange={e => orcnchange(e.target.value)} style={{ fontSize: '20px', width: 85, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='ordem' id='ordem' />                
                </div>
                 <div className='mb-3'>
-                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px' }}>Nome:</label>
-                  <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 560, margin: '0 115px' }} className='form-control rounded-0' name='nome' />
+                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Nome:</label>
+                  <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 560, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='nome' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='qtd' style={{ fontSize: '20px', margin: '0 115px' }}>Quantidade:</label>
-                  <label htmlFor='total' style={{ fontSize: '20px', margin: '0 75px' }}>Total c/s Desconto:</label>
-                  <label htmlFor='total' style={{ fontSize: '20px' }}>Desconto:</label>
-                  <input type='number'  autoFocus={true} onSelect={mudacorquant} value={quant} onChange={e => quantchange(e.target.value)} style={{ fontSize: '20px', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='qtd' id='quant' />
-                  <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='total' id='total' />
-                  <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 655px', marginTop: '-42px' }} className='form-control rounded-0' name='desconto' id='desconto' value={desc} onChange={e => descchange(e.target.value)} />
+                  <label htmlFor='qtd' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Quantidade:</label>
+                  <label htmlFor='total' style={{ fontSize: '20px', margin: '0 75px', fontWeight:'bold'}}>Total:</label>
+                  <label htmlFor='total' style={{ fontSize: '20px', margin:'0 80px', fontWeight:'bold'}}>Desconto:</label>
+                  <input type='number' autoFocus={true} onSelect={mudacorquant} value={quant} onChange={e => quantchange(e.target.value)} style={{ fontSize: '20px', width: 85, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='qtd' id='quant' />
+                  <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px', color:'navy', fontWeight:'bold'}} className='form-control rounded-0' name='total' id='total' />
+                  <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 620px', marginTop: '-42px', color:'navy', fontWeight:'bold'}} className='form-control rounded-0' name='desconto' id='desconto' value={desc} onChange={e => descchange(e.target.value)} />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px' }}>Preço:</label>
-                  <label htmlFor='valorpag' style={{ fontSize: '20px', margin: '0 124px' }}>Valor Desconto:</label>
-                  <input type="decimal" value={preco} onChange={e => precochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' />
-                  <input type="decimal" style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px' }} className='form-control rounded-0' name='valordesc' id='valordesc' />
-                </div><br /><br />           
-
+                  <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Preço:</label>
+                  <label htmlFor='valorpag' style={{ fontSize: '20px', margin: '0 124px', fontWeight:'bold'}}>Valor Desconto:</label>
+                  <input type="decimal" value={preco} onChange={e => precochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' , fontWeight:'bold', color:'navy'}} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' />
+                  <input type="decimal" style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='valordesc' id='valordesc' />
+                </div>
+                <div className='mb-3'>
+                <label htmlFor='totaldesc' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Total c/Desconto:</label>
+                <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='totaldesc' id='totaldesc' /> 
+                </div><br /><br />     
+                 
                 <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 120px', marginTop: '-19px', fontSize: '16px' }}>Cadastrar:</button>
                 <ToastContainer />
               </form>

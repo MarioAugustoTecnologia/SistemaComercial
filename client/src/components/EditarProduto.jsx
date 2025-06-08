@@ -136,7 +136,7 @@ const EditarProduto = () => {
       const data_cadastro = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
       const qtd = qtdcur;
       const categoria = document.getElementById('categoria').value;
-      const edtobj = { id, qtd, nome, preco, custo, categoria, data_cadastro, codigo }
+      const edtobj = { id, qtd, nome, preco, custo, categoria, data_cadastro, codigo}
       //console.log(cadobj)  
 
       if (isValidate()) {
@@ -213,11 +213,11 @@ const EditarProduto = () => {
               datacadchange('')
               entradachange('')
               codchange('')
-
+    
             }).catch((err) => {
               toast.error('Erro ! :' + err.message)
             })
-
+    
 
 
           } else if (result.isDenied) {
@@ -225,7 +225,7 @@ const EditarProduto = () => {
           }
         })
 
-
+       
       }
 
     }
@@ -354,7 +354,7 @@ const EditarProduto = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -363,7 +363,6 @@ const EditarProduto = () => {
                   </span>
                 </Link>
               </li>
-
               <li className="w-100" onClick={logout}>
                 <Link to='/'
                   className="nav-link px-0 align-middle text-white"
@@ -384,42 +383,42 @@ const EditarProduto = () => {
           <br />
           <div className='d-flex justify-content-center align-items-center vh-100'>
             <div className='bg-white p-4 rounded w-50 border'>
-              <h4><center>Editar Produto:</center></h4><br />
+              <h4><center><strong>Editar Produto:</strong></center></h4><br />
               <form action='' onSubmit={editar}>
                 <div>
-                  <label htmlFor='id' style={{ fontSize: '20px', margin: '0 115px' }}>Id:</label>
-                  <label htmlFor='estoque' style={{ fontSize: '20px', margin: '0 -12px' }}>Estoque:</label>
-                  <label htmlFor='entrada' style={{ fontSize: '20px', margin: '0 70px' }}>Entrada:</label>
+                  <label htmlFor='id' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Id:</label>
+                  <label htmlFor='estoque' style={{ fontSize: '20px', margin: '0 -12px', fontWeight:'bold'}}>Estoque:</label>
+                  <label htmlFor='entrada' style={{ fontSize: '20px', margin: '0 70px', fontWeight:'bold'}}>Entrada:</label>
 
                 </div>
                 <div>
-                  <input type='number' value={id} onChange={e => idchange(e.target.value)} style={{ fontSize: '20px', width: 70, margin: '0 115px' }} name='id' />
-                  <input type='number' value={qtdcur} onChange={e => qtdchange(e.target.value)} style={{ fontSize: '20px', width: 100, margin: '0 -60px' }} name='estoque' />
-                  <input type='number' value={entrada} onChange={e => entradachange(e.target.value)} style={{ fontSize: '20px', width: 100, margin: '0 376px', marginTop: '-42px' }} className='form-control rounded-0' name='entrada' />
+                  <input type='number' value={id} onChange={e => idchange(e.target.value)} style={{ fontSize: '20px', width: 70, margin: '0 115px', fontWeight:'bold', color:'navy' }} name='id' />
+                  <input type='number' value={qtdcur} onChange={e => qtdchange(e.target.value)} style={{ fontSize: '20px', width: 100, margin: '0 -60px', fontWeight:'bold', color:'navy'  }} name='estoque' />
+                  <input type='number' value={entrada} onChange={e => entradachange(e.target.value)} style={{ fontSize: '20px', width: 100, margin: '0 376px', marginTop: '-42px', fontWeight:'bold', color:'navy'  }} className='form-control rounded-0' name='entrada' />
                 </div><br />
                 <div className="mb-3">
-                  <label htmlFor='cod' style={{ fontSize: '20px', margin: '0 115px' }}>Codigo de Venda:</label>
-                  <input type='text' placeholder='Entre com o codigo:' value={codigo} onChange={e => codchange(e.target.value)} style={{ fontSize: '20px', width: 100, margin: '0 115px' }} className='form-control rounded-0' name='codigo' />
+                  <label htmlFor='cod' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Codigo de Venda:</label>
+                  <input type='text' placeholder='Entre com o codigo:' value={codigo} onChange={e => codchange(e.target.value)} style={{ fontSize: '20px', width: 100, margin: '0 115px', fontWeight:'bold', color:'navy'  }} className='form-control rounded-0' name='codigo' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px' }}>Nome:</label>
-                  <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 500, margin: '0 115px' }} className='form-control rounded-0' name='nome' />
+                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Nome:</label>
+                  <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 500, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='nome' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='preco' style={{ fontSize: '20px', margin: '0 115px' }}>Preço:</label>
-                  <input type="decimal" onKeyUp={MudacorPreco} value={preco} onChange={e => precochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o preço:' className='form-control rounded-0' name='preco' id="preco" />
+                  <label htmlFor='preco' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Preço:</label>                 
+                  <input type="decimal" onKeyUp={MudacorPreco} value={preco} onChange={e => precochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight:'bold', color:'navy'}} placeholder='Entre com o preço:' className='form-control rounded-0' name='preco' id="preco" />
 
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px' }}>Custo:</label>
-                  <input type="decimal" onKeyUp={MudacorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px' }} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' id="custo" />
+                  <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Custo:</label>
+                  <input type="decimal" onKeyUp={MudacorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight:'bold', color:'navy'}} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' id="custo" />
                 </div>
 
                 <div className='mb-3'>
-                  <label htmlFor='categoria' className='form-label' style={{ fontSize: '20px', margin: '0 115px' }}>
+                  <label htmlFor='categoria' className='form-label' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>
                     Categoria:
                   </label>
-                  <select onSelect={MudacorCat} style={{ fontSize: '20px', width: 280, margin: '0 115px' }} name='categoria' id='categoria' className='form-select' onChange={(e) => setValues({ ...values, id: e.target.value })}>
+                  <select onSelect={MudacorCat} style={{ fontSize: '20px', width: 280, margin: '0 115px', fontWeight:'bold', color:'navy'  }} name='categoria' id='categoria' className='form-select' onChange={(e) => setValues({ ...values, id: e.target.value })}>
                     <option value=""></option>
                     {categoria.map(val => {
                       return <option value={val.nome}>{val.nome}</option>
@@ -429,8 +428,8 @@ const EditarProduto = () => {
                 </div>
 
                 <div className='mb-3'>
-                  <label htmlFor='datacadastro' style={{ fontSize: '20px', margin: '0 115px' }}>Data de Cadastro:</label>
-                  <input type='date' onSelect={MudacorDataCad} value={datacad} onChange={e => datacadchange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px' }} className='form-control rounded-0' name='datacad' id="datacad" />
+                  <label htmlFor='datacadastro' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Data de Cadastro:</label>
+                  <input type='date' onSelect={MudacorDataCad} value={datacad} onChange={e => datacadchange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='datacad' id="datacad" />
 
                 </div>
                 <div className="mb-3">
@@ -438,7 +437,6 @@ const EditarProduto = () => {
                   <Link to='/produtos' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 -75px', fontSize: '16px', width: 100 }}>Voltar:</Link>
                 </div>
                 <ToastContainer />
-
               </form>
             </div>
           </div>

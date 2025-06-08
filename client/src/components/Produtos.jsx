@@ -76,7 +76,7 @@ const Produtos = () => {
 
       if (result.isConfirmed) {
 
-        for (let id = 0; id <= produtodata.length; id++) {
+        for (id = 0; id <= produtodata.length; id++) {
 
           fetch("https://sistemacomercialserver.onrender.com/produtos/" + id, {
 
@@ -95,7 +95,7 @@ const Produtos = () => {
       } else if (result.isDenied) {
         Swal.fire("Nada excluido", "", "info");
       }
-    });
+    });   
 
   }
 
@@ -210,7 +210,7 @@ const Produtos = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -270,14 +270,14 @@ const Produtos = () => {
                         <tr key={item.id}>
                           <td className="td">{item.id}</td>
                           <td className="td">{item.nome}</td>
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.custo)}</td>
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.preco)}</td>
+                          <td className="td">{item.custo}</td>
+                          <td className="td">{item.preco}</td>
                           <td className="td">{item.categoria}</td>
                           <td className="td">{item.data_cadastro}</td>
                           <td className="td">{item.qtd}</td>
                           <td className="td">{item.codigo}</td>
                           <td className="td" >
-                            <button className="editar" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Editar:</button>
+                            <button className="editar" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px'}}>Editar:</button>
                             <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
 
                           </td>

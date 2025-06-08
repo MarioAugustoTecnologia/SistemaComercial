@@ -15,7 +15,7 @@ const EntradasNome = () => {
   const buscarap = buscanome.toLowerCase()
 
 
-  var table = vendadata.filter(item => item.nome.toLowerCase().includes(buscarap))
+  var table = vendadata.filter(item => item.nome.toLowerCase().includes(buscarap)) 
 
 
   useEffect(() => {
@@ -72,25 +72,22 @@ const EntradasNome = () => {
 
     if (buscanome === "" || buscanome === null) {
       toast.warning("O campo busca por nome está vazio !")
-    } else {
+    } else {   
 
       let valores = [];
 
+        table.map(item => {
+          valores.push(item.vp)        
+          
+        }
+        )
 
-      table.map(item => {
-        valores.push(item.total)
-
-      }
-      )
-
-      let soma = valores.reduce((previous_value, current_value) => {
-
-        return parseFloat(previous_value) + parseFloat(current_value);
-      })
-
-      const total = soma.toFixed(2);
-      document.getElementById('total').innerHTML = total;
-
+        let soma = valores.reduce((previous_value, current_value) => {
+              
+          return parseFloat(previous_value) + parseFloat(current_value);
+        })
+        const total = soma.toFixed(2);
+        document.getElementById('total').innerHTML = total; 
 
     }
   }
@@ -100,7 +97,6 @@ const EntradasNome = () => {
     console.clear();
 
   }
-
 
   return (
     <div className="container-fluid" style={{ fontFamily: 'arial' }}>
@@ -218,7 +214,7 @@ const EntradasNome = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -228,7 +224,7 @@ const EntradasNome = () => {
                 </Link>
               </li>
               <li className="w-100" onClick={logout}>
-                <Link
+                <Link to="/"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-power ms-2"></i>
@@ -239,14 +235,14 @@ const EntradasNome = () => {
           </div>
         </div>
         <div className="col p-0 m-0">
-          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: '142%' }}>
+          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: '144%' }}>
             <h4><strong>Sistema de Gestão Comercial</strong></h4>
           </div>
           <Outlet />
           <div className="px-5 mt-5">
             <div className="mb3">
-              <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px' }}>Busca por nome:</label><br />
-              <input type="search" autoFocus='true' className="consultanome" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px' }} />
+              <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold'}}>Busca por nome:</label><br />                       
+              <input type="search" autoFocus='true' className="consultanome" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold', color:'navy'}} />
               <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 20px' }}>Voltar:</Link>
               <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '18px' }}>Total Entradas:</Link>
               <strong style={{ fontSize: '30px' }}>Total:</strong>
@@ -258,54 +254,58 @@ const EntradasNome = () => {
             <div className="mt-3">
               <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: '150%' }}>
                 <thead>
-                  <tr>
-                    <th className="th" scope="col">Id:</th>
-                    <th className="th" scope="col">Venda nº:</th>
-                    <th className="th" scope="col">Nome:</th>
-                    <th className="th" scope="col">Qtd:</th>
-                    <th className="th" scope="col">Preço:</th>
-                    <th className="th" scope="col">Total c/s Desconto:</th>
-                    <th className="th" scope="col">Forma Paga:</th>
-                    <th className="th" scope="col">Entradas:</th>
-                    <th className="th" scope="col">Troco:</th>
-                    <th className="th" scope="col">Parcelamento:</th>
-                    <th className="th" scope="col">Parcela:</th>
-                    <th className="th" scope="col">Mês:</th>
-                    <th className="th" scope="col">Data de Cadastro:</th>
-                    <th className="th" scope="col">Ação:</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    table.map(item => (
-                      <tr key={item.id}>
-                        <td className="td">{item.id}</td>
-                        <td className="td">{item.vendan}</td>
-                        <td className="td">{item.nome}</td>
-                        <td className="td">{item.quant}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.preco)}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.total)}</td>
-                        <td className="td">{item.formapag}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.valorpag)}</td>
-                        <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.troco)}</td>
-                        <td className="td">{item.parcelamento}</td>
-                        <td className="td">{item.parcelan}</td>
-                        <td className="td">{item.mes}</td>
-                        <td className="td">{item.data}</td>
-
-                        <td className="td" >
-
+                    <tr>
+                      <th className="th" scope="col">Id:</th>
+                      <th className="th" scope="col">Venda nº:</th>
+                      <th className="th" scope="col">Nome:</th>
+                      <th className="th" scope="col">Qtd:</th>
+                      <th className="th" scope="col">Preço:</th>
+                      <th className="th" scope="col">Total:</th>
+                      <th className="th" scope="col">Desconto:</th>
+                      <th className="th" scope="col">Valor Desconto:</th>
+                      <th className="th" scope="col">Total c/Desconto:</th>
+                      <th className="th" scope="col">Forma Paga:</th>
+                      <th className="th" scope="col">Entradas:</th>
+                      <th className="th" scope="col">Troco:</th>
+                      <th className="th" scope="col">Faturamento:</th>
+                      <th className="th" scope="col">Parcelamento:</th>
+                      <th className="th" scope="col">Parcela:</th>
+                      <th className="th" scope="col">Mês:</th>
+                      <th className="th" scope="col">Data de Cadastro:</th>
+                      <th className="th" scope="col">Ação:</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      table.map(item => (
+                        <tr key={item.id}>
+                          <td className="td">{item.id}</td>
+                          <td className="td">{item.vendan}</td>
+                          <td className="td">{item.nome}</td>
+                          <td className="td">{item.quant}</td>
+                          <td className="td">{item.preco}</td>
+                          <td className="td">{item.total}</td>
+                          <td className="td">{item.desconto}</td>
+                          <td className="td">{item.valordesc}</td>
+                          <td className="td">{item.totaldesc}</td>
+                          <td className="td">{item.formapag}</td>
+                          <td className="td">{item.valorpagto}</td>
+                          <td className="td">{item.troco}</td>
+                          <td className="td">{item.vp}</td>
+                          <td className="td">{item.parcelamento}</td>
+                          <td className="td">{item.parcelan}</td>
+                          <td className="td">{item.mes}</td>
+                          <td className="td">{item.data_cad}</td>
+                          <td className="td" >
                           <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                          </td>
+                        </tr>
+                      ))
 
-                        </td>
+                    }
 
-                      </tr>
-                    ))
-
-                  }
-
-                </tbody>
-                <ToastContainer />
+                  </tbody>
+                    <ToastContainer />             
 
               </table>
             </div>

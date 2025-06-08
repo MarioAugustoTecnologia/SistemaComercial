@@ -280,7 +280,7 @@ const EditarCliente = () => {
               </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
-                  to=""
+                  to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
@@ -289,7 +289,6 @@ const EditarCliente = () => {
                   </span>
                 </Link>
               </li>
-
               <li className="w-100" onClick={logout}>
                 <Link to='/'
                   className="nav-link px-0 align-middle text-white"
@@ -310,35 +309,35 @@ const EditarCliente = () => {
           <br />
           <div className='d-flex justify-content-center align-items-center vh-100'>
             <div className='bg-white p-4 rounded w-50 border'>
-              <h4><center>Editar Cliente:</center></h4><br />
+              <h4><center><strong>Editar Cliente:</strong></center></h4><br />
               <form action='' onSubmit={editar}>
                 <div className='mb-3'>
-                  <label htmlFor='id' style={{ fontSize: '20px', margin: '0 115px' }}>Id:</label>
-                  <input type='number' id="id" value={id} onChange={e => idchange(e.target.value)} style={{ fontSize: '20px', width: 100, margin: '0 115px' }} className='form-control rounded-0' name='id' />
+                  <label htmlFor='id' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Id:</label>
+                  <input type='number' id="id" value={id} onChange={e => idchange(e.target.value)} style={{ fontSize: '20px', width: 100, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='id' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px' }}>Nome:</label>
-                  <input type='text' onKeyUp={MostraNome} id="nome" placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 400, margin: '0 115px' }} className='form-control rounded-0' name='nome' />
+                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Nome:</label>
+                  <input type='text' onKeyUp={MostraNome} id="nome" placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 400, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='nome' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='email' style={{ fontSize: '20px', margin: '0 115px' }}>Email:</label>
-                  <input type="email" onKeyUp={MostraEmail} id="email" value={email} onChange={e => emailchange(e.target.value)} style={{ fontSize: '20px', width: 330, margin: '0 115px' }} placeholder='Entre com o email:' className='form-control rounded-0' name='email' />
+                  <label htmlFor='email' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Email:</label>
+                  <input type="email" onKeyUp={MostraEmail} id="email" value={email} onChange={e => emailchange(e.target.value)} style={{ fontSize: '20px', width: 330, margin: '0 115px', fontWeight:'bold', color:'navy'}} placeholder='Entre com o email:' className='form-control rounded-0' name='email' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='fone' style={{ fontSize: '20px', margin: '0 115px' }}>Telefone:</label>
-                  <input type='text' onKeyUp={MostraTelefone} id="fone" value={fone} onChange={e => fonechange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px' }} placeholder='Entre com o telefone:' className='form-control rounded-0' name='fone' />
+                  <label htmlFor='fone' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Telefone:</label>
+                  <input type='text' onKeyUp={MostraTelefone} id="fone" value={fone} onChange={e => fonechange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px', fontWeight:'bold', color:'navy'}} placeholder='Entre com o telefone:' className='form-control rounded-0' name='fone' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='endereco' style={{ fontSize: '20px', margin: '0 115px' }}>Endereço:</label>
-                  <input type='text' onKeyUp={MostraEndereco} id="endereco" placeholder='Entre com o endereço:' value={endereco} onChange={e => enderecochange(e.target.value)} style={{ fontSize: '20px', width: 400, margin: '0 115px' }} className='form-control rounded-0' name='endereco' />
+                  <label htmlFor='endereco' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Endereço:</label>
+                  <input type='text' onKeyUp={MostraEndereco} id="endereco" placeholder='Entre com o endereço:' value={endereco} onChange={e => enderecochange(e.target.value)} style={{ fontSize: '20px', width: 400, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='endereco' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='bairro' style={{ fontSize: '20px', margin: '0 115px' }}>Bairro:</label>
-                  <input type='text' onKeyUp={MostraBairro} id="bairro" placeholder='Entre com o bairro:' value={bairro} onChange={e => bairrochange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px' }} className='form-control rounded-0' name='bairro' />
+                  <label htmlFor='bairro' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Bairro:</label>
+                  <input type='text' onKeyUp={MostraBairro} id="bairro" placeholder='Entre com o bairro:' value={bairro} onChange={e => bairrochange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='bairro' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='cpf' style={{ fontSize: '20px', margin: '0 115px' }}>Cpf:</label>
-                  <input aria-disabled={true} onKeyUp={MostraCpf} type='text' value={cpf} onChange={e => cpfchange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px' }} className='form-control rounded-0' name='cpf' id="cpf" />
+                  <label htmlFor='cpf' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Cpf:</label>
+                  <input aria-disabled={true} onKeyUp={MostraCpf} type='text' value={cpf} onChange={e => cpfchange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px', color:'navy' , fontWeight:'bold'}} className='form-control rounded-0' name='cpf' id="cpf" />
                 </div>
                 <div className='mb-3'>
                   <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px', fontSize: '16px' }} >Atualizar:</button>

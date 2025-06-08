@@ -54,9 +54,10 @@ import ProdutosCat from './components/ProdutosCat';
 import MesAtual from './components/MesAtual';
 import MesComprasAtual from './components/MesComprasAtual';
 import CadNovaCompra from './components/CadNovaCompra';
-import ProdutoCodOrc from './components/ProdutoCodOrc';
 import OrcVendas from './components/OrcVendas';
+import ProdutoCodOrc from './components/ProdutoCodOrc';
 import CadOrcVenda from './components/CadOrcVenda';
+
 
 //8=> Criação do json server com o comando: npx json-server db.json
 
@@ -82,7 +83,8 @@ function App() {
     <Route path='/produtos/cat' element={<PrivateRoutes><ProdutosCat /></PrivateRoutes>}></Route>
     <Route path='/produto/cadcat' element={<PrivateRoutes><CadCatProd /></PrivateRoutes>}></Route>
     <Route path='/produtos/categoria/lista' element={<PrivateRoutes><CatProdutos/></PrivateRoutes>}></Route>
-    <Route path='/produto/categoria/editar/:catcod' element={<PrivateRoutes><ProdutoCatEditar/></PrivateRoutes>}></Route>       
+    <Route path='/produto/categoria/editar/:catcod' element={<PrivateRoutes><ProdutoCatEditar/></PrivateRoutes>}></Route>  
+    <Route path='/produto/codorc' element={<PrivateRoutes><ProdutoCodOrc /></PrivateRoutes>}></Route>     
     <Route path='/entradas' element={<PrivateRoutes><Entradas /></PrivateRoutes>}></Route>
     <Route path='/entradas/nome' element={<PrivateRoutes><EntradasNome /></PrivateRoutes>}></Route>
     <Route path='/entradas/data' element={<PrivateRoutes><EntradasData /></PrivateRoutes>}></Route>
@@ -91,6 +93,7 @@ function App() {
     <Route path='/entradas/numero' element={<PrivateRoutes><EntradasNumero /></PrivateRoutes>}></Route> 
     <Route path='/entradas/cadastrar/:pcod' element={<PrivateRoutes><CadVenda /></PrivateRoutes>}></Route>  
     <Route path='/entradas/numero/editar/:entradacod' element={<PrivateRoutes><EntradasNumeroEditar /></PrivateRoutes>}></Route> 
+    <Route path='/entradas/cadastrar/orc/:pcod' element={<PrivateRoutes><CadOrcVenda /></PrivateRoutes>}></Route>
     <Route path='/caddespesas' element={<PrivateRoutes><CadDespesas /></PrivateRoutes>}></Route>
     <Route path='/despesas' element={<PrivateRoutes><Despesas /></PrivateRoutes>}></Route>
     <Route path='/despesas/editar/:despesacod' element={<PrivateRoutes><EditarDespesa /></PrivateRoutes>}></Route>
@@ -119,10 +122,10 @@ function App() {
     <Route path='/fornecedores/categoria/lista' element={<PrivateRoutes><CatFornecedores /></PrivateRoutes>}></Route>
     <Route path='/fornecedor/categoria/editar/:catcod' element={<PrivateRoutes><FornecedorCatEditar /></PrivateRoutes>}></Route>
     <Route path='/mesatual' element={<PrivateRoutes><MesAtual /></PrivateRoutes>}></Route>
-    <Route path='/mescompraatual' element={<PrivateRoutes><MesComprasAtual /></PrivateRoutes>}></Route>
-    <Route path='/produto/codorc' element={<PrivateRoutes><ProdutoCodOrc /></PrivateRoutes>}></Route>
-    <Route path='/orcvendas' element={<PrivateRoutes><OrcVendas /></PrivateRoutes>}></Route>  
-    <Route path='/entradas/cadastrar/orc/:pcod' element={<PrivateRoutes><CadOrcVenda /></PrivateRoutes>}></Route>
+    <Route path='/mescompraatual' element={<PrivateRoutes><MesComprasAtual /></PrivateRoutes>}></Route>  
+    <Route path='/orcvendas' element={<PrivateRoutes><OrcVendas /></PrivateRoutes>}></Route>
+    
+    
     </Routes>
     </BrowserRouter>
    </div>

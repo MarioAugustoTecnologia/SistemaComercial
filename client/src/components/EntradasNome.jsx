@@ -34,6 +34,8 @@ const EntradasNome = () => {
 
   }, [])
 
+    const [mes, setMes] = React.useState("")
+
 
   const handleDelete = (id) => {
 
@@ -68,28 +70,78 @@ const EntradasNome = () => {
 
   }
 
-  function somar() {
+function somar() {
 
-    if (buscanome === "" || buscanome === null) {
-      toast.warning("O campo busca por nome está vazio !")
-    } else {   
+    const tabela = document.getElementById("table");
+    const linhas = tabela.getElementsByTagName("tr");
 
-      let valores = [];
+    let somaTotal = 0;    
 
-        table.map(item => {
-          valores.push(item.vp)        
-          
-        }
-        )
+    if (mes !== ''){
 
-        let soma = valores.reduce((previous_value, current_value) => {
-              
-          return parseFloat(previous_value) + parseFloat(current_value);
-        })
-        const total = soma.toFixed(2);
-        document.getElementById('total').innerHTML = total; 
+      for (let i = 0; i < linhas.length; i++) {
+
+      const celulas1 = linhas[i].getElementsByTagName("td");
+
+      for (let k = 15; k < celulas1.length; k++) {
+
+        const valorMes = celulas1[k].innerHTML;     
+
+          if (valorMes === mes) {
+
+            const celulas = linhas[i].getElementsByTagName("td");
+
+            for (let j = 12; j < celulas.length; j++) {
+
+              const valorCelula = celulas[j].innerHTML;
+              // Converte o valor para número, tratando erros com try/catch
+              try {
+                const numero = Number(valorCelula);
+
+                if (!isNaN(numero)) { // Verifica se é um número válido
+                  somaTotal += numero;
+                } else {
+                  console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
+                }
+              } catch (error) {
+                console.error("Erro ao converter valor para número:", error);
+              }
+            }
+
+          }
+
+      }
 
     }
+
+    }else{
+
+      for (let i = 0; i < linhas.length; i++) { 
+
+        const celulas = linhas[i].getElementsByTagName("td");
+
+            for (let j = 12; j < celulas.length; j++) {
+
+              const valorCelula = celulas[j].innerHTML;
+              // Converte o valor para número, tratando erros com try/catch
+              try {
+                const numero = Number(valorCelula);
+
+                if (!isNaN(numero)) { // Verifica se é um número válido
+                  somaTotal += numero;
+                } else {
+                  console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
+                }
+              } catch (error) {
+                console.error("Erro ao converter valor para número:", error);
+              }
+            } 
+
+    }  
+
+  }
+    
+    document.getElementById("total").innerText = "R$" + (somaTotal).toFixed(2);
   }
 
   const logout = () => {
@@ -241,12 +293,15 @@ const EntradasNome = () => {
           <Outlet />
           <div className="px-5 mt-5">
             <div className="mb3">
-              <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold'}}>Busca por nome:</label><br />                       
-              <input type="search" autoFocus='true' className="consultanome" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold', color:'navy'}} />
+              <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold' }}>Busca por nome:</label><br />
+
+              <input type="search" autoFocus='true' className="consultanome" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy' }} />
               <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 20px' }}>Voltar:</Link>
               <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '18px' }}>Total Entradas:</Link>
               <strong style={{ fontSize: '30px' }}>Total:</strong>
-              <strong><span id="total" style={{ color: 'green', fontSize: '32px', margin: '0 10px' }}></span></strong>
+              <strong><span id="total" style={{ color: 'green', fontSize: '32px', margin: '0 10px' }}></span></strong><br />
+              <label htmlFor="Mes" className="mes" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold' }}>Mes:</label><br />
+              <input type="text" className="consultames" value={mes} onChange={(e) => setMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy', width: '150px' }} />
 
             </div><br />
             <h4 style={{ textAlign: 'center', color: 'Red', fontSize: '25px', marginRight: '-225px' }}><strong>Entradas:</strong></h4>

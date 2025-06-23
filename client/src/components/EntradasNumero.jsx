@@ -34,6 +34,7 @@ const EntradasNumero = () => {
     const [parcelamento, parcelamentochange] = useState("")
     const [parcelan, parcelanchange] = useState("")
     const [mes, meschange] = useState("")
+    const [frete, fretechange] = useState("")
 
 
     const handleDelete = (id) => {
@@ -100,14 +101,30 @@ const EntradasNumero = () => {
                 return parseFloat(previous_value) + parseFloat(current_value);     // converte de string para number
             })
 
-            const total = parseFloat(soma).toFixed(2);
-            const nome = 'Total da venda nº:' + document.getElementById('vendan').value;
-            document.getElementById('total').value = total;
-            document.getElementById('nome').value = nome;
-            document.getElementById('totalvenda').innerHTML = "R$" + total;
-            document.getElementById('total').style.borderColor = 'gainsboro'
-            document.getElementById('nome').style.borderColor = 'gainsboro'
-            document.getElementById('vp').value = total;
+
+            if (frete == '') {
+
+                const total = parseFloat(soma).toFixed(2);
+                const nome = 'Total da venda nº:' + document.getElementById('vendan').value;
+                document.getElementById('total').value = total;
+                document.getElementById('nome').value = nome;
+                document.getElementById('totalvenda').innerHTML = "R$" + total;
+                document.getElementById('total').style.borderColor = 'gainsboro'
+                document.getElementById('nome').style.borderColor = 'gainsboro'
+                document.getElementById('vp').value = total;
+
+            } else {
+
+                const result = Number(soma) + Number(frete);
+                const total = result.toFixed(2);
+                const nome = 'Total da venda nº:' + document.getElementById('vendan').value;
+                document.getElementById('total').value = total;
+                document.getElementById('nome').value = nome;
+                document.getElementById('totalvenda').innerHTML = "R$" + total;
+                document.getElementById('total').style.borderColor = 'gainsboro'
+                document.getElementById('nome').style.borderColor = 'gainsboro'
+                document.getElementById('vp').value = total;
+            }
 
 
         }
@@ -701,6 +718,7 @@ const EntradasNumero = () => {
                                 </select><br />
                                 <label htmlFor="mes" style={{ fontSize: '20px', fontFamily: 'arial', fontWeight:'bold'}} >Mes:</label>
                                 <label htmlFor="parcelas" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 465px', fontWeight:'bold' }} >Parcelas:</label>
+                                <label htmlFor="frete" style={{ fontSize: '20px', fontFamily: 'arial', margin: '-360px', fontWeight: 'bold' }} >Frete:</label>
                                 <select onClick={MudaCorMes} style={{ fontSize: '20px', width: 150, fontWeight:'bold', color:'navy' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
                                     <option value=""></option>
                                     <option value="Janeiro">Janeiro</option>
@@ -717,7 +735,8 @@ const EntradasNumero = () => {
                                     <option value="Dezembro">Dezembro</option>
                                 </select>
 
-                                <input type="number" className="form-control rounded-0" style={{ fontSize: '20px', width: 100, margin: '0 505px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} id="parcelas" /><br />
+                                <input type="number" className="form-control rounded-0" style={{ fontSize: '20px', width: 100, margin: '0 505px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} id="parcelas" />
+                                <input type="decimal" className="form-control rounded-0" value={frete} onChange={e => fretechange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 705px', marginTop: '-45px', fontWeight: 'bold', color: 'navy' }} id="frete" /><br />
                                 <button type="submit" className="btn" style={{ color: 'white', backgroundColor: 'green', fontSize: '18px', width: 120 }}>Concluir</button>
                                 <ToastContainer />
                             </form>
@@ -749,6 +768,7 @@ const EntradasNumero = () => {
                                         <th className="th" scope="col">Parcelamento:</th>
                                         <th className="th" scope="col">Parcela:</th>
                                         <th className="th" scope="col">Mês:</th>
+                                        <th className="th" scope="col">Frete:</th>
                                         <th className="th" scope="col">Data de Cadastro:</th>
                                         <th className="th" scope="col">Ação:</th>
                                     </tr>
@@ -772,6 +792,7 @@ const EntradasNumero = () => {
                                                 <td className="td">{item.parcelamento}</td>
                                                 <td className="td">{item.parcelan}</td>
                                                 <td className="td">{item.mes}</td>
+                                                <td className="td">{item.frete}</td>
                                                 <td className="td">{item.data_cad}</td>
                                                 <td className="td" >
                                                     <button className="editar" onClick={() => { handleEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Atualizar:</button>

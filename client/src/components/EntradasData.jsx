@@ -272,6 +272,7 @@ const EntradasData = () => {
                     <th className="th" scope="col">Parcelamento:</th>
                     <th className="th" scope="col">Parcela:</th>
                     <th className="th" scope="col">Mês:</th>
+                    <th className="th" scope="col">Frete:</th>
                     <th className="th" scope="col">Data de Cadastro:</th>
                     <th className="th" scope="col">Ação:</th>
                   </tr>
@@ -295,6 +296,7 @@ const EntradasData = () => {
                         <td className="td">{item.parcelamento}</td>
                         <td className="td">{item.parcelan}</td>
                         <td className="td">{item.mes}</td>
+                        <td className="td">{item.frete}</td>
                         <td className="td">{item.data_cad}</td>
                         <td className="td" >
                           <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>

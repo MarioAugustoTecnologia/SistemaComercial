@@ -190,8 +190,7 @@ const EntradasNumero = () => {
                   const troco = parseFloat(document.getElementById('vp').value) - parseFloat(document.getElementById('total').value)
                   document.getElementById('troco').value = troco.toFixed(2)
 
-            }         
-
+            }        
 
         }
 

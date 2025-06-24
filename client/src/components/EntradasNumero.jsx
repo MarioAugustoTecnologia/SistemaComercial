@@ -166,7 +166,7 @@ const EntradasNumero = () => {
             const novototal = total - desconto;
             document.getElementById('td').value = (novototal).toFixed(2);
             document.getElementById('vd').value = desconto;
-            document.getElementById('desconto').value = (desc * 100) + '%';
+            document.getElementById('desconto').value = (desc * 100).toFixed(2) + '%';
             document.getElementById('totald').innerHTML = "R$" + novototal.toFixed(2)
             document.getElementById('vp').value = (novototal).toFixed(2);
 

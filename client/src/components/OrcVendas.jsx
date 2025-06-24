@@ -72,15 +72,41 @@ const OrcVendas = () => {
     let soma = valores.reduce((previous_value, current_value) => {       // método que faz a soma
       return parseFloat(previous_value) + parseFloat(current_value);     // converte de string para number
     })
-  
-    const nome = 'Total da venda:';
-    const total = soma.toFixed(2);
-    const valordesc = parseFloat((desconto * total).toFixed(2)); 
-    const td = total - valordesc;
-    const totaldesc = td.toFixed(2); 
-    const desc = (desconto * 100) + '%';       
 
-    const cadobj = { nome, total, valordesc, totaldesc, desc }
+    
+      let valores2 = [];
+
+      orcvendas.map(item => {
+      valores2.push(item.totaldesc)
+    })
+    //console.log(valores)
+
+    let soma2 = valores2.reduce((previous_value, current_value) => {     
+      return parseFloat(previous_value) + parseFloat(current_value);    
+    })
+
+    let valores3 = [];
+
+      orcvendas.map(item => {
+      valores3.push(item.valordesc)
+    })
+    //console.log(valores)
+
+    let soma3 = valores3.reduce((previous_value, current_value) => {     
+      return parseFloat(previous_value) + parseFloat(current_value);    
+    })
+  
+    const nome = 'Total Geral:';
+    const total = soma.toFixed(2); 
+
+    const totaldesc = soma2.toFixed(2);
+    const valordesc = soma3.toFixed(2);
+
+    //const desc = (desconto * 100) + '%';
+    const descap = (valordesc/total); 
+    const desc = (valordesc/total * 100).toFixed(2) + "%";      
+
+    const cadobj = { nome, total, totaldesc, descap, valordesc, desc }
 
     fetch("https://sistemacomercialserver.onrender.com/orcvenda", {
       method: "POST",
@@ -179,11 +205,12 @@ const OrcVendas = () => {
               <thead>
                 <tr>        
                   <th className="th" scope="col">Orçamento nº:</th>
-                  <th className="th" scope="col">Nome:</th>
+                  <th className="th" scope="col">Produto/ Serviço:</th>
                   <th className="th" scope="col">Qtd:</th>
                   <th className="th" scope="col">Preço:</th>
                   <th className="th" scope="col">Total:</th>
                   <th className="th" scope="col">Total c/Desconto:</th>
+                   <th className="th" scope="col">Desc/ Calc:</th>
                   <th className="th" scope="col">Desconto:</th>
                   <th className="th" scope="col">Valor Desconto:</th>                                   
                 </tr>
@@ -198,6 +225,7 @@ const OrcVendas = () => {
                       <td className="td">{item.preco}</td>
                       <td className="td">{item.total}</td>
                       <td className="td" style={{fontWeight:'bold', color:'green'}}>{item.totaldesc}</td>
+                      <td className="td">{item.descap}</td>
                       <td className="td">{item.desc}</td>
                       <td className="td">{item.valordesc}</td>                  
                                          

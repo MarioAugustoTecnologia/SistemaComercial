@@ -317,8 +317,7 @@ const ComprasNumero = () => {
 
                 const compran = document.getElementById('compran').value
                 const nome = document.getElementById('nome').value;
-                const data_cad = formataData()
-                const fornecedor = document.getElementById('forname').value;
+                const data_cad = formataData()               
                 const total = document.getElementById('total').value;
                 const totalfrete = document.getElementById('tf').value;
                 const vf = parseFloat(document.getElementById('frete').value).toFixed(2);
@@ -327,7 +326,7 @@ const ComprasNumero = () => {
                 const valorpagto = (totalfrete / parcelas).toFixed(2);
                 const vp = 0;
 
-                const cadobj = { compran, nome, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes, fornecedor, totalfrete, vf, vp }
+                const cadobj = { compran, nome, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes, totalfrete, vf, vp }
 
                 Swal.fire({
                     title: "Deseja salvar ?",

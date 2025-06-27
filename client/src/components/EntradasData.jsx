@@ -238,7 +238,7 @@ const EntradasData = () => {
           </div>
         </div>
         <div className="col p-0 m-0">
-          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: '145%' }}>
+          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: '160%' }}>
             <h4><strong>Sistema de Gestão Comercial:</strong></h4>
           </div>
           <Outlet />
@@ -254,7 +254,7 @@ const EntradasData = () => {
             <h4 style={{ textAlign: 'center', color: 'Red', fontSize: '25px', marginRight: '-225px' }}><strong>Entradas:</strong></h4>
             <br />
             <div className="mt-3">
-              <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: '150%' }}>
+              <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: 3000 }}>
                 <thead>
                   <tr>
                     <th className="th" scope="col">Id:</th>

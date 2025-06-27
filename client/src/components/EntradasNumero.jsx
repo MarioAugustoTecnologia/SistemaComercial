@@ -467,7 +467,7 @@ const EntradasNumero = () => {
                     } else if (result.isDenied) {
                         Swal.fire("Nada salvo", "", "info");
                     }
-                    window.location.reload();
+                    
                 });
 
             }

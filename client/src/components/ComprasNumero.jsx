@@ -221,19 +221,23 @@ const ComprasNumero = () => {
         return isproceed
     }
 
-    const concluir = (e) => {
+ 
+
+     const concluir = (e) => {
 
         e.preventDefault();
 
         if (isValidate()) {
 
-            if (parcelamento === "" || parcelamento === null && parcelan === "" || parcelan === null) {
+            const parcelas = document.getElementById('parcelas').value;
+
+            if (parcelamento === "" || parcelamento === null && parcelan === "" || parcelan === null && parcelas === "" || parcelas === null) {
 
                 const data_cad = formataData();
                 const total = document.getElementById('total').value;
                 const nome = document.getElementById('nome').value;
                 const totalfrete = document.getElementById('tf').value;
-                const vf = parseFloat(document.getElementById('frete').value).toFixed(2)
+                const vf = parseFloat(document.getElementById('frete').value).toFixed(2);
                 const fornecedor = document.getElementById('forname').value;
                 const compran = document.getElementById('compran').value;
                 const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
@@ -323,7 +327,6 @@ const ComprasNumero = () => {
                 const valorpagto = (totalfrete / parcelas).toFixed(2);
                 const vp = 0;
 
-
                 const cadobj = { compran, nome, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes, fornecedor, totalfrete, vf, vp }
 
                 Swal.fire({
@@ -353,6 +356,9 @@ const ComprasNumero = () => {
                     window.location.reload();
                 });
 
+      
+
+                
             }
 
         }
@@ -409,6 +415,18 @@ const ComprasNumero = () => {
     }
     function MudaCorFornecedor() {
         document.getElementById('forname').style.borderColor = 'Gainsboro'
+
+    }
+       function MudaCorParcelamento() {
+        document.getElementById('parcelamento').style.borderColor = 'Gainsboro'
+
+    }
+       function MudaCorParcelas() {
+        document.getElementById('parcelas').style.borderColor = 'Gainsboro'
+
+    }
+       function MudaCorParcelan() {
+        document.getElementById('parcelan').style.borderColor = 'Gainsboro'
 
     }
 
@@ -581,15 +599,15 @@ const ComprasNumero = () => {
                                 <label htmlFor='frete' style={{ fontSize: '20px', margin: '0 -24px', marginTop: '-50px', fontWeight: 'bold' }}>Frete:</label><br />
                                 <input type="decimal" className='form-control rounded-0' style={{ width: '13%', height: '42px', fontSize: '20px', fontWeight: 'bold', color: 'navy' }} id="total" />
                                 <input type="text" className='form-control rounded-0' style={{ width: '25%', height: '42px', margin: '0 200px', fontSize: '20px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="nome" />
-                                <input type="decimal" className='form-control rounded-0' style={{ width: '14%', height: '42px', margin: '0 500px', fontSize: '20px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="tf" />
-                                <input type="decimal" onKeyDown={MudaCorFrete} className="form-control rounded-0" style={{ width: '14%', height: '42px', margin: '0 680px', fontSize: '20px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="frete" /> <br />
+                                <input type="decimal" className='form-control rounded-0' style={{ width: '14%', height: '42px', margin: '0 504px', fontSize: '20px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="tf" />
+                                <input type="decimal" onKeyDown={MudaCorFrete} className="form-control rounded-0" style={{ width: '14%', height: '42px', margin: '0 690px', fontSize: '20px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="frete" /> <br />
                                 <label htmlFor="valorpag" style={{ fontSize: '20px', fontFamily: 'arial', fontWeight: 'bold' }} >Valor Pago:</label>
                                 <label htmlFor="formapag" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 100px', fontWeight: 'bold' }} >Forma Paga:</label>
-                                <label htmlFor="troco" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 90px', fontWeight: 'bold' }} >Troco:</label>
-                                <label htmlFor="parcelamento" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 20px', fontWeight: 'bold' }} >Parcelamento:</label>
-                                <label htmlFor="parcelan" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 20px', fontWeight: 'bold' }} >Parcela nº:</label><br />
+                                <label htmlFor="troco" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 73px', fontWeight: 'bold' }} >Troco:</label>
+                                <label htmlFor="parcelamento" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 40px', fontWeight: 'bold' }} >Parcelamento:</label>
+                                <label htmlFor="parcelan" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 -3px', fontWeight: 'bold' }} >Parcela nº:</label><br />
                                 <input type="decimal" onKeyDown={MudaCorVp} className="form-control rounded-0" style={{ width: '14%', height: '42px', fontSize: '20px', fontWeight: 'bold', color: 'navy' }} id="vp" />
-                                <select className="form-control rounded-0" onClick={MudaCorForma} value={formapag} onChange={e => formapagchange(e.target.value)} style={{ width: '15%', height: '42px', margin: '0 200px', fontSize: '20px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} name='formapag' id='formapag' >
+                                <select className="form-control rounded-0" onClick={MudaCorForma} value={formapag} onChange={e => formapagchange(e.target.value)} style={{ width: '15%', height: '42px', margin: '0 205px', fontSize: '20px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} name='formapag' id='formapag' >
                                     <option value=""></option>
                                     <option value="Dinheiro">Dinheiro</option>
                                     <option value="Pix">Pix</option>
@@ -598,7 +616,7 @@ const ComprasNumero = () => {
                                     <option value="Boleto">Boleto</option>
                                 </select>
                                 <input type="decimal" className="form-control rounded-0" style={{ width: '14%', height: '42px', fontSize: '20px', margin: '0 505px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="troco" />
-                                <select className="form-control rounded-0" value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ width: '10%', height: '42px', fontSize: '20px', margin: '0 680px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="parcelamento" >
+                                 <select className="form-control rounded-0" value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ width: '10%', height: '42px', fontSize: '20px', margin: '0 680px', marginTop: '-42px', fontWeight:'bold', color:'navy' }} onSelect={MudaCorParcelamento} id="parcelamento" >
                                     <option value=""></option>
                                     <option value="2x">2x</option>
                                     <option value="3x">3x</option>
@@ -612,7 +630,7 @@ const ComprasNumero = () => {
                                     <option value="11x">11x</option>
                                     <option value="12x">12x</option>
                                 </select>
-                                <select className="form-control rounded-0" value={parcelan} onChange={e => parcelanchange(e.target.value)} style={{ width: '10%', height: '42px', fontSize: '20px', margin: '0 850px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="parcelan" >
+                                <select className="form-control rounded-0" value={parcelan} onChange={e => parcelanchange(e.target.value)} style={{ width: '10%', height: '42px', fontSize: '20px', margin: '0 855px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} onSelect={MudaCorParcelan} id="parcelan" >
                                     <option value=""></option>
                                     <option value="1ª">1ª</option>
                                     <option value="2ª">2ª</option>
@@ -626,7 +644,8 @@ const ComprasNumero = () => {
                                     <option value="10ª">10ª</option>
                                     <option value="11ª">11ª</option>
                                     <option value="12ª">12ª</option>
-                                </select><br />
+                                </select><br />                                               
+                                                
                                 <label htmlFor="mes" style={{ fontSize: '20px', fontFamily: 'arial', fontWeight: 'bold' }} >Mes:</label>
                                 <label htmlFor="fornecedor" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 155px', marginTop: '-50px', fontWeight: 'bold' }} >Fornecedor:</label>
                                 <label htmlFor="parcelas" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 50px', fontWeight: 'bold' }} >Parcelas:</label>
@@ -645,13 +664,15 @@ const ComprasNumero = () => {
                                     <option value="Novembro">Novembro</option>
                                     <option value="Dezembro">Dezembro</option>
                                 </select>
-                                <select onClick={MudaCorFornecedor} style={{ fontSize: '20px', width: 260, margin: '0 198px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id='forname' className='form-select' onChange={(e) => setValues({ ...values, id: e.target.value })} >
+                                <select style={{ fontSize: '20px', width: 260, margin: '0 198px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id='forname' className='form-select' onChange={(e) => setValues({ ...values, id: e.target.value })} onSelect={MudaCorFornecedor} >
                                     <option></option>
-                                    {forname.map(val => {
+                                    {
+                                    forname.map(val => {
                                         return <option value={val.nome}>{val.nome}</option>
-                                    })}
+                                    } )
+                                    }
                                 </select>
-                                <input type="number" className="form-control rounded-0" style={{ fontSize: '20px', width: 100, margin: '0 510px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="parcelas" /><br />
+                                <input type="number" className="form-control rounded-0" style={{ fontSize: '20px', width: 100, margin: '0 516px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} onSelect={MudaCorParcelas}  id="parcelas" /><br />
                                 <button type="submit" className="btn" style={{ color: 'white', backgroundColor: 'green', fontSize: '18px', width: 120 }}>Concluir</button>
                                 <ToastContainer />
                             </form>

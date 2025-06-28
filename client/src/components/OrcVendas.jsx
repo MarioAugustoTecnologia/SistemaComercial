@@ -187,35 +187,7 @@ const OrcVendas = () => {
     document.getElementById('obs').innerHTML = obs;
   }
 
-    const handleDelete = (id) => {
-  
-      Swal.fire({
-        title: "Deseja Excluir ?",
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: "Excluir",
-        denyButtonText: `Não Excluir`
-      }).then((result) => {
-  
-        if (result.isConfirmed) {
-  
-          fetch("https://sistemacomercialserver.onrender.com/orcvenda/" + id, {
-  
-            method: "DELETE"
-  
-          }).then((res) => {
-  
-            window.location.reload();         
-  
-          }).catch((err) => {
-            toast.error('Erro ! :' + err.message)
-          })
-  
-        } else if (result.isDenied) {
-          Swal.fire("Nada excluido", "", "info");
-        }
-      });
-    }
+    
 
 
   return (
@@ -241,8 +213,7 @@ const OrcVendas = () => {
                   <th className="th" scope="col">Total c/Desconto:</th>
                    <th className="th" scope="col">Desc/ Calc:</th>
                   <th className="th" scope="col">Desconto:</th>
-                  <th className="th" scope="col">Valor Desconto:</th> 
-                     <th className="th" scope="col">Action:</th>                                              
+                  <th className="th" scope="col">Valor Desconto:</th>                                                               
                 </tr>
               </thead>
               <tbody>
@@ -258,10 +229,7 @@ const OrcVendas = () => {
                       <td className="td">{item.descap}</td>
                       <td className="td">{item.desc}</td>
                       <td className="td">{item.valordesc}</td> 
-                      <td className="td">
-                        <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-                        
-                      </td>                   
+                                       
                                          
                     </tr>
                   ))

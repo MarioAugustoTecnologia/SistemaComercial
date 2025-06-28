@@ -139,10 +139,9 @@ const OrcVendas = () => {
       
                 fetch("https://sistemacomercialserver.onrender.com/orcvenda/" + id, {
           
-                  method: "DELETE"
-          
-                }).then((res) => {
-          
+                  method: "DELETE", 
+
+                }).then((res) => {          
                   window.location.reload();               
           
                 }).catch((err) => {

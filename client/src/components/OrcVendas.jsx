@@ -143,8 +143,7 @@ const OrcVendas = () => {
           
                 }).then((res) => {
           
-                  window.location.reload();
-                  //toast.success('Excluido com sucesso !')    
+                  window.location.reload();               
           
                 }).catch((err) => {
                   toast.error('Erro ! :' + err.message)

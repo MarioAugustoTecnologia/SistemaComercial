@@ -123,7 +123,7 @@ const OrcVendas = () => {
     }    
   }
 
-    const deleteall = (id) => {
+    /*const deleteall = (id) => {
 
       Swal.fire({
             title: "Deseja Excluir ?",
@@ -155,7 +155,34 @@ const OrcVendas = () => {
             }
           });      
     
-    }    
+    }*/
+  
+const apiUrl = 'https://sistemacomercialserver.onrender.com/orcvenda';
+
+async function deleteall() {
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'DELETE',
+      headers: {
+          'content-type': 'application/json'
+      },
+    });
+
+    if (response.ok) {
+      console.log('Todos os dados foram excluídos com sucesso!');
+      // Atualize a interface do usuário conforme necessário
+    } else {
+      console.error('Erro ao excluir os dados:', response.status, response.statusText);
+    }
+  } catch (error) {
+    console.error('Erro na requisição:', error);
+  }
+}
+
+// Chame a função para excluir os dados
+deleteAllData();
+          
+
 
   const navigate = useNavigate()
 
@@ -210,7 +237,7 @@ const OrcVendas = () => {
                   <th className="th" scope="col">Total c/Desconto:</th>
                    <th className="th" scope="col">Desc/ Calc:</th>
                   <th className="th" scope="col">Desconto:</th>
-                  <th className="th" scope="col">Valor Desconto:</th>                                   
+                  <th className="th" scope="col">Valor Desconto:</th>                                               
                 </tr>
               </thead>
               <tbody>

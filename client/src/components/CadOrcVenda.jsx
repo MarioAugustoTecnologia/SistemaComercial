@@ -98,18 +98,17 @@ const CadOrcVenda = () => {
   const cadastrar = (e) => {
 
     e.preventDefault();
+
     var total = document.getElementById('total').value;
 
-    if(orcn !== null || orcn !== ""){
+    if (orcn !== null || orcn !== "") {
 
-      if(desc === null || desc === ""){
+      if (desc === null || desc === "") {
 
         if (isValidate()) {
 
-       
+          const cadobj = { orcn, nome, quant, preco, total }
 
-          const cadobj = {orcn, nome, quant, preco, total }
-    
           Swal.fire({
             title: "Deseja salvar ?",
             showDenyButton: true,
@@ -125,28 +124,28 @@ const CadOrcVenda = () => {
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(cadobj)
               }).then((res) => {
-                toast.success('Cadastrado com Sucesso !')  
+                toast.success('Cadastrado com Sucesso !')
                 orcnchange('');
-                navigate('/produto/codorc');                    
+                navigate('/produto/codorc');
               }).catch((err) => {
                 toast.error('Erro ! :' + err.message)
-              })          
-                
-               
+              })
+
+
             }
           });
         }
 
-      }else{
+      } else {
 
         if (isValidate()) {
 
 
           const valordesc = document.getElementById('valordesc').value;
-          const desconto = (desc * 100) + '%'; 
+          const desconto = (desc * 100) + '%';
           const totaldesc = document.getElementById('totaldesc').value;
-          const cadobj = {orcn, nome, quant, preco, total, desconto, valordesc, totaldesc }
-          
+          const cadobj = { orcn, nome, quant, preco, total, desconto, valordesc, totaldesc }
+
           Swal.fire({
             title: "Deseja salvar ?",
             showDenyButton: true,
@@ -162,49 +161,86 @@ const CadOrcVenda = () => {
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(cadobj)
               }).then((res) => {
-                toast.success('Cadastrado com Sucesso !')                                   
-                    
+                toast.success('Cadastrado com Sucesso !')
+                navigate('/produto/codorc');
+
               }).catch((err) => {
                 toast.error('Erro ! :' + err.message)
-              })         
-               
-               
+              })
+
+
             }
           });
         }
-      }   
-     }else{
-      if (isValidate()) {       
-
-          const cadobj = {nome, quant, preco, total }
-  
-        Swal.fire({
-          title: "Deseja salvar ?",
-          showDenyButton: true,
-          showCancelButton: true,
-          confirmButtonText: "Salvar",
-          denyButtonText: `Não salvar`
-        }).then((result) => {
-
-          if (result.isConfirmed) {
-
-            fetch("https://sistemacomercialserver.onrender.com/orcvenda", {
-              method: "POST",
-              headers: { 'content-type': 'application/json' },
-              body: JSON.stringify(cadobj)
-            }).then((res) => {
-              toast.success('Cadastrado com Sucesso !')                                   
-                  
-            }).catch((err) => {
-              toast.error('Erro ! :' + err.message)
-            })          
-              
-             
-          }
-        });
       }
-     }
-    
+    } else {
+      if (isValidate()) {
+
+        if (nome === 'Transporte' || nome === 'Frete') {
+
+          document.getElementById('valordesc').value = 0;
+          document.getElementById('totaldesc').value = 0;
+          const valordesc = document.getElementById('valordesc').value;
+          const totaldesc = document.getElementById('totaldesc').value;
+
+          const cadobj = { nome, quant, preco, total, valordesc, totaldesc }
+
+          Swal.fire({
+            title: "Deseja salvar ?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Salvar",
+            denyButtonText: `Não salvar`
+          }).then((result) => {
+
+            if (result.isConfirmed) {
+
+              fetch("https://sistemacomercialserver.onrender.com/orcvenda", {
+                method: "POST",
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(cadobj)
+              }).then((res) => {
+                toast.success('Cadastrado com Sucesso !')
+                navigate('/produto/codorc');
+              }).catch((err) => {
+                toast.error('Erro ! :' + err.message)
+              })
+
+
+            }
+          });
+
+        } else {
+
+          const cadobj = { nome, quant, preco, total }
+
+          Swal.fire({
+            title: "Deseja salvar ?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Salvar",
+            denyButtonText: `Não salvar`
+          }).then((result) => {
+
+            if (result.isConfirmed) {
+
+              fetch("https://sistemacomercialserver.onrender.com/orcvenda", {
+                method: "POST",
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(cadobj)
+              }).then((res) => {
+                toast.success('Cadastrado com Sucesso !')
+                navigate('/produto/codorc');
+              }).catch((err) => {
+                toast.error('Erro ! :' + err.message)
+              })
+
+            }
+          });
+        }
+
+      }
+    }
   }
 
   function mudacorquant() {

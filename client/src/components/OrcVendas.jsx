@@ -43,7 +43,7 @@ const OrcVendas = () => {
       return parseFloat(previous_value) + parseFloat(current_value);    
     })
   
-    const nome = 'Total da venda:';
+    const nome = 'Total Geral:';
     const total = soma.toFixed(2);    
 
     const cadobj = { nome, total }

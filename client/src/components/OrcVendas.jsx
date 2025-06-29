@@ -202,7 +202,7 @@ const OrcVendas = () => {
       </div><br /><br /><br /><br />
       <div className="px-5 mt-5" style={{fontFamily:'arial'}}>       
           <div className='mt-3'>
-            <table className="table" id="table" style={{ margin: '0 90px', fontFamily: 'arial', fontSize: '22px', width: '92%' }}>
+            <table className="table" id="table" style={{ margin: '0 90px', fontFamily: 'arial', fontSize: '22px', width: '94%' }}>
               <thead>
                 <tr>        
                   <th className="th" scope="col">Orçamento nº:</th>
@@ -228,8 +228,7 @@ const OrcVendas = () => {
                       <td className="td" style={{fontWeight:'bold', color:'green'}}>{item.totaldesc}</td>
                       <td className="td">{item.descap}</td>
                       <td className="td">{item.desc}</td>
-                      <td className="td">{item.valordesc}</td> 
-                                       
+                      <td className="td">{item.valordesc}</td>                                      
                                          
                     </tr>
                   ))

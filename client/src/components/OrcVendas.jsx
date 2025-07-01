@@ -123,7 +123,7 @@ const OrcVendas = () => {
     }    
   }
 
-    const deleteall = (id) => {
+   /* const deleteall = (id) => {
 
       Swal.fire({
             title: "Deseja Excluir ?",
@@ -142,7 +142,7 @@ const OrcVendas = () => {
                   method: "DELETE" 
 
                 }).then((res) => {   
-                         
+
                   window.location.reload();               
           
                 }).catch((err) => {
@@ -156,7 +156,9 @@ const OrcVendas = () => {
             }
           });      
     
-    }
+    }*/
+
+
 
       
 
@@ -164,6 +166,11 @@ const OrcVendas = () => {
 
   const Return = () => {
     navigate('/produto/codorc')
+
+  }
+
+    const DeleteAllOrcs = () => {
+    navigate('/orcvendas/excluirtodos')
 
   }
 
@@ -248,7 +255,7 @@ const OrcVendas = () => {
           <button type="button" className="btn btn-success border" onClick={somar} style={{ width: 100, margin: '0 260px', fontSize: '20px', fontFamily: 'arial' }}>Somar:</button>
           <label htmlFor="desconto" style={{margin:'0 -150px', fontSize:'20px'}}>Desconto:</label>
           <input type="decimal" value={desconto} onChange={e => setDesconto(e.target.value)} style={{margin:'0 154px', width:100, fontSize:'22px', color:'green', fontWeight:'bold'}} />
-          <button type="button" className="btn border" onClick={deleteall} style={{ width: 100, margin: '0 -100px', fontSize: '20px', fontFamily: 'arial', backgroundColor:'red', color:'white'}}>Excluir</button>
+          <button type="button" className="btn border" onClick={DeleteAllOrcs} style={{ width: 100, margin: '0 -100px', fontSize: '20px', fontFamily: 'arial', backgroundColor:'red', color:'white'}}>Excluir</button>
           <button type="button" className="btn border" onClick={Return} style={{ width: 100, margin: '0 130px', fontSize: '20px', fontFamily: 'arial', backgroundColor:'orange', color:'white'}}>Voltar</button>
           <button type="button" className="btn border" onClick={() => generatePDF(GerarPdf, personalizacao)} style={{ width: 120, margin: '0 -50px', fontSize: '20px', fontFamily: 'arial', backgroundColor:'Crimson', color:'white'}}>Gerar Pdf:</button>
           <input type="text" value={obs} onChange={e => setObs(e.target.value)} style={{margin:'0 154px', width:400, fontSize:'22px', color:'navy', fontWeight:'bold'}} />

@@ -157,6 +157,38 @@ const OrcVendas = () => {
     
     }
 
+      const handleDelete = (id) => {
+    
+        Swal.fire({
+          title: "Deseja Excluir ?",
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: "Excluir",
+          denyButtonText: `Não Excluir`
+        }).then((result) => {
+    
+          if (result.isConfirmed) {
+    
+            fetch("https://sistemacomercialserver.onrender.com/orcvenda/" + id, {
+    
+              method: "DELETE"
+    
+            }).then((res) => {
+    
+              window.location.reload();
+              //toast.success('Excluido com sucesso !')    
+    
+            }).catch((err) => {
+              toast.error('Erro ! :' + err.message)
+            })
+    
+          } else if (result.isDenied) {
+            Swal.fire("Nada excluido", "", "info");
+          }
+        });
+      }
+
+
 
   const navigate = useNavigate()
 
@@ -213,7 +245,9 @@ const OrcVendas = () => {
                   <th className="th" scope="col">Total c/Desconto:</th>
                    <th className="th" scope="col">Desc/ Calc:</th>
                   <th className="th" scope="col">Desconto:</th>
-                  <th className="th" scope="col">Valor Desconto:</th>                                                               
+                  <th className="th" scope="col">Valor Desconto:</th>
+                  <th className="th" scope="col">Ação:</th> 
+                                                                               
                 </tr>
               </thead>
               <tbody>
@@ -228,11 +262,11 @@ const OrcVendas = () => {
                       <td className="td" style={{fontWeight:'bold', color:'green'}}>{item.totaldesc}</td>
                       <td className="td">{item.descap}</td>
                       <td className="td">{item.desc}</td>
-                      <td className="td">{item.valordesc}</td>                                      
+                      <td className="td">{item.valordesc}</td>   
+                      <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>                                   
                                          
                     </tr>
                   ))
-
                 }
               </tbody>         
 

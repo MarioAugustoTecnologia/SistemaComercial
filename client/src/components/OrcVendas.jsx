@@ -141,7 +141,8 @@ const OrcVendas = () => {
           
                   method: "DELETE" 
 
-                }).then((res) => {          
+                }).then((res) => {   
+                         
                   window.location.reload();               
           
                 }).catch((err) => {
@@ -157,38 +158,7 @@ const OrcVendas = () => {
     
     }
 
-      const handleDelete = (id) => {
-    
-        Swal.fire({
-          title: "Deseja Excluir ?",
-          showDenyButton: true,
-          showCancelButton: true,
-          confirmButtonText: "Excluir",
-          denyButtonText: `Não Excluir`
-        }).then((result) => {
-    
-          if (result.isConfirmed) {
-    
-            fetch("https://sistemacomercialserver.onrender.com/orcvenda/" + id, {
-    
-              method: "DELETE"
-    
-            }).then((res) => {
-    
-              window.location.reload();
-              //toast.success('Excluido com sucesso !')    
-    
-            }).catch((err) => {
-              toast.error('Erro ! :' + err.message)
-            })
-    
-          } else if (result.isDenied) {
-            Swal.fire("Nada excluido", "", "info");
-          }
-        });
-      }
-
-
+      
 
   const navigate = useNavigate()
 

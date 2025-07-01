@@ -245,8 +245,7 @@ const OrcVendas = () => {
                   <th className="th" scope="col">Total c/Desconto:</th>
                    <th className="th" scope="col">Desc/ Calc:</th>
                   <th className="th" scope="col">Desconto:</th>
-                  <th className="th" scope="col">Valor Desconto:</th>
-                  <th className="th" scope="col">Ação:</th> 
+                  <th className="th" scope="col">Valor Desconto:</th>        
                                                                                
                 </tr>
               </thead>
@@ -262,8 +261,7 @@ const OrcVendas = () => {
                       <td className="td" style={{fontWeight:'bold', color:'green'}}>{item.totaldesc}</td>
                       <td className="td">{item.descap}</td>
                       <td className="td">{item.desc}</td>
-                      <td className="td">{item.valordesc}</td>   
-                      <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>                                   
+                      <td className="td">{item.valordesc}</td>                                                         
                                          
                     </tr>
                   ))

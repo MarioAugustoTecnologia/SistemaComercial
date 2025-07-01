@@ -145,15 +145,15 @@ const OrcVendas = () => {
               </tbody>         
 
             </table>
-            </div>
+         </div>
             
        </div>       
                  
  
           <br /><br /><br />
          
-          <button type="button" className="btn border" onClick={deleteall} style={{ width: 100, margin: '0 -100px', fontSize: '20px', fontFamily: 'arial', backgroundColor:'red', color:'white'}}>Excluir</button>
-          <button type="button" className="btn border" onClick={Return} style={{ width: 100, margin: '0 130px', fontSize: '20px', fontFamily: 'arial', backgroundColor:'orange', color:'white'}}>Voltar</button>
+          <button type="button" className="btn border" onClick={deleteall} style={{ width: 100, margin: '0 20px', fontSize: '20px', fontFamily: 'arial', backgroundColor:'red', color:'white'}}>Excluir</button>
+          <button type="button" className="btn border" onClick={Return} style={{ width: 100, margin: '0 0px', fontSize: '20px', fontFamily: 'arial', backgroundColor:'orange', color:'white'}}>Voltar</button>
                     
          <ToastContainer />  
      

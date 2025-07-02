@@ -35,6 +35,7 @@ const EntradasNome = () => {
   }, [])
 
     const [mes, setMes] = React.useState("")
+    const [vendan, setVendan] = React.useState("")
 
 
   const handleDelete = (id) => {
@@ -70,78 +71,123 @@ const EntradasNome = () => {
 
   }
 
-function somar() {
+  function somar() {
 
     const tabela = document.getElementById("table");
     const linhas = tabela.getElementsByTagName("tr");
 
-    let somaTotal = 0;    
+    let somaTotal = 0;
 
-    if (mes !== ''){
+    if (vendan === "") {
 
-      for (let i = 0; i < linhas.length; i++) {
+      if (mes !== '') {
 
-      const celulas1 = linhas[i].getElementsByTagName("td");
+        for (let i = 0; i < linhas.length; i++) {
 
-      for (let k = 15; k < celulas1.length; k++) {
+          const celulas1 = linhas[i].getElementsByTagName("td");
 
-        const valorMes = celulas1[k].innerHTML;     
+          for (let k = 15; k < celulas1.length; k++) {
 
-          if (valorMes === mes) {
+            const valorMes = celulas1[k].innerHTML;
 
-            const celulas = linhas[i].getElementsByTagName("td");
+            if (valorMes === mes) {
 
-            for (let j = 12; j < celulas.length; j++) {
+              const celulas = linhas[i].getElementsByTagName("td");
 
-              const valorCelula = celulas[j].innerHTML;
-              // Converte o valor para número, tratando erros com try/catch
-              try {
-                const numero = Number(valorCelula);
+              for (let j = 12; j < celulas.length; j++) {
 
-                if (!isNaN(numero)) { // Verifica se é um número válido
-                  somaTotal += numero;
-                } else {
-                  console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
+                const valorCelula = celulas[j].innerHTML;
+                // Converte o valor para número, tratando erros com try/catch
+                try {
+                  const numero = Number(valorCelula);
+
+                  if (!isNaN(numero)) { // Verifica se é um número válido
+                    somaTotal += numero;
+                  } else {
+                    console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
+                  }
+                } catch (error) {
+                  console.error("Erro ao converter valor para número:", error);
                 }
-              } catch (error) {
-                console.error("Erro ao converter valor para número:", error);
               }
+
             }
 
           }
 
+        }
+
+      } else {
+
+        for (let i = 0; i < linhas.length; i++) {
+
+          const celulas = linhas[i].getElementsByTagName("td");
+
+          for (let j = 12; j < celulas.length; j++) {
+
+            const valorCelula = celulas[j].innerHTML;
+            // Converte o valor para número, tratando erros com try/catch
+            try {
+              const numero = Number(valorCelula);
+
+              if (!isNaN(numero)) { // Verifica se é um número válido
+                somaTotal += numero;
+              } else {
+                console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
+              }
+            } catch (error) {
+              console.error("Erro ao converter valor para número:", error);
+            }
+          }
+
+        }
+
       }
 
-    }
+    } else
+      if (vendan !== "") {
 
-    }else{
 
-      for (let i = 0; i < linhas.length; i++) { 
+        for (let i = 0; i < linhas.length; i++) {
 
-        const celulas = linhas[i].getElementsByTagName("td");
+          const celulas1 = linhas[i].getElementsByTagName("td");
 
-            for (let j = 12; j < celulas.length; j++) {
+          for (let k = 1; k < celulas1.length; k++) {
 
-              const valorCelula = celulas[j].innerHTML;
-              // Converte o valor para número, tratando erros com try/catch
-              try {
-                const numero = Number(valorCelula);
+            const nvenda = celulas1[k].innerHTML;
 
-                if (!isNaN(numero)) { // Verifica se é um número válido
-                  somaTotal += numero;
-                } else {
-                  console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
+            if (nvenda === vendan) {
+
+              const celulas = linhas[i].getElementsByTagName("td");
+
+              for (let j = 5; j < celulas.length; j++) {
+
+                const valorCelula = celulas[j].innerHTML;
+                // Converte o valor para número, tratando erros com try/catch
+                try {
+                  const numero = Number(valorCelula);
+
+                  if (!isNaN(numero)) { // Verifica se é um número válido
+                    somaTotal += numero;
+                  } else {
+                    console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
+                  }
+                } catch (error) {
+                  console.error("Erro ao converter valor para número:", error);
                 }
-              } catch (error) {
-                console.error("Erro ao converter valor para número:", error);
               }
-            } 
 
-    }  
+            }
 
-  }
-    
-    document.getElementById("total").innerText = "R$" + (somaTotal).toFixed(2);
+          }        
+      
+
+        }      
+      }
+
+           document.getElementById("total").innerText = "R$" + (somaTotal/2).toFixed(2);
+
+   
   }
 
   const logout = () => {
@@ -302,7 +348,7 @@ function somar() {
               <strong><span id="total" style={{ color: 'green', fontSize: '32px', margin: '0 10px' }}></span></strong><br />
               <label htmlFor="Mes" className="mes" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold' }}>Mes:</label><br />
               <input type="text" className="consultames" value={mes} onChange={(e) => setMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy', width: '150px' }} />
-
+              <input type="text" className="consultavendan" value={vendan} onChange={(e) => setVendan(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy', width: '150px', margin: '0 50px' }} />
             </div><br />
             <h4 style={{ textAlign: 'center', color: 'Red', fontSize: '25px', marginRight: '-225px' }}><strong>Entradas:</strong></h4>
             <br />

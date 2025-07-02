@@ -84,7 +84,7 @@ const EntradasNumero = () => {
         return `${dia}/${mes}/${ano}`;
     }
 
-    function somar() {
+   function somar() {
 
         if (buscanumero === "" || buscanumero === null) {
             toast.warning('Campo busca por número vazio !')
@@ -99,10 +99,7 @@ const EntradasNumero = () => {
             })
             const soma = valores.reduce((previous_value, current_value) => {       // método que faz a soma
                 return parseFloat(previous_value) + parseFloat(current_value);     // converte de string para number
-            })
-
-
-            if (frete == '') {
+            })                 
 
                 const total = parseFloat(soma).toFixed(2);
                 const nome = 'Total da venda nº:' + document.getElementById('vendan').value;
@@ -111,22 +108,8 @@ const EntradasNumero = () => {
                 document.getElementById('totalvenda').innerHTML = "R$" + total;
                 document.getElementById('total').style.borderColor = 'gainsboro'
                 document.getElementById('nome').style.borderColor = 'gainsboro'
-                document.getElementById('vp').value = total;
-
-            } else {
-
-                const result = Number(soma) + Number(frete);
-                const total = result.toFixed(2);
-                const nome = 'Total da venda nº:' + document.getElementById('vendan').value;
-                document.getElementById('total').value = total;
-                document.getElementById('nome').value = nome;
-                document.getElementById('totalvenda').innerHTML = "R$" + total;
-                document.getElementById('total').style.borderColor = 'gainsboro'
-                document.getElementById('nome').style.borderColor = 'gainsboro'
-                document.getElementById('vp').value = total;
-            }
-
-
+                document.getElementById('vp').value = total;       
+            
         }
     }
 

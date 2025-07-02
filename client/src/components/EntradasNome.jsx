@@ -351,7 +351,8 @@ const EntradasNome = () => {
               <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '18px' }}>Total Entradas:</Link>
               <strong style={{ fontSize: '30px' }}>Total:</strong>
               <strong><span id="total" style={{ color: 'green', fontSize: '32px', margin: '0 10px' }}></span></strong><br />
-              <label htmlFor="Mes" className="mes" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold' }}>Mes:</label><br />
+              <label htmlFor="Mes" className="mes" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold' }}>Mes:</label>
+              <label htmlFor="vendan" className="vendan" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', margin: '0 150px' }}>Venda nº:</label><br />
               <input type="text" className="consultames" value={mes} onChange={(e) => setMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy', width: '150px' }} />
               <input type="text" className="consultavendan" value={vendan} onChange={(e) => setVendan(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy', width: '150px', margin: '0 50px' }} />
             </div><br />

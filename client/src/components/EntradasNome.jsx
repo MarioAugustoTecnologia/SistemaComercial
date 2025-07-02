@@ -115,7 +115,9 @@ const EntradasNome = () => {
 
           }
 
-        }
+        }  
+        
+         document.getElementById("total").innerText = "R$" + (somaTotal).toFixed(2);
 
       } else {
 
@@ -141,6 +143,7 @@ const EntradasNome = () => {
           }
 
         }
+            document.getElementById("total").innerText = "R$" + (somaTotal).toFixed(2);
 
       }
 
@@ -182,10 +185,12 @@ const EntradasNome = () => {
           }        
       
 
-        }      
+        }   
+        
+           document.getElementById("total").innerText = "R$" + (somaTotal/2).toFixed(2);
       }
 
-           document.getElementById("total").innerText = "R$" + (somaTotal/2).toFixed(2);
+        
 
    
   }

@@ -84,7 +84,7 @@ const EntradasNumero = () => {
         return `${dia}/${mes}/${ano}`;
     }
 
-   function somar() {
+    function somar() {
 
         if (buscanumero === "" || buscanumero === null) {
             toast.warning('Campo busca por número vazio !')
@@ -99,17 +99,17 @@ const EntradasNumero = () => {
             })
             const soma = valores.reduce((previous_value, current_value) => {       // método que faz a soma
                 return parseFloat(previous_value) + parseFloat(current_value);     // converte de string para number
-            })                 
+            })
 
-                const total = parseFloat(soma).toFixed(2);
-                const nome = 'Total da venda nº:' + document.getElementById('vendan').value;
-                document.getElementById('total').value = total;
-                document.getElementById('nome').value = nome;
-                document.getElementById('totalvenda').innerHTML = "R$" + total;
-                document.getElementById('total').style.borderColor = 'gainsboro'
-                document.getElementById('nome').style.borderColor = 'gainsboro'
-                document.getElementById('vp').value = total;       
-            
+            const total = parseFloat(soma).toFixed(2);
+            const nome = 'Total da venda nº:' + document.getElementById('vendan').value;
+            document.getElementById('total').value = total;
+            document.getElementById('nome').value = nome;
+            document.getElementById('totalvenda').innerHTML = "R$" + total;
+            document.getElementById('total').style.borderColor = 'gainsboro'
+            document.getElementById('nome').style.borderColor = 'gainsboro'
+            document.getElementById('vp').value = total;
+
         }
     }
 
@@ -164,16 +164,16 @@ const EntradasNumero = () => {
             document.getElementById('vp').style.borderColor = 'Red'
 
         } else {
-            if(document.getElementById('td').value !== ""){
+            if (document.getElementById('td').value !== "") {
 
-                  const troco = parseFloat(document.getElementById('vp').value) - parseFloat(document.getElementById('td').value)
-                  document.getElementById('troco').value = troco.toFixed(2)
+                const troco = parseFloat(document.getElementById('vp').value) - parseFloat(document.getElementById('td').value)
+                document.getElementById('troco').value = troco.toFixed(2)
             } else {
 
-                  const troco = parseFloat(document.getElementById('vp').value) - parseFloat(document.getElementById('total').value)
-                  document.getElementById('troco').value = troco.toFixed(2)
+                const troco = parseFloat(document.getElementById('vp').value) - parseFloat(document.getElementById('total').value)
+                document.getElementById('troco').value = troco.toFixed(2)
 
-            }        
+            }
 
         }
 
@@ -249,7 +249,7 @@ const EntradasNumero = () => {
     }
 
 
-  const concluir = (e) => {
+    const concluir = (e) => {
 
         e.preventDefault();
 
@@ -458,207 +458,207 @@ const EntradasNumero = () => {
 
                 }
 
-            }else{
-
-               if (parcelamento === "" || parcelamento === null && parcelan === "" || parcelan === null) {
-
-                if (document.getElementById('desconto').value !== "" && document.getElementById('td').value !== '' && document.getElementById('vd').value !== '') {
-
-                    const total = parseFloat(document.getElementById('total').value).toFixed(2);
-                    const nome = document.getElementById('nome').value;
-                    const totaldesc = parseFloat(document.getElementById('td').value).toFixed(2);
-                    const vendan = document.getElementById('vendan').value;
-                    const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
-                    const desconto = document.getElementById('desconto').value;
-                    const valordesc = parseFloat(document.getElementById('vd').value).toFixed(2);
-                    const data_cad = formataData();
-                    const vp = 0;
-
-                    if (valorpagto > totaldesc) {
-
-                        const troco = document.getElementById('troco').value;
-
-                        const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, troco, data_cad, vp, frete }
-
-                        Swal.fire({
-                            title: "Deseja salvar ?",
-                            showDenyButton: true,
-                            showCancelButton: true,
-                            confirmButtonText: "Salvar",
-                            denyButtonText: `Não salvar`
-                        }).then((result) => {
-
-                            if (result.isConfirmed) {
-
-                                fetch("https://sistemacomercialserver.onrender.com/vendas", {
-                                    method: "POST",
-                                    headers: { 'content-type': 'application/json' },
-                                    body: JSON.stringify(cadobj)
-                                }).then((res) => {
-                                    window.location.reload();                                   
-
-                                }).catch((err) => {
-                                    toast.error('Erro ! :' + err.message)
-                                })
-
-                            } else if (result.isDenied) {
-                                Swal.fire("Nada salvo", "", "info");
-                            }
-                        });
-
-                    } else
-                        if (valorpagto === totaldesc) {
-
-                            const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, data_cad, vp, frete }
-
-                            Swal.fire({
-                                title: "Deseja salvar ?",
-                                showDenyButton: true,
-                                showCancelButton: true,
-                                confirmButtonText: "Salvar",
-                                denyButtonText: `Não salvar`
-                            }).then((result) => {
-
-                                if (result.isConfirmed) {
-
-                                    fetch("https://sistemacomercialserver.onrender.com/vendas", {
-                                        method: "POST",
-                                        headers: { 'content-type': 'application/json' },
-                                        body: JSON.stringify(cadobj)
-                                    }).then((res) => {
-                                        window.location.reload();
-
-                                    }).catch((err) => {
-                                        toast.error('Erro ! :' + err.message)
-                                    })
-
-                                } else if (result.isDenied) {
-                                    Swal.fire("Nada salvo", "", "info");
-                                }
-
-                            });
-                        }
-
-                } else {
-                    
-                    const total = parseFloat(document.getElementById('total').value).toFixed(2);
-                    const nome = document.getElementById('nome').value;
-                    const vendan = document.getElementById('vendan').value;
-                    const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
-                    const data_cad = formataData();
-                    const vp = 0;
-
-                    if (valorpagto > total) {
-
-                        const troco = document.getElementById('troco').value;
-
-                        const cadobj = { vendan, total, nome, valorpagto, mes, formapag, troco, data_cad, vp, frete }
-
-                        Swal.fire({
-                            title: "Deseja salvar ?",
-                            showDenyButton: true,
-                            showCancelButton: true,
-                            confirmButtonText: "Salvar",
-                            denyButtonText: `Não salvar`
-                        }).then((result) => {
-
-                            if (result.isConfirmed) {
-
-                                fetch("https://sistemacomercialserver.onrender.com/vendas", {
-                                    method: "POST",
-                                    headers: { 'content-type': 'application/json' },
-                                    body: JSON.stringify(cadobj)
-                                }).then((res) => {
-                                    window.location.reload();
-
-                                }).catch((err) => {
-                                    toast.error('Erro ! :' + err.message)
-                                })
-
-                            } else if (result.isDenied) {
-                                Swal.fire("Nada salvo", "", "info");
-                            }
-
-                        });
-
-                    } else
-                        if (valorpagto === total) {
-
-
-                            const cadobj = { vendan, total, nome, valorpagto, mes, formapag, data_cad, vp, frete }
-
-                            Swal.fire({
-                                title: "Deseja salvar ?",
-                                showDenyButton: true,
-                                showCancelButton: true,
-                                confirmButtonText: "Salvar",
-                                denyButtonText: `Não salvar`
-                            }).then((result) => {
-
-                                if (result.isConfirmed) {
-
-                                    fetch("https://sistemacomercialserver.onrender.com/vendas", {
-                                        method: "POST",
-                                        headers: { 'content-type': 'application/json' },
-                                        body: JSON.stringify(cadobj)
-                                    }).then((res) => {
-                                        window.location.reload();
-
-                                    }).catch((err) => {
-                                        toast.error('Erro ! :' + err.message)
-                                    })
-
-                                } else if (result.isDenied) {
-                                    Swal.fire("Nada salvo", "", "info");
-                                }
-
-                            });
-
-                        }
-
-                }
-
             } else {
 
-                const vendan = document.getElementById('vendan').value
-                const nome = document.getElementById('nome').value;    
-                const total = parseFloat(document.getElementById('total').value).toFixed(2);
-                const parcelas = document.getElementById("parcelas").value;
-                const formapag = document.getElementById('formapag').value
-                const valorpagto = (total / parcelas).toFixed(2);
-                const data_cad = formataData()
-                const vp = 0;
+                if (parcelamento === "" || parcelamento === null && parcelan === "" || parcelan === null) {
 
-                const cadobj = { vendan, nome, total, parcelamento, parcelan, formapag, valorpagto, mes, data_cad, vp, frete }
+                    if (document.getElementById('desconto').value !== "" && document.getElementById('td').value !== '' && document.getElementById('vd').value !== '') {
 
-                Swal.fire({
-                    title: "Deseja salvar ?",
-                    showDenyButton: true,
-                    showCancelButton: true,
-                    confirmButtonText: "Salvar",
-                    denyButtonText: `Não salvar`
-                }).then((result) => {
+                        const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                        const nome = document.getElementById('nome').value;
+                        const totaldesc = parseFloat(document.getElementById('td').value).toFixed(2);
+                        const vendan = document.getElementById('vendan').value;
+                        const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
+                        const desconto = document.getElementById('desconto').value;
+                        const valordesc = parseFloat(document.getElementById('vd').value).toFixed(2);
+                        const data_cad = formataData();
+                        const vp = 0;
 
-                    if (result.isConfirmed) {
+                        if (valorpagto > totaldesc) {
 
-                        fetch("https://sistemacomercialserver.onrender.com/vendas", {
-                            method: "POST",
-                            headers: { 'content-type': 'application/json' },
-                            body: JSON.stringify(cadobj)
-                        }).then((res) => {
-                            window.location.reload();
+                            const troco = document.getElementById('troco').value;
 
-                        }).catch((err) => {
-                            toast.error('Erro ! :' + err.message)
-                        })
+                            const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, troco, data_cad, vp, frete }
 
-                    } else if (result.isDenied) {
-                        Swal.fire("Nada salvo", "", "info");
+                            Swal.fire({
+                                title: "Deseja salvar ?",
+                                showDenyButton: true,
+                                showCancelButton: true,
+                                confirmButtonText: "Salvar",
+                                denyButtonText: `Não salvar`
+                            }).then((result) => {
+
+                                if (result.isConfirmed) {
+
+                                    fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                                        method: "POST",
+                                        headers: { 'content-type': 'application/json' },
+                                        body: JSON.stringify(cadobj)
+                                    }).then((res) => {
+                                        window.location.reload();
+
+                                    }).catch((err) => {
+                                        toast.error('Erro ! :' + err.message)
+                                    })
+
+                                } else if (result.isDenied) {
+                                    Swal.fire("Nada salvo", "", "info");
+                                }
+                            });
+
+                        } else
+                            if (valorpagto === totaldesc) {
+
+                                const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, data_cad, vp, frete }
+
+                                Swal.fire({
+                                    title: "Deseja salvar ?",
+                                    showDenyButton: true,
+                                    showCancelButton: true,
+                                    confirmButtonText: "Salvar",
+                                    denyButtonText: `Não salvar`
+                                }).then((result) => {
+
+                                    if (result.isConfirmed) {
+
+                                        fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                                            method: "POST",
+                                            headers: { 'content-type': 'application/json' },
+                                            body: JSON.stringify(cadobj)
+                                        }).then((res) => {
+                                            window.location.reload();
+
+                                        }).catch((err) => {
+                                            toast.error('Erro ! :' + err.message)
+                                        })
+
+                                    } else if (result.isDenied) {
+                                        Swal.fire("Nada salvo", "", "info");
+                                    }
+
+                                });
+                            }
+
+                    } else {
+
+                        const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                        const nome = document.getElementById('nome').value;
+                        const vendan = document.getElementById('vendan').value;
+                        const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
+                        const data_cad = formataData();
+                        const vp = 0;
+
+                        if (valorpagto > total) {
+
+                            const troco = document.getElementById('troco').value;
+
+                            const cadobj = { vendan, total, nome, valorpagto, mes, formapag, troco, data_cad, vp, frete }
+
+                            Swal.fire({
+                                title: "Deseja salvar ?",
+                                showDenyButton: true,
+                                showCancelButton: true,
+                                confirmButtonText: "Salvar",
+                                denyButtonText: `Não salvar`
+                            }).then((result) => {
+
+                                if (result.isConfirmed) {
+
+                                    fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                                        method: "POST",
+                                        headers: { 'content-type': 'application/json' },
+                                        body: JSON.stringify(cadobj)
+                                    }).then((res) => {
+                                        window.location.reload();
+
+                                    }).catch((err) => {
+                                        toast.error('Erro ! :' + err.message)
+                                    })
+
+                                } else if (result.isDenied) {
+                                    Swal.fire("Nada salvo", "", "info");
+                                }
+
+                            });
+
+                        } else
+                            if (valorpagto === total) {
+
+
+                                const cadobj = { vendan, total, nome, valorpagto, mes, formapag, data_cad, vp, frete }
+
+                                Swal.fire({
+                                    title: "Deseja salvar ?",
+                                    showDenyButton: true,
+                                    showCancelButton: true,
+                                    confirmButtonText: "Salvar",
+                                    denyButtonText: `Não salvar`
+                                }).then((result) => {
+
+                                    if (result.isConfirmed) {
+
+                                        fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                                            method: "POST",
+                                            headers: { 'content-type': 'application/json' },
+                                            body: JSON.stringify(cadobj)
+                                        }).then((res) => {
+                                            window.location.reload();
+
+                                        }).catch((err) => {
+                                            toast.error('Erro ! :' + err.message)
+                                        })
+
+                                    } else if (result.isDenied) {
+                                        Swal.fire("Nada salvo", "", "info");
+                                    }
+
+                                });
+
+                            }
+
                     }
-                    window.location.reload();
-                });
 
-            }
+                } else if (parcelamento !== "" || parcelamento !== null && parcelan !== "" || parcelan !== null) {
+
+                    const vendan = document.getElementById('vendan').value
+                    const nome = document.getElementById('nome').value;
+                    const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                    const parcelas = document.getElementById("parcelas").value;
+                    const formapag = document.getElementById('formapag').value
+                    const valorpagto = (total / parcelas).toFixed(2);
+                    const data_cad = formataData()
+                    const vp = 0;
+
+                    const cadobj = { vendan, nome, total, parcelamento, parcelan, formapag, valorpagto, mes, data_cad, vp, frete }
+
+                    Swal.fire({
+                        title: "Deseja salvar ?",
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: "Salvar",
+                        denyButtonText: `Não salvar`
+                    }).then((result) => {
+
+                        if (result.isConfirmed) {
+
+                            fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                                method: "POST",
+                                headers: { 'content-type': 'application/json' },
+                                body: JSON.stringify(cadobj)
+                            }).then((res) => {
+                                window.location.reload();
+
+                            }).catch((err) => {
+                                toast.error('Erro ! :' + err.message)
+                            })
+
+                        } else if (result.isDenied) {
+                            Swal.fire("Nada salvo", "", "info");
+                        }
+                        window.location.reload();
+                    });
+
+                }
 
 
             }
@@ -839,8 +839,8 @@ const EntradasNumero = () => {
                     <Outlet />
                     <div className="px-5 mt-5">
                         <div className="mb3">
-                            <label htmlFor="Numero" className="Numero" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold' }}>Busca por numero:</label><br />
-                            <input type="search" autoFocus='true' onKeyUp={MudaCorCampo} className="consultanumero" value={buscanumero} onChange={(e) => setBuscaNumero(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', width: '100px', fontWeight:'bold', color:'navy' }} id="vendan" />
+                            <label htmlFor="Numero" className="Numero" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold' }}>Busca por numero:</label><br />
+                            <input type="search" autoFocus='true' onKeyUp={MudaCorCampo} className="consultanumero" value={buscanumero} onChange={(e) => setBuscaNumero(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', width: '100px', fontWeight: 'bold', color: 'navy' }} id="vendan" />
                             <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 50px' }}>Voltar:</Link>
                             <Link onClick={GerarUltima} className="btn" style={{ color: 'white', backgroundColor: 'blue', margin: '0 45px', fontSize: '18px' }}>Próxima Venda:</Link>
                             <strong style={{ fontSize: '36px' }}>Total:</strong>
@@ -851,23 +851,23 @@ const EntradasNumero = () => {
                         </div><br />
                         <div className="bg-white p-4 rounded border" style={{ margin: '0 20px', width: '70%' }}>
                             <form onSubmit={concluir}>
-                                <label htmlFor="total" style={{ fontSize: '20px', fontFamily: 'arial', fontWeight:'bold' }} >Total:</label>
-                                <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 150px', marginTop: '-50px', fontWeight:'bold' }}>Nome:</label>
-                                <label htmlFor='td' style={{ fontSize: '20px', margin: '0 85px', marginTop: '-50px', fontWeight:'bold' }}>Total c/Desconto:</label>
-                                <label htmlFor='desconto' style={{ fontSize: '20px', margin: '0 -43px', marginTop: '-50px', fontWeight:'bold' }}>Desconto:</label>
-                                <label htmlFor='vd' style={{ fontSize: '20px', margin: '0 134px', marginTop: '-20px', fontWeight:'bold' }}>Valor Desconto:</label><br />
-                                <input type="decimal" className='form-control rounded-0' style={{ width: '13%', height: '42px', fontSize: '20px', fontWeight:'bold', color:'navy'}} id="total" />
-                                <input type="text" className='form-control rounded-0' style={{ width: '22%', height: '42px', margin: '0 200px', fontSize: '20px', marginTop: '-42px', fontWeight:'bold', color:'navy' }} id="nome" />
-                                <input type="decimal" className='form-control rounded-0' style={{ width: '14%', height: '42px', margin: '0 500px', fontSize: '20px', marginTop: '-42px', fontWeight:'bold', color:'navy' }} id="td" />
-                                <input type="decimal" className="form-control rounded-0" style={{ width: '14%', height: '42px', margin: '0 710px', fontSize: '20px', marginTop: '-42px', fontWeight:'bold', color:'navy' }} id="desconto" onKeyDown={MudaCorDesc} />
-                                <input type="decimal" className="form-control rounded-0" style={{ width: '14%', height: '42px', margin: '0 900px', fontSize: '20px', marginTop: '-42px', fontWeight:'bold', color:'navy' }} id="vd" /> <br />
-                                <label htmlFor="valorpag" style={{ fontSize: '20px', fontFamily: 'arial', fontWeight:'bold' }} >Valor Pago:</label>
-                                <label htmlFor="formapag" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 95px', fontWeight:'bold'}} >Forma Paga:</label>
-                                <label htmlFor="troco" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 80px', fontWeight:'bold'}} >Troco:</label>
-                                <label htmlFor="parcelamento" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 62px', fontWeight:'bold'}} >Parcelamento:</label>
-                                <label htmlFor="parcelan" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 13px', fontWeight:'bold'}} >Parcela nº:</label><br />
-                                <input type="decimal" onKeyDown={MudaCorVp} className="form-control rounded-0" style={{ width: '14%', height: '42px', fontSize: '20px', fontWeight:'bold', color:'navy' }} id="vp" />
-                                <select className="form-control rounded-0" onClick={MudaCorForma} value={formapag} onChange={e => formapagchange(e.target.value)} style={{ width: '15%', height: '42px', margin: '0 200px', fontSize: '20px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} name='formapag' id='formapag' >
+                                <label htmlFor="total" style={{ fontSize: '20px', fontFamily: 'arial', fontWeight: 'bold' }} >Total:</label>
+                                <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 150px', marginTop: '-50px', fontWeight: 'bold' }}>Nome:</label>
+                                <label htmlFor='td' style={{ fontSize: '20px', margin: '0 85px', marginTop: '-50px', fontWeight: 'bold' }}>Total c/Desconto:</label>
+                                <label htmlFor='desconto' style={{ fontSize: '20px', margin: '0 -43px', marginTop: '-50px', fontWeight: 'bold' }}>Desconto:</label>
+                                <label htmlFor='vd' style={{ fontSize: '20px', margin: '0 134px', marginTop: '-20px', fontWeight: 'bold' }}>Valor Desconto:</label><br />
+                                <input type="decimal" className='form-control rounded-0' style={{ width: '13%', height: '42px', fontSize: '20px', fontWeight: 'bold', color: 'navy' }} id="total" />
+                                <input type="text" className='form-control rounded-0' style={{ width: '22%', height: '42px', margin: '0 200px', fontSize: '20px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="nome" />
+                                <input type="decimal" className='form-control rounded-0' style={{ width: '14%', height: '42px', margin: '0 500px', fontSize: '20px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="td" />
+                                <input type="decimal" className="form-control rounded-0" style={{ width: '14%', height: '42px', margin: '0 710px', fontSize: '20px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="desconto" onKeyDown={MudaCorDesc} />
+                                <input type="decimal" className="form-control rounded-0" style={{ width: '14%', height: '42px', margin: '0 900px', fontSize: '20px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="vd" /> <br />
+                                <label htmlFor="valorpag" style={{ fontSize: '20px', fontFamily: 'arial', fontWeight: 'bold' }} >Valor Pago:</label>
+                                <label htmlFor="formapag" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 95px', fontWeight: 'bold' }} >Forma Paga:</label>
+                                <label htmlFor="troco" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 80px', fontWeight: 'bold' }} >Troco:</label>
+                                <label htmlFor="parcelamento" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 62px', fontWeight: 'bold' }} >Parcelamento:</label>
+                                <label htmlFor="parcelan" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 13px', fontWeight: 'bold' }} >Parcela nº:</label><br />
+                                <input type="decimal" onKeyDown={MudaCorVp} className="form-control rounded-0" style={{ width: '14%', height: '42px', fontSize: '20px', fontWeight: 'bold', color: 'navy' }} id="vp" />
+                                <select className="form-control rounded-0" onClick={MudaCorForma} value={formapag} onChange={e => formapagchange(e.target.value)} style={{ width: '15%', height: '42px', margin: '0 200px', fontSize: '20px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} name='formapag' id='formapag' >
                                     <option value=""></option>
                                     <option value="Dinheiro">Dinheiro</option>
                                     <option value="Pix">Pix</option>
@@ -875,8 +875,8 @@ const EntradasNumero = () => {
                                     <option value="Crédito">Crédito</option>
                                     <option value="Boleto">Boleto</option>
                                 </select>
-                                <input type="decimal" className="form-control rounded-0" style={{ width: '14%', height: '42px', fontSize: '20px', margin: '0 505px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} id="troco" />
-                                <select className="form-control rounded-0" value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ width: '10%', height: '42px', fontSize: '20px', margin: '0 705px', marginTop: '-42px', fontWeight:'bold', color:'navy' }} id="parcelamento" >
+                                <input type="decimal" className="form-control rounded-0" style={{ width: '14%', height: '42px', fontSize: '20px', margin: '0 505px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="troco" />
+                                <select className="form-control rounded-0" value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ width: '10%', height: '42px', fontSize: '20px', margin: '0 705px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="parcelamento" >
                                     <option value=""></option>
                                     <option value="2x">2x</option>
                                     <option value="3x">3x</option>
@@ -890,7 +890,7 @@ const EntradasNumero = () => {
                                     <option value="11x">11x</option>
                                     <option value="12x">12x</option>
                                 </select>
-                                <select className="form-control rounded-0" value={parcelan} onChange={e => parcelanchange(e.target.value)} style={{ width: '10%', height: '42px', fontSize: '20px', margin: '0 910px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} id="parcelan" >
+                                <select className="form-control rounded-0" value={parcelan} onChange={e => parcelanchange(e.target.value)} style={{ width: '10%', height: '42px', fontSize: '20px', margin: '0 910px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="parcelan" >
                                     <option value=""></option>
                                     <option value="1ª">1ª</option>
                                     <option value="2ª">2ª</option>
@@ -905,10 +905,10 @@ const EntradasNumero = () => {
                                     <option value="11ª">11ª</option>
                                     <option value="12ª">12ª</option>
                                 </select><br />
-                                <label htmlFor="mes" style={{ fontSize: '20px', fontFamily: 'arial', fontWeight:'bold'}} >Mes:</label>
-                                <label htmlFor="parcelas" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 465px', fontWeight:'bold' }} >Parcelas:</label>
+                                <label htmlFor="mes" style={{ fontSize: '20px', fontFamily: 'arial', fontWeight: 'bold' }} >Mes:</label>
+                                <label htmlFor="parcelas" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 465px', fontWeight: 'bold' }} >Parcelas:</label>
                                 <label htmlFor="frete" style={{ fontSize: '20px', fontFamily: 'arial', margin: '-360px', fontWeight: 'bold' }} >Frete:</label>
-                                <select onClick={MudaCorMes} style={{ fontSize: '20px', width: 150, fontWeight:'bold', color:'navy' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
+                                <select onClick={MudaCorMes} style={{ fontSize: '20px', width: 150, fontWeight: 'bold', color: 'navy' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
                                     <option value=""></option>
                                     <option value="Janeiro">Janeiro</option>
                                     <option value="Fevereiro">Fevereiro</option>
@@ -924,7 +924,7 @@ const EntradasNumero = () => {
                                     <option value="Dezembro">Dezembro</option>
                                 </select>
 
-                                <input type="number" className="form-control rounded-0" style={{ fontSize: '20px', width: 100, margin: '0 505px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} id="parcelas" />
+                                <input type="number" className="form-control rounded-0" style={{ fontSize: '20px', width: 100, margin: '0 505px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="parcelas" />
                                 <input type="decimal" className="form-control rounded-0" value={frete} onChange={e => fretechange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 705px', marginTop: '-45px', fontWeight: 'bold', color: 'navy' }} id="frete" /><br />
                                 <button type="submit" className="btn" style={{ color: 'white', backgroundColor: 'green', fontSize: '18px', width: 120 }}>Concluir</button>
                                 <ToastContainer />

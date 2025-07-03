@@ -453,12 +453,14 @@ const EntradasNumero = () => {
                         } else if (result.isDenied) {
                             Swal.fire("Nada salvo", "", "info");
                         }
-                        window.location.reload();
+                      
                     });
 
                 }
 
-            } else {
+            }
+            if (frete !== "") {
+
 
                 if (parcelamento === "" || parcelamento === null && parcelan === "" || parcelan === null) {
 
@@ -618,9 +620,8 @@ const EntradasNumero = () => {
 
                     }
 
-                } 
-                 else 
-                   if (parcelamento !== "" || parcelamento !== null && parcelan !== "" || parcelan !== null) {
+                }
+                if (parcelamento !== "" || parcelamento !== null && parcelan !== "" || parcelan !== null) {
 
                     const vendan = document.getElementById('vendan').value
                     const nome = document.getElementById('nome').value;
@@ -657,7 +658,7 @@ const EntradasNumero = () => {
                         } else if (result.isDenied) {
                             Swal.fire("Nada salvo", "", "info");
                         }
-                        window.location.reload();
+                       
                     });
 
                 }

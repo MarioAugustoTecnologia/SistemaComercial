@@ -618,7 +618,9 @@ const EntradasNumero = () => {
 
                     }
 
-                } else if (parcelamento !== "" || parcelamento !== null && parcelan !== "" || parcelan !== null) {
+                } 
+                 else 
+                   if (parcelamento !== "" || parcelamento !== null && parcelan !== "" || parcelan !== null) {
 
                     const vendan = document.getElementById('vendan').value
                     const nome = document.getElementById('nome').value;

@@ -131,8 +131,7 @@ const CadResultado = () => {
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(cadobj)
           }).then((res) => {
-            toast.success('Cadastrado com Sucesso !')
-            entradaschange('')       
+            toast.success('Cadastrado com Sucesso !')             
 
           }).catch((err) => {
             toast.error('Erro ! :' + err.message)
@@ -176,8 +175,7 @@ const CadResultado = () => {
   
           }).then((res) => {
   
-            window.location.reload();
-            //toast.success('Excluido com sucesso !')     
+            window.location.reload();    
   
           }).catch((err) => {
             toast.error('Erro ! :' + err.message)
@@ -208,8 +206,7 @@ const CadResultado = () => {
   
           }).then((res) => {
   
-            window.location.reload();
-            //toast.success('Excluido com sucesso !')     
+            window.location.reload();               
   
           }).catch((err) => {
             toast.error('Erro ! :' + err.message)

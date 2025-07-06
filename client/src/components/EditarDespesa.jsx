@@ -17,6 +17,7 @@ const EditarDespesa = () => {
       nomechange(resp.nome);
       custochange(resp.custo);
       datapagchange(resp.data_pgto);
+      meschange(resp.mes)
 
     }).catch((err) => {
       console.log(err.message);
@@ -28,7 +29,7 @@ const EditarDespesa = () => {
   const [nome, nomechange] = useState("")
   const [custo, custochange] = useState("")
   const [datapgto, datapagchange] = useState("")
-
+  const [mes, meschange] = useState("")
 
 
   const isValidate = () => {
@@ -52,6 +53,10 @@ const EditarDespesa = () => {
     }
 
     if (datapgto === null || datapgto === '') {
+      isproceed = false
+      // errormessage += 'Salario:' 
+    }
+     if (mes === null || mes === '') {
       isproceed = false
       // errormessage += 'Salario:' 
     }
@@ -79,7 +84,7 @@ const EditarDespesa = () => {
       const data_cad = data2.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
       const total = custo;
 
-      const edtobj = { id, nome, custo, data_pgto, total, data_cad }
+      const edtobj = { id, nome, custo, data_pgto, total, data_cad, mes }
 
       Swal.fire({
         title: "Deseja salvar ?",
@@ -101,6 +106,7 @@ const EditarDespesa = () => {
             nomechange('');
             custochange('');
             datapagchange('');
+            meschange('');
 
           }).catch((err) => {
             toast.error('Erro ! :' + err.message)
@@ -126,6 +132,11 @@ const EditarDespesa = () => {
 
   function MostraPreco() {
     document.getElementById('custo').style.borderColor = 'GainsBoro'
+
+  }
+
+   function MostraMes() {
+    document.getElementById('mes').style.borderColor = 'GainsBoro'
 
   }
 
@@ -298,6 +309,24 @@ const EditarDespesa = () => {
                 <div className='mb-3'>
                   <label htmlFor='datacadastro' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Data de Pagamento:</label>
                   <input type='date' value={datapgto} onChange={e => datapagchange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='data_pgto' />
+                </div>
+                 <div className='mb-3'>
+                  <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Mes:</label>
+                   <select onSelect={MostraMes} style={{ fontSize: '20px', width: 130, margin: '0 115px', marginTop: '0px', fontWeight:'bold', color:'navy' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
+                    <option value=""></option>
+                    <option value="Janeiro">Janeiro</option>
+                    <option value="Fevereiro">Fevereiro</option>
+                    <option value="Março">Março</option>
+                    <option value="Abril">Abril</option>
+                    <option value="Maio">Maio</option>
+                    <option value="Junho">Junho</option>
+                    <option value="Julho">Julho</option>
+                    <option value="Agosto">Agosto</option>
+                    <option value="Setembro">Setembro</option>
+                    <option value="Outubro">Outubro</option>
+                    <option value="Novembro">Novembro</option>
+                    <option value="Dezembro">Dezembro</option>
+                  </select>
                 </div>
                 <div className="mb-3">
                   <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px', fontSize: '16px' }} >Atualizar:</button>

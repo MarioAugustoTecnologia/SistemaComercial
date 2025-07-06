@@ -121,6 +121,20 @@ const ComprasMes = () => {
         toast.error('Erro ! :' + err.message)
       })
 
+       const cadobj2 = { nome, total }
+
+      fetch("https://sistemacomercialserver.onrender.com/compras", {
+        method: "POST",
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(cadobj2)
+      }).then((res) => {
+        //toast.success('Cadastrado com Sucesso !') 
+        window.location.reload();
+
+      }).catch((err) => {
+        toast.error('Erro ! :' + err.message)
+      })
+
     }
   }
 

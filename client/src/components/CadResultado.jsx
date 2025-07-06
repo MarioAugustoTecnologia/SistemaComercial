@@ -492,7 +492,7 @@ const CadResultado = () => {
                 <input type="search" value={buscasaida} onChange={e => setBuscaSaida(e.target.value)} className="form-control rounded-0" style={{ fontFamily: 'arial', fontSize: '20px', fontWeight: 'bold', color: 'navy', margin: '0 329px', width: '40%', marginTop: '-44px' }} /> <br />
                 <button className='btn order rounded-0' style={{ width: 100, fontSize: '16px', backgroundColor:'red', color:'white', margin:'0 330px'}} onClick={somar}>Total:</button><br /><br /><br /><br />
                 <h4 style={{color:'navy', fontWeight:'bold'}}>Entradas:</h4> 
-                <h4 style={{color:'navy', fontWeight:'bold', margin:'0 420px', marginTop:'-40px'}}>Saidas:</h4>
+                <h4 style={{color:'navy', fontWeight:'bold', margin:'0 720px', marginTop:'-40px'}}>Saidas:</h4>
 
               </div><br />
               <div style={{ display: 'flex' }}>
@@ -550,7 +550,7 @@ const CadResultado = () => {
               </div><br /><br />
                <div style={{ display: 'flex' }}>                 
                  <button className='btn order rounded-0' onClick={DeleteAllInputs} style={{ width: 120, fontSize: '16px', backgroundColor:'red', color:'white', margin:'0 310px'}} >Excluir Tudo:</button>
-                 <button className='btn order rounded-0' onClick={DeleteAllOutputs} style={{ width: 120, fontSize: '16px', backgroundColor:'red', color:'white', margin:'0 220px'}} >Excluir Tudo:</button>
+                 <button className='btn order rounded-0' onClick={DeleteAllOutputs} style={{ width: 120, fontSize: '16px', backgroundColor:'red', color:'white', margin:'0 290px'}} >Excluir Tudo:</button>
                </div>
 
             </div><br />

@@ -8,7 +8,6 @@ import Swal from 'sweetalert2';
 
 const CadResultado = () => {
 
-  const [entradas, entradaschange] = useState("")
   const [mes, meschange] = useState("")
   const [entradadata, setEntradadata] = useState([]);
   const [saidadata, setSaidadata] = useState([]);
@@ -57,12 +56,6 @@ const CadResultado = () => {
   const isValidate = () => {
     let isproceed = true
     let errormessage = "Campos não podem estar vazio  !"
-
-    if (entradas === null || entradas === '') {
-      document.getElementById('entradas').style.borderColor = 'red'
-      isproceed = false
-      //errormessage += 'Nome Completo:' 
-    }
  
     if (mes === null || mes === '') {
       document.getElementById('mes').style.borderColor = 'red'
@@ -115,6 +108,7 @@ const CadResultado = () => {
     const data = new Date();
     const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
     const saidas = document.getElementById('saidas').value;
+    const entradas = document.getElementById('entradas').value;
 
     var resultado = document.getElementById('resultado').value;
 
@@ -157,6 +151,7 @@ const CadResultado = () => {
   function calcResult() {
 
     const saidas = document.getElementById('saidas').value;
+    const entradas = document.getElementById('entradas').value;
     const resultado = (entradas - saidas).toFixed(2);
     console.log(resultado)
     document.getElementById('resultado').value = resultado;
@@ -291,7 +286,14 @@ const CadResultado = () => {
           }
         });
     
-      }  
+      } 
+      
+      
+ const handleInsert = () => {
+    
+    document.getElementById('entradas').value = document.getElementById('total').innerHTML;  
+
+}
   
 
   const logout = () => {
@@ -449,7 +451,7 @@ const CadResultado = () => {
               <form action='' onSubmit={cadastrar}>
                 <div className='mb-3'>
                   <label htmlFor='entradas' style={{ fontSize: '20px', margin: '0 115px', fontWeight: 'bold' }}>Total de Entradas:</label>
-                  <input type='decimal' onKeyUp={MostraEntradas} placeholder='Entre com o total:' value={entradas} onChange={e => entradaschange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='entradas' id='entradas' />
+                  <input type='decimal' onKeyUp={MostraEntradas} placeholder='Entre com o total:' style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='entradas' id='entradas' />
                 </div>
                 <div className='mb-3'>
                   <label htmlFor='saidas' style={{ fontSize: '20px', margin: '0 115px', fontWeight: 'bold' }}>Total de Saídas:</label>
@@ -492,11 +494,11 @@ const CadResultado = () => {
                 <input type="search" value={buscasaida} onChange={e => setBuscaSaida(e.target.value)} className="form-control rounded-0" style={{ fontFamily: 'arial', fontSize: '20px', fontWeight: 'bold', color: 'navy', margin: '0 329px', width: '40%', marginTop: '-44px' }} /> <br />
                 <button className='btn order rounded-0' style={{ width: 100, fontSize: '16px', backgroundColor:'red', color:'white', margin:'0 330px'}} onClick={somar}>Total:</button><br /><br /><br /><br />
                 <h4 style={{color:'navy', fontWeight:'bold'}}>Entradas:</h4> 
-                <h4 style={{color:'navy', fontWeight:'bold', margin:'0 720px', marginTop:'-40px'}}>Saidas:</h4>
+                <h4 style={{color:'navy', fontWeight:'bold', margin:'0 750px', marginTop:'-40px'}}>Saidas:</h4>
 
               </div><br />
               <div style={{ display: 'flex' }}>
-                <table className="table" id="table" style={{fontFamily: 'arial', fontSize: '20px', width:'30%', margin:'0 300px'}} >
+                <table className="table" id="table" style={{fontFamily: 'arial', fontSize: '20px', width:'35%', margin:'0 300px'}} >
                   <thead>
                     <tr>
                       <th className="th" scope="col">Nome:</th>
@@ -509,8 +511,9 @@ const CadResultado = () => {
                       table.map(item => (
                         <tr key={item.id}>
                            <td className="td" style={{color:'green', fontWeight:'bold'}}>{item.nome}</td>
-                           <td className="td" style={{color:'green', fontWeight:'bold'}}>{item.total}</td> 
+                           <td className="td" style={{color:'green', fontWeight:'bold'}} id='total'>{item.total}</td> 
                            <td className="td">
+                            <button className="inserir"  onClick={() => {handleInsert(item.total)}} style={{color:'white', backgroundColor:'orange', border:'none', borderRadius:'5px'}}>Inserir:</button>
                             <button className="excluir" onClick={() => { DeleteEntradas(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
                           </td> 
                         </tr>
@@ -521,7 +524,7 @@ const CadResultado = () => {
                   </tbody>                  
                 
                 </table>
-                <table className="table" id="table" style={{fontFamily: 'arial', fontSize: '20px', width:'30%', margin:'0 -170px'}} >
+                <table className="table" id="table" style={{fontFamily: 'arial', fontSize: '20px', width:'30%', margin:'0 -220px'}} >
                   <thead>
                     <tr>
                       <th className="th" scope="col">Nome:</th>
@@ -550,7 +553,7 @@ const CadResultado = () => {
               </div><br /><br />
                <div style={{ display: 'flex' }}>                 
                  <button className='btn order rounded-0' onClick={DeleteAllInputs} style={{ width: 120, fontSize: '16px', backgroundColor:'red', color:'white', margin:'0 310px'}} >Excluir Tudo:</button>
-                 <button className='btn order rounded-0' onClick={DeleteAllOutputs} style={{ width: 120, fontSize: '16px', backgroundColor:'red', color:'white', margin:'0 290px'}} >Excluir Tudo:</button>
+                 <button className='btn order rounded-0' onClick={DeleteAllOutputs} style={{ width: 120, fontSize: '16px', backgroundColor:'red', color:'white', margin:'0 305px'}} >Excluir Tudo:</button>
                </div>
 
             </div><br />

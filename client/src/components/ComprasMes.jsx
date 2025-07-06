@@ -123,7 +123,7 @@ const ComprasMes = () => {
 
        const cadobj2 = { nome, total }
 
-      fetch("https://sistemacomercialserver.onrender.com/compras", {
+      fetch("https://sistemacomercialserver.onrender.com/saidas", {
         method: "POST",
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(cadobj2)

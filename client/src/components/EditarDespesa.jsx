@@ -53,10 +53,12 @@ const EditarDespesa = () => {
     }
 
     if (datapgto === null || datapgto === '') {
+      document.getElementById('datapagto').style.borderColor = 'red'
       isproceed = false
       // errormessage += 'Salario:' 
     }
      if (mes === null || mes === '') {
+      document.getElementById('mes').style.borderColor = 'red'
       isproceed = false
       // errormessage += 'Salario:' 
     }
@@ -135,7 +137,12 @@ const EditarDespesa = () => {
 
   }
 
-   function MostraMes() {
+    function MostraData() {
+    document.getElementById('datapagto').style.borderColor = 'GainsBoro'
+
+  }
+
+    function MostraMes() {
     document.getElementById('mes').style.borderColor = 'GainsBoro'
 
   }
@@ -308,11 +315,11 @@ const EditarDespesa = () => {
                 </div>
                 <div className='mb-3'>
                   <label htmlFor='datacadastro' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Data de Pagamento:</label>
-                  <input type='date' value={datapgto} onChange={e => datapagchange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='data_pgto' />
+                  <input type='date' value={datapgto} onChange={e => datapagchange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='data_pgto' id="datapagto" onClick={MostraData} />
                 </div>
                  <div className='mb-3'>
                   <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Mes:</label>
-                   <select onSelect={MostraMes} style={{ fontSize: '20px', width: 130, margin: '0 115px', marginTop: '0px', fontWeight:'bold', color:'navy' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
+                   <select onClick={MostraMes} style={{ fontSize: '20px', width: 130, margin: '0 115px', marginTop: '0px', fontWeight:'bold', color:'navy' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
                     <option value=""></option>
                     <option value="Janeiro">Janeiro</option>
                     <option value="Fevereiro">Fevereiro</option>

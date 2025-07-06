@@ -12,6 +12,7 @@ const CadDespesas = () => {
   const [nome, nomechange] = useState("")
   const [custo, custochange] = useState("")
   const [datapag, datapagchange] = useState("")
+  const [mes, meschange] = useState("")
 
   const isValidate = () => {
     let isproceed = true
@@ -24,6 +25,11 @@ const CadDespesas = () => {
     }
     if (custo === null || custo === '') {
       document.getElementById('custo').style.borderColor = 'red';
+      isproceed = false
+      // errormessage += 'Email:' 
+    }
+      if (mes === null || mes === '') {
+      document.getElementById('mes').style.borderColor = 'red';
       isproceed = false
       // errormessage += 'Email:' 
     }
@@ -53,7 +59,7 @@ const CadDespesas = () => {
       const data_cad = data2.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
       const total = custo;
 
-      const cadobj = { nome, custo, data_pgto, data_cad, total }
+      const cadobj = { nome, custo, data_pgto, data_cad, total, mes }
       //console.log(cadobj)  
 
       if (isValidate()) {
@@ -93,7 +99,7 @@ const CadDespesas = () => {
       const data_cad = data2.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
       const total = custo;
 
-      const cadobj = { nome, custo, data_cad, total }
+      const cadobj = { nome, custo, data_cad, total, mes }
       //console.log(cadobj)  
 
       if (isValidate()) {
@@ -137,6 +143,10 @@ const CadDespesas = () => {
 
   function MostraCusto() {
     document.getElementById('custo').style.borderColor = 'GainsBoro'
+  }
+
+    function MostraMes() {
+    document.getElementById('mes').style.borderColor = 'GainsBoro'
   }
 
   const logout = () => {
@@ -306,6 +316,25 @@ const CadDespesas = () => {
                 <div className='mb-3'>
                   <label htmlFor='datapagamento' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Data de Pagamento:</label>
                   <input type='date' value={datapag} onChange={e => datapagchange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='datapag' />
+                </div>
+                 <div className='mb-3'>
+                  <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Mês:</label>
+                  <select onSelect={MostraMes} style={{ fontSize: '20px', width: 130, margin: '0 115px', marginTop: '0px', fontWeight:'bold', color:'navy' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
+                    <option value=""></option>
+                    <option value="Janeiro">Janeiro</option>
+                    <option value="Fevereiro">Fevereiro</option>
+                    <option value="Março">Março</option>
+                    <option value="Abril">Abril</option>
+                    <option value="Maio">Maio</option>
+                    <option value="Junho">Junho</option>
+                    <option value="Julho">Julho</option>
+                    <option value="Agosto">Agosto</option>
+                    <option value="Setembro">Setembro</option>
+                    <option value="Outubro">Outubro</option>
+                    <option value="Novembro">Novembro</option>
+                    <option value="Dezembro">Dezembro</option>
+                  </select>
+                  
                 </div>
                 <div className='mb-3'>
                   <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px', fontSize: '16px' }} >Cadastrar:</button>

@@ -101,7 +101,8 @@ const Despesas = () => {
       mes = (data.getMonth() + 1).toString().padStart(2, '0'),
       ano = data.getFullYear();
     return `${dia}/${mes}/${ano}`;
-  }
+  }     
+
 
   function somar() {
 
@@ -114,21 +115,35 @@ const Despesas = () => {
     let soma = valores.reduce((previous_value, current_value) => {
       return parseFloat(previous_value) + parseFloat(current_value);
     })
-
-    const nome = 'Total das despesas:';
+    
+    const mes = document.getElementById('mes').innerHTML;
+    const nome = 'Total das despesas em: ' + mes;
     const total = soma.toFixed(2);
     const data_cad = formataData();
     const custo = null;
 
-    const cadobj = { nome, total, custo, data_cad }
+    const cadobj = { nome, total, custo, data_cad, mes }
 
     fetch("https://sistemacomercialserver.onrender.com/despesas", {
       method: "POST",
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(cadobj)
     }).then((res) => {
+     
+      window.location.reload();
 
-      toast.success('Cadastrado com Sucesso !')
+    }).catch((err) => {
+      toast.error('Erro ! :' + err.message)
+    })
+
+    const cadobj2 = { nome, total }
+
+    fetch("https://sistemacomercialserver.onrender.com/saidas", {
+      method: "POST",
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(cadobj2)
+    }).then((res) => {
+     
       window.location.reload();
 
     }).catch((err) => {
@@ -289,6 +304,7 @@ const Despesas = () => {
                       <th className="th" scope="col">Total:</th>
                       <th className="th" scope="col">Data de Pagamento:</th>
                       <th className="th" scope="col">Data de Cadastro:</th>
+                      <th className="th" scope="col">Mês:</th>
                       <th className="th" scope="col">Ação:</th>
                     </tr>
                   </thead>
@@ -298,10 +314,11 @@ const Despesas = () => {
                         <tr key={item.id}>
                           <td className="td">{item.id}</td>
                           <td className="td">{item.nome}</td>
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.custo)}</td>
-                          <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.total)}</td>
+                          <td className="td">{item.custo}</td>
+                          <td className="td">{item.total}</td>
                           <td className="td">{item.data_pgto}</td>
                           <td className="td">{item.data_cad}</td>
+                          <td className="td" id="mes">{item.mes}</td>
                           <td className="td" >
                             <button className="editar" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Editar:</button>
                             <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
@@ -309,7 +326,6 @@ const Despesas = () => {
 
                         </tr>
                       ))
-
                     }
                   </tbody>
                   <ToastContainer />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,8 +9,49 @@ import Swal from 'sweetalert2';
 const CadResultado = () => {
 
   const [entradas, entradaschange] = useState("")
-  const [saidas, saidaschange] = useState("")
   const [mes, meschange] = useState("")
+  const [entradadata, setEntradadata] = useState([]);
+  const [saidadata, setSaidadata] = useState([]);
+  const [buscaentrada, setBuscaEntrada] = React.useState("")
+  const [buscasaida, setBuscaSaida] = React.useState("")
+
+  const buscarap = buscaentrada.toLowerCase()
+  const buscarap2 = buscasaida.toLowerCase()
+
+  var table = entradadata.filter(item => item.nome.toLowerCase().includes(buscarap))
+  var table2 = saidadata.filter(item => item.nome.toLowerCase().includes(buscarap2))
+
+  useEffect(() => {
+
+    fetch("https://sistemacomercialserver.onrender.com/entradas").then((res) => {
+
+      return res.json()
+
+    }).then((resp) => {
+
+      setEntradadata(resp)
+
+    }).catch((err) => {
+      console.log(err.message)
+    })
+
+  }, [])
+
+  useEffect(() => {
+
+    fetch("https://sistemacomercialserver.onrender.com/saidas").then((res) => {
+
+      return res.json()
+
+    }).then((resp) => {
+
+      setSaidadata(resp)
+
+    }).catch((err) => {
+      console.log(err.message)
+    })
+
+  }, [])
 
 
   const isValidate = () => {
@@ -22,11 +63,7 @@ const CadResultado = () => {
       isproceed = false
       //errormessage += 'Nome Completo:' 
     }
-    if (saidas === null || saidas === '') {
-      document.getElementById('saidas').style.borderColor = 'red'
-      isproceed = false
-      // errormessage += 'Email:' 
-    }
+ 
     if (mes === null || mes === '') {
       document.getElementById('mes').style.borderColor = 'red'
       isproceed = false
@@ -53,12 +90,31 @@ const CadResultado = () => {
   }
 
 
+    function somar() { 
+  
+  
+        let valores = [];
+  
+        table2.map(item => {
+          valores.push(item.total)
+        })
+  
+        let soma = valores.reduce((previous_value, current_value) => {       // método que faz a soma
+          return parseFloat(previous_value) + parseFloat(current_value);     // converte de string para number
+        }) 
+
+        document.getElementById('saidas').value = soma;
+              
+    }
+
+
   const cadastrar = (e) => {
 
     e.preventDefault();
 
     const data = new Date();
     const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+    const saidas = document.getElementById('saidas').value;
 
     var resultado = document.getElementById('resultado').value;
 
@@ -82,8 +138,7 @@ const CadResultado = () => {
             body: JSON.stringify(cadobj)
           }).then((res) => {
             toast.success('Cadastrado com Sucesso !')
-            entradaschange('')
-            saidaschange('')
+            entradaschange('')       
 
           }).catch((err) => {
             toast.error('Erro ! :' + err.message)
@@ -101,12 +156,143 @@ const CadResultado = () => {
 
   function calcResult() {
 
+    const saidas = document.getElementById('saidas').value;
     const resultado = (entradas - saidas).toFixed(2);
     console.log(resultado)
     document.getElementById('resultado').value = resultado;
 
   }
 
+  const DeleteEntradas = (id) => {
+  
+      Swal.fire({
+        title: "Deseja Excluir ?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Excluir",
+        denyButtonText: `Não Excluir`
+      }).then((result) => {
+  
+        if (result.isConfirmed) {
+  
+          fetch("https://sistemacomercialserver.onrender.com/entradas/" + id, {
+  
+            method: "DELETE"
+  
+          }).then((res) => {
+  
+            window.location.reload();
+            //toast.success('Excluido com sucesso !')     
+  
+          }).catch((err) => {
+            toast.error('Erro ! :' + err.message)
+          })
+        } else if (result.isDenied) {
+          Swal.fire("Nada excluido", "", "info");
+        }
+      });
+  
+    }
+
+
+      const DeleteSaidas = (id) => {
+  
+      Swal.fire({
+        title: "Deseja Excluir ?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Excluir",
+        denyButtonText: `Não Excluir`
+      }).then((result) => {
+  
+        if (result.isConfirmed) {
+  
+          fetch("https://sistemacomercialserver.onrender.com/saidas/" + id, {
+  
+            method: "DELETE"
+  
+          }).then((res) => {
+  
+            window.location.reload();
+            //toast.success('Excluido com sucesso !')     
+  
+          }).catch((err) => {
+            toast.error('Erro ! :' + err.message)
+          })
+        } else if (result.isDenied) {
+          Swal.fire("Nada excluido", "", "info");
+        }
+      });
+  
+    }
+
+    const DeleteAllInputs = (id) => {
+    
+        Swal.fire({
+          title: "Deseja Excluir ?",
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: "Excluir",
+          denyButtonText: `Não Excluir`
+        }).then((result) => {
+    
+          if (result.isConfirmed) {
+            for (id = 0; id <= entradadata.length; id++) {
+    
+              fetch("https://sistemacomercialserver.onrender.com/entradas/" + id, {
+    
+                method: "DELETE"
+    
+              }).then((res) => {
+    
+                window.location.reload();                  
+    
+              }).catch((err) => {
+                toast.error('Erro ! :' + err.message)
+              })
+    
+            }
+          } else if (result.isDenied) {
+            Swal.fire("Nada excluido", "", "info");
+          }
+        });
+    
+      }
+
+      const DeleteAllOutputs = (id) => {
+    
+        Swal.fire({
+          title: "Deseja Excluir ?",
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: "Excluir",
+          denyButtonText: `Não Excluir`
+        }).then((result) => {
+    
+          if (result.isConfirmed) {
+            for (id = 0; id <= saidadata.length; id++) {
+    
+              fetch("https://sistemacomercialserver.onrender.com/saidas/" + id, {
+    
+                method: "DELETE"
+    
+              }).then((res) => {
+    
+                window.location.reload();
+                //toast.success('Excluido com sucesso !')    
+    
+              }).catch((err) => {
+                toast.error('Erro ! :' + err.message)
+              })
+    
+            }
+          } else if (result.isDenied) {
+            Swal.fire("Nada excluido", "", "info");
+          }
+        });
+    
+      }  
+  
 
   const logout = () => {
     localStorage.clear()
@@ -257,23 +443,23 @@ const CadResultado = () => {
             <h4><strong>Sistema de Gestão Comercial:</strong></h4>
           </div>
           <Outlet /><br />
-          <div className='d-flex justify-content-center align-items-center'>
-            <div className='bg-white p-4 rounded border' style={{ width: '45%', marginTop: '200px' }}>
+          <div className='justify-content-center align-items-center'><br /><br /><br />
+            <div className='bg-white p-4 rounded border' style={{ width: '45%', margin: '0 400px' }}>
               <h4><center><strong>Cadastrar novo Resultado:</strong></center></h4><br />
               <form action='' onSubmit={cadastrar}>
                 <div className='mb-3'>
-                  <label htmlFor='entradas' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Total de Entradas:</label>
-                  <input type='decimal' onKeyUp={MostraEntradas} placeholder='Entre com o total:' value={entradas} onChange={e => entradaschange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='entradas' id='entradas' />
+                  <label htmlFor='entradas' style={{ fontSize: '20px', margin: '0 115px', fontWeight: 'bold' }}>Total de Entradas:</label>
+                  <input type='decimal' onKeyUp={MostraEntradas} placeholder='Entre com o total:' value={entradas} onChange={e => entradaschange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='entradas' id='entradas' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='saidas' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Total de Saídas:</label>
-                  <label htmlFor='resultado' style={{ fontSize: '20px', margin: '0 42px', fontWeight:'bold'}}>Resultado:</label>
-                  <input type='decimal' onKeyUp={MostraSaidas} placeholder='Entre com o total:' value={saidas} onChange={e => saidaschange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='saidas' id='saidas' />
-                  <input type='decimal' style={{ fontSize: '20px', width: 200, margin: '0 415px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='resultado' id='resultado' />
+                  <label htmlFor='saidas' style={{ fontSize: '20px', margin: '0 115px', fontWeight: 'bold' }}>Total de Saídas:</label>
+                  <label htmlFor='resultado' style={{ fontSize: '20px', margin: '0 42px', fontWeight: 'bold' }}>Resultado:</label>
+                  <input type='decimal' onKeyUp={MostraSaidas} placeholder='Entre com o total:' style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='saidas' id='saidas' />
+                  <input type='decimal' style={{ fontSize: '20px', width: 200, margin: '0 415px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='resultado' id='resultado' />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Mês:</label>
-                  <select style={{ fontSize: '20px', width: 150, margin: '0 115px', color:'navy', fontWeight:'bold'}} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
+                  <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 115px', fontWeight: 'bold' }}>Mês:</label>
+                  <select style={{ fontSize: '20px', width: 150, margin: '0 115px', color: 'navy', fontWeight: 'bold' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
                     <option value=""></option>
                     <option value="Janeiro">Janeiro</option>
                     <option value="Fevereiro">Fevereiro</option>
@@ -294,11 +480,85 @@ const CadResultado = () => {
 
                 <ToastContainer />
               </form>
-              <button className='btn btn-primary border rounded-0' onClick={calcResult} style={{ width: 100, margin: '0 230px', marginTop: '-63px', fontSize: '16px' }}>Total:</button>
-              <Link to='/resultado' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 -215px', marginTop: '-65px', fontSize: '16px', width: 100 }}>Voltar:</Link>
+                   <button className='btn btn-primary border rounded-0' onClick={calcResult} style={{ width: 100, margin: '0 230px', marginTop: '-63px', fontSize: '16px' }}>Total:</button>
+              <Link to='/resultado' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 -215px', marginTop: '-65px', fontSize: '16px', width: 100 }}>Voltar:</Link><br />
 
             </div>
+            <div><br />
+              <div style={{ margin: '0 500px' }}>
+                <label htmlFor="buscaentradas" className="Entradas" style={{ fontFamily: 'arial', fontSize: '20px', fontWeight: 'bold', margin: '0 -80px' }}>Busca por entradas:</label>
+                <label htmlFor="buscasaidas" className="Saidas" style={{ fontFamily: 'arial', fontSize: '20px', fontWeight: 'bold', margin: '0 300px' }}>Busca por saidas:</label><br />
+                <input type="search" value={buscaentrada} onChange={e => setBuscaEntrada(e.target.value)} className="form-control rounded-0" style={{ fontFamily: 'arial', fontSize: '20px', fontWeight: 'bold', color: 'navy', margin: '0 -78px', width: '40%' }} />
+                <input type="search" value={buscasaida} onChange={e => setBuscaSaida(e.target.value)} className="form-control rounded-0" style={{ fontFamily: 'arial', fontSize: '20px', fontWeight: 'bold', color: 'navy', margin: '0 329px', width: '40%', marginTop: '-44px' }} /> <br />
+                <button className='btn order rounded-0' style={{ width: 100, fontSize: '16px', backgroundColor:'red', color:'white', margin:'0 330px'}} onClick={somar}>Total:</button><br /><br /><br /><br />
+                <h4 style={{color:'navy', fontWeight:'bold'}}>Entradas:</h4> 
+                <h4 style={{color:'navy', fontWeight:'bold', margin:'0 420px', marginTop:'-40px'}}>Saidas:</h4>
+
+              </div><br />
+              <div style={{ display: 'flex' }}>
+                <table className="table" id="table" style={{fontFamily: 'arial', fontSize: '20px', width:'30%', margin:'0 300px'}} >
+                  <thead>
+                    <tr>
+                      <th className="th" scope="col">Nome:</th>
+                      <th className="th" scope="col">Total:</th>
+                      <th className="th" scope="col">Ação:</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      table.map(item => (
+                        <tr key={item.id}>
+                           <td className="td" style={{color:'green', fontWeight:'bold'}}>{item.nome}</td>
+                           <td className="td" style={{color:'green', fontWeight:'bold'}}>{item.total}</td> 
+                           <td className="td">
+                            <button className="excluir" onClick={() => { DeleteEntradas(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                          </td> 
+                        </tr>
+                      ))
+                    }           
+                             
+
+                  </tbody>                  
+                
+                </table>
+                <table className="table" id="table" style={{fontFamily: 'arial', fontSize: '20px', width:'30%', margin:'0 -170px'}} >
+                  <thead>
+                    <tr>
+                      <th className="th" scope="col">Nome:</th>
+                      <th className="th" scope="col">Total:</th>
+                      <th className="th" scope="col">Ação:</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      table2.map(item => (
+                        <tr key={item.id}>
+                           <td className="td" style={{color:'red', fontWeight:'bold'}}>{item.nome}</td>
+                           <td className="td" style={{color:'red', fontWeight:'bold'}}>{item.total}</td> 
+                            <td className="td">
+                            <button className="excluir" onClick={() => { DeleteSaidas(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                          </td> 
+                        </tr>
+                      ))
+                    }       
+                          
+
+                  </tbody>                  
+             
+                </table>
+
+              </div><br /><br />
+               <div style={{ display: 'flex' }}>                 
+                 <button className='btn order rounded-0' onClick={DeleteAllInputs} style={{ width: 120, fontSize: '16px', backgroundColor:'red', color:'white', margin:'0 310px'}} >Excluir Tudo:</button>
+                 <button className='btn order rounded-0' onClick={DeleteAllOutputs} style={{ width: 120, fontSize: '16px', backgroundColor:'red', color:'white', margin:'0 220px'}} >Excluir Tudo:</button>
+               </div>
+
+            </div><br />
+
+
           </div>
+
+
         </div>
       </div>
     </div>

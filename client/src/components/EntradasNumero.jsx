@@ -109,6 +109,7 @@ const EntradasNumero = () => {
             document.getElementById('total').style.borderColor = 'gainsboro'
             document.getElementById('nome').style.borderColor = 'gainsboro'
             document.getElementById('vp').value = total;
+            document.getElementById('vp').style.borderColor = 'gainsboro'
 
         }
     }

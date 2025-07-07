@@ -86,7 +86,7 @@ const EntradasData = () => {
       })
 
       const total = soma.toFixed(2);
-      document.getElementById('total').innerHTML = total;
+      document.getElementById('total').innerHTML = "R$" + total;
 
     }
 

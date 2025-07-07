@@ -18,7 +18,6 @@ const CadTransportes = () => {
         let isproceed = true
         let errormessage = "Campos não podem estar vazio  !"
 
-
         if (nome === null || nome === '') {
             document.getElementById('nome').style.borderColor = 'red';
             isproceed = false

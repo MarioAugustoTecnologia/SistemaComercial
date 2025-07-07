@@ -159,6 +159,17 @@ const ClientesCpf = () => {
                   </span>
                 </Link>
               </li>
+               <li className="w-100">
+                <Link
+                  to="/transportes"
+                  className="nav-link px-0 align-middle text-white"
+                >
+                  <i class="bi bi-truck-flatbed" style={{margin:'0 8px'}}></i>
+                  <span className="ms-2 d-none d-sm-inline">
+                    Transportes:
+                  </span>
+                </Link>
+              </li>
               <li className="w-100">
                 <Link
                   to="/fornecedores"

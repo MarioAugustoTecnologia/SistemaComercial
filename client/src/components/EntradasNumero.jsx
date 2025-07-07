@@ -454,7 +454,7 @@ const EntradasNumero = () => {
                         } else if (result.isDenied) {
                             Swal.fire("Nada salvo", "", "info");
                         }
-                      
+
                     });
 
                 }
@@ -659,7 +659,7 @@ const EntradasNumero = () => {
                         } else if (result.isDenied) {
                             Swal.fire("Nada salvo", "", "info");
                         }
-                       
+
                     });
 
                 }
@@ -778,6 +778,17 @@ const EntradasNumero = () => {
                                     <i className="fs-4 bi bi-box-fill ms-2"></i>
                                     <span className="ms-2 d-none d-sm-inline">
                                         Produtos:
+                                    </span>
+                                </Link>
+                            </li>
+                            <li className="w-100">
+                                <Link
+                                    to="/transportes"
+                                    className="nav-link px-0 align-middle text-white"
+                                >
+                                    <i class="bi bi-truck-flatbed" style={{ margin: '0 8px' }}></i>
+                                    <span className="ms-2 d-none d-sm-inline">
+                                        Transportes:
                                     </span>
                                 </Link>
                             </li>

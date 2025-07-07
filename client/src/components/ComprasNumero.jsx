@@ -29,7 +29,7 @@ const ComprasNumero = () => {
         })
 
     }, [])
-    
+
 
     const [forname, fornamechange] = useState([])
 
@@ -221,9 +221,9 @@ const ComprasNumero = () => {
         return isproceed
     }
 
- 
 
-     const concluir = (e) => {
+
+    const concluir = (e) => {
 
         e.preventDefault();
 
@@ -317,8 +317,8 @@ const ComprasNumero = () => {
 
                 const compran = document.getElementById('compran').value
                 const nome = document.getElementById('nome').value;
-                const data_cad = formataData() 
-                const fornecedor = document.getElementById('forname').value;              
+                const data_cad = formataData()
+                const fornecedor = document.getElementById('forname').value;
                 const total = document.getElementById('total').value;
                 const totalfrete = document.getElementById('tf').value;
                 const vf = parseFloat(document.getElementById('frete').value).toFixed(2);
@@ -353,12 +353,12 @@ const ComprasNumero = () => {
                     } else if (result.isDenied) {
                         Swal.fire("Nada salvo", "", "info");
                     }
-               
+
                 });
 
-      
 
-                
+
+
             }
 
         }
@@ -376,7 +376,7 @@ const ComprasNumero = () => {
             const numero = buscanumero;
             const register = { numero }
 
-            fetch("https://sistemacomercialserver.onrender.com/compraatual/",{
+            fetch("https://sistemacomercialserver.onrender.com/compraatual/", {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(register)
@@ -417,15 +417,15 @@ const ComprasNumero = () => {
         document.getElementById('forname').style.borderColor = 'Gainsboro'
 
     }
-       function MudaCorParcelamento() {
+    function MudaCorParcelamento() {
         document.getElementById('parcelamento').style.borderColor = 'Gainsboro'
 
     }
-       function MudaCorParcelas() {
+    function MudaCorParcelas() {
         document.getElementById('parcelas').style.borderColor = 'Gainsboro'
 
     }
-       function MudaCorParcelan() {
+    function MudaCorParcelan() {
         document.getElementById('parcelan').style.borderColor = 'Gainsboro'
 
     }
@@ -520,6 +520,17 @@ const ComprasNumero = () => {
                             </li>
                             <li className="w-100">
                                 <Link
+                                    to="/transportes"
+                                    className="nav-link px-0 align-middle text-white"
+                                >
+                                    <i class="bi bi-truck-flatbed" style={{ margin: '0 8px' }}></i>
+                                    <span className="ms-2 d-none d-sm-inline">
+                                        Transportes:
+                                    </span>
+                                </Link>
+                            </li>
+                            <li className="w-100">
+                                <Link
                                     to="/fornecedores"
                                     className="nav-link px-0 align-middle text-white"
                                 >
@@ -582,10 +593,10 @@ const ComprasNumero = () => {
                         <div className="mb3">
                             <label htmlFor="Numero" className="Numero" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold' }}>Busca por numero:</label><br />
                             <input type="search" autoFocus='true' onKeyUp={MudaCorCampo} className="consultanumero" value={buscanumero} onChange={(e) => setBuscaNumero(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', width: '100px', color: 'navy', fontWeight: 'bold' }} id="compran" />
-                            
-                            <Link to="/compras" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 100px', marginTop:'-20px' }}>Voltar:</Link>
-                            <Link onClick={GerarUltima} className="btn" style={{ color: 'white', backgroundColor: 'blue', margin: '-60px', marginTop:'-80px', fontSize: '18px' }}>Próxima Compra:</Link>
-                            <strong style={{ fontSize: '36px', margin:'140px'}}>Total:</strong>
+
+                            <Link to="/compras" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 100px', marginTop: '-20px' }}>Voltar:</Link>
+                            <Link onClick={GerarUltima} className="btn" style={{ color: 'white', backgroundColor: 'blue', margin: '-60px', marginTop: '-80px', fontSize: '18px' }}>Próxima Compra:</Link>
+                            <strong style={{ fontSize: '36px', margin: '140px' }}>Total:</strong>
                             <strong><span id="totalcompra" style={{ color: 'LimeGreen', fontSize: '40px', margin: '-135px' }}></span></strong>
                             <strong style={{ fontSize: '36px', margin: '0 200px' }}>Total c Frete:</strong>
                             <strong><span id="totalf" style={{ color: 'Crimson', fontSize: '40px', margin: '0 -192px' }}></span></strong>
@@ -616,7 +627,7 @@ const ComprasNumero = () => {
                                     <option value="Boleto">Boleto</option>
                                 </select>
                                 <input type="decimal" className="form-control rounded-0" style={{ width: '14%', height: '42px', fontSize: '20px', margin: '0 505px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id="troco" />
-                                 <select className="form-control rounded-0" value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ width: '10%', height: '42px', fontSize: '20px', margin: '0 680px', marginTop: '-42px', fontWeight:'bold', color:'navy' }} onSelect={MudaCorParcelamento} id="parcelamento" >
+                                <select className="form-control rounded-0" value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ width: '10%', height: '42px', fontSize: '20px', margin: '0 680px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} onSelect={MudaCorParcelamento} id="parcelamento" >
                                     <option value=""></option>
                                     <option value="2x">2x</option>
                                     <option value="3x">3x</option>
@@ -630,7 +641,7 @@ const ComprasNumero = () => {
                                     <option value="11x">11x</option>
                                     <option value="12x">12x</option>
                                 </select>
-                                <select className="form-control rounded-0" value={parcelan} onChange={e => parcelanchange(e.target.value)} style={{ width: '10%', height: '42px', fontSize: '20px', margin: '0 855px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} onSelect={MudaCorParcelan} id="parcelan" >
+                                <select className="form-control rounded-0" value={parcelan} onChange={e => parcelanchange(e.target.value)} style={{ width: '10%', height: '42px', fontSize: '20px', margin: '0 855px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} onSelect={MudaCorParcelan} id="parcelan" >
                                     <option value=""></option>
                                     <option value="1ª">1ª</option>
                                     <option value="2ª">2ª</option>
@@ -644,8 +655,8 @@ const ComprasNumero = () => {
                                     <option value="10ª">10ª</option>
                                     <option value="11ª">11ª</option>
                                     <option value="12ª">12ª</option>
-                                </select><br />                                               
-                                                
+                                </select><br />
+
                                 <label htmlFor="mes" style={{ fontSize: '20px', fontFamily: 'arial', fontWeight: 'bold' }} >Mes:</label>
                                 <label htmlFor="fornecedor" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 155px', marginTop: '-50px', fontWeight: 'bold' }} >Fornecedor:</label>
                                 <label htmlFor="parcelas" style={{ fontSize: '20px', fontFamily: 'arial', margin: '0 50px', fontWeight: 'bold' }} >Parcelas:</label>
@@ -667,12 +678,12 @@ const ComprasNumero = () => {
                                 <select style={{ fontSize: '20px', width: 260, margin: '0 198px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} id='forname' className='form-select' onChange={(e) => setValues({ ...values, id: e.target.value })} onSelect={MudaCorFornecedor} >
                                     <option></option>
                                     {
-                                    forname.map(val => {
-                                        return <option value={val.nome}>{val.nome}</option>
-                                    } )
+                                        forname.map(val => {
+                                            return <option value={val.nome}>{val.nome}</option>
+                                        })
                                     }
                                 </select>
-                                <input type="number" className="form-control rounded-0" style={{ fontSize: '20px', width: 100, margin: '0 516px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} onSelect={MudaCorParcelas}  id="parcelas" /><br />
+                                <input type="number" className="form-control rounded-0" style={{ fontSize: '20px', width: 100, margin: '0 516px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} onSelect={MudaCorParcelas} id="parcelas" /><br />
                                 <button type="submit" className="btn" style={{ color: 'white', backgroundColor: 'green', fontSize: '18px', width: 120 }}>Concluir</button>
                                 <ToastContainer />
                             </form>

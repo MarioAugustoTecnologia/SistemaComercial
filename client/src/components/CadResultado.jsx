@@ -402,18 +402,7 @@ const CadResultado = () => {
                     Clientes:
                   </span>
                 </Link>
-              </li>
-              <li className="w-100">
-                <Link
-                  to="/resultado"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <i className="fs-4 bi bi-bank ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Resultados:
-                  </span>
-                </Link>
-              </li>
+              </li>              
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
                   to="/produto/codorc"

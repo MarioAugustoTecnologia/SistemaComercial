@@ -37,6 +37,7 @@ const CadVenda = () => {
   const [parcelan, parcelanchange] = useState("")
   const [entradadata, setEntradadata] = useState([])
   const [mesatual, setMesAtual] = useState([])
+  const [categoria, setCategoria] = useState('')
 
   useEffect(() => {
 
@@ -202,12 +203,13 @@ const CadVenda = () => {
 
   function MudaCorDesc() {
     document.getElementById('desconto').style.borderColor = 'GainsBoro'
-  }   
+  } 
+
 
   const cadastrar = (e) => {
 
-    e.preventDefault(); 
-
+    e.preventDefault();  
+    
 
     if (isValidate()) {
 
@@ -471,8 +473,10 @@ const CadVenda = () => {
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(cadobj)
                   }).then((res) => {
+                     
+                    if(categoria === "" || categoria === null){
 
-                    function Subtract() {
+                       function Subtract() {
                       return estoque - quant;
                     }
                     const qtd = Subtract();
@@ -489,6 +493,10 @@ const CadVenda = () => {
                       toast.error('Erro ! :' + err.message)
                     })
                     navigate('/produtos/codigo')
+
+                    }else{
+                    navigate('/entradas/nome')  
+                    }                   
 
                   }).catch((err) => {
                     toast.error('Erro ! :' + err.message)
@@ -758,11 +766,19 @@ const CadVenda = () => {
                     </tbody>
                   </table>
                 </div>
-                <div className='mb-3'>
-                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Nome:</label>
-                  <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 560, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='nome' />
+                <div className='d-flex'>
+                   <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Nome:</label>
+                   <label htmlFor='categoria' style={{ fontSize: '20px', margin: '0 370px', fontWeight:'bold'}}>Categoria:</label>
                 </div>
-                <div className='mb-3'>
+                <div className='d-flex'>
+                  <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 500, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='nome' />
+                  <select style={{ fontSize: '20px', width: 166, fontWeight:'bold', color:'navy', margin:'0 -69px' }} className='form-select' value={categoria} onChange={e => setCategoria(e.target.value)}>
+                     <option value=""></option>
+                     <option value="Transporte">Transporte</option>
+                   
+                  </select>
+                </div><br />           
+               <div className='mb-3'>
                   <label htmlFor='qtd' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Quantidade:</label>
                   <label htmlFor='total' style={{ fontSize: '20px', margin: '0 -50px', fontWeight:'bold' }}>Total:</label>
                   <label htmlFor='totaldesc' style={{ fontSize: '20px', margin: '0 200px', fontWeight:'bold' }}>Total c/Desconto:</label>

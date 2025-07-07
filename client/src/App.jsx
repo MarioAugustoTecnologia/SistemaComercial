@@ -126,8 +126,8 @@ function App() {
     <Route path='/mescompraatual' element={<PrivateRoutes><MesComprasAtual /></PrivateRoutes>}></Route>  
     <Route path='/orcvendas' element={<PrivateRoutes><OrcVendas /></PrivateRoutes>}></Route>
     <Route path='/orcvendas/excluirtodos' element={<PrivateRoutes><DeleteOrcVendas /></PrivateRoutes>}></Route>
-    
-    
+    <Route path='/transportes' element={<PrivateRoutes><CadTransportes /></PrivateRoutes>}></Route>   
+   
     </Routes>
     </BrowserRouter>
    </div>

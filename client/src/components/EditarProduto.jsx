@@ -429,7 +429,7 @@ const EditarProduto = () => {
                   <label htmlFor='categoria' className='form-label' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>
                     Categoria:
                   </label>
-                  <select onSelect={MudacorCat} style={{ fontSize: '20px', width: 280, margin: '0 115px', fontWeight:'bold', color:'navy'  }} name='categoria' id='categoria' className='form-select' onChange={(e) => setValues({ ...values, id: e.target.value })}>
+                  <select onClick={MudacorCat} style={{ fontSize: '20px', width: 280, margin: '0 115px', fontWeight:'bold', color:'navy'  }} name='categoria' id='categoria' className='form-select' onChange={(e) => setValues({ ...values, id: e.target.value })}>
                     <option value=""></option>
                     {categoria.map(val => {
                       return <option value={val.nome}>{val.nome}</option>

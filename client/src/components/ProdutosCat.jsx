@@ -242,7 +242,7 @@ const ProdutosCat = () => {
               <Link to="/produtos" className="btn" style={{ color: 'white', backgroundColor: 'orange', margin: '0 20px', fontSize: '18px', fontFamily: 'arial', width: '140px' }}>Voltar:</Link>
             </div><br />
 
-            <h4><strong style={{ color: 'red', margin: '0 680px', fontSize: '25px' }}>Produtos:</strong></h4>
+            <h4><strong style={{ color: 'red', margin: '0 680px', fontSize: '25px' }}>Produtos e Serviços:</strong></h4>
             <br />
             <div className="mt-3">
               <table className="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: 2100 }} id="table">

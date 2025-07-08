@@ -58,6 +58,7 @@ import OrcVendas from './components/OrcVendas';
 import ProdutoCodOrc from './components/ProdutoCodOrc';
 import CadOrcVenda from './components/CadOrcVenda';
 import DeleteOrcVendas from './components/DeleteOrcVendas';
+import CadTransportes from './components/CadTransportes';
 
 
 //8=> Criação do json server com o comando: npx json-server db.json
@@ -126,15 +127,11 @@ function App() {
     <Route path='/mescompraatual' element={<PrivateRoutes><MesComprasAtual /></PrivateRoutes>}></Route>  
     <Route path='/orcvendas' element={<PrivateRoutes><OrcVendas /></PrivateRoutes>}></Route>
     <Route path='/orcvendas/excluirtodos' element={<PrivateRoutes><DeleteOrcVendas /></PrivateRoutes>}></Route>
-    <Route path='/transportes' element={<PrivateRoutes><CadTransportes /></PrivateRoutes>}></Route>   
-   
+    <Route path='/transportes' element={<PrivateRoutes><CadTransportes /></PrivateRoutes>}></Route> 
     </Routes>
-    </BrowserRouter>
-   </div>
-    
-  
-
-  )
+    </BrowserRouter> 
+    </div>
+   )
 }
 
 export default App

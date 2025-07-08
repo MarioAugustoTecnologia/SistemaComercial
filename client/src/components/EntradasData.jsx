@@ -144,7 +144,7 @@ const EntradasData = () => {
                 >
                   <i className="fs-4 bi bi-cash-coin ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    Gestão de Vendas:
+                    Vendas:
                   </span>
                 </Link>
               </li>
@@ -177,7 +177,7 @@ const EntradasData = () => {
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    Produtos:
+                      Produtos e Serviços:
                   </span>
                 </Link>
               </li>

@@ -205,7 +205,7 @@ const CadClientes = () => {
                 >
                   <i className="fs-4 bi bi-coin ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    Gestão de Despesas:
+                     Despesas:
                   </span>
                 </Link>
               </li>

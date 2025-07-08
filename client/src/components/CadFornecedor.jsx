@@ -38,41 +38,41 @@ const CadFornecedor = () => {
     id: ''
   })
 
-   
+
 
   const isValidate = () => {
     let isproceed = true
     let errormessage = "Campos não podem estar vazio  !"
 
-   
+
 
     if (nome === null || nome === '') {
-      document.getElementById('nome').style.borderColor='red';
+      document.getElementById('nome').style.borderColor = 'red';
       isproceed = false
       //errormessage += 'Nome:' 
     }
     if (endereco === null || endereco === '') {
-      document.getElementById('endereco').style.borderColor='red';
+      document.getElementById('endereco').style.borderColor = 'red';
       isproceed = false
       //errormessage += 'Nome Completo:' 
     }
     if (cep === null || cep === '') {
-      document.getElementById('cep').style.borderColor='red';
+      document.getElementById('cep').style.borderColor = 'red';
       isproceed = false
       // errormessage += 'Email:' 
     }
     if (cidade === null || cidade === '') {
-      document.getElementById('cidade').style.borderColor='red';
+      document.getElementById('cidade').style.borderColor = 'red';
       isproceed = false
       // errormessage += 'Senha:' 
     }
 
     if (document.getElementById('catforn').value === null || document.getElementById('catforn').value === '') {
-      document.getElementById('catforn').style.borderColor='red';
+      document.getElementById('catforn').style.borderColor = 'red';
       isproceed = false
       // errormessage += 'Senha:' 
     }
-    
+
 
     if (!isproceed) {
       toast.warning(errormessage)
@@ -83,104 +83,104 @@ const CadFornecedor = () => {
       } else {
         isproceed = false;
         toast.warning('Entre com um email valido !')
-        document.getElementById('email').style.borderColor='red';
- 
+        document.getElementById('email').style.borderColor = 'red';
+
       }
     }
-    if(isproceed){      
+    if (isproceed) {
 
       if (/^[a-zA-Z\u00C0-\u00FF]+/i.test(nome)) {
 
       } else {
         isproceed = false;
         toast.warning('Entre com um nome valido !')
-        document.getElementById('nome').style.borderColor='red';
- 
+        document.getElementById('nome').style.borderColor = 'red';
+
       }
 
     }
-    if(isproceed){      
+    if (isproceed) {
 
       if (/^[a-zA-Z-/0-9\u00C0-\u00FF ]+/i.test(endereco)) {
 
       } else {
         isproceed = false;
         toast.warning('Entre com um endereço valido !')
-        document.getElementById('endereco').style.borderColor='red';
- 
+        document.getElementById('endereco').style.borderColor = 'red';
+
       }
 
     }
-    if(isproceed){      
+    if (isproceed) {
 
       if (/^[0-9-]+$/.test(cep)) {
 
       } else {
         isproceed = false;
         toast.warning('Entre com um cep valido !')
-        document.getElementById('cep').style.borderColor='red';
- 
+        document.getElementById('cep').style.borderColor = 'red';
+
       }
 
     }
-    if(isproceed){      
+    if (isproceed) {
 
       if (/^[a-zA-Z\u00C0-\u00FF ]+/i.test(cidade)) {
 
       } else {
         isproceed = false;
         toast.warning('Entre com uma cidade valida !')
-        document.getElementById('cidade').style.borderColor='red';
- 
+        document.getElementById('cidade').style.borderColor = 'red';
+
       }
 
     }
-    if(isproceed){      
+    if (isproceed) {
 
       if (/^[0-9-() ]+$/.test(fone)) {
 
       } else {
         isproceed = false;
         toast.warning('Entre com um telefone valido !')
-        document.getElementById('fone').style.borderColor='red';
- 
+        document.getElementById('fone').style.borderColor = 'red';
+
       }
 
     }
-    if(isproceed){
+    if (isproceed) {
 
-      if(numero !== ''){
+      if (numero !== '') {
 
         if (/^[0-9]+$/.test(numero)) {
 
         } else {
           isproceed = false;
           toast.warning('Entre com um numero valido !')
-          document.getElementById('numero').style.borderColor='red';
-   
+          document.getElementById('numero').style.borderColor = 'red';
+
         }
 
-      }   
-    
+      }
+
 
     }
-    if(isproceed){
-      
-      if(comp !== ''){
+    if (isproceed) {
+
+      if (comp !== '') {
 
         if (/^[0-9- a-zA-Z]+$/.test(comp)) {
 
         } else {
           isproceed = false;
           toast.warning('Entre com um complemento valido !')
-          document.getElementById('comp').style.borderColor='red';
-   
+          document.getElementById('comp').style.borderColor = 'red';
+
         }
 
 
       }
 
-      
+
 
     }
     return isproceed
@@ -189,116 +189,116 @@ const CadFornecedor = () => {
   }
 
 
-function mudacor(){
+  function mudacor() {
     //Ação de muda cor
-    document.getElementById('nome').style.borderColor='Gainsboro';
-  
-}
-function mudacorEnd(){
+    document.getElementById('nome').style.borderColor = 'Gainsboro';
 
-  document.getElementById('endereco').style.borderColor='Gainsboro';
+  }
+  function mudacorEnd() {
 
-}
-function mudacorCep(){
+    document.getElementById('endereco').style.borderColor = 'Gainsboro';
 
-  document.getElementById('cep').style.borderColor='Gainsboro';
+  }
+  function mudacorCep() {
 
-}
-function mudacorCidade(){
+    document.getElementById('cep').style.borderColor = 'Gainsboro';
 
-  document.getElementById('cidade').style.borderColor='Gainsboro';
+  }
+  function mudacorCidade() {
 
-}
+    document.getElementById('cidade').style.borderColor = 'Gainsboro';
 
-function mudacorEmail(){
+  }
 
-  document.getElementById('email').style.borderColor='Gainsboro';
+  function mudacorEmail() {
 
-}
+    document.getElementById('email').style.borderColor = 'Gainsboro';
 
-function mudacorFone(){
+  }
 
-  document.getElementById('fone').style.borderColor='Gainsboro';
+  function mudacorFone() {
 
-}
-function mudacorNumero(){
+    document.getElementById('fone').style.borderColor = 'Gainsboro';
 
-  document.getElementById('numero').style.borderColor='Gainsboro';
-  document.getElementById('comp').style.borderColor='Gainsboro';
-}
-function mudacorComp(){
+  }
+  function mudacorNumero() {
 
-  document.getElementById('comp').style.borderColor='Gainsboro';
-  document.getElementById('numero').style.borderColor='Gainsboro';
+    document.getElementById('numero').style.borderColor = 'Gainsboro';
+    document.getElementById('comp').style.borderColor = 'Gainsboro';
+  }
+  function mudacorComp() {
 
-}
+    document.getElementById('comp').style.borderColor = 'Gainsboro';
+    document.getElementById('numero').style.borderColor = 'Gainsboro';
 
-function mudacorCat(){
+  }
 
-  document.getElementById('catforn').style.borderColor='Gainsboro';
+  function mudacorCat() {
+
+    document.getElementById('catforn').style.borderColor = 'Gainsboro';
 
 
-}
+  }
 
- const cadastrar = (e) => {
+  const cadastrar = (e) => {
 
     e.preventDefault();
 
     if (isValidate()) {
 
-      if(numero === '' && comp === ''){
-        toast.warning('Campos numero e complemento vazio !') 
-        document.getElementById('numero').style.borderColor='red'
-        document.getElementById('comp').style.borderColor='red'
+      if (numero === '' && comp === '') {
+        toast.warning('Campos numero e complemento vazio !')
+        document.getElementById('numero').style.borderColor = 'red'
+        document.getElementById('comp').style.borderColor = 'red'
 
       } else if (numero === '' || numero === null) {
 
         Swal.fire({
-                title: "Deseja salvar ?",
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: "Salvar",
-                denyButtonText: `Não salvar`
-              }).then((result) => {
-                        
-                if (result.isConfirmed) {
+          title: "Deseja salvar ?",
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: "Salvar",
+          denyButtonText: `Não salvar`
+        }).then((result) => {
 
-                  const catforn = document.getElementById('catforn').value;
-                  const data = new Date();
-                  const datacad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-                  const cadobj = { nome, endereco, comp, cep, cidade, email, fone, datacad, catforn }          
-                  
-                  fetch("https://sistemacomercialserver.onrender.com/fornecedor", {
-                    method: "POST",
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(cadobj)
-                  }).then((res) => {
-                    toast.success('Cadastrado com sucesso !')
-                    nomechange('');
-                    enderecochange('');
-                    compchange('');
-                    cepchange('');
-                    cidadechange('');
-                    emailchange('');
-                    fonechange('');
-                    //window.location.reload();
-                    document.getElementById('nome').style.borderColor='Gainsboro';
-                    document.getElementById('endereco').style.borderColor='Gainsboro';
-                    document.getElementById('cep').style.borderColor='Gainsboro';
-                    document.getElementById('cidade').style.borderColor='Gainsboro';
-                    document.getElementById('email').style.borderColor='Gainsboro';
-                    document.getElementById('fone').style.borderColor='Gainsboro';
-                    document.getElementById('comp').style.borderColor='Gainsboro';
+          if (result.isConfirmed) {
 
-                  }).catch((err) => {
-                    toast.error('Erro ! :' + err.message)
-                  })         
-                                  
-              
-                } else if (result.isDenied) {
-                  Swal.fire("Nada salvo", "", "info");
-                }
-              });        
+            const catforn = document.getElementById('catforn').value;
+            const data = new Date();
+            const datacad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+            const cadobj = { nome, endereco, comp, cep, cidade, email, fone, datacad, catforn }
+
+            fetch("https://sistemacomercialserver.onrender.com/fornecedor", {
+              method: "POST",
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify(cadobj)
+            }).then((res) => {
+              toast.success('Cadastrado com sucesso !')
+              nomechange('');
+              enderecochange('');
+              compchange('');
+              cepchange('');
+              cidadechange('');
+              emailchange('');
+              fonechange('');
+              //window.location.reload();
+              document.getElementById('nome').style.borderColor = 'Gainsboro';
+              document.getElementById('endereco').style.borderColor = 'Gainsboro';
+              document.getElementById('cep').style.borderColor = 'Gainsboro';
+              document.getElementById('cidade').style.borderColor = 'Gainsboro';
+              document.getElementById('email').style.borderColor = 'Gainsboro';
+              document.getElementById('fone').style.borderColor = 'Gainsboro';
+              document.getElementById('comp').style.borderColor = 'Gainsboro';
+
+            }).catch((err) => {
+              toast.error('Erro ! :' + err.message)
+            })
+
+
+          } else if (result.isDenied) {
+            Swal.fire("Nada salvo", "", "info");
+          }
+        });
 
       } else {
 
@@ -309,40 +309,40 @@ function mudacorCat(){
           confirmButtonText: "Salvar",
           denyButtonText: `Não salvar`
         }).then((result) => {
-                  
-          if (result.isConfirmed) {
-            
-           const catforn = document.getElementById('catforn').value;
-           const data = new Date();
-           const datacad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-           const cadobj = { nome, endereco, numero, cep, cidade, email, fone, datacad, catforn }
 
-           fetch("https://sistemacomercialserver.onrender.com/fornecedor", {
-            method: "POST",
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(cadobj)
-          }).then((res) => {
-            toast.success('Cadastrado com sucesso !')
-            nomechange('');
-            enderecochange('');
-            numerochange('');
-            cepchange('');
-            cidadechange('');
-            emailchange('');
-            fonechange('');
-  
-            document.getElementById('nome').style.borderColor='Gainsboro';
-            document.getElementById('endereco').style.borderColor='Gainsboro';
-            document.getElementById('cep').style.borderColor='Gainsboro';
-            document.getElementById('cidade').style.borderColor='Gainsboro';
-            document.getElementById('email').style.borderColor='Gainsboro';
-            document.getElementById('fone').style.borderColor='Gainsboro';
-            document.getElementById('numero').style.borderColor='Gainsboro';
-  
-          }).catch((err) => {
-            toast.error('Erro ! :' + err.message)
-          })                                      
-        
+          if (result.isConfirmed) {
+
+            const catforn = document.getElementById('catforn').value;
+            const data = new Date();
+            const datacad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+            const cadobj = { nome, endereco, numero, cep, cidade, email, fone, datacad, catforn }
+
+            fetch("https://sistemacomercialserver.onrender.com/fornecedor", {
+              method: "POST",
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify(cadobj)
+            }).then((res) => {
+              toast.success('Cadastrado com sucesso !')
+              nomechange('');
+              enderecochange('');
+              numerochange('');
+              cepchange('');
+              cidadechange('');
+              emailchange('');
+              fonechange('');
+
+              document.getElementById('nome').style.borderColor = 'Gainsboro';
+              document.getElementById('endereco').style.borderColor = 'Gainsboro';
+              document.getElementById('cep').style.borderColor = 'Gainsboro';
+              document.getElementById('cidade').style.borderColor = 'Gainsboro';
+              document.getElementById('email').style.borderColor = 'Gainsboro';
+              document.getElementById('fone').style.borderColor = 'Gainsboro';
+              document.getElementById('numero').style.borderColor = 'Gainsboro';
+
+            }).catch((err) => {
+              toast.error('Erro ! :' + err.message)
+            })
+
           } else if (result.isDenied) {
             Swal.fire("Nada salvo", "", "info");
           }
@@ -426,7 +426,7 @@ function mudacorCat(){
                 >
                   <i className="fs-4 bi bi-coin ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    Gestão de Despesas:
+                    Despesas:
                   </span>
                 </Link>
               </li>
@@ -437,18 +437,29 @@ function mudacorCat(){
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                     Produtos e Serviços:
+                    Produtos e Serviços:
                   </span>
                 </Link>
               </li>
-               <li className="w-100">
+              <li className="w-100">
                 <Link
                   to="/transportes"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i class="bi bi-truck-flatbed" style={{margin:'0 8px'}}></i>
+                  <i class="bi bi-truck-flatbed" style={{ margin: '0 8px' }}></i>
                   <span className="ms-2 d-none d-sm-inline">
                     Transportes:
+                  </span>
+                </Link>
+              </li>
+              <li className="w-100">
+                <Link
+                  to="/fornecedores"
+                  className="nav-link px-0 align-middle text-white"
+                >
+                  <i className="fs-4 bi bi-truck ms-2"></i>
+                  <span className="ms-2 d-none d-sm-inline">
+                    Fornecedores:
                   </span>
                 </Link>
               </li>
@@ -473,7 +484,7 @@ function mudacorCat(){
                     Resultados:
                   </span>
                 </Link>
-              </li> 
+              </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
                   to="/produto/codorc"
@@ -484,7 +495,7 @@ function mudacorCat(){
                     Orçamentos:
                   </span>
                 </Link>
-              </li>            
+              </li>
               <li className="w-100" onClick={logout}>
                 <Link to="/"
                   className="nav-link px-0 align-middle text-white"
@@ -508,50 +519,50 @@ function mudacorCat(){
               <form action='' onSubmit={cadastrar}>
 
                 <div className='mb-3'>
-                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Nome:</label>
-                  <input type='text' placeholder='Entre com o nome' value={nome} onChange={e => nomechange(e.target.value)} onKeyUp={mudacor} style={{ fontSize: '20px', width: 400, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='nome' id='nome' />
+                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px', fontWeight: 'bold' }}>Nome:</label>
+                  <input type='text' placeholder='Entre com o nome' value={nome} onChange={e => nomechange(e.target.value)} onKeyUp={mudacor} style={{ fontSize: '20px', width: 400, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='nome' id='nome' />
 
                 </div>
 
                 <div className='mb-3'>
-                  <label htmlFor='endereco' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Endereço:</label>
-                  <input type="text" value={endereco} onChange={e => enderecochange(e.target.value)} style={{ fontSize: '20px', width: 630, margin: '0 115px', fontWeight:'bold', color:'navy'}} onKeyUp={mudacorEnd} placeholder='Entre com o endereço:' className='form-control rounded-0' name='endereco' id='endereco' />
+                  <label htmlFor='endereco' style={{ fontSize: '20px', margin: '0 115px', fontWeight: 'bold' }}>Endereço:</label>
+                  <input type="text" value={endereco} onChange={e => enderecochange(e.target.value)} style={{ fontSize: '20px', width: 630, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} onKeyUp={mudacorEnd} placeholder='Entre com o endereço:' className='form-control rounded-0' name='endereco' id='endereco' />
 
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='numero' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Numero:</label>
-                  <label htmlFor='categoria' style={{ fontSize: '20px', margin: '0 -52px', fontWeight:'bold'}}>Categoria:</label>
-                  <input type='number' value={numero} onChange={e => numerochange(e.target.value)} style={{ width: 100, margin: '0 115px', fontSize: '20px', fontWeight:'bold', color:'navy'}} onKeyUp={mudacorNumero} className='form-control rounded-0' name='numero' id='numero' />
-                   <select onSelect={mudacorCat} style={{ width: 270, margin: '0 250px', marginTop: '-42px', fontSize: '20px', fontWeight:'bold', color:'navy'}} className='form-select' name='catforn' id='catforn' onChange={(e) => setValues({ ...values, id: e.target.value })} >
+                  <label htmlFor='numero' style={{ fontSize: '20px', margin: '0 115px', fontWeight: 'bold' }}>Numero:</label>
+                  <label htmlFor='categoria' style={{ fontSize: '20px', margin: '0 -52px', fontWeight: 'bold' }}>Categoria:</label>
+                  <input type='number' value={numero} onChange={e => numerochange(e.target.value)} style={{ width: 100, margin: '0 115px', fontSize: '20px', fontWeight: 'bold', color: 'navy' }} onKeyUp={mudacorNumero} className='form-control rounded-0' name='numero' id='numero' />
+                  <select onSelect={mudacorCat} style={{ width: 270, margin: '0 250px', marginTop: '-42px', fontSize: '20px', fontWeight: 'bold', color: 'navy' }} className='form-select' name='catforn' id='catforn' onChange={(e) => setValues({ ...values, id: e.target.value })} >
                     <option value=""></option>
                     {catforn.map(val => {
                       return <option value={val.nome}>{val.nome}</option>
                     })}
-                   </select>
+                  </select>
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='comp' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Complemento:</label>
-                  <input type='text' value={comp} onChange={e => compchange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 115px', fontWeight:'bold', color:'navy'}} onKeyUp={mudacorComp} className='form-control rounded-0' name='comp' id='comp' />
+                  <label htmlFor='comp' style={{ fontSize: '20px', margin: '0 115px', fontWeight: 'bold' }}>Complemento:</label>
+                  <input type='text' value={comp} onChange={e => compchange(e.target.value)} style={{ fontSize: '20px', width: 120, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} onKeyUp={mudacorComp} className='form-control rounded-0' name='comp' id='comp' />
 
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='cep' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Cep:</label>
-                  <input type='text' placeholder='Entre com o cep:' value={cep} onChange={e => cepchange(e.target.value)} onKeyUp={mudacorCep} style={{ fontSize: '20px', width: 225, margin: '0 115px', fontWeight:'bold', color:'navy' }} className='form-control rounded-0' name='cep' id='cep' />
+                  <label htmlFor='cep' style={{ fontSize: '20px', margin: '0 115px', fontWeight: 'bold' }}>Cep:</label>
+                  <input type='text' placeholder='Entre com o cep:' value={cep} onChange={e => cepchange(e.target.value)} onKeyUp={mudacorCep} style={{ fontSize: '20px', width: 225, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='cep' id='cep' />
 
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='cidade' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Cidade:</label>
-                  <input type='text' placeholder='Entre com a cidade:' value={cidade} onChange={e => cidadechange(e.target.value)} onKeyUp={mudacorCidade} style={{ fontSize: '20px', width: 350, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='cidade' id='cidade' />
+                  <label htmlFor='cidade' style={{ fontSize: '20px', margin: '0 115px', fontWeight: 'bold' }}>Cidade:</label>
+                  <input type='text' placeholder='Entre com a cidade:' value={cidade} onChange={e => cidadechange(e.target.value)} onKeyUp={mudacorCidade} style={{ fontSize: '20px', width: 350, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='cidade' id='cidade' />
 
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='email' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Email:</label>
-                  <input type='email' placeholder='Entre com o email:' value={email} onChange={e => emailchange(e.target.value)} style={{ fontSize: '20px', width: 350, margin: '0 115px', fontWeight:'bold', color:'navy'}} onKeyUp={mudacorEmail} className='form-control rounded-0' name='email' id='email' />
+                  <label htmlFor='email' style={{ fontSize: '20px', margin: '0 115px', fontWeight: 'bold' }}>Email:</label>
+                  <input type='email' placeholder='Entre com o email:' value={email} onChange={e => emailchange(e.target.value)} style={{ fontSize: '20px', width: 350, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} onKeyUp={mudacorEmail} className='form-control rounded-0' name='email' id='email' />
 
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='fone' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Telefone:</label>
-                  <input type='text' placeholder='Entre com o telefone:' value={fone} onChange={e => fonechange(e.target.value)} onKeyUp={mudacorFone} style={{ fontSize: '20px', width: 225, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='fone' id='fone' />
+                  <label htmlFor='fone' style={{ fontSize: '20px', margin: '0 115px', fontWeight: 'bold' }}>Telefone:</label>
+                  <input type='text' placeholder='Entre com o telefone:' value={fone} onChange={e => fonechange(e.target.value)} onKeyUp={mudacorFone} style={{ fontSize: '20px', width: 225, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='fone' id='fone' />
 
                 </div><br />
                 <div className='mb-3'>

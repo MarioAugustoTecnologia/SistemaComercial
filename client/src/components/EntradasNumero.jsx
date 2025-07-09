@@ -459,9 +459,7 @@ const EntradasNumero = () => {
 
                 }
 
-            }
-            if (frete !== "") {
-
+            } else {
 
                 if (parcelamento === "" || parcelamento === null && parcelan === "" || parcelan === null) {
 
@@ -584,21 +582,20 @@ const EntradasNumero = () => {
 
                             });
 
-                        } else
-                            if (valorpagto === total) {
+                        } else if (valorpagto === total) {
 
 
-                                const cadobj = { vendan, total, nome, valorpagto, mes, formapag, data_cad, vp, frete }
+                                  const cadobj = { vendan, total, nome, valorpagto, mes, formapag, data_cad, vp, frete }
 
-                                Swal.fire({
+                                  Swal.fire({
                                     title: "Deseja salvar ?",
                                     showDenyButton: true,
                                     showCancelButton: true,
                                     confirmButtonText: "Salvar",
                                     denyButtonText: `Não salvar`
-                                }).then((result) => {
+                                   }).then((result) => {
 
-                                    if (result.isConfirmed) {
+                                      if (result.isConfirmed) {
 
                                         fetch("https://sistemacomercialserver.onrender.com/vendas", {
                                             method: "POST",
@@ -611,15 +608,15 @@ const EntradasNumero = () => {
                                             toast.error('Erro ! :' + err.message)
                                         })
 
-                                    } else if (result.isDenied) {
+                                      } else if (result.isDenied) {
                                         Swal.fire("Nada salvo", "", "info");
-                                    }
+                                      }
 
-                                });
+                                   });
 
-                            }
+                               }
 
-                    }
+                      }
 
                 }
                 if (parcelamento !== "" || parcelamento !== null && parcelan !== "" || parcelan !== null) {
@@ -663,7 +660,6 @@ const EntradasNumero = () => {
                     });
 
                 }
-
 
             }
         }
@@ -777,7 +773,7 @@ const EntradasNumero = () => {
                                 >
                                     <i className="fs-4 bi bi-box-fill ms-2"></i>
                                     <span className="ms-2 d-none d-sm-inline">
-                                       Produtos e Serviços:
+                                        Produtos e Serviços:
                                     </span>
                                 </Link>
                             </li>

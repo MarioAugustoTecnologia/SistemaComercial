@@ -495,7 +495,7 @@ const CadVenda = () => {
                     navigate('/produtos/codigo')
 
                     }else{
-                    navigate('/entradas/nome')  
+                    navigate('/produtos/codigo')  
                     }                   
 
                   }).catch((err) => {

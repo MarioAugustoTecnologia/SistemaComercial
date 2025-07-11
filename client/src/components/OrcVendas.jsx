@@ -202,7 +202,7 @@ const OrcVendas = () => {
   return (
     <div className="col p-0 m-0">
       <div id="conteudo"> 
-      <div className="p-2 justify-content-center shadow text-white" style={{ backgroundColor: 'blue', fontFamily: 'arial', width: '100%', margin: '0 150px', height: '82px', fontSize:'20px'}}>
+      <div className="p-2 justify-content-center shadow text-white" style={{ backgroundColor: 'blue', fontFamily: 'arial', width: '86%', margin: '0 150px', height: '82px', fontSize:'20px'}}>
         <h4><strong><center>Multicompany Solutions</center></strong></h4>
         <h7><strong><center>Rua Antonio Alves de Souza nº:500 Vila Lageado - Botucatu SP </center></strong></h7>
       </div><br /><br /><br /><br /><br />
@@ -211,7 +211,7 @@ const OrcVendas = () => {
       </div><br /><br /><br /><br />
       <div className="px-5 mt-5" style={{fontFamily:'arial'}}>       
           <div className='mt-3'>
-            <table className="table" id="table" style={{ margin: '0 5px', fontFamily: 'arial', fontSize: '22px', width: '105%' }}>
+            <table className="table" id="table" style={{ margin: '0 80px', fontFamily: 'arial', fontSize: '20px', width: '95%' }}>
               <thead>
                 <tr>        
                   <th className="th" scope="col">Orçamento nº:</th>

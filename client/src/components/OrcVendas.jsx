@@ -211,7 +211,7 @@ const OrcVendas = () => {
       </div><br /><br /><br /><br />
       <div className="px-5 mt-5" style={{fontFamily:'arial'}}>       
           <div className='mt-3'>
-            <table className="table" id="table" style={{ margin: '0 80px', fontFamily: 'arial', fontSize: '22px', width: '100%' }}>
+            <table className="table" id="table" style={{ margin: '0 80px', fontFamily: 'arial', fontSize: '22px', width: '105%' }}>
               <thead>
                 <tr>        
                   <th className="th" scope="col">Orçamento nº:</th>

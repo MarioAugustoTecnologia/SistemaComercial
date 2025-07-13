@@ -122,44 +122,6 @@ const OrcVendas = () => {
       
     }    
   }
-
-   /* const deleteall = (id) => {
-
-      Swal.fire({
-            title: "Deseja Excluir ?",
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: "Excluir",
-            denyButtonText: `Não Excluir`
-          }).then((result) => {
-      
-            if (result.isConfirmed) {
-      
-              for (id = 0; id <= orcvendas.length; id++) {
-      
-                fetch("https://sistemacomercialserver.onrender.com/orcvenda/" + id, {
-          
-                  method: "DELETE" 
-
-                }).then((res) => {   
-
-                  window.location.reload();               
-          
-                }).catch((err) => {
-                  toast.error('Erro ! :' + err.message)
-                })
-          
-              }
-      
-            } else if (result.isDenied) {
-              Swal.fire("Nada excluido", "", "info");
-            }
-          });      
-    
-    }*/
-
-
-
       
 
   const navigate = useNavigate()
@@ -194,9 +156,7 @@ const OrcVendas = () => {
 
   function Obs(){
     document.getElementById('obs').innerHTML = obs;
-  }
-
-    
+  }   
 
 
   return (

@@ -207,7 +207,7 @@ const logout = () => {
                                     
                 </div><br /> 
                      <div>
-                         <h6><strong style={{color:'red', margin:'0 680px', fontSize:'25px'}}>Produtos e Serviços:</strong></h6> 
+                         <h6><strong style={{color:'red', margin:'0 680px', fontSize:'23px'}}>Produtos e Serviços:</strong></h6> 
                      </div>           
                                             
                      <br />

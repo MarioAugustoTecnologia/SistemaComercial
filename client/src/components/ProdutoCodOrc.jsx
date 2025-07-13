@@ -207,7 +207,7 @@ const logout = () => {
                                                        
                 </div><br /><br /><br />
                      <div className="mt-3">
-                      <h4 style={{color:'red', margin:'0 680px', fontSize:'25px'}}><strong>Produtos e Serviços:</strong></h4><br /><br />
+                      <h4 style={{color:'red', margin:'0 680px', fontSize:'25px'}}><strong><center>Produtos e Serviços:</center></strong></h4><br /><br />
                          <table className="table" style={{margin:'0 -30px', fontFamily:'arial', fontSize:'20px', width:'140%'}} id="table">
                               <thead>
                                   <tr>

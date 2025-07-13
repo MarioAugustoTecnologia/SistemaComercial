@@ -207,7 +207,7 @@ const logout = () => {
                                     
                 </div><br /> 
                      <div className="justify-content-center">
-                         <h4><strong style={{color:'red', margin:'0 680px', fontSize:'25px'}}>Produtos e Serviços:</strong></h4> 
+                         <h4><strong style={{color:'red', margin:'0 500px', fontSize:'25px'}}>Produtos e Serviços:</strong></h4> 
                      </div>           
                                              
                      <br />

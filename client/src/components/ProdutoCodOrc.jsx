@@ -197,22 +197,17 @@ const logout = () => {
                <h4><strong>Sistema de Gestão Comercial</strong></h4>
            </div>
            <Outlet />
-           <div className="px-5 mt-5">
-             
+           <div className="px-5 mt-5">             
              <div>
-               <div className="mb3">
+                <div className="mb3">
                   <label htmlFor="Id" className="Id" style={{fontFamily: 'arial', fontSize:'22px', fontWeight:'bold'}}>Busca por codigo de venda:</label><br />
                   
                   <input style={{fontFamily: 'arial', fontSize:'22px', width:'200px', fontWeight:'bold', color:'navy'}} type="search" className="consultaid" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)} id="busca" autoFocus='true'/>                  
                   <Link to="/orcvendas" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 58px', fontSize:'18px', fontFamily:'arial', width:'240px'}}>Orçamento de Venda:</Link>
-                   
-                                    
+                                                       
                 </div><br /><br /><br />
-                   <h6><strong style={{color:'red', margin:'0 680px', fontSize:'23px'}}>Produtos e Serviços:</strong></h6> 
-                         
-                                            
-                     <br />
-                    <div className="mt-3">
+                     <div className="mt-3">
+                      <h4 style={{color:'red'}}><strong><center>Produtos e Serviços:</center></strong></h4>
                          <table className="table" style={{margin:'0 -30px', fontFamily:'arial', fontSize:'20px', width:'145%'}} id="table">
                               <thead>
                                   <tr>
@@ -253,7 +248,10 @@ const logout = () => {
                               </tbody>
                 
                           </table> 
-                  </div>
+                  </div>       
+                                                         
+               
+               
 
               </div>    
               

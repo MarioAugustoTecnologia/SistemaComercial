@@ -205,8 +205,11 @@ const logout = () => {
                   <Link to="/orcvendas" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 58px', fontSize:'18px', fontFamily:'arial', width:'240px'}}>Orçamento de Venda:</Link>
                    
                                     
-                </div><br />             
-                      <h4><strong style={{color:'red', margin:'0 680px', fontSize:'25px'}}>Produtos e Serviços:</strong></h4>                         
+                </div><br /> 
+                     <div className="justify-content-center">
+                         <h4><strong style={{color:'red', margin:'0 680px', fontSize:'25px'}}>Produtos e Serviços:</strong></h4> 
+                     </div>           
+                                             
                      <br />
                     <div className="mt-3">
                     <table className="table" style={{margin:'0 -30px', fontFamily:'arial', fontSize:'20px', width:'145%'}} id="table">

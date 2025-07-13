@@ -209,8 +209,8 @@ const logout = () => {
                      <div className="d-flex">
                          <h4><strong style={{color:'red', margin:'0 800px', fontSize:'25px'}}>Produtos</strong></h4> 
                           <h4><strong style={{color:'red', margin:'0 840px', fontSize:'25px'}}>e Serviços</strong></h4> 
-                     </div>          
-                                             
+                     </div>         
+                                            
                      <br />
                     <div className="mt-3">
                     <table className="table" style={{margin:'0 -30px', fontFamily:'arial', fontSize:'20px', width:'145%'}} id="table">

@@ -198,6 +198,8 @@ const logout = () => {
            </div>
            <Outlet />
            <div className="px-5 mt-5">
+             
+             <div>
                <div className="mb3">
                   <label htmlFor="Id" className="Id" style={{fontFamily: 'arial', fontSize:'22px', fontWeight:'bold'}}>Busca por codigo de venda:</label><br />
                   
@@ -205,14 +207,13 @@ const logout = () => {
                   <Link to="/orcvendas" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 58px', fontSize:'18px', fontFamily:'arial', width:'240px'}}>Orçamento de Venda:</Link>
                    
                                     
-                </div><br /> 
-                     <div>
-                         <h6><strong style={{color:'red', margin:'0 680px', fontSize:'23px'}}>Produtos e Serviços:</strong></h6> 
-                     </div>           
+                </div><br /><br /><br />
+                   <h6><strong style={{color:'red', margin:'0 680px', fontSize:'23px'}}>Produtos e Serviços:</strong></h6> 
+                         
                                             
                      <br />
                     <div className="mt-3">
-                    <table className="table" style={{margin:'0 -30px', fontFamily:'arial', fontSize:'20px', width:'145%'}} id="table">
+                         <table className="table" style={{margin:'0 -30px', fontFamily:'arial', fontSize:'20px', width:'145%'}} id="table">
                               <thead>
                                   <tr>
                                   <th scope="col" className="th">Id:</th>
@@ -253,6 +254,8 @@ const logout = () => {
                 
                           </table> 
                   </div>
+
+              </div>    
               
                                        
           </div>                          

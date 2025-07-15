@@ -299,7 +299,10 @@ const EntradasNumero = () => {
                                         toast.error('Erro ! :' + err.message)
                                     })
 
-                                    document.getElementById('vendan').value =  document.getElementById('vendan').value + 1; 
+                                    var numero = document.getElementById('vendan').value; 
+                                    var numero2 = Number(numero);
+                                    var numero3 = numero2 + 1;
+                                    document.getElementById('vendan').value = numero3;
 
                                 } else if (result.isDenied) {
                                     Swal.fire("Nada salvo", "", "info");

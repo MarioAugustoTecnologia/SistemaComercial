@@ -303,11 +303,7 @@ const EntradasNumero = () => {
 
                                 } else if (result.isDenied) {
                                     Swal.fire("Nada salvo", "", "info");
-                                }
-                                     var numero = document.getElementById('vendan').value; 
-                                     var numero2 = Number(numero);
-                                     var numero3 = numero2 + 1;
-                                     document.getElementById('vendan').value = numero3;   
+                                }                                       
                                
                            });
 
@@ -465,6 +461,10 @@ const EntradasNumero = () => {
 
                 }
 
+             var numero = document.getElementById('vendan').value; 
+             var numero2 = Number(numero);
+             var numero3 = numero2 + 1;
+             document.getElementById('vendan').value = numero3;
             
         }
     }

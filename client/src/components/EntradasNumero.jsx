@@ -284,6 +284,7 @@ const EntradasNumero = () => {
                                 showCancelButton: true,
                                 confirmButtonText: "Salvar",
                                 denyButtonText: `Não salvar`
+                                
                             }).then((result) => {
 
                                 if (result.isConfirmed) {
@@ -293,20 +294,22 @@ const EntradasNumero = () => {
                                         headers: { 'content-type': 'application/json' },
                                         body: JSON.stringify(cadobj)
                                     }).then((res) => {
-                                        
-                                        window.location.reload();                                        
-                                        var numero = document.getElementById('vendan').value; 
-                                        var numero2 = Number(numero);
-                                        var numero3 = numero2 + 1;
-                                        document.getElementById('vendan').value = numero3;
+
+                                        window.location.reload();                                      
+                                  
 
                                     }).catch((err) => {
                                         toast.error('Erro ! :' + err.message)
-                                    })
-
+                                    })                                    
 
                                 } else if (result.isDenied) {
                                     Swal.fire("Nada salvo", "", "info");
+                                }
+                                if(result.isConfirmed){                                    
+                                    var numero = document.getElementById('vendan').value; 
+                                    var numero2 = Number(numero);
+                                    var numero3 = numero2 + 1;
+                                    document.getElementById('vendan').value = numero3;                                    
                                 }
                             });
 

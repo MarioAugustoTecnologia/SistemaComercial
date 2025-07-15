@@ -294,8 +294,8 @@ const EntradasNumero = () => {
                                         headers: { 'content-type': 'application/json' },
                                         body: JSON.stringify(cadobj)
                                     }).then((res) => {
-
-                                        window.location.reload();                                   
+                                         toast.success('Cadastrado com Sucesso !')
+                                       // window.location.reload();                                   
                                   
                                     }).catch((err) => {
                                         toast.error('Erro ! :' + err.message)
@@ -327,7 +327,7 @@ const EntradasNumero = () => {
                                             headers: { 'content-type': 'application/json' },
                                             body: JSON.stringify(cadobj)
                                         }).then((res) => {
-                                            window.location.reload();
+                                            
 
                                         }).catch((err) => {
                                             toast.error('Erro ! :' + err.message)

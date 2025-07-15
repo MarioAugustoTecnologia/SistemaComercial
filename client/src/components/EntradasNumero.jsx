@@ -270,8 +270,7 @@ const EntradasNumero = () => {
                         const desconto = document.getElementById('desconto').value;
                         const valordesc = parseFloat(document.getElementById('vd').value).toFixed(2);
                         const data_cad = formataData();
-                        const vp = 0;
-                  
+                        const vp = 0;                  
 
                         if (valorpagto > totaldesc) {
 
@@ -299,6 +298,8 @@ const EntradasNumero = () => {
                                     }).catch((err) => {
                                         toast.error('Erro ! :' + err.message)
                                     })
+
+                                    document.getElementById('vendan').value =  document.getElementById('vendan').value + 1; 
 
                                 } else if (result.isDenied) {
                                     Swal.fire("Nada salvo", "", "info");

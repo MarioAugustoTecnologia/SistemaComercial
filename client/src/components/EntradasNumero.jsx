@@ -284,7 +284,7 @@ const EntradasNumero = () => {
                                 showCancelButton: true,
                                 confirmButtonText: "Salvar",
                                 denyButtonText: `Não salvar`
-                                
+
                             }).then((result) => {
 
                                 if (result.isConfirmed) {
@@ -295,9 +295,8 @@ const EntradasNumero = () => {
                                         body: JSON.stringify(cadobj)
                                     }).then((res) => {
 
-                                        window.location.reload();                                      
+                                        window.location.reload();                                   
                                   
-
                                     }).catch((err) => {
                                         toast.error('Erro ! :' + err.message)
                                     })                                    
@@ -305,13 +304,12 @@ const EntradasNumero = () => {
                                 } else if (result.isDenied) {
                                     Swal.fire("Nada salvo", "", "info");
                                 }
-                                if(result.isConfirmed){                                    
-                                    var numero = document.getElementById('vendan').value; 
-                                    var numero2 = Number(numero);
-                                    var numero3 = numero2 + 1;
-                                    document.getElementById('vendan').value = numero3;                                    
-                                }
-                            });
+                                     var numero = document.getElementById('vendan').value; 
+                                     var numero2 = Number(numero);
+                                     var numero3 = numero2 + 1;
+                                     document.getElementById('vendan').value = numero3;   
+                               
+                           });
 
                         } else
                             if (valorpagto === totaldesc) {

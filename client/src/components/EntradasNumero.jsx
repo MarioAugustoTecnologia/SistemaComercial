@@ -293,16 +293,17 @@ const EntradasNumero = () => {
                                         headers: { 'content-type': 'application/json' },
                                         body: JSON.stringify(cadobj)
                                     }).then((res) => {
-                                        window.location.reload();
+                                        
+                                        window.location.reload();                                        
+                                        var numero = document.getElementById('vendan').value; 
+                                        var numero2 = Number(numero);
+                                        var numero3 = numero2 + 1;
+                                        document.getElementById('vendan').value = numero3;
 
                                     }).catch((err) => {
                                         toast.error('Erro ! :' + err.message)
                                     })
 
-                                    var numero = document.getElementById('vendan').value; 
-                                    var numero2 = Number(numero);
-                                    var numero3 = numero2 + 1;
-                                    document.getElementById('vendan').value = numero3;
 
                                 } else if (result.isDenied) {
                                     Swal.fire("Nada salvo", "", "info");

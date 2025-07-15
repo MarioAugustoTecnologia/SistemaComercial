@@ -277,6 +277,24 @@ const CadVenda = () => {
                 Swal.fire("Nada salvo", "", "info");
               }
             });
+            var numero = document.getElementById('vendan').innerHTML;
+            var numero2 = Number(numero);
+            var numero3 = numero2 + 1; 
+            numero = numero3;
+
+            const edtobj2= { numero }
+
+                 fetch("https://sistemacomercialserver.onrender.com/atual/" + numero, {
+                    method: "PUT",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(edtobj2)
+                  }).then((res) => {
+                    console.log(numero);
+
+                  }).catch((err) => {
+                    toast.error('Erro ! :' + err.message)
+                  })
+
 
           } else
             if (valorpagto === totaldesc) {

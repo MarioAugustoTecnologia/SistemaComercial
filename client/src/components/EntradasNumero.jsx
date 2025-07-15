@@ -294,8 +294,8 @@ const EntradasNumero = () => {
                                         headers: { 'content-type': 'application/json' },
                                         body: JSON.stringify(cadobj)
                                     }).then((res) => {
-                                         toast.success('Cadastrado com Sucesso !')
-                                       // window.location.reload();                                   
+                                        
+                                       window.location.reload();                                   
                                   
                                     }).catch((err) => {
                                         toast.error('Erro ! :' + err.message)
@@ -460,12 +460,7 @@ const EntradasNumero = () => {
                     });
 
                 }
-
-             var numero = document.getElementById('vendan').value; 
-             var numero2 = Number(numero);
-             var numero3 = numero2 + 1;
-             document.getElementById('vendan').innerHTML = numero3;
-            
+           
         }
     }
 

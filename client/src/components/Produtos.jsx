@@ -258,7 +258,7 @@ const Produtos = () => {
                 <Link className="btn" style={{ color: 'white', backgroundColor: 'red', margin: '0 20px', fontSize: '18px', fontFamily: 'arial' }} onClick={deleteall}>Excluir Tudo:</Link>
 
               </div><br /><br /><br />
-              <h4 className="h4" ><strong className="strong" style={{ color: 'red', margin: '0 680px', fontSize: '25px' }}>Produtos e Serviços:</strong></h4>
+              <h4 className="h4" ><strong className="strong" style={{ color: 'red', margin: '0 680px', fontSize: '25px' }}>Produtos:</strong></h4>
               <br />
               <div className="mt-3">
                 <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: 2100 }}>

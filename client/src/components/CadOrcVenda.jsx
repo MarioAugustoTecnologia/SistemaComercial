@@ -19,9 +19,8 @@ const CadOrcVenda = () => {
     }).then((resp) => {
       Idchange(resp.id);
       nomechange(resp.nome);
-      precochange(resp.preco);    
+      precochange(resp.preco);  
       
-
     }).catch((err) => {
       console.log(err.message);
     })
@@ -105,9 +104,12 @@ const CadOrcVenda = () => {
 
       if (desc === null || desc === "") {
 
+        const valordesc = 0;
+        const totaldesc = total;
+
         if (isValidate()) {
 
-          const cadobj = { orcn, nome, quant, preco, total }
+          const cadobj = { orcn, nome, quant, preco, total, valordesc, totaldesc }
 
           Swal.fire({
             title: "Deseja salvar ?",
@@ -130,8 +132,6 @@ const CadOrcVenda = () => {
               }).catch((err) => {
                 toast.error('Erro ! :' + err.message)
               })
-
-
             }
           });
         }
@@ -139,7 +139,6 @@ const CadOrcVenda = () => {
       } else {
 
         if (isValidate()) {
-
 
           const valordesc = document.getElementById('valordesc').value;
           const desconto = (desc * 100) + '%';
@@ -167,17 +166,54 @@ const CadOrcVenda = () => {
               }).catch((err) => {
                 toast.error('Erro ! :' + err.message)
               })
-
-
             }
           });
         }
       }
     } else {
-      if (isValidate()) {
 
+      if (desc === null || desc === "") {
 
-          const cadobj = { nome, quant, preco, total }
+         const valordesc = 0;
+         const totaldesc = total;
+
+        if (isValidate()) {
+
+          const cadobj = { orcn, nome, quant, preco, total, totaldesc, valordesc }
+
+           Swal.fire({
+             title: "Deseja salvar ?",
+             showDenyButton: true,
+             showCancelButton: true,
+             confirmButtonText: "Salvar",
+             denyButtonText: `Não salvar`
+           }).then((result) => {
+
+            if (result.isConfirmed) {
+
+              fetch("https://sistemacomercialserver.onrender.com/orcvenda", {
+                method: "POST",
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(cadobj)
+              }).then((res) => {
+                toast.success('Cadastrado com Sucesso !')
+                orcnchange('');
+                navigate('/produto/codorc');
+              }).catch((err) => {
+                toast.error('Erro ! :' + err.message)
+              })
+            }
+          });
+        }
+
+      } else {
+
+        if (isValidate()) {
+
+          const valordesc = document.getElementById('valordesc').value;
+          const desconto = (desc * 100) + '%';
+          const totaldesc = document.getElementById('totaldesc').value;
+          const cadobj = { orcn, nome, quant, preco, total, desconto, valordesc, totaldesc }
 
           Swal.fire({
             title: "Deseja salvar ?",
@@ -196,15 +232,19 @@ const CadOrcVenda = () => {
               }).then((res) => {
                 toast.success('Cadastrado com Sucesso !')
                 navigate('/produto/codorc');
+
               }).catch((err) => {
                 toast.error('Erro ! :' + err.message)
               })
-
             }
           });
-        }      
-    }
-  }
+        }
+      }
+     
+    };
+  }      
+    
+
 
   function mudacorquant() {
 
@@ -399,7 +439,7 @@ const CadOrcVenda = () => {
                   <input type="decimal" style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='valordesc' id='valordesc' />
                 </div>
                 <div className='mb-3'>
-                <label htmlFor='totaldesc' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Total c/Desconto:</label>
+                <label htmlFor='totaldesc' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Total c/Desconto e Frete:</label>
                 <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='totaldesc' id='totaldesc' /> 
                 </div><br /><br />     
                  

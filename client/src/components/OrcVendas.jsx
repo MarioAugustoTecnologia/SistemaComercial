@@ -104,9 +104,9 @@ const OrcVendas = () => {
 
     //const desc = (desconto * 100) + '%';
     const descap = (valordesc/total); 
-    const desc = (valordesc/total * 100).toFixed(2) + "%";      
+    const desconto = (valordesc/total * 100).toFixed(2) + "%";      
 
-    const cadobj = { nome, total, totaldesc, descap, valordesc, desc }
+    const cadobj = { nome, total, totaldesc, descap, valordesc, desconto }
 
     fetch("https://sistemacomercialserver.onrender.com/orcvenda", {
       method: "POST",
@@ -155,8 +155,18 @@ const OrcVendas = () => {
   }
 
   function Obs(){
+    
+    const hoje = new Date();
+    const dia = String(hoje.getDate()).padStart(2, '0');
+    const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+    const ano = hoje.getFullYear();
+
+    const dataFormatada = `${dia}/${mes}/${ano}`;
+
+    console.log(dataFormatada); // Exibe a data atual no formato dd/mm/aaaa
+    document.getElementById('data').innerHTML = 'Orçamento de:  ' +  dataFormatada;
     document.getElementById('obs').innerHTML = obs;
-  }   
+  }
 
 
   return (
@@ -179,7 +189,7 @@ const OrcVendas = () => {
                   <th className="th" scope="col">Qtd:</th>
                   <th className="th" scope="col">Preço:</th>
                   <th className="th" scope="col">Total:</th>
-                  <th className="th" scope="col">Total c/Desconto:</th>
+                  <th className="th" scope="col">Total c/s Desconto e Frete:</th>
                    <th className="th" scope="col">Desc/ Calc:</th>
                   <th className="th" scope="col">Desconto:</th>
                   <th className="th" scope="col">Valor Desconto:</th>        
@@ -197,7 +207,7 @@ const OrcVendas = () => {
                       <td className="td">{item.total}</td>
                       <td className="td" style={{fontWeight:'bold', color:'green'}}>{item.totaldesc}</td>
                       <td className="td">{item.descap}</td>
-                      <td className="td">{item.desc}</td>
+                      <td className="td">{item.desconto}</td>
                       <td className="td">{item.valordesc}</td>                                                         
                                          
                     </tr>
@@ -206,8 +216,9 @@ const OrcVendas = () => {
               </tbody>         
 
             </table>
-            </div><br /><br /><br />
-            <span style={{fontSize:'20px', fontWeight:'bold', margin:'0 200px'}} id="obs"></span>
+            </div><br /><br /><br />       
+            <span style={{fontSize:'20px', fontWeight:'bold', margin:'0 100px'}} id="data"></span>        
+            <span style={{fontSize:'20px', fontWeight:'bold', margin:'0 30px'}} id="obs"></span>
           </div>        
                  
          </div>

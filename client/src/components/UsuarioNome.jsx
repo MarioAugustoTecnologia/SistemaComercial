@@ -22,7 +22,7 @@ const UsuarioNome = () => {
 
   useEffect(() => {
 
-    fetch("https://sistemacomercialserver.onrender.com/usuarios").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/usuarios").then((res) => {
 
     return res.json()
 
@@ -53,7 +53,7 @@ const UsuarioNome = () => {
                             
                     if (result.isConfirmed) {
   
-                      fetch("https://sistemacomercialserver.onrender.com/usuarios/" + id, {
+                      fetch("https://sistemacomercial-fv5g.onrender.com/usuarios/" + id, {
   
                               method: "DELETE"    
   

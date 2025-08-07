@@ -11,7 +11,7 @@ const ProdutoCatEditar = () => {
   const { catcod } = useParams()
 
   useEffect(() => {
-    fetch("https://sistemacomercialserver.onrender.com/catproduto/" + catcod).then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/catproduto/" + catcod).then((res) => {
       return res.json();
     }).then((resp) => {
       nomechange(resp.nome); 
@@ -64,7 +64,7 @@ const ProdutoCatEditar = () => {
                                   
                           if (result.isConfirmed) {
       
-                            fetch("https://sistemacomercialserver.onrender.com/catproduto/" + catcod, {
+                            fetch("https://sistemacomercial-fv5g.onrender.com/catproduto/" + catcod, {
                               method: "PUT",
                               headers: {'content-type':'application/json'},
                               body: JSON.stringify(edtdobj)

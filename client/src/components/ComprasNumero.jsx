@@ -16,7 +16,7 @@ const ComprasNumero = () => {
 
     useEffect(() => {
 
-        fetch("https://sistemacomercialserver.onrender.com/compras").then((res) => {
+        fetch("https://sistemacomercial-fv5g.onrender.com/compras").then((res) => {
 
             return res.json()
 
@@ -34,7 +34,7 @@ const ComprasNumero = () => {
     const [forname, fornamechange] = useState([])
 
     useEffect(() => {
-        fetch("https://sistemacomercialserver.onrender.com/fornecedor").then((res) => {
+        fetch("https://sistemacomercial-fv5g.onrender.com/fornecedor").then((res) => {
 
             return res.json()
 
@@ -69,7 +69,7 @@ const ComprasNumero = () => {
 
             if (result.isConfirmed) {
 
-                fetch("https://sistemacomercialserver.onrender.com/compras/" + id, {
+                fetch("https://sistemacomercial-fv5g.onrender.com/compras/" + id, {
 
                     method: "DELETE"
 
@@ -260,7 +260,7 @@ const ComprasNumero = () => {
 
                         if (result.isConfirmed) {
 
-                            fetch("https://sistemacomercialserver.onrender.com/compras", {
+                            fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
                                 method: "POST",
                                 headers: { 'content-type': 'application/json' },
                                 body: JSON.stringify(cadobj)
@@ -294,7 +294,7 @@ const ComprasNumero = () => {
 
                             if (result.isConfirmed) {
 
-                                fetch("https://sistemacomercialserver.onrender.com/compras", {
+                                fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
                                     method: "POST",
                                     headers: { 'content-type': 'application/json' },
                                     body: JSON.stringify(cadobj)
@@ -339,7 +339,7 @@ const ComprasNumero = () => {
 
                     if (result.isConfirmed) {
 
-                        fetch("https://sistemacomercialserver.onrender.com/compras", {
+                        fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
                             method: "POST",
                             headers: { 'content-type': 'application/json' },
                             body: JSON.stringify(cadobj)
@@ -376,7 +376,7 @@ const ComprasNumero = () => {
             const numero = buscanumero;
             const register = { numero }
 
-            fetch("https://sistemacomercialserver.onrender.com/compraatual/", {
+            fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/", {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(register)

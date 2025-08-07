@@ -20,7 +20,7 @@ const Login = () => {
     if(validate()){ 
 
       //console.log('proceed')
-      fetch('https://sistemacomercialserver.onrender.com/usuarios/' + usuario).then((res) => {
+      fetch('https://sistemacomercial-fv5g.onrender.com/usuarios/' + usuario).then((res) => {
         
         return res.json()
   

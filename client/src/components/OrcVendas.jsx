@@ -13,7 +13,7 @@ const OrcVendas = () => {
 
   useEffect(() => {
 
-    fetch("https://sistemacomercialserver.onrender.com/orcvenda").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/orcvenda").then((res) => {
 
       return res.json()
 
@@ -48,7 +48,7 @@ const OrcVendas = () => {
 
     const cadobj = { nome, total }
 
-    fetch("https://sistemacomercialserver.onrender.com/orcvenda", {
+    fetch("https://sistemacomercial-fv5g.onrender.com/orcvenda", {
       method: "POST",
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(cadobj)
@@ -108,7 +108,7 @@ const OrcVendas = () => {
 
     const cadobj = { nome, total, totaldesc, descap, valordesc, desconto }
 
-    fetch("https://sistemacomercialserver.onrender.com/orcvenda", {
+    fetch("https://sistemacomercial-fv5g.onrender.com/orcvenda", {
       method: "POST",
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(cadobj)

@@ -109,7 +109,7 @@ const CadClientes = () => {
 
         if (result.isConfirmed) {
 
-          fetch("https://sistemacomercialserver.onrender.com/clientes", {
+          fetch("https://sistemacomercial-fv5g.onrender.com/clientes", {
             method: "POST",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(cadobj)

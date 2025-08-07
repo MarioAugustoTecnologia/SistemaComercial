@@ -10,7 +10,7 @@ const EditarCliente = () => {
   const { clientecod } = useParams();
 
   useEffect(() => {
-    fetch("https://sistemacomercialserver.onrender.com/clientes/" + clientecod).then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/clientes/" + clientecod).then((res) => {
       return res.json();
     }).then((resp) => {
       idchange(resp.id);
@@ -130,7 +130,7 @@ const EditarCliente = () => {
 
         if (result.isConfirmed) {
 
-          fetch("https://sistemacomercialserver.onrender.com/clientes/" + clientecod, {
+          fetch("https://sistemacomercial-fv5g.onrender.com/clientes/" + clientecod, {
             method: "PUT",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(edtobj)

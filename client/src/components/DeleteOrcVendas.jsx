@@ -11,7 +11,7 @@ const OrcVendas = () => {
 
   useEffect(() => {
 
-    fetch("https://sistemacomercialserver.onrender.com/orcvenda").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/orcvenda").then((res) => {
 
       return res.json()
 
@@ -40,7 +40,7 @@ const OrcVendas = () => {
       
               for (id = 0; id <= orcvendas.length; id++) {
       
-                fetch("https://sistemacomercialserver.onrender.com/orcvenda/" + id, {
+                fetch("https://sistemacomercial-fv5g.onrender.com/orcvenda/" + id, {
           
                   method: "DELETE" 
 
@@ -73,7 +73,7 @@ const OrcVendas = () => {
     
           if (result.isConfirmed) {
     
-            fetch("https://sistemacomercialserver.onrender.com/orcvenda/" + id, {
+            fetch("https://sistemacomercial-fv5g.onrender.com/orcvenda/" + id, {
     
               method: "DELETE"
     

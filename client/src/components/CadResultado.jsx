@@ -22,7 +22,7 @@ const CadResultado = () => {
 
   useEffect(() => {
 
-    fetch("https://sistemacomercialserver.onrender.com/entradas").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/entradas").then((res) => {
 
       return res.json()
 
@@ -38,7 +38,7 @@ const CadResultado = () => {
 
   useEffect(() => {
 
-    fetch("https://sistemacomercialserver.onrender.com/saidas").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/saidas").then((res) => {
 
       return res.json()
 
@@ -126,7 +126,7 @@ const CadResultado = () => {
 
         if (result.isConfirmed) {
 
-          fetch("https://sistemacomercialserver.onrender.com/resultados", {
+          fetch("https://sistemacomercial-fv5g.onrender.com/resultados", {
             method: "POST",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(cadobj)
@@ -169,7 +169,7 @@ const CadResultado = () => {
   
         if (result.isConfirmed) {
   
-          fetch("https://sistemacomercialserver.onrender.com/entradas/" + id, {
+          fetch("https://sistemacomercial-fv5g.onrender.com/entradas/" + id, {
   
             method: "DELETE"
   
@@ -200,7 +200,7 @@ const CadResultado = () => {
   
         if (result.isConfirmed) {
   
-          fetch("https://sistemacomercialserver.onrender.com/saidas/" + id, {
+          fetch("https://sistemacomercial-fv5g.onrender.com/saidas/" + id, {
   
             method: "DELETE"
   
@@ -231,7 +231,7 @@ const CadResultado = () => {
           if (result.isConfirmed) {
             for (id = 0; id <= entradadata.length; id++) {
     
-              fetch("https://sistemacomercialserver.onrender.com/entradas/" + id, {
+              fetch("https://sistemacomercial-fv5g.onrender.com/entradas/" + id, {
     
                 method: "DELETE"
     
@@ -264,7 +264,7 @@ const CadResultado = () => {
           if (result.isConfirmed) {
             for (id = 0; id <= saidadata.length; id++) {
     
-              fetch("https://sistemacomercialserver.onrender.com/saidas/" + id, {
+              fetch("https://sistemacomercial-fv5g.onrender.com/saidas/" + id, {
     
                 method: "DELETE"
     

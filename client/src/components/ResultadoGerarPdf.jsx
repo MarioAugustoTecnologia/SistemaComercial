@@ -11,7 +11,7 @@ const ResultadoGerarPdf = () => {
 
   useEffect(() => {
 
-    fetch("https://sistemacomercialserver.onrender.com/resultados", {
+    fetch("https://sistemacomercial-fv5g.onrender.com/resultados", {
 
       method: "GET",
       headers: {'content-type':'application/json'} }

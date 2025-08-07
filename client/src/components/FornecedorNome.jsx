@@ -19,7 +19,7 @@ const FornecedorNome = () => {
   
   useEffect(() => {
 
-    fetch("https://sistemacomercialserver.onrender.com/fornecedor").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/fornecedor").then((res) => {
 
     return res.json()
 
@@ -51,7 +51,7 @@ const FornecedorNome = () => {
                                    
                            if (result.isConfirmed) {
          
-                             fetch("https://sistemacomercialserver.onrender.com/fornecedor/" + id, {
+                             fetch("https://sistemacomercial-fv5g.onrender.com/fornecedor/" + id, {
          
                                      method: "DELETE"    
          

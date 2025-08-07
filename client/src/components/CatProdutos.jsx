@@ -13,7 +13,7 @@ const CatProdutos = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch("https://sistemacomercialserver.onrender.com/catproduto").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/catproduto").then((res) => {
 
       return res.json()
 
@@ -38,7 +38,7 @@ const CatProdutos = () => {
 
       if (result.isConfirmed) {
 
-        fetch("https://sistemacomercialserver.onrender.com/catproduto/" + id, {
+        fetch("https://sistemacomercial-fv5g.onrender.com/catproduto/" + id, {
 
           method: "DELETE"
 

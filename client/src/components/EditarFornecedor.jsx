@@ -12,7 +12,7 @@ const EditarFornecedor = () => {
     //const [empdata, empdatachange] = useState({});
 
     useEffect(() => {
-        fetch("https://sistemacomercialserver.onrender.com/fornecedor/" + forcod).then((res) => {
+        fetch("https://sistemacomercial-fv5g.onrender.com/fornecedor/" + forcod).then((res) => {
             return res.json();
         }).then((resp) => {
             idchange(resp.id);
@@ -23,8 +23,7 @@ const EditarFornecedor = () => {
             cepchange(resp.cep);
             cidadechange(resp.cidade);
             emailchange(resp.email);
-            fonechange(resp.fone);
-            //categoriachange(resp.categoria)       
+            fonechange(resp.fone);    
 
         }).catch((err) => {
             console.log(err.message);
@@ -43,7 +42,7 @@ const EditarFornecedor = () => {
     const [fone, fonechange] = useState("")
 
     useEffect(() => {
-        fetch("https://sistemacomercialserver.onrender.com/catfornecedor").then((res) => {
+        fetch("https://sistemacomercial-fv5g.onrender.com/catfornecedor").then((res) => {
 
             return res.json()
 
@@ -239,7 +238,7 @@ const EditarFornecedor = () => {
                     const datacad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
                     const edtobj = { nome, endereco, comp, cep, cidade, email, fone, datacad, catforn, numero }
 
-                    fetch("https://sistemacomercialserver.onrender.com/fornecedor/" + forcod, {
+                    fetch("https://sistemacomercial-fv5g.onrender.com/fornecedor/" + forcod, {
                         method: "PUT",
                         headers: { 'content-type': 'application/json' },
                         body: JSON.stringify(edtobj)

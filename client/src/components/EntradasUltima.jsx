@@ -11,7 +11,7 @@ const EntradasUltima = () => {
 
   useEffect(() => {
 
-    fetch("https://sistemacomercialserver.onrender.com/atual").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/atual").then((res) => {
 
         return res.json()
 
@@ -27,7 +27,7 @@ const EntradasUltima = () => {
 
 const handleDelete = (id) => {    
 
-  fetch("https://sistemacomercialserver.onrender.com/atual/" + id , {
+  fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id , {
 
       method: "DELETE"    
 

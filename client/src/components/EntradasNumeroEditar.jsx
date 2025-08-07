@@ -11,7 +11,7 @@ const EntradasNumeroEditar = () => {
   const { entradacod } = useParams()
 
   useEffect(() => {
-    fetch("https://sistemacomercialserver.onrender.com/vendas/" + entradacod).then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/vendas/" + entradacod).then((res) => {
       return res.json();
     }).then((resp) => {  
      
@@ -45,7 +45,7 @@ const EntradasNumeroEditar = () => {
       
               if (result.isConfirmed) {
       
-                fetch("https://sistemacomercialserver.onrender.com/vendas/" + entradacod, {
+                fetch("https://sistemacomercial-fv5g.onrender.com/vendas/" + entradacod, {
                   method: "PATCH",
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(edtobj)

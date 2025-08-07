@@ -14,7 +14,7 @@ const EditarUsuario = () => {
     //const [empdata, empdatachange] = useState({});
 
     useEffect(() => {
-        fetch("https://sistemacomercialserver.onrender.com/usuarios/" + usuariocod).then((res) => {
+        fetch("https://sistemacomercial-fv5g.onrender.com/usuarios/" + usuariocod).then((res) => {
             return res.json();
         }).then((resp) => {
             idchange(resp.id);
@@ -127,7 +127,7 @@ const EditarUsuario = () => {
                 }).then((result) => {
                  
                   if (result.isConfirmed) {
-                    fetch("https://sistemacomercialserver.onrender.com/usuarios/" + usuariocod, {
+                    fetch("https://sistemacomercial-fv5g.onrender.com/usuarios/" + usuariocod, {
                       method: "PUT",
                       headers: {'content-type':'application/json'},
                       body: JSON.stringify(edtobj)
@@ -149,7 +149,7 @@ const EditarUsuario = () => {
                   } else if (result.isDenied) {
                     Swal.fire("Nada salvo", "", "info");
                   }
-                }); 
+               });
              
           
      }
@@ -172,7 +172,7 @@ const EditarUsuario = () => {
                   /* Read more about isConfirmed, isDenied below */
                   if (result.isConfirmed) {
 
-                    fetch("https://sistemacomercialserver.onrender.com/usuarios/" + usuariocod, {
+                    fetch("https://sistemacomercial-fv5g.onrender.com/usuarios/" + usuariocod, {
                       method: "PUT",
                       headers: {'content-type':'application/json'},
                       body: JSON.stringify(edtobj)

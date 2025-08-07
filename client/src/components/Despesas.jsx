@@ -13,7 +13,7 @@ const Despesas = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch("https://sistemacomercialserver.onrender.com/despesas").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/despesas").then((res) => {
 
       return res.json()
 
@@ -42,7 +42,7 @@ const Despesas = () => {
 
       if (result.isConfirmed) {
 
-        fetch("https://sistemacomercialserver.onrender.com/despesas/" + id, {
+        fetch("https://sistemacomercial-fv5g.onrender.com/despesas/" + id, {
 
           method: "DELETE"
 
@@ -74,7 +74,7 @@ const Despesas = () => {
       if (result.isConfirmed) {
         for (id = 0; id <= despesas.length; id++) {
 
-          fetch("https://sistemacomercialserver.onrender.com/despesas/" + id, {
+          fetch("https://sistemacomercial-fv5g.onrender.com/despesas/" + id, {
 
             method: "DELETE"
 
@@ -124,21 +124,21 @@ const Despesas = () => {
 
     const cadobj = { nome, total, custo, data_cad, mes }
 
-    fetch("https://sistemacomercialserver.onrender.com/despesas", {
+    fetch("https://sistemacomercial-fv5g.onrender.com/despesas", {
       method: "POST",
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(cadobj)
-    }).then((res) => {
+     }).then((res) => {
      
       window.location.reload();
 
-    }).catch((err) => {
+     }).catch((err) => {
       toast.error('Erro ! :' + err.message)
-    })
+     })
 
     const cadobj2 = { nome, total }
 
-    fetch("https://sistemacomercialserver.onrender.com/saidas", {
+    fetch("https://sistemacomercial-fv5g.onrender.com/saidas", {
       method: "POST",
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(cadobj2)

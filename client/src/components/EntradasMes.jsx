@@ -19,7 +19,7 @@ const EntradasMes = () => {
 
   useEffect(() => {
 
-    fetch("https://sistemacomercialserver.onrender.com/vendas").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/vendas").then((res) => {
 
       return res.json()
 
@@ -47,7 +47,7 @@ const EntradasMes = () => {
       if (result.isConfirmed) {
 
 
-        fetch("https://sistemacomercialserver.onrender.com/vendas/" + id, {
+        fetch("https://sistemacomercial-fv5g.onrender.com/vendas/" + id, {
 
           method: "DELETE"
 
@@ -105,7 +105,7 @@ const EntradasMes = () => {
 
       const cadobj = { nome, total, preco, mes, vendan, troco, valorpagto, data_cad }
 
-      fetch("https://sistemacomercialserver.onrender.com/vendas", {
+      fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
         method: "POST",
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(cadobj)
@@ -119,7 +119,7 @@ const EntradasMes = () => {
 
       const cadobj2 = { nome, total }
 
-        fetch("https://sistemacomercialserver.onrender.com/entradas", {
+        fetch("https://sistemacomercial-fv5g.onrender.com/entradas", {
         method: "POST",
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(cadobj2)
@@ -150,7 +150,7 @@ const EntradasMes = () => {
   
           if (result.isConfirmed) {
   
-            fetch("https://sistemacomercialserver.onrender.com/mesatual", {
+            fetch("https://sistemacomercial-fv5g.onrender.com/mesatual", {
               method: "POST",
               headers: { 'content-type': 'application/json' },
               body: JSON.stringify(cadobj)

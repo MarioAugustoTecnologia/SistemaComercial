@@ -80,7 +80,7 @@ const CadTransportes = () => {
 
                 if (result.isConfirmed) {
 
-                    fetch("https://sistemacomercialserver.onrender.com/produtos", {
+                    fetch("https://sistemacomercial-fv5g.onrender.com/produtos", {
                         method: "POST",
                         headers: { 'content-type': 'application/json' },
                         body: JSON.stringify(cadobj)

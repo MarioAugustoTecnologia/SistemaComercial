@@ -16,7 +16,7 @@ const EntradasNumero = () => {
 
     useEffect(() => {
 
-        fetch("https://sistemacomercialserver.onrender.com/vendas").then((res) => {
+        fetch("https://sistemacomercial-fv5g.onrender.com/vendas").then((res) => {
 
             return res.json()
 
@@ -49,7 +49,7 @@ const EntradasNumero = () => {
 
             if (result.isConfirmed) {
 
-                fetch("https://sistemacomercialserver.onrender.com/vendas/" + id, {
+                fetch("https://sistemacomercial-fv5g.onrender.com/vendas/" + id, {
 
                     method: "DELETE"
 
@@ -233,7 +233,7 @@ const EntradasNumero = () => {
             const numero = buscanumero;
             const register = { numero }
 
-            fetch("https://sistemacomercialserver.onrender.com/atual", {
+            fetch("https://sistemacomercial-fv5g.onrender.com/atual", {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(register)
@@ -289,7 +289,7 @@ const EntradasNumero = () => {
 
                                 if (result.isConfirmed) {
 
-                                    fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                                    fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
                                         method: "POST",
                                         headers: { 'content-type': 'application/json' },
                                         body: JSON.stringify(cadobj)
@@ -322,7 +322,7 @@ const EntradasNumero = () => {
 
                                     if (result.isConfirmed) {
 
-                                        fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
                                             method: "POST",
                                             headers: { 'content-type': 'application/json' },
                                             body: JSON.stringify(cadobj)
@@ -365,7 +365,7 @@ const EntradasNumero = () => {
 
                                 if (result.isConfirmed) {
 
-                                    fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                                    fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
                                         method: "POST",
                                         headers: { 'content-type': 'application/json' },
                                         body: JSON.stringify(cadobj)
@@ -398,7 +398,7 @@ const EntradasNumero = () => {
 
                                     if (result.isConfirmed) {
 
-                                        fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
                                             method: "POST",
                                             headers: { 'content-type': 'application/json' },
                                             body: JSON.stringify(cadobj)
@@ -442,7 +442,7 @@ const EntradasNumero = () => {
 
                         if (result.isConfirmed) {
 
-                            fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                            fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
                                 method: "POST",
                                 headers: { 'content-type': 'application/json' },
                                 body: JSON.stringify(cadobj)

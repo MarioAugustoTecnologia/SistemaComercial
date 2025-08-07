@@ -11,7 +11,7 @@ const EditarProduto = () => {
   //const [empdata, empdatachange] = useState({});
 
   useEffect(() => {
-    fetch("https://sistemacomercialserver.onrender.com/produtos/" + produtocod).then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + produtocod).then((res) => {
       return res.json();
     }).then((resp) => {
       idchange(resp.id);
@@ -38,7 +38,7 @@ const EditarProduto = () => {
   const [custo, custochange] = useState("")
 
   useEffect(() => {
-    fetch("https://sistemacomercialserver.onrender.com/catproduto").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/catproduto").then((res) => {
 
       return res.json()
 
@@ -151,7 +151,7 @@ const EditarProduto = () => {
 
           if (result.isConfirmed) {
 
-            fetch("https://sistemacomercialserver.onrender.com/produtos/" + produtocod, {
+            fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + produtocod, {
               method: "PUT",
               headers: { 'content-type': 'application/json' },
               body: JSON.stringify(edtobj)
@@ -199,7 +199,7 @@ const EditarProduto = () => {
 
           if (result.isConfirmed) {
 
-            fetch("https://sistemacomercialserver.onrender.com/produtos/" + produtocod, {
+            fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + produtocod, {
               method: "PUT",
               headers: { 'content-type': 'application/json' },
               body: JSON.stringify(edtobj)

@@ -11,7 +11,7 @@ const ComprasNumeroEditar = () => {
   const { compracod } = useParams()
 
   useEffect(() => {
-    fetch("https://sistemacomercialserver.onrender.com/compras/" + compracod).then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/compras/" + compracod).then((res) => {
       return res.json();
     }).then((resp) => {
       meschange(resp.mes);
@@ -43,7 +43,7 @@ const ComprasNumeroEditar = () => {
     
             if (result.isConfirmed) {
     
-              fetch("https://sistemacomercialserver.onrender.com/compras/" + compracod, {
+              fetch("https://sistemacomercial-fv5g.onrender.com/compras/" + compracod, {
                 method: "PATCH",
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(edtobj)

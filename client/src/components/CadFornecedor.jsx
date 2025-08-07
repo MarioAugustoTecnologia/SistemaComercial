@@ -21,7 +21,8 @@ const CadFornecedor = () => {
 
 
   useEffect(() => {
-    fetch("https://sistemacomercialserver.onrender.com/catfornecedor").then((res) => {
+
+    fetch("https://sistemacomercial-fv5g.onrender.com/catfornecedor").then((res) => {
 
       return res.json()
 
@@ -268,7 +269,7 @@ const CadFornecedor = () => {
             const datacad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
             const cadobj = { nome, endereco, comp, cep, cidade, email, fone, datacad, catforn }
 
-            fetch("https://sistemacomercialserver.onrender.com/fornecedor", {
+            fetch("https://sistemacomercial-fv5g.onrender.com/fornecedor", {
               method: "POST",
               headers: { 'content-type': 'application/json' },
               body: JSON.stringify(cadobj)
@@ -317,7 +318,7 @@ const CadFornecedor = () => {
             const datacad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
             const cadobj = { nome, endereco, numero, cep, cidade, email, fone, datacad, catforn }
 
-            fetch("https://sistemacomercialserver.onrender.com/fornecedor", {
+            fetch("https://sistemacomercial-fv5g.onrender.com/fornecedor", {
               method: "POST",
               headers: { 'content-type': 'application/json' },
               body: JSON.stringify(cadobj)

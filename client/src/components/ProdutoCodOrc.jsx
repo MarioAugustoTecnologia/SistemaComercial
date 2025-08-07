@@ -25,7 +25,7 @@ const ProdutoCodOrc = () => {
 
    useEffect(() => {
 
-     fetch("https://sistemacomercialserver.onrender.com/produtos").then((res) => {
+     fetch("https://sistemacomercial-fv5g.onrender.com/produtos").then((res) => {
 
       return res.json()
 

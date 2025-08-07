@@ -12,7 +12,7 @@ const ComprasUltima = () => {
 
   useEffect(() => {
 
-    fetch("https://sistemacomercialserver.onrender.com/compraatual").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/compraatual").then((res) => {
 
         return res.json()
 
@@ -28,7 +28,7 @@ const ComprasUltima = () => {
 
 const handleDelete = (id) => {    
 
-  fetch("https://sistemacomercialserver.onrender.com/compraatual/" + id , {
+  fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/" + id , {
 
       method: "DELETE"    
 

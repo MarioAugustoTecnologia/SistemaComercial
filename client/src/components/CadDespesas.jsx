@@ -74,7 +74,7 @@ const CadDespesas = () => {
 
           if (result.isConfirmed) {
 
-            fetch("https://sistemacomercialserver.onrender.com/despesas", {
+            fetch("https://sistemacomercial-fv5g.onrender.com/despesas", {
               method: "POST",
               headers: { 'content-type': 'application/json' },
               body: JSON.stringify(cadobj)
@@ -114,7 +114,7 @@ const CadDespesas = () => {
 
           if (result.isConfirmed) {
 
-            fetch("https://sistemacomercialserver.onrender.com/despesas", {
+            fetch("https://sistemacomercial-fv5g.onrender.com/despesas", {
               method: "POST",
               headers: { 'content-type': 'application/json' },
               body: JSON.stringify(cadobj)

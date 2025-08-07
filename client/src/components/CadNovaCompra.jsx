@@ -23,7 +23,7 @@ const CadNovaCompra = () => {
 
   useEffect(() => {
 
-    fetch("https://sistemacomercialserver.onrender.com/compraatual").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/compraatual").then((res) => {
 
       return res.json()
 
@@ -39,7 +39,7 @@ const CadNovaCompra = () => {
 
   useEffect(() => {
 
-    fetch("https://sistemacomercialserver.onrender.com/mescompraatual").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/mescompraatual").then((res) => {
 
       return res.json()
 
@@ -55,7 +55,7 @@ const CadNovaCompra = () => {
 
 
   useEffect(() => {
-    fetch("https://sistemacomercialserver.onrender.com/fornecedor").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/fornecedor").then((res) => {
 
       return res.json()
 
@@ -255,7 +255,7 @@ const CadNovaCompra = () => {
 
               if (result.isConfirmed) {
 
-                fetch("https://sistemacomercialserver.onrender.com/compras", {
+                fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
                   method: "POST",
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(cadobj)
@@ -293,7 +293,7 @@ const CadNovaCompra = () => {
 
                   if (result.isConfirmed) {
 
-                    fetch("https://sistemacomercialserver.onrender.com/compras", {
+                    fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
                       method: "POST",
                       headers: { 'content-type': 'application/json' },
                       body: JSON.stringify(cadobj)
@@ -344,7 +344,7 @@ const CadNovaCompra = () => {
 
               if (result.isConfirmed) {
 
-                fetch("https://sistemacomercialserver.onrender.com/compras", {
+                fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
                   method: "POST",
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(cadobj)
@@ -398,7 +398,7 @@ const CadNovaCompra = () => {
 
             if (result.isConfirmed) {
 
-              fetch("https://sistemacomercialserver.onrender.com/compras", {
+              fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(cadobj)

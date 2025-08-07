@@ -10,7 +10,7 @@ const EditarDespesa = () => {
   const { despesacod } = useParams()
 
   useEffect(() => {
-    fetch("https://sistemacomercialserver.onrender.com/despesas/" + despesacod).then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/despesas/" + despesacod).then((res) => {
       return res.json();
     }).then((resp) => {
       idchange(resp.id);
@@ -98,7 +98,7 @@ const EditarDespesa = () => {
 
         if (result.isConfirmed) {
 
-          fetch("https://sistemacomercialserver.onrender.com/despesas/" + despesacod, {
+          fetch("https://sistemacomercial-fv5g.onrender.com/despesas/" + despesacod, {
             method: "PUT",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(edtobj)

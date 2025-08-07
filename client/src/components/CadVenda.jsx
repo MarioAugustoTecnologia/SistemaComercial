@@ -13,7 +13,7 @@ const CadVenda = () => {
 
 
   useEffect(() => {
-    fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod).then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod).then((res) => {
       return res.json();
     }).then((resp) => {
       Idchange(resp.id);
@@ -41,7 +41,7 @@ const CadVenda = () => {
 
   useEffect(() => {
 
-    fetch("https://sistemacomercialserver.onrender.com/atual").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/atual").then((res) => {
 
       return res.json()
 
@@ -58,7 +58,7 @@ const CadVenda = () => {
 
   useEffect(() => {
 
-    fetch("https://sistemacomercialserver.onrender.com/mesatual").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/mesatual").then((res) => {
 
       return res.json()
 
@@ -242,7 +242,7 @@ const CadVenda = () => {
 
               if (result.isConfirmed) {
 
-                fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
                   method: "POST",
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(cadobj)
@@ -255,7 +255,7 @@ const CadVenda = () => {
                   const qtd = Subtract();
                   const edtobj = { id, qtd }
 
-                  fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
+                  fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
                     method: "PATCH",
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(edtobj)
@@ -292,7 +292,7 @@ const CadVenda = () => {
 
                   if (result.isConfirmed) {
 
-                    fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                    fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
                       method: "POST",
                       headers: { 'content-type': 'application/json' },
                       body: JSON.stringify(cadobj)
@@ -305,7 +305,7 @@ const CadVenda = () => {
                       const qtd = Subtract();
                       const edtobj = { id, qtd }
 
-                      fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
+                      fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
                         method: "PATCH",
                         headers: { 'content-type': 'application/json' },
                         body: JSON.stringify(edtobj)
@@ -357,7 +357,7 @@ const CadVenda = () => {
 
                 if (result.isConfirmed) {
 
-                  fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                  fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(cadobj)
@@ -370,7 +370,7 @@ const CadVenda = () => {
                     const qtd = Subtract();
                     const edtobj = { id, qtd }
 
-                    fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
+                    fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
                       method: "PATCH",
                       headers: { 'content-type': 'application/json' },
                       body: JSON.stringify(edtobj)
@@ -407,7 +407,7 @@ const CadVenda = () => {
 
                     if (result.isConfirmed) {
 
-                      fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                      fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
                         method: "POST",
                         headers: { 'content-type': 'application/json' },
                         body: JSON.stringify(cadobj)
@@ -420,7 +420,7 @@ const CadVenda = () => {
                         const qtd = Subtract();
                         const edtobj = { id, qtd }
 
-                        fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
+                        fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
                           method: "PATCH",
                           headers: { 'content-type': 'application/json' },
                           body: JSON.stringify(edtobj)
@@ -465,7 +465,7 @@ const CadVenda = () => {
 
                 if (result.isConfirmed) {
 
-                  fetch("https://sistemacomercialserver.onrender.com/vendas", {
+                  fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(cadobj)
@@ -479,7 +479,7 @@ const CadVenda = () => {
                     const qtd = Subtract();
                     const edtobj = { id, qtd }
 
-                    fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
+                    fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
                       method: "PATCH",
                       headers: { 'content-type': 'application/json' },
                       body: JSON.stringify(edtobj)
@@ -530,7 +530,7 @@ const CadVenda = () => {
 
             if (result.isConfirmed) {
 
-              fetch("https://sistemacomercialserver.onrender.com/vendas", {
+              fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(cadobj)
@@ -543,7 +543,7 @@ const CadVenda = () => {
                 const qtd = Subtract();
                 const edtobj = { id, qtd }
 
-                fetch("https://sistemacomercialserver.onrender.com/produtos/" + pcod, {
+                fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
                   method: "PATCH",
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(edtobj)

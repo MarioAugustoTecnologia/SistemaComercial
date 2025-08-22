@@ -11,11 +11,9 @@ const EntradasNome = () => {
   const [vendadata, setVendadata] = useState([]);
   const [buscanome, setBuscaNome] = React.useState("")
 
-
   const buscarap = buscanome.toLowerCase()
 
-
-  var table = vendadata.filter(item => item.nome.toLowerCase().includes(buscarap)) 
+  var table = vendadata.filter(item => item.nome.toLowerCase().includes(buscarap))
 
 
   useEffect(() => {
@@ -34,9 +32,7 @@ const EntradasNome = () => {
 
   }, [])
 
-    const [mes, setMes] = React.useState("")
-    const [vendan, setVendan] = React.useState("")
-
+  const [mes, setMes] = React.useState("")
 
   const handleDelete = (id) => {
 
@@ -51,7 +47,7 @@ const EntradasNome = () => {
       if (result.isConfirmed) {
 
 
-        fetch("https://sistemacomercial-fv5g.onrender.com/vendas/" + id, {
+        fetch("https://sistemacomercial-fv5g.onrender.com/vendas" + id, {
 
           method: "DELETE"
 
@@ -73,127 +69,69 @@ const EntradasNome = () => {
 
   function somar() {
 
-    const tabela = document.getElementById("table");
-    const linhas = tabela.getElementsByTagName("tr");
+    if(buscanome === '' || buscanome === null){
+      toast.warning('Campo busca por nome vazio ! ...')
+      document.getElementById('consulta').style.borderColor = 'Red';
+    } else {
+      
+    const tabela = document.getElementById("table")
+    const linhas = tabela.getElementsByTagName("tr")
 
     let somaTotal = 0;
 
-    if (vendan === "") {
+    if(mes !== ''){
 
-      if (mes !== '') {
+      for (let i = 0; i < linhas.length; i++) {
 
-        for (let i = 0; i < linhas.length; i++) {
+            const celulas1 = linhas[i].getElementsByTagName("td");
 
-          const celulas1 = linhas[i].getElementsByTagName("td");
+            for (let k = 15; k < celulas1.length; k++) {
 
-          for (let k = 15; k < celulas1.length; k++) {
+              const valorMes = celulas1[k].innerHTML;
 
-            const valorMes = celulas1[k].innerHTML;
+              if (valorMes.toLowerCase() === mes.toLowerCase()) {
 
-            if (valorMes === mes) {
+                const celulas = linhas[i].getElementsByTagName("td");
 
-              const celulas = linhas[i].getElementsByTagName("td");
+                for (let j = 12; j < celulas.length; j++) {
 
-              for (let j = 12; j < celulas.length; j++) {
+                      const valorCelula = celulas[j].innerHTML;
+                      // Converte o valor para número, tratando erros com try/catch
+                      try {
+                        const numero = Number(valorCelula);
 
-                const valorCelula = celulas[j].innerHTML;
-                // Converte o valor para número, tratando erros com try/catch
-                try {
-                  const numero = Number(valorCelula);
+                        if (!isNaN(numero)) { // Verifica se é um número válido
+                          somaTotal += numero;
+                        } else {
+                          console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
+                        }
+                         } catch (error) {
+                        console.error("Erro ao converter valor para número:", error);
+                        }
+                    }                  
 
-                  if (!isNaN(numero)) { // Verifica se é um número válido
-                    somaTotal += numero;
-                  } else {
-                    console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
-                  }
-                } catch (error) {
-                  console.error("Erro ao converter valor para número:", error);
                 }
-              }
-
             }
-
-          }
-
-        }  
-        
-         document.getElementById("total").innerText = "R$" + (somaTotal).toFixed(2);
-
-      } else {
-
-        for (let i = 0; i < linhas.length; i++) {
-
-          const celulas = linhas[i].getElementsByTagName("td");
-
-          for (let j = 12; j < celulas.length; j++) {
-
-            const valorCelula = celulas[j].innerHTML;
-            // Converte o valor para número, tratando erros com try/catch
-            try {
-              const numero = Number(valorCelula);
-
-              if (!isNaN(numero)) { // Verifica se é um número válido
-                somaTotal += numero;
-              } else {
-                console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
-              }
-            } catch (error) {
-              console.error("Erro ao converter valor para número:", error);
-            }
-          }
 
         }
-            document.getElementById("total").innerText = "R$" + (somaTotal).toFixed(2);
+         document.getElementById("total").innerText = "R$" + (somaTotal).toFixed(2);
 
-      }
+    }else{
+      toast.warning(' Informe o mes ! ')
+      document.getElementById('mes').style.borderColor = 'red';
+    }
 
-    } else
-      if (vendan !== "") {
+ }
+}
 
+function MudaCorMes(){
+  document.getElementById('mes').style.borderColor = 'GainsBoro';
+}
 
-        for (let i = 0; i < linhas.length; i++) {
+function MudaCorBusca(){
+  document.getElementById('consulta').style.borderColor = 'GainsBoro';
+}
 
-          const celulas1 = linhas[i].getElementsByTagName("td");
-
-          for (let k = 1; k < celulas1.length; k++) {
-
-            const nvenda = celulas1[k].innerHTML;
-
-            if (nvenda === vendan) {
-
-              const celulas = linhas[i].getElementsByTagName("td");
-
-              for (let j = 5; j < celulas.length; j++) {
-
-                const valorCelula = celulas[j].innerHTML;
-                // Converte o valor para número, tratando erros com try/catch
-                try {
-                  const numero = Number(valorCelula);
-
-                  if (!isNaN(numero)) { // Verifica se é um número válido
-                    somaTotal += numero;
-                  } else {
-                    console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
-                  }
-                } catch (error) {
-                  console.error("Erro ao converter valor para número:", error);
-                }
-              }
-
-            }
-
-          }        
-      
-
-        }   
-        
-           document.getElementById("total").innerText = "R$" + (somaTotal/2).toFixed(2);
-      }
-
-        
-
-   
-  }
 
   const logout = () => {
     localStorage.clear()
@@ -349,83 +287,80 @@ const EntradasNome = () => {
           </div>
         </div>
         <div className="col p-0 m-0">
-          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: '160%' }}>
+          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: "160%" }}>
             <h4><strong>Sistema de Gestão Comercial</strong></h4>
           </div>
           <Outlet />
           <div className="px-5 mt-5">
             <div className="mb3">
-              <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold' }}>Busca por nome:</label><br />
-
-              <input type="search" autoFocus='true' className="consultanome" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy' }} />
+              <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold' }}>Busca por nome:</label>
+              <label htmlFor="Mes" className="mes" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', margin:'0 250px' }}>Mes:</label><br />
+              <input type="search" id="consulta" onKeyUp={MudaCorBusca} autoFocus='true' className="form-control rounded-0" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy', padding:'2px', width:'400px'}} />                            
+              <input type="text" className='form-control rounded-0' id="mes" onKeyUp={MudaCorMes} value={mes} onChange={(e) => setMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy', width: '150px', padding:'2px', margin:'0 430px', marginTop:'-38px'}} /> <br /><br />
               <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 20px' }}>Voltar:</Link>
               <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '18px' }}>Total Entradas:</Link>
               <strong style={{ fontSize: '30px' }}>Total:</strong>
               <strong><span id="total" style={{ color: 'green', fontSize: '32px', margin: '0 10px' }}></span></strong><br />
-              <label htmlFor="Mes" className="mes" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold' }}>Mes:</label>
-              <label htmlFor="vendan" className="vendan" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', margin: '0 150px' }}>Venda nº:</label><br />
-              <input type="text" className="consultames" value={mes} onChange={(e) => setMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy', width: '150px' }} />
-              <input type="text" className="consultavendan" value={vendan} onChange={(e) => setVendan(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy', width: '150px', margin: '0 50px' }} />
+                           
             </div><br />
             <h4 style={{ textAlign: 'center', color: 'Red', fontSize: '25px', marginRight: '-225px' }}><strong>Entradas:</strong></h4>
             <br />
             <div className="mt-3">
               <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: 3000 }}>
                 <thead>
-                    <tr>
-                      <th className="th" scope="col">Id:</th>
-                      <th className="th" scope="col">Venda nº:</th>
-                      <th className="th" scope="col">Nome:</th>
-                      <th className="th" scope="col">Qtd:</th>
-                      <th className="th" scope="col">Preço:</th>
-                      <th className="th" scope="col">Total:</th>
-                      <th className="th" scope="col">Desconto:</th>
-                      <th className="th" scope="col">Valor Desconto:</th>
-                      <th className="th" scope="col">Total c/Desconto:</th>
-                      <th className="th" scope="col">Forma Paga:</th>
-                      <th className="th" scope="col">Entradas:</th>
-                      <th className="th" scope="col">Troco:</th>
-                      <th className="th" scope="col">Faturamento:</th>
-                      <th className="th" scope="col">Parcelamento:</th>
-                      <th className="th" scope="col">Parcela:</th>
-                      <th className="th" scope="col">Mês:</th>
-                      <th className="th" scope="col">Frete:</th>
-                      <th className="th" scope="col">Data de Cadastro:</th>
-                      <th className="th" scope="col">Ação:</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      table.map(item => (
-                        <tr key={item.id}>
-                          <td className="td">{item.id}</td>
-                          <td className="td">{item.vendan}</td>
-                          <td className="td">{item.nome}</td>
-                          <td className="td">{item.quant}</td>
-                          <td className="td">{item.preco}</td>
-                          <td className="td">{item.total}</td>
-                          <td className="td">{item.desconto}</td>
-                          <td className="td">{item.valordesc}</td>
-                          <td className="td">{item.totaldesc}</td>
-                          <td className="td">{item.formapag}</td>
-                          <td className="td">{item.valorpagto}</td>
-                          <td className="td">{item.troco}</td>
-                          <td className="td">{item.vp}</td>
-                          <td className="td">{item.parcelamento}</td>
-                          <td className="td">{item.parcelan}</td>
-                          <td className="td">{item.mes}</td>
-                          <td className="td">{item.frete}</td>
-                          <td className="td">{item.data_cad}</td>
-                          <td className="td" >
+                  <tr>
+                    <th className="th" scope="col">Id:</th>
+                    <th className="th" scope="col">Venda nº:</th>
+                    <th className="th" scope="col">Nome:</th>
+                    <th className="th" scope="col">Qtd:</th>
+                    <th className="th" scope="col">Preço:</th>
+                    <th className="th" scope="col">Total:</th>
+                    <th className="th" scope="col">Desconto:</th>
+                    <th className="th" scope="col">Valor Desconto:</th>
+                    <th className="th" scope="col">Total c/Desconto:</th>
+                    <th className="th" scope="col">Forma Paga:</th>
+                    <th className="th" scope="col">Entradas:</th>
+                    <th className="th" scope="col">Troco:</th>
+                    <th className="th" scope="col">Faturamento:</th>
+                    <th className="th" scope="col">Parcelamento:</th>
+                    <th className="th" scope="col">Parcela:</th>
+                    <th className="th" scope="col">Mês:</th>
+                    <th className="th" scope="col">Frete:</th>
+                    <th className="th" scope="col">Data de Cadastro:</th>
+                    <th className="th" scope="col">Ação:</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    table.map(item => (
+                      <tr key={item.id}>
+                        <td className="td">{item.id}</td>
+                        <td className="td">{item.vendan}</td>
+                        <td className="td">{item.nome}</td>
+                        <td className="td">{item.quant}</td>
+                        <td className="td">{item.preco}</td>
+                        <td className="td">{item.total}</td>
+                        <td className="td">{item.desconto}</td>
+                        <td className="td">{item.valordesc}</td>
+                        <td className="td">{item.totaldesc}</td>
+                        <td className="td">{item.formapag}</td>
+                        <td className="td">{item.valorpagto}</td>
+                        <td className="td">{item.troco}</td>
+                        <td className="td" id="vp">{item.vp}</td>
+                        <td className="td">{item.parcelamento}</td>
+                        <td className="td">{item.parcelan}</td>
+                        <td className="td" id="mes">{item.mes}</td>
+                        <td className="td">{item.frete}</td>
+                        <td className="td">{item.data_cad}</td>
+                        <td className="td" >
                           <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-                          </td>
-                        </tr>
-                      ))
+                        </td>
+                      </tr>
+                    ))
+                  }
 
-                    }
-
-                  </tbody>
-                    <ToastContainer />             
+                </tbody>
+                <ToastContainer />
 
               </table>
             </div>

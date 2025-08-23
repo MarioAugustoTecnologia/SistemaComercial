@@ -47,7 +47,7 @@ const EntradasMes = () => {
       if (result.isConfirmed) {
 
 
-        fetch("https://sistemacomercial-fv5g.onrender.com/vendas/" + id, {
+        fetch("https://sistemacomercial-fv5g.onrender.com/vendas" + id, {
 
           method: "DELETE"
 
@@ -104,6 +104,7 @@ const EntradasMes = () => {
  
 
       const cadobj = { nome, total, preco, mes, vendan, troco, valorpagto, data_cad }
+    
 
       fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
         method: "POST",
@@ -117,9 +118,9 @@ const EntradasMes = () => {
         toast.error('Erro ! :' + err.message)
       })
 
-      const cadobj2 = { nome, total }
+        const cadobj2 = { nome, total }
 
-        fetch("https://sistemacomercial-fv5g.onrender.com/entradas", {
+        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
         method: "POST",
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(cadobj2)
@@ -259,7 +260,7 @@ const EntradasMes = () => {
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                      Produtos e Serviços:
+                     Produtos e Serviços:
                   </span>
                 </Link>
               </li>
@@ -340,10 +341,10 @@ const EntradasMes = () => {
               <div className="mb3">
               <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold'}}>Busca por mes:</label>
               <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px', margin: '0 500px', fontWeight:'bold' }}>Mes atual:</label><br />
-              <input type="search" autoFocus='true' className="consultames" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold', color:'navy' }} />
-              <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 20px' }}>Voltar:</Link>
-              <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 5px', fontSize: '18px' }}>Total Entradas:</Link>
-              <select value={mes} onChange={e => setMes(e.target.value)} style={{ fontSize: '20px', width: 160, margin:'0 650px', marginTop:'-40px', fontWeight:'bold', color:'navy' }} name='mes' id='mes' className='form-select'>
+              <input type="search" autoFocus='true' className="form-control rounded-0" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold', color:'navy', width:'200px', padding:'2px' }} /> <br />
+              <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 250px', marginTop:'-115px' }}>Voltar:</Link>
+              <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 -220px', fontSize: '18px', marginTop:'-110px'}}>Total Entradas:</Link>
+              <select value={mes} onChange={e => setMes(e.target.value)} style={{ fontSize: '20px', width: 160, margin:'0 650px', marginTop:'-90px', fontWeight:'bold', color:'navy' }} name='mes' id='mes' className='form-select'>
                 <option value=""></option>
                 <option value="Janeiro">Janeiro</option>
                 <option value="Fevereiro">Fevereiro</option>
@@ -384,7 +385,7 @@ const EntradasMes = () => {
                       <th className="th" scope="col">Parcelamento:</th>
                       <th className="th" scope="col">Parcela:</th>
                       <th className="th" scope="col">Mês:</th>
-                      <th className="th" scope="col">Frete:</th>                      
+                      <th className="th" scope="col">Frete:</th>
                       <th className="th" scope="col">Data de Cadastro:</th>
                       <th className="th" scope="col">Ação:</th>
                     </tr>

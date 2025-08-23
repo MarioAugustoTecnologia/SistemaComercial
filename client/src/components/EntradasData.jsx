@@ -46,7 +46,7 @@ const EntradasData = () => {
       if (result.isConfirmed) {
 
 
-        fetch("https://sistemacomercial-fv5g.onrender.com/vendas/" + id, {
+        fetch("https://sistemacomercial-fv5g.onrender.com/vendas" + id, {
 
           method: "DELETE"
 
@@ -144,7 +144,7 @@ const EntradasData = () => {
                 >
                   <i className="fs-4 bi bi-cash-coin ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    Vendas:
+                    Gestão de Vendas:
                   </span>
                 </Link>
               </li>
@@ -177,7 +177,7 @@ const EntradasData = () => {
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                      Produtos e Serviços:
+                    Produtos e Serviços:
                   </span>
                 </Link>
               </li>
@@ -256,7 +256,7 @@ const EntradasData = () => {
           <div className="px-5 mt-5">
             <div className="mb3">
               <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold' }}>Busca por data:</label><br />
-              <input type="search" autoFocus='true' className="consultadata" value={buscadata} onChange={(e) => setBuscaData(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold', color:'navy' }} />
+              <input type="search" autoFocus='true' className="form-control rounded-0" value={buscadata} onChange={(e) => setBuscaData(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold', color:'navy', width:'200px', padding:'2px'}} /> <br />
               <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 20px' }}>Voltar:</Link>
               <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '18px' }}>Total Entradas:</Link>
               <strong style={{ fontSize: '30px' }}>Total:</strong>

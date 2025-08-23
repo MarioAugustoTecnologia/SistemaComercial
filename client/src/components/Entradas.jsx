@@ -40,7 +40,7 @@ const Entradas = () => {
       if (result.isConfirmed) {
 
 
-        fetch("https://sistemacomercial-fv5g.onrender.com/vendas/" + id, {
+        fetch("https://sistemacomercial-fv5g.onrender.com/vendas" + id, {
 
           method: "DELETE"
 
@@ -75,7 +75,7 @@ const Entradas = () => {
 
         for (id = 0; id <= vendasdata.length; id++) {
 
-          fetch("https://sistemacomercial-fv5g.onrender.com/vendas/" + id, {
+          fetch("https://sistemacomercial-fv5g.onrender.com/vendas" + id, {
 
             method: "DELETE"
 
@@ -168,7 +168,7 @@ const Entradas = () => {
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                      Produtos e Serviços:
+                     Produtos e Serviços:
                   </span>
                 </Link>
               </li>
@@ -239,7 +239,7 @@ const Entradas = () => {
             </ul>
           </div>
         </div>
-        <div className="col p-0 m-0" style={{ fontFamily: 'arial' }}>
+        <div className="col p-0 m-0" style={{ fontFamily: 'arial'}}>
           <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: '160%' }}>
             <h4><strong style={{ fontFamily: 'arial', margin: '0 600px ' }}>Sistema de Gestão Comercial:</strong></h4>
           </div>
@@ -251,8 +251,9 @@ const Entradas = () => {
               <Link to="/entradas/data" className="btn" style={{ color: 'white', backgroundColor: 'yellowgreen', margin: '0 3px', fontSize: '18px', fontFamily: 'arial' }}>Faturamento por data:</Link>
               <Link to="/entradas/mes" className="btn" style={{ color: 'white', backgroundColor: 'DarkSlateBlue', margin: '0 25px', fontSize: '18px', fontFamily: 'arial' }}>Faturamento por mes:</Link>
               <Link to="/entradas/numero" className="btn" style={{ color: 'white', backgroundColor: 'DeepSkyBlue', margin: '0 2px', fontSize: '18px', fontFamily: 'arial' }}>Totalizar Venda:</Link>
-              <Link to="/entradas/ultima" className="btn" style={{ color: 'white', backgroundColor: 'Crimson', margin: '0 20px', fontSize: '18px', fontFamily: 'arial' }}>Venda Atual:</Link>
-              <Link className="btn" style={{ color: 'white', backgroundColor: 'red', margin: '0 5px', fontSize: '18px', fontFamily: 'arial' }} onClick={deleteall}>Excluir Todos:</Link>
+              <Link to="/entradas/totfrete" className="btn" style={{ color: 'white', backgroundColor: 'DarkCyan', margin: '0 22px', fontSize: '18px', fontFamily: 'arial' }}>Totalizar Frete:</Link>
+              <Link to="/entradas/ultima" className="btn" style={{ color: 'white', backgroundColor: 'Crimson', margin: '0 5px', fontSize: '18px', fontFamily: 'arial' }}>Venda Atual:</Link>
+              <Link className="btn" style={{ color: 'white', backgroundColor: 'red', margin: '0 15px', fontSize: '18px', fontFamily: 'arial' }} onClick={deleteall}>Excluir Todos:</Link>
               
             </div><br /><br />
             <div>

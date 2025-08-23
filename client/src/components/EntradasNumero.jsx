@@ -37,6 +37,7 @@ const EntradasNumero = () => {
     const [frete, fretechange] = useState("")
 
 
+
     const handleDelete = (id) => {
 
         Swal.fire({
@@ -49,7 +50,7 @@ const EntradasNumero = () => {
 
             if (result.isConfirmed) {
 
-                fetch("https://sistemacomercial-fv5g.onrender.com/vendas/" + id, {
+                fetch("https://sistemacomercial-fv5g.onrender.com/vendas" + id, {
 
                     method: "DELETE"
 
@@ -109,7 +110,6 @@ const EntradasNumero = () => {
             document.getElementById('total').style.borderColor = 'gainsboro'
             document.getElementById('nome').style.borderColor = 'gainsboro'
             document.getElementById('vp').value = total;
-            document.getElementById('vp').style.borderColor = 'gainsboro'
 
         }
     }
@@ -176,6 +176,7 @@ const EntradasNumero = () => {
 
             }
 
+
         }
 
     }
@@ -227,7 +228,7 @@ const EntradasNumero = () => {
 
         if (buscanumero === "" || buscanumero === null) {
             toast.warning('Campo busca por número vazio !')
-
+            document.getElementById('vendan').style.borderColor = 'red';
         }
         else {
             const numero = buscanumero;
@@ -250,7 +251,7 @@ const EntradasNumero = () => {
     }
 
 
-    const concluir = (e) => {
+  const concluir = (e) => {
 
         e.preventDefault();
 
@@ -572,7 +573,7 @@ const EntradasNumero = () => {
                                 >
                                     <i className="fs-4 bi bi-box-fill ms-2"></i>
                                     <span className="ms-2 d-none d-sm-inline">
-                                       Produtos e Serviços:
+                                         Produtos e Serviços:
                                     </span>
                                 </Link>
                             </li>
@@ -650,13 +651,13 @@ const EntradasNumero = () => {
                     <div className="px-5 mt-5">
                         <div className="mb3">
                             <label htmlFor="Numero" className="Numero" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold' }}>Busca por numero:</label><br />
-                            <input type="search" autoFocus='true' onKeyUp={MudaCorCampo} className="consultanumero" value={buscanumero} onChange={(e) => setBuscaNumero(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', width: '100px', fontWeight: 'bold', color: 'navy' }} id="vendan" />
-                            <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 50px' }}>Voltar:</Link>
-                            <Link onClick={GerarUltima} className="btn" style={{ color: 'white', backgroundColor: 'blue', margin: '0 45px', fontSize: '18px' }}>Próxima Venda:</Link>
-                            <strong style={{ fontSize: '36px' }}>Total:</strong>
-                            <strong><span id="totalvenda" style={{ color: 'LimeGreen', fontSize: '40px', margin: '0 10px' }}></span></strong>
-                            <strong style={{ fontSize: '36px', margin: '0 65px' }}>Total c/ Desconto:</strong>
-                            <strong><span id="totald" style={{ color: 'Crimson', fontSize: '40px', margin: '0 -60px' }}></span></strong>
+                            <input type="search" autoFocus='true' onKeyUp={MudaCorCampo} className="form-control rounded-0" value={buscanumero} onChange={(e) => setBuscaNumero(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', width: '100px', fontWeight: 'bold', color: 'navy', padding:'2px' }} id="vendan" />
+                            <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 150px', marginTop:'-110px'}}>Voltar:</Link>
+                            <Link onClick={GerarUltima} className="btn" style={{ color: 'white', backgroundColor: 'blue', margin: '0 -120px', fontSize: '18px', marginTop:'-110px'}}>Próxima Venda:</Link>
+                            <strong style={{ fontSize: '36px', margin:'0 200px'}}>Total:</strong>
+                            <strong><span id="totalvenda" style={{ color: 'LimeGreen', fontSize: '40px', margin: '0 -190px' }}></span></strong>
+                            <strong style={{ fontSize: '36px', margin: '0 280px' }}>Total c/ Desconto:</strong>
+                            <strong><span id="totald" style={{ color: 'Crimson', fontSize: '40px', margin: '0 -270px' }}></span></strong>
 
                         </div><br />
                         <div className="bg-white p-4 rounded border" style={{ margin: '0 20px', width: '70%' }}>

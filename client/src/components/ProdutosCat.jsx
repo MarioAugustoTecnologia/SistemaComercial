@@ -159,7 +159,7 @@ const ProdutosCat = () => {
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                      Produtos e Serviços:
+                    Produtos e Serviços:
                   </span>
                 </Link>
               </li>
@@ -237,9 +237,9 @@ const ProdutosCat = () => {
           <div className="px-5 mt-5">
             <div className="mb3">
               <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold'}}>Busca por categoria:</label><br />
-              <input style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold', color:'navy'}} type="search" autoFocus='true' className="consultanome" value={buscacat} onChange={(e) => setBuscaCat(e.target.value)} />
+              <input style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold', color:'navy', padding:'2px', width:'250px'}} type="search" autoFocus='true' className="form-control rounded-0" value={buscacat} onChange={(e) => setBuscaCat(e.target.value)} />
 
-              <Link to="/produtos" className="btn" style={{ color: 'white', backgroundColor: 'orange', margin: '0 20px', fontSize: '18px', fontFamily: 'arial', width: '140px' }}>Voltar:</Link>
+              <Link to="/produtos" className="btn" style={{ color: 'white', backgroundColor: 'orange', margin: '0 300px', marginTop:'-60px', fontSize: '18px', fontFamily: 'arial', width: '140px' }}>Voltar:</Link>
             </div><br />
 
             <h4><strong style={{ color: 'red', margin: '0 680px', fontSize: '25px' }}>Produtos e Serviços:</strong></h4>

@@ -256,10 +256,9 @@ const logout = () => {
                   <label htmlFor="Id" className="Id" style={{fontFamily: 'arial', fontSize:'22px', fontWeight:'bold'}}>Busca por codigo:</label><br />
                   
                   <input style={{fontFamily: 'arial', fontSize:'22px', width:'200px', color:'navy', fontWeight:'bold'}} type="search" className="consultaid" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)} id="busca" autoFocus='true'/>                  
-                  <Link to="/entradas" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 58px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Entradas:</Link>
-                  <Link to="/compras" className="btn" style={{color: 'white', backgroundColor:'green', margin: '0 -20px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Saidas:</Link> 
-                  
-                  
+                  <Link to="/entradas" className="btn" style={{color: 'white', backgroundColor:'orange', margin:'0 300px', marginTop:'-68px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Entradas:</Link>
+                  <Link to="/compras" className="btn" style={{color: 'white', backgroundColor:'green', margin:'0 -265px', fontSize:'18px', fontFamily:'arial', width:'140px', marginTop:'-68px'}}>Saidas:</Link> 
+                                  
                 </div><br />             
                       <h4><strong style={{color:'red', margin:'0 680px', fontSize:'25px'}}>Produtos e Serviços:</strong></h4>                         
                      <br />

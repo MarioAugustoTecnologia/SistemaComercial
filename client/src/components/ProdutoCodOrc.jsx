@@ -16,7 +16,6 @@ const ProdutoCodOrc = () => {
    const navigate = useNavigate();
 
    //const [value, setValue] = useState("");
-
    useScanDetecion({
     onComplete: setBuscaRap,
     minLength: 13 
@@ -201,9 +200,8 @@ const logout = () => {
              <div>
                 <div className="mb3">
                   <label htmlFor="Id" className="Id" style={{fontFamily: 'arial', fontSize:'22px', fontWeight:'bold'}}>Busca por codigo de venda:</label><br />
-                  
-                  <input style={{fontFamily: 'arial', fontSize:'22px', width:'200px', fontWeight:'bold', color:'navy'}} type="search" className="consultaid" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)} id="busca" autoFocus='true'/>                  
-                  <Link to="/orcvendas" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 58px', fontSize:'18px', fontFamily:'arial', width:'240px'}}>Orçamento de Venda:</Link>
+                  <input style={{fontFamily: 'arial', fontSize:'22px', width:'200px', fontWeight:'bold', color:'navy', padding:'2px'}} type="search" className="form-control rounded-0" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)} id="busca" autoFocus='true'/>                  
+                  <Link to="/orcvendas" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 250px', fontSize:'18px', fontFamily:'arial', width:'240px', marginTop:'-53px'}}>Orçamento de Venda:</Link>
                                                        
                 </div><br /><br /><br />
                      <div className="mt-3">
@@ -248,8 +246,8 @@ const logout = () => {
                               </tbody>
                 
                           </table> 
-                  </div>       
-                                                         
+                  </div>   
+                                                     
                
                
 

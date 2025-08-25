@@ -329,6 +329,7 @@ const EntradasNumero = () => {
                                             body: JSON.stringify(cadobj)
                                         }).then((res) => {
                                             
+                                              window.location.reload(); 
 
                                         }).catch((err) => {
                                             toast.error('Erro ! :' + err.message)

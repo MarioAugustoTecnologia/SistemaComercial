@@ -175,7 +175,7 @@ const logout = () => {
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                      Produtos e Serviços:
+                   Produtos e Serviços:
                   </span>
                 </Link>
               </li>
@@ -255,7 +255,7 @@ const logout = () => {
                <div className="mb3">
                   <label htmlFor="Id" className="Id" style={{fontFamily: 'arial', fontSize:'22px', fontWeight:'bold'}}>Busca por codigo:</label><br />
                   
-                  <input style={{fontFamily: 'arial', fontSize:'22px', width:'200px', color:'navy', fontWeight:'bold'}} type="search" className="consultaid" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)} id="busca" autoFocus='true'/>                  
+                  <input style={{fontFamily: 'arial', fontSize:'22px', width:'200px', color:'navy', fontWeight:'bold', padding:'2px'}} type="search" className="form-control rounded-0" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)} id="busca" autoFocus='true'/>                  
                   <Link to="/entradas" className="btn" style={{color: 'white', backgroundColor:'orange', margin:'0 300px', marginTop:'-68px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Entradas:</Link>
                   <Link to="/compras" className="btn" style={{color: 'white', backgroundColor:'green', margin:'0 -265px', fontSize:'18px', fontFamily:'arial', width:'140px', marginTop:'-68px'}}>Saidas:</Link> 
                                   

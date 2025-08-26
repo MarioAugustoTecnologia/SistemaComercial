@@ -223,19 +223,19 @@ const logout = () => {
          </div>
        </div>
        <div className="col p-0 m-0">
-           <div className="p-2 d-flex justify-content-center shadow text-white" style={{backgroundColor:'blue', fontFamily:'arial', width:'140%'}}>
+           <div className="p-2 d-flex justify-content-center shadow text-white" style={{backgroundColor:'blue', fontFamily:'arial', width:'143%'}}>
                <h4><strong>Sistema de Gestão Comercial</strong></h4>
            </div>
            <Outlet />
            <div className="px-5 mt-5">                  
                 <div>              
                       <label htmlFor="Categoria" className="Categoria" style={{fontFamily: 'arial', fontSize:'22px', fontWeight:'bold'}}>Busca por categoria:</label><br />
-                      <input style={{fontFamily: 'arial', fontSize:'22px', fontWeight:'bold', color:'navy', width:'230px', padding:'2px'}} type="search" autoFocus='true' className="form-control" value={buscacat} onChange={(e) => setBuscaCat(e.target.value)}/>                  
+                      <input style={{fontFamily: 'arial', fontSize:'22px', fontWeight:'bold', color:'navy', width:'230px', padding:'2px'}} type="search" autoFocus='true' className="form-control rounded-0" value={buscacat} onChange={(e) => setBuscaCat(e.target.value)}/>                  
                       <Link to="/fornecedores" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 280px', marginTop:'-65px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Voltar:</Link>  
                       <h4 className="h4" ><strong className="strong" style={{color:'red', margin:'0 1200px', fontSize:'25px'}}>Fornecedores:</strong></h4>                         
                       <br />
                     <div className="mt-3">
-                          <table className="table" id="table" style={{margin:'0 -30px', fontFamily:'arial', fontSize:'20px', width:2600}}>
+                          <table className="table" id="table" style={{margin:'0 -30px', fontFamily:'arial', fontSize:'20px', width:2700}}>
                               <thead>
                                   <tr>
                                   <th className="th" scope="col">Id:</th>

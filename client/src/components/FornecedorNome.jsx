@@ -15,7 +15,7 @@ const FornecedorNome = () => {
   var table = fornecedor.filter(item => item.nome.toLowerCase().includes(buscarap))
 
   const navigate = useNavigate();
-  
+
 
   useEffect(() => {
 
@@ -32,6 +32,7 @@ const FornecedorNome = () => {
     })
 
   }, [])
+
 
 
   const LoadEdit = (id) => {
@@ -224,7 +225,7 @@ const FornecedorNome = () => {
           </div>
         </div>
         <div className="col p-0 m-0">
-          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', fontFamily: 'arial', width: '142%' }}>
+          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', fontFamily: 'arial', width: '143%' }}>
             <h4><strong>Sistema de Gestão Comercial</strong></h4>
           </div>
           <Outlet />
@@ -236,7 +237,7 @@ const FornecedorNome = () => {
               <h4 className="h4" ><strong className="strong" style={{ color: 'red', margin: '0 1200px', fontSize: '25px' }}>Fornecedores:</strong></h4><br />
 
               <div className="mt-3">
-                <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: 2600 }}>
+                <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: 2700 }}>
                   <thead>
                     <tr>
                       <th className="th" scope="col">Id:</th>

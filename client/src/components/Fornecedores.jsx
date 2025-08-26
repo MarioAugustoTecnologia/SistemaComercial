@@ -260,7 +260,7 @@ const Fornecedores = () => {
               <h4 className="h4" ><strong className="strong" style={{ color: 'red', margin: '0 1200px', fontSize: '25px' }}>Fornecedores:</strong></h4>
               <br />
               <div className="mt-3">
-                <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: 2600 }}>
+                <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: 2650 }}>
                   <thead>
                     <tr>
                       <th className="th" scope="col">Id:</th>

@@ -157,7 +157,7 @@ const UsuarioCategoria = () => {
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                     Produtos e Serviços:
+                    Produtos e Serviços:
                   </span>
                 </Link>
               </li>
@@ -278,8 +278,8 @@ const UsuarioCategoria = () => {
                   </div><br />
                   <div className="mb3" style={{fontFamily: 'arial', fontSize:'22px'}}>
                   <label htmlFor="Nome" className="Nome" style={{fontWeight:'bold'}}>Busca por categoria:</label><br />
-                  <input type="search" className="consultanome" value={buscacat} onChange={(e) => setBuscaCat(e.target.value)} style={{color:'navy', fontWeight:'bold'}} />
-                  <Link to="/usuarios" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 20px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Voltar:</Link>  
+                  <input type="search" className="form-control rounded-0" value={buscacat} onChange={(e) => setBuscaCat(e.target.value)} style={{color:'navy', fontWeight:'bold', width:'250px', fontSize:'20px'}} />
+                  <Link to="/usuarios" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 300px', fontSize:'18px', fontFamily:'arial', width:'140px', marginTop:'-66px'}}>Voltar:</Link>  
                   </div>                             
           </div>                          
                                    

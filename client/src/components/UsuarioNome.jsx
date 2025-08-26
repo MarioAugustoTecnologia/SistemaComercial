@@ -158,7 +158,7 @@ const UsuarioNome = () => {
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                     Produtos e Serviços:
+                   Produtos e Serviços:
                   </span>
                 </Link>
               </li>
@@ -280,8 +280,8 @@ const UsuarioNome = () => {
                   </div><br />
                   <div className="mb3" style={{fontFamily: 'arial', fontSize:'22px'}}>
                   <label htmlFor="Nome" className="Nome" style={{fontWeight:'bold'}} >Busca por nome:</label><br />
-                  <input className="consultanome" type="search" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{fontWeight:'bold', color:'navy'}} />
-                  <Link to="/usuarios" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 20px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Voltar:</Link>  
+                  <input className="form-control rounded-0" type="search" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{fontWeight:'bold', color:'navy', width:'250px', fontSize:'20px'}} />
+                  <Link to="/usuarios" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 300px', fontSize:'18px', fontFamily:'arial', width:'140px', marginTop:'-66px'}}>Voltar:</Link>  
                   </div>                             
           </div>                          
                                    

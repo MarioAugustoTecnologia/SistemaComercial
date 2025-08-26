@@ -230,8 +230,8 @@ const logout = () => {
            <div className="px-5 mt-5">                  
                 <div>              
                       <label htmlFor="Categoria" className="Categoria" style={{fontFamily: 'arial', fontSize:'22px', fontWeight:'bold'}}>Busca por categoria:</label><br />
-                      <input style={{fontFamily: 'arial', fontSize:'22px', fontWeight:'bold', color:'navy'}} type="search" autoFocus='true' className="consultacategoria" value={buscacat} onChange={(e) => setBuscaCat(e.target.value)}/>                  
-                      <Link to="/fornecedores" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 20px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Voltar:</Link>  
+                      <input style={{fontFamily: 'arial', fontSize:'22px', fontWeight:'bold', color:'navy', width:'230px', padding:'2px'}} type="search" autoFocus='true' className="form-control" value={buscacat} onChange={(e) => setBuscaCat(e.target.value)}/>                  
+                      <Link to="/fornecedores" className="btn" style={{color: 'white', backgroundColor:'orange', margin: '0 280px', marginTop:'-65px', fontSize:'18px', fontFamily:'arial', width:'140px'}}>Voltar:</Link>  
                       <h4 className="h4" ><strong className="strong" style={{color:'red', margin:'0 1200px', fontSize:'25px'}}>Fornecedores:</strong></h4>                         
                       <br />
                     <div className="mt-3">
@@ -286,8 +286,7 @@ const logout = () => {
                   </div><br />
                                                  
                  
-                </div> 
-          
+                </div>          
        </div> 
                  
     </div>

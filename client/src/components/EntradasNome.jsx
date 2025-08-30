@@ -69,68 +69,93 @@ const EntradasNome = () => {
 
   function somar() {
 
-    if(buscanome === '' || buscanome === null){
+    if (buscanome === '' || buscanome === null) {
       toast.warning('Campo busca por nome vazio ! ...')
       document.getElementById('consulta').style.borderColor = 'Red';
     } else {
-      
-    const tabela = document.getElementById("table")
-    const linhas = tabela.getElementsByTagName("tr")
 
-    let somaTotal = 0;
+      const tabela = document.getElementById("table")
+      const linhas = tabela.getElementsByTagName("tr")
 
-    if(mes !== ''){
+      let somaTotal = 0;
 
-      for (let i = 0; i < linhas.length; i++) {
+      if (mes !== '') {
 
-            const celulas1 = linhas[i].getElementsByTagName("td");
+        for (let i = 0; i < linhas.length; i++) {
 
-            for (let k = 15; k < celulas1.length; k++) {
+          const celulas1 = linhas[i].getElementsByTagName("td");
 
-              const valorMes = celulas1[k].innerHTML;
+          for (let k = 15; k < celulas1.length; k++) {
 
-              if (valorMes.toLowerCase() === mes.toLowerCase()) {
+            const valorMes = celulas1[k].innerHTML;
 
-                const celulas = linhas[i].getElementsByTagName("td");
+            if (valorMes.toLowerCase() === mes.toLowerCase()) {
 
-                for (let j = 12; j < celulas.length; j++) {
+              const celulas = linhas[i].getElementsByTagName("td");
 
-                      const valorCelula = celulas[j].innerHTML;
-                      // Converte o valor para número, tratando erros com try/catch
-                      try {
-                        const numero = Number(valorCelula);
+              for (let j = 12; j < celulas.length; j++) {
 
-                        if (!isNaN(numero)) { // Verifica se é um número válido
-                          somaTotal += numero;
-                        } else {
-                          console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
-                        }
-                         } catch (error) {
-                        console.error("Erro ao converter valor para número:", error);
-                        }
-                    }                  
+                const valorCelula = celulas[j].innerHTML;
+                // Converte o valor para número, tratando erros com try/catch
+                try {
+                  const numero = Number(valorCelula);
 
+                  if (!isNaN(numero)) { // Verifica se é um número válido
+                    somaTotal += numero;
+                  } else {
+                    console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
+                  }
+                } catch (error) {
+                  console.error("Erro ao converter valor para número:", error);
                 }
+              }
+
             }
+          }
 
         }
-         document.getElementById("total").innerText = "R$" + (somaTotal).toFixed(2);
+        document.getElementById("total").innerText = "R$" + (somaTotal).toFixed(2);
 
-    }else{
-      toast.warning(' Informe o mes ! ')
-      document.getElementById('mes').style.borderColor = 'red';
+      } else {
+
+        for (let i = 0; i < linhas.length; i++) {
+
+          const celulas = linhas[i].getElementsByTagName("td");
+
+          for (let j = 12; j < celulas.length; j++) {
+
+            const valorCelula = celulas[j].innerHTML;
+            // Converte o valor para número, tratando erros com try/catch
+            try {
+              const numero = Number(valorCelula);
+
+              if (!isNaN(numero)) { // Verifica se é um número válido
+                somaTotal += numero;
+              } else {
+                console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
+              }
+            } catch (error) {
+              console.error("Erro ao converter valor para número:", error);
+            }
+          }
+
+        }
+
+        document.getElementById("total").innerText = "R$" + (somaTotal).toFixed(2);
+
+
+      }
+
     }
+  }
 
- }
-}
+  function MudaCorMes() {
+    document.getElementById('mes').style.borderColor = 'GainsBoro';
+  }
 
-function MudaCorMes(){
-  document.getElementById('mes').style.borderColor = 'GainsBoro';
-}
-
-function MudaCorBusca(){
-  document.getElementById('consulta').style.borderColor = 'GainsBoro';
-}
+  function MudaCorBusca() {
+    document.getElementById('consulta').style.borderColor = 'GainsBoro';
+  }
 
 
   const logout = () => {
@@ -216,16 +241,16 @@ function MudaCorBusca(){
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                      Produtos e Serviços:
+                    Produtos e Serviços:
                   </span>
                 </Link>
               </li>
-               <li className="w-100">
+              <li className="w-100">
                 <Link
                   to="/transportes"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i class="bi bi-truck-flatbed" style={{margin:'0 8px'}}></i>
+                  <i class="bi bi-truck-flatbed" style={{ margin: '0 8px' }}></i>
                   <span className="ms-2 d-none d-sm-inline">
                     Transportes:
                   </span>
@@ -294,14 +319,14 @@ function MudaCorBusca(){
           <div className="px-5 mt-5">
             <div className="mb3">
               <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold' }}>Busca por nome:</label>
-              <label htmlFor="Mes" className="mes" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', margin:'0 250px' }}>Mes:</label><br />
-              <input type="search" id="consulta" onKeyUp={MudaCorBusca} autoFocus='true' className="form-control rounded-0" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy', padding:'2px', width:'400px'}} />                            
-              <input type="text" className='form-control rounded-0' id="mes" onKeyUp={MudaCorMes} value={mes} onChange={(e) => setMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy', width: '150px', padding:'2px', margin:'0 430px', marginTop:'-38px'}} /> <br /><br />
+              <label htmlFor="Mes" className="mes" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', margin: '0 250px' }}>Mes:</label><br />
+              <input type="search" id="consulta" onKeyUp={MudaCorBusca} autoFocus='true' className="form-control rounded-0" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy', padding: '2px', width: '400px' }} />
+              <input type="text" className='form-control rounded-0' id="mes" onKeyUp={MudaCorMes} value={mes} onChange={(e) => setMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy', width: '150px', padding: '2px', margin: '0 430px', marginTop: '-38px' }} /> <br /><br />
               <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 20px' }}>Voltar:</Link>
               <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '18px' }}>Total Entradas:</Link>
               <strong style={{ fontSize: '30px' }}>Total:</strong>
               <strong><span id="total" style={{ color: 'green', fontSize: '32px', margin: '0 10px' }}></span></strong><br />
-                           
+
             </div><br />
             <h4 style={{ textAlign: 'center', color: 'Red', fontSize: '25px', marginRight: '-225px' }}><strong>Entradas:</strong></h4>
             <br />

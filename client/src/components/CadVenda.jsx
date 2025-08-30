@@ -184,7 +184,7 @@ const CadVenda = () => {
       document.getElementById('totaldesc').value = novototal;
       document.getElementById('valordesc').value = desconto;
       document.getElementById('desconto').value = (desc * 100) + '%';
-      document.getElementById('valorpago').value = novototal;
+      document.getElementById('valorpago').value = 0;
 
     }
 
@@ -276,7 +276,9 @@ const CadVenda = () => {
             });
             
           } else
-            if (valorpagto === totaldesc) {
+            if (valorpagto === totaldesc  || valorpagto == 0) {
+
+              vp = totaldesc;
 
               const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, valorpagto, totaldesc, desconto, valordesc, vp }
 

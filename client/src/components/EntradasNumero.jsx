@@ -658,7 +658,7 @@ const EntradasNumero = () => {
                             <strong style={{ fontSize: '36px', margin:'0 200px'}}>Total:</strong>
                             <strong><span id="totalvenda" style={{ color: 'LimeGreen', fontSize: '40px', margin: '0 -190px' }}></span></strong>
                             <strong style={{ fontSize: '36px', margin: '0 280px' }}>Total c/ Desconto:</strong>
-                            <strong><span id="totald" style={{ color: 'Crimson', fontSize: '40px', margin: '0 -270px' }}></span></strong>
+                            <strong><span id="totald" style={{ color: 'Crimson', fontSize: '40px', margin: '0 -397px' }}></span></strong>
 
                         </div><br />
                         <div className="bg-white p-4 rounded border" style={{ margin: '0 20px', width: '70%' }}>

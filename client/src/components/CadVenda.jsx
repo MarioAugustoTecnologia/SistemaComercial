@@ -317,6 +317,7 @@ const CadVenda = () => {
                       }).catch((err) => {
                         toast.error('Erro ! :' + err.message)
                       })
+                           navigate('/produtos/codigo')
                     }).catch((err) => {
                       toast.error('Erro ! :' + err.message)
                     })

@@ -80,6 +80,7 @@ const EntradasMes = () => {
 
     if (buscames === "" || buscames === null) {
       toast.warning('Campo busca por mês vazio !')
+      document.getElementById('buscames').style.borderColor = 'red';
 
     } else {
 
@@ -168,6 +169,15 @@ const EntradasMes = () => {
         })
       
     }  
+
+    function CorBuscaMes() {
+
+      document.getElementById('buscames').style.bordercolor = 'GainsBoro'
+      
+    }
+
+
+  
 
   const logout = () => {
     localStorage.clear()
@@ -341,7 +351,7 @@ const EntradasMes = () => {
               <div className="mb3">
               <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold'}}>Busca por mes:</label>
               <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px', margin: '0 500px', fontWeight:'bold' }}>Mes atual:</label><br />
-              <input type="search" autoFocus='true' className="form-control rounded-0" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold', color:'navy', width:'200px', padding:'2px' }} /> <br />
+              <input type="search" id="buscames" onKeyUp={CorBuscaMes} autoFocus='true' className="form-control rounded-0" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold', color:'navy', width:'200px', padding:'2px' }} /> <br />
               <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 250px', marginTop:'-115px' }}>Voltar:</Link>
               <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 -220px', fontSize: '18px', marginTop:'-110px'}}>Total Entradas:</Link>
               <select value={mes} onChange={e => setMes(e.target.value)} style={{ fontSize: '20px', width: 160, margin:'0 650px', marginTop:'-90px', fontWeight:'bold', color:'navy' }} name='mes' id='mes' className='form-select'>

@@ -276,7 +276,7 @@ const CadVenda = () => {
             });
             
           } else
-            if (valorpagto === totaldesc  || valorpagto == 0) {
+            if (valorpagto == 0) {
 
               vp = totaldesc;
 
@@ -317,7 +317,7 @@ const CadVenda = () => {
                       }).catch((err) => {
                         toast.error('Erro ! :' + err.message)
                       })
-                           navigate('/produtos/codigo')
+                        navigate('/produtos/codigo')
                     }).catch((err) => {
                       toast.error('Erro ! :' + err.message)
                     })
@@ -329,6 +329,58 @@ const CadVenda = () => {
 
               }
 
+            } else if(valorpagto === totaldesc){
+  
+              vp = totaldesc;
+
+              const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, valorpagto, totaldesc, desconto, valordesc, vp }
+
+              if (isValidate()) {
+
+                Swal.fire({
+                  title: "Deseja salvar ?",
+                  showDenyButton: true,
+                  showCancelButton: true,
+                  confirmButtonText: "Salvar",
+                  denyButtonText: `Não salvar`
+                }).then((result) => {
+
+                  if (result.isConfirmed) {
+
+                    fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                      method: "POST",
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(cadobj)
+                    }).then((res) => {
+                      toast.success('Cadastrado com Sucesso !')
+
+                      function Subtract() {
+                        return estoque - quant;
+                      }
+                      const qtd = Subtract();
+                      const edtobj = { id, qtd }
+
+                      fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
+                        method: "PATCH",
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(edtobj)
+                      }).then((res) => {
+                        console.log(qtd);
+
+                      }).catch((err) => {
+                        toast.error('Erro ! :' + err.message)
+                      })                      
+                         
+                    }).catch((err) => {
+                      toast.error('Erro ! :' + err.message)
+                    })
+
+                  } else if (result.isDenied) {
+                    Swal.fire("Nada salvo", "", "info");
+                  }
+                });
+
+              }      
             }
 
         } else

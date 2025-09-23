@@ -40,7 +40,7 @@ const Entradas = () => {
       if (result.isConfirmed) {
 
 
-        fetch("https://sistemacomercial-fv5g.onrender.com/vendas" + id, {
+        fetch("https://sistemacomercial-fv5g.onrender.com/vendas/" + id, {
 
           method: "DELETE"
 
@@ -60,7 +60,7 @@ const Entradas = () => {
 
   }
 
-  const deleteall = () => {
+  const deleteall = (id) => {
 
     Swal.fire({
       title: "Deseja Excluir ?",
@@ -72,7 +72,7 @@ const Entradas = () => {
 
       if (result.isConfirmed) {
 
-        fetch('https://sistemacomercial-fv5g.onrender.com/vendas', {
+        fetch('https://sistemacomercial-fv5g.onrender.com/vendas/' + id, {
           method: 'DELETE'
         })
           .then(response => {

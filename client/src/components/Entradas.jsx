@@ -60,7 +60,7 @@ const Entradas = () => {
 
   }
 
-  const deleteall = (id) => {
+  const deleteall = () => {
 
     Swal.fire({
       title: "Deseja Excluir ?",
@@ -72,7 +72,7 @@ const Entradas = () => {
 
       if (result.isConfirmed) {
 
-        fetch('https://sistemacomercial-fv5g.onrender.com/vendas/' + id, {
+        fetch('https://sistemacomercial-fv5g.onrender.com/resource/vendas', {
           method: 'DELETE'
         })
           .then(response => {

@@ -24,7 +24,7 @@ const Entradas = () => {
       console.log(err.message)
     })
 
-  }, [])   
+  }, [])
 
 
   const handleDelete = (id) => {
@@ -62,8 +62,36 @@ const Entradas = () => {
 
   const deleteall = () => {
 
-    vendasdata.length = 0; // Esvazia o array
-    console.log(vendasdata); // Saída: []
+    Swal.fire({
+      title: "Deseja Excluir ?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Excluir",
+      denyButtonText: `Não Excluir`
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+
+        fetch('https://sistemacomercial-fv5g.onrender.com/vendas', {
+          method: 'DELETE'
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Erro ao excluir os dados');
+            }
+            return response.json(); // Ou response.text() se o servidor não retornar JSON
+          })
+          .then(data => {
+            console.log('Array esvaziado com sucesso!', data);
+          })
+          .catch(error => {
+            console.error('Falha na requisição:', error);
+          });
+
+      } else if (result.isDenied) {
+        Swal.fire("Nada excluido", "", "info");
+      }
+    });
 
   }
 
@@ -138,16 +166,16 @@ const Entradas = () => {
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                     Produtos e Serviços:
+                    Produtos e Serviços:
                   </span>
                 </Link>
               </li>
-               <li className="w-100">
+              <li className="w-100">
                 <Link
                   to="/transportes"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i class="bi bi-truck-flatbed" style={{margin:'0 8px'}}></i>
+                  <i class="bi bi-truck-flatbed" style={{ margin: '0 8px' }}></i>
                   <span className="ms-2 d-none d-sm-inline">
                     Transportes:
                   </span>
@@ -209,7 +237,7 @@ const Entradas = () => {
             </ul>
           </div>
         </div>
-        <div className="col p-0 m-0" style={{ fontFamily: 'arial'}}>
+        <div className="col p-0 m-0" style={{ fontFamily: 'arial' }}>
           <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: '160%' }}>
             <h4><strong style={{ fontFamily: 'arial', margin: '0 600px ' }}>Sistema de Gestão Comercial:</strong></h4>
           </div>
@@ -224,7 +252,7 @@ const Entradas = () => {
               <Link to="/entradas/totfrete" className="btn" style={{ color: 'white', backgroundColor: 'DarkCyan', margin: '0 22px', fontSize: '18px', fontFamily: 'arial' }}>Totalizar Frete:</Link>
               <Link to="/entradas/ultima" className="btn" style={{ color: 'white', backgroundColor: 'Crimson', margin: '0 5px', fontSize: '18px', fontFamily: 'arial' }}>Venda Atual:</Link>
               <Link className="btn" style={{ color: 'white', backgroundColor: 'red', margin: '0 15px', fontSize: '18px', fontFamily: 'arial' }} onClick={deleteall}>Excluir Todos:</Link>
-              
+
             </div><br /><br />
             <div>
               <h4 className="h4"><strong className="strong" style={{ color: 'red', fontSize: '25px', textAlign: 'center', margin: '0 980px' }}>Entradas:</strong></h4>
@@ -275,7 +303,7 @@ const Entradas = () => {
                           <td className="td">{item.frete}</td>
                           <td className="td">{item.data_cad}</td>
                           <td className="td" >
-                          <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                            <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
                           </td>
                         </tr>
                       ))

@@ -60,40 +60,10 @@ const Entradas = () => {
 
   }
 
-  const deleteall = (id) => {
+  const deleteall = () => {
 
-    Swal.fire({
-      title: "Deseja Excluir ?",
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: "Excluir",
-      denyButtonText: `Não Excluir`
-    }).then((result) => {
-
-      if (result.isConfirmed) {
-
-
-        for (id = 0; id <= vendasdata.length; id++) {
-
-          fetch("https://sistemacomercial-fv5g.onrender.com/vendas" + id, {
-
-            method: "DELETE"
-
-          }).then((res) => {
-
-            window.location.reload();
-            //toast.success('Excluido com sucesso !')    
-
-          }).catch((err) => {
-            toast.error('Erro ! :' + err.message)
-          })
-
-        }
-
-      } else if (result.isDenied) {
-        Swal.fire("Nada excluido", "", "info");
-      }
-    });
+    vendasdata.length = 0; // Esvazia o array
+    console.log(vendasdata); // Saída: []
 
   }
 

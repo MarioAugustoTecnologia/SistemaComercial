@@ -13,91 +13,96 @@ const Produtos = () => {
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    fetch("https://sistemacomercial-fv5g.onrender.com/produtos").then((res) => {
-
-      return res.json()
-
-    }).then((resp) => {
-
-      setProdutodata(resp)
-
-    }).catch((err) => {
-      console.log(err.message)
-    })
-  }, [])
-
-  const LoadEdit = (id) => {
+ const API_URL = 'https://sistemacomercial-fv5g.onrender.com/produtos';
+ 
+   useEffect(() => {
+ 
+     fetch(API_URL)
+       .then(response => response.json())
+       .then(data => setProdutodata(data))
+       .catch(error => console.error('Erro ao buscar os dados:', error));
+ 
+   }, []) 
+   
+const LoadEdit = (id) => {
     navigate("/produtos/editar/" + id);
   }
 
 
   //const element = array[index];
-  const handleDelete = (id) => {
-
-    Swal.fire({
-      title: "Deseja Excluir ?",
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: "Excluir",
-      denyButtonText: `Não Excluir`
-    }).then((result) => {
-
+   const handleDelete = async (id) => {
+  
+      const result = await Swal.fire({
+        title: "Deseja Excluir ?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Excluir",
+        denyButtonText: `Não Excluir`
+      })
+  
       if (result.isConfirmed) {
-
-        fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + id, {
-
+  
+        fetch('https://sistemacomercial-fv5g.onrender.com/produtos/' + id, {
+  
           method: "DELETE"
-
+  
         }).then((res) => {
-
+  
           window.location.reload();
-          //toast.success('Excluido com sucesso !')    
-
+          //toast.success('Excluido com sucesso !')      
+  
         }).catch((err) => {
           toast.error('Erro ! :' + err.message)
         })
-
+  
       } else if (result.isDenied) {
         Swal.fire("Nada excluido", "", "info");
       }
-    });
-  }
+  
+  
+    }
 
-  const deleteall = (id) => {
-
-    Swal.fire({
-      title: "Deseja Excluir ?",
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: "Excluir",
-      denyButtonText: `Não Excluir`
-    }).then((result) => {
-
-      if (result.isConfirmed) {
-
-        for (id = 0; id <= produtodata.length; id++) {
-
-          fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + id, {
-
-            method: "DELETE"
-
-          }).then((res) => {
-
-            window.location.reload();
-            //toast.success('Excluido com sucesso !')    
-
-          }).catch((err) => {
-            toast.error('Erro ! :' + err.message)
-          })
-
-        }
-      } else if (result.isDenied) {
-        Swal.fire("Nada excluido", "", "info");
-      }
-    });   
-
-  }
+ const deleteall = async () => {
+ 
+     const result = await Swal.fire({
+       title: "Deseja Excluir ?",
+       showDenyButton: true,
+       showCancelButton: true,
+       confirmButtonText: "Excluir",
+       denyButtonText: `Não Excluir`
+     })
+ 
+     if (result.isConfirmed) {
+ 
+       try {
+         // Mapeia o array de vendas para um array de promessas de exclusão
+         const deletePromises = produtodata.map(item =>
+           fetch(`${API_URL}/${item.id}`, {
+             method: 'DELETE',
+           })
+         );
+ 
+         // Espera que todas as promessas de exclusão sejam resolvidas
+         await Promise.all(deletePromises);
+ 
+         // Limpa a lista no estado do React
+         setProdutodata([]);
+         //console.log('Todos os dados foram excluídos com sucesso!');
+         toast.success('Excluido com sucesso !')  
+ 
+       } catch (error) {
+ 
+         console.error('Erro ao excluir todos os dados:', error);
+       }
+ 
+ 
+ 
+     } else if (result.isDenied) {
+       Swal.fire("Nada excluido", "", "info");
+     }
+ 
+ 
+   };
 
   const logout = () => {
     localStorage.clear()

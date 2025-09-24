@@ -22,38 +22,40 @@ const Entradas = () => {
   }, [])
 
 
-  const handleDelete = (id) => {
+const handleDelete = async (id) => {
 
-  Swal.fire({
+    const result = await Swal.fire({
       title: "Deseja Excluir ?",
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: "Excluir",
       denyButtonText: `Não Excluir`
-    }).then((result) => {
-      
-      if (result.isConfirmed) {
+    })
 
-         fetch('https://sistemacomercial-fv5g.onrender.com/vendas/' + id, {
+    if (result.isConfirmed) {
 
-          method: "DELETE"
+      fetch('https://sistemacomercial-fv5g.onrender.com/vendas' + id, {
 
-        }).then((res) => {
+        method: "DELETE"
 
-          window.location.reload();
-          //toast.success('Excluido com sucesso !')      
+      }).then((res) => {
 
-        }).catch((err) => {
-          toast.error('Erro ! :' + err.message)
-        })
+        window.location.reload();
+        //toast.success('Excluido com sucesso !')      
 
-      } else if (result.isDenied) {
-        Swal.fire("Nada excluido", "", "info");
-      }
-    });
+      }).catch((err) => {
+        toast.error('Erro ! :' + err.message)
+      })
+
+    } else if (result.isDenied) {
+      Swal.fire("Nada excluido", "", "info");
+    }
+
 
   }
 
+
+  
 const deleteall = async () => {
 
     try {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
 import { Link, Outlet } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -10,37 +10,31 @@ const Entradas = () => {
 
   const [vendasdata, setVendasdata] = useState([])
 
+  const API_URL = 'https://sistemacomercial-fv5g.onrender.com/vendas';
+
   useEffect(() => {
 
-    fetch("https://sistemacomercial-fv5g.onrender.com/vendas").then((res) => {
-
-      return res.json()
-
-    }).then((resp) => {
-
-      setVendasdata(resp)
-
-    }).catch((err) => {
-      console.log(err.message)
-    })
+    fetch(API_URL)
+      .then(response => response.json())
+      .then(data => setVendasdata(data))
+      .catch(error => console.error('Erro ao buscar os dados:', error)); 
 
   }, [])
 
 
   const handleDelete = (id) => {
 
-    Swal.fire({
+  Swal.fire({
       title: "Deseja Excluir ?",
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: "Excluir",
       denyButtonText: `Não Excluir`
     }).then((result) => {
-
+      
       if (result.isConfirmed) {
 
-
-        fetch("https://sistemacomercial-fv5g.onrender.com/vendas/" + id, {
+         fetch('https://sistemacomercial-fv5g.onrender.com/vendas/' + id, {
 
           method: "DELETE"
 
@@ -60,40 +54,31 @@ const Entradas = () => {
 
   }
 
-  const deleteall = () => {
+const deleteall = async () => {
 
-    Swal.fire({
-      title: "Deseja Excluir ?",
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: "Excluir",
-      denyButtonText: `Não Excluir`
-    }).then((result) => {
-
-      if (result.isConfirmed) {
-
-        fetch('https://sistemacomercial-fv5g.onrender.com/resource/vendas', {
-          method: 'DELETE'
+    try {
+      // Mapeia o array de vendas para um array de promessas de exclusão
+      const deletePromises = vendasdata.map(item =>
+        fetch(`${API_URL}/${item.id}`, {
+          method: 'DELETE',
         })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Erro ao excluir os dados');
-            }
-            return response.json(); // Ou response.text() se o servidor não retornar JSON
-          })
-          .then(data => {
-            console.log('Array esvaziado com sucesso!', data);
-          })
-          .catch(error => {
-            console.error('Falha na requisição:', error);
-          });
+      );
+      
+      // Espera que todas as promessas de exclusão sejam resolvidas
+      await Promise.all(deletePromises);
 
-      } else if (result.isDenied) {
-        Swal.fire("Nada excluido", "", "info");
-      }
-    });
+      // Limpa a lista no estado do React
+      setVendasdata([]);
 
-  }
+      console.log('Todos os dados foram excluídos com sucesso!');
+
+    } catch (error) {
+
+      console.error('Erro ao excluir todos os dados:', error);
+    }
+  };
+
+
 
   const logout = () => {
     localStorage.clear()

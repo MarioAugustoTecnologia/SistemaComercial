@@ -57,28 +57,44 @@ const handleDelete = async (id) => {
 
   
 const deleteall = async () => {
-
-    try {
-      // Mapeia o array de vendas para um array de promessas de exclusão
-      const deletePromises = vendasdata.map(item =>
-        fetch(`${API_URL}/${item.id}`, {
-          method: 'DELETE',
-        })
-      );
       
-      // Espera que todas as promessas de exclusão sejam resolvidas
-      await Promise.all(deletePromises);
-
-      // Limpa a lista no estado do React
-      setVendasdata([]);
-
-      console.log('Todos os dados foram excluídos com sucesso!');
-
-    } catch (error) {
-
-      console.error('Erro ao excluir todos os dados:', error);
-    }
-  };
+          const result = await Swal.fire({
+            title: "Deseja Excluir ?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Excluir",
+            denyButtonText: `Não Excluir`
+          })
+      
+          if (result.isConfirmed) {
+      
+            try {
+              // Mapeia o array de vendas para um array de promessas de exclusão
+              const deletePromises = vendasdata.map(item =>
+                fetch(`${API_URL}/${item.id}`, {
+                  method: 'DELETE',
+                })
+              );
+      
+              // Espera que todas as promessas de exclusão sejam resolvidas
+              await Promise.all(deletePromises);
+      
+              // Limpa a lista no estado do React
+              setVendasdata([]);
+              //console.log('Todos os dados foram excluídos com sucesso!');
+              toast.success('Excluido com sucesso !')  
+      
+            } catch (error) {
+      
+              console.error('Erro ao excluir todos os dados:', error);
+            }    
+            
+          } else if (result.isDenied) {
+            Swal.fire("Nada excluido", "", "info");
+          }
+      
+      
+ };
 
 
 

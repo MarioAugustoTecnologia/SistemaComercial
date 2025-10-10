@@ -110,6 +110,42 @@ const LoadEdit = (id) => {
 
   }
 
+  function nivelestoque() {
+  
+    const tabela = document.getElementById("table")
+    const linhas = tabela.getElementsByTagName("tr")
+        
+         for (let i = 0; i < linhas.length; i++) {           
+
+          const celulas = linhas[i].getElementsByTagName("td");
+
+           for (let j = 6; j < celulas.length; j++) {
+
+            const qtd = parseInt(celulas[j].innerHTML);
+
+            if (qtd <= 20) {
+               celulas[j].style.fontWeight = 'bold';
+               //celulas[j].style.backgroundColor = 'salmon'; 
+               celulas[j].style.color = 'red';                 
+                                       
+            
+            }                   
+        
+        } 
+        
+        for (let j = 7; j < celulas.length; j++) {
+           //celulas[j].style.backgroundColor = 'white';
+           celulas[j].style.fontWeight = 'normal';
+           celulas[j].style.color = 'black';   
+        
+        }       
+
+     }
+  }
+
+
+
+
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">
@@ -260,6 +296,7 @@ const LoadEdit = (id) => {
                 <Link to="/produtos/codigo" className="btn" style={{ color: 'white', backgroundColor: 'DodgerBlue', margin: '0 20px', fontSize: '18px', fontFamily: 'arial' }}>Consulta por codigo:</Link>
                 <Link to="/produto/cadcat" className="btn" style={{ color: 'white', backgroundColor: 'Green', margin: '0 5px', fontSize: '18px', fontFamily: 'arial' }}>Cadastrar Categoria:</Link>
                 <Link to="/produtos/categoria/lista" className="btn" style={{ color: 'white', backgroundColor: 'SlateBlue', margin: '0 20px', fontSize: '18px', fontFamily: 'arial' }}>Categorias:</Link>
+                <Link className="btn" style={{ color: 'white', backgroundColor: 'OrangeRed', margin: '0 5px', fontSize: '18px', fontFamily: 'arial' }} onClick={nivelestoque}>Estoque Nivel:</Link>
                 <Link className="btn" style={{ color: 'white', backgroundColor: 'red', margin: '0 20px', fontSize: '18px', fontFamily: 'arial' }} onClick={deleteall}>Excluir Tudo:</Link>
 
               </div><br /><br /><br />

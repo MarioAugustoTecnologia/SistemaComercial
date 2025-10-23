@@ -9,8 +9,8 @@ import Swal from 'sweetalert2';
 const CadOrcVenda = () => {
 
 
-  const { pcod } = useParams();
-  const navigate = useNavigate();
+     const { pcod } = useParams();
+     const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -242,10 +242,8 @@ const CadOrcVenda = () => {
       }
      
     };
-  }      
-    
-
-
+  }     
+   
   function mudacorquant() {
 
     document.getElementById('quant').style.borderColor = 'Gainsboro';
@@ -439,7 +437,7 @@ const CadOrcVenda = () => {
                   <input type="decimal" style={{ fontSize: '20px', width: 150, margin: '0 415px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='valordesc' id='valordesc' />
                 </div>
                 <div className='mb-3'>
-                <label htmlFor='totaldesc' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Total c/Desconto e Frete:</label>
+                <label htmlFor='totaldesc' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Total c/Desconto:</label>
                 <input type='decimal' style={{ fontSize: '20px', width: 150, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='totaldesc' id='totaldesc' /> 
                 </div><br /><br />     
                  

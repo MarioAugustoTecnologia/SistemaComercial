@@ -125,7 +125,7 @@ const LoadEdit = (id) => {
 
             if (qtd <= 20) {
                celulas[j].style.fontWeight = 'bold';
-               //celulas[j].style.backgroundColor = 'salmon'; 
+               celulas[j].style.backgroundColor = 'salmon'; 
                celulas[j].style.color = 'red';                 
                                        
             
@@ -134,7 +134,7 @@ const LoadEdit = (id) => {
         } 
         
         for (let j = 7; j < celulas.length; j++) {
-           //celulas[j].style.backgroundColor = 'white';
+           celulas[j].style.backgroundColor = 'white';
            celulas[j].style.fontWeight = 'normal';
            celulas[j].style.color = 'black';   
         

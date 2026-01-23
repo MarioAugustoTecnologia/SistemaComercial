@@ -10,7 +10,9 @@ server.use(router);
 
 server.use(cors({origin: ["https://sistemacomercial-5t1i.onrender.com/"], 
     methods: ["GET","POST", "PUT", "PATCH", "DELETE"],
-    credentials: true 
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+ 
     }));
 
 server.listen(port);

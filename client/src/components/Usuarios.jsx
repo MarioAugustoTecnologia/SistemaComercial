@@ -218,7 +218,7 @@ const Usuarios = () => {
                       <h4><strong style={{color:'red', margin:'0 670px', fontSize:'25px'}}>Usuarios:</strong></h4>                         
                      <br />
                     <div className="mt-3">
-                          <table className="table" style={{margin:'0 -30px', fontFamily:'arial', fontSize:'20px'}} id="table">
+                          <table className="table" style={{margin:'0 -30px', fontFamily:'arial', fontSize:'20px', overflowX:'auto', display:'block', minWidth:'600px'}} id="table">
                               <thead>
                                   <tr>
                                   <th className="th" scope="col">Id:</th>

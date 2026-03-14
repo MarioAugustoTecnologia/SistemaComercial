@@ -46,15 +46,7 @@ const Login = () => {
               localStorage.setItem('usuario', usuario) 
               localStorage.setItem('userLoggedIn', 'true')
 
-              if (usuario == 'User'){
-
-                  navigate('/home')  
-
-              }else{
-
-                navigate('/entradas')
-              }
-
+              navigate('/home')
                     
             }
           })   
@@ -120,11 +112,12 @@ function MostraTexto(){
   }
 }
 
+
   
   return (
              
    
-   <div className="">
+    <div className="">
 
             <div className="bg-secondary" style={{ height: 75 }}>
                 
@@ -142,7 +135,7 @@ function MostraTexto(){
                         type="text"
                         id="usuario"
                         name="nome"
-                        className='form-control'
+                        className='form-control rounded-0'
                         value={usuario}
                         onChange={e => setUsuario(e.target.value)}
                         placeholder="Seu nome completo"
@@ -159,7 +152,7 @@ function MostraTexto(){
                         type="password"
                         id="senha"
                         name="senha"
-                        className='form-control'
+                        className='form-control rounded-0'
                         value={senha}
                         onChange={e => setSenha(e.target.value)}
                         onKeyUp={MostraSenha}
@@ -173,7 +166,7 @@ function MostraTexto(){
                     
                 <div className='d-flex'>
                     <button onClick={(e) => LoginForm(e)} type="submit" style={{backgroundColor:'green', color:'white', width:'90px'}}>Login:</button>
-                    <button type='button' style={{backgroundColor:'orange', color:'white', margin:'0 15px', width:'90px'}}>Cadastro:</button>
+                    <a href='/cadusuarios'><button type='button' style={{backgroundColor:'orange', color:'white', margin:'0 15px', width:'90px'}}>Cadastro:</button></a>
   
                 </div>    
                 <ToastContainer />

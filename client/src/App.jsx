@@ -73,7 +73,7 @@ function App() {
     <Routes>   
     <Route path='/' element={<Login />}></Route>
     <Route path='/home' element={<PrivateRoutes><Home /></PrivateRoutes>}></Route>
-    <Route path='/cadusuarios' element={<PrivateRoutes><CadUsuarios /></PrivateRoutes>}></Route>
+    <Route path='/cadusuarios' element={<CadUsuarios />}></Route>
     <Route path='/usuarios' element={<PrivateRoutes><Usuarios /></PrivateRoutes>}></Route>
     <Route path='/usuarios/editar/:usuariocod' element={<PrivateRoutes><EditarUsuario /></PrivateRoutes>}></Route>      
     <Route path='/usuarios/nome' element={<PrivateRoutes><UsuarioNome /></PrivateRoutes>}></Route>

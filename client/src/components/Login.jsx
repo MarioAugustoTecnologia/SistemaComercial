@@ -1,6 +1,6 @@
 import React, {useState} from 'react';//4=> criação do Login...
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { toast,ToastContainer } from 'react-toastify';
+import { useNavigate, Link  } from 'react-router-dom';
 import bcrypt from 'bcryptjs';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -43,8 +43,19 @@ const Login = () => {
             }
             else{  
               toast.success('Logado com sucesso !')            
-              localStorage.setItem('usuario', usuario)          
-              navigate('/home')         
+              localStorage.setItem('usuario', usuario) 
+              localStorage.setItem('userLoggedIn', 'true')
+
+              if (usuario == 'User'){
+
+                  navigate('/home')  
+
+              }else{
+
+                navigate('/entradas')
+              }
+
+                    
             }
           })   
         } 
@@ -109,43 +120,76 @@ function MostraTexto(){
   }
 }
 
-
   
   return (
              
-     <div className='d-flex justify-content-center align-items-center vh-100'>
-       <div className='bg-white p-3 rounded w-25 border'>
-          <div className='text-danger'></div>
-             <h2>Login:</h2><br />
-           <form action=''>
-              <div className='mb3'>                  
-                  <label htmlFor="nome" style={{margin:'0 40px', fontSize:25}}>Usuario:</label>
-                  <input type="text" placeholder='Entre com o nome:'                  
-                  className='form-control rounded-0' style={{width:320, margin:'0 40px', fontSize:20}} 
-                  value={usuario} onChange={e => setUsuario(e.target.value)} id='usuario' onKeyUp={MostraUsuario}
-                />
-              </div>
-              <br/>
-              <div className='mb3'>
-                  <label htmlFor="senha" style={{margin:'0 40px', fontSize:25}}>Senha:</label>
-              </div>  
-              <div className='d-flex'> 
-                  <input type="password" placeholder='Entre com a senha:'
-                  className='form-control rounded-0' style={{width:320, margin:'0 40px', fontSize:20}}
-                  value={senha} onChange={e => setSenha(e.target.value)} id='senha' onKeyUp={MostraSenha} 
+   
+    <div className="">
 
-              />
-              <i class="bi bi-eye-fill" id='mostrasenha' onClick={MostraTexto} style={{fontSize:25}}></i> 
-              </div>
-              <br />
-              <button type='submit' onClick={(e) => LoginForm(e)} className='btn btn-success rounded-0' style={{width:160, margin:'0 130px'}}>Entrar:</button>
-                  
-           </form>
-       </div>
+            <div className="bg-secondary" style={{ height: 75 }}>
+                <Link to="/" className="navbar-brand fs-5 fw-bolder text-white" >Inicio:</Link>
 
-    </div>
+            </div><br /><br />
+       
 
+            <form className="mobile-form" style={{margin:'0 100px'}}>
+                <h5>Login:</h5>
+
+                <div className="form-group">
+                    <label htmlFor="nome">Nome:</label><br />
+
+                    <input
+                        type="text"
+                        id="usuario"
+                        name="nome"
+                        className='form-control'
+                        value={usuario}
+                        onChange={e => setUsuario(e.target.value)}
+                        placeholder="Seu nome completo"
+                        onKeyUp={MostraUsuario}
+                        style={{width:'180px'}}
+              
+                    />
+                </div>             
+
+                <div className="form-group">
+                    <label htmlFor="senha">Senha:</label><br />
+                    <div className='d-flex'>
+                      <input
+                        type="password"
+                        id="senha"
+                        name="senha"
+                        className='form-control'
+                        value={senha}
+                        onChange={e => setSenha(e.target.value)}
+                        onKeyUp={MostraSenha}
+                        style={{width:'180px'}}
+                        
+                    /><i class="bi bi-eye-fill" id='mostrasenha' onClick={MostraTexto} style={{ fontSize: 20, margin:'0 20px'}}></i>
+
+                    </div>
+                    
+                </div><br /><br />
+                    
+                <div className='d-flex'>
+                    <button onClick={(e) => LoginForm(e)} type="submit" style={{backgroundColor:'green', color:'white', width:'90px'}}>Login:</button>
+                    <button type='button' style={{backgroundColor:'orange', color:'white', margin:'0 15px', width:'90px'}}>Cadastro:</button>
+  
+                </div>    
+                <ToastContainer />
+            </form>
+
+
+            <footer className="py-4 bg-secondary d-flex justify-content-center" style={{ marginTop: "500px" }}>
+                <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+
+            </footer>
+
+        </div>
   )
 }
 
 export default Login
+    
+
+  

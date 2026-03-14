@@ -124,12 +124,12 @@ function MostraTexto(){
   return (
              
    
-    <div className="">
+   <div className="">
 
             <div className="bg-secondary" style={{ height: 75 }}>
-                <Link to="/" className="navbar-brand fs-5 fw-bolder text-white" >Inicio:</Link>
+                
 
-            </div><br /><br />
+            </div><br /><br /><br /><br /><br /><br /><br /><br /><br />
        
 
             <form className="mobile-form" style={{margin:'0 100px'}}>

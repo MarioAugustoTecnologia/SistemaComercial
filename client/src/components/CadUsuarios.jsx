@@ -42,14 +42,7 @@ const CadUsuarios = () => {
     if(!isproceed){
       toast.warning(errormessage)
   
-    }else{
-      if(/^[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)){
-
-      }else{
-          isproceed = false;
-          toast.warning('Entre com um email valido !')
-      }
-  }
+    }
     return isproceed
    }
 
@@ -91,7 +84,8 @@ const CadUsuarios = () => {
     const password = senha;
     const hashedPassword = bcrypt.hashSync(password, 10)
     const user = nome;
-    window.localStorage.setItem('Login', JSON.stringify({user, hashedPassword})) 
+    
+    window.localStorage.setItem('Login', JSON.stringify({user, categoria, hashedPassword})) 
    
   
     const cadobj = {nome, hashedPassword, categoria }

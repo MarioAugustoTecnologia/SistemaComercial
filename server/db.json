@@ -1,14 +1,6 @@
 {
   "usuarios": [
-    {
-      "id": "User",
-      "cod": "1",
-      "email": "user@email.com",
-      "hashedPassword": "$2a$10$HhwTMGfI3.fg/U7fD0.FAOsWgLrZlyCUtm8ixSAYZumSrryXqPiFy",
-      "fone": "14 998216619",
-      "datanascimento": "30/07/1982",
-      "categoria": "Administrador"
-    }
+   
   ],
   "vendas": [
     {

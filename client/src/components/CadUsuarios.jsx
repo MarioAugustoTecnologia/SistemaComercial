@@ -64,8 +64,7 @@ const CadUsuarios = () => {
 
    function MostraSenha(){
     document.getElementById('senha').style.borderColor = 'GainsBoro'
-   }
-   
+   }   
   
   
  const cadastrar = (e) => { 

@@ -54,6 +54,23 @@ const CadUsuarios = () => {
    }
 
 
+   function MostraTexto() {
+
+        var inputPass = document.getElementById('senha');
+        var btnshowPass = document.getElementById('mostrasenha')
+
+        if (inputPass.type === 'password') {
+            inputPass.setAttribute('type', 'text')
+            btnshowPass.classList.replace('bi-eye-fill', 'bi-eye-slash')
+
+        }
+        else {
+            inputPass.setAttribute('type', 'password')
+            btnshowPass.classList.replace('bi-eye-slash', 'bi-eye-fill')
+
+        }
+    }
+
   
 
    function MostraNome(){
@@ -180,7 +197,7 @@ const CadUsuarios = () => {
                             onKeyUp={MostraSenha}
                             style={{ width: '150px' }}
 
-                        /><i class="bi bi-eye-fill" id='mostrasenha' onClick={MostraSenha} style={{ fontSize: 20, margin: '0 20px' }}></i>
+                        /><i class="bi bi-eye-fill" id='mostrasenha' onClick={MostraTexto} style={{ fontSize: 20, margin: '0 20px' }}></i>
 
                     </div>
                 </div><br /><br />             

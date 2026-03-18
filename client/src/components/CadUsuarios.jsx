@@ -9,7 +9,7 @@ import bcrypt from 'bcryptjs';
 
 const CadUsuario = () => {
 
-    const [nome, setNome] = useState('')
+    const [id, setId] = useState('')
     const [senha, setSenha] = useState('')
     const [erro, setErro] = useState('');
     const [categoria, categoriachange] = useState("")
@@ -111,10 +111,10 @@ const validarsenha = (valor) => {
 
                     const password = senha;
                     const hashedPassword = bcrypt.hashSync(password, 10)
-                    const user = nome;
+                    const user = id;
                     window.localStorage.setItem('Login', JSON.stringify({ user, categoria, hashedPassword }))
 
-                    const cadobj = { nome, categoria, hashedPassword }
+                    const cadobj = { id, categoria, hashedPassword }
                     //console.log(cadobj) 
                     Swal.fire({
                         title: "Deseja salvar ?",

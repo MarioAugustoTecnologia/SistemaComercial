@@ -1,5 +1,33 @@
 {
   "usuarios": [
+
+     {
+      "id": "User",
+      "cod": "1",
+      "email": "user@email.com",
+      "hashedPassword": "$2a$10$QoUNGUVPMbHHjcWXK85fFe4VgxjcgnyT..YD7vkx8mkSNcVQtcKn2",
+      "fone": "14111111",
+      "datanascimento": "20/02/1982",
+      "categoria": "Administrador"
+    },
+    {
+      "id": "User2",
+      "cod": "2",
+      "email": "usuario02@email.com",
+      "hashedPassword": "$2a$10$If4NVmWC12RrUU60//IkaufpfwXmlRVl621qc.8hq.rGx3RXAS7UK",
+      "fone": "1466552258",
+      "datanascimento": "31/12/1995",
+      "categoria": "Desenvolvedor"
+    },
+    {
+      "id": "User3",
+      "cod": "3",
+      "email": "user6@email.com",
+      "hashedPassword": "$2a$10$Jcy0b5/Vfj5vL9U.l5JDYe.pXGG0n5KSi1rx3fGHhX75K9alY3IeS",
+      "fone": "123456",
+      "datanascimento": "12/12/1992",
+      "categoria": "Desenvolvedor"
+    }
    
   ],
   "vendas": [

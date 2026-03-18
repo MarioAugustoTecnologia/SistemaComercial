@@ -96,6 +96,12 @@ const Entradas = () => {
 
   }
 
+    const logout = () => {
+    localStorage.clear()
+    console.clear();
+
+  }
+
 
 
 

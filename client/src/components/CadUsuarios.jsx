@@ -1,53 +1,21 @@
-import React, { useState } from 'react';//5=> Criação do arquivo de Cadastro de Usuarios:
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
-import bcrypt from 'bcryptjs';
 import 'react-toastify/dist/ReactToastify.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Swal from 'sweetalert2';
+import bcrypt from 'bcryptjs';
 
 
-const CadUsuarios = () => {
+const CadUsuario = () => {
+
+    const [nome, setNome] = useState('')
+    const [senha, setSenha] = useState('')
+    const [erro, setErro] = useState('');
+    const [categoria, categoriachange] = useState("")
 
 
-  const [nome, nomechange] = useState("") //=> Nome de usuario obrigatório campo (id) 
-  const [senha, senhachange] = useState("");
-  const [categoria, categoriachange] = useState("")
-
-  //var data = new Date();
-
-  const isValidate = () => {
-    let isproceed = true
-    let errormessage = "Campos não podem estar vazio  !"
-    if(nome === null || nome === ''){
-      document.getElementById('nome').style.borderColor = 'red';
-      isproceed = false
-      //errormessage += 'Nome:' 
-    }
-   
-    
-    if(senha === null || senha === ''){
-      document.getElementById('senha').style.borderColor = 'red';
-      isproceed = false
-     // errormessage += 'Senha:' 
-    }
- 
-   
-    if(categoria === null || categoria === ''){
-      document.getElementById('categoria').style.borderColor = 'red';
-      isproceed = false
-     // errormessage += 'Categoria:' 
-    }
-
-    if(!isproceed){
-      toast.warning(errormessage)
-  
-    }
-    return isproceed
-   }
-
-
-   function MostraTexto() {
+    function MostraTexto() {
 
         var inputPass = document.getElementById('senha');
         var btnshowPass = document.getElementById('mostrasenha')
@@ -64,76 +32,140 @@ const CadUsuarios = () => {
         }
     }
 
-  
+    const isValidate = () => {
+        let isproceed = true
+        let errormessage = "Campos não podem estar vazio  !"
 
-   function MostraNome(){
-    document.getElementById('id').style.borderColor = 'GainsBoro'
-   }
-
-   
-
-   function MostraSenha(){
-    document.getElementById('senha').style.borderColor = 'GainsBoro'
-   }   
-  
-  
- const cadastrar = (e) => { 
-
-    e.preventDefault();    
-    
-    const password = senha;
-    const hashedPassword = bcrypt.hashSync(password, 10)
-    const user = nome;
-    
-    window.localStorage.setItem('Login', JSON.stringify({user, categoria, hashedPassword})) 
-   
-  
-    const cadobj = {nome, hashedPassword, categoria }
-    //console.log(cadobj)  
-    
-    if(isValidate()){
-
-      Swal.fire({
-        title: "Deseja salvar ?",
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: "Salvar",
-        denyButtonText: `Não salvar`
-      }).then((result) => {
-                
-        if (result.isConfirmed) {
-          
-          fetch("https://sistemacomercial-fv5g.onrender.com/usuarios", {
-            method: "POST",
-            headers: {'content-type':'application/json'},
-            body: JSON.stringify(cadobj)
-          }).then((res) => {        
-             toast.success('Cadastrado com sucesso !')
-             nomechange('');             
-             senhachange('');      
-             
-             categoriachange('');           
-           
-          }).catch((err) => {
-            toast.error('Erro ! :' +err.message)
-          }) 
-          //Swal.fire("Salvo!", "", "success");
-        } else if (result.isDenied) {
-          Swal.fire("Nada salvo", "", "info");
+        if (senha === null || senha === '') {
+            document.getElementById('senha').style.borderColor = 'red';
+            isproceed = false
+            // errormessage += 'Senha:' 
         }
-      });     
+        if (id === null || id === '') {
+            document.getElementById('id').style.borderColor = 'red';
+            isproceed = false
+            // errormessage += 'Senha:' 
+        }
+        if (categoria === null || categoria === '') {
+            document.getElementById('categoria').style.borderColor = 'red';
+            isproceed = false
+            // errormessage += 'Senha:' 
+        }
+
+        if (!isproceed) {
+            toast.warning(errormessage)
+
+        }
+        return isproceed
+    }
+
+
+
+    function MostraSenha() {
+
+        document.getElementById('senha').style.borderColor = 'GainsBoro';
+        setErro('');
+
+    }
+
+    function MostraUsuario() {
+
+        document.getElementById('id').style.borderColor = 'GainsBoro';
+        setErro('');
+
+    }
+    
+    function MostraCat() {
+
+        document.getElementById('categoria').style.borderColor = 'GainsBoro';
        
-  }
-} 
+
+    }
+
+   
+const validarsenha = (valor) => {
+
+        const senhavalida = /^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{8,10}$/
 
 
-     
-  return (  
+        if (!senhavalida.test(valor)) {
+            // Verifica se a string tem pelo menos um espaço no meio
+            return 'Senha deve conter: letras maiuscula e minuscula, numeros, caracter especial e de 8 a 10 digitos !';
+        }
 
-<div className="">
+    }
+
+    const cadastrar = (e) => {
+
+        e.preventDefault();
+
+        if (isValidate()) {
+
+      
+            const errosenha = validarsenha(senha);       
+
+                if (errosenha) {
+                    setErro(errosenha);
+                    console.log('Erro de validação:', errosenha);
+                } else {
+
+                    const password = senha;
+                    const hashedPassword = bcrypt.hashSync(password, 10)
+                    const user = nome;
+                    window.localStorage.setItem('Login', JSON.stringify({ user, categoria, hashedPassword }))
+
+                    const cadobj = { nome, categoria, hashedPassword }
+                    //console.log(cadobj) 
+                    Swal.fire({
+                        title: "Deseja salvar ?",
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: "Salvar",
+                        denyButtonText: `Não salvar`
+                    }).then((result) => {
+
+                        if (result.isConfirmed) {
+
+                            fetch("http://localhost:3000/usuarios", {
+                                method: "POST",
+                                headers: { 'content-type': 'application/json' },
+                                body: JSON.stringify(cadobj)
+
+                            }).then((res) => {
+                                toast.success('Cadastrado com sucesso !')
+                                setId('');
+                                setSenha('');
+
+
+                            }).catch((err) => {
+                                toast.error('Erro ! :' + err.message)
+                            })
+                            //Swal.fire("Salvo!", "", "success");
+                        } else if (result.isDenied) {
+                            Swal.fire("Nada salvo", "", "info");
+                        }
+                    });
+
+                }
+            
+        }
+    }
+
+    const navigate = useNavigate()
+
+    function Login(){
+      
+        navigate('/')
+
+    }
+
+    return (
+
+      
+        <div className="">
 
             <div className="bg-secondary" style={{ height: 75 }}>
-                <Link to="/" className="navbar-brand fs-5 fw-bolder text-white" >Login:</Link>
+                <Link to="/" className="navbar-brand fs-5 fw-bolder text-white" >Inicio:</Link>
 
             </div><br /><br />
 
@@ -146,13 +178,14 @@ const CadUsuarios = () => {
 
                     <input
                         type="text"
-                        id="nome"
+                        id="id"
                         name="nome"
-                        className='form-control rounded-0'
+                        className='form-control'
                         value={nome}
-                        onChange={e => nomechange(e.target.value)}                         
-                        onSelect={MostraNome}
-                        style={{ width: "150px" }}
+                        onChange={e => setNome(e.target.value)}
+                   
+                        onKeyUp={MostraUsuario}
+                        style={{ width: '180px' }}
 
                     />
                 </div>
@@ -164,7 +197,8 @@ const CadUsuarios = () => {
                         name="categoria"
                         className='form-select'
                         value={categoria}
-                        onChange={e => categoriachange(e.target.value)}                        
+                        onChange={e => categoriachange(e.target.value)}  
+                        onMouseDown={MostraCat}                      
                      
                         style={{ width: "150px" }}
 
@@ -185,19 +219,20 @@ const CadUsuarios = () => {
                             type="password"
                             id="senha"
                             name="senha"
-                            className='form-control rounded-0'
+                            className='form-control'
                             value={senha}
-                            onChange={e => senhachange(e.target.value)}
+                            onChange={e => setSenha(e.target.value)}
                             onKeyUp={MostraSenha}
                             style={{ width: '150px' }}
 
                         /><i class="bi bi-eye-fill" id='mostrasenha' onClick={MostraTexto} style={{ fontSize: 20, margin: '0 20px' }}></i>
 
                     </div>
-                </div><br /><br />             
+                </div><br /><br />
+                <center>{erro && <p style={{ color: 'red' }}>{erro}</p>}</center>
                 <div className='d-flex'>
                     <button type="submit" style={{ backgroundColor: 'green', color: 'white', width: '90px' }}>Cadastrar:</button>
-                    <a href="/"><button type='button' style={{ backgroundColor: 'orange', color: 'white', margin: '0 15px', width: '90px' }}>Login:</button></a>
+                    <button type='button' onClick={Login} style={{ backgroundColor: 'orange', color: 'white', margin: '0 15px', width: '90px' }}>Login:</button>
 
                 </div>
                 <ToastContainer />
@@ -213,9 +248,7 @@ const CadUsuarios = () => {
 
 
 
-
-
-  )
+    )
 }
 
-export default CadUsuarios
+export default CadUsuario

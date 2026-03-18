@@ -137,7 +137,7 @@ const Home = () => {
                 className="nav-link px-0 align-middle text-white"
               >
                 <i className="fs-4 bi-power ms-2"></i>
-                <span className="ms-2 d-sm-inline">Logout</span>
+                <span className="ms-2 d-sm-inline">Sair:</span>
               </Link>
             </li>
           </ul>

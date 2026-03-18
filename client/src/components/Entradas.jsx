@@ -17,12 +17,12 @@ const Entradas = () => {
     fetch(API_URL)
       .then(response => response.json())
       .then(data => setVendasdata(data))
-      .catch(error => console.error('Erro ao buscar os dados:', error)); 
+      .catch(error => console.error('Erro ao buscar os dados:', error));
 
   }, [])
 
 
-const handleDelete = async (id) => {
+  const handleDelete = async (id) => {
 
     const result = await Swal.fire({
       title: "Deseja Excluir ?",
@@ -34,7 +34,7 @@ const handleDelete = async (id) => {
 
     if (result.isConfirmed) {
 
-      fetch('https://sistemacomercial-fv5g.onrender.com/vendas' + id, {
+      fetch('https://sistemacomercial-fv5g.onrender.com/vendas/' + id, {
 
         method: "DELETE"
 
@@ -54,50 +54,53 @@ const handleDelete = async (id) => {
 
   }
 
+  const deleteall = async () => {
 
-  
-const deleteall = async () => {
-      
-          const result = await Swal.fire({
-            title: "Deseja Excluir ?",
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: "Excluir",
-            denyButtonText: `Não Excluir`
+    const result = await Swal.fire({
+      title: "Deseja Excluir ?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Excluir",
+      denyButtonText: `Não Excluir`
+    })
+
+    if (result.isConfirmed) {
+
+      try {
+        // Mapeia o array de vendas para um array de promessas de exclusão
+        const deletePromises = vendasdata.map(item =>
+          fetch(`${API_URL}/${item.id}`, {
+            method: 'DELETE',
           })
-      
-          if (result.isConfirmed) {
-      
-            try {
-              // Mapeia o array de vendas para um array de promessas de exclusão
-              const deletePromises = vendasdata.map(item =>
-                fetch(`${API_URL}/${item.id}`, {
-                  method: 'DELETE',
-                })
-              );
-      
-              // Espera que todas as promessas de exclusão sejam resolvidas
-              await Promise.all(deletePromises);
-      
-              // Limpa a lista no estado do React
-              setVendasdata([]);
-              //console.log('Todos os dados foram excluídos com sucesso!');
-              toast.success('Excluido com sucesso !')  
-      
-            } catch (error) {
-      
-              console.error('Erro ao excluir todos os dados:', error);
-            }    
-            
-          } else if (result.isDenied) {
-            Swal.fire("Nada excluido", "", "info");
-          }
-      
-      
- }
+        );
+
+        // Espera que todas as promessas de exclusão sejam resolvidas
+        await Promise.all(deletePromises);
+
+        // Limpa a lista no estado do React
+        setVendasdata([]);
+        //console.log('Todos os dados foram excluídos com sucesso!');
+        toast.success('Excluido com sucesso !')  
+
+      } catch (error) {
+
+        console.error('Erro ao excluir todos os dados:', error);
+      }
+
+
+
+    } else if (result.isDenied) {
+      Swal.fire("Nada excluido", "", "info");
+    }
+
+
+  }
+
+
 
 
   return (
+
     <div style={{width:'120%'}}>     
       
       <div className="bg-secondary" style={{ height: 75, width:'100%' }}>
@@ -107,21 +110,21 @@ const deleteall = async () => {
    
           <div className="">
             <div className="mb3">
-              <Link to="/produtos/codigo" className="btn" style={{ fontSize: '16px', fontFamily: 'arial', color: 'white', backgroundColor: 'orange' }}>Nova Venda:</Link>
-              <Link to="/entradas/nome" className="btn" style={{ color: 'white', backgroundColor: 'green', margin: '0 25px', fontSize: '17px', fontFamily: 'arial' }}>Faturamento por produto e serviço:</Link>
-              <Link to="/entradas/data" className="btn" style={{ color: 'white', backgroundColor: 'yellowgreen', margin: '0 3px', fontSize: '17px', fontFamily: 'arial' }}>Faturamento por data:</Link>
-              <Link to="/entradas/mes" className="btn" style={{ color: 'white', backgroundColor: 'DarkSlateBlue', margin: '0 25px', fontSize: '17px', fontFamily: 'arial' }}>Faturamento e atualização do mes:</Link>
-              <Link to="/entradas/numero" className="btn" style={{ color: 'white', backgroundColor: 'DeepSkyBlue', margin: '0 2px', fontSize: '17px', fontFamily: 'arial' }}>Totalizar Venda:</Link>
-              <Link to="/entradas/totfrete" className="btn" style={{ color: 'white', backgroundColor: 'DarkCyan', margin: '0 22px', fontSize: '17px', fontFamily: 'arial' }}>Totalizar Frete:</Link>
-              <Link to="/entradas/ultima" className="btn" style={{ color: 'white', backgroundColor: 'Crimson', margin: '0 5px', fontSize: '17px', fontFamily: 'arial' }}>Venda Atual:</Link>
-              <Link className="btn" style={{ color: 'white', backgroundColor: 'red', margin: '0 15px', fontSize: '17px', fontFamily: 'arial' }} onClick={deleteall}>Excluir Todos:</Link>
+              <Link to="/produtos/codigo" className="btn" style={{ fontSize: '13px', fontFamily: 'arial', color: 'white', backgroundColor: 'orange' }}>Nova Venda:</Link>
+              <Link to="/entradas/nome" className="btn" style={{ color: 'white', backgroundColor: 'green', margin: '0 25px', fontSize: '13px', fontFamily: 'arial' }}>Faturamento por produto e serviço:</Link>
+              <Link to="/entradas/data" className="btn" style={{ color: 'white', backgroundColor: 'yellowgreen', margin: '0 3px', fontSize: '13px', fontFamily: 'arial' }}>Faturamento por data:</Link>
+              <Link to="/entradas/mes" className="btn" style={{ color: 'white', backgroundColor: 'DarkSlateBlue', margin: '0 25px', fontSize: '13px', fontFamily: 'arial' }}>Faturamento e atualização do mes:</Link>
+              <Link to="/entradas/numero" className="btn" style={{ color: 'white', backgroundColor: 'DeepSkyBlue', margin: '0 2px', fontSize: '13px', fontFamily: 'arial' }}>Totalizar Venda:</Link>
+              <Link to="/entradas/totfrete" className="btn" style={{ color: 'white', backgroundColor: 'DarkCyan', margin: '0 22px', fontSize: '13px', fontFamily: 'arial' }}>Totalizar Frete:</Link>
+              <Link to="/entradas/ultima" className="btn" style={{ color: 'white', backgroundColor: 'Crimson', margin: '0 5px', fontSize: '13px', fontFamily: 'arial' }}>Venda Atual:</Link>
+              <Link className="btn" style={{ color: 'white', backgroundColor: 'red', margin: '0 15px', fontSize: '13px', fontFamily: 'arial' }} onClick={deleteall}>Excluir Todos:</Link>
 
             </div><br /><br />
             <div>
-              <h4 className="h4"><strong className="strong" style={{ color: 'red', fontSize: '23px', textAlign: 'center', margin: '0 980px' }}>Entradas:</strong></h4>
+              <h4 className="h4"><strong className="strong" style={{ color: 'red', fontSize: '15px', textAlign: 'center', margin: '0 980px' }}>Entradas:</strong></h4>
               <br />
               <div className="">
-                <table className="table" id="table" style={{fontFamily: 'arial', fontSize: '18px', border:'true'}}>
+                <table className="table" id="table" style={{fontFamily: 'arial', fontSize: '15px', border:'true'}}>
                   <thead>
                     <tr>
                       <th className="th" scope="col">Id:</th>
@@ -180,6 +183,7 @@ const deleteall = async () => {
 
               </div>
             </div><br />
+            
 
 
 
@@ -190,6 +194,8 @@ const deleteall = async () => {
             </footer>
 
           </div>
+
+
 
   )
 }

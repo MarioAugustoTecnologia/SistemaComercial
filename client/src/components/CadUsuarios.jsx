@@ -181,8 +181,8 @@ const validarsenha = (valor) => {
                         id="id"
                         name="nome"
                         className='form-control'
-                        value={nome}
-                        onChange={e => setNome(e.target.value)}
+                        value={id}
+                        onChange={e => setId(e.target.value)}
                    
                         onKeyUp={MostraUsuario}
                         style={{ width: '180px' }}

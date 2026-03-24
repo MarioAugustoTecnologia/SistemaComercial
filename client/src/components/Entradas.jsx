@@ -80,7 +80,7 @@ const Entradas = () => {
         // Limpa a lista no estado do React
         setVendasdata([]);
         //console.log('Todos os dados foram excluídos com sucesso!');
-        toast.success('Excluido com sucesso !')  
+        toast.success('Excluido com sucesso !')
 
       } catch (error) {
 
@@ -96,242 +96,219 @@ const Entradas = () => {
 
   }
 
-    const logout = () => {
+  const logout = () => {
     localStorage.clear()
     console.clear();
 
   }
 
 
-
-
   return (
 
-     <div className="container-fluid">
+    <div className="container-fluid">
       <div className="row flex-nowrap">
-        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary" style={{ fontFamily: 'arial', fontSize: '19px' }}>
-          <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-            <Link
-              to=""
-              className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none"
-            >
-              <span className="fs-5 fw-bolder d-none d-sm-inline">
-                Opções:
-              </span>
-            </Link>
-            <ul
-              className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-              id="menu"
-            >
+
+        <div className="main-wrapper">
+
+          <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000 }}>
+            <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+              id="menu">
               <li className="w-100">
                 <Link
                   to="/home"
-                  className="nav-link text-white px-0 align-middle"
-                >
-                  <i className="fs-4 bi-speedometer2 ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Painel:</span>
-                </Link>
-              </li>
-              <li className="w-100">
-                <Link
-                  to="/usuarios"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi-people ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Usuarios:
+                  <i class="fs-4 bi bi-house"></i>
+
+                  <span className="ms-2 d-sm-inline">
+                    Home:
                   </span>
                 </Link>
               </li>
               <li className="w-100">
                 <Link
-                  to="/compras"
+                  to="/produtos/codigo"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi bi-cash ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Compras:
+                  <i class="fs-4 bi bi-cash-coin"></i>
+
+                  <span className="ms-2 d-sm-inline">
+                    Nova Venda:
                   </span>
                 </Link>
               </li>
               <li className="w-100">
                 <Link
-                  to="/despesas"
+                  to=""
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi bi-coin ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Despesas:
-                  </span>
+                  <i class="fs-4 bi bi-graph-up"></i>
+                  <span className="ms-2 d-sm-inline">
+                    Faturamentos:
+
+                  </span><br />
+
                 </Link>
               </li>
               <li className="w-100">
                 <Link
-                  to="/produtos"
+                  to="/entradas/nome"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi bi-box-fill ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Produtos e Serviços:
-                  </span>
+
+                  <span className="ms-2 d-sm-inline">
+                    - Por Produtos e Serviços:
+
+                  </span><br />
+
                 </Link>
               </li>
               <li className="w-100">
                 <Link
-                  to="/transportes"
+                  to="/entradas/data"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i class="bi bi-truck-flatbed" style={{ margin: '0 8px' }}></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Transportes:
-                  </span>
+                  <span className="ms-2 d-sm-inline">
+                    - Por Data:
+                  </span><br />
+
                 </Link>
               </li>
               <li className="w-100">
                 <Link
-                  to="/fornecedores"
+                  to="/entradas/mes"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi bi-truck ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Fornecedores:
-                  </span>
+                  <span className="ms-2 d-sm-inline">
+                    - Por Mês:
+                  </span><br />
+
+                </Link>
+              </li>
+
+              <li className="w-100">
+                <Link
+                  to="/entradas/numero"
+                  className="nav-link px-0 align-middle text-white"
+                > <i class="fs-4 bi bi-plus-circle"></i>
+                  <span className="ms-2 d-sm-inline">
+                    Totalizar Venda:
+                  </span><br />
+
                 </Link>
               </li>
               <li className="w-100">
                 <Link
-                  to="/clientes"
+                  to="/entradas/totfrete"
                   className="nav-link px-0 align-middle text-white"
-                >
-                  <i className="fs-4 bi bi-person-square ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Clientes:
-                  </span>
+                ><i class="fs-4 bi bi-plus-circle-fill"></i>
+                  <span className="ms-2 d-sm-inline">
+                    Totalizar Frete:
+                  </span><br />
+
                 </Link>
               </li>
               <li className="w-100">
                 <Link
-                  to="/resultado"
+                  to="/entradas/ultima"
                   className="nav-link px-0 align-middle text-white"
-                >
-                  <i className="fs-4 bi bi-bank ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Resultados:
-                  </span>
+                ><i class="fs-4 bi bi-receipt"></i>
+                  <span className="ms-2 d-sm-inline">
+                    Venda Atual:
+                  </span><br />
+
                 </Link>
               </li>
-              <li className="w-100" style={{ margin: "0 7px" }}>
-                <Link
-                  to="/produto/codorc"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Orçamentos:
-                  </span>
-                </Link>
-              </li>
+
               <li className="w-100" onClick={logout}>
-                <Link
-                  to="/"
+                <Link to="/"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-power ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Logout</span>
+                  <span className="ms-2 d-sm-inline">Sair:</span>
                 </Link>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
-        <div className="col p-0 m-0" style={{ fontFamily: 'arial' }}>
-          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: '160%' }}>
-            <h4><strong style={{ fontFamily: 'arial', margin: '0 600px ' }}>Sistema de Gestão Comercial:</strong></h4>
-          </div>
-          <Outlet />
-          <div className="px-5 mt-5">
-            <div className="mb3">
-              <Link to="/produtos/codigo" className="btn" style={{ fontSize: '18px', fontFamily: 'arial', color: 'white', backgroundColor: 'orange' }}>Nova Venda:</Link>
-              <Link to="/entradas/nome" className="btn" style={{ color: 'white', backgroundColor: 'green', margin: '0 25px', fontSize: '18px', fontFamily: 'arial' }}>Faturamento por produto e serviço:</Link>
-              <Link to="/entradas/data" className="btn" style={{ color: 'white', backgroundColor: 'yellowgreen', margin: '0 3px', fontSize: '18px', fontFamily: 'arial' }}>Faturamento por data:</Link>
-              <Link to="/entradas/mes" className="btn" style={{ color: 'white', backgroundColor: 'DarkSlateBlue', margin: '0 25px', fontSize: '18px', fontFamily: 'arial' }}>Faturamento e atualização do mes:</Link>
-              <Link to="/entradas/numero" className="btn" style={{ color: 'white', backgroundColor: 'DeepSkyBlue', margin: '0 2px', fontSize: '18px', fontFamily: 'arial' }}>Totalizar Venda:</Link>
-              <Link to="/entradas/totfrete" className="btn" style={{ color: 'white', backgroundColor: 'DarkCyan', margin: '0 22px', fontSize: '18px', fontFamily: 'arial' }}>Totalizar Frete:</Link>
-              <Link to="/entradas/ultima" className="btn" style={{ color: 'white', backgroundColor: 'Crimson', margin: '0 5px', fontSize: '18px', fontFamily: 'arial' }}>Venda Atual:</Link>
-              <Link className="btn" style={{ color: 'white', backgroundColor: 'red', margin: '0 15px', fontSize: '18px', fontFamily: 'arial' }} onClick={deleteall}>Excluir Todos:</Link>
 
-            </div><br /><br />
-            <div>
-              <h4 className="h4"><strong className="strong" style={{ color: 'red', fontSize: '25px', textAlign: 'center', margin: '0 980px' }}>Entradas:</strong></h4>
-              <br />
-              <div className="mt-3">
-                <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: 3000, overflowX:'auto', display:'block', minWidth:'300px' }}>
-                  <thead>
-                    <tr>
-                      <th className="th" scope="col">Id:</th>
-                      <th className="th" scope="col">Venda nº:</th>
-                      <th className="th" scope="col">Nome:</th>
-                      <th className="th" scope="col">Qtd:</th>
-                      <th className="th" scope="col">Preço:</th>
-                      <th className="th" scope="col">Total:</th>
-                      <th className="th" scope="col">Desconto:</th>
-                      <th className="th" scope="col">Valor Desconto:</th>
-                      <th className="th" scope="col">Total c/Desconto:</th>
-                      <th className="th" scope="col">Forma Paga:</th>
-                      <th className="th" scope="col">Entradas:</th>
-                      <th className="th" scope="col">Troco:</th>
-                      <th className="th" scope="col">Parcelamento:</th>
-                      <th className="th" scope="col">Parcela:</th>
-                      <th className="th" scope="col">Mês:</th>
-                      <th className="th" scope="col">Frete:</th>
-                      <th className="th" scope="col">Data de Cadastro:</th>
-                      <th className="th" scope="col">Ação:</th>
+        <Outlet />
+
+        <div className="" style={{ width: '250px' }}>
+          <br /><br />
+
+
+          <h4><strong style={{ color: 'red', fontSize: '20px', margin: '-1600px' }}>Entradas:</strong></h4>  <br /><br />
+          <div >
+            <table className="table" style={{ fontFamily: 'arial', fontSize: '16px', margin: '0 -1660px', width: '1850px' }} id="table">
+              <thead>
+                <tr>
+                  <th className="th" scope="col">Id:</th>
+                  <th className="th" scope="col">Venda nº:</th>
+                  <th className="th" scope="col">Nome:</th>
+                  <th className="th" scope="col">Qtd:</th>
+                  <th className="th" scope="col">Preço:</th>
+                  <th className="th" scope="col">Total:</th>
+                  <th className="th" scope="col">Desconto:</th>
+                  <th className="th" scope="col">Valor Desconto:</th>
+                  <th className="th" scope="col">Total c/Desconto:</th>
+                  <th className="th" scope="col">Forma Paga:</th>
+                  <th className="th" scope="col">Entradas:</th>
+                  <th className="th" scope="col">Troco:</th>
+                  <th className="th" scope="col">Parcelamento:</th>
+                  <th className="th" scope="col">Parcela:</th>
+                  <th className="th" scope="col">Mês:</th>
+                  <th className="th" scope="col">Frete:</th>
+                  <th className="th" scope="col">Data de Cadastro:</th>
+                  <th className="th" scope="col">Ação:</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  vendasdata.map(item => (
+                    <tr key={item.id}>
+                      <td className="td">{item.id}</td>
+                      <td className="td">{item.vendan}</td>
+                      <td className="td">{item.nome}</td>
+                      <td className="td">{item.quant}</td>
+                      <td className="td">{item.preco}</td>
+                      <td className="td">{item.total}</td>
+                      <td className="td">{item.desconto}</td>
+                      <td className="td">{item.valordesc}</td>
+                      <td className="td">{item.totaldesc}</td>
+                      <td className="td">{item.formapag}</td>
+                      <td className="td">{item.valorpagto}</td>
+                      <td className="td">{item.troco}</td>
+                      <td className="td">{item.parcelamento}</td>
+                      <td className="td">{item.parcelan}</td>
+                      <td className="td">{item.mes}</td>
+                      <td className="td">{item.frete}</td>
+                      <td className="td">{item.data_cad}</td>
+                      <td className="td" >
+                        <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      vendasdata.map(item => (
-                        <tr key={item.id}>
-                          <td className="td">{item.id}</td>
-                          <td className="td">{item.vendan}</td>
-                          <td className="td">{item.nome}</td>
-                          <td className="td">{item.quant}</td>
-                          <td className="td">{item.preco}</td>
-                          <td className="td">{item.total}</td>
-                          <td className="td">{item.desconto}</td>
-                          <td className="td">{item.valordesc}</td>
-                          <td className="td">{item.totaldesc}</td>
-                          <td className="td">{item.formapag}</td>
-                          <td className="td">{item.valorpagto}</td>
-                          <td className="td">{item.troco}</td>
-                          <td className="td">{item.parcelamento}</td>
-                          <td className="td">{item.parcelan}</td>
-                          <td className="td">{item.mes}</td>
-                          <td className="td">{item.frete}</td>
-                          <td className="td">{item.data_cad}</td>
-                          <td className="td" >
-                            <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-                          </td>
-                        </tr>
-                      ))
-
-                    }
-
-                  </tbody>
-                  <ToastContainer />
-
-                </table>
-
-              </div>
-            </div><br />
+                  ))
 
 
+                }
 
+              </tbody>
+              <ToastContainer />
+            </table>
           </div>
-
         </div>
+
+
+
+
+
 
       </div>
     </div>
+
+
+
 
 
 

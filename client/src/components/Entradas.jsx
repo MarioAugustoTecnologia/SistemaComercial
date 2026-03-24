@@ -240,7 +240,7 @@ const Entradas = () => {
 
           <h4><strong style={{ color: 'red', fontSize: '20px', margin: '-1600px' }}>Entradas:</strong></h4>  <br /><br />
           <div >
-            <table className="table" style={{ fontFamily: 'arial', fontSize: '16px', margin: '0 -1660px', width: '1900px' }} id="table">
+            <table className="table" style={{ fontFamily: 'arial', fontSize: '16px', margin: '0 -1660px', width: '1850px' }} id="table">
               <thead>
                 <tr>
                   <th className="th" scope="col">Id:</th>

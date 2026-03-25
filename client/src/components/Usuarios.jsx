@@ -209,7 +209,7 @@ const Usuarios = () => {
                    
             </div>           
               
-                <div className="container" style={{ display: 'flex', margin: '0 230px',  marginTop:'-850px' }}>
+                <div className="container" style={{ display: 'flex', margin: '0 230px',  marginTop:'-400px' }}>
 
 
                     <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', marginTop: '-1600px', width: '400px' }} id="table">

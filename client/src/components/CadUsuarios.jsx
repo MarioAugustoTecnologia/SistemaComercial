@@ -229,7 +229,7 @@ const validarsenha = (valor) => {
                     >
                     <option value=""></option>    
                     <option value="Administrador">Administrador:</option>
-                    <option value="Programador">Vendedor:</option>
+                    <option value="Vendedor">Vendedor:</option>
      
                     </select>
                 </div>

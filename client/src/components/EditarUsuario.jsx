@@ -193,7 +193,7 @@ const EditarUsuario = () => {
         if (e.charCode < 48 || e.charCode > 57) {
             e.preventDefault();
         }
-        
+
     };
 
 
@@ -318,63 +318,59 @@ const EditarUsuario = () => {
                     </nav>
 
                 </div>
-                <div className="col p-0 m-0">
 
-                    <Outlet />
-                    <div className="px-5 mt-5">
 
-                        <h4><strong style={{ color: 'red', fontSize: '18px', margin: '-1600px' }}> Editar Usuario:</strong></h4>  <br /><br />
-                        <div className="bg-white p-4 rounded border" style={{ marginLeft: '-1690px', width: '600px', fontSize: '18px' }}>
-                            <form action='' onSubmit={editar} >
-                                <div className='mb-3'>
-                                    <label htmlFor='id' style={{ margin: '0 115px', fontWeight: 'bold' }}>Nome:</label>
-                                    <input onKeyUp={MostraNome} type='text' value={id} onChange={e => idchange(e.target.value)} style={{ fontWeight: 'bold', color: 'navy', width: 150, margin: '0 115px' }} className='form-control rounded-0' name='id' id="id" />
+            </div>
 
-                                </div>
-                                <div className='mb-3'>
-                                    <label htmlFor='cod' style={{ margin: '0 115px', fontWeight: 'bold' }}>Cod:</label>
-                                    <input type='decimal' onKeyPress={handleKeyPress} onSelect={MostraCod} value={cod} onChange={e => codchange(e.target.value)} style={{ fontWeight: 'bold', color: 'navy', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='cod' id="cod" />
+            <div className="container" style={{ display: 'flex', margin: '0 130px' }}>         
 
-                                </div>
 
-                                <div className='mb-3'>
-                                    <label htmlFor='senha' style={{ margin: '0 115px', fontWeight: 'bold' }}>Senha:</label>
-                                    <div className="d-flex">
-                                        <input type='password' onKeyUp={MostraSenha} value={senha} onChange={e => senhachange(e.target.value)} style={{ width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} placeholder='Entre com a senha:' className='form-control rounded-0' name='senha' id="senha" />
-                                        <i class="bi bi-eye-fill" id='mostrasenha' style={{ fontSize: 20, margin: '0 -90px' }} onClick={MostraTexto}></i>
-                                    </div>
-                                    <center>{erro && <p style={{ color: 'red' }}>{erro}</p>}</center>
+                <form action='' onSubmit={editar} style={{marginTop: '-900px'}} >
+                    <div className='mb-3'>
+                        <label htmlFor='id' style={{ margin: '0 115px', fontWeight: 'bold', fontFamily:'arial', fontSize:'20px', color:'blue' }}>Editar Usuario:</label><br /><br />
+                        <label htmlFor='id' style={{ margin: '0 115px', fontWeight: 'bold' }}>Nome:</label>
+                        <input onKeyUp={MostraNome} type='text' value={id} onChange={e => idchange(e.target.value)} style={{ fontWeight: 'bold', color: 'navy', width: 150, margin: '0 115px' }} className='form-control rounded-0' name='id' id="id" />
 
-                                </div>
-
-                                <div className='mb-3'>
-                                    <label htmlFor='categoria' className='form-label' style={{ margin: '0 115px', fontWeight: 'bold' }}>
-                                        Categoria:
-                                    </label>
-                                    <select style={{ width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} name='categoria' id='categoria' className='form-select' value={categoria} onChange={e => categoriachange(e.target.value)} onClick={MostraCategoria}>
-                                        <option value=""></option>
-                                        <option value="Administrador">Administrador</option>
-                                        <option value="Programador">Programador</option>
-                                        <option value="Desenvolvedor">Desenvolvedor</option>
-                                    </select>
-
-                                </div>
-
-                                <div className='mb-3'>
-                                    <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px' }} >Atualizar:</button>
-                                    <Link to='/usuarios' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 -90px', width: 100 }}>Voltar:</Link>
-                                </div>
-                                <ToastContainer />
-                            </form>
-
-                        </div>
-
+                    </div>
+                    <div className='mb-3'>
+                        <label htmlFor='cod' style={{ margin: '0 115px', fontWeight: 'bold' }}>Cod:</label>
+                        <input type='decimal' onKeyPress={handleKeyPress} onSelect={MostraCod} value={cod} onChange={e => codchange(e.target.value)} style={{ fontWeight: 'bold', color: 'navy', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='cod' id="cod" />
 
                     </div>
 
-                </div>
+                    <div className='mb-3'>
+                        <label htmlFor='senha' style={{ margin: '0 115px', fontWeight: 'bold' }}>Senha:</label>
+                        <div className="d-flex">
+                            <input type='password' onKeyUp={MostraSenha} value={senha} onChange={e => senhachange(e.target.value)} style={{ width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} placeholder='Entre com a senha:' className='form-control rounded-0' name='senha' id="senha" />
+                            <i class="bi bi-eye-fill" id='mostrasenha' style={{ fontSize: 20, margin: '0 -90px' }} onClick={MostraTexto}></i>
+                        </div>
+                        <center>{erro && <p style={{ color: 'red' }}>{erro}</p>}</center>
+
+                    </div>
+
+                    <div className='mb-3'>
+                        <label htmlFor='categoria' className='form-label' style={{ margin: '0 115px', fontWeight: 'bold' }}>
+                            Categoria:
+                        </label>
+                        <select style={{ width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} name='categoria' id='categoria' className='form-select' value={categoria} onChange={e => categoriachange(e.target.value)} onClick={MostraCategoria}>
+                            <option value=""></option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Vendedor">Vendedor</option>
+
+                        </select>
+
+                    </div>
+
+                    <div className='mb-3'>
+                        <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px' }} >Atualizar:</button>
+                        <Link to='/usuarios' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 -90px', width: 100 }}>Voltar:</Link>
+                    </div>
+                    <ToastContainer />
+                </form>
 
             </div>
+
+
         </div>
 
 

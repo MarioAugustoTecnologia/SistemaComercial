@@ -87,12 +87,12 @@ const Usuarios = () => {
                                     className="nav-link px-0 align-middle text-white"
                                 >
                                     <i class="fs-4 bi bi-house"></i>
-                                   
+
                                     <span className="ms-2 d-sm-inline">
                                         Home:
                                     </span>
                                 </Link>
-                            </li>  
+                            </li>
 
                             <li className="w-100">
                                 <Link
@@ -203,59 +203,50 @@ const Usuarios = () => {
                             </li>
                         </ul>
                     </nav>
+                 
+
+                </div><br /><br />
+                   
+            </div>           
+              
+                <div className="container" style={{ display: 'flex', margin: '0 230px' }}>
 
 
+                    <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', marginTop: '-1600px', width: '400px' }} id="table">
 
+                        <thead>
+                            <tr>
+                                <th className="th" scope="col">Id:</th>
+                                <th className="th" scope="col" >Nome:</th>
+                                <th className="th" scope="col" >Categoria:</th>
+                                <th className="th" scope="col">Ação:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {usuariodata &&
+                                usuariodata.map(item => (
+                                    <tr key={item.id}>
+                                        <td className="td">{item.cod}</td>
+                                        <td className="td">{item.id}</td>
+                                        <td className="td">{item.categoria}</td>
+                                        <td>
+                                            <button className="editar" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Editar:</button>
+                                            <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+
+                                        </td>
+
+                                    </tr>
+                                ))
+
+                            }
+
+                        </tbody>
+                        <ToastContainer />
+                    </table>
+                     
                 </div>
-
-                <div className="col p-0 m-0">
-
-                    <Outlet />
-                    <div className="px-5 mt-5">
-
-                        <h4><strong style={{ color: 'red', fontSize: '20px', margin: '-1600px' }}>Usuarios:</strong></h4>  <br /><br />
-
-                        <table className="table" style={{fontFamily: 'arial', fontSize: '17px', margin:'0 -1600px', width:'400px' }} id="table">
-                            <thead>
-                                <tr>
-                                    <th className="th" scope="col">Id:</th>
-                                    <th className="th" scope="col" >Nome:</th>                            
-                                    <th className="th" scope="col" >Categoria:</th>                         
-                                    <th className="th" scope="col">Ação:</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {usuariodata &&
-                                    usuariodata.map(item => (
-                                        <tr key={item.id}>
-                                            <td className="td">{item.cod}</td>
-                                            <td className="td">{item.id}</td>                                          
-                                            <td className="td">{item.categoria}</td>
-                                            <td>
-                                                <button className="editar" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Editar:</button>
-                                                <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-
-                                            </td>
-
-                                        </tr>
-                                    ))
-
-                                }
-
-                            </tbody>
-                            <ToastContainer />
-                        </table>
-                    </div>
-
-                </div>
+                 
             </div>
-        </div>
-
-
-
-
-
-
 
     )
 }

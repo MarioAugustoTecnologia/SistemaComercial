@@ -1,32 +1,17 @@
 {
   "usuarios": [
 
-     {
-      "id": "User",
+    {
+      "id": "Mario",
       "cod": "1",
-      "email": "user@email.com",
-      "hashedPassword": "$2a$10$QoUNGUVPMbHHjcWXK85fFe4VgxjcgnyT..YD7vkx8mkSNcVQtcKn2",
-      "fone": "14111111",
-      "datanascimento": "20/02/1982",
+      "hashedPassword": "$2a$10$.ZsPg3L4RjbEU9PP3oDSrO8/bU68hExppU2WlnV/79ekTwarAOigy",
       "categoria": "Administrador"
     },
     {
-      "id": "User2",
+      "id": "Fernando",
       "cod": "2",
-      "email": "usuario02@email.com",
-      "hashedPassword": "$2a$10$If4NVmWC12RrUU60//IkaufpfwXmlRVl621qc.8hq.rGx3RXAS7UK",
-      "fone": "1466552258",
-      "datanascimento": "31/12/1995",
-      "categoria": "Desenvolvedor"
-    },
-    {
-      "id": "User3",
-      "cod": "3",
-      "email": "user6@email.com",
-      "hashedPassword": "$2a$10$Jcy0b5/Vfj5vL9U.l5JDYe.pXGG0n5KSi1rx3fGHhX75K9alY3IeS",
-      "fone": "123456",
-      "datanascimento": "12/12/1992",
-      "categoria": "Desenvolvedor"
+      "hashedPassword": "$2a$10$VHp2oYMIK7J8mbWRdDZTOeG0jb0qo.8BvqM.mwtQW5rQHC5u8qnOa",
+      "categoria": "Vendedor"
     }
    
   ],

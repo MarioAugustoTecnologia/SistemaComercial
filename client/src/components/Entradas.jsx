@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Swal from 'sweetalert2';
@@ -233,71 +233,76 @@ const Entradas = () => {
         </div><br /><br />
 
       </div>
-   
-
-      <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-850px'}}>
-        
-
-        <table className="table" style={{ fontFamily: 'arial', fontSize: '17px'}} id="table">
-          <thead>
-            <tr>
-              <th className="th" scope="col">Id:</th>
-              <th className="th" scope="col" >Venda nº:</th>
-              <th className="th" scope="col">Nome:</th>
-              <th className="th" scope="col">Qtd:</th>
-              <th className="th" scope="col">Preço:</th>
-              <th className="th" scope="col">Total:</th>
-              <th className="th" scope="col">Desconto:</th>
-              <th className="th" scope="col">Valor Desconto:</th>
-              <th className="th" scope="col">Total c/Desconto:</th>
-              <th className="th" scope="col">Forma Paga:</th>
-              <th className="th" scope="col">Entradas:</th>
-              <th className="th" scope="col">Troco:</th>
-              <th className="th" scope="col">Parcelamento:</th>
-              <th className="th" scope="col">Parcela:</th>
-              <th className="th" scope="col">Mês:</th>
-              <th className="th" scope="col">Frete:</th>
-              <th className="th" scope="col">Data de Cadastro:</th>
-              <th className="th" scope="col">Ação:</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              vendasdata.map(item => (
-                <tr key={item.id}>
-                  <td className="td">{item.id}</td>
-                  <td className="td">{item.vendan}</td>
-                  <td className="td">{item.nome}</td>
-                  <td className="td">{item.quant}</td>
-                  <td className="td">{item.preco}</td>
-                  <td className="td">{item.total}</td>
-                  <td className="td">{item.desconto}</td>
-                  <td className="td">{item.valordesc}</td>
-                  <td className="td">{item.totaldesc}</td>
-                  <td className="td">{item.formapag}</td>
-                  <td className="td">{item.valorpagto}</td>
-                  <td className="td">{item.troco}</td>
-                  <td className="td">{item.parcelamento}</td>
-                  <td className="td">{item.parcelan}</td>
-                  <td className="td">{item.mes}</td>
-                  <td className="td">{item.frete}</td>
-                  <td className="td">{item.data_cad}</td>
-                  <td className="td" >
-                    <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-                  </td>
-                </tr>
-              ))
 
 
-            }
-          </tbody>
-          <ToastContainer />
-        </table>
-      
+      <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-850px' }}>
+
+
+        <div className="mb3">
+
+          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '2000px' }} id="table">
+            <thead>
+              <tr>
+                <th className="th" scope="col">Id:</th>
+                <th className="th" scope="col" >Venda nº:</th>
+                <th className="th" scope="col">Nome:</th>
+                <th className="th" scope="col">Qtd:</th>
+                <th className="th" scope="col">Preço:</th>
+                <th className="th" scope="col">Total:</th>
+                <th className="th" scope="col">Desconto:</th>
+                <th className="th" scope="col">Valor Desconto:</th>
+                <th className="th" scope="col">Total c/Desconto:</th>
+                <th className="th" scope="col">Forma Paga:</th>
+                <th className="th" scope="col">Entradas:</th>
+                <th className="th" scope="col">Troco:</th>
+                <th className="th" scope="col">Parcelamento:</th>
+                <th className="th" scope="col">Parcela:</th>
+                <th className="th" scope="col">Mês:</th>
+                <th className="th" scope="col">Frete:</th>
+                <th className="th" scope="col">Data de Cadastro:</th>
+                <th className="th" scope="col">Ação:</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                vendasdata.map(item => (
+                  <tr key={item.id}>
+                    <td className="td">{item.id}</td>
+                    <td className="td">{item.vendan}</td>
+                    <td className="td">{item.nome}</td>
+                    <td className="td">{item.quant}</td>
+                    <td className="td">{item.preco}</td>
+                    <td className="td">{item.total}</td>
+                    <td className="td">{item.desconto}</td>
+                    <td className="td">{item.valordesc}</td>
+                    <td className="td">{item.totaldesc}</td>
+                    <td className="td">{item.formapag}</td>
+                    <td className="td">{item.valorpagto}</td>
+                    <td className="td">{item.troco}</td>
+                    <td className="td">{item.parcelamento}</td>
+                    <td className="td">{item.parcelan}</td>
+                    <td className="td">{item.mes}</td>
+                    <td className="td">{item.frete}</td>
+                    <td className="td">{item.data_cad}</td>
+                    <td className="td" >
+                      <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                    </td>
+                  </tr>
+                ))
+
+              }
+            </tbody>
+            <ToastContainer />
+          </table>
+
+
+
+        </div>
+
 
       </div>
-            <button type="button" onClick={deleteall} style={{ backgroundColor: 'red', color: 'white', width: '120px', margin:'0 300px' }}>Excluir Tudo:</button>
-       <br /><br />
+      <button type="button" onClick={deleteall} style={{ backgroundColor: 'red', color: 'white', width: '120px', margin: '0 300px' }}>Excluir Tudo:</button>
+      <br /><br />
 
     </div>
 

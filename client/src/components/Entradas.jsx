@@ -239,6 +239,7 @@ const Entradas = () => {
 
 
         <div className="mb3">
+             <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Entradas:</h4><br /><br />  
 
           <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '2000px' }} id="table">
             <thead>

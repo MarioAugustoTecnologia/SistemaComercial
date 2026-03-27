@@ -203,7 +203,9 @@ const EditarUsuario = () => {
 
                 <div className="main-wrapper">
 
-                    <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000 }}>
+                    <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000, margin:'-12px' }}>
+
+                             <br />
                         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                             id="menu">
 
@@ -369,6 +371,10 @@ const EditarUsuario = () => {
                 </form>
 
             </div>
+
+               <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{position:'fixed', left:0, bottom:0, width:'100%', backgroundColor:'gray', color:'white', textAlign:'center', zIndex:1000}}>
+                   <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+              </footer>
 
 
         </div>

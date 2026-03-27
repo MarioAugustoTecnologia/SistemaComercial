@@ -1,3 +1,4 @@
+
 import { Link, Outlet } from "react-router-dom";
 
 
@@ -17,6 +18,7 @@ const Home = () => {
       <div className="main-wrapper">
 
         <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000 }}>
+          <br />
           <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
             id="menu">
               <li className="w-100">
@@ -140,6 +142,10 @@ const Home = () => {
           </ul>
         </nav>
 
+            <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{position:'fixed', left:0, bottom:0, width:'100%', color:'white', textAlign:'center', zIndex:1000}}>
+                   <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+            </footer>
+      
 
 
       </div>

@@ -73,16 +73,18 @@ const Usuarios = () => {
 
 
     return (
-  
+
+
         <div className="container-fluid">
             <div className="row flex-nowrap">
 
-                <div className="main-wrapper" style={{ display: 'flex', flex: 1 }}>
+                <div className="main-wrapper">
 
-                    <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000 }}>
+                    <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000, margin:'-12px'}}>
+                        <br />
                         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                             id="menu">
-                            <li className="w-100">
+                            <li className="w-100" style={{margin:'12px'}}>
                                 <Link
                                     to="/home"
                                     className="nav-link px-0 align-middle text-white"
@@ -213,7 +215,7 @@ const Usuarios = () => {
             <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-850px' }}>
 
 
-                <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '800px' }} id="table">
+                <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '400px' }} id="table">
 
                     <thead>
                         <tr>
@@ -245,16 +247,18 @@ const Usuarios = () => {
                     <ToastContainer />
                 </table>
 
-            </div>  
-                <footer className="py-4 bg-secondary d-flex justify-content-center" style={{ marginTop: "630px" }}>
-                    <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
 
-                </footer>  
 
-                 
-           
+            </div>
+
+            <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{position:'fixed', left:0, bottom:0, width:'100%', backgroundColor:'gray', color:'white', textAlign:'center', zIndex:1000}}>
+                   <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+            </footer>
+
+
         </div>
-            
+
+
 
 
 

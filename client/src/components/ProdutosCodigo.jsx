@@ -100,14 +100,15 @@ const ProdutosCodigo = () => {
 
   return (
     <div className="container-fluid">
-      <div className="row flex-nowrap">
+      <div className="row flex-nowrap" >
 
-        <div className="main-wrapper">
+        <div className="main-wrapper" >
 
-          <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000 }}>
+          <nav class="sidebar bg-secondary" style={{ width: '200px', height: 950, margin: '-12px' }}>
+            <br />
             <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-              id="menu">
-              <li className="w-100">
+              id="menu"><br /><br />
+              <li className="w-100" style={{ margin: '12px' }} >
                 <Link
                   to="/home"
                   className="nav-link px-0 align-middle text-white"
@@ -238,16 +239,16 @@ const ProdutosCodigo = () => {
       <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-850px' }}>
 
 
-        <div className="mb3">
-          <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Produtos</h4>
+        <div className="mb3" style={{marginTop:'-50px'}}>
+          <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Produtos:</h4>
           <label htmlFor="Id" className="Id" style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold' }}>Busca por codigo:</label><br />
 
           <input style={{ fontFamily: 'arial', fontSize: '17px', width: '140px', color: 'navy', fontWeight: 'bold', padding: '2px' }} type="search" className="form-control rounded-0" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)} id="busca" autoFocus='true' /> <br />
           <Link to="/entradas" className="btn" style={{ color: 'white', backgroundColor: 'orange', fontSize: '16px', fontFamily: 'arial', width: '100px' }}>Entradas:</Link>
           <Link to="/compras" className="btn" style={{ color: 'white', backgroundColor: 'green', fontSize: '16px', fontFamily: 'arial', width: '100px', margin: '0 10px' }}>Saidas:</Link><br /><br />
-           <br /><br />
+          <br /><br />
 
-          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width:'1800px' }} id="table">
+          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '1800px'}} id="table">
             <thead>
               <tr>
                 <th scope="col" className="th">Id:</th>
@@ -290,12 +291,14 @@ const ProdutosCodigo = () => {
             </tbody>
 
           </table>
-        </div><br /><br /><br />
-
-
+        </div>
 
       </div>
 
+      <br /><br />
+      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000}}>
+        <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+      </footer>
 
     </div>
 

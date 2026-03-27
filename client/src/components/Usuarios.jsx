@@ -73,11 +73,11 @@ const Usuarios = () => {
 
 
     return (
-    <div className="">
+  
         <div className="container-fluid">
             <div className="row flex-nowrap">
 
-                <div className="main-wrapper">
+                <div className="main-wrapper" style={{ display: 'flex', flex: 1 }}>
 
                     <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000 }}>
                         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
@@ -245,17 +245,18 @@ const Usuarios = () => {
                     <ToastContainer />
                 </table>
 
-            </div>    
+            </div>  
+                <footer className="py-4 bg-secondary d-flex justify-content-center" style={{ marginTop: "630px" }}>
+                    <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+
+                </footer>  
 
                  
            
         </div>
-                <footer className="py-4 bg-secondary d-flex justify-content-center" style={{ marginTop: "630px" }}>
-                    <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+            
 
-                </footer>
 
-    </div>
 
     )
 }

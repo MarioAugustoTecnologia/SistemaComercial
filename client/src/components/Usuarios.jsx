@@ -212,7 +212,7 @@ const Usuarios = () => {
                 <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop:'-850px'}}>
 
 
-                    <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '400px' }} id="table">
+                    <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '600px' }} id="table">
 
                         <thead>
                             <tr>
@@ -245,6 +245,11 @@ const Usuarios = () => {
                     </table>
                      
                 </div>
+                <footer className="py-4 bg-secondary d-flex justify-content-center" style={{ marginTop: "650px"}}>
+                    <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+
+               </footer>
+
                  
             </div>
 

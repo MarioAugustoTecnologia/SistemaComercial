@@ -73,6 +73,7 @@ const Usuarios = () => {
 
 
     return (
+    <div className="">
         <div className="container-fluid">
             <div className="row flex-nowrap">
 
@@ -244,16 +245,17 @@ const Usuarios = () => {
                     <ToastContainer />
                 </table>
 
-            </div>
-              <div className="">
+            </div>    
 
+                 
+           
+        </div>
                 <footer className="py-4 bg-secondary d-flex justify-content-center" style={{ marginTop: "630px" }}>
                     <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
 
                 </footer>
-            </div>
-           
-        </div>
+
+    </div>
 
     )
 }

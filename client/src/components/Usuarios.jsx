@@ -212,7 +212,7 @@ const Usuarios = () => {
             <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-850px' }}>
 
 
-                <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '600px' }} id="table">
+                <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '800px' }} id="table">
 
                     <thead>
                         <tr>
@@ -245,7 +245,7 @@ const Usuarios = () => {
                 </table>
 
             </div>
-            <footer class="main-footer bg-secondary" style={{ color: "white", padding: '20px 10px', textAlign: 'center', fontSize: '16px', width: '150%', marginTop: "650px" }}>
+            <footer class="main-footer bg-secondary" style={{ color: "white", padding: '20px 10px', textAlign: 'center', fontSize: '16px', width: '160%', marginTop: "650px" }}>
                 <div class="footer-content" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     <p>&copy; Multicompany Solutions </p>
 

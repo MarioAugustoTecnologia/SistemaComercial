@@ -239,7 +239,7 @@ const ProdutosCodigo = () => {
       <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-850px' }}>
 
 
-        <div className="mb3" style={{marginTop:'-50px'}}>
+        <div className="mb3" style={{ marginTop: '-50px' }}>
           <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Produtos:</h4>
           <label htmlFor="Id" className="Id" style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold' }}>Busca por codigo:</label><br />
 
@@ -248,7 +248,7 @@ const ProdutosCodigo = () => {
           <Link to="/compras" className="btn" style={{ color: 'white', backgroundColor: 'green', fontSize: '16px', fontFamily: 'arial', width: '100px', margin: '0 10px' }}>Saidas:</Link><br /><br />
           <br /><br />
 
-          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '1800px'}} id="table">
+          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '1800px' }} id="table">
             <thead>
               <tr>
                 <th scope="col" className="th">Id:</th>
@@ -296,8 +296,8 @@ const ProdutosCodigo = () => {
       </div>
 
       <br /><br />
-      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000}}>
-        <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000, height: '30px' }}>
+        <p className="fw-bolder text-white" style={{ marginTop: '-10px' }}>&copy; Multicompany Solutions</p>
       </footer>
 
     </div>

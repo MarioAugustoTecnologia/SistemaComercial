@@ -114,7 +114,7 @@ const Entradas = () => {
             <br />
             <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
               id="menu">
-              <li className="w-100" style={{margin:'12px'}}>
+              <li className="w-100" style={{ margin: '12px' }}>
                 <Link
                   to="/home"
                   className="nav-link px-0 align-middle text-white"
@@ -237,13 +237,13 @@ const Entradas = () => {
 
 
       <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-850px' }}>
-            
+
 
         <div className="mb3">
 
           <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Entradas:</h4><br /><br />
           <button type="button" onClick={deleteall} style={{ backgroundColor: 'red', color: 'white', width: '120px', margin: '0' }}>Excluir Tudo:</button>
-           <br /><br />
+          <br /><br />
           <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '2000px' }} id="table">
             <thead>
               <tr>
@@ -305,10 +305,10 @@ const Entradas = () => {
 
 
       </div>
-      
+
       <br /><br />
-      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000 }}>
-        <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000, height: '30px' }}>
+        <p className="fw-bolder text-white" style={{ marginTop: '-10px' }}>&copy; Multicompany Solutions</p>
       </footer>
 
     </div>

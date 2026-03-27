@@ -203,55 +203,56 @@ const Usuarios = () => {
                             </li>
                         </ul>
                     </nav>
-                 
+
 
                 </div><br /><br />
-                   
-            </div>           
-              
-                <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop:'-850px'}}>
 
-
-                    <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '600px' }} id="table">
-
-                        <thead>
-                            <tr>
-                                <th className="th" scope="col">Id:</th>
-                                <th className="th" scope="col" >Nome:</th>
-                                <th className="th" scope="col" >Categoria:</th>
-                                <th className="th" scope="col">Ação:</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {usuariodata &&
-                                usuariodata.map(item => (
-                                    <tr key={item.id}>
-                                        <td className="td">{item.cod}</td>
-                                        <td className="td">{item.id}</td>
-                                        <td className="td">{item.categoria}</td>
-                                        <td>
-                                            <button className="editar" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Editar:</button>
-                                            <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-
-                                        </td>
-
-                                    </tr>
-                                ))
-
-                            }
-
-                        </tbody>
-                        <ToastContainer />
-                    </table>
-                     
-                </div>
-                <footer className="py-4 bg-secondary d-flex justify-content-center" style={{ marginTop: "650px"}}>
-                    <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
-
-               </footer>
-
-                 
             </div>
+
+            <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-850px' }}>
+
+
+                <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '600px' }} id="table">
+
+                    <thead>
+                        <tr>
+                            <th className="th" scope="col">Id:</th>
+                            <th className="th" scope="col" >Nome:</th>
+                            <th className="th" scope="col" >Categoria:</th>
+                            <th className="th" scope="col">Ação:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {usuariodata &&
+                            usuariodata.map(item => (
+                                <tr key={item.id}>
+                                    <td className="td">{item.cod}</td>
+                                    <td className="td">{item.id}</td>
+                                    <td className="td">{item.categoria}</td>
+                                    <td>
+                                        <button className="editar" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Editar:</button>
+                                        <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+
+                                    </td>
+
+                                </tr>
+                            ))
+
+                        }
+
+                    </tbody>
+                    <ToastContainer />
+                </table>
+
+            </div>
+            <footer class="main-footer bg-secondary" style={{ color: "white", padding: '20px 10px', textAlign: 'center', fontSize: '16px', width: '100%', marginTop: "650px" }}>
+                <div class="footer-content" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    <p>&copy; Multicompany Solutions </p>
+
+                </div>
+            </footer>
+
+        </div>
 
     )
 }

@@ -245,6 +245,13 @@ const Usuarios = () => {
                 </table>
 
             </div>
+              <div className="">
+
+                <footer className="py-4 bg-secondary d-flex justify-content-center" style={{ marginTop: "630px" }}>
+                    <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+
+                </footer>
+            </div>
            
         </div>
 

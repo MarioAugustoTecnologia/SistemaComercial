@@ -245,14 +245,7 @@ const Usuarios = () => {
                 </table>
 
             </div>
-            <footer class="main-footer bg-secondary" style={{ color: "white", padding: '20px 10px', textAlign: 'center', fontSize: '16px', width: '160%', marginTop: "560px", position: 'fixed' }}>
-                <div class="footer-content" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    <p>&copy; Multicompany Solutions </p>
-
-                </div>
-            </footer>
-
-
+           
         </div>
 
     )

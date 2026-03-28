@@ -224,7 +224,6 @@ const EditarProduto = () => {
             Swal.fire("Nada salvo", "", "info");
           }
         })
-
        
       }
 
@@ -239,49 +238,47 @@ const EditarProduto = () => {
 
 
   return (
-    <div className="container-fluid loginpage" style={{ fontFamily: 'arial' }}>
+
+   <div className="container-fluid">
       <div className="row flex-nowrap">
-        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary" style={{ fontFamily: 'arial', fontSize: '19px' }}>
-          <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-            <Link
-              to=""
-              className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none"
-            >
-              <span className='fs-5 fw-bolder d-none d-sm-inline'>
-                Opções:
-              </span>
-            </Link>
-            <ul
-              className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-              id="menu"
-            >
-              <li className="w-100">
+
+        <div className="main-wrapper">
+
+          <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000, margin: '-12px' }}>
+
+            <br />
+            <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+              id="menu">
+              <li className="w-100" style={{ margin: '12px' }}>
                 <Link
                   to="/home"
-                  className="nav-link text-white px-0 align-middle"
-                >
-                  <i className="fs-4 bi-speedometer2 ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Painel:</span>
-                </Link>
-              </li>
-              <li className="w-100">
-                <Link
-                  to="/usuarios"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi-people ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Usuarios:
+                  <i class="fs-4 bi bi-house"></i>
+
+                  <span className="ms-2 d-sm-inline">
+                    Home:
                   </span>
                 </Link>
               </li>
+                <li className="w-100">
+              <Link
+                to="/usuarios"
+                className="nav-link px-0 align-middle text-white"
+              >
+                <i class="fs-3 bi bi-person-check"></i>
+                <span className="ms-2 d-sm-inline">
+                  Usuarios:
+                </span>
+              </Link>
+            </li>         
               <li className="w-100">
                 <Link
                   to="/entradas"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-cash-coin ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Vendas:
                   </span>
                 </Link>
@@ -292,7 +289,7 @@ const EditarProduto = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-cash ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Compras:
                   </span>
                 </Link>
@@ -303,7 +300,7 @@ const EditarProduto = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-coin ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Despesas:
                   </span>
                 </Link>
@@ -314,18 +311,18 @@ const EditarProduto = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                      Produtos e Serviços:
+                  <span className="ms-2 d-sm-inline">
+                    Produtos e Serviços:
                   </span>
                 </Link>
               </li>
-               <li className="w-100">
+              <li className="w-100">
                 <Link
                   to="/transportes"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i class="bi bi-truck-flatbed" style={{margin:'0 8px'}}></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <i class="bi bi-truck-flatbed" style={{ margin: '0 8px' }}></i>
+                  <span className="ms-2 d-sm-inline">
                     Transportes:
                   </span>
                 </Link>
@@ -336,7 +333,7 @@ const EditarProduto = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-truck ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Fornecedores:
                   </span>
                 </Link>
@@ -347,7 +344,7 @@ const EditarProduto = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-person-square ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Clientes:
                   </span>
                 </Link>
@@ -358,7 +355,7 @@ const EditarProduto = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-bank ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Resultados:
                   </span>
                 </Link>
@@ -369,93 +366,94 @@ const EditarProduto = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Orçamentos:
                   </span>
                 </Link>
               </li>
               <li className="w-100" onClick={logout}>
-                <Link to='/'
+                <Link to="/"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-power ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Logout</span>
+                  <span className="ms-2 d-sm-inline">Sair:</span>
                 </Link>
               </li>
             </ul>
-          </div>
+          </nav>
+
         </div>
-        <div className="col p-0 m-0">
-          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue' }}>
-            <h4><strong>Sistema de Gestão Comercial:</strong></h4>
-          </div>
-          <Outlet />
 
-          <br />
-          <div className='d-flex justify-content-center align-items-center vh-100'>
-            <div className='bg-white p-4 rounded w-50 border'>
-              <h4><center><strong>Editar Produto:</strong></center></h4><br />
-              <form action='' onSubmit={editar}>
-                <div>
-                  <label htmlFor='id' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Id:</label>
-                  <label htmlFor='estoque' style={{ fontSize: '20px', margin: '0 -12px', fontWeight:'bold'}}>Estoque:</label>
-                  <label htmlFor='entrada' style={{ fontSize: '20px', margin: '0 70px', fontWeight:'bold'}}>Entrada:</label>
-
-                </div>
-                <div>
-                  <input type='number' value={id} onChange={e => idchange(e.target.value)} style={{ fontSize: '20px', width: 70, margin: '0 115px', fontWeight:'bold', color:'navy' }} name='id' />
-                  <input type='number' value={qtdcur} onChange={e => qtdchange(e.target.value)} style={{ fontSize: '20px', width: 100, margin: '0 -60px', fontWeight:'bold', color:'navy'  }} name='estoque' />
-                  <input type='number' value={entrada} onChange={e => entradachange(e.target.value)} style={{ fontSize: '20px', width: 100, margin: '0 376px', marginTop: '-42px', fontWeight:'bold', color:'navy'  }} className='form-control rounded-0' name='entrada' />
-                </div><br />
-                <div className="mb-3">
-                  <label htmlFor='cod' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold'}}>Codigo de Venda:</label>
-                  <input type='text' placeholder='Entre com o codigo:' value={codigo} onChange={e => codchange(e.target.value)} style={{ fontSize: '20px', width: 100, margin: '0 115px', fontWeight:'bold', color:'navy'  }} className='form-control rounded-0' name='codigo' />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='nome' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Nome:</label>
-                  <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '20px', width: 500, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='nome' />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='preco' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Preço:</label>                 
-                  <input type="decimal" onKeyUp={MudacorPreco} value={preco} onChange={e => precochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight:'bold', color:'navy'}} placeholder='Entre com o preço:' className='form-control rounded-0' name='preco' id="preco" />
-
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='custo' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Custo:</label>
-                  <input type="decimal" onKeyUp={MudacorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight:'bold', color:'navy'}} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' id="custo" />
-                </div>
-
-                <div className='mb-3'>
-                  <label htmlFor='categoria' className='form-label' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>
-                    Categoria:
-                  </label>
-                  <select onClick={MudacorCat} style={{ fontSize: '20px', width: 280, margin: '0 115px', fontWeight:'bold', color:'navy'  }} name='categoria' id='categoria' className='form-select' onChange={(e) => setValues({ ...values, id: e.target.value })}>
-                    <option value=""></option>
-                    {categoria.map(val => {
-                      return <option value={val.nome}>{val.nome}</option>
-                    })}
-
-                  </select>
-                </div>
-
-                <div className='mb-3'>
-                  <label htmlFor='datacadastro' style={{ fontSize: '20px', margin: '0 115px', fontWeight:'bold' }}>Data de Cadastro:</label>
-                  <input type='date' onSelect={MudacorDataCad} value={datacad} onChange={e => datacadchange(e.target.value)} style={{ fontSize: '20px', width: 225, margin: '0 115px', fontWeight:'bold', color:'navy'}} className='form-control rounded-0' name='datacad' id="datacad" />
-
-                </div>
-                <div className="mb-3">
-                  <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px', fontSize: '16px' }} >Atualizar:</button>
-                  <Link to='/produtos' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 -75px', fontSize: '16px', width: 100 }}>Voltar:</Link>
-                </div>
-                <ToastContainer />
-              </form>
-            </div>
-          </div>
-        </div>
 
       </div>
-    </div>
 
+      <div className="container" style={{ display: 'flex', margin: '0 130px' }}>
+     
+           
+            <form action='' onSubmit={editar} style={{ marginTop: '-900px' }}>
+              <div>
+                <label htmlFor='' style={{ margin: '0 115px', fontWeight: 'bold', fontFamily: 'arial', color: 'blue', fontSize:'20px' }}>Editar Produto:</label><br /><br />
+                <label htmlFor='id' style={{margin: '0 115px', fontWeight: 'bold' }}>Id:</label>
+                <label htmlFor='estoque' style={{margin: '0 -12px', fontWeight: 'bold' }}>Estoque:</label>
+            
+
+              </div>
+              <div>
+                <input type='number' value={id} onChange={e => idchange(e.target.value)} style={{ width: 70, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} name='id' />
+                <input type='number' value={qtdcur} onChange={e => qtdchange(e.target.value)} style={{  width: 100, margin: '0 -60px', fontWeight: 'bold', color: 'navy' }} name='estoque' />
+                
+              </div><br />
+              <div className="mb3">
+                 <label htmlFor='entrada' style={{ margin: '0 115px', fontWeight: 'bold' }}>Entrada:</label>
+                 <input type='number' value={entrada} onChange={e => entradachange(e.target.value)} style={{  width: 80, margin: '0 115px', fontWeight: 'bold', color: 'navy'}} name='entrada' className="form-control rounded-0" />
+              </div><br />
+              <div className="mb-3">
+                <label htmlFor='cod' style={{  margin: '0 115px', fontWeight: 'bold' }}>Codigo de Venda:</label>
+                <input type='text' placeholder='Entre com o codigo:' value={codigo} onChange={e => codchange(e.target.value)} style={{ width: 80, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='codigo' />
+              </div>
+              <div className='mb-3'>
+                <label htmlFor='nome' style={{ margin: '0 115px', fontWeight: 'bold' }}>Nome:</label>
+                <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ width: 300, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='nome' />
+              </div>
+              <div className='mb-3'>
+                <label htmlFor='preco' style={{ margin: '0 115px', fontWeight: 'bold' }}>Preço:</label>
+                <input type="decimal" onKeyUp={MudacorPreco} value={preco} onChange={e => precochange(e.target.value)} style={{ width: 150, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} placeholder='Entre com o preço:' className='form-control rounded-0' name='preco' id="preco" />
+
+              </div>
+              <div className='mb-3'>
+                <label htmlFor='custo' style={{  margin: '0 115px', fontWeight: 'bold' }}>Custo:</label>
+                <input type="decimal" onKeyUp={MudacorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{ width: 150, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' id="custo" />
+              </div>
+
+              <div className='mb-3'>
+                <label htmlFor='categoria' className='form-label' style={{ margin: '0 115px', fontWeight: 'bold' }}>
+                  Categoria:
+                </label>
+                <select onClick={MudacorCat} style={{  width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} name='categoria' id='categoria' className='form-select' onChange={(e) => setValues({ ...values, id: e.target.value })}>
+                  <option value=""></option>
+                  {categoria.map(val => {
+                    return <option value={val.nome}>{val.nome}</option>
+                  })}
+
+                </select>
+              </div>
+
+              <div className='mb-3'>
+                <label htmlFor='datacadastro' style={{  margin: '0 115px', fontWeight: 'bold' }}>Data de Cadastro:</label>
+                <input type='date' onSelect={MudacorDataCad} value={datacad} onChange={e => datacadchange(e.target.value)} style={{ width: 170, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='datacad' id="datacad" />
+
+              </div><br />
+              <div className="mb-3">
+                <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px' }} >Atualizar:</button>
+                <Link to='/produtos' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 -75px', width: 100 }}>Voltar:</Link>
+              </div>
+              <ToastContainer />
+            </form>
+          </div>
+             <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000 }}>
+                   <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+              </footer>
+        </div>
 
   )
 }

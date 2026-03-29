@@ -639,7 +639,7 @@ const CadVenda = () => {
 
 
   return (
-      <div className="container-fluid">
+        <div className="container-fluid">
       <div className="row flex-nowrap">
         <div className="main-wrapper">
 
@@ -904,7 +904,7 @@ const CadVenda = () => {
           </div><br />
           <div className='d-flex' style={{margin:'0 120px'}}>
             <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100 }}>Cadastrar:</button>
-            <button className='btn btn-primary border rounded-0' onClick={calcular} style={{ width: 100 }}>Total:</button>
+            <button type='button' className='btn btn-primary border rounded-0' onClick={calcular} style={{ width: 100 }}>Total:</button>
             <Link onClick={desconto} className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'Indigo', width: 100 }}>Desconto:</Link>
             <Link to="" className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'DarkRed', width: 100 }}>QrCode:</Link>
             <Link to='/produtos/codigo' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', width: 100 }}>Voltar:</Link>
@@ -920,6 +920,7 @@ const CadVenda = () => {
       </footer>
 
     </div>
+
   )
 }
 

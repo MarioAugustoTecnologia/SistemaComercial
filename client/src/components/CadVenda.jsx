@@ -639,7 +639,7 @@ const CadVenda = () => {
 
 
   return (
-     <div className="container-fluid">
+       <div className="container-fluid">
       <div className="row flex-nowrap">
         <div className="main-wrapper">
 
@@ -808,23 +808,25 @@ const CadVenda = () => {
           </div><br />
           <div className='d-flex'>
             <label htmlFor='qtd' style={{ margin: '0 120px', fontWeight: 'bold' }}>Quantidade:</label>
-            <label htmlFor='total' style={{ margin: '0 130px', fontWeight: 'bold' }}>Total:</label>
+            <label htmlFor='preco' style={{ margin: '0 -80px', fontWeight: 'bold' }}>Preço:</label>
+            <label htmlFor='total' style={{ margin: '0 240px', fontWeight: 'bold' }}>Total:</label>
 
           </div>
           <div className='d-flex'>
             <input type='number' autoFocus={true} onSelect={mudacorquant} value={quant} onChange={e => quantchange(e.target.value)} style={{ width: 85, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='qtd' id='quant' />
-            <input type='decimal' style={{ width: 150, margin: '0 133px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='total' id='total' />
+            <input type="decimal" value={preco} onChange={e => precochange(e.target.value)} style={{ width: 120, margin: '0 -73px', fontWeight: 'bold', color: 'navy' }} placeholder='Entre com o preço:' className='form-control rounded-0' name='preco' />
+            <input type='decimal' style={{ width: 150, margin: '0 160px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='total' id='total' />
 
           </div><br />
           <div className='d-flex'>
               <label htmlFor='totaldesc' style={{ margin: '0 120px', fontWeight: 'bold' }}>Total c/Desconto:</label>
               <label htmlFor='desconto' style={{ margin: '0 -60px', fontWeight: 'bold' }}>Desconto:</label>
-              <label htmlFor='preco' style={{ margin: '0 100px', fontWeight: 'bold' }}>Preço:</label>
+            
           </div>
           <div className='d-flex'>
             <input type='decimal' style={{ width: 150, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='totaldesc' id='totaldesc' />
             <input type='text' onKeyDown={MudaCorDesc} style={{ width: 80, margin: '0 -80px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='desconto' id='desconto' />
-            <input type="decimal" value={preco} onChange={e => precochange(e.target.value)} style={{ width: 120, margin: '0 117px', fontWeight: 'bold', color: 'navy' }} placeholder='Entre com o preço:' className='form-control rounded-0' name='preco' />
+            
           </div><br />
           <div className='d-flex'>
              <label htmlFor='valorpag' style={{ margin: '0 120px', fontWeight: 'bold' }}>Valor Pago:</label>

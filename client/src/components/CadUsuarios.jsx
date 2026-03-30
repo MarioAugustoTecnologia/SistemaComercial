@@ -173,7 +173,7 @@ const validarsenha = (valor) => {
         <div className="">
 
             <div className="bg-secondary" style={{ height: 75 }}>
-                <Link to="/" className="navbar-brand fs-5 fw-bolder text-white" >Inicio:</Link>
+                
 
             </div><br /><br />
 

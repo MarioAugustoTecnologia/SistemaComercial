@@ -17,7 +17,7 @@ const Home = () => {
 
       <div className="main-wrapper">
 
-        <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000 }}>
+        <nav class="sidebar bg-secondary" style={{ width: '220px', height: 1000 }}>
           <br />
           <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
             id="menu">

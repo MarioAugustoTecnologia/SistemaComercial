@@ -47,7 +47,7 @@ const CadVenda = () => {
 
     }).then((resp) => {
 
-      setEntradadata(resp)    
+      setEntradadata(resp)
 
     }).catch((err) => {
       console.log(err.message)
@@ -200,13 +200,13 @@ const CadVenda = () => {
 
   function MudaCorDesc() {
     document.getElementById('desconto').style.borderColor = 'GainsBoro'
-  } 
+  }
 
 
   const cadastrar = (e) => {
 
-    e.preventDefault();  
-    
+    e.preventDefault();
+
 
     if (isValidate()) {
 
@@ -274,7 +274,7 @@ const CadVenda = () => {
                 Swal.fire("Nada salvo", "", "info");
               }
             });
-            
+
           } else
             if (valorpagto == 0) {
 
@@ -317,7 +317,7 @@ const CadVenda = () => {
                       }).catch((err) => {
                         toast.error('Erro ! :' + err.message)
                       })
-                        navigate('/produtos/codigo')
+                      navigate('/produtos/codigo')
                     }).catch((err) => {
                       toast.error('Erro ! :' + err.message)
                     })
@@ -329,8 +329,8 @@ const CadVenda = () => {
 
               }
 
-            } else if(valorpagto === totaldesc){
-  
+            } else if (valorpagto === totaldesc) {
+
               vp = totaldesc;
 
               const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, valorpagto, totaldesc, desconto, valordesc, vp }
@@ -369,8 +369,8 @@ const CadVenda = () => {
 
                       }).catch((err) => {
                         toast.error('Erro ! :' + err.message)
-                      })                      
-                         
+                      })
+
                     }).catch((err) => {
                       toast.error('Erro ! :' + err.message)
                     })
@@ -380,7 +380,7 @@ const CadVenda = () => {
                   }
                 });
 
-              }      
+              }
             }
 
         } else
@@ -392,7 +392,7 @@ const CadVenda = () => {
             var vendan = document.getElementById('vendan').innerHTML;
             var mes = document.getElementById('mesatual').innerHTML;
             var valorpagto = parseFloat(document.getElementById('valorpago').value).toFixed(2);
-            vp = valorpagto;            
+            vp = valorpagto;
 
             if (valorpagto > total) {
 
@@ -525,30 +525,30 @@ const CadVenda = () => {
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(cadobj)
                   }).then((res) => {
-                     
-                    if(categoria === "" || categoria === null){
 
-                       function Subtract() {
-                      return estoque - quant;
+                    if (categoria === "" || categoria === null) {
+
+                      function Subtract() {
+                        return estoque - quant;
+                      }
+                      const qtd = Subtract();
+                      const edtobj = { id, qtd }
+
+                      fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
+                        method: "PATCH",
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(edtobj)
+                      }).then((res) => {
+                        console.log(qtd);
+
+                      }).catch((err) => {
+                        toast.error('Erro ! :' + err.message)
+                      })
+                      navigate('/produtos/codigo')
+
+                    } else {
+                      navigate('/produtos/codigo')
                     }
-                    const qtd = Subtract();
-                    const edtobj = { id, qtd }
-
-                    fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
-                      method: "PATCH",
-                      headers: { 'content-type': 'application/json' },
-                      body: JSON.stringify(edtobj)
-                    }).then((res) => {
-                      console.log(qtd);
-
-                    }).catch((err) => {
-                      toast.error('Erro ! :' + err.message)
-                    })
-                    navigate('/produtos/codigo')
-
-                    }else{
-                    navigate('/produtos/codigo')  
-                    }                   
 
                   }).catch((err) => {
                     toast.error('Erro ! :' + err.message)
@@ -563,10 +563,10 @@ const CadVenda = () => {
 
       } else {
 
-        var vendan = document.getElementById('vendan').innerHTML;    
+        var vendan = document.getElementById('vendan').innerHTML;
         var data_cad = formataData()
         var total = parseFloat(document.getElementById('total').value).toFixed(2);
-        var parcelas = parcela;       
+        var parcelas = parcela;
         var valorpagto = (total / parcelas).toFixed(2);
         vp = valorpagto;
         var mes = document.getElementById('mesatual').innerHTML;
@@ -639,14 +639,26 @@ const CadVenda = () => {
 
 
   return (
-       <div className="container-fluid">
+    <div className="container-fluid">
       <div className="row flex-nowrap">
         <div className="main-wrapper">
 
-          <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000, margin: '-12px' }}>
+          <nav class="sidebar bg-secondary" style={{ width: '220px', height: 1000, margin: '-12px' }}>
             <br />
             <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
               id="menu">
+              <li className="w-100" style={{ margin: '12px' }}>
+                <Link
+                  to="/home"
+                  className="nav-link px-0 align-middle text-white"
+                >
+                  <i class="fs-4 bi bi-house"></i>
+
+                  <span className="ms-2 d-sm-inline">
+                    Home:
+                  </span>
+                </Link>
+              </li>
               <li className="w-100">
                 <Link
                   to="/usuarios"
@@ -772,7 +784,7 @@ const CadVenda = () => {
       <div className="container" style={{ display: 'flex', margin: '0 130px' }}>
 
         <form action='' style={{ marginTop: '-1000px' }}>
-                
+
           <div className='mb-3'>
 
             <label htmlFor='id' style={{ fontWeight: 'bold', margin: '120px' }}>Venda nº:</label>
@@ -821,37 +833,37 @@ const CadVenda = () => {
 
           </div><br />
           <div className='d-flex'>
-              <label htmlFor='totaldesc' style={{ margin: '0 120px', fontWeight: 'bold' }}>Total c/Desconto:</label>
-              <label htmlFor='desconto' style={{ margin: '0 -60px', fontWeight: 'bold' }}>Desconto:</label>
-            
+            <label htmlFor='totaldesc' style={{ margin: '0 120px', fontWeight: 'bold' }}>Total c/Desconto:</label>
+            <label htmlFor='desconto' style={{ margin: '0 -60px', fontWeight: 'bold' }}>Desconto:</label>
+
           </div>
           <div className='d-flex'>
             <input type='decimal' style={{ width: 150, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='totaldesc' id='totaldesc' />
             <input type='text' onKeyDown={MudaCorDesc} style={{ width: 80, margin: '0 -80px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='desconto' id='desconto' />
-            
+
           </div><br />
           <div className='d-flex'>
-             <label htmlFor='valorpag' style={{ margin: '0 120px', fontWeight: 'bold' }}>Valor Pago:</label>
-             <label htmlFor='valordesc' style={{ margin: '0 -60px', fontWeight: 'bold' }}>Valor Desconto:</label>
-             <label htmlFor='formapag' style={{ margin: '0 100px', fontWeight: 'bold' }}>Forma de Pagamento:</label>
+            <label htmlFor='valorpag' style={{ margin: '0 120px', fontWeight: 'bold' }}>Valor Pago:</label>
+            <label htmlFor='valordesc' style={{ margin: '0 -60px', fontWeight: 'bold' }}>Valor Desconto:</label>
+            <label htmlFor='formapag' style={{ margin: '0 100px', fontWeight: 'bold' }}>Forma de Pagamento:</label>
 
-            
+
           </div>
-            <div className='d-flex'>
-             <input type="decimal" style={{ width: 120, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='valorpago' id='valorpago' />
-             <input type="decimal" style={{ width: 120, margin: '0 -93px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='valordesc' id='valordesc' /> 
-             <select style={{ width: 130, margin: '0 130px', fontWeight: 'bold', color: 'navy' }} name='formapag' id='formapag' className='form-select rounded-0' value={formapag} onChange={e => formapagchange(e.target.value)}>
+          <div className='d-flex'>
+            <input type="decimal" style={{ width: 120, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='valorpago' id='valorpago' />
+            <input type="decimal" style={{ width: 120, margin: '0 -93px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='valordesc' id='valordesc' />
+            <select style={{ width: 130, margin: '0 130px', fontWeight: 'bold', color: 'navy' }} name='formapag' id='formapag' className='form-select rounded-0' value={formapag} onChange={e => formapagchange(e.target.value)}>
               <option value=""></option>
               <option value="Dinheiro">Dinheiro</option>
               <option value="Pix">Pix</option>
               <option value="Débito">Débito</option>
               <option value="Crédito">Crédito</option>
               <option value="Boleto">Boleto</option>
-             </select>            
-            </div><br />
-            <div className='mb-3'>
-              <label htmlFor='mes' style={{ margin: '0 120px', fontWeight: 'bold' }}>Mes:</label>
-              <table className="table" style={{ fontFamily: 'arial', width: '5%', margin: '0 120px', fontWeight: 'bold', color: 'navy' }}>
+            </select>
+          </div><br />
+          <div className='mb-3'>
+            <label htmlFor='mes' style={{ margin: '0 120px', fontWeight: 'bold' }}>Mes:</label>
+            <table className="table" style={{ fontFamily: 'arial', width: '5%', margin: '0 120px', fontWeight: 'bold', color: 'navy' }}>
               <thead hidden='true'>
                 <tr>
                   <th className="th" scope="col" >Id:</th>
@@ -869,8 +881,8 @@ const CadVenda = () => {
                 }
               </tbody>
             </table>
-            </div><br />
-            <div className='d-flex' style={{margin:'0 120px'}}>
+          </div><br />
+          <div className='d-flex' style={{ margin: '0 120px' }}>
             <button type='submit' onClick={cadastrar} className='btn btn-success border rounded-0' style={{ width: 100 }}>Cadastrar:</button>
             <button type='button' className='btn btn-primary border rounded-0' onClick={calcular} style={{ width: 100 }}>Total:</button>
             <Link onClick={desconto} className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'Indigo', width: 100 }}>Desconto:</Link>

@@ -252,7 +252,7 @@ const CadCompras = () => {
           var vp = valorpagto;
           var vf = parseFloat(document.getElementById('vf').value).toFixed(2)
           var custo = parseFloat(document.getElementById('custo').value).toFixed(2);
-          var qtd = document.getElementById('qtd').value;    
+          var qtd = document.getElementById('qtd').value;
 
           if (valorpagto > totalfrete) {
 
@@ -400,7 +400,7 @@ const CadCompras = () => {
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(cadobj)
                 }).then((res) => {
-                                   
+
                   function Add() {
                     return parseInt(estoque) + parseInt(quant);
                   }
@@ -516,10 +516,22 @@ const CadCompras = () => {
       <div className="row flex-nowrap">
         <div className="main-wrapper">
 
-          <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000, margin: '-12px' }}>
+          <nav class="sidebar bg-secondary" style={{ width: '220px', height: 1000, margin: '-12px' }}>
             <br />
             <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
               id="menu">
+              <li className="w-100" style={{ margin: '12px' }}>
+                <Link
+                  to="/home"
+                  className="nav-link px-0 align-middle text-white"
+                >
+                  <i class="fs-4 bi bi-house"></i>
+
+                  <span className="ms-2 d-sm-inline">
+                    Home:
+                  </span>
+                </Link>
+              </li>
               <li className="w-100">
                 <Link
                   to="/usuarios"
@@ -645,7 +657,7 @@ const CadCompras = () => {
       <div className="container" style={{ display: 'flex', margin: '0 130px' }}>
 
         <form action='' onSubmit={cadastrar} style={{ marginTop: '-900px' }}>
-   
+
           <div className='mb-3'>
             <label htmlFor="compran" style={{ fontWeight: 'bold', fontSize: '17px', margin: '0 120px' }}>Compra nº:</label>
             <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '5%', margin: '0 120px' }}>
@@ -765,7 +777,7 @@ const CadCompras = () => {
           <div className='d-flex'>
             <label htmlFor='datacad' style={{ fontSize: '17px', margin: '0 120px', fontWeight: 'bold' }}>Data de Cadastro:</label>
             <label htmlFor='mes' style={{ fontSize: '17px', margin: '0 -50px', fontWeight: 'bold' }}>Mês:</label>
-      
+
           </div>
           <div className='d-flex'>
             <input type='date' onKeyUp={mudacorData} onSelect={mudacorData} value={datacad} onChange={e => datacadchange(e.target.value)} style={{ fontSize: '17px', width: 175, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='datacad' id='datacad' />
@@ -787,23 +799,23 @@ const CadCompras = () => {
                 }
               </tbody>
             </table>
-            
+
           </div><br />
           <div className='mb-3'>
-             <label htmlFor='fornecedor' style={{ fontSize: '17px', margin: '0 120px', fontWeight: 'bold' }}>Fornecedor:</label>
-             <select style={{ fontSize: '17px', width: 200, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} id='forname' className='form-select' onChange={(e) => setValues({ ...values, id: e.target.value })}>
+            <label htmlFor='fornecedor' style={{ fontSize: '17px', margin: '0 120px', fontWeight: 'bold' }}>Fornecedor:</label>
+            <select style={{ fontSize: '17px', width: 200, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} id='forname' className='form-select' onChange={(e) => setValues({ ...values, id: e.target.value })}>
               <option></option>
               {forname.map(val => {
                 return <option value={val.nome}>{val.nome}</option>
               })}
-            </select> 
+            </select>
           </div><br />
           <div className='d-flex'>
             <button type='submit' className='btn btn-success border rounded-0' style={{ width: 120, margin: '0 120px', fontSize: '16px' }}>Cadastrar:</button>
             <Link className="btn border rounded-0" onClick={totalFrete} style={{ color: 'white', backgroundColor: 'gray', margin: '0 -120px', fontSize: '16px', width: 120 }}>Total c/frete:</Link>
             <button type='button' className='btn btn-primary border rounded-0' onClick={calcular} style={{ width: 120, margin: '0 116px', fontSize: '16px' }}>Total:</button>
             <Link to='/produtos/codigo' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 -115px', fontSize: '16px', width: 120 }}>Voltar:</Link>
-            
+
           </div>
 
           <ToastContainer />

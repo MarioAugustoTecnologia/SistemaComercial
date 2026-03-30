@@ -104,10 +104,11 @@ const ProdutosCodigo = () => {
 
         <div className="main-wrapper" >
 
-          <nav class="sidebar bg-secondary" style={{ width: '200px', height: 950, margin: '-12px' }}>
+          <nav class="sidebar bg-secondary" style={{ width: '220px', height: 950, margin: '-12px' }}>
             <br />
             <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
               id="menu"><br /><br />
+              
               <li className="w-100" style={{ margin: '12px' }} >
                 <Link
                   to="/home"
@@ -120,7 +121,6 @@ const ProdutosCodigo = () => {
                   </span>
                 </Link>
               </li>
-
               <li className="w-100">
                 <Link
                   to="/entradas"
@@ -297,10 +297,10 @@ const ProdutosCodigo = () => {
 
       <br /><br />
 
-       <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000, height:'30px'}}>
-        <p className="fw-bolder text-white" style={{marginTop:'-10px'}}>&copy; Multicompany Solutions</p>
+      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000, height: '30px' }}>
+        <p className="fw-bolder text-white" style={{ marginTop: '-10px' }}>&copy; Multicompany Solutions</p>
       </footer>
- 
+
 
     </div>
 

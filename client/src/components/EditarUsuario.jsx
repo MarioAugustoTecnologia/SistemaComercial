@@ -203,11 +203,23 @@ const EditarUsuario = () => {
 
                 <div className="main-wrapper">
 
-                    <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000, margin:'-12px' }}>
+                    <nav class="sidebar bg-secondary" style={{ width: '220px', height: 1000, margin:'-12px' }}>
 
                              <br />
                         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                             id="menu">
+                                <li className="w-100" style={{margin:'12px'}}>
+                                <Link
+                                    to="/home"
+                                    className="nav-link px-0 align-middle text-white"
+                                >
+                                    <i class="fs-4 bi bi-house"></i>
+
+                                    <span className="ms-2 d-sm-inline">
+                                        Home:
+                                    </span>
+                                </Link>
+                            </li>
 
                             <li className="w-100">
                                 <Link

@@ -772,7 +772,9 @@ const CadVenda = () => {
       <div className="container" style={{ display: 'flex', margin: '0 130px' }}>
 
         <form action='' style={{ marginTop: '-1000px' }}>
-          <div className=''>
+                
+          <div className='mb-3'>
+
             <label htmlFor='id' style={{ fontWeight: 'bold', margin: '120px' }}>Venda nº:</label>
             <table className="table" style={{ fontFamily: 'arial', width: '5%', margin: '0 120px', marginTop: '-120px' }}>
               <thead hidden='true'>
@@ -869,7 +871,7 @@ const CadVenda = () => {
             </table>
             </div><br />
             <div className='d-flex' style={{margin:'0 120px'}}>
-            <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100 }}>Cadastrar:</button>
+            <button type='submit' onClick={cadastrar} className='btn btn-success border rounded-0' style={{ width: 100 }}>Cadastrar:</button>
             <button type='button' className='btn btn-primary border rounded-0' onClick={calcular} style={{ width: 100 }}>Total:</button>
             <Link onClick={desconto} className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'Indigo', width: 100 }}>Desconto:</Link>
             <Link to="" className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'DarkRed', width: 100 }}>QrCode:</Link>

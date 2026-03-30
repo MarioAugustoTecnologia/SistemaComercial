@@ -639,11 +639,11 @@ const CadVenda = () => {
 
 
   return (
-        <div className="container-fluid">
+     <div className="container-fluid">
       <div className="row flex-nowrap">
         <div className="main-wrapper">
 
-          <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000, margin: '-12px'  }}>
+          <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000, margin: '-12px' }}>
             <br />
             <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
               id="menu">
@@ -769,13 +769,12 @@ const CadVenda = () => {
           </nav>
         </div>
       </div>
-      <div className="container" style={{ display: 'flex', margin: '0 130px', fontSize: '18px' }}>
+      <div className="container" style={{ display: 'flex', margin: '0 130px' }}>
 
-
-        <form action='' onSubmit={cadastrar} style={{ marginTop: '-900px' }}>
-          <div className='mb-3'>
-            <label htmlFor='compran' style={{ margin: '0 115px', fontWeight: 'bold' }}>Venda nº:</label>
-            <table className="table" style={{ fontFamily: 'arial', width: '5%', margin: '0 120px' }}>
+        <form action='' style={{ marginTop: '-1000px' }}>
+          <div className=''>
+            <label htmlFor='id' style={{ fontWeight: 'bold', margin: '120px' }}>Venda nº:</label>
+            <table className="table" style={{ fontFamily: 'arial', width: '5%', margin: '0 120px', marginTop: '-120px' }}>
               <thead hidden='true'>
                 <tr>
                   <th className="th" scope="col" >Id:</th>
@@ -793,97 +792,62 @@ const CadVenda = () => {
                 }
               </tbody>
             </table>
+          </div><br />
+
+          <div className='d-flex'>
+            <label htmlFor='nome' style={{ margin: '0 120px', fontWeight: 'bold' }}>Nome:</label>
+            <label htmlFor='categoria' style={{ margin: '0 170px', fontWeight: 'bold' }}>Categoria:</label>
           </div>
           <div className='d-flex'>
-            <label htmlFor='nome' style={{ margin: '0 115px', fontWeight: 'bold' }}>Nome:</label>
-            <label htmlFor='categoria' style={{ margin: '0 220px', fontWeight: 'bold' }}>Categoria:</label>
-          </div>
-          <div className='d-flex'>
-            <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ width: 340, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='nome' />
-            <select style={{ width: 166, fontWeight: 'bold', color: 'navy', margin: '0 -69px' }} className='form-select rounded-0' value={categoria} onChange={e => setCategoria(e.target.value)}>
+            <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ width: 300, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='nome' />
+            <select style={{ width: 166, fontWeight: 'bold', color: 'navy', margin: '0 -80px' }} className='form-select rounded-0' value={categoria} onChange={e => setCategoria(e.target.value)}>
               <option value=""></option>
               <option value="Transporte">Transporte</option>
 
             </select>
           </div><br />
-          <div className='mb-3'>
-            <label htmlFor='qtd' style={{ margin: '0 115px', fontWeight: 'bold' }}>Quantidade:</label>
-            <label htmlFor='total' style={{ margin: '0 -45px', fontWeight: 'bold' }}>Total:</label>
-            <label htmlFor='totaldesc' style={{ margin: '0 210px', fontWeight: 'bold' }}>Total c/Desconto:</label>
-            <label htmlFor='desconto' style={{ margin: '0 -160px', fontWeight: 'bold' }}>Desconto:</label>
-            <input type='number' autoFocus={true} onSelect={mudacorquant} value={quant} onChange={e => quantchange(e.target.value)} style={{ width: 85, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='qtd' id='quant' />
-            <input type='decimal' style={{ width: 150, margin: '0 290px', marginTop: '-40px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='total' id='total' />
-            <input type='decimal' style={{ width: 150, margin: '0 500px', marginTop: '-38px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='totaldesc' id='totaldesc' />
-            <input type='text' onKeyDown={MudaCorDesc} style={{ width: 70, margin: '0 700px', marginTop: '-38px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='desconto' id='desconto' />
+          <div className='d-flex'>
+            <label htmlFor='qtd' style={{ margin: '0 120px', fontWeight: 'bold' }}>Quantidade:</label>
+            <label htmlFor='total' style={{ margin: '0 130px', fontWeight: 'bold' }}>Total:</label>
+
+          </div>
+          <div className='d-flex'>
+            <input type='number' autoFocus={true} onSelect={mudacorquant} value={quant} onChange={e => quantchange(e.target.value)} style={{ width: 85, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='qtd' id='quant' />
+            <input type='decimal' style={{ width: 150, margin: '0 133px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='total' id='total' />
+
           </div><br />
-          <div className='mb-3'>
-            <label htmlFor='preco' style={{ margin: '0 115px', fontWeight: 'bold' }}>Preço:</label>
-            <label htmlFor='valorpag' style={{ margin: '0 10px', fontWeight: 'bold' }}>Valor Pago:</label>
-            <label htmlFor='valordesc' style={{ margin: '0 40px', fontWeight: 'bold' }}>Valor Desconto:</label>
-            <input type="decimal" value={preco} onChange={e => precochange(e.target.value)} style={{ width: 120, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' />
-            <input type="decimal" style={{ width: 120, margin: '0 290px', marginTop: '-38px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='valorpago' id='valorpago' />
-            <input type="decimal" style={{ width: 150, margin: '0 440px', marginTop: '-38px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='valordesc' id='valordesc' />
+          <div className='d-flex'>
+              <label htmlFor='totaldesc' style={{ margin: '0 120px', fontWeight: 'bold' }}>Total c/Desconto:</label>
+              <label htmlFor='desconto' style={{ margin: '0 -60px', fontWeight: 'bold' }}>Desconto:</label>
+              <label htmlFor='preco' style={{ margin: '0 100px', fontWeight: 'bold' }}>Preço:</label>
+          </div>
+          <div className='d-flex'>
+            <input type='decimal' style={{ width: 150, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='totaldesc' id='totaldesc' />
+            <input type='text' onKeyDown={MudaCorDesc} style={{ width: 80, margin: '0 -80px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='desconto' id='desconto' />
+            <input type="decimal" value={preco} onChange={e => precochange(e.target.value)} style={{ width: 120, margin: '0 117px', fontWeight: 'bold', color: 'navy' }} placeholder='Entre com o preço:' className='form-control rounded-0' name='preco' />
           </div><br />
-          <div className='mb-3'>
-            <label htmlFor='formapag' style={{ margin: '0 115px', fontWeight: 'bold' }}>Forma de Pagamento:</label>
-            <label htmlFor='parcelamento' style={{ margin: '0 -47px', fontWeight: 'bold' }}>Parcelamento:</label>
-            <label htmlFor='parcelan' style={{ margin: '0 80px', fontWeight: 'bold' }}>Parcela n°:</label>
-            <label htmlFor='parcelas' style={{ margin: '0 -10px', fontWeight: 'bold' }}>Parcelas:</label>
-            <select style={{ width: 130, margin: '0 115px', marginTop: '0px', fontWeight: 'bold', color: 'navy' }} name='formapag' id='formapag' className='form-select rounded-0' value={formapag} onChange={e => formapagchange(e.target.value)}>
+          <div className='d-flex'>
+             <label htmlFor='valorpag' style={{ margin: '0 120px', fontWeight: 'bold' }}>Valor Pago:</label>
+             <label htmlFor='valordesc' style={{ margin: '0 -60px', fontWeight: 'bold' }}>Valor Desconto:</label>
+             <label htmlFor='formapag' style={{ margin: '0 100px', fontWeight: 'bold' }}>Forma de Pagamento:</label>
+
+            
+          </div>
+            <div className='d-flex'>
+             <input type="decimal" style={{ width: 120, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='valorpago' id='valorpago' />
+             <input type="decimal" style={{ width: 120, margin: '0 -93px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='valordesc' id='valordesc' /> 
+             <select style={{ width: 130, margin: '0 130px', fontWeight: 'bold', color: 'navy' }} name='formapag' id='formapag' className='form-select rounded-0' value={formapag} onChange={e => formapagchange(e.target.value)}>
               <option value=""></option>
               <option value="Dinheiro">Dinheiro</option>
               <option value="Pix">Pix</option>
               <option value="Débito">Débito</option>
               <option value="Crédito">Crédito</option>
               <option value="Boleto">Boleto</option>
-            </select>
-            <select value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ width: 120, margin: '0 365px', marginTop: '-38px', fontWeight: 'bold', color: 'navy' }} className='form-select rounded-0' name='parcela' id='parcela'>
-              <option value=""></option>
-              <option value="2x">2x</option>
-              <option value="3x">3x</option>
-              <option value="4x">4x</option>
-              <option value="5x">5x</option>
-              <option value="6x">6x</option>
-              <option value="7x">7x</option>
-              <option value="8x">8x</option>
-              <option value="9x">9x</option>
-              <option value="10x">10x</option>
-              <option value="11x">11x</option>
-              <option value="12x">12x</option>
-            </select>
-            <select value={parcelan} onChange={e => parcelanchange(e.target.value)} style={{ width: 120, margin: '0 520px', marginTop: '-38px', fontWeight: 'bold', color: 'navy' }} className='form-select rounded-0' name='parcelan' id='parcela'>
-              <option value=""></option>
-              <option value="1ª">1ª</option>
-              <option value="2ª">2ª</option>
-              <option value="3ª">3ª</option>
-              <option value="4ª">4ª</option>
-              <option value="5ª">5ª</option>
-              <option value="6ª">6ª</option>
-              <option value="7ª">7ª</option>
-              <option value="8ª">8ª</option>
-              <option value="9ª">9ª</option>
-              <option value="10ª">10ª</option>
-              <option value="11ª">11ª</option>
-              <option value="12ª">12ª</option>
-            </select>
-            <select value={parcela} onChange={e => parcelachange(e.target.value)} style={{ width: 120, margin: '0 680px', marginTop: '-38px', fontWeight: 'bold', color: 'navy' }} className='form-select rounded-0' name='parcela' id='parcela'>
-              <option value=""></option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select>
-          </div><br />
-          <div className='mb-3'>
-            <label htmlFor='mes' style={{ margin: '0 120px', fontWeight: 'bold' }}>Mes:</label>
-            <table className="table" style={{ fontFamily: 'arial', width: '5%', margin: '0 120px', fontWeight: 'bold', color: 'navy' }}>
+             </select>            
+            </div><br />
+            <div className='mb-3'>
+              <label htmlFor='mes' style={{ margin: '0 120px', fontWeight: 'bold' }}>Mes:</label>
+              <table className="table" style={{ fontFamily: 'arial', width: '5%', margin: '0 120px', fontWeight: 'bold', color: 'navy' }}>
               <thead hidden='true'>
                 <tr>
                   <th className="th" scope="col" >Id:</th>
@@ -895,30 +859,26 @@ const CadVenda = () => {
                   mesatual.map(item => (
                     <tr key={item.id}>
                       <td className="td" hidden='true'>{item.id}</td>
-                      <td className="td" style={{ fontWeight: 'bold', color: 'navy', fontSize: '18px' }} id='mesatual'>{item.mes}</td>
+                      <td className="td" style={{ fontWeight: 'bold', color: 'navy', fontSize: '16px' }} id='mesatual'>{item.mes}</td>
                     </tr>
                   ))
                 }
               </tbody>
             </table>
-          </div><br />
-          <div className='d-flex' style={{margin:'0 120px'}}>
+            </div><br />
+            <div className='d-flex' style={{margin:'0 120px'}}>
             <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100 }}>Cadastrar:</button>
             <button type='button' className='btn btn-primary border rounded-0' onClick={calcular} style={{ width: 100 }}>Total:</button>
             <Link onClick={desconto} className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'Indigo', width: 100 }}>Desconto:</Link>
             <Link to="" className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'DarkRed', width: 100 }}>QrCode:</Link>
             <Link to='/produtos/codigo' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', width: 100 }}>Voltar:</Link>
-
-
           </div>
           <ToastContainer />
         </form>
       </div>
-
       <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', color: 'white', textAlign: 'center', zIndex: 1000 }}>
         <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
       </footer>
-
     </div>
 
   )

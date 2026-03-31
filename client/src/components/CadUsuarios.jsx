@@ -175,7 +175,8 @@ const validarsenha = (valor) => {
             <div className="bg-secondary" style={{ height: 75 }}>
                 
 
-            </div><br /><br />
+            </div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
 
 
             <form className="mobile-form" style={{ margin: '0 100px' }} onSubmit={cadastrar}>

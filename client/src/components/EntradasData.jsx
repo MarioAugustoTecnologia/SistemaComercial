@@ -257,7 +257,7 @@ const EntradasData = () => {
          
                    <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Entradas:</h4><br /><br />
                    <button type="button" onClick={voltar} style={{ backgroundColor: 'green', color: 'white', width: '120px', margin: '0' }}>Voltar:</button>
-                   <button type="button" onClick={somar} style={{ backgroundColor: 'gray', color: 'white', width: '160px', margin: '0 10px' }}>Total Entradas:</button>
+                   <button type="button" onClick={somar} style={{ backgroundColor: 'gray', color: 'white', width: '150px', margin: '0 10px' }}>Total Entradas:</button>
                    <strong style={{fontSize:'30px'}}>Total:<span id="total" style={{fontWeight:'bold', color:'green', margin:'0 10px'}}></span></strong><br /><br />
                    <div className="d-flex">
                      <label htmlFor="busca" style={{fontWeight:'bold', fontSize:'17px'}}>Busca por Data:</label>

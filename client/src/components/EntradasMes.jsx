@@ -47,7 +47,7 @@ const EntradasMes = () => {
       if (result.isConfirmed) {
 
 
-        fetch("https://sistemacomercial-fv5g.onrender.com/vendas" + id, {
+        fetch("https://sistemacomercial-fv5g.onrender.com/vendas/" + id, {
 
           method: "DELETE"
 
@@ -80,32 +80,34 @@ const EntradasMes = () => {
 
     if (buscames === "" || buscames === null) {
       toast.warning('Campo busca por mês vazio !')
-      document.getElementById('buscames').style.borderColor = 'red';
 
     } else {
+      let somaTotal = 0;
+      // Seleciona todas as linhas do corpo da tabela
+      const linhas = document.querySelectorAll("#table tbody tr");
 
-      let valores = [];
+      linhas.forEach(linha => {
 
-      table.map(item => {
-        valores.push(item.valorpagto)
-      })
+        const forma = linha.cells[9].textContent;
+        const total = parseFloat(linha.cells[10].textContent);
 
-      let soma = valores.reduce((previous_value, current_value) => {       // método que faz a soma
-        return parseFloat(previous_value) + parseFloat(current_value);     // converte de string para number
-      })
-
-      const nome = 'Total das entradas no mes de  '  +   buscames;
-      const total = soma.toFixed(2);
+        // Verifica a condição
+        if (forma !== "Crédito") {
+          somaTotal += total;
+        }
+      });
+      const nome = 'Total das entradas no mes de  ' + buscames;
+      const total = somaTotal.toFixed(2);
       const data_cad = formataData();
       const preco = 0;
       const vendan = "0";
       const mes = buscames;
       const troco = 0;
       const valorpagto = 0;
- 
+
 
       const cadobj = { nome, total, preco, mes, vendan, troco, valorpagto, data_cad }
-    
+
 
       fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
         method: "POST",
@@ -119,65 +121,46 @@ const EntradasMes = () => {
         toast.error('Erro ! :' + err.message)
       })
 
-        const cadobj2 = { nome, total }
 
-        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-        method: "POST",
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(cadobj2)
-      }).then((res) => {
-        //toast.success('Cadastrado com Sucesso !') 
-        window.location.reload();
 
-      }).catch((err) => {
-        toast.error('Erro ! :' + err.message)
-      })
+
 
     }
   }
 
   const cadastrar = (e) => {
-  
-      e.preventDefault();
-  
-      const cadobj = { mes }    
-  
-        Swal.fire({
-          title: "Deseja salvar ?",
-          showDenyButton: true,
-          showCancelButton: true,
-          confirmButtonText: "Salvar",
-          denyButtonText: `Não salvar`
-        }).then((result) => {
-  
-          if (result.isConfirmed) {
-  
-            fetch("https://sistemacomercial-fv5g.onrender.com/mesatual", {
-              method: "POST",
-              headers: { 'content-type': 'application/json' },
-              body: JSON.stringify(cadobj)
-            }).then((res) => {
-              toast.success('Cadastrado com sucesso !')              
-  
-            }).catch((err) => {
-              toast.error('Erro ! :' + err.message)
-            })
-          }
-          else if (result.isDenied) {
-            Swal.fire("Nada salvo", "", "info");
-          }
+
+    e.preventDefault();
+
+    const cadobj = { mes }
+
+    Swal.fire({
+      title: "Deseja salvar ?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Salvar",
+      denyButtonText: `Não salvar`
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+
+        fetch("https://sistemacomercial-fv5g.onrender.com/mesatual", {
+          method: "POST",
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(cadobj)
+        }).then((res) => {
+          toast.success('Cadastrado com sucesso !')
+
+        }).catch((err) => {
+          toast.error('Erro ! :' + err.message)
         })
-      
-    }  
+      }
+      else if (result.isDenied) {
+        Swal.fire("Nada salvo", "", "info");
+      }
+    })
 
-    function CorBuscaMes() {
-
-      document.getElementById('buscames').style.bordercolor = 'GainsBoro'
-      
-    }
-
-
-  
+  }
 
   const logout = () => {
     localStorage.clear()
@@ -185,38 +168,32 @@ const EntradasMes = () => {
 
   }
 
-  const navigate = useNavigate()
 
-  const handleEdit = (id) => {
-    
-   navigate('/entradas/numero/editar/' + id) 
-    
+  function CorBuscaMes() {
+
+    document.getElementById('buscames').style.bordercolor = 'GainsBoro'
+
   }
-  
+
   return (
-    <div className="container-fluid" style={{ fontFamily: 'arial' }}>
+    <div className="container-fluid">
       <div className="row flex-nowrap">
-        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary" style={{ fontFamily: 'arial', fontSize: '19px' }}>
-          <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-            <Link
-              to=""
-              className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none"
-            >
-              <span className='fs-5 fw-bolder d-none d-sm-inline'>
-                Opções:
-              </span>
-            </Link>
-            <ul
-              className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-              id="menu"
-            >
-              <li className="w-100">
+        <div className="main-wrapper">
+
+          <nav class="sidebar bg-secondary" style={{ width: '220px', height: 1000, margin: '-12px' }}>
+            <br />
+            <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+              id="menu">
+              <li className="w-100" style={{ margin: '12px' }}>
                 <Link
                   to="/home"
-                  className="nav-link text-white px-0 align-middle"
+                  className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi-speedometer2 ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Painel:</span>
+                  <i class="fs-4 bi bi-house"></i>
+
+                  <span className="ms-2 d-sm-inline">
+                    Home:
+                  </span>
                 </Link>
               </li>
               <li className="w-100">
@@ -224,8 +201,8 @@ const EntradasMes = () => {
                   to="/usuarios"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi-people ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <i class="fs-3 bi bi-person-check"></i>
+                  <span className="ms-2 d-sm-inline">
                     Usuarios:
                   </span>
                 </Link>
@@ -236,7 +213,7 @@ const EntradasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-cash-coin ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Vendas:
                   </span>
                 </Link>
@@ -247,7 +224,7 @@ const EntradasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-cash ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Compras:
                   </span>
                 </Link>
@@ -258,7 +235,7 @@ const EntradasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-coin ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Despesas:
                   </span>
                 </Link>
@@ -269,18 +246,18 @@ const EntradasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                     Produtos e Serviços:
+                  <span className="ms-2 d-sm-inline">
+                    Produtos e Serviços:
                   </span>
                 </Link>
               </li>
-               <li className="w-100">
+              <li className="w-100">
                 <Link
                   to="/transportes"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i class="bi bi-truck-flatbed" style={{margin:'0 8px'}}></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <i class="bi bi-truck-flatbed" style={{ margin: '0 8px' }}></i>
+                  <span className="ms-2 d-sm-inline">
                     Transportes:
                   </span>
                 </Link>
@@ -291,7 +268,7 @@ const EntradasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-truck ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Fornecedores:
                   </span>
                 </Link>
@@ -302,7 +279,7 @@ const EntradasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-person-square ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Clientes:
                   </span>
                 </Link>
@@ -313,7 +290,7 @@ const EntradasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-bank ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Resultados:
                   </span>
                 </Link>
@@ -324,123 +301,119 @@ const EntradasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Orçamentos:
                   </span>
                 </Link>
               </li>
-
               <li className="w-100" onClick={logout}>
                 <Link to="/"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-power ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Logout</span>
+                  <span className="ms-2 d-sm-inline">Sair:</span>
                 </Link>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
-        <div className="col p-0 m-0">
-          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: '160%' }}>
-            <h4><strong>Sistema de Gestão Comercial</strong></h4>
-          </div>
-          <Outlet />
-          <div className="px-5 mt-5">
-            <form action="" onSubmit={cadastrar} >
-              <div className="mb3">
-              <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold'}}>Busca por mes:</label>
-              <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px', margin: '0 500px', fontWeight:'bold' }}>Mes atual:</label><br />
-              <input type="search" id="buscames" onKeyUp={CorBuscaMes} autoFocus='true' className="form-control rounded-0" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold', color:'navy', width:'200px', padding:'2px' }} /> <br />
-              <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 250px', marginTop:'-115px' }}>Voltar:</Link>
-              <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 -220px', fontSize: '18px', marginTop:'-110px'}}>Total Entradas:</Link>
-              <select value={mes} onChange={e => setMes(e.target.value)} style={{ fontSize: '20px', width: 160, margin:'0 650px', marginTop:'-90px', fontWeight:'bold', color:'navy' }} name='mes' id='mes' className='form-select'>
-                <option value=""></option>
-                <option value="Janeiro">Janeiro</option>
-                <option value="Fevereiro">Fevereiro</option>
-                <option value="Março">Março</option>
-                <option value="Abril">Abril</option>
-                <option value="Maio">Maio</option>
-                <option value="Junho">Junho</option>
-                <option value="Julho">Julho</option>
-                <option value="Agosto">Agosto</option>
-                <option value="Setembro">Setembro</option>
-                <option value="Outubro">Outubro</option>
-                <option value="Novembro">Novembro</option>
-                <option value="Dezembro">Dezembro</option>
-              </select>
-               <button type="submit" className="btn btn-success" style={{margin:'0 840px', fontSize:'18px', marginTop:'-69px'}}>Cadastrar:</button>
-              <Link to="/mesatual" className="btn btn-primary" style={{ fontSize: '18px', width: '140px', margin: '0 980px', marginTop:'-114px' }}>Mes atual:</Link>
-              </div>
-             </form>
-             <br />
-             <h4 style={{ textAlign: 'center', color: 'Red', fontSize: '25px', margin: '0 980px' }}><strong>Entradas:</strong></h4>
-             <br />
-             <div className="mt-3">
-              <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: 3000 }}>
-               <thead>
-                    <tr>
-                      <th className="th" scope="col">Id:</th>
-                      <th className="th" scope="col">Venda nº:</th>
-                      <th className="th" scope="col">Nome:</th>
-                      <th className="th" scope="col">Qtd:</th>
-                      <th className="th" scope="col">Preço:</th>
-                      <th className="th" scope="col">Total:</th>
-                      <th className="th" scope="col">Desconto:</th>
-                      <th className="th" scope="col">Valor Desconto:</th>
-                      <th className="th" scope="col">Total c/Desconto:</th>
-                      <th className="th" scope="col">Forma Paga:</th>
-                      <th className="th" scope="col">Entradas:</th>
-                      <th className="th" scope="col">Troco:</th>                    
-                      <th className="th" scope="col">Parcelamento:</th>
-                      <th className="th" scope="col">Parcela:</th>
-                      <th className="th" scope="col">Mês:</th>
-                      <th className="th" scope="col">Frete:</th>
-                      <th className="th" scope="col">Data de Cadastro:</th>
-                      <th className="th" scope="col">Ação:</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      table.map(item => (
-                        <tr key={item.id}>
-                          <td className="td">{item.id}</td>
-                          <td className="td">{item.vendan}</td>
-                          <td className="td">{item.nome}</td>
-                          <td className="td">{item.quant}</td>
-                          <td className="td">{item.preco}</td>
-                          <td className="td">{item.total}</td>
-                          <td className="td">{item.desconto}</td>
-                          <td className="td">{item.valordesc}</td>
-                          <td className="td">{item.totaldesc}</td>
-                          <td className="td">{item.formapag}</td>
-                          <td className="td">{item.valorpagto}</td>
-                          <td className="td">{item.troco}</td>              
-                          <td className="td">{item.parcelamento}</td>
-                          <td className="td">{item.parcelan}</td>
-                          <td className="td">{item.mes}</td>
-                          <td className="td">{item.frete}</td>
-                          <td className="td">{item.data_cad}</td>
-                          <td className="td" >
-                          <button className="editar" onClick={() => { handleEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Editar:</button>  
-                          <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-                          </td>
-                        </tr>
-                      ))
+      </div>
+      <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-850px' }}>
 
-                    }
-
-                  </tbody>
-                    <ToastContainer />
-              </table>
-            </div>
-            <br />
+        <div className="mb3">
+                <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Entradas:</h4><br /><br />
+          <div className="d-flex">
+            <label htmlFor="busca" style={{ fontWeight: 'bold', fontSize: '17px' }}>Busca por Mês:</label>
+            <label htmlFor="mes" style={{ fontWeight: 'bold', fontSize: '17px', margin: '0 332px' }}>Mês Atual:</label>
 
           </div>
+          <div className="d-flex">
+            <input type="search" id="buscames" onKeyUp={CorBuscaMes} autoFocus='true' className="form-control rounded-0" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', padding: '2px', width: '150px', height:'30px' }} />
+            <Link to="/entradas" className="btn btn-success rounded-0" style={{ width: '100px', margin: '0 25px', height:'35px', padding:'2px'}} >Voltar:</Link>
+            <Link onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 -22px', height:'35px', padding:'2px', width:'150px' }}>Total Entradas:</Link>
+            <select value={mes} onChange={e => setMes(e.target.value)} style={{height:'30px', fontSize: '17px', width: 160, margin: '0 49px', fontWeight: 'bold', color: 'navy' }} name='mes' id='mes' className='form-select rounded-0'>
+              <option value=""></option>
+              <option value="Janeiro">Janeiro</option>
+              <option value="Fevereiro">Fevereiro</option>
+              <option value="Março">Março</option>
+              <option value="Abril">Abril</option>
+              <option value="Maio">Maio</option>
+              <option value="Junho">Junho</option>
+              <option value="Julho">Julho</option>
+              <option value="Agosto">Agosto</option>
+              <option value="Setembro">Setembro</option>
+              <option value="Outubro">Outubro</option>
+              <option value="Novembro">Novembro</option>
+              <option value="Dezembro">Dezembro</option>
+            </select>
+          </div><br /><br /><br /><br />
+
+          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '2100px' }} id="table">
+            <thead>
+              <tr>
+                <th className="th" scope="col">Id:</th>
+                <th className="th" scope="col" >Venda nº:</th>
+                <th className="th" scope="col">Nome:</th>
+                <th className="th" scope="col">Qtd:</th>
+                <th className="th" scope="col">Preço:</th>
+                <th className="th" scope="col">Total:</th>
+                <th className="th" scope="col">Desconto:</th>
+                <th className="th" scope="col">Valor Desconto:</th>
+                <th className="th" scope="col">Total c/Desconto:</th>
+                <th className="th" scope="col">Forma Paga:</th>
+                <th className="th" scope="col">Entradas:</th>
+                <th className="th" scope="col">Troco:</th>
+                <th className="th" scope="col">Parcelamento:</th>
+                <th className="th" scope="col">Parcela:</th>
+                <th className="th" scope="col">Mês:</th>
+                <th className="th" scope="col">Frete:</th>
+                <th className="th" scope="col">Data de Cadastro:</th>
+                <th className="th" scope="col">Ação:</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                table.map(item => (
+                  <tr key={item.id}>
+                    <td className="td">{item.id}</td>
+                    <td className="td">{item.vendan}</td>
+                    <td className="td">{item.nome}</td>
+                    <td className="td">{item.quant}</td>
+                    <td className="td">{item.preco}</td>
+                    <td className="td">{item.total}</td>
+                    <td className="td">{item.desconto}</td>
+                    <td className="td">{item.valordesc}</td>
+                    <td className="td">{item.totaldesc}</td>
+                    <td className="td">{item.formapag}</td>
+                    <td className="td">{item.valorpagto}</td>
+                    <td className="td">{item.troco}</td>
+                    <td className="td">{item.parcelamento}</td>
+                    <td className="td">{item.parcelan}</td>
+                    <td className="td">{item.mes}</td>
+                    <td className="td">{item.frete}</td>
+                    <td className="td">{item.data_cad}</td>
+                    <td className="td" >
+                      <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                    </td>
+                  </tr>
+                ))
+
+              }
+            </tbody>
+            <ToastContainer />
+          </table>
+
 
         </div>
+
 
       </div>
+
+      <br /><br />
+      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000, height: '30px' }}>
+        <p className="fw-bolder text-white" style={{ marginTop: '-10px' }}>&copy; Multicompany Solutions</p>
+      </footer>
+
     </div>
   )
 }

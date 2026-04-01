@@ -10,6 +10,8 @@ const EntradasNome = () => {
 
   const [vendadata, setVendadata] = useState([]);
   const [buscanome, setBuscaNome] = React.useState("")
+  const [mes, setMes] = React.useState("")
+
 
   const buscarap = buscanome.toLowerCase()
 
@@ -32,7 +34,7 @@ const EntradasNome = () => {
 
   }, [])
 
-  const [mes, setMes] = React.useState("")
+
 
   const handleDelete = (id) => {
 
@@ -67,90 +69,41 @@ const EntradasNome = () => {
 
   }
 
- function somar() {
+  function somar() {
 
-    if(buscanome === '' || buscanome === null){
+    if (buscanome === '' || buscanome === null) {
       toast.warning('Campo busca por nome vazio ! ...')
       document.getElementById('consulta').style.borderColor = 'Red';
+
     } else {
-      
-    const tabela = document.getElementById("table")
-    const linhas = tabela.getElementsByTagName("tr")
 
-    let somaTotal = 0;
+      let somaTotal = 0;
 
-    if(mes !== ''){
+      const linhas = document.querySelectorAll("#table tbody tr");
 
-      for (let i = 0; i < linhas.length; i++) {
+      linhas.forEach(linha => {
 
-            const celulas1 = linhas[i].getElementsByTagName("td");
+        const verificames = linha.cells[14].textContent;
+        const total = parseFloat(linha.cells[5].textContent);
 
-            for (let k = 14; k < celulas1.length; k++) {
+        // Verifica a condição
+        if (mes !== "") {
 
-              const valorMes = celulas1[k].innerHTML;
+          if (mes === verificames) {
+            somaTotal += total;
+          } 
 
-              if (valorMes.toLowerCase() === mes.toLowerCase()) {
-
-                const celulas = linhas[i].getElementsByTagName("td");
-
-                for (let j = 10; j < celulas.length; j++) {
-
-                      const valorCelula = celulas[j].innerHTML;
-                      // Converte o valor para número, tratando erros com try/catch
-                      try {
-                        const numero = Number(valorCelula);
-
-                        if (!isNaN(numero)) { // Verifica se é um número válido
-                          somaTotal += numero;
-                        } else {
-                          console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
-                        }
-                         } catch (error) {
-                        console.error("Erro ao converter valor para número:", error);
-                        }
-                    }                  
-
-                }
-            }
+        }else{
+        
+           somaTotal += total;
 
         }
-         document.getElementById("total").innerText = "R$" + (somaTotal).toFixed(2);
+      });
 
-    } else {
+         document.getElementById('total').innerHTML = "R$" + somaTotal.toFixed(2);
 
-             for (let i = 0; i < linhas.length; i++) {       
-
-                   const celulas = linhas[i].getElementsByTagName("td");
-
-                for (let j = 10; j < celulas.length; j++) {
-
-                      const valorCelula = celulas[j].innerHTML;
-                      // Converte o valor para número, tratando erros com try/catch
-                      try {
-                        const numero = Number(valorCelula);
-
-                        if (!isNaN(numero)) { // Verifica se é um número válido
-                          somaTotal += numero;
-                        } else {
-                          console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
-                        }
-                         } catch (error) {
-                        console.error("Erro ao converter valor para número:", error);
-                        }
-                    }                  
-
-                }
-
-                   document.getElementById("total").innerText = "R$" + (somaTotal).toFixed(2);
-      
-
-            }     
-
-      
-      }
-
-   }
-
+    }
+  }
 
 
 
@@ -171,11 +124,11 @@ const EntradasNome = () => {
 
   const navigate = useNavigate()
 
-const voltar = () => {
+  const voltar = () => {
 
-  navigate('/entradas')
+    navigate('/entradas')
 
-}
+  }
 
   return (
     <div className="container-fluid">
@@ -320,94 +273,94 @@ const voltar = () => {
           </nav>
         </div>
       </div>
-       <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-850px'}}>
-                  
-      
-              <div className="mb3">
-      
-                <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Entradas:</h4><br /><br />
-                <button type="button" onClick={voltar} style={{ backgroundColor: 'green', color: 'white', width: '120px', margin: '0' }}>Voltar:</button>
-                <button type="button" onClick={somar} style={{ backgroundColor: 'gray', color: 'white', width: '160px', margin: '0 10px' }}>Total Entradas:</button>
-                <strong style={{fontSize:'30px'}}>Total:<span id="total" style={{fontWeight:'bold', color:'green'}}></span></strong><br /><br />
-                <div className="d-flex">
-                  <label htmlFor="busca" style={{fontWeight:'bold', fontSize:'17px'}}>Busca por Nome:</label>
-                  <label htmlFor="mes" style={{fontWeight:'bold', fontSize:'17px', margin:'0 200px'}}>Mês:</label>
-                </div>
-                <div className="d-flex">
-                     <input type="search" id="consulta" onKeyUp={MudaCorBusca} autoFocus='true' className="form-control rounded-0" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', padding:'2px', width:'300px'}} />                            
-                     <input type="text" className='form-control rounded-0' id="mes" onKeyUp={MudaCorMes} value={mes} onChange={(e) => setMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', width: '150px', padding:'2px', margin:'0 33px'}} /> 
-   
+      <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-850px' }}>
 
-                </div>
-                        <br /><br />
-                <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '2100px' }} id="table">
-                  <thead>
-                    <tr>
-                      <th className="th" scope="col">Id:</th>
-                      <th className="th" scope="col" >Venda nº:</th>
-                      <th className="th" scope="col">Nome:</th>
-                      <th className="th" scope="col">Qtd:</th>
-                      <th className="th" scope="col">Preço:</th>
-                      <th className="th" scope="col">Total:</th>
-                      <th className="th" scope="col">Desconto:</th>
-                      <th className="th" scope="col">Valor Desconto:</th>
-                      <th className="th" scope="col">Total c/Desconto:</th>
-                      <th className="th" scope="col">Forma Paga:</th>
-                      <th className="th" scope="col">Entradas:</th>
-                      <th className="th" scope="col">Troco:</th>
-                      <th className="th" scope="col">Parcelamento:</th>
-                      <th className="th" scope="col">Parcela:</th>
-                      <th className="th" scope="col">Mês:</th>
-                      <th className="th" scope="col">Frete:</th>
-                      <th className="th" scope="col">Data de Cadastro:</th>
-                      <th className="th" scope="col">Ação:</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      table.map(item => (
-                        <tr key={item.id}>
-                          <td className="td">{item.id}</td>
-                          <td className="td">{item.vendan}</td>
-                          <td className="td">{item.nome}</td>
-                          <td className="td">{item.quant}</td>
-                          <td className="td">{item.preco}</td>
-                          <td className="td">{item.total}</td>
-                          <td className="td">{item.desconto}</td>
-                          <td className="td">{item.valordesc}</td>
-                          <td className="td">{item.totaldesc}</td>
-                          <td className="td">{item.formapag}</td>
-                          <td className="td">{item.valorpagto}</td>
-                          <td className="td">{item.troco}</td>
-                          <td className="td">{item.parcelamento}</td>
-                          <td className="td">{item.parcelan}</td>
-                          <td className="td">{item.mes}</td>
-                          <td className="td">{item.frete}</td>
-                          <td className="td">{item.data_cad}</td>
-                          <td className="td" >
-                            <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-                          </td>
-                        </tr>
-                      ))
-      
-                    }
-                  </tbody>
-                  <ToastContainer />
-                </table>      
-      
-      
-              </div>
-      
-      
-            </div>
-            
-            <br /><br />
-             <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000, height:'30px'}}>
-              <p className="fw-bolder text-white" style={{marginTop:'-10px'}}>&copy; Multicompany Solutions</p>
-            </footer>
-      
+
+        <div className="mb3">
+
+          <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Entradas:</h4><br /><br />
+          <button type="button" onClick={voltar} style={{ backgroundColor: 'green', color: 'white', width: '120px', margin: '0' }}>Voltar:</button>
+          <button type="button" onClick={somar} style={{ backgroundColor: 'gray', color: 'white', width: '120px', margin: '0 10px' }}>Total Entradas:</button>
+          <strong style={{ fontSize: '30px' }}>Total:<span id="total" style={{ fontWeight: 'bold', color: 'green' }}></span></strong><br /><br />
+          <div className="d-flex">
+            <label htmlFor="busca" style={{ fontWeight: 'bold', fontSize: '17px' }}>Busca por Nome:</label>
+            <label htmlFor="mes" style={{ fontWeight: 'bold', fontSize: '17px', margin: '0 200px' }}>Mês:</label>
           </div>
-      
+          <div className="d-flex">
+            <input type="search" id="consulta" onKeyUp={MudaCorBusca} autoFocus='true' className="form-control rounded-0" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', padding: '2px', width: '300px' }} />
+            <input type="text" className='form-control rounded-0' id="mes" onKeyUp={MudaCorMes} value={mes} onChange={(e) => setMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', width: '150px', padding: '2px', margin: '0 33px' }} />
+
+
+          </div>
+          <br /><br />
+          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '2100px' }} id="table">
+            <thead>
+              <tr>
+                <th className="th" scope="col">Id:</th>
+                <th className="th" scope="col" >Venda nº:</th>
+                <th className="th" scope="col">Nome:</th>
+                <th className="th" scope="col">Qtd:</th>
+                <th className="th" scope="col">Preço:</th>
+                <th className="th" scope="col">Total:</th>
+                <th className="th" scope="col">Desconto:</th>
+                <th className="th" scope="col">Valor Desconto:</th>
+                <th className="th" scope="col">Total c/Desconto:</th>
+                <th className="th" scope="col">Forma Paga:</th>
+                <th className="th" scope="col">Entradas:</th>
+                <th className="th" scope="col">Troco:</th>
+                <th className="th" scope="col">Parcelamento:</th>
+                <th className="th" scope="col">Parcela:</th>
+                <th className="th" scope="col">Mês:</th>
+                <th className="th" scope="col">Frete:</th>
+                <th className="th" scope="col">Data de Cadastro:</th>
+                <th className="th" scope="col">Ação:</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                table.map(item => (
+                  <tr key={item.id}>
+                    <td className="td">{item.id}</td>
+                    <td className="td">{item.vendan}</td>
+                    <td className="td">{item.nome}</td>
+                    <td className="td">{item.quant}</td>
+                    <td className="td">{item.preco}</td>
+                    <td className="td">{item.total}</td>
+                    <td className="td">{item.desconto}</td>
+                    <td className="td">{item.valordesc}</td>
+                    <td className="td">{item.totaldesc}</td>
+                    <td className="td">{item.formapag}</td>
+                    <td className="td">{item.valorpagto}</td>
+                    <td className="td">{item.troco}</td>
+                    <td className="td">{item.parcelamento}</td>
+                    <td className="td">{item.parcelan}</td>
+                    <td className="td">{item.mes}</td>
+                    <td className="td">{item.frete}</td>
+                    <td className="td">{item.data_cad}</td>
+                    <td className="td" >
+                      <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                    </td>
+                  </tr>
+                ))
+
+              }
+            </tbody>
+            <ToastContainer />
+          </table>
+
+
+        </div>
+
+
+      </div>
+
+      <br /><br />
+      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000, height: '30px' }}>
+        <p className="fw-bolder text-white" style={{ marginTop: '-10px' }}>&copy; Multicompany Solutions</p>
+      </footer>
+
+    </div>
+
 
 
   )

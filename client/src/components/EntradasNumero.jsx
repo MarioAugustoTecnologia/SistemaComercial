@@ -498,7 +498,7 @@ const EntradasNumero = () => {
 
 
     return (
-         <div className="container-fluid">
+           <div className="container-fluid">
             <div className="row flex-nowrap">
                 <div className="main-wrapper">
 
@@ -651,8 +651,8 @@ const EntradasNumero = () => {
                         <Link onClick={GerarUltima} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '0 -120px', marginTop: '-98px', height: '36px' }}>Próxima Venda:</Link>
                         <strong style={{ margin: '0 200px', fontSize: '30px' }}>Total:</strong>
                         <strong><span id="totalvenda" style={{ color: 'LimeGreen', margin: '0 -190px', fontSize:'30px' }}></span></strong>
-                        <strong style={{ margin: '0 50px', fontSize: '30px' }}>Total c/ Desconto:</strong>
-                        <strong><span id="totald" style={{ color: 'Crimson', margin: '0 -40px', fontSize:'30px' }}></span></strong>
+                        <strong style={{ margin: '0 200px', fontSize: '30px' }}>Total c/ Desconto:</strong>
+                        <strong><span id="totald" style={{ color: 'Crimson', margin: '0 -190px', fontSize:'30px' }}></span></strong>
 
                     </div><br />
                     <div className="bg-white p-4 rounded border-none" style={{ margin: '0 100px' }}>
@@ -812,7 +812,8 @@ const EntradasNumero = () => {
 
                <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{position:'fixed', left:0, bottom:0, width:'100%', color:'white', textAlign:'center', zIndex:1000}}>
                    <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
-               </footer>    
+               </footer>     
+
 
         </div>
     )

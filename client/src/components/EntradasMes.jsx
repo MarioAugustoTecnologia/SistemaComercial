@@ -169,6 +169,7 @@ const EntradasMes = () => {
   }
 
 
+
   function CorBuscaMes() {
 
     document.getElementById('buscames').style.bordercolor = 'GainsBoro'
@@ -320,102 +321,111 @@ const EntradasMes = () => {
       </div>
       <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-850px' }}>
 
-        <div className="mb3">
-          <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Entradas:</h4><br /><br />
-          <div className="d-flex">
-            <label htmlFor="busca" style={{ fontWeight: 'bold', fontSize: '17px' }}>Busca por Mês:</label>
-            <label htmlFor="mes" style={{ fontWeight: 'bold', fontSize: '17px', margin: '0 332px' }}>Mês Atual:</label>
+        <form action="" onSubmit={cadastrar}>
+
+          <div className="mb3">
+            <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Entradas:</h4><br /><br />
+            <div className="d-flex">
+              <label htmlFor="busca" style={{ fontWeight: 'bold', fontSize: '17px' }}>Busca por Mês:</label>
+              <label htmlFor="mes" style={{ fontWeight: 'bold', fontSize: '17px', margin: '0 332px' }}>Mês Atual:</label>
+
+            </div>
+            <div className="d-flex">
+              <input type="search" id="buscames" onKeyUp={CorBuscaMes} autoFocus='true' className="form-control rounded-0" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', padding: '2px', width: '150px', height: '30px' }} />
+              <Link to="/entradas" className="btn btn-success rounded-0" style={{ width: '100px', margin: '0 25px' }} >Voltar:</Link>
+              <Link onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 -22px', width: '150px' }}>Total Entradas:</Link>
+
+              <select value={mes} onChange={e => setMes(e.target.value)} style={{ height: '30px', fontSize: '17px', width: 160, margin: '0 49px', fontWeight: 'bold', color: 'navy' }} name='mes' id='mes' className='form-select rounded-0'>
+                <option value=""></option>
+                <option value="Janeiro">Janeiro</option>
+                <option value="Fevereiro">Fevereiro</option>
+                <option value="Março">Março</option>
+                <option value="Abril">Abril</option>
+                <option value="Maio">Maio</option>
+                <option value="Junho">Junho</option>
+                <option value="Julho">Julho</option>
+                <option value="Agosto">Agosto</option>
+                <option value="Setembro">Setembro</option>
+                <option value="Outubro">Outubro</option>
+                <option value="Novembro">Novembro</option>
+                <option value="Dezembro">Dezembro</option>
+              </select>
+              <button type="submit" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '0 20px', width: '150px' }}>Atualiza Mês:</button>
+              <Link to="/mesatual" className="btn rounded-0" style={{ width: '100px', margin: '0 25px', backgroundColor:'navy', color:'white' }} >Mês atual:</Link>
+
+            </div><br /><br /><br /><br />
+
+            <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '2100px' }} id="table">
+              <thead>
+                <tr>
+                  <th className="th" scope="col">Id:</th>
+                  <th className="th" scope="col" >Venda nº:</th>
+                  <th className="th" scope="col">Nome:</th>
+                  <th className="th" scope="col">Qtd:</th>
+                  <th className="th" scope="col">Preço:</th>
+                  <th className="th" scope="col">Total:</th>
+                  <th className="th" scope="col">Desconto:</th>
+                  <th className="th" scope="col">Valor Desconto:</th>
+                  <th className="th" scope="col">Total c/Desconto:</th>
+                  <th className="th" scope="col">Forma Paga:</th>
+                  <th className="th" scope="col">Entradas:</th>
+                  <th className="th" scope="col">Troco:</th>
+                  <th className="th" scope="col">Parcelamento:</th>
+                  <th className="th" scope="col">Parcela:</th>
+                  <th className="th" scope="col">Mês:</th>
+                  <th className="th" scope="col">Frete:</th>
+                  <th className="th" scope="col">Data de Cadastro:</th>
+                  <th className="th" scope="col">Ação:</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  table.map(item => (
+                    <tr key={item.id}>
+                      <td className="td">{item.id}</td>
+                      <td className="td">{item.vendan}</td>
+                      <td className="td">{item.nome}</td>
+                      <td className="td">{item.quant}</td>
+                      <td className="td">{item.preco}</td>
+                      <td className="td">{item.total}</td>
+                      <td className="td">{item.desconto}</td>
+                      <td className="td">{item.valordesc}</td>
+                      <td className="td">{item.totaldesc}</td>
+                      <td className="td">{item.formapag}</td>
+                      <td className="td">{item.valorpagto}</td>
+                      <td className="td">{item.troco}</td>
+                      <td className="td">{item.parcelamento}</td>
+                      <td className="td">{item.parcelan}</td>
+                      <td className="td">{item.mes}</td>
+                      <td className="td">{item.frete}</td>
+                      <td className="td">{item.data_cad}</td>
+                      <td className="td" >
+                        <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                      </td>
+                    </tr>
+                  ))
+
+                }
+              </tbody>
+              <ToastContainer />
+            </table>
+
 
           </div>
-          <div className="d-flex">
-            <input type="search" id="buscames" onKeyUp={CorBuscaMes} autoFocus='true' className="form-control rounded-0" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', padding: '2px', width: '150px', height: '30px' }} />
-            <Link to="/entradas" className="btn btn-success rounded-0" style={{ width: '100px', margin: '0 25px' }} >Voltar:</Link>
-            <Link onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 -22px', width: '150px' }}>Total Entradas:</Link>
-            <select value={mes} onChange={e => setMes(e.target.value)} style={{ height: '30px', fontSize: '17px', width: 160, margin: '0 49px', fontWeight: 'bold', color: 'navy' }} name='mes' id='mes' className='form-select rounded-0'>
-              <option value=""></option>
-              <option value="Janeiro">Janeiro</option>
-              <option value="Fevereiro">Fevereiro</option>
-              <option value="Março">Março</option>
-              <option value="Abril">Abril</option>
-              <option value="Maio">Maio</option>
-              <option value="Junho">Junho</option>
-              <option value="Julho">Julho</option>
-              <option value="Agosto">Agosto</option>
-              <option value="Setembro">Setembro</option>
-              <option value="Outubro">Outubro</option>
-              <option value="Novembro">Novembro</option>
-              <option value="Dezembro">Dezembro</option>
-            </select>
-          </div><br /><br /><br /><br />
-
-          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '2100px' }} id="table">
-            <thead>
-              <tr>
-                <th className="th" scope="col">Id:</th>
-                <th className="th" scope="col" >Venda nº:</th>
-                <th className="th" scope="col">Nome:</th>
-                <th className="th" scope="col">Qtd:</th>
-                <th className="th" scope="col">Preço:</th>
-                <th className="th" scope="col">Total:</th>
-                <th className="th" scope="col">Desconto:</th>
-                <th className="th" scope="col">Valor Desconto:</th>
-                <th className="th" scope="col">Total c/Desconto:</th>
-                <th className="th" scope="col">Forma Paga:</th>
-                <th className="th" scope="col">Entradas:</th>
-                <th className="th" scope="col">Troco:</th>
-                <th className="th" scope="col">Parcelamento:</th>
-                <th className="th" scope="col">Parcela:</th>
-                <th className="th" scope="col">Mês:</th>
-                <th className="th" scope="col">Frete:</th>
-                <th className="th" scope="col">Data de Cadastro:</th>
-                <th className="th" scope="col">Ação:</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                table.map(item => (
-                  <tr key={item.id}>
-                    <td className="td">{item.id}</td>
-                    <td className="td">{item.vendan}</td>
-                    <td className="td">{item.nome}</td>
-                    <td className="td">{item.quant}</td>
-                    <td className="td">{item.preco}</td>
-                    <td className="td">{item.total}</td>
-                    <td className="td">{item.desconto}</td>
-                    <td className="td">{item.valordesc}</td>
-                    <td className="td">{item.totaldesc}</td>
-                    <td className="td">{item.formapag}</td>
-                    <td className="td">{item.valorpagto}</td>
-                    <td className="td">{item.troco}</td>
-                    <td className="td">{item.parcelamento}</td>
-                    <td className="td">{item.parcelan}</td>
-                    <td className="td">{item.mes}</td>
-                    <td className="td">{item.frete}</td>
-                    <td className="td">{item.data_cad}</td>
-                    <td className="td" >
-                      <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-                    </td>
-                  </tr>
-                ))
-
-              }
-            </tbody>
-            <ToastContainer />
-          </table>
 
 
-        </div>
+
+
+
+        </form>
 
 
       </div>
 
-      <br />
-      <br /><br /><br /><br />
-
-      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', color: 'white', textAlign: 'center', zIndex: 1000 }}>
-        <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+      <br /><br />
+      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000, height: '30px' }}>
+        <p className="fw-bolder text-white" style={{ marginTop: '-10px' }}>&copy; Multicompany Solutions</p>
       </footer>
-
 
     </div>
   )

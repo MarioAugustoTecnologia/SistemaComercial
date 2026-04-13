@@ -787,7 +787,7 @@ const EntradasNumero = () => {
                                             <td className="td">{item.data_cad}</td>
                                             <td className="td" >
                                                 <button type="button" className="editar" onClick={() => { handleEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Atualizar:</button>
-                                                <button type="button" className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                                                <button type="" className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
                                             </td>
                                         </tr>
                                     ))

@@ -329,8 +329,8 @@ const EntradasMes = () => {
           </div>
           <div className="d-flex">
             <input type="search" id="buscames" onKeyUp={CorBuscaMes} autoFocus='true' className="form-control rounded-0" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', padding: '2px', width: '150px', height:'30px' }} />
-            <Link to="/entradas" className="btn btn-success rounded-0" style={{ width: '100px', margin: '0 25px', height:'35px', padding:'2px'}} >Voltar:</Link>
-            <Link onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 -22px', height:'35px', padding:'2px', width:'150px' }}>Total Entradas:</Link>
+            <Link to="/entradas" className="btn btn-success rounded-0" style={{ width: '100px', margin: '0 25px'}} >Voltar:</Link>
+            <Link onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 -22px', width:'150px' }}>Total Entradas:</Link>
             <select value={mes} onChange={e => setMes(e.target.value)} style={{height:'30px', fontSize: '17px', width: 160, margin: '0 49px', fontWeight: 'bold', color: 'navy' }} name='mes' id='mes' className='form-select rounded-0'>
               <option value=""></option>
               <option value="Janeiro">Janeiro</option>

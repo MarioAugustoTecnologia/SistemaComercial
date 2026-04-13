@@ -498,7 +498,8 @@ const EntradasNumero = () => {
 
 
     return (
-        <div className="container-fluid">
+
+         <div className="container-fluid">
             <div className="row flex-nowrap">
                 <div className="main-wrapper">
 
@@ -651,7 +652,7 @@ const EntradasNumero = () => {
                         <Link onClick={GerarUltima} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '0 -120px', marginTop: '-98px', height: '36px' }}>Próxima Venda:</Link>
                         <strong style={{ margin: '0 200px', fontSize: '30px' }}>Total:</strong>
                         <strong><span id="totalvenda" style={{ color: 'LimeGreen', margin: '0 -190px', fontSize:'30px' }}></span></strong>
-                        <strong style={{ margin: '0 400px', fontSize: '30px' }}>Total c/ Desconto:</strong>
+                        <strong style={{ margin: '0 50px', fontSize: '30px' }}>Total c/ Desconto:</strong>
                         <strong><span id="totald" style={{ color: 'Crimson', margin: '0 -390px', fontSize:'30px' }}></span></strong>
 
                     </div><br />
@@ -736,12 +737,11 @@ const EntradasNumero = () => {
                         <ToastContainer />
 
 
-                    </div><br />
+                    </div>
 
-
-                    <br />
-                    <div className="mt-3" style={{ margin: '0 105px' }}>
-                        <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', width: 3000 }}>
+                </form>
+                <div className="mt-3" style={{ margin: '0 105px'}}>
+                        <table className="table" id="table" style={{ margin: '0 -1900px', fontFamily: 'arial', width: 3000, marginTop:'-400px' }}>
                             <thead>
                                 <tr>
                                     <th className="th" scope="col">Id:</th>
@@ -787,7 +787,7 @@ const EntradasNumero = () => {
                                             <td className="td">{item.data_cad}</td>
                                             <td className="td" >
                                                 <button type="button" className="editar" onClick={() => { handleEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Atualizar:</button>
-                                                <button type="button" className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                                                <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
                                             </td>
                                         </tr>
                                     ))
@@ -796,11 +796,8 @@ const EntradasNumero = () => {
                             </tbody>
                         </table>
                     </div>
-                    <br />
 
-                </form><br />
-
-            </div>
+            </div><br /><br />
             <div className="d-flex" style={{ margin: '0 300px', width: '1000px' }}>
                 <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '', height: '37px' }} onClick={desconto}>Total c/Desconto:</button>
                 <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '', width: 120, height: '37px' }} onClick={Troco}>Troco:</button>
@@ -812,11 +809,11 @@ const EntradasNumero = () => {
 
                <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{position:'fixed', left:0, bottom:0, width:'100%', color:'white', textAlign:'center', zIndex:1000}}>
                    <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
-               </footer>
-      
+               </footer>     
 
 
         </div>
+
     )
 }
 

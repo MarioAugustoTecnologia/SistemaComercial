@@ -321,17 +321,17 @@ const EntradasMes = () => {
       <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-850px' }}>
 
         <div className="mb3">
-                <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Entradas:</h4><br /><br />
+          <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Entradas:</h4><br /><br />
           <div className="d-flex">
             <label htmlFor="busca" style={{ fontWeight: 'bold', fontSize: '17px' }}>Busca por Mês:</label>
             <label htmlFor="mes" style={{ fontWeight: 'bold', fontSize: '17px', margin: '0 332px' }}>Mês Atual:</label>
 
           </div>
           <div className="d-flex">
-            <input type="search" id="buscames" onKeyUp={CorBuscaMes} autoFocus='true' className="form-control rounded-0" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', padding: '2px', width: '150px', height:'30px' }} />
-            <Link to="/entradas" className="btn btn-success rounded-0" style={{ width: '100px', margin: '0 25px'}} >Voltar:</Link>
-            <Link onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 -22px', width:'150px' }}>Total Entradas:</Link>
-            <select value={mes} onChange={e => setMes(e.target.value)} style={{height:'30px', fontSize: '17px', width: 160, margin: '0 49px', fontWeight: 'bold', color: 'navy' }} name='mes' id='mes' className='form-select rounded-0'>
+            <input type="search" id="buscames" onKeyUp={CorBuscaMes} autoFocus='true' className="form-control rounded-0" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', padding: '2px', width: '150px', height: '30px' }} />
+            <Link to="/entradas" className="btn btn-success rounded-0" style={{ width: '100px', margin: '0 25px' }} >Voltar:</Link>
+            <Link onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 -22px', width: '150px' }}>Total Entradas:</Link>
+            <select value={mes} onChange={e => setMes(e.target.value)} style={{ height: '30px', fontSize: '17px', width: 160, margin: '0 49px', fontWeight: 'bold', color: 'navy' }} name='mes' id='mes' className='form-select rounded-0'>
               <option value=""></option>
               <option value="Janeiro">Janeiro</option>
               <option value="Fevereiro">Fevereiro</option>
@@ -409,10 +409,13 @@ const EntradasMes = () => {
 
       </div>
 
-      <br /><br />
-      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000, height: '30px' }}>
-        <p className="fw-bolder text-white" style={{ marginTop: '-10px' }}>&copy; Multicompany Solutions</p>
+      <br />
+      <br /><br /><br /><br />
+
+      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', color: 'white', textAlign: 'center', zIndex: 1000 }}>
+        <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
       </footer>
+
 
     </div>
   )

@@ -499,7 +499,7 @@ const EntradasNumero = () => {
 
     return (
 
-         <div className="container-fluid">
+       <div className="container-fluid">
             <div className="row flex-nowrap">
                 <div className="main-wrapper">
 
@@ -659,22 +659,23 @@ const EntradasNumero = () => {
                     <div className="bg-white p-4 rounded border-none" style={{ margin: '0 100px' }}>
 
                         <label htmlFor="total" style={{ fontFamily: 'arial', fontWeight: 'bold' }} >Total:</label>
-                        <label htmlFor='nome' style={{ margin: '0 155px', marginTop: '-50px', fontWeight: 'bold' }}>Nome:</label>
-                        <label htmlFor='td' style={{ margin: '0 120px', marginTop: '-50px', fontWeight: 'bold' }}>Total c/Desconto:</label>
-                        <label htmlFor='desconto' style={{ margin: '0 -77px', marginTop: '-50px', fontWeight: 'bold' }}>Desconto:</label>
-                        <label htmlFor='vd' style={{ margin: '0 134px', marginTop: '-20px', fontWeight: 'bold' }}>Valor Desconto:</label><br />
-                        <input type="decimal" className='form-control rounded-0' style={{ width: '6%', height: '42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="total" />
-                        <input type="text" className='form-control rounded-0' style={{ width: '10%', height: '42px', margin: '0 197px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="nome" />
-                        <input type="decimal" className='form-control rounded-0' style={{ width: '5%', height: '42px', margin: '0 520px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="td" />
-                        <input type="decimal" className="form-control rounded-0" style={{ width: '3%', height: '42px', margin: '0 693px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="desconto" onKeyDown={MudaCorDesc} />
-                        <input type="decimal" className="form-control rounded-0" style={{ width: '6%', height: '42px', margin: '0 833px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="vd" /> <br />
+                        <label htmlFor='nome' style={{ margin: '0 110px', marginTop: '-50px', fontWeight: 'bold' }}>Nome:</label>
+                        <label htmlFor='td' style={{ margin: '0 50px', marginTop: '-50px', fontWeight: 'bold' }}>Total c/Desconto:</label>
+                        <label htmlFor='desconto' style={{ margin: '0 -0px', marginTop: '-50px', fontWeight: 'bold' }}>Desconto:</label>
+                        <label htmlFor='vd' style={{ margin: '0 50px', marginTop: '-20px', fontWeight: 'bold' }}>Valor Desconto:</label><br />
+                        <input type="decimal" className='form-control rounded-0' style={{ width: '9%', height: '42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="total" />
+                        <input type="text" className='form-control rounded-0' style={{ width: '13%', height: '42px', margin: '0 150px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="nome" />
+                        <input type="decimal" className='form-control rounded-0' style={{ width: '10%', height: '42px', margin: '0 365px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="td" />
+                        <input type="decimal" className="form-control rounded-0" style={{ width: '5%', height: '42px', margin: '0 545px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="desconto" onKeyDown={MudaCorDesc} />
+                        <input type="decimal" className="form-control rounded-0" style={{ width: '10%', height: '42px', margin: '0 670px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="vd"/> <br />
+
                         <label htmlFor="valorpag" style={{ fontFamily: 'arial', fontWeight: 'bold' }} >Valor Pago:</label>
-                        <label htmlFor="formapag" style={{ fontFamily: 'arial', margin: '0 112px', fontWeight: 'bold' }} >Forma Paga:</label>
-                        <label htmlFor="troco" style={{ fontFamily: 'arial', margin: '0 20px', fontWeight: 'bold' }} >Troco:</label>
-                        <label htmlFor="parcelamento" style={{ fontFamily: 'arial', margin: '0 62px', fontWeight: 'bold' }} >Parcelamento:</label>
-                        <label htmlFor="parcelan" style={{ fontFamily: 'arial', margin: '0 13px', fontWeight: 'bold' }} >Parcela nº:</label><br />
-                        <input type="decimal" onKeyDown={MudaCorVp} className="form-control rounded-0" style={{ width: '6%', height: '42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="vp" />
-                        <select className="form-control rounded-0" onClick={MudaCorForma} value={formapag} onChange={e => formapagchange(e.target.value)} style={{ width: '7%', height: '42px', margin: '0 200px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} name='formapag' id='formapag' >
+                        <label htmlFor="formapag" style={{ fontFamily: 'arial', margin: '0 90px', fontWeight: 'bold' }} >Forma Paga:</label>
+                        <label htmlFor="troco" style={{ fontFamily: 'arial', margin: '0 -25px', fontWeight: 'bold' }} >Troco:</label>
+                        
+                        
+                        <input type="decimal" onKeyDown={MudaCorVp} className="form-control rounded-0" style={{ width: '10%', height: '42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="vp" />
+                        <select className="form-control rounded-0" onClick={MudaCorForma} value={formapag} onChange={e => formapagchange(e.target.value)} style={{ width: '10%', height: '42px', margin: '0 170px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} name='formapag' id='formapag' >
                             <option value=""></option>
                             <option value="Dinheiro">Dinheiro</option>
                             <option value="Pix">Pix</option>
@@ -682,40 +683,13 @@ const EntradasNumero = () => {
                             <option value="Crédito">Crédito</option>
                             <option value="Boleto">Boleto</option>
                         </select>
-                        <input type="decimal" className="form-control rounded-0" style={{ width: '3%', height: '42px', margin: '0 435px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="troco" />
-                        <select className="form-control rounded-0" value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ width: '5%', height: '42px', margin: '0 560px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="parcelamento" >
-                            <option value=""></option>
-                            <option value="2x">2x</option>
-                            <option value="3x">3x</option>
-                            <option value="4x">4x</option>
-                            <option value="5x">5x</option>
-                            <option value="6x">6x</option>
-                            <option value="7x">7x</option>
-                            <option value="8x">8x</option>
-                            <option value="9x">9x</option>
-                            <option value="10x">10x</option>
-                            <option value="11x">11x</option>
-                            <option value="12x">12x</option>
-                        </select>
-                        <select className="form-control rounded-0" value={parcelan} onChange={e => parcelanchange(e.target.value)} style={{ width: '5%', height: '42px', margin: '0 747px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="parcelan" >
-                            <option value=""></option>
-                            <option value="1ª">1ª</option>
-                            <option value="2ª">2ª</option>
-                            <option value="3ª">3ª</option>
-                            <option value="4ª">4ª</option>
-                            <option value="5ª">5ª</option>
-                            <option value="6ª">6ª</option>
-                            <option value="7ª">7ª</option>
-                            <option value="8ª">8ª</option>
-                            <option value="9ª">9ª</option>
-                            <option value="10ª">10ª</option>
-                            <option value="11ª">11ª</option>
-                            <option value="12ª">12ª</option>
-                        </select><br />
+                        <input type="decimal" className="form-control rounded-0" style={{ width: '6%', height: '42px', margin: '0 340px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="troco" />
+                        <br />
+                        
                         <label htmlFor="mes" style={{ fontFamily: 'arial', fontWeight: 'bold' }} >Mes:</label>
-                        <label htmlFor="parcelas" style={{ fontFamily: 'arial', margin: '0 520px', fontWeight: 'bold' }} >Parcelas:</label>
-                        <label htmlFor="frete" style={{ fontFamily: 'arial', margin: '-395px', fontWeight: 'bold' }} >Frete:</label>
-                        <select onClick={MudaCorMes} style={{ width: 150, fontWeight: 'bold', color: 'navy', fontSize:'19px' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
+                  
+                        <label htmlFor="frete" style={{ fontFamily: 'arial', margin: '0 170px', fontWeight: 'bold' }} >Frete:</label>
+                        <select onClick={MudaCorMes} style={{ width: 150, fontWeight: 'bold', color: 'navy', fontSize:'19px' }} name='mes' id='mes' className='form-select rounded-0' value={mes} onChange={e => meschange(e.target.value)}>
                             <option value=""></option>
                             <option value="Janeiro">Janeiro</option>
                             <option value="Fevereiro">Fevereiro</option>
@@ -731,8 +705,8 @@ const EntradasNumero = () => {
                             <option value="Dezembro">Dezembro</option>
                         </select>
 
-                        <input type="number" className="form-control rounded-0" style={{ width: 65, margin: '0 557px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="parcelas" />
-                        <input type="decimal" className="form-control rounded-0" value={frete} onChange={e => fretechange(e.target.value)} style={{ width: 80, margin: '0 755px', marginTop: '-35px', fontWeight: 'bold', color: 'navy', fontSize:'19px'}} id="frete" /><br />
+                        
+                        <input type="decimal" className="form-control rounded-0" value={frete} onChange={e => fretechange(e.target.value)} style={{ width: 80, margin: '0 200px', marginTop: '-40px', fontWeight: 'bold', color: 'navy', fontSize:'19px'}} id="frete" /><br />
                         <button type="submit" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'green', width: 120, height: '37px' }}>Concluir</button>
                         <ToastContainer />
 
@@ -741,7 +715,7 @@ const EntradasNumero = () => {
 
                 </form>
                 <div className="mt-3" style={{ margin: '0 105px'}}>
-                        <table className="table" id="table" style={{ margin: '0 -1900px', fontFamily: 'arial', width: 3000, marginTop:'-400px' }}>
+                        <table className="table" id="table" style={{ margin: '0 -1600px', fontFamily: 'arial', width: 3000, marginTop:'-450px' }}>
                             <thead>
                                 <tr>
                                     <th className="th" scope="col">Id:</th>
@@ -755,9 +729,7 @@ const EntradasNumero = () => {
                                     <th className="th" scope="col">Total c/Desconto:</th>
                                     <th className="th" scope="col">Forma Paga:</th>
                                     <th className="th" scope="col">Entradas:</th>
-                                    <th className="th" scope="col">Troco:</th>
-                                    <th className="th" scope="col">Parcelamento:</th>
-                                    <th className="th" scope="col">Parcela:</th>
+                                    <th className="th" scope="col">Troco:</th>                                    
                                     <th className="th" scope="col">Mês:</th>
                                     <th className="th" scope="col">Frete:</th>
                                     <th className="th" scope="col">Data de Cadastro:</th>
@@ -779,9 +751,7 @@ const EntradasNumero = () => {
                                             <td className="td">{item.totaldesc}</td>
                                             <td className="td">{item.formapag}</td>
                                             <td className="td">{item.valorpagto}</td>
-                                            <td className="td">{item.troco}</td>
-                                            <td className="td">{item.parcelamento}</td>
-                                            <td className="td">{item.parcelan}</td>
+                                            <td className="td">{item.troco}</td>                                           
                                             <td className="td">{item.mes}</td>
                                             <td className="td">{item.frete}</td>
                                             <td className="td">{item.data_cad}</td>
@@ -797,7 +767,7 @@ const EntradasNumero = () => {
                         </table>
                     </div>
 
-            </div><br /><br />
+            </div><br />
             <div className="d-flex" style={{ margin: '0 300px', width: '1000px' }}>
                 <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '', height: '37px' }} onClick={desconto}>Total c/Desconto:</button>
                 <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '', width: 120, height: '37px' }} onClick={Troco}>Troco:</button>
@@ -809,10 +779,9 @@ const EntradasNumero = () => {
 
                <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{position:'fixed', left:0, bottom:0, width:'100%', color:'white', textAlign:'center', zIndex:1000}}>
                    <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
-               </footer>     
+               </footer>   
 
-
-        </div>
+      </div>
 
     )
 }

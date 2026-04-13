@@ -802,9 +802,9 @@ const EntradasNumero = () => {
 
             </div>
             <div className="d-flex" style={{ margin: '0 300px', width: '1000px' }}>
-                <button type="btn" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '', height: '37px' }} onClick={desconto}>Total c/Desconto:</button>
-                <button type="btn" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '', width: 120, height: '37px' }} onClick={Troco}>Troco:</button>
-                <button type="btn" onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0', height: '37px' }}>Total Venda:</button>
+                <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '', height: '37px' }} onClick={desconto}>Total c/Desconto:</button>
+                <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '', width: 120, height: '37px' }} onClick={Troco}>Troco:</button>
+                <button type="button" onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0', height: '37px' }}>Total Venda:</button>
                 <Link to="" className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'DarkRed', margin: '0 px', width: 112, height: '37px' }}>QrCode:</Link>
 
 

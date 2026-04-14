@@ -499,7 +499,7 @@ const EntradasNumero = () => {
 
     return (
 
-       <div className="container-fluid">
+         <div className="container-fluid">
             <div className="row flex-nowrap">
                 <div className="main-wrapper">
 
@@ -647,13 +647,18 @@ const EntradasNumero = () => {
                 <form action='' style={{ marginTop: '-950px' }} onSubmit={concluir}>
                     <div className="mb3" style={{ margin: '0 100px' }}>
                         <label htmlFor="Numero" className="Numero" style={{ fontFamily: 'arial', fontWeight: 'bold' }}>Buscar Venda nº:</label><br />
-                        <input type="search" autoFocus='true' onKeyUp={MudaCorCampo} className="form-control rounded-0" value={buscanumero} onChange={(e) => setBuscaNumero(e.target.value)} style={{ fontFamily: 'arial', width: '100px', fontWeight: 'bold', color: 'navy', padding: '2px', fontSize:'19px' }} id="vendan" />
+                        <input type="search" autoFocus='true' onKeyUp={MudaCorCampo} className="form-control rounded-0" value={buscanumero} onChange={(e) => setBuscaNumero(e.target.value)} style={{ fontFamily: 'arial', width: '100px', fontWeight: 'bold', color: 'navy', padding: '2px', fontSize: '19px' }} id="vendan" />
                         <Link to="/entradas" className="btn btn-success rounded-0" style={{ width: '140px', height: '37px', margin: '0 150px', marginTop: '-98px' }}>Voltar:</Link>
                         <Link onClick={GerarUltima} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '0 -120px', marginTop: '-98px', height: '36px' }}>Próxima Venda:</Link>
-                        <strong style={{ margin: '0 200px', fontSize: '30px' }}>Total:</strong>
-                        <strong><span id="totalvenda" style={{ color: 'LimeGreen', margin: '0 -190px', fontSize:'30px' }}></span></strong>
-                        <strong style={{ margin: '0 50px', fontSize: '30px' }}>Total c/ Desconto:</strong>
-                        <strong><span id="totald" style={{ color: 'Crimson', margin: '0 -390px', fontSize:'30px' }}></span></strong>
+
+                        <div className="d-flex">
+
+                            <strong style={{ margin: '0 200px', fontSize: '30px' }}>Total:</strong>
+                            <strong><span id="totalvenda" style={{ color: 'LimeGreen', margin: '0 -190px', fontSize: '30px' }}></span></strong>
+                            <strong style={{ margin: '0 70px', fontSize: '30px' }}>Total c/ Desconto:</strong>
+                            <strong><span id="totald" style={{ color: 'Crimson', margin: '0 -60px', fontSize: '30px' }}></span></strong>
+
+                        </div>
 
                     </div><br />
                     <div className="bg-white p-4 rounded border-none" style={{ margin: '0 100px' }}>
@@ -663,19 +668,19 @@ const EntradasNumero = () => {
                         <label htmlFor='td' style={{ margin: '0 50px', marginTop: '-50px', fontWeight: 'bold' }}>Total c/Desconto:</label>
                         <label htmlFor='desconto' style={{ margin: '0 -0px', marginTop: '-50px', fontWeight: 'bold' }}>Desconto:</label>
                         <label htmlFor='vd' style={{ margin: '0 50px', marginTop: '-20px', fontWeight: 'bold' }}>Valor Desconto:</label><br />
-                        <input type="decimal" className='form-control rounded-0' style={{ width: '9%', height: '42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="total" />
-                        <input type="text" className='form-control rounded-0' style={{ width: '13%', height: '42px', margin: '0 150px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="nome" />
-                        <input type="decimal" className='form-control rounded-0' style={{ width: '10%', height: '42px', margin: '0 365px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="td" />
-                        <input type="decimal" className="form-control rounded-0" style={{ width: '5%', height: '42px', margin: '0 545px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="desconto" onKeyDown={MudaCorDesc} />
-                        <input type="decimal" className="form-control rounded-0" style={{ width: '10%', height: '42px', margin: '0 670px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="vd"/> <br />
+                        <input type="decimal" className='form-control rounded-0' style={{ width: '9%', height: '42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="total" />
+                        <input type="text" className='form-control rounded-0' style={{ width: '13%', height: '42px', margin: '0 150px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="nome" />
+                        <input type="decimal" className='form-control rounded-0' style={{ width: '10%', height: '42px', margin: '0 365px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="td" />
+                        <input type="decimal" className="form-control rounded-0" style={{ width: '5%', height: '42px', margin: '0 545px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="desconto" onKeyDown={MudaCorDesc} />
+                        <input type="decimal" className="form-control rounded-0" style={{ width: '10%', height: '42px', margin: '0 670px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="vd" /> <br />
 
                         <label htmlFor="valorpag" style={{ fontFamily: 'arial', fontWeight: 'bold' }} >Valor Pago:</label>
                         <label htmlFor="formapag" style={{ fontFamily: 'arial', margin: '0 90px', fontWeight: 'bold' }} >Forma Paga:</label>
                         <label htmlFor="troco" style={{ fontFamily: 'arial', margin: '0 -25px', fontWeight: 'bold' }} >Troco:</label>
-                        
-                        
-                        <input type="decimal" onKeyDown={MudaCorVp} className="form-control rounded-0" style={{ width: '10%', height: '42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="vp" />
-                        <select className="form-control rounded-0" onClick={MudaCorForma} value={formapag} onChange={e => formapagchange(e.target.value)} style={{ width: '10%', height: '42px', margin: '0 170px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} name='formapag' id='formapag' >
+
+
+                        <input type="decimal" onKeyDown={MudaCorVp} className="form-control rounded-0" style={{ width: '10%', height: '42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="vp" />
+                        <select className="form-control rounded-0" onClick={MudaCorForma} value={formapag} onChange={e => formapagchange(e.target.value)} style={{ width: '10%', height: '42px', margin: '0 170px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} name='formapag' id='formapag' >
                             <option value=""></option>
                             <option value="Dinheiro">Dinheiro</option>
                             <option value="Pix">Pix</option>
@@ -683,13 +688,13 @@ const EntradasNumero = () => {
                             <option value="Crédito">Crédito</option>
                             <option value="Boleto">Boleto</option>
                         </select>
-                        <input type="decimal" className="form-control rounded-0" style={{ width: '6%', height: '42px', margin: '0 340px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize:'19px' }} id="troco" />
+                        <input type="decimal" className="form-control rounded-0" style={{ width: '6%', height: '42px', margin: '0 340px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="troco" />
                         <br />
-                        
+
                         <label htmlFor="mes" style={{ fontFamily: 'arial', fontWeight: 'bold' }} >Mes:</label>
-                  
+
                         <label htmlFor="frete" style={{ fontFamily: 'arial', margin: '0 170px', fontWeight: 'bold' }} >Frete:</label>
-                        <select onClick={MudaCorMes} style={{ width: 150, fontWeight: 'bold', color: 'navy', fontSize:'19px' }} name='mes' id='mes' className='form-select rounded-0' value={mes} onChange={e => meschange(e.target.value)}>
+                        <select onClick={MudaCorMes} style={{ width: 150, fontWeight: 'bold', color: 'navy', fontSize: '19px' }} name='mes' id='mes' className='form-select rounded-0' value={mes} onChange={e => meschange(e.target.value)}>
                             <option value=""></option>
                             <option value="Janeiro">Janeiro</option>
                             <option value="Fevereiro">Fevereiro</option>
@@ -705,8 +710,8 @@ const EntradasNumero = () => {
                             <option value="Dezembro">Dezembro</option>
                         </select>
 
-                        
-                        <input type="decimal" className="form-control rounded-0" value={frete} onChange={e => fretechange(e.target.value)} style={{ width: 80, margin: '0 200px', marginTop: '-40px', fontWeight: 'bold', color: 'navy', fontSize:'19px'}} id="frete" /><br />
+
+                        <input type="decimal" className="form-control rounded-0" value={frete} onChange={e => fretechange(e.target.value)} style={{ width: 80, margin: '0 200px', marginTop: '-40px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="frete" /><br />
                         <button type="submit" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'green', width: 120, height: '37px' }}>Concluir</button>
                         <ToastContainer />
 
@@ -714,58 +719,58 @@ const EntradasNumero = () => {
                     </div>
 
                 </form>
-                <div className="mt-3" style={{ margin: '0 105px'}}>
-                        <table className="table" id="table" style={{ margin: '0 -1600px', fontFamily: 'arial', width: 3000, marginTop:'-450px' }}>
-                            <thead>
-                                <tr>
-                                    <th className="th" scope="col">Id:</th>
-                                    <th className="th" scope="col">Venda nº:</th>
-                                    <th className="th" scope="col">Nome:</th>
-                                    <th className="th" scope="col">Qtd:</th>
-                                    <th className="th" scope="col">Preço:</th>
-                                    <th className="th" scope="col">Total:</th>
-                                    <th className="th" scope="col">Desconto:</th>
-                                    <th className="th" scope="col">Valor Desconto:</th>
-                                    <th className="th" scope="col">Total c/Desconto:</th>
-                                    <th className="th" scope="col">Forma Paga:</th>
-                                    <th className="th" scope="col">Entradas:</th>
-                                    <th className="th" scope="col">Troco:</th>                                    
-                                    <th className="th" scope="col">Mês:</th>
-                                    <th className="th" scope="col">Frete:</th>
-                                    <th className="th" scope="col">Data de Cadastro:</th>
-                                    <th className="th" scope="col">Ação:</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    table.map(item => (
-                                        <tr key={item.id}>
-                                            <td className="td">{item.id}</td>
-                                            <td className="td">{item.vendan}</td>
-                                            <td className="td">{item.nome}</td>
-                                            <td className="td">{item.quant}</td>
-                                            <td className="td">{item.preco}</td>
-                                            <td className="td">{item.total}</td>
-                                            <td className="td">{item.desconto}</td>
-                                            <td className="td">{item.valordesc}</td>
-                                            <td className="td">{item.totaldesc}</td>
-                                            <td className="td">{item.formapag}</td>
-                                            <td className="td">{item.valorpagto}</td>
-                                            <td className="td">{item.troco}</td>                                           
-                                            <td className="td">{item.mes}</td>
-                                            <td className="td">{item.frete}</td>
-                                            <td className="td">{item.data_cad}</td>
-                                            <td className="td" >
-                                                <button type="button" className="editar" onClick={() => { handleEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Atualizar:</button>
-                                                <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-                                            </td>
-                                        </tr>
-                                    ))
+                <div className="mt-3" style={{ margin: '0 105px' }}>
+                    <table className="table" id="table" style={{ margin: '0 -1600px', fontFamily: 'arial', width: 3000, marginTop: '-450px' }}>
+                        <thead>
+                            <tr>
+                                <th className="th" scope="col">Id:</th>
+                                <th className="th" scope="col">Venda nº:</th>
+                                <th className="th" scope="col">Nome:</th>
+                                <th className="th" scope="col">Qtd:</th>
+                                <th className="th" scope="col">Preço:</th>
+                                <th className="th" scope="col">Total:</th>
+                                <th className="th" scope="col">Desconto:</th>
+                                <th className="th" scope="col">Valor Desconto:</th>
+                                <th className="th" scope="col">Total c/Desconto:</th>
+                                <th className="th" scope="col">Forma Paga:</th>
+                                <th className="th" scope="col">Entradas:</th>
+                                <th className="th" scope="col">Troco:</th>
+                                <th className="th" scope="col">Mês:</th>
+                                <th className="th" scope="col">Frete:</th>
+                                <th className="th" scope="col">Data de Cadastro:</th>
+                                <th className="th" scope="col">Ação:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                table.map(item => (
+                                    <tr key={item.id}>
+                                        <td className="td">{item.id}</td>
+                                        <td className="td">{item.vendan}</td>
+                                        <td className="td">{item.nome}</td>
+                                        <td className="td">{item.quant}</td>
+                                        <td className="td">{item.preco}</td>
+                                        <td className="td">{item.total}</td>
+                                        <td className="td">{item.desconto}</td>
+                                        <td className="td">{item.valordesc}</td>
+                                        <td className="td">{item.totaldesc}</td>
+                                        <td className="td">{item.formapag}</td>
+                                        <td className="td">{item.valorpagto}</td>
+                                        <td className="td">{item.troco}</td>
+                                        <td className="td">{item.mes}</td>
+                                        <td className="td">{item.frete}</td>
+                                        <td className="td">{item.data_cad}</td>
+                                        <td className="td" >
+                                            <button type="button" className="editar" onClick={() => { handleEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Atualizar:</button>
+                                            <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                                        </td>
+                                    </tr>
+                                ))
 
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+                            }
+                        </tbody>
+                    </table>
+                </div>
 
             </div><br />
             <div className="d-flex" style={{ margin: '0 300px', width: '1000px' }}>
@@ -777,11 +782,11 @@ const EntradasNumero = () => {
             </div><br />
             <br /><br /><br /><br />
 
-               <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{position:'fixed', left:0, bottom:0, width:'100%', color:'white', textAlign:'center', zIndex:1000}}>
-                   <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
-               </footer>   
+             <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', color: 'white', textAlign: 'center', zIndex: 1000 }}>
+                <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+            </footer>
 
-      </div>
+        </div>     
 
     )
 }

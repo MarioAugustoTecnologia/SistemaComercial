@@ -445,7 +445,7 @@ const EntradasNumero = () => {
     }
 
     return (
-        <div className="container-fluid">
+       <div className="container-fluid">
             <div className="row flex-nowrap">
                 <div className="main-wrapper">
 
@@ -595,7 +595,7 @@ const EntradasNumero = () => {
                         <label htmlFor="Numero" className="Numero" style={{ fontFamily: 'arial', fontWeight: 'bold' }}>Buscar Venda nº:</label><br />
                         <input type="search" autoFocus='true' onKeyUp={MudaCorCampo} className="form-control rounded-0" value={buscanumero} onChange={(e) => setBuscaNumero(e.target.value)} style={{ fontFamily: 'arial', width: '100px', fontWeight: 'bold', color: 'navy', padding: '2px', fontSize: '19px' }} id="vendan" />
                         <Link to="/entradas" className="btn btn-success rounded-0" style={{ width: '140px', height: '37px', margin: '0 150px', marginTop: '-98px' }}>Voltar:</Link>
-                        <Link onClick={GerarUltima} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '0 -120px', marginTop: '-98px', height: '36px' }}>Próxima Venda:</Link>
+                        <Link to="/entradas/ultima" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '0 -120px', marginTop: '-98px', height: '36px'}}>Próxima Venda:</Link>
 
                         <div className="d-flex">
 
@@ -615,7 +615,7 @@ const EntradasNumero = () => {
                         <label htmlFor='desconto' style={{ margin: '0 -0px', marginTop: '-50px', fontWeight: 'bold' }}>Desconto:</label>
                         <label htmlFor='vd' style={{ margin: '0 50px', marginTop: '-20px', fontWeight: 'bold' }}>Valor Desconto:</label><br />
                         <input type="decimal" className='form-control rounded-0' style={{ width: '9%', height: '42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="total" />
-                        <input type="text" className='form-control rounded-0' style={{ width: '14%', height: '42px', margin: '0 150px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="nome" />
+                        <input type="text" className='form-control rounded-0' style={{ width: '14%', height: '42px', margin: '0 150px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '15px' }} id="nome" />
                         <input type="decimal" className='form-control rounded-0' style={{ width: '10%', height: '42px', margin: '0 365px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="td" />
                         <input type="decimal" className="form-control rounded-0" style={{ width: '8%', height: '42px', margin: '0 545px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="desconto" onKeyDown={MudaCorDesc} />
                         <input type="decimal" className="form-control rounded-0" style={{ width: '10%', height: '42px', margin: '0 670px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="vd" /> <br />
@@ -655,15 +655,11 @@ const EntradasNumero = () => {
                             <option value="Novembro">Novembro</option>
                             <option value="Dezembro">Dezembro</option>
                         </select>
-
-
                         <input type="decimal" className="form-control rounded-0" value={frete} onChange={e => fretechange(e.target.value)} style={{ width: 80, margin: '0 200px', marginTop: '-40px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="frete" /><br />
                         <button type="submit" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'green', width: 120, height: '37px' }}>Concluir</button>
                         <ToastContainer />
 
-
                     </div>
-
                 </form>
                 <div className="mt-3" style={{ margin: '0 105px' }}>
                     <table className="table" id="table" style={{ margin: '0 -1600px', fontFamily: 'arial', width: 3000, marginTop: '-450px' }}>
@@ -715,7 +711,7 @@ const EntradasNumero = () => {
 
                             }
                         </tbody>
-                        <ToastContainer />
+                          <ToastContainer />
                     </table>
                 </div>
 
@@ -736,6 +732,7 @@ const EntradasNumero = () => {
 
 
         </div>
+
 
     )
 }

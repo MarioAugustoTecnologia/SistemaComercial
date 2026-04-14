@@ -60,7 +60,7 @@ import CadOrcVenda from './components/CadOrcVenda';
 import DeleteOrcVendas from './components/DeleteOrcVendas';
 import CadTransportes from './components/CadTransportes';
 import EntradasTotFrete from './components/EntradasTotFrete';
-
+import EditarVendaAtual from './components/EditarVendaAtual';
 
 //8=> Criação do json server com o comando: npx json-server db.json
 
@@ -98,6 +98,7 @@ function App() {
     <Route path='/entradas/numero/editar/:entradacod' element={<PrivateRoutes><EntradasNumeroEditar /></PrivateRoutes>}></Route> 
     <Route path='/entradas/cadastrar/orc/:pcod' element={<PrivateRoutes><CadOrcVenda /></PrivateRoutes>}></Route>
     <Route path='/entradas/totfrete' element={<PrivateRoutes><EntradasTotFrete /></PrivateRoutes>}></Route>
+    <Route path='/vendaatual/editar/:pvatual' element={<PrivateRoutes><EditarVendaAtual /></PrivateRoutes>}></Route> 
     <Route path='/caddespesas' element={<PrivateRoutes><CadDespesas /></PrivateRoutes>}></Route>
     <Route path='/despesas' element={<PrivateRoutes><Despesas /></PrivateRoutes>}></Route>
     <Route path='/despesas/editar/:despesacod' element={<PrivateRoutes><EditarDespesa /></PrivateRoutes>}></Route>

@@ -25,21 +25,7 @@ const EntradasUltima = () => {
 
 }, []) 
 
-const handleDelete = (id) => {    
 
-  fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id , {
-
-      method: "DELETE"    
-
-  }).then((res) => {           
-                       
-     window.location.reload();     
-                
-  }).catch((err) => {
-    toast.error('Erro ! :' +err.message)
-  })
-
-}
 
 const navigate = useNavigate()
 
@@ -47,6 +33,10 @@ function Return(){
   navigate('/entradas')
   
 }
+
+ const LoadEdit = (id) => {
+    navigate("/vendaatual/editar/" + id);
+  }
 
   const logout = () => {
     localStorage.clear()
@@ -215,7 +205,7 @@ return (
                                     <tr key={item.id}>
                                            <td className="td" hidden='true'>{item.id}</td>
                                            <td className="td" style={{color:'blue', fontSize:'50px'}}><strong>{item.numero}</strong></td>
-                                           <td className="td"><button className="excluir" onClick={() => {handleDelete(item.id)}} style={{color:'white', backgroundColor:'red', border:'none', borderRadius:'5px', fontSize:'23px', marginTop:'25px'}}>Excluir:</button></td> 
+                                           <td className="td"><button className="editar" onClick={() => {LoadEdit(item.id)}} style={{color:'white', backgroundColor:'blue', border:'none', borderRadius:'5px', fontSize:'23px', marginTop:'25px'}}>Editar:</button></td> 
                                            <td className="td"><button className="excluir" onClick={Return} style={{color:'white', backgroundColor:'orange', border:'none', borderRadius:'5px', fontSize:'23px', marginTop:'25px'}}>Voltar:</button></td>                                     
                                     </tr>
                                   ))

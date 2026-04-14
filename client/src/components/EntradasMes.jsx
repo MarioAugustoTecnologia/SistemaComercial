@@ -335,7 +335,7 @@ const EntradasMes = () => {
               <Link to="/entradas" className="btn btn-success rounded-0" style={{ width: '100px', margin: '0 25px' }} >Voltar:</Link>
               <Link onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 -22px', width: '150px' }}>Total Entradas:</Link>
 
-              <select value={mes} onChange={e => setMes(e.target.value)} style={{ height: '30px', fontSize: '17px', width: 160, margin: '0 49px', fontWeight: 'bold', color: 'navy' }} name='mes' id='mes' className='form-select rounded-0'>
+              <select value={mes} onChange={e => setMes(e.target.value)} style={{ height: '40px', fontSize: '17px', width: 160, margin: '0 49px', fontWeight: 'bold', color: 'navy' }} name='mes' id='mes' className='form-select rounded-0'>
                 <option value=""></option>
                 <option value="Janeiro">Janeiro</option>
                 <option value="Fevereiro">Fevereiro</option>

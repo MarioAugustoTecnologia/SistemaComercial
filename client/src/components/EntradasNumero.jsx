@@ -253,25 +253,59 @@ const EntradasNumero = () => {
         e.preventDefault();
 
 
-        if (isValidate()) {         
+        if (isValidate()) {
 
-                if (document.getElementById('desconto').value !== "" && document.getElementById('td').value !== '' && document.getElementById('vd').value !== '') {
+            if (document.getElementById('desconto').value !== "" && document.getElementById('td').value !== '' && document.getElementById('vd').value !== '') {
 
-                    const total = parseFloat(document.getElementById('total').value).toFixed(2);
-                    const nome = document.getElementById('nome').value;
-                    const totaldesc = parseFloat(document.getElementById('td').value).toFixed(2);
-                    const vendan = document.getElementById('vendan').value;
-                    const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
-                    const desconto = document.getElementById('desconto').value;
-                    const valordesc = parseFloat(document.getElementById('vd').value).toFixed(2);
-                    const data_cad = formataData();
-                    const vp = 0;
+                const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                const nome = document.getElementById('nome').value;
+                const totaldesc = parseFloat(document.getElementById('td').value).toFixed(2);
+                const vendan = document.getElementById('vendan').value;
+                const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
+                const desconto = document.getElementById('desconto').value;
+                const valordesc = parseFloat(document.getElementById('vd').value).toFixed(2);
+                const data_cad = formataData();
+                const vp = 0;
 
-                    if (valorpagto > totaldesc) {
+                if (valorpagto > totaldesc) {
 
-                        const troco = document.getElementById('troco').value;
+                    const troco = document.getElementById('troco').value;
 
-                        const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, troco, data_cad, vp, frete }
+                    const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, troco, data_cad, vp, frete }
+
+                    Swal.fire({
+                        title: "Deseja salvar ?",
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: "Salvar",
+                        denyButtonText: `Não salvar`
+
+                    }).then((result) => {
+
+                        if (result.isConfirmed) {
+
+                            fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                method: "POST",
+                                headers: { 'content-type': 'application/json' },
+                                body: JSON.stringify(cadobj)
+                            }).then((res) => {
+
+                                window.location.reload();
+
+                            }).catch((err) => {
+                                toast.error('Erro ! :' + err.message)
+                            })
+
+                        } else if (result.isDenied) {
+                            Swal.fire("Nada salvo", "", "info");
+                        }
+
+                    });
+
+                } else
+                    if (valorpagto === totaldesc) {
+
+                        const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, data_cad, vp, frete }
 
                         Swal.fire({
                             title: "Deseja salvar ?",
@@ -279,7 +313,6 @@ const EntradasNumero = () => {
                             showCancelButton: true,
                             confirmButtonText: "Salvar",
                             denyButtonText: `Não salvar`
-
                         }).then((result) => {
 
                             if (result.isConfirmed) {
@@ -301,55 +334,55 @@ const EntradasNumero = () => {
                             }
 
                         });
+                    }
 
-                    } else
-                        if (valorpagto === totaldesc) {
+            } else {
 
-                            const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, data_cad, vp, frete }
+                const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                const nome = document.getElementById('nome').value;
+                const vendan = document.getElementById('vendan').value;
+                const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
+                const data_cad = formataData();
+                const vp = 0;
 
-                            Swal.fire({
-                                title: "Deseja salvar ?",
-                                showDenyButton: true,
-                                showCancelButton: true,
-                                confirmButtonText: "Salvar",
-                                denyButtonText: `Não salvar`
-                            }).then((result) => {
+                if (valorpagto > total) {
 
-                                if (result.isConfirmed) {
+                    const troco = document.getElementById('troco').value;
 
-                                    fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                                        method: "POST",
-                                        headers: { 'content-type': 'application/json' },
-                                        body: JSON.stringify(cadobj)
-                                    }).then((res) => {
+                    const cadobj = { vendan, total, nome, valorpagto, mes, formapag, troco, data_cad, vp, frete }
 
-                                        window.location.reload();
+                    Swal.fire({
+                        title: "Deseja salvar ?",
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: "Salvar",
+                        denyButtonText: `Não salvar`
+                    }).then((result) => {
 
-                                    }).catch((err) => {
-                                        toast.error('Erro ! :' + err.message)
-                                    })
+                        if (result.isConfirmed) {
 
-                                } else if (result.isDenied) {
-                                    Swal.fire("Nada salvo", "", "info");
-                                }
+                            fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                method: "POST",
+                                headers: { 'content-type': 'application/json' },
+                                body: JSON.stringify(cadobj)
+                            }).then((res) => {
+                                window.location.reload();
 
-                            });
+                            }).catch((err) => {
+                                toast.error('Erro ! :' + err.message)
+                            })
+
+                        } else if (result.isDenied) {
+                            Swal.fire("Nada salvo", "", "info");
                         }
 
-                } else {
+                    });
 
-                    const total = parseFloat(document.getElementById('total').value).toFixed(2);
-                    const nome = document.getElementById('nome').value;
-                    const vendan = document.getElementById('vendan').value;
-                    const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
-                    const data_cad = formataData();
-                    const vp = 0;
+                } else
+                    if (valorpagto === total) {
 
-                    if (valorpagto > total) {
 
-                        const troco = document.getElementById('troco').value;
-
-                        const cadobj = { vendan, total, nome, valorpagto, mes, formapag, troco, data_cad, vp, frete }
+                        const cadobj = { vendan, total, nome, valorpagto, mes, formapag, data_cad, vp, frete }
 
                         Swal.fire({
                             title: "Deseja salvar ?",
@@ -378,44 +411,11 @@ const EntradasNumero = () => {
 
                         });
 
-                    } else
-                        if (valorpagto === total) {
+                    }
+
+            }
 
 
-                            const cadobj = { vendan, total, nome, valorpagto, mes, formapag, data_cad, vp, frete }
-
-                            Swal.fire({
-                                title: "Deseja salvar ?",
-                                showDenyButton: true,
-                                showCancelButton: true,
-                                confirmButtonText: "Salvar",
-                                denyButtonText: `Não salvar`
-                            }).then((result) => {
-
-                                if (result.isConfirmed) {
-
-                                    fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                                        method: "POST",
-                                        headers: { 'content-type': 'application/json' },
-                                        body: JSON.stringify(cadobj)
-                                    }).then((res) => {
-                                        window.location.reload();
-
-                                    }).catch((err) => {
-                                        toast.error('Erro ! :' + err.message)
-                                    })
-
-                                } else if (result.isDenied) {
-                                    Swal.fire("Nada salvo", "", "info");
-                                }
-
-                            });
-
-                        }
-
-                }
-           
-         
 
         }
     }
@@ -605,8 +605,8 @@ const EntradasNumero = () => {
 
                         <div className="d-flex">
 
-                            <strong style={{ margin: '0 200px', fontSize: '30px' }}>Total:</strong>
-                            <strong><span id="totalvenda" style={{ color: 'LimeGreen', margin: '0 -190px', fontSize: '30px' }}></span></strong>
+                            <strong style={{ margin: '0 0px', fontSize: '30px' }}>Total:</strong>
+                            <strong><span id="totalvenda" style={{ color: 'LimeGreen', margin: '0 10px', fontSize: '30px' }}></span></strong>
                             <strong style={{ margin: '0 70px', fontSize: '30px' }}>Total c/ Desconto:</strong>
                             <strong><span id="totald" style={{ color: 'Crimson', margin: '0 -60px', fontSize: '30px' }}></span></strong>
 
@@ -721,7 +721,7 @@ const EntradasNumero = () => {
 
                             }
                         </tbody>
-                          <ToastContainer />
+                        <ToastContainer />
                     </table>
                 </div>
 

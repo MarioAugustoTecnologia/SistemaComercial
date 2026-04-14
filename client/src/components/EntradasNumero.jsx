@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Swal from 'sweetalert2';
@@ -31,11 +31,8 @@ const EntradasNumero = () => {
     }, [])
 
     const [formapag, formapagchange] = useState("")
-    const [parcelamento, parcelamentochange] = useState("")
-    const [parcelan, parcelanchange] = useState("")
     const [mes, meschange] = useState("")
     const [frete, fretechange] = useState("")
-
 
 
     const handleDelete = (id) => {
@@ -50,7 +47,7 @@ const EntradasNumero = () => {
 
             if (result.isConfirmed) {
 
-                fetch("https://sistemacomercial-fv5g.onrender.com/vendas" + id, {
+                fetch("https://sistemacomercial-fv5g.onrender.com/vendas/" + id, {
 
                     method: "DELETE"
 
@@ -256,10 +253,7 @@ const EntradasNumero = () => {
         e.preventDefault();
 
 
-        if (isValidate()) {
-
-
-            if (parcelamento === "" || parcelamento === null && parcelan === "" || parcelan === null) {
+        if (isValidate()) {         
 
                 if (document.getElementById('desconto').value !== "" && document.getElementById('td').value !== '' && document.getElementById('vd').value !== '') {
 
@@ -420,48 +414,8 @@ const EntradasNumero = () => {
                         }
 
                 }
-
-            } else {
-
-                const vendan = document.getElementById('vendan').value
-                const nome = document.getElementById('nome').value;
-                const total = parseFloat(document.getElementById('total').value).toFixed(2);
-                const parcelas = document.getElementById("parcelas").value;
-                const formapag = document.getElementById('formapag').value
-                const valorpagto = (total / parcelas).toFixed(2);
-                const data_cad = formataData()
-                const vp = 0;
-
-                const cadobj = { vendan, nome, total, parcelamento, parcelan, formapag, valorpagto, mes, data_cad, vp, frete }
-
-                Swal.fire({
-                    title: "Deseja salvar ?",
-                    showDenyButton: true,
-                    showCancelButton: true,
-                    confirmButtonText: "Salvar",
-                    denyButtonText: `Não salvar`
-                }).then((result) => {
-
-                    if (result.isConfirmed) {
-
-                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                            method: "POST",
-                            headers: { 'content-type': 'application/json' },
-                            body: JSON.stringify(cadobj)
-                        }).then((res) => {
-                            window.location.reload();
-
-                        }).catch((err) => {
-                            toast.error('Erro ! :' + err.message)
-                        })
-
-                    } else if (result.isDenied) {
-                        Swal.fire("Nada salvo", "", "info");
-                    }
-
-                });
-
-            }
+           
+         
 
         }
     }
@@ -496,10 +450,8 @@ const EntradasNumero = () => {
 
     }
 
-
     return (
-
-         <div className="container-fluid">
+        <div className="container-fluid">
             <div className="row flex-nowrap">
                 <div className="main-wrapper">
 
@@ -769,6 +721,7 @@ const EntradasNumero = () => {
 
                             }
                         </tbody>
+                          <ToastContainer />
                     </table>
                 </div>
 
@@ -782,11 +735,13 @@ const EntradasNumero = () => {
             </div><br />
             <br /><br /><br /><br />
 
-             <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', color: 'white', textAlign: 'center', zIndex: 1000 }}>
+            <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', color: 'white', textAlign: 'center', zIndex: 1000 }}>
                 <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
             </footer>
 
-        </div>     
+
+
+        </div>
 
     )
 }

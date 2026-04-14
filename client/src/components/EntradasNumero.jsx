@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Swal from 'sweetalert2';
@@ -66,13 +66,7 @@ const EntradasNumero = () => {
 
     }
 
-    const navigate = useNavigate();
 
-    const handleEdit = (id) => {
-
-        navigate("/entradas/numero/editar/" + id);
-
-    }
 
     function formataData() {
         let data = new Date(),
@@ -621,9 +615,9 @@ const EntradasNumero = () => {
                         <label htmlFor='desconto' style={{ margin: '0 -0px', marginTop: '-50px', fontWeight: 'bold' }}>Desconto:</label>
                         <label htmlFor='vd' style={{ margin: '0 50px', marginTop: '-20px', fontWeight: 'bold' }}>Valor Desconto:</label><br />
                         <input type="decimal" className='form-control rounded-0' style={{ width: '9%', height: '42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="total" />
-                        <input type="text" className='form-control rounded-0' style={{ width: '13%', height: '42px', margin: '0 150px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="nome" />
+                        <input type="text" className='form-control rounded-0' style={{ width: '14%', height: '42px', margin: '0 150px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="nome" />
                         <input type="decimal" className='form-control rounded-0' style={{ width: '10%', height: '42px', margin: '0 365px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="td" />
-                        <input type="decimal" className="form-control rounded-0" style={{ width: '5%', height: '42px', margin: '0 545px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="desconto" onKeyDown={MudaCorDesc} />
+                        <input type="decimal" className="form-control rounded-0" style={{ width: '8%', height: '42px', margin: '0 545px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="desconto" onKeyDown={MudaCorDesc} />
                         <input type="decimal" className="form-control rounded-0" style={{ width: '10%', height: '42px', margin: '0 670px', marginTop: '-42px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="vd" /> <br />
 
                         <label htmlFor="valorpag" style={{ fontFamily: 'arial', fontWeight: 'bold' }} >Valor Pago:</label>
@@ -713,7 +707,7 @@ const EntradasNumero = () => {
                                         <td className="td">{item.frete}</td>
                                         <td className="td">{item.data_cad}</td>
                                         <td className="td" >
-                                            <button type="button" className="editar" onClick={() => { handleEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Atualizar:</button>
+                                            
                                             <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
                                         </td>
                                     </tr>

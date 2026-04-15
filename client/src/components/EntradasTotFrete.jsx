@@ -140,49 +140,35 @@ function MudaCorBusca(){
   }
 
   return (
-    <div className="container-fluid" style={{ fontFamily: 'arial' }}>
+     <div className="container-fluid">
       <div className="row flex-nowrap">
-        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary" style={{ fontFamily: 'arial', fontSize: '19px' }}>
-          <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-            <Link
-              to=""
-              className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none"
-            >
-              <span className='fs-5 fw-bolder d-none d-sm-inline'>
-                Opções:
-              </span>
-            </Link>
-            <ul
-              className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-              id="menu"
-            >
-              <li className="w-100">
+
+        <div className="main-wrapper">
+
+          <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000, margin: '-12px' }}>
+            <br />
+            <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+              id="menu">
+              <li className="w-100" style={{ margin: '12px' }}>
                 <Link
                   to="/home"
-                  className="nav-link text-white px-0 align-middle"
-                >
-                  <i className="fs-4 bi-speedometer2 ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Painel:</span>
-                </Link>
-              </li>
-              <li className="w-100">
-                <Link
-                  to="/usuarios"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi-people ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Usuarios:
+                  <i class="fs-4 bi bi-house"></i>
+
+                  <span className="ms-2 d-sm-inline">
+                    Home:
                   </span>
                 </Link>
               </li>
+
               <li className="w-100">
                 <Link
                   to="/entradas"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-cash-coin ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Vendas:
                   </span>
                 </Link>
@@ -193,7 +179,7 @@ function MudaCorBusca(){
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-cash ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Compras:
                   </span>
                 </Link>
@@ -204,7 +190,7 @@ function MudaCorBusca(){
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-coin ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Despesas:
                   </span>
                 </Link>
@@ -215,18 +201,18 @@ function MudaCorBusca(){
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                      Produtos e Serviços:
+                  <span className="ms-2 d-sm-inline">
+                    Produtos e Serviços:
                   </span>
                 </Link>
               </li>
-               <li className="w-100">
+              <li className="w-100">
                 <Link
                   to="/transportes"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i class="bi bi-truck-flatbed" style={{margin:'0 8px'}}></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <i class="bi bi-truck-flatbed" style={{ margin: '0 8px' }}></i>
+                  <span className="ms-2 d-sm-inline">
                     Transportes:
                   </span>
                 </Link>
@@ -237,7 +223,7 @@ function MudaCorBusca(){
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-truck ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Fornecedores:
                   </span>
                 </Link>
@@ -248,7 +234,7 @@ function MudaCorBusca(){
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-person-square ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Clientes:
                   </span>
                 </Link>
@@ -259,7 +245,7 @@ function MudaCorBusca(){
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-bank ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Resultados:
                   </span>
                 </Link>
@@ -270,7 +256,7 @@ function MudaCorBusca(){
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Orçamentos:
                   </span>
                 </Link>
@@ -280,98 +266,107 @@ function MudaCorBusca(){
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-power ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Logout</span>
+                  <span className="ms-2 d-sm-inline">Sair:</span>
                 </Link>
               </li>
             </ul>
-          </div>
-        </div>
-        <div className="col p-0 m-0">
-          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: "160%" }}>
-            <h4><strong>Sistema de Gestão Comercial</strong></h4>
-          </div>
-          <Outlet />
-          <div className="px-5 mt-5">
-            <div className="mb3">
-              <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold' }}>Busca por nome:</label>
-              <label htmlFor="Mes" className="mes" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', margin:'0 250px' }}>Venda nº:</label><br />
-              <input type="search" id="consulta" onKeyUp={MudaCorBusca} autoFocus='true' className="form-control rounded-0" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy', padding:'2px', width:'400px'}} />                            
-              <input type="text" className='form-control rounded-0' id="venda" onKeyUp={MudaCorVenda} value={vendan} onChange={(e) => setVendan(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight: 'bold', color: 'navy', width: '150px', padding:'2px', margin:'0 430px', marginTop:'-38px'}} /> <br /><br />
-              <Link to="/entradas" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 20px' }}>Voltar:</Link>
-              <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '18px' }}>Total Frete:</Link>
-              <strong style={{ fontSize: '30px' }}>Total:</strong>
-              <strong><span id="total" style={{ color: 'green', fontSize: '32px', margin: '0 10px' }}></span></strong><br />
-                           
-            </div><br />
-            <h4 style={{ textAlign: 'center', color: 'Red', fontSize: '25px', marginRight: '-225px' }}><strong>Entradas:</strong></h4>
-            <br />
-            <div className="mt-3">
-              <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: 3000 }}>
-                <thead>
-                  <tr>
-                    <th className="th" scope="col">Id:</th>
-                    <th className="th" scope="col">Venda nº:</th>
-                    <th className="th" scope="col">Nome:</th>
-                    <th className="th" scope="col">Qtd:</th>
-                    <th className="th" scope="col">Preço:</th>
-                    <th className="th" scope="col">Total:</th>
-                    <th className="th" scope="col">Desconto:</th>
-                    <th className="th" scope="col">Valor Desconto:</th>
-                    <th className="th" scope="col">Total c/Desconto:</th>
-                    <th className="th" scope="col">Forma Paga:</th>
-                    <th className="th" scope="col">Entradas:</th>
-                    <th className="th" scope="col">Troco:</th>
-                    <th className="th" scope="col">Faturamento:</th>
-                    <th className="th" scope="col">Parcelamento:</th>
-                    <th className="th" scope="col">Parcela:</th>
-                    <th className="th" scope="col">Mês:</th>
-                    <th className="th" scope="col">Frete:</th>
-                    <th className="th" scope="col">Data de Cadastro:</th>
-                    <th className="th" scope="col">Ação:</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    table.map(item => (
-                      <tr key={item.id}>
-                        <td className="td">{item.id}</td>
-                        <td className="td">{item.vendan}</td>
-                        <td className="td">{item.nome}</td>
-                        <td className="td">{item.quant}</td>
-                        <td className="td">{item.preco}</td>
-                        <td className="td">{item.total}</td>
-                        <td className="td">{item.desconto}</td>
-                        <td className="td">{item.valordesc}</td>
-                        <td className="td">{item.totaldesc}</td>
-                        <td className="td">{item.formapag}</td>
-                        <td className="td">{item.valorpagto}</td>
-                        <td className="td">{item.troco}</td>
-                        <td className="td" id="vp">{item.vp}</td>
-                        <td className="td">{item.parcelamento}</td>
-                        <td className="td">{item.parcelan}</td>
-                        <td className="td" id="mes">{item.mes}</td>
-                        <td className="td">{item.frete}</td>
-                        <td className="td">{item.data_cad}</td>
-                        <td className="td" >
-                          <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-                        </td>
-                      </tr>
-                    ))
-                  }
+          </nav>
 
-                </tbody>
-                <ToastContainer />
 
-              </table>
-            </div>
-            <br />
-
-          </div>
-
-        </div>
+        </div><br /><br />
 
       </div>
+
+      <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-1000px' }}>
+
+        <div className="px-5 mt-5">
+          <div className="mb3">
+            <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold' }}>Busca por nome:</label>
+            <label htmlFor="Mes" className="mes" style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', margin: '0 250px'}}>Venda nº:</label><br />
+            <input type="search" id="consulta" onKeyUp={MudaCorBusca} autoFocus='true' className="form-control rounded-0" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', padding: '2px', width: '350px' }} />
+            <input type="text" className='form-control rounded-0' id="venda" onKeyUp={MudaCorVenda} value={vendan} onChange={(e) => setVendan(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', width: '80px', padding: '2px', margin: '0 390px', marginTop: '-30px' }} /> <br /><br />
+            <Link to="/entradas" className="btn btn-success rounded-0" style={{ fontSize: '15px', width: '140px', margin: '0 20px', height:'35px' }}>Voltar:</Link>
+            <Link onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '15px', height:'35px' }}>Total Frete:</Link>
+            <strong style={{ fontSize: '30px' }}>Total:</strong>
+            <strong><span id="total" style={{ color: 'green', fontSize: '30px', margin: '0 10px' }}></span></strong><br />
+
+          </div><br />
+  
+          <br />
+          <div className="mt-3">
+            <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '17px', width: 3000 }}>
+              <thead>
+                <tr>
+                  <th className="th" scope="col">Id:</th>
+                  <th className="th" scope="col">Venda nº:</th>
+                  <th className="th" scope="col">Nome:</th>
+                  <th className="th" scope="col">Qtd:</th>
+                  <th className="th" scope="col">Preço:</th>
+                  <th className="th" scope="col">Total:</th>
+                  <th className="th" scope="col">Desconto:</th>
+                  <th className="th" scope="col">Valor Desconto:</th>
+                  <th className="th" scope="col">Total c/Desconto:</th>
+                  <th className="th" scope="col">Forma Paga:</th>
+                  <th className="th" scope="col">Entradas:</th>
+                  <th className="th" scope="col">Troco:</th>
+                  <th className="th" scope="col">Faturamento:</th>
+                  <th className="th" scope="col">Parcelamento:</th>
+                  <th className="th" scope="col">Parcela:</th>
+                  <th className="th" scope="col">Mês:</th>
+                  <th className="th" scope="col">Frete:</th>
+                  <th className="th" scope="col">Data de Cadastro:</th>
+                  <th className="th" scope="col">Ação:</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  table.map(item => (
+                    <tr key={item.id}>
+                      <td className="td">{item.id}</td>
+                      <td className="td">{item.vendan}</td>
+                      <td className="td">{item.nome}</td>
+                      <td className="td">{item.quant}</td>
+                      <td className="td">{item.preco}</td>
+                      <td className="td">{item.total}</td>
+                      <td className="td">{item.desconto}</td>
+                      <td className="td">{item.valordesc}</td>
+                      <td className="td">{item.totaldesc}</td>
+                      <td className="td">{item.formapag}</td>
+                      <td className="td">{item.valorpagto}</td>
+                      <td className="td">{item.troco}</td>
+                      <td className="td" id="vp">{item.vp}</td>
+                      <td className="td">{item.parcelamento}</td>
+                      <td className="td">{item.parcelan}</td>
+                      <td className="td" id="mes">{item.mes}</td>
+                      <td className="td">{item.frete}</td>
+                      <td className="td">{item.data_cad}</td>
+                      <td className="td" >
+                        <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                      </td>
+                    </tr>
+                  ))
+                }
+
+              </tbody>
+              <ToastContainer />
+
+            </table>
+          </div>
+          <br />
+
+        </div>
+
+
+
+      </div>
+
+      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000 }}>
+        <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+      </footer>
+
+
     </div>
+
   )
 }
 

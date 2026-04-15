@@ -180,29 +180,26 @@ const ComprasMes = () => {
 
 
   return (
-    <div className="container-fluid" style={{ fontFamily: 'arial' }}>
+
+     <div className="container-fluid">
       <div className="row flex-nowrap">
-        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary" style={{ fontFamily: 'arial', fontSize: '19px' }}>
-          <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-            <Link
-              to=""
-              className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none"
-            >
-              <span className='fs-5 fw-bolder d-none d-sm-inline'>
-                Opções:
-              </span>
-            </Link>
-            <ul
-              className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-              id="menu"
-            >
-              <li className="w-100">
+
+        <div className="main-wrapper">
+
+          <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000, margin: '-12px' }}>
+            <br />
+            <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+              id="menu">
+              <li className="w-100" style={{ margin: '12px' }}>
                 <Link
                   to="/home"
-                  className="nav-link text-white px-0 align-middle"
+                  className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi-speedometer2 ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Painel:</span>
+                  <i class="fs-4 bi bi-house"></i>
+
+                  <span className="ms-2 d-sm-inline">
+                    Home:
+                  </span>
                 </Link>
               </li>
               <li className="w-100">
@@ -210,8 +207,8 @@ const ComprasMes = () => {
                   to="/usuarios"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi-people ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <i class="fs-3 bi bi-person-check"></i>
+                  <span className="ms-2 d-sm-inline">
                     Usuarios:
                   </span>
                 </Link>
@@ -222,7 +219,7 @@ const ComprasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-cash-coin ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Vendas:
                   </span>
                 </Link>
@@ -233,7 +230,7 @@ const ComprasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-cash ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Compras:
                   </span>
                 </Link>
@@ -244,7 +241,7 @@ const ComprasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-coin ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Despesas:
                   </span>
                 </Link>
@@ -255,18 +252,18 @@ const ComprasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                      Produtos e Serviços:
+                  <span className="ms-2 d-sm-inline">
+                    Produtos e Serviços:
                   </span>
                 </Link>
               </li>
-               <li className="w-100">
+              <li className="w-100">
                 <Link
                   to="/transportes"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i class="bi bi-truck-flatbed" style={{margin:'0 8px'}}></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <i class="bi bi-truck-flatbed" style={{ margin: '0 8px' }}></i>
+                  <span className="ms-2 d-sm-inline">
                     Transportes:
                   </span>
                 </Link>
@@ -277,7 +274,7 @@ const ComprasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-truck ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Fornecedores:
                   </span>
                 </Link>
@@ -288,7 +285,7 @@ const ComprasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-person-square ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Clientes:
                   </span>
                 </Link>
@@ -299,7 +296,7 @@ const ComprasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-bank ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Resultados:
                   </span>
                 </Link>
@@ -310,7 +307,7 @@ const ComprasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Orçamentos:
                   </span>
                 </Link>
@@ -320,26 +317,33 @@ const ComprasMes = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-power ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Logout</span>
+                  <span className="ms-2 d-sm-inline">Sair:</span>
                 </Link>
               </li>
             </ul>
-          </div>
-        </div>
-        <div className="col p-0 m-0">
-          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue', width: '160%' }}>
-            <h4><strong>Sistema de Gestão Comercial</strong></h4>
-          </div>
-          <Outlet />
-          <div className="px-5 mt-5">
+          </nav>
+
+
+        </div><br /><br />
+
+      </div><br /><br /><br /><br />
+
+      <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-1100px' }}>
+
+        <div className="px-5 mt-5">
           <form action="" onSubmit={cadastrar} >
             <div className="mb3">
-              <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold'}}>Busca por mes:</label>
-              <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '22px', margin: '0 500px', fontWeight:'bold'}}>Mes atual:</label><br />
-              <input type="search" autoFocus='true' className="consultames" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '22px', fontWeight:'bold', color:'navy' }} />
-              <Link to="/compras" className="btn btn-success" style={{ fontSize: '18px', width: '140px', margin: '0 20px' }}>Voltar:</Link>
-              <Link onClick={somar} className="btn" style={{ color: 'white', backgroundColor: 'gray', margin: '0 2px', fontSize: '18px' }}>Total Compras:</Link>
-              <select value={mes} onChange={e => setMes(e.target.value)} style={{ fontSize: '20px', width: 160, margin: '0 650px', marginTop: '-40px', color:'navy', fontWeight:'bold'}} name='mes' id='mes' className='form-select'>
+
+              <div className="d-flex">
+                 <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold' }}>Busca por mes:</label>
+                 <label htmlFor="Mes" className="Mes" style={{ fontFamily: 'arial', fontSize: '17px', margin: '0 150px', fontWeight: 'bold' }}>Mes atual:</label>
+              </div>
+              
+              <input type="search" autoFocus='true' className="consultames form-control rounded-0" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', width:'250px' }} /> <br />
+            
+              <Link to="/compras" className="btn btn-success rounded-0" style={{ fontSize: '15px', width: '140px', margin: '0 5px' }}>Voltar:</Link>
+              <Link onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 -2px', fontSize: '15px' }}>Total Compras:</Link>
+              <select value={mes} onChange={e => setMes(e.target.value)} style={{ fontSize: '17px', width: 160, margin: '0 280px', marginTop: '-100px', color: 'navy', fontWeight: 'bold' }} name='mes' id='mes' className='form-select rounded-0'>
                 <option value=""></option>
                 <option value="Janeiro">Janeiro</option>
                 <option value="Fevereiro">Fevereiro</option>
@@ -354,78 +358,82 @@ const ComprasMes = () => {
                 <option value="Novembro">Novembro</option>
                 <option value="Dezembro">Dezembro</option>
               </select>
-              <button type="submit" className="btn btn-success" style={{ margin: '0 840px', fontSize: '18px', marginTop: '-69px' }}>Cadastrar:</button>
-              <Link to="/mescompraatual" className="btn btn-primary" style={{ fontSize: '18px', width: '140px', margin: '0 980px', marginTop: '-114px' }}>Mes atual:</Link>
+              <button type="submit" className="btn btn-success rounded-0" style={{ margin: '0 470px', fontSize: '15px', marginTop: '-69px' }}>Cadastrar:</button>
+              <Link to="/mescompraatual" className="btn btn-primary rounded-0" style={{ fontSize: '15px', width: '140px', margin: '-460px', marginTop: '-530px' }}>Mes atual:</Link>
 
             </div>
-            </form>
-            <br />
-            <h4 style={{ textAlign: 'center', color: 'Red', fontSize: '25px', margin: '0 980px' }}><strong>Compras:</strong></h4>
-            <br />
-            <div className="mt-3">
-              <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '20px', width: 3000 }}>
+          </form>
+          <br />
+
+          <br /><br /><br />
+          <div className="mt-3">
+            <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '17px', width: 3000 }}>
               <thead>
-                    <tr>
-                      <th className="th" scope="col">Id:</th>
-                      <th className="th" scope="col">Compra nº:</th>
-                      <th className="th" scope="col">Nome:</th>
-                      <th className="th" scope="col">Qtd:</th>
-                      <th className="th" scope="col">Custo:</th>                                 
-                      <th className="th" scope="col">Total:</th>
-                      <th className="th" scope="col">Total c/Frete:</th>                
-                      <th className="th" scope="col">Saidas:</th>
-                      <th className="th" scope="col">Troco:</th>
-                      <th className="th" scope="col">Frete:</th>
-                      <th className="th" scope="col">Forma Paga:</th>
-                      <th className="th" scope="col">Parcelas:</th>
-                      <th className="th" scope="col">Parcela:</th>
-                      <th className="th" scope="col">Mês:</th>
-                      <th className="th" scope="col">Data de Cadastro:</th>
-                      <th className="th" scope="col">Fornecedor:</th>
-                      <th className="th" scope="col">Ação:</th>
+                <tr>
+                  <th className="th" scope="col">Id:</th>
+                  <th className="th" scope="col">Compra nº:</th>
+                  <th className="th" scope="col">Nome:</th>
+                  <th className="th" scope="col">Qtd:</th>
+                  <th className="th" scope="col">Custo:</th>
+                  <th className="th" scope="col">Total:</th>
+                  <th className="th" scope="col">Total c/Frete:</th>
+                  <th className="th" scope="col">Saidas:</th>
+                  <th className="th" scope="col">Troco:</th>
+                  <th className="th" scope="col">Frete:</th>
+                  <th className="th" scope="col">Forma Paga:</th>
+                  <th className="th" scope="col">Parcelas:</th>
+                  <th className="th" scope="col">Parcela:</th>
+                  <th className="th" scope="col">Mês:</th>
+                  <th className="th" scope="col">Data de Cadastro:</th>
+                  <th className="th" scope="col">Fornecedor:</th>
+                  <th className="th" scope="col">Ação:</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  table.map(item => (
+                    <tr key={item.id}>
+                      <td className="td">{item.id}</td>
+                      <td className="td">{item.compran}</td>
+                      <td className="td">{item.nome}</td>
+                      <td className="td">{item.qtd}</td>
+                      <td className="td">{item.custo}</td>
+                      <td className="td">{item.total}</td>
+                      <td className="td">{item.totalfrete}</td>
+                      <td className="td">{item.valorpagto}</td>
+                      <td className="td">{item.troco}</td>
+                      <td className="td">{item.vf}</td>
+                      <td className="td">{item.formapag}</td>
+                      <td className="td">{item.parcelamento}</td>
+                      <td className="td">{item.parcelan}</td>
+                      <td className="td">{item.mes}</td>
+                      <td className="td">{item.data_cad}</td>
+                      <td className="td">{item.fornecedor}</td>
+                      <td className="td">
+                        <button className="editar" onClick={() => { handleEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Editar:</button>
+                        <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      table.map(item => (
-                        <tr key={item.id}>
-                          <td className="td">{item.id}</td>
-                          <td className="td">{item.compran}</td>
-                          <td className="td">{item.nome}</td>
-                          <td className="td">{item.qtd}</td>
-                          <td className="td">{item.custo}</td>                                         
-                          <td className="td">{item.total}</td>
-                          <td className="td">{item.totalfrete}</td>                  
-                          <td className="td">{item.valorpagto}</td>
-                          <td className="td">{item.troco}</td>
-                          <td className="td">{item.vf}</td>
-                          <td className="td">{item.formapag}</td>
-                          <td className="td">{item.parcelamento}</td>
-                          <td className="td">{item.parcelan}</td>
-                          <td className="td">{item.mes}</td>
-                          <td className="td">{item.data_cad}</td>
-                          <td className="td">{item.fornecedor}</td>
-                          <td className="td">
-                            <button className="editar" onClick={() => { handleEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Editar:</button>                            
-                            <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-                          </td>
-                        </tr>
-                      ))
-                    }
+                  ))
+                }
 
-                  </tbody>              
+              </tbody>
 
-              </table>
-            </div>
-            <br />
-            
-
+            </table>
           </div>
-
+          <br />
         </div>
 
       </div>
+
+      <br /><br /><br /><br />
+
+      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000 }}>
+        <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+      </footer>
+
     </div>
+ 
   )
 }
 

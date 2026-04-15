@@ -270,8 +270,7 @@ const ComprasNome = () => {
             </div>
           
           </div><br />
-
-          <h4 style={{ textAlign: 'center', color: 'Red', fontSize: '25px', marginRight: '-2125px' }}><strong>Compras:</strong></h4>
+      
           <br />
           <div className="mt-3" style={{ width: 100 }}>
             <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '17px', width: 3000 }}>

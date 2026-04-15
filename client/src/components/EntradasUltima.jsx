@@ -219,13 +219,13 @@ return (
                 </tr>
               </thead>
               <tbody>
-                {entradadata &&
+               {entradadata &&
                   entradadata.map(item => (
                     <tr key={item.id}>
                       <td className="td" hidden='false'>{item.id}</td>
-                      <td className="td" style={{ color: 'blue', fontSize: '50px' }}><strong>{item.numero}</strong></td>
-                      <td className="td"><button className="editar" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px', fontSize: '23px', marginTop: '25px' }}>Editar:</button></td>
-                      <td className="td"><button className="voltar" onClick={Return} style={{ color: 'white', backgroundColor: 'orange', border: 'none', borderRadius: '5px', fontSize: '23px', marginTop: '25px' }}>Voltar:</button></td>
+                      <td className="td" style={{ color: 'blue', fontSize: '30px' }}><strong>{item.numero}</strong></td>
+                      <td className="td"><button className="editar" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px', fontSize: '20px', marginTop: '25px' }}>Editar:</button></td>
+                      <td className="td"><button className="voltar" onClick={Return} style={{ color: 'white', backgroundColor: 'orange', border: 'none', borderRadius: '5px', fontSize: '20px', marginTop: '25px' }}>Voltar:</button></td>
                     </tr>
                   ))
                 }

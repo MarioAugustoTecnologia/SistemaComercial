@@ -732,7 +732,7 @@ const CadNovaCompra = () => {
             <button type='submit' className='btn btn-success border rounded-0' style={{ width: 120, margin: '0 120px', fontSize: '16px' }}>Cadastrar:</button>
             <Link className="btn border rounded-0" onClick={totalFrete} style={{ color: 'white', backgroundColor: 'gray', margin: '0 -120px', fontSize: '16px', width: 120 }}>Total c/frete:</Link>
             <button type='button' className='btn btn-primary border rounded-0' onClick={calcular} style={{ width: 120, margin: '0 116px', fontSize: '16px' }}>Total:</button>
-            <Link to='/produtos/codigo' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 -115px', fontSize: '16px', width: 120 }}>Voltar:</Link>
+            <Link to='/compras' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 -115px', fontSize: '16px', width: 120 }}>Voltar:</Link>
 
           </div>
 

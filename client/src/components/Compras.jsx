@@ -106,12 +106,12 @@ const Compras = () => {
   }
 
   return (
-    <div className="container-fluid">
+   <div className="container-fluid">
       <div className="row flex-nowrap" >
 
         <div className="main-wrapper">
 
-          <nav class="sidebar bg-secondary" style={{ width: '210px', height: 1000, margin: '-12px' }}>
+          <nav class="sidebar bg-secondary" style={{ width: '270px', height: 1000, margin: '-12px' }}>
             <br />
             <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
               id="menu">
@@ -129,13 +129,37 @@ const Compras = () => {
               </li>
               <li className="w-100">
                 <Link
-                  to="/cadnovascompras"
+                  to=""
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-cash ms-2"></i>
 
                   <span className="ms-2 d-sm-inline">
                     Nova Compra:
+                  </span>
+                </Link>
+              </li>
+                <li className="w-100" style={{ margin: '0 6px' }}>
+                <Link
+                  to="/cadnovascompras"
+                  className="nav-link px-0 align-middle text-white"
+                >
+                   <i class="fs-4 bi bi-box-seam-fill ms-2"></i>
+
+                  <span className="ms-2 d-sm-inline">
+                    - Produto não Cadastrado:
+                  </span>
+                </Link>
+              </li>
+                <li className="w-100" style={{ margin: '0 6px' }}>
+                <Link
+                  to="/produtos/codigo"
+                  className="nav-link px-0 align-middle text-white"
+                >
+                 <i class="fs-4 bi bi-box-seam ms-2"></i>
+
+                  <span className="ms-2 d-sm-inline">
+                    - Produto Cadastrado:
                   </span>
                 </Link>
               </li>
@@ -232,9 +256,9 @@ const Compras = () => {
         <div className="mb3">
 
           <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Compras:</h4><br /><br />
-          <button type="button" onClick={deleteall} style={{ backgroundColor: 'red', color: 'white', width: '120px', margin: '0' }}>Excluir Tudo:</button>
+          <button type="button" onClick={deleteall} style={{ backgroundColor: 'red', color: 'white', width: '120px', margin: '40px' }}>Excluir Tudo:</button>
           <br /><br />
-          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '3000px' }} id="table">
+          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '3000px', margin:'0 40px' }} id="table">
             <thead>
               <tr>
                 <th className="th" scope="col">Id:</th>
@@ -287,11 +311,7 @@ const Compras = () => {
             <ToastContainer />
           </table>
 
-
-
         </div>
-
-
       </div>
 
       <br /><br />

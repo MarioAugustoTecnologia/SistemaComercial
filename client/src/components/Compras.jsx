@@ -163,7 +163,7 @@ const Compras = () => {
                   </span>
                 </Link>
               </li>
-              <li className="w-100">
+              <li className="w-100" style={{ margin: '0 6px' }}>
                 <Link
                   to=""
                   className="nav-link px-0 align-middle text-white"
@@ -213,7 +213,7 @@ const Compras = () => {
 
                 </Link>
               </li>
-              <li className="w-100">
+              <li className="w-100" style={{ margin: '0 6px' }}>
                 <Link
                   to="/compras/numero"
                   className="nav-link px-0 align-middle text-white"
@@ -225,7 +225,7 @@ const Compras = () => {
                 </Link>
               </li>
 
-              <li className="w-100">
+              <li className="w-100" style={{ margin: '0 6px' }}>
                 <Link
                   to="/compras/ultima"
                   className="nav-link px-0 align-middle text-white"
@@ -311,7 +311,11 @@ const Compras = () => {
             <ToastContainer />
           </table>
 
+
+
         </div>
+
+
       </div>
 
       <br /><br />
@@ -320,6 +324,7 @@ const Compras = () => {
       </footer>
 
     </div>
+
   )
 }
 

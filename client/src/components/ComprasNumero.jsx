@@ -678,7 +678,7 @@ const ComprasNumero = () => {
                             <option value="Novembro">Novembro</option>
                             <option value="Dezembro">Dezembro</option>
                         </select>
-                        <select style={{ fontSize: '17px', width: 150, margin:'0 170px', marginTop: '-40px', fontWeight: 'bold', color: 'navy' }} id='forname' className='form-select rounded-0' onChange={(e) => setValues({ ...values, id: e.target.value })} onSelect={MudaCorFornecedor} >
+                        <select style={{ fontSize: '17px', width: 150, margin: '0 170px', marginTop: '-40px', fontWeight: 'bold', color: 'navy' }} id='forname' className='form-select rounded-0' onChange={(e) => setValues({ ...values, id: e.target.value })} onSelect={MudaCorFornecedor} >
                             <option></option>
                             {
                                 forname.map(val => {
@@ -687,11 +687,17 @@ const ComprasNumero = () => {
                             }
                         </select>
                         <input type="number" className="form-control rounded-0" style={{ fontSize: '17px', width: 100, margin: '0 340px', marginTop: '-40px', fontWeight: 'bold', color: 'navy' }} onSelect={MudaCorParcelas} id="parcelas" /><br />
-                        <button type="submit" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'green', width: 120, height: '37px' }}>Concluir</button>
+                        <div className="d-flex">
+                            <button type="submit" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'green', width: 120, height: '37px', marginTop:'-9px' }}>Concluir</button>
+                            <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '', height: '37px', marginTop:'-9px' }}>Total c/Frete:</button>
+                            <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '', width: 120, height: '37px', marginTop:'-9px' }} onClick={Troco}>Troco:</button>
+                            <button type="button" onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0', height: '37px', marginTop:'-9px' }}>Total Compra:</button>
+
+                        </div>
                         <ToastContainer />
 
                     </div>
-                </form>           
+                </form>
 
                 <div className="mt-3" style={{ margin: '0 105px' }}>
                     <table className="table" id="table" style={{ margin: '0 -1440px', fontFamily: 'arial', width: 3000, marginTop: '-450px' }}>
@@ -750,13 +756,7 @@ const ComprasNumero = () => {
                 </div>
 
             </div><br />
-            <div className="d-flex" style={{ margin: '0 300px', width: '1000px' }}>
-                <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '', height: '37px' }}>Total c/Frete:</button>
-                <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '', width: 120, height: '37px' }} onClick={Troco}>Troco:</button>
-                <button type="button" onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0', height: '37px' }}>Total Compra:</button>
-        
-            </div><br />
-            <br /><br /><br /><br />
+
 
             <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', color: 'white', textAlign: 'center', zIndex: 1000 }}>
                 <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>

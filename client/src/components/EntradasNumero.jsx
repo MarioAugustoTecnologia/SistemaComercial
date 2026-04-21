@@ -627,7 +627,7 @@ const EntradasNumero = () => {
                         <Link to="/entradas" className="btn btn-success rounded-0" style={{ width: '140px', height: '37px', margin: '0 150px', marginTop: '-98px' }}>Voltar:</Link>
                         <Link to="/entradas/ultima" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '0 -120px', marginTop: '-98px', height: '36px' }}>Próxima Venda:</Link>
 
-                        <div className="d-flex" style={{marginTop:'-23px'}}>
+                        <div className="d-flex" style={{ marginTop: '-23px' }}>
 
                             <strong style={{ margin: '0 0px', fontSize: '30px' }}>Total:</strong>
                             <strong><span id="totalvenda" style={{ color: 'LimeGreen', margin: '0 10px', fontSize: '30px' }}></span></strong>
@@ -637,7 +637,7 @@ const EntradasNumero = () => {
                         </div>
 
                     </div><br /><br />
-                    <div className="bg-white p-4 rounded border-none" style={{ margin: '0 100px', marginTop:'-60px' }}>
+                    <div className="bg-white p-4 rounded border-none" style={{ margin: '0 100px', marginTop: '-60px' }}>
 
                         <label htmlFor="total" style={{ fontFamily: 'arial', fontWeight: 'bold' }} >Total:</label>
                         <label htmlFor='nome' style={{ margin: '0 110px', marginTop: '-50px', fontWeight: 'bold' }}>Nome:</label>
@@ -724,7 +724,14 @@ const EntradasNumero = () => {
                         </select>
                         <input type="decimal" className="form-control rounded-0" value={frete} onChange={e => fretechange(e.target.value)} style={{ width: 80, margin: '0 200px', marginTop: '-40px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="frete" /><br />
 
-                        <button type="submit" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'green', width: 120, height: '37px', marginTop:'-8px' }}>Concluir</button>
+                        <div className="d-flex">
+                            <button type="submit" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'green', width: 120, height: '37px', marginTop:'-9px'}}>Concluir</button>
+                            <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '', height: '37px', marginTop:'-9px' }} onClick={desconto}>Total c/Desconto:</button>
+                            <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '', width: 120, height: '37px', marginTop:'-9px' }} onClick={Troco}>Troco:</button>
+                            <button type="button" onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0', height: '37px', marginTop:'-9px' }}>Total Venda:</button>
+                            <Link to="/entradas/qrcode" className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'DarkRed', margin: '0 px', width: 112, height: '37px', marginTop:'-9px' }}>QrCode:</Link>
+
+                        </div>
                         <ToastContainer />
 
                     </div>
@@ -783,14 +790,8 @@ const EntradasNumero = () => {
                     </table>
                 </div>
 
-            </div><br />
-            <div className="d-flex" style={{ margin: '0 300px', width: '1000px' }}>
-                <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '', height: '37px' }} onClick={desconto}>Total c/Desconto:</button>
-                <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '', width: 120, height: '37px' }} onClick={Troco}>Troco:</button>
-                <button type="button" onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0', height: '37px' }}>Total Venda:</button>
-                <Link to="/entradas/qrcode" className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'DarkRed', margin: '0 px', width: 112, height: '37px' }}>QrCode:</Link>
+            </div ><br />
 
-            </div><br />
             <br /><br /><br /><br />
 
             <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', color: 'white', textAlign: 'center', zIndex: 1000 }}>
@@ -799,8 +800,7 @@ const EntradasNumero = () => {
 
 
 
-        </div>
-
+        </div >
     )
 }
 

@@ -31,8 +31,7 @@ const EntradasNumero = () => {
     }, [])
 
     const [formapag, formapagchange] = useState("")
-    const [mes, meschange] = useState("")
-    const [frete, fretechange] = useState("")
+    const [mes, meschange] = useState("")  
     const [parcelamento, parcelamentochange] = useState("")
     const [parcelan, parcelanchange] = useState("")
 
@@ -130,6 +129,86 @@ const EntradasNumero = () => {
         return isproceed
     }
 
+    const isValidate3 = () => {
+
+        let isproceed = true
+        let errormessage = "Campos não podem estar vazio  !"
+
+        if (document.getElementById("td").value === null || document.getElementById("td").value === '') {
+
+            if (document.getElementById('frete').value === null || document.getElementById('frete').value === '') {
+                document.getElementById('frete').style.borderColor = 'red';
+                isproceed = false
+                //errormessage += 'Nome Completo:' 
+            }
+            if (document.getElementById('total').value === null || document.getElementById('total').value === '') {
+                document.getElementById('total').style.borderColor = 'red';
+                isproceed = false
+                // errormessage += 'Email:' 
+            }
+
+
+        } else {
+
+            if (document.getElementById('frete').value === null || document.getElementById('frete').value === '') {
+                document.getElementById('frete').style.borderColor = 'red';
+                isproceed = false
+                //errormessage += 'Nome Completo:' 
+            }
+            if (document.getElementById('total').value === null || document.getElementById('total').value === '') {
+                document.getElementById('total').style.borderColor = 'red';
+                isproceed = false
+                // errormessage += 'Email:' 
+            }
+
+
+
+        }
+
+        if (!isproceed) {
+            toast.warning(errormessage)
+        }
+
+        return isproceed
+    }
+
+    function TotFrete() {
+
+        if (isValidate3()) {
+
+            if (document.getElementById("td").value === '') {
+
+                let total = document.getElementById('total').value;
+                let frete = document.getElementById('frete').value;
+                console.log(total);
+                console.log(frete);
+                const totfrete = parseFloat(total) + parseFloat(frete);
+                console.log(totfrete);
+
+                document.getElementById('totfrete').value = totfrete.toFixed(2);
+                document.getElementById('totalcfrete').innerHTML = "R$" + totfrete.toFixed(2)
+                document.getElementById('vp').value = totfrete.toFixed(2);
+
+
+            } else {
+
+
+                let totaldesc = document.getElementById('td').value;
+                let frete = document.getElementById('frete').value;
+                console.log(totaldesc);
+                console.log(frete);
+                const totfrete = parseFloat(totaldesc) + parseFloat(frete);
+                console.log(totfrete);
+
+                document.getElementById('totfrete').value = totfrete.toFixed(2);
+                document.getElementById('totalcfrete').innerHTML = "R$" + totfrete.toFixed(2)
+
+
+            }
+
+        }
+    }
+
     function desconto() {
 
         if (isValidate2()) {
@@ -149,6 +228,7 @@ const EntradasNumero = () => {
         }
     }
 
+
     function Troco() {
 
 
@@ -157,17 +237,28 @@ const EntradasNumero = () => {
             document.getElementById('vp').style.borderColor = 'Red'
 
         } else {
-            if (document.getElementById('td').value !== "") {
 
-                const troco = parseFloat(document.getElementById('vp').value) - parseFloat(document.getElementById('td').value)
-                document.getElementById('troco').value = troco.toFixed(2)
-            } else {
+            const vp = document.getElementById('vp').value;
+            const total = document.getElementById('total').value;
+            const tf = document.getElementById('totfrete').value;
+            console.log(vp);
+            console.log(total);
+            console.log(tf);
 
-                const troco = parseFloat(document.getElementById('vp').value) - parseFloat(document.getElementById('total').value)
-                document.getElementById('troco').value = troco.toFixed(2)
+            if(tf === ''){
 
-            }
+                  const troco = parseFloat(vp) - parseFloat(total);
+                  console.log(troco);
+                  document.getElementById('troco').value = troco.toFixed(2)
 
+
+            }else{
+
+                  const troco = parseFloat(vp) - parseFloat(tf);
+                  console.log(troco);
+                  document.getElementById('troco').value = troco.toFixed(2)
+
+            }          
 
         }
 
@@ -227,55 +318,24 @@ const EntradasNumero = () => {
 
                 if (document.getElementById('desconto').value !== "" && document.getElementById('td').value !== '' && document.getElementById('vd').value !== '') {
 
-                    const total = parseFloat(document.getElementById('total').value).toFixed(2);
-                    const nome = document.getElementById('nome').value;
-                    const totaldesc = parseFloat(document.getElementById('td').value).toFixed(2);
-                    const vendan = document.getElementById('vendan').value;
-                    const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
-                    const desconto = document.getElementById('desconto').value;
-                    const valordesc = parseFloat(document.getElementById('vd').value).toFixed(2);
-                    const data_cad = formataData();
-                    const vp = 0;
+                    if (document.getElementById('frete').value === "" || document.getElementById('frete').value === null) {
 
-                    if (valorpagto > totaldesc) {
+                        const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                        const nome = document.getElementById('nome').value;
+                        const totaldesc = parseFloat(document.getElementById('td').value).toFixed(2);
+                        const vendan = document.getElementById('vendan').value;
+                        const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
+                        const desconto = document.getElementById('desconto').value;
+                        const valordesc = parseFloat(document.getElementById('vd').value).toFixed(2);
+                        const data_cad = formataData();
+                        const vp = 0;
 
-                        const troco = document.getElementById('troco').value;
 
-                        const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, troco, data_cad, vp, frete }
+                        if (valorpagto > totaldesc) {
 
-                        Swal.fire({
-                            title: "Deseja salvar ?",
-                            showDenyButton: true,
-                            showCancelButton: true,
-                            confirmButtonText: "Salvar",
-                            denyButtonText: `Não salvar`
+                            const troco = document.getElementById('troco').value;
 
-                        }).then((result) => {
-
-                            if (result.isConfirmed) {
-
-                                fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                                    method: "POST",
-                                    headers: { 'content-type': 'application/json' },
-                                    body: JSON.stringify(cadobj)
-                                }).then((res) => {
-
-                                    window.location.reload();
-
-                                }).catch((err) => {
-                                    toast.error('Erro ! :' + err.message)
-                                })
-
-                            } else if (result.isDenied) {
-                                Swal.fire("Nada salvo", "", "info");
-                            }
-
-                        });
-
-                    } else
-                        if (valorpagto === totaldesc) {
-
-                            const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, data_cad, vp, frete }
+                            const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, troco, data_cad, vp }
 
                             Swal.fire({
                                 title: "Deseja salvar ?",
@@ -283,6 +343,7 @@ const EntradasNumero = () => {
                                 showCancelButton: true,
                                 confirmButtonText: "Salvar",
                                 denyButtonText: `Não salvar`
+
                             }).then((result) => {
 
                                 if (result.isConfirmed) {
@@ -304,55 +365,143 @@ const EntradasNumero = () => {
                                 }
 
                             });
-                        }
+
+                        } else
+                            if (valorpagto === totaldesc) {
+
+                                const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, data_cad, vp }
+
+                                Swal.fire({
+                                    title: "Deseja salvar ?",
+                                    showDenyButton: true,
+                                    showCancelButton: true,
+                                    confirmButtonText: "Salvar",
+                                    denyButtonText: `Não salvar`
+                                }).then((result) => {
+
+                                    if (result.isConfirmed) {
+
+                                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                            method: "POST",
+                                            headers: { 'content-type': 'application/json' },
+                                            body: JSON.stringify(cadobj)
+                                        }).then((res) => {
+
+                                            window.location.reload();
+
+                                        }).catch((err) => {
+                                            toast.error('Erro ! :' + err.message)
+                                        })
+
+                                    } else if (result.isDenied) {
+                                        Swal.fire("Nada salvo", "", "info");
+                                    }
+
+                                });
+                            }
+
+
+                    } else {
+
+                        const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                        const nome = document.getElementById('nome').value;
+                        const totaldesc = parseFloat(document.getElementById('td').value).toFixed(2);
+                        const vendan = document.getElementById('vendan').value;
+                        const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
+                        const desconto = document.getElementById('desconto').value;
+                        const valordesc = parseFloat(document.getElementById('vd').value).toFixed(2);
+                        const data_cad = formataData();
+                        const vp = 0;
+                        const frete = parseFloat(document.getElementById('frete').value).toFixed(2);
+                        const totfrete = parseFloat(document.getElementById('totfrete').value).toFixed(2);
+
+
+                        if (valorpagto > totfrete) {
+
+                            const troco = document.getElementById('troco').value;
+
+                            const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, troco, data_cad, vp, frete, totfrete }
+
+                            Swal.fire({
+                                title: "Deseja salvar ?",
+                                showDenyButton: true,
+                                showCancelButton: true,
+                                confirmButtonText: "Salvar",
+                                denyButtonText: `Não salvar`
+
+                            }).then((result) => {
+
+                                if (result.isConfirmed) {
+
+                                    fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                        method: "POST",
+                                        headers: { 'content-type': 'application/json' },
+                                        body: JSON.stringify(cadobj)
+                                    }).then((res) => {
+
+                                        window.location.reload();
+
+                                    }).catch((err) => {
+                                        toast.error('Erro ! :' + err.message)
+                                    })
+
+                                } else if (result.isDenied) {
+                                    Swal.fire("Nada salvo", "", "info");
+                                }
+
+                            });
+
+                        } else
+                            if (valorpagto === totfrete) {
+
+                                const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, data_cad, vp, frete, totfrete }
+
+                                Swal.fire({
+                                    title: "Deseja salvar ?",
+                                    showDenyButton: true,
+                                    showCancelButton: true,
+                                    confirmButtonText: "Salvar",
+                                    denyButtonText: `Não salvar`
+                                }).then((result) => {
+
+                                    if (result.isConfirmed) {
+
+                                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                            method: "POST",
+                                            headers: { 'content-type': 'application/json' },
+                                            body: JSON.stringify(cadobj)
+                                        }).then((res) => {
+
+                                            window.location.reload();
+
+                                        }).catch((err) => {
+                                            toast.error('Erro ! :' + err.message)
+                                        })
+
+                                    } else if (result.isDenied) {
+                                        Swal.fire("Nada salvo", "", "info");
+                                    }
+
+                                });
+                            }
+                    }
 
                 } else {
 
-                    const total = parseFloat(document.getElementById('total').value).toFixed(2);
-                    const nome = document.getElementById('nome').value;
-                    const vendan = document.getElementById('vendan').value;
-                    const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
-                    const data_cad = formataData();
-                    const vp = 0;
+                    if (document.getElementById('frete').value === "" || document.getElementById('frete').value === null) {
 
-                    if (valorpagto > total) {
+                        const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                        const nome = document.getElementById('nome').value;
+                        const vendan = document.getElementById('vendan').value;
+                        const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
+                        const data_cad = formataData();
+                        const vp = 0;
 
-                        const troco = document.getElementById('troco').value;
+                        if (valorpagto > total) {
 
-                        const cadobj = { vendan, total, nome, valorpagto, mes, formapag, troco, data_cad, vp, frete }
+                            const troco = document.getElementById('troco').value;
 
-                        Swal.fire({
-                            title: "Deseja salvar ?",
-                            showDenyButton: true,
-                            showCancelButton: true,
-                            confirmButtonText: "Salvar",
-                            denyButtonText: `Não salvar`
-                        }).then((result) => {
-
-                            if (result.isConfirmed) {
-
-                                fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                                    method: "POST",
-                                    headers: { 'content-type': 'application/json' },
-                                    body: JSON.stringify(cadobj)
-                                }).then((res) => {
-                                    window.location.reload();
-
-                                }).catch((err) => {
-                                    toast.error('Erro ! :' + err.message)
-                                })
-
-                            } else if (result.isDenied) {
-                                Swal.fire("Nada salvo", "", "info");
-                            }
-
-                        });
-
-                    } else
-                        if (valorpagto === total) {
-
-
-                            const cadobj = { vendan, total, nome, valorpagto, mes, formapag, data_cad, vp, frete }
+                            const cadobj = { vendan, total, nome, valorpagto, mes, formapag, troco, data_cad, vp }
 
                             Swal.fire({
                                 title: "Deseja salvar ?",
@@ -381,49 +530,218 @@ const EntradasNumero = () => {
 
                             });
 
-                        }
+                        } else
+                            if (valorpagto === total) {
+
+
+                                const cadobj = { vendan, total, nome, valorpagto, mes, formapag, data_cad, vp }
+
+                                Swal.fire({
+                                    title: "Deseja salvar ?",
+                                    showDenyButton: true,
+                                    showCancelButton: true,
+                                    confirmButtonText: "Salvar",
+                                    denyButtonText: `Não salvar`
+                                }).then((result) => {
+
+                                    if (result.isConfirmed) {
+
+                                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                            method: "POST",
+                                            headers: { 'content-type': 'application/json' },
+                                            body: JSON.stringify(cadobj)
+                                        }).then((res) => {
+                                            window.location.reload();
+
+                                        }).catch((err) => {
+                                            toast.error('Erro ! :' + err.message)
+                                        })
+
+                                    } else if (result.isDenied) {
+                                        Swal.fire("Nada salvo", "", "info");
+                                    }
+
+                                });
+
+                            }
+
+
+                    } else {
+
+                        const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                        const nome = document.getElementById('nome').value;
+                        const vendan = document.getElementById('vendan').value;
+                        const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
+                        const data_cad = formataData();
+                        const vp = 0;
+                        const frete = parseFloat(document.getElementById('frete').value).toFixed(2);
+                        const totfrete = parseFloat(document.getElementById('totfrete').value).toFixed(2)
+
+                        if (valorpagto > totfrete) {
+
+                            const troco = document.getElementById('troco').value;
+
+                            const cadobj = { vendan, total, nome, valorpagto, mes, formapag, troco, data_cad, vp, frete, totfrete }
+
+                            Swal.fire({
+                                title: "Deseja salvar ?",
+                                showDenyButton: true,
+                                showCancelButton: true,
+                                confirmButtonText: "Salvar",
+                                denyButtonText: `Não salvar`
+                            }).then((result) => {
+
+                                if (result.isConfirmed) {
+
+                                    fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                        method: "POST",
+                                        headers: { 'content-type': 'application/json' },
+                                        body: JSON.stringify(cadobj)
+                                    }).then((res) => {
+                                        window.location.reload();
+
+                                    }).catch((err) => {
+                                        toast.error('Erro ! :' + err.message)
+                                    })
+
+                                } else if (result.isDenied) {
+                                    Swal.fire("Nada salvo", "", "info");
+                                }
+
+                            });
+
+                        } else
+                            if (valorpagto === totfrete) {
+
+
+                                const cadobj = { vendan, total, nome, valorpagto, mes, formapag, data_cad, vp, frete, totfrete }
+
+                                Swal.fire({
+                                    title: "Deseja salvar ?",
+                                    showDenyButton: true,
+                                    showCancelButton: true,
+                                    confirmButtonText: "Salvar",
+                                    denyButtonText: `Não salvar`
+                                }).then((result) => {
+
+                                    if (result.isConfirmed) {
+
+                                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                            method: "POST",
+                                            headers: { 'content-type': 'application/json' },
+                                            body: JSON.stringify(cadobj)
+                                        }).then((res) => {
+                                            window.location.reload();
+
+                                        }).catch((err) => {
+                                            toast.error('Erro ! :' + err.message)
+                                        })
+
+                                    } else if (result.isDenied) {
+                                        Swal.fire("Nada salvo", "", "info");
+                                    }
+
+                                });
+
+                            }
+
+
+                    }
 
                 }
 
             } else {
 
-                const vendan = document.getElementById('vendan').value
-                const nome = document.getElementById('nome').value;
-                const total = parseFloat(document.getElementById('total').value).toFixed(2);
-                const parcelas = document.getElementById("parcelas").value;
-                const formapag = document.getElementById('formapag').value
-                const valorpagto = (total / parcelas).toFixed(2);
-                const data_cad = formataData()
-                const vp = 0;
+                const tf = document.getElementById('totfrete').value;
+                console.log(tf)
 
-                const cadobj = { vendan, nome, total, parcelamento, parcelan, formapag, valorpagto, mes, data_cad, vp, frete }
+                if (tf !== "") {
 
-                Swal.fire({
-                    title: "Deseja salvar ?",
-                    showDenyButton: true,
-                    showCancelButton: true,
-                    confirmButtonText: "Salvar",
-                    denyButtonText: `Não salvar`
-                }).then((result) => {
+                    const vendan = document.getElementById('vendan').value
+                    const nome = document.getElementById('nome').value;
+                    const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                    const parcelas = document.getElementById("parcelas").value;
+                    const formapag = document.getElementById('formapag').value
+                    const valorpagto = (total / parcelas).toFixed(2);
+                    const data_cad = formataData()
+                    const vp = 0;
+                    const frete = parseFloat(document.getElementById('frete').value).toFixed(2)
+                    const totfrete = parseFloat(document.getElementById('totfrete').value).toFixed(2)
 
-                    if (result.isConfirmed) {
+                    const cadobj = { vendan, nome, total, parcelamento, parcelan, formapag, valorpagto, mes, data_cad, vp, frete, totfrete }
 
-                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                            method: "POST",
-                            headers: { 'content-type': 'application/json' },
-                            body: JSON.stringify(cadobj)
-                        }).then((res) => {
-                            window.location.reload();
+                    Swal.fire({
+                        title: "Deseja salvar ?",
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: "Salvar",
+                        denyButtonText: `Não salvar`
+                    }).then((result) => {
 
-                        }).catch((err) => {
-                            toast.error('Erro ! :' + err.message)
-                        })
+                        if (result.isConfirmed) {
 
-                    } else if (result.isDenied) {
-                        Swal.fire("Nada salvo", "", "info");
-                    }
+                            fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                method: "POST",
+                                headers: { 'content-type': 'application/json' },
+                                body: JSON.stringify(cadobj)
+                            }).then((res) => {
+                                window.location.reload();
 
-                });
+                            }).catch((err) => {
+                                toast.error('Erro ! :' + err.message)
+                            })
+
+                        } else if (result.isDenied) {
+                            Swal.fire("Nada salvo", "", "info");
+                        }
+
+                    });
+
+
+                } else {
+
+                    const vendan = document.getElementById('vendan').value
+                    const nome = document.getElementById('nome').value;
+                    const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                    const parcelas = document.getElementById("parcelas").value;
+                    const formapag = document.getElementById('formapag').value
+                    const valorpagto = (total / parcelas).toFixed(2);
+                    const data_cad = formataData()
+                    const vp = 0;
+
+                    const cadobj = { vendan, nome, total, parcelamento, parcelan, formapag, valorpagto, mes, data_cad, vp }
+
+                    Swal.fire({
+                        title: "Deseja salvar ?",
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: "Salvar",
+                        denyButtonText: `Não salvar`
+                    }).then((result) => {
+
+                        if (result.isConfirmed) {
+
+                            fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                method: "POST",
+                                headers: { 'content-type': 'application/json' },
+                                body: JSON.stringify(cadobj)
+                            }).then((res) => {
+                                window.location.reload();
+
+                            }).catch((err) => {
+                                toast.error('Erro ! :' + err.message)
+                            })
+
+                        } else if (result.isDenied) {
+                            Swal.fire("Nada salvo", "", "info");
+                        }
+
+                    });
+
+
+
+                }
+
 
             }
 
@@ -460,11 +778,17 @@ const EntradasNumero = () => {
 
     }
 
-        function MudaCorParcelan() {
+    function MudaCorParcelan() {
         document.getElementById('parcelan').style.borderColor = 'Gainsboro'
 
     }
-       
+
+    function MudaCorFrete() {
+        document.getElementById('frete').style.borderColor = 'Gainsboro'
+
+    }
+
+
 
 
     const logout = () => {
@@ -472,6 +796,7 @@ const EntradasNumero = () => {
         console.clear();
 
     }
+
 
 
     return (
@@ -633,6 +958,8 @@ const EntradasNumero = () => {
                             <strong><span id="totalvenda" style={{ color: 'LimeGreen', margin: '0 10px', fontSize: '30px' }}></span></strong>
                             <strong style={{ margin: '0 70px', fontSize: '30px' }}>Total c/ Desconto:</strong>
                             <strong><span id="totald" style={{ color: 'Crimson', margin: '0 -60px', fontSize: '30px' }}></span></strong>
+                            <strong style={{ margin: '0 100px', fontSize: '30px' }}>Total c/ Frete:</strong>
+                            <strong><span id="totalcfrete" style={{ color: 'SlateBlue', margin: '0 -90px', fontSize: '30px' }}></span></strong>
 
                         </div>
 
@@ -672,7 +999,7 @@ const EntradasNumero = () => {
                             <label htmlFor="" style={{ fontFamily: 'arial', margin: '', fontWeight: 'bold', margin: '0 27px' }} >Parcelas:</label>
                         </div>
                         <div className="d-flex">
-                            <select className="form-control rounded-0" value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ width: '10%', height: '42px', fontSize: '17px', fontWeight: 'bold', color: 'navy' }} onSelect={MudaCorParcelamento} id="parcelamento" >
+                            <select className="form-control rounded-0" value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ width: '10%', height: '42px', fontSize: '20px', fontWeight: 'bold', color: 'navy' }} onSelect={MudaCorParcelamento} id="parcelamento" >
                                 <option value=""></option>
                                 <option value="2x">2x</option>
                                 <option value="3x">3x</option>
@@ -706,7 +1033,8 @@ const EntradasNumero = () => {
 
                         <label htmlFor="mes" style={{ fontFamily: 'arial', fontWeight: 'bold' }} >Mes:</label>
 
-                        <label htmlFor="frete" style={{ fontFamily: 'arial', margin: '0 170px', fontWeight: 'bold' }} >Frete:</label>
+                        <label htmlFor="frete" style={{ fontFamily: 'arial', margin: '0 150px', fontWeight: 'bold' }} >Frete:</label>
+                        <label htmlFor="totfrete" style={{ fontFamily: 'arial', fontWeight: 'bold', margin: '0 -40px' }} >Total c/ Frete:</label>
                         <select onClick={MudaCorMes} style={{ width: 150, fontWeight: 'bold', color: 'navy', fontSize: '19px' }} name='mes' id='mes' className='form-select rounded-0' value={mes} onChange={e => meschange(e.target.value)}>
                             <option value=""></option>
                             <option value="Janeiro">Janeiro</option>
@@ -722,14 +1050,15 @@ const EntradasNumero = () => {
                             <option value="Novembro">Novembro</option>
                             <option value="Dezembro">Dezembro</option>
                         </select>
-                        <input type="decimal" className="form-control rounded-0" value={frete} onChange={e => fretechange(e.target.value)} style={{ width: 80, margin: '0 200px', marginTop: '-40px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="frete" /><br />
-
+                        <input type="decimal" className="form-control rounded-0" style={{ width: 120, margin: '0 180px', marginTop: '-40px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} onKeyDown={MudaCorFrete} id="frete" /><br />
+                        <input type="decimal" className="form-control rounded-0" style={{ width: 120, margin: '0 345px', marginTop: '-70px', fontWeight: 'bold', color: 'navy', fontSize: '19px' }} id="totfrete" /> <br />
                         <div className="d-flex">
-                            <button type="submit" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'green', width: 120, height: '37px', marginTop:'-9px'}}>Concluir</button>
-                            <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '', height: '37px', marginTop:'-9px' }} onClick={desconto}>Total c/Desconto:</button>
-                            <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '', width: 120, height: '37px', marginTop:'-9px' }} onClick={Troco}>Troco:</button>
-                            <button type="button" onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0', height: '37px', marginTop:'-9px' }}>Total Venda:</button>
-                            <Link to="/entradas/qrcode" className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'DarkRed', margin: '0 px', width: 112, height: '37px', marginTop:'-9px' }}>QrCode:</Link>
+                            <button type="submit" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'green', width: 120, height: '37px', marginTop: '-9px' }}>Concluir</button>
+                            <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '', height: '37px', marginTop: '-9px' }} onClick={desconto}>Total c/Desconto:</button>
+                            <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'navy', margin: '', height: '37px', marginTop: '-9px' }} onClick={TotFrete}>Total c/Frete:</button>
+                            <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '', width: 120, height: '37px', marginTop: '-9px' }} onClick={Troco}>Troco:</button>
+                            <button type="button" onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0', height: '37px', marginTop: '-9px' }}>Total Venda:</button>
+                            <Link to="/entradas/qrcode" className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'DarkRed', margin: '0 -4px', width: 112, height: '37px', marginTop: '-9px' }}>QrCode:</Link>
 
                         </div>
                         <ToastContainer />
@@ -749,11 +1078,14 @@ const EntradasNumero = () => {
                                 <th className="th" scope="col">Desconto:</th>
                                 <th className="th" scope="col">Valor Desconto:</th>
                                 <th className="th" scope="col">Total c/Desconto:</th>
+                                <th className="th" scope="col">Frete:</th>
+                                <th className="th" scope="col">Total c/Frete:</th>
                                 <th className="th" scope="col">Forma Paga:</th>
                                 <th className="th" scope="col">Entradas:</th>
                                 <th className="th" scope="col">Troco:</th>
+                                <th className="th" scope="col">Parcelamento:</th>
+                                <th className="th" scope="col">Parcela:</th>
                                 <th className="th" scope="col">Mês:</th>
-                                <th className="th" scope="col">Frete:</th>
                                 <th className="th" scope="col">Data de Cadastro:</th>
                                 <th className="th" scope="col">Ação:</th>
                             </tr>
@@ -771,11 +1103,14 @@ const EntradasNumero = () => {
                                         <td className="td">{item.desconto}</td>
                                         <td className="td">{item.valordesc}</td>
                                         <td className="td">{item.totaldesc}</td>
+                                        <td className="td">{item.frete}</td>
+                                        <td className="td">{item.totfrete}</td>
                                         <td className="td">{item.formapag}</td>
                                         <td className="td">{item.valorpagto}</td>
                                         <td className="td">{item.troco}</td>
+                                        <td className="td">{item.parcelamento}</td>
+                                        <td className="td">{item.parcelan}</td>
                                         <td className="td">{item.mes}</td>
-                                        <td className="td">{item.frete}</td>
                                         <td className="td">{item.data_cad}</td>
                                         <td className="td" >
 
@@ -801,6 +1136,8 @@ const EntradasNumero = () => {
 
 
         </div >
+
+
     )
 }
 

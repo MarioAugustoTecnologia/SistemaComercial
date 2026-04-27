@@ -258,7 +258,7 @@ const ComprasData = () => {
             <div className="d-flex">
 
               <Link to="/compras" className="btn btn-success rounded-0" style={{ fontSize: '15px', fontFamily: 'arial', width: '140px', margin: '0 20px', height: '35px' }}>Voltar:</Link>
-              <Link onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '15px', height: '35px' }}>Gasto Total:</Link>
+              <Link onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '15px', height: '35px', width:'150px' }}>Gasto Total:</Link>
               <strong style={{ fontSize: '30px' }}>Total:</strong>
               <strong><span id="total" style={{ color: 'green', fontSize: '30px', margin: '0 10px' }}></span></strong>
             </div>

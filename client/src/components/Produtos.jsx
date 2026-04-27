@@ -143,7 +143,14 @@ const LoadEdit = (id) => {
      }
   }
 
+  const getColor = (qtd) => {
 
+    if (qtd <= 20) {
+
+      return 'red'
+
+    }
+  }
 
 
   return (

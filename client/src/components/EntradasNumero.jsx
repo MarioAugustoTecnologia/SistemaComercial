@@ -1058,7 +1058,7 @@ const EntradasNumero = () => {
                             <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'navy', margin: '', height: '37px', marginTop: '-9px' }} onClick={TotFrete}>Total c/Frete:</button>
                             <button type="button" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '', width: 120, height: '37px', marginTop: '-9px' }} onClick={Troco}>Troco:</button>
                             <button type="button" onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0', height: '37px', marginTop: '-9px' }}>Total Venda:</button>
-                            <Link to="/entradas/qrcode" className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'DarkRed', margin: '0 -4px', width: 112, height: '37px', marginTop: '-9px' }}>QrCode:</Link>
+                            <Link to="" className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'DarkRed', margin: '0 -4px', width: 112, height: '37px', marginTop: '-9px' }}>QrCode:</Link>
 
                         </div>
                         <ToastContainer />

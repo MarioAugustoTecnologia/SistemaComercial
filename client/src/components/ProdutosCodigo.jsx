@@ -240,7 +240,7 @@ const ProdutosCodigo = () => {
 
 
         <div className="mb3" style={{ marginTop: '-50px' }}>
-          <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Produtos:</h4>
+
           <label htmlFor="Id" className="Id" style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold' }}>Busca por codigo:</label><br />
 
           <input style={{ fontFamily: 'arial', fontSize: '17px', width: '140px', color: 'navy', fontWeight: 'bold', padding: '2px' }} type="search" className="form-control rounded-0" value={buscarap} onChange={(e) => setBuscaRap(e.target.value)} id="busca" autoFocus='true' /> <br />

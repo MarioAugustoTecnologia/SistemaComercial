@@ -216,6 +216,13 @@ const EditarFornecedor = () => {
 
     }
 
+      function mudacorCat() {
+
+        document.getElementById('categoria').style.borderColor = 'Gainsboro';
+        document.getElementById('numero').style.borderColor = 'Gainsboro';
+
+    }
+
 
 
     const editar = (e) => {

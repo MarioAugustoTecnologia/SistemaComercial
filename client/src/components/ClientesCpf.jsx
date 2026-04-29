@@ -79,7 +79,7 @@ const ClientesCpf = () => {
 
   
   return (
-    <div className="main-wrapper">
+   <div className="main-wrapper">
 
       <nav class="sidebar bg-secondary" style={{ width: '220px', height: 1000 }}>
         <br />
@@ -250,9 +250,16 @@ const ClientesCpf = () => {
             </tbody>
             <ToastContainer />
           </table>
-          <label htmlFor="Cpf" className="Cpf" style={{ fontWeight: 'bold', fontSize:'19px' }} >Busca por cpf:</label><br />
-          <input className="consultacpf" type="search" value={buscacpf} onChange={(e) => setBuscaCpf(e.target.value)} style={{ fontWeight: 'bold', color: 'navy', fontSize:'17px' }} />
-          <Link to="/clientes" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 20px', fontSize: '15px', fontFamily: 'arial', width: '140px' }}>Voltar:</Link>
+          <label htmlFor="Cpf" className="Cpf" style={{ fontWeight: 'bold', fontSize: '19px' }} >Busca por cpf:</label><br />
+
+          <div className="d-flex">
+
+            <input className="consultacpf form-control rounded-0" type="search" value={buscacpf} onChange={(e) => setBuscaCpf(e.target.value)} style={{ fontWeight: 'bold', color: 'navy', fontSize: '17px', width: '150px' }} />
+            <Link to="/clientes" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 20px', fontSize: '15px', fontFamily: 'arial', width: '140px' }}>Voltar:</Link>
+
+
+          </div>
+
 
 
         </div>

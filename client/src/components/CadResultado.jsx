@@ -301,29 +301,25 @@ const CadResultado = () => {
 
 
   return (
-    <div className="container-fluid" style={{ fontFamily: 'arial' }}>
+    <div className="container-fluid">
       <div className="row flex-nowrap">
-        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary" style={{ fontFamily: 'arial', fontSize: '19px' }}>
-          <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-            <Link
-              to=""
-              className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none"
-            >
-              <span className='fs-5 fw-bolder d-none d-sm-inline'>
-                Opções:
-              </span>
-            </Link>
-            <ul
-              className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-              id="menu"
-            >
-              <li className="w-100">
+        <div className="main-wrapper">
+
+
+          <nav class="sidebar bg-secondary" style={{ width: '220px', height: 1000, margin: '-12px' }}>
+            <br />
+            <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+              id="menu">
+              <li className="w-100" style={{ margin: '12px' }}>
                 <Link
                   to="/home"
-                  className="nav-link text-white px-0 align-middle"
+                  className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi-speedometer2 ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Painel:</span>
+                  <i class="fs-4 bi bi-house"></i>
+
+                  <span className="ms-2 d-sm-inline">
+                    Home:
+                  </span>
                 </Link>
               </li>
               <li className="w-100">
@@ -331,8 +327,8 @@ const CadResultado = () => {
                   to="/usuarios"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi-people ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <i class="fs-3 bi bi-person-check"></i>
+                  <span className="ms-2 d-sm-inline">
                     Usuarios:
                   </span>
                 </Link>
@@ -343,7 +339,7 @@ const CadResultado = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-cash-coin ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Vendas:
                   </span>
                 </Link>
@@ -354,7 +350,7 @@ const CadResultado = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-cash ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Compras:
                   </span>
                 </Link>
@@ -365,7 +361,7 @@ const CadResultado = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-coin ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Despesas:
                   </span>
                 </Link>
@@ -376,18 +372,18 @@ const CadResultado = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                      Produtos e Serviços:
+                  <span className="ms-2 d-sm-inline">
+                    Produtos e Serviços:
                   </span>
                 </Link>
               </li>
-               <li className="w-100">
+              <li className="w-100">
                 <Link
                   to="/transportes"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i class="bi bi-truck-flatbed" style={{margin:'0 8px'}}></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <i class="bi bi-truck-flatbed" style={{ margin: '0 8px' }}></i>
+                  <span className="ms-2 d-sm-inline">
                     Transportes:
                   </span>
                 </Link>
@@ -398,170 +394,180 @@ const CadResultado = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-truck ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Fornecedores:
                   </span>
                 </Link>
               </li>
+
               <li className="w-100">
                 <Link
-                  to="/clientes"
+                  to="/resultado"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi bi-person-square ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Clientes:
+                  <i className="fs-4 bi bi-bank ms-2"></i>
+                  <span className="ms-2 d-sm-inline">
+                    Resultados:
                   </span>
                 </Link>
-              </li>              
+              </li>
               <li className="w-100" style={{ margin: "0 7px" }}>
                 <Link
                   to="/produto/codorc"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Orçamentos:
                   </span>
                 </Link>
               </li>
-
               <li className="w-100" onClick={logout}>
                 <Link to="/"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-power ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Logout</span>
+                  <span className="ms-2 d-sm-inline">Sair:</span>
                 </Link>
               </li>
             </ul>
-          </div>
-        </div>
-        <div className="col p-0 m-0">
-          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue' }}>
-            <h4><strong>Sistema de Gestão Comercial:</strong></h4>
-          </div>
-          <Outlet /><br />
-          <div className='justify-content-center align-items-center'><br /><br /><br />
-            <div className='bg-white p-4 rounded border' style={{ width: '45%', margin: '0 400px' }}>
-              <h4><center><strong>Cadastrar novo Resultado:</strong></center></h4><br />
-              <form action='' onSubmit={cadastrar}>
-                <div className='mb-3'>
-                  <label htmlFor='entradas' style={{ fontSize: '20px', margin: '0 115px', fontWeight: 'bold' }}>Total de Entradas:</label>
-                  <input type='decimal' onKeyUp={MostraEntradas} placeholder='Entre com o total:' style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='entradas' id='entradas' />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='saidas' style={{ fontSize: '20px', margin: '0 115px', fontWeight: 'bold' }}>Total de Saídas:</label>
-                  <label htmlFor='resultado' style={{ fontSize: '20px', margin: '0 42px', fontWeight: 'bold' }}>Resultado:</label>
-                  <input type='decimal' onKeyUp={MostraSaidas} placeholder='Entre com o total:' style={{ fontSize: '20px', width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='saidas' id='saidas' />
-                  <input type='decimal' style={{ fontSize: '20px', width: 200, margin: '0 415px', marginTop: '-42px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='resultado' id='resultado' />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='mes' style={{ fontSize: '20px', margin: '0 115px', fontWeight: 'bold' }}>Mês:</label>
-                  <select style={{ fontSize: '20px', width: 150, margin: '0 115px', color: 'navy', fontWeight: 'bold' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
-                    <option value=""></option>
-                    <option value="Janeiro">Janeiro</option>
-                    <option value="Fevereiro">Fevereiro</option>
-                    <option value="Março">Março</option>
-                    <option value="Abril">Abril</option>
-                    <option value="Maio">Maio</option>
-                    <option value="Junho">Junho</option>
-                    <option value="Julho">Julho</option>
-                    <option value="Agosto">Agosto</option>
-                    <option value="Setembro">Setembro</option>
-                    <option value="Outubro">Outubro</option>
-                    <option value="Novembro">Novembro</option>
-                    <option value="Dezembro">Dezembro</option>
-                  </select>
-                </div>
-
-                <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 120px', fontSize: '16px' }}>Cadastrar:</button>
-
-                <ToastContainer />
-              </form>
-                   <button className='btn btn-primary border rounded-0' onClick={calcResult} style={{ width: 100, margin: '0 230px', marginTop: '-63px', fontSize: '16px' }}>Total:</button>
-              <Link to='/resultado' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 -215px', marginTop: '-65px', fontSize: '16px', width: 100 }}>Voltar:</Link><br />
-
-            </div>
-            <div><br />
-              <div style={{ margin: '0 500px' }}>
-                <label htmlFor="buscaentradas" className="Entradas" style={{ fontFamily: 'arial', fontSize: '20px', fontWeight: 'bold', margin: '0 -80px' }}>Busca por entradas:</label>
-                <label htmlFor="buscasaidas" className="Saidas" style={{ fontFamily: 'arial', fontSize: '20px', fontWeight: 'bold', margin: '0 300px' }}>Busca por saidas:</label><br />
-                <input type="search" value={buscaentrada} onChange={e => setBuscaEntrada(e.target.value)} className="form-control rounded-0" style={{ fontFamily: 'arial', fontSize: '20px', fontWeight: 'bold', color: 'navy', margin: '0 -78px', width: '40%' }} />
-                <input type="search" value={buscasaida} onChange={e => setBuscaSaida(e.target.value)} className="form-control rounded-0" style={{ fontFamily: 'arial', fontSize: '20px', fontWeight: 'bold', color: 'navy', margin: '0 329px', width: '40%', marginTop: '-44px' }} /> <br />
-                <button className='btn order rounded-0' style={{ width: 100, fontSize: '16px', backgroundColor:'red', color:'white', margin:'0 330px'}} onClick={somar}>Total:</button><br /><br /><br /><br />
-                <h4 style={{color:'navy', fontWeight:'bold'}}>Entradas:</h4> 
-                <h4 style={{color:'navy', fontWeight:'bold', margin:'0 750px', marginTop:'-40px'}}>Saidas:</h4>
-
-              </div><br />
-              <div style={{ display: 'flex' }}>
-                <table className="table" id="table" style={{fontFamily: 'arial', fontSize: '20px', width:'35%', margin:'0 300px'}} >
-                  <thead>
-                    <tr>
-                      <th className="th" scope="col">Nome:</th>
-                      <th className="th" scope="col">Total:</th>
-                      <th className="th" scope="col">Ação:</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      table.map(item => (
-                        <tr key={item.id}>
-                           <td className="td" style={{color:'green', fontWeight:'bold'}}>{item.nome}</td>
-                           <td className="td" style={{color:'green', fontWeight:'bold'}} id='total'>{item.total}</td> 
-                           <td className="td">
-                            <button className="inserir"  onClick={() => {handleInsert(item.total)}} style={{color:'white', backgroundColor:'orange', border:'none', borderRadius:'5px'}}>Inserir:</button>
-                            <button className="excluir" onClick={() => { DeleteEntradas(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-                          </td> 
-                        </tr>
-                      ))
-                    }           
-                             
-
-                  </tbody>                  
-                
-                </table>
-                <table className="table" id="table" style={{fontFamily: 'arial', fontSize: '20px', width:'30%', margin:'0 -220px'}} >
-                  <thead>
-                    <tr>
-                      <th className="th" scope="col">Nome:</th>
-                      <th className="th" scope="col">Total:</th>
-                      <th className="th" scope="col">Ação:</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      table2.map(item => (
-                        <tr key={item.id}>
-                           <td className="td" style={{color:'red', fontWeight:'bold'}}>{item.nome}</td>
-                           <td className="td" style={{color:'red', fontWeight:'bold'}}>{item.total}</td> 
-                            <td className="td">
-                            <button className="excluir" onClick={() => { DeleteSaidas(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-                          </td> 
-                        </tr>
-                      ))
-                    }       
-                          
-
-                  </tbody>                  
-             
-                </table>
-
-              </div><br /><br />
-               <div style={{ display: 'flex' }}>                 
-                 <button className='btn order rounded-0' onClick={DeleteAllInputs} style={{ width: 120, fontSize: '16px', backgroundColor:'red', color:'white', margin:'0 310px'}} >Excluir Tudo:</button>
-                 <button className='btn order rounded-0' onClick={DeleteAllOutputs} style={{ width: 120, fontSize: '16px', backgroundColor:'red', color:'white', margin:'0 305px'}} >Excluir Tudo:</button>
-               </div>
-
-            </div><br />
-
-
-          </div>
-
+          </nav>
 
         </div>
       </div>
+
+      <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-950px' }}>
+
+        <form action='' onSubmit={cadastrar}>
+          <h5><center><strong>Cadastrar novo Resultado:</strong></center></h5><br />
+          <div className='mb-3'>
+            <label htmlFor='entradas' style={{ fontSize: '17px', margin: '0 115px', fontWeight: 'bold' }}>Total de Entradas:</label>
+            <input type='decimal' onKeyUp={MostraEntradas} placeholder='Entre com o total:' style={{ fontSize: '17px', width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='entradas' id='entradas' />
+            <br />
+            <label htmlFor='saidas' style={{ fontSize: '17px', margin: '0 115px', fontWeight: 'bold' }}>Total de Saídas:</label>
+            <input type='decimal' onKeyUp={MostraSaidas} placeholder='Entre com o total:' style={{ fontSize: '17px', width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='saidas' id='saidas' />
+            <br />
+            <label htmlFor='mes' style={{ fontSize: '17px', margin: '0 115px', fontWeight: 'bold' }}>Mes:</label>
+            <select style={{ fontSize: '17px', width: 150, margin: '0 115px', color: 'navy', fontWeight: 'bold' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
+              <option value=""></option>
+              <option value="Janeiro">Janeiro</option>
+              <option value="Fevereiro">Fevereiro</option>
+              <option value="Março">Março</option>
+              <option value="Abril">Abril</option>
+              <option value="Maio">Maio</option>
+              <option value="Junho">Junho</option>
+              <option value="Julho">Julho</option>
+              <option value="Agosto">Agosto</option>
+              <option value="Setembro">Setembro</option>
+              <option value="Outubro">Outubro</option>
+              <option value="Novembro">Novembro</option>
+              <option value="Dezembro">Dezembro</option>
+            </select>
+          </div><br />
+          <label htmlFor='resultados' style={{ fontSize: '17px', margin: '0 115px', fontWeight: 'bold' }}>Resultado:</label>
+          <input type='decimal' onKeyUp={MostraSaidas} style={{ fontSize: '17px', width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='resultado' id='resultado' />
+          <br />
+          <div className='d-flex'>
+            <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 120px', fontSize: '15px' }}>Cadastrar:</button>
+            <button className='btn btn-primary border rounded-0' onClick={calcResult} style={{ width: 100, margin: '0 -100px', fontSize: '15px' }}>Total:</button>
+            <Link to='/resultado' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 120px', fontSize: '15px', width: 100 }}>Voltar:</Link><br />
+          </div>
+          <br /><br />
+          <div className='d-flex'>
+            <label htmlFor="buscaentradas" style={{ fontWeight: 'bold', fontSize: '17px', margin: '0 115px' }}>Busca Entradas:</label>
+            <label htmlFor="buscasaidas" style={{ fontWeight: 'bold', fontSize: '17px', margin: '0 0px' }}>Busca Saidas:</label>
+          </div>
+          <div className='d-flex'>
+
+            <input type='search' value={buscaentrada} onChange={e => setBuscaEntrada(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='saidas' id='saidas' />
+            <input type='search' value={buscasaida} onChange={e => setBuscaSaida(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', width: 200, margin: '0 -80px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='saidas' id='saidas' />
+
+          </div><br />
+          <div>
+            <button className='btn order rounded-0' style={{ width: 100, fontSize: '15px', backgroundColor: 'green', color: 'white', margin: '0 115px' }} onClick={somar}>Total:</button>
+          </div><br /><br />
+          <div className='d-flex'>
+            <h5 style={{ color: 'navy', fontWeight: 'bold', margin: '0 5px' }}>Entradas:</h5>
+            <h5 style={{ color: 'navy', fontWeight: 'bold', margin: '0 330px' }}>Saidas:</h5>
+
+          </div>
+
+          <div className='d-flex'>
+
+            <table className="table" id="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '35%', margin: '0 0px' }} >
+              <thead>
+                <tr>
+                  <th className="th" scope="col">Nome:</th>
+                  <th className="th" scope="col">Total:</th>
+                  <th className="th" scope="col">Ação:</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  table.map(item => (
+                    <tr key={item.id}>
+                      <td className="td" style={{ color: 'green', fontWeight: 'bold' }}>{item.nome}</td>
+                      <td className="td" style={{ color: 'green', fontWeight: 'bold' }} id='total'>{item.total}</td>
+                      <td className="td">
+                        <button className="inserir" onClick={() => { handleInsert(item.total) }} style={{ color: 'white', backgroundColor: 'orange', border: 'none', borderRadius: '5px' }}>Inserir:</button>
+                        <button className="excluir" onClick={() => { DeleteEntradas(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                      </td>
+                    </tr>
+                  ))
+                }
+
+
+              </tbody>
+
+            </table>
+            <table className="table" id="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '30%', margin: '0 120px' }} >
+              <thead>
+                <tr>
+                  <th className="th" scope="col">Nome:</th>
+                  <th className="th" scope="col">Total:</th>
+                  <th className="th" scope="col">Ação:</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  table2.map(item => (
+                    <tr key={item.id}>
+                      <td className="td" style={{ color: 'red', fontWeight: 'bold' }}>{item.nome}</td>
+                      <td className="td" style={{ color: 'red', fontWeight: 'bold' }}>{item.total}</td>
+                      <td className="td">
+                        <button className="excluir" onClick={() => { DeleteSaidas(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                      </td>
+                    </tr>
+                  ))
+                }
+
+
+              </tbody>
+
+            </table>
+
+          </div><br />
+          <div className='d-flex'>
+            <button className='btn order rounded-0' onClick={DeleteAllInputs} style={{ width: 120, fontSize: '15px', backgroundColor: 'red', color: 'white', margin: '0 0px' }} >Excluir Tudo:</button>
+            <button className='btn order rounded-0' onClick={DeleteAllOutputs} style={{ width: 120, fontSize: '15px', backgroundColor: 'red', color: 'white', margin: '0 305px' }} >Excluir Tudo:</button>
+
+          </div>
+
+
+        </form><br />
+
+
+
+
+
+      </div><br />
+      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000, height: '30px' }}>
+        <p className="fw-bolder text-white" style={{ marginTop: '-10px' }}>&copy; Multicompany Solutions</p>
+      </footer>
+
+
     </div>
+
 
   )
 }

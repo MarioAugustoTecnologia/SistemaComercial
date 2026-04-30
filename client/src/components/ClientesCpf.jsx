@@ -255,7 +255,7 @@ const ClientesCpf = () => {
           <div className="d-flex">
 
             <input className="consultacpf form-control rounded-0" type="search" value={buscacpf} onChange={(e) => setBuscaCpf(e.target.value)} style={{ fontWeight: 'bold', color: 'navy', fontSize: '17px', width: '150px' }} />
-            <Link to="/clientes" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 20px', fontSize: '15px', fontFamily: 'arial', width: '140px' }}>Voltar:</Link>
+            <Link to="/clientes" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 20px', fontSize: '15px', fontFamily: 'arial', width: '140px', height:'35px' }}>Voltar:</Link>
 
 
           </div>

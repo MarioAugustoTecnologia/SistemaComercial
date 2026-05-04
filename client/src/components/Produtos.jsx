@@ -269,7 +269,7 @@ const LoadEdit = (id) => {
 
         <div className="mt-3">
 
-          <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Produtos e Serviços:</h4><br /><br />
+          <h5 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Produtos e Serviços:</h5><br /><br />
           <button type="button" onClick={deleteall} style={{ backgroundColor: 'red', color: 'white', width: '120px', margin: '0px' }}>Excluir Tudo:</button>
           <br /><br />
           <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '17px', width: 2100 }}>

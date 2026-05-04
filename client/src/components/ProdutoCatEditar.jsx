@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,15 +7,15 @@ import Swal from 'sweetalert2';
 
 
 const ProdutoCatEditar = () => {
-  
+
   const { catcod } = useParams()
 
   useEffect(() => {
     fetch("https://sistemacomercial-fv5g.onrender.com/catproduto/" + catcod).then((res) => {
       return res.json();
     }).then((resp) => {
-      nomechange(resp.nome); 
-      idchange(resp.id);    
+      nomechange(resp.nome);
+      idchange(resp.id);
 
     }).catch((err) => {
       console.log(err.message);
@@ -24,74 +24,74 @@ const ProdutoCatEditar = () => {
 
   const [nome, nomechange] = useState("")
   const [id, idchange] = useState("")
- 
+
   const isValidate = () => {
 
     let isproceed = true
     let errormessage = "Campo não pode estar vazio  !"
 
-    if(nome === null || nome === ''){
+    if (nome === null || nome === '') {
       isproceed = false
       //errormessage += 'Nome:' 
     }
- 
-    if(!isproceed){
+
+    if (!isproceed) {
       toast.warning(errormessage)
-  
-    }   
-    
+
+    }
+
     return isproceed
-   }
+  }
 
-//console.log(data_cadastro);
+  //console.log(data_cadastro);
 
- const editar = (e) => { 
+  const editar = (e) => {
 
     e.preventDefault();
-     
-      const edtdobj = {id, nome}
+
+    const edtdobj = { id, nome }
     //console.log(cadobj)  
 
-    if(isValidate()){
+    if (isValidate()) {
 
       Swal.fire({
-                          title: "Deseja salvar ?",
-                          showDenyButton: true,
-                          showCancelButton: true,
-                          confirmButtonText: "Salvar",
-                          denyButtonText: `Não salvar`
-                        }).then((result) => {
-                                  
-                          if (result.isConfirmed) {
-      
-                            fetch("https://sistemacomercial-fv5g.onrender.com/catproduto/" + catcod, {
-                              method: "PUT",
-                              headers: {'content-type':'application/json'},
-                              body: JSON.stringify(edtdobj)
-                            }).then((res) => {        
-                              toast.success('Atualizado com Sucesso !')      
-                              nomechange('')          
-                             
-                            }).catch((err) => {
-                              toast.error('Erro ! :' +err.message)
-                            }) 
-                                                     
-                          } else if (result.isDenied) {
-                            Swal.fire("Nada salvo", "", "info");
-                          }
-                        });    
-                       
-  }
-} 
+        title: "Deseja salvar ?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Salvar",
+        denyButtonText: `Não salvar`
+      }).then((result) => {
 
-const logout = () => {
-  localStorage.clear()
-  console.clear();
-  
-}
-     
+        if (result.isConfirmed) {
+
+          fetch("https://sistemacomercial-fv5g.onrender.com/catproduto/" + catcod, {
+            method: "PUT",
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(edtdobj)
+          }).then((res) => {
+            toast.success('Atualizado com Sucesso !')
+            nomechange('')
+
+          }).catch((err) => {
+            toast.error('Erro ! :' + err.message)
+          })
+
+        } else if (result.isDenied) {
+          Swal.fire("Nada salvo", "", "info");
+        }
+      });
+
+    }
+  }
+
+  const logout = () => {
+    localStorage.clear()
+    console.clear();
+
+  }
+
   return (
-   <div className="container-fluid">
+    <div className="container-fluid">
       <div className="row flex-nowrap">
 
         <div className="main-wrapper">
@@ -112,7 +112,17 @@ const logout = () => {
                   </span>
                 </Link>
               </li>
-
+              <li className="w-100">
+                <Link
+                  to="/usuarios"
+                  className="nav-link px-0 align-middle text-white"
+                >
+                  <i class="fs-3 bi bi-person-check"></i>
+                  <span className="ms-2 d-sm-inline">
+                    Usuarios:
+                  </span>
+                </Link>
+              </li>
               <li className="w-100">
                 <Link
                   to="/entradas"
@@ -228,9 +238,9 @@ const logout = () => {
       </div>
 
       <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-850px' }}>
-       
+
         <form action='' onSubmit={editar}>
-             <h5><center><strong>Editar Categoria:</strong></center></h5><br />
+          <h5><center><strong>Editar Categoria:</strong></center></h5><br />
           <div className='mb-3'>
             <label htmlFor='nome' style={{ fontSize: '17px', margin: '0 115px', fontWeight: 'bold' }}>Nome:</label>
             <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '17px', width: 250, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='nome' />

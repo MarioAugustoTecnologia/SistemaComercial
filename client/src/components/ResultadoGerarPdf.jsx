@@ -52,7 +52,7 @@ const ResultadoGerarPdf = () => {
 
   
   return (
-      <div className="container-fluid">
+     <div className="container-fluid">
       <div className="row flex-nowrap">
         <div className="main-wrapper">
 
@@ -203,38 +203,44 @@ const ResultadoGerarPdf = () => {
 
         <div className="mb-3">
 
-          <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 700px' }}>Resultados:</h4><br /><br />
-          <table className="table" id="table" style={{ margin: '0 300px', fontFamily: 'arial', fontSize: '17px', width: 900 }}>
-            <thead>
-              <tr>
-                <th className="th" scope="col">Id:</th>
-                <th className="th" scope="col">Total das Entradas:</th>
-                <th className="th" scope="col">Total das Saidas:</th>
-                <th className="th" scope="col">Resultado:</th>
-                <th className="th" scope="col">Mês:</th>
+          <div id="conteudo">
 
-              </tr>
-            </thead>
-            <tbody>
-              {result &&
-                result.map(item => (
-                  <tr key={item.id}>
-                    <td className="td">{item.id}</td>
-                    <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.entradas)}</td>
-                    <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.saidas)}</td>
-                    <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.resultado)}</td>
-                    <td className="td">{item.mes}</td>
+            <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 700px' }}>Resultados:</h4><br /><br />
+            <table className="table" id="table" style={{ margin: '0 300px', fontFamily: 'arial', fontSize: '17px', width: 900 }}>
+              <thead>
+                <tr>
+                  <th className="th" scope="col">Id:</th>
+                  <th className="th" scope="col">Total das Entradas:</th>
+                  <th className="th" scope="col">Total das Saidas:</th>
+                  <th className="th" scope="col">Resultado:</th>
+                  <th className="th" scope="col">Mês:</th>
 
-
-                  </tr>
-                ))
-
-              }
-
-            </tbody>
+                </tr>
+              </thead>
+              <tbody>
+                {result &&
+                  result.map(item => (
+                    <tr key={item.id}>
+                      <td className="td">{item.id}</td>
+                      <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.entradas)}</td>
+                      <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.saidas)}</td>
+                      <td className="td">{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(item.resultado)}</td>
+                      <td className="td">{item.mes}</td>
 
 
-          </table>
+                    </tr>
+                  ))
+
+                }
+
+              </tbody>
+
+
+            </table>
+
+          </div>
+
+
           <div className="mb3">
             <button style={{ margin: '0 25px', backgroundColor: 'LimeGreen', color: 'white', fontSize: '15px', fontFamily: 'arial' }} className="btn rounded-0" onClick={() => generatePDF(GerarPdf, personalizacao)} >Gerar PDF:</button>
             <Link to="/resultado" className="btn rounded-0" style={{ fontSize: '15px', fontFamily: 'arial', color: 'white', backgroundColor: 'orange', width: '8%' }}>Voltar:</Link>
@@ -244,11 +250,10 @@ const ResultadoGerarPdf = () => {
         </div>
 
       </div>
-      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000, height: '30px' }}>
-        <p className="fw-bolder text-white" style={{ marginTop: '-10px' }}>&copy; Multicompany Solutions</p>
-      </footer>
-    </div>
- 
+        <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000, height: '30px' }}>
+           <p className="fw-bolder text-white" style={{ marginTop: '-10px' }}>&copy; Multicompany Solutions</p>
+        </footer>
+    </div> 
 
   )
 }

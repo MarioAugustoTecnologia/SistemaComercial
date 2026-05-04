@@ -399,6 +399,17 @@ const CadResultado = () => {
                   </span>
                 </Link>
               </li>
+              <li className="w-100">
+                <Link
+                  to="/clientes"
+                  className="nav-link px-0 align-middle text-white"
+                >
+                  <i className="fs-4 bi bi-person-square ms-2"></i>
+                  <span className="ms-2 d-sm-inline">
+                    Clientes:
+                  </span>
+                </Link>
+              </li>
 
               <li className="w-100">
                 <Link

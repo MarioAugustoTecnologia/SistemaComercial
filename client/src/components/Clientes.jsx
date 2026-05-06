@@ -210,7 +210,7 @@ const Clientes = () => {
 
         <div className="mb-3"><br /><br />
 
-          <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 700px' }}>Clientes:</h4><br /><br />
+          <h5 style={{ fontWeight: 'bold', color: 'blue', margin: '0 700px' }}>Clientes:</h5><br /><br />
 
           <table className="table" id="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '1500px' }}>
             <thead>

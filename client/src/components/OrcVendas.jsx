@@ -245,6 +245,13 @@ const OrcVendas = () => {
 
   }}
 
+  
+  const logout = () => {
+    localStorage.clear()
+    console.clear();
+
+  }
+
 
   return (
     <div className="container-fluid">

@@ -255,7 +255,7 @@ const Compras = () => {
 
         <div className="mb3">
 
-          <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Compras:</h4><br /><br />
+          <h5 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Compras:</h5><br /><br />
           <button type="button" onClick={deleteall} style={{ backgroundColor: 'red', color: 'white', width: '120px', margin: '40px' }}>Excluir Tudo:</button>
           <br /><br />
           <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '3000px', margin:'0 40px' }} id="table">

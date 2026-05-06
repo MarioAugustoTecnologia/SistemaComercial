@@ -105,12 +105,14 @@ const OrcVendas = () => {
 
   return (
 
+   <div className="container" style={{ display: 'flex', margin: '0 80px'}}>
+
     <div className="col p-0 m-0">
    
     
       <div className="px-5 mt-5" style={{fontFamily:'arial'}}>       
           <div className='mt-3'>
-            <table className="table" id="table" style={{ margin: '0 70px', fontFamily: 'arial', fontSize: '20px', width: '100%' }}>
+            <table className="table" id="table" style={{ margin: '0 70px', fontFamily: 'arial', fontSize: '17px', width: '100%' }}>
               <thead>
                 <tr>        
                   <th className="th" scope="col">Orçamento nº:</th>
@@ -135,7 +137,7 @@ const OrcVendas = () => {
                       <td className="td">{item.quant}</td>
                       <td className="td">{item.preco}</td>
                       <td className="td">{item.total}</td>
-                      <td className="td" style={{fontWeight:'bold', color:'green'}}>{item.totaldesc}</td>
+                      <td className="td">{item.totaldesc}</td>
                       <td className="td">{item.descap}</td>
                       <td className="td">{item.desc}</td>
                       <td className="td">{item.valordesc}</td>
@@ -156,12 +158,13 @@ const OrcVendas = () => {
  
           <br /><br /><br />
          
-          <button type="button" className="btn border" onClick={deleteall} style={{ width: 100, margin: '0 20px', fontSize: '20px', fontFamily: 'arial', backgroundColor:'red', color:'white'}}>Excluir</button>
-          <button type="button" className="btn border" onClick={Return} style={{ width: 100, margin: '0 0px', fontSize: '20px', fontFamily: 'arial', backgroundColor:'orange', color:'white'}}>Voltar</button>
+          <button type="button" className="btn border" onClick={deleteall} style={{ width: 100, margin: '0 17px', fontSize: '15px', fontFamily: 'arial', backgroundColor:'red', color:'white'}}>Excluir</button>
+          <button type="button" className="btn border" onClick={Return} style={{ width: 100, margin: '0 0px', fontSize: '15px', fontFamily: 'arial', backgroundColor:'orange', color:'white'}}>Voltar</button>
                     
          <ToastContainer />  
      
     </div>
+  </div>
   )
 }
 

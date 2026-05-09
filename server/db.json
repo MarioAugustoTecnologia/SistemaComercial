@@ -8,7 +8,10 @@
    
   ],
   "atual": [
-   
+   {
+      "id": 1,
+      "numero": 1
+    }   
   ],
   "catproduto": [
       ],
@@ -19,6 +22,10 @@
       ],
   "compras": [],
   "compraatual": [
+    {
+      "id": 1,
+      "numero": 1
+    }  
     
   ],
   "resultados": [],

@@ -1,71 +1,87 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useParams, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import "bootstrap-icons/font/bootstrap-icons.css";
+import Swal from 'sweetalert2';
 
+const EditarCompraAtual = () => {
 
-const ComprasUltima = () => {
+  const { comprap } = useParams()
 
-  const [saidadata, setSaidadata] = useState([])
-  const navigate = useNavigate();
-
+  //const [empdata, empdatachange] = useState({});
 
   useEffect(() => {
-
-    fetch("https://sistemacomercial-fv5g.onrender.com/compraatual").then((res) => {
-
-      return res.json()
-
+    fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/" + comprap).then((res) => {
+      return res.json();
     }).then((resp) => {
-
-      setSaidadata(resp)
-
-    }).catch((err) => {
-      console.log(err.message)
-    })
-
-  }, [])
-
-  const handleDelete = (id) => {
-
-    fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/" + id, {
-
-      method: "DELETE"
-
-    }).then((res) => {
-
-      window.location.reload();
+      idchange(resp.id);
+      numerochange(resp.numero);    
 
     }).catch((err) => {
-      toast.error('Erro ! :' + err.message)
+      console.log(err.message);
     })
+  }, []);
+
+
+  const [id, idchange] = useState("")
+  const [number, numerochange] = useState("") //=> Representa o registro, qual é o usuario.
+ 
+
+  const editar = (e) => {
+
+    e.preventDefault();
+      
+      var soma = parseInt(number) + 1;
+      const numero = soma;
+
+      const edtobj = { id, numero }
+      //console.log(cadobj)    
+
+        Swal.fire({
+          title: "Deseja salvar ?",
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: "Salvar",
+          denyButtonText: `Não Salvar`
+        }).then((result) => {
+
+          if (result.isConfirmed) {
+
+            fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/" + comprap, {
+              method: "PUT",
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify(edtobj)
+            }).then((res) => {
+              toast.success('Atualizado com sucesso !')
+              idchange('')
+              numerochange('')
+
+            }).catch((err) => {
+              toast.error('Erro ! :' + err.message)
+            })
+
+          } else if (result.isDenied) {
+            Swal.fire("Nada salvo", "", "info");
+          }
+        })         
 
   }
 
-  const handleReturn = () => {
-
-    navigate('/compras')
-
-  }
 
   const logout = () => {
     localStorage.clear()
     console.clear();
   }
 
-    const LoadEdit = (id) => {
-    navigate("/compraatual/editar/" + id);
-  }
-
 
   return (
-
     <div className="container-fluid">
-      <div className="row flex-nowrap" >
+      <div className="row flex-nowrap">
 
         <div className="main-wrapper">
 
-          <nav class="sidebar bg-secondary" style={{ width: '220px', height: 1000, margin: '-12px' }}>
+          <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000, margin: '-12px' }}>
+
             <br />
             <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
               id="menu">
@@ -81,17 +97,17 @@ const ComprasUltima = () => {
                   </span>
                 </Link>
               </li>
-              <li className="w-100">
-                <Link
-                  to="/usuarios"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <i class="fs-3 bi bi-person-check"></i>
-                  <span className="ms-2 d-sm-inline">
-                    Usuarios:
-                  </span>
-                </Link>
-              </li>
+                <li className="w-100">
+              <Link
+                to="/usuarios"
+                className="nav-link px-0 align-middle text-white"
+              >
+                <i class="fs-3 bi bi-person-check"></i>
+                <span className="ms-2 d-sm-inline">
+                  Usuarios:
+                </span>
+              </Link>
+            </li>         
               <li className="w-100">
                 <Link
                   to="/entradas"
@@ -201,55 +217,42 @@ const ComprasUltima = () => {
               </li>
             </ul>
           </nav>
-        </div><br /><br />
+
+        </div>
+
 
       </div>
 
-      <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-850px' }}>
+      <div className="container" style={{ display: 'flex', margin: '0 130px' }}>
+     
+           
+            <form action='' onSubmit={editar} style={{ marginTop: '-900px' }}>
+              <div>
+                <label htmlFor='' style={{ margin: '0 115px', fontWeight: 'bold', fontFamily: 'arial', color: 'blue', fontSize:'20px' }}>Atualizar Compra nº:</label><br /><br />
+                <label htmlFor='id' style={{margin: '0 115px', fontWeight: 'bold' }}>Id:</label>
+                <label htmlFor='estoque' style={{margin: '0 -12px', fontWeight: 'bold' }}>Numero:</label>
+            
 
-        <div className="px-5 mt-5">
-
-          <div className="mt-3">
-            <table className="table" id="table" style={{ fontFamily: 'arial', fontSize: '20px', width: '20%' }}>
-              <thead hidden='true'>
-                <tr>
-                  <th className="th" scope="col" >Id:</th>
-                  <th className="th" scope="col">Venda nº:</th>
-                  <th className="th" scope="col">Ação:</th>
-                </tr>
-              </thead>
-              <tbody>
-                {saidadata &&
-                  saidadata.map(item => (
-                    <tr key={item.id}>
-                      <td className="td" hidden='true'>{item.id}</td>
-                      <td className="td" style={{ color: 'blue', fontSize: '30px' }}><strong>{item.numero}</strong></td>
-                      <td className="td"><button className="excluir" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px', fontSize: '20px', marginTop: '25px' }}>Editar:</button></td>
-                      <td className="td"><button className="excluir" onClick={() => { handleReturn(item.id) }} style={{ color: 'white', backgroundColor: 'orange', border: 'none', borderRadius: '5px', fontSize: '20px', marginTop: '25px' }}>Voltar:</button></td>
-                    </tr>
-                  ))
-
-                }
-
-              </tbody>
+              </div>
+              <div>
+                <input type='text' value={id} onChange={e => idchange(e.target.value)} style={{ width: 70, margin: '0 115px', fontWeight: 'bold', color: 'navy', fontSize:'20px' }} name='id' className="form-control rounded-0" />
+                <input type='text' value={number} onChange={e => numerochange(e.target.value)} style={{  width: 100, margin: '0 233px', fontWeight: 'bold', color: 'navy', marginTop:'-42px', fontSize:'20px' }} name='numero' className="form-control rounded-0" />
+                
+              </div><br />
+              
+              <div className="mb-3">
+                <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 115px' }} >Atualizar:</button>
+                <Link to='/compras/ultima' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 -75px', width: 100 }}>Voltar:</Link>
+              </div>
               <ToastContainer />
-
-            </table>
-
+            </form>
           </div>
-        </div><br />
+             <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000 }}>
+                   <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+              </footer>
+        </div>
 
-
-
-      </div>
-
-      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000 }}>
-        <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
-      </footer>
-    </div>
-
-
-  )
+   )
 }
 
-export default ComprasUltima
+export default EditarCompraAtual

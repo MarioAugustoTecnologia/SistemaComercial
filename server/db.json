@@ -1,51 +1,96 @@
 {
   "usuarios": [
-
-    
-   
+    {
+      "id": "Mario",
+      "cod": "1",
+      "hashedPassword": "$2a$10$.ZsPg3L4RjbEU9PP3oDSrO8/bU68hExppU2WlnV/79ekTwarAOigy",
+      "categoria": "Administrador"
+    },
+    {
+      "id": "Fernando",
+      "cod": "2",
+      "hashedPassword": "$2a$10$VHp2oYMIK7J8mbWRdDZTOeG0jb0qo.8BvqM.mwtQW5rQHC5u8qnOa",
+      "categoria": "Vendedor"
+    }
   ],
-   "vendas": [
-   
+  "vendas": [
+    
   ],
   "atual": [
-   {
+    {
       "id": 1,
       "numero": 1
-    }   
+    }
   ],
-  "catproduto": [
-      ],
-  "produtos": [
-    
-  ],
+  "catproduto": [],
+  "produtos": [],
   "despesas": [
-      ],
+   
+  ],
   "compras": [],
   "compraatual": [
     {
       "id": 1,
       "numero": 1
-    }  
-    
+    }
   ],
   "resultados": [],
   "clientes": [
-    
+    {
+      "id": 1,
+      "nome": "Joel Ribeiro da Silva",
+      "email": "joellima@email.com",
+      "fone": "14 996663325",
+      "bairro": "Vila Paulista",
+      "endereco": "Avenida Dante Delmanto - 500",
+      "cpf": "33555853897",
+      "data_cad": "29/04/2026"
+    },
+    {
+      "id": 2,
+      "nome": "Fernando de Souza Farias",
+      "email": "fernando@email.com",
+      "fone": "14 333333",
+      "bairro": "Vila Paulista",
+      "endereco": "Rua Jose Thiago",
+      "cpf": "335556214589",
+      "data_cad": "29/04/2026"
+    }
   ],
   "fornecedor": [
-    
+    {
+      "nome": "HomeTec",
+      "endereco": "Rua Curuzu Centro ",
+      "numero": "200",
+      "cep": "18600200",
+      "cidade": "Botucatu SP",
+      "email": "hometecvendas@email.com",
+      "fone": "1438124455",
+      "datacad": "09/05/2026",
+      "catforn": "Produtos de Informática",
+      "id": 1
+    }
   ],
   "catfornecedor": [
-    
+    {
+      "nome": "Produtos de Informática",
+      "id": 1
+    }
   ],
   "mesatual": [
-      ],
+    {
+      "mes": "Maio",
+      "id": 1
+    }
+  ],
   "mescompraatual": [
-    
+    {
+      "mes": "Maio",
+      "id": 1
+    }
   ],
   "orcvenda": [
-    
-  ],
+   ],
   "entradas": [],
   "saidas": []
 }

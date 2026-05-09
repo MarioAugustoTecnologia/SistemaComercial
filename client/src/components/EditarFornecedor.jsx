@@ -450,7 +450,7 @@ const EditarFornecedor = () => {
                         <label htmlFor='numero' style={{ fontSize: '17px', margin: '0 115px', fontWeight: 'bold' }}>Numero:</label>
                         <label htmlFor='catforn' style={{ fontSize: '17px', margin: '0 -52px', fontWeight: 'bold' }}>Categoria:</label>
                         <input type='number' value={numero} onChange={e => numerochange(e.target.value)} onKeyUp={mudacorNumero} style={{ width: 100, margin: '0 115px', fontSize: '17px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='numero' id="numero" />
-                        <select style={{ width: 200, margin: '0 250px', marginTop: '-42px', fontSize: '17px', fontWeight: 'bold', color: 'navy' }} className='form-select' name='categoria' id='categoria' onChange={(e) => setValues({ ...values, id: e.target.value })} onClick={mudacorCat} >
+                        <select style={{ width: 253, margin: '0 250px', marginTop: '-42px', fontSize: '17px', fontWeight: 'bold', color: 'navy' }} className='form-select' name='categoria' id='categoria' onChange={(e) => setValues({ ...values, id: e.target.value })} onClick={mudacorCat} >
                             <option value=""></option>
                             {categoria.map(val => {
                                 return <option value={val.nome}>{val.nome}</option>

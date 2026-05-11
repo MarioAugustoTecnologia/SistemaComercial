@@ -214,13 +214,16 @@ const CadNovaCompra = () => {
 
   }
  
-  const cadastrar = (e) => {
+   const cadastrar = (e) => {
 
     e.preventDefault();
 
     if (isValidate()) {
 
+
       if (parcelamento === "" || parcelamento === null && parcela === "" || parcela === null && parcelan === "" || parcelan === null) {
+
+        // Um Produto Apenas e com Frete e Valor Pago;
 
         if (document.getElementById('vf').value !== "" && document.getElementById('totalfrete').value !== '' && document.getElementById('valorpago').value !== '') {
 
@@ -233,7 +236,6 @@ const CadNovaCompra = () => {
           var compran = document.getElementById('compran').innerHTML;
           var mes = document.getElementById('mescompraatual').innerHTML;
           var valorpagto = parseFloat(document.getElementById('valorpago').value).toFixed(2);
-          var vp = valorpagto;
           var vf = parseFloat(document.getElementById('vf').value).toFixed(2)
           var custo = parseFloat(document.getElementById('custo').value).toFixed(2);
 
@@ -243,7 +245,7 @@ const CadNovaCompra = () => {
             const troco = (t).toFixed(2)
             valorpagto = parseFloat(valorpagto).toFixed(2);
 
-            const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpagto, totalfrete, vf, vp }
+            const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpagto, totalfrete, vf }
 
             Swal.fire({
               title: "Deseja salvar ?",
@@ -255,7 +257,7 @@ const CadNovaCompra = () => {
 
               if (result.isConfirmed) {
 
-                fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
+                fetch("http://localhost:3000/compras", {
                   method: "POST",
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(cadobj)
@@ -271,15 +273,12 @@ const CadNovaCompra = () => {
                 Swal.fire("Nada salvo", "", "info");
               }
             });
-
             
-
-
           } else
             if (valorpagto === totalfrete) {
 
 
-              const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpagto, totalfrete, vf, vp }
+              const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpagto, totalfrete, vf }
 
               if (isValidate()) {
 
@@ -293,7 +292,7 @@ const CadNovaCompra = () => {
 
                   if (result.isConfirmed) {
 
-                    fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
+                    fetch("http://localhost:3000/compras", {
                       method: "POST",
                       headers: { 'content-type': 'application/json' },
                       body: JSON.stringify(cadobj)
@@ -316,8 +315,8 @@ const CadNovaCompra = () => {
 
             }
 
-        }
-        else {
+        }      // Um Produto Apenas e sem Frete e Valor Pago;
+        else if (document.getElementById('vf').value === "" && document.getElementById('totalfrete').value === '' && document.getElementById('valorpago').value !== '') {
 
           const dataInput = datacad;
           const data = new Date(dataInput);
@@ -326,11 +325,99 @@ const CadNovaCompra = () => {
           var fornecedor = document.getElementById('forname').value;
           var compran = document.getElementById('compran').innerHTML;
           var mes = document.getElementById('mescompraatual').innerHTML;
+          var valorpagto = parseFloat(document.getElementById('valorpago').value).toFixed(2);
           var custo = parseFloat(document.getElementById('custo').value).toFixed(2);
-          const valorpagto = 0;
-          vp = total;
 
-          const cadobj = { compran, nome, qtd, custo, total, data_cad, mes, fornecedor, valorpagto, vp }
+          if (valorpagto > total) {
+
+            const t = parseFloat((valorpagto - total).toFixed(2));
+            const troco = (t).toFixed(2)
+            valorpagto = parseFloat(valorpagto).toFixed(2);
+
+            const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpagto }
+
+            Swal.fire({
+              title: "Deseja salvar ?",
+              showDenyButton: true,
+              showCancelButton: true,
+              confirmButtonText: "Salvar",
+              denyButtonText: `Não salvar`
+            }).then((result) => {
+
+              if (result.isConfirmed) {
+
+                fetch("http://localhost:3000/compras", {
+                  method: "POST",
+                  headers: { 'content-type': 'application/json' },
+                  body: JSON.stringify(cadobj)
+                }).then((res) => {
+                  toast.success('Cadastrado com Sucesso !')
+
+
+                }).catch((err) => {
+                  toast.error('Erro ! :' + err.message)
+                })
+
+              } else if (result.isDenied) {
+                Swal.fire("Nada salvo", "", "info");
+              }
+            });
+
+          } else
+            if (valorpagto === total) {
+
+
+              const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpagto }
+
+              if (isValidate()) {
+
+                Swal.fire({
+                  title: "Deseja salvar ?",
+                  showDenyButton: true,
+                  showCancelButton: true,
+                  confirmButtonText: "Salvar",
+                  denyButtonText: `Não salvar`
+                }).then((result) => {
+
+                  if (result.isConfirmed) {
+
+                    fetch("http://localhost:3000/compras", {
+                      method: "POST",
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(cadobj)
+                    }).then((res) => {
+                      toast.success('Cadastrado com Sucesso !')
+
+
+                      document.getElementById('qtd').style.borderColor = 'Gainsboro';
+
+                    }).catch((err) => {
+                      toast.error('Erro ! :' + err.message)
+                    })
+
+                  } else if (result.isDenied) {
+                    Swal.fire("Nada salvo", "", "info");
+                  }
+                });
+
+              }
+
+            }
+
+        } else if (document.getElementById('vf').value === "" && document.getElementById('totalfrete').value === '' && document.getElementById('valorpago').value === '') {
+
+
+          const dataInput = datacad;
+          const data = new Date(dataInput);
+          const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+          var total = parseFloat(document.getElementById('total').value).toFixed(2);
+          var fornecedor = document.getElementById('forname').value;
+          var compran = document.getElementById('compran').innerHTML;
+          var mes = document.getElementById('mescompraatual').innerHTML;
+          var valorpagto = 0;
+          var custo = parseFloat(document.getElementById('custo').value).toFixed(2);
+
+          const cadobj = { compran, nome, qtd, custo, total, data_cad, mes, fornecedor, valorpagto }
 
           if (isValidate()) {
 
@@ -344,16 +431,107 @@ const CadNovaCompra = () => {
 
               if (result.isConfirmed) {
 
-                fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
+                fetch("http://localhost:3000/compras", {
                   method: "POST",
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(cadobj)
                 }).then((res) => {
                   toast.success('Cadastrado com Sucesso !')
-                  nomechange('')
-                  qtdchange('')
-                  custochange('')
+                  document.getElementById('qtd').style.borderColor = 'Gainsboro';
 
+                }).catch((err) => {
+                  toast.error('Erro ! :' + err.message)
+                })
+
+              } else if (result.isDenied) {
+                Swal.fire("Nada salvo", "", "info");
+              }
+            });
+
+          }
+        }
+
+      } else {
+
+        if (document.getElementById('vf').value !== "" && document.getElementById('totalfrete').value !== '') {
+
+          var compran = document.getElementById('compran').innerHTML;
+          var mes = document.getElementById('mescompraatual').innerHTML;
+          const dataInput = datacad;
+          const data = new Date(dataInput);
+          const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+          const fornecedor = document.getElementById('forname').value;
+          const total = parseFloat(document.getElementById('total').value).toFixed(2);
+          const totalfrete = parseFloat(document.getElementById('totalfrete').value).toFixed(2);
+          var vf = parseFloat(document.getElementById('vf').value).toFixed(2);
+          var custo = parseFloat(document.getElementById('custo').value).toFixed(2);
+
+          const valorpagto = (totalfrete / parcela).toFixed(2);
+
+          const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes, fornecedor, totalfrete, vf }
+
+          if (isValidate()) {
+
+            Swal.fire({
+              title: "Deseja salvar ?",
+              showDenyButton: true,
+              showCancelButton: true,
+              confirmButtonText: "Salvar",
+              denyButtonText: `Não salvar`
+            }).then((result) => {
+
+              if (result.isConfirmed) {
+
+                fetch("http://localhost:3000/compras", {
+                  method: "POST",
+                  headers: { 'content-type': 'application/json' },
+                  body: JSON.stringify(cadobj)
+                }).then((res) => {
+                  toast.success('Cadastrado com Sucesso !')
+
+                }).catch((err) => {
+                  toast.error('Erro ! :' + err.message)
+                })
+
+              } else if (result.isDenied) {
+                Swal.fire("Nada salvo", "", "info");
+              }
+            });
+
+          }
+
+        }else{
+
+          var compran = document.getElementById('compran').innerHTML;
+          var mes = document.getElementById('mescompraatual').innerHTML;
+          const dataInput = datacad;
+          const data = new Date(dataInput);
+          const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+          const fornecedor = document.getElementById('forname').value;
+          const total = parseFloat(document.getElementById('total').value).toFixed(2);       
+          var custo = parseFloat(document.getElementById('custo').value).toFixed(2);
+          const valorpagto = (total / parcela).toFixed(2);
+
+          const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes, fornecedor }
+
+          if (isValidate()) {
+
+            Swal.fire({
+              title: "Deseja salvar ?",
+              showDenyButton: true,
+              showCancelButton: true,
+              confirmButtonText: "Salvar",
+              denyButtonText: `Não salvar`
+            }).then((result) => {
+
+              if (result.isConfirmed) {
+
+                fetch("http://localhost:3000/compras", {
+                  method: "POST",
+                  headers: { 'content-type': 'application/json' },
+                  body: JSON.stringify(cadobj)
+                }).then((res) => {
+                  toast.success('Cadastrado com Sucesso !')
 
                 }).catch((err) => {
                   toast.error('Erro ! :' + err.message)
@@ -368,53 +546,6 @@ const CadNovaCompra = () => {
 
         }
 
-      } else {
-
-        var compran = document.getElementById('compran').innerHTML;
-        var mes = document.getElementById('mescompraatual').innerHTML;
-        const dataInput = datacad;
-        const data = new Date(dataInput);
-        const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-        const fornecedor = document.getElementById('forname').value;
-        const total = parseFloat(document.getElementById('total').value).toFixed(2);
-        const totalfrete = parseFloat(document.getElementById('totalfrete').value).toFixed(2);
-        var vf = parseFloat(document.getElementById('vf').value).toFixed(2);
-        var custo = parseFloat(document.getElementById('custo').value).toFixed(2);
-
-        const valorpagto = (totalfrete / parcela).toFixed(2);
-        vp = valorpagto;
-
-        const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes, fornecedor, totalfrete, vf, vp }
-
-        if (isValidate()) {
-
-          Swal.fire({
-            title: "Deseja salvar ?",
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: "Salvar",
-            denyButtonText: `Não salvar`
-          }).then((result) => {
-
-            if (result.isConfirmed) {
-
-              fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
-                method: "POST",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(cadobj)
-              }).then((res) => {
-                toast.success('Cadastrado com Sucesso !')
-
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-
-            } else if (result.isDenied) {
-              Swal.fire("Nada salvo", "", "info");
-            }
-          });
-
-        }
       }
 
     }

@@ -257,7 +257,7 @@ const CadNovaCompra = () => {
 
               if (result.isConfirmed) {
 
-                fetch("http://localhost:3000/compras", {
+                fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
                   method: "POST",
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(cadobj)
@@ -292,7 +292,7 @@ const CadNovaCompra = () => {
 
                   if (result.isConfirmed) {
 
-                    fetch("http://localhost:3000/compras", {
+                    fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
                       method: "POST",
                       headers: { 'content-type': 'application/json' },
                       body: JSON.stringify(cadobj)
@@ -346,7 +346,7 @@ const CadNovaCompra = () => {
 
               if (result.isConfirmed) {
 
-                fetch("http://localhost:3000/compras", {
+                fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
                   method: "POST",
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(cadobj)
@@ -381,7 +381,7 @@ const CadNovaCompra = () => {
 
                   if (result.isConfirmed) {
 
-                    fetch("http://localhost:3000/compras", {
+                    fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
                       method: "POST",
                       headers: { 'content-type': 'application/json' },
                       body: JSON.stringify(cadobj)
@@ -431,7 +431,7 @@ const CadNovaCompra = () => {
 
               if (result.isConfirmed) {
 
-                fetch("http://localhost:3000/compras", {
+                fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
                   method: "POST",
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(cadobj)
@@ -482,7 +482,7 @@ const CadNovaCompra = () => {
 
               if (result.isConfirmed) {
 
-                fetch("http://localhost:3000/compras", {
+                fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
                   method: "POST",
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(cadobj)
@@ -526,7 +526,7 @@ const CadNovaCompra = () => {
 
               if (result.isConfirmed) {
 
-                fetch("http://localhost:3000/compras", {
+                fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
                   method: "POST",
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(cadobj)

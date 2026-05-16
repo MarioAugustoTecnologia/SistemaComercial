@@ -22,7 +22,6 @@ const ComprasNumeroEditar = () => {
     })
   }, []);
 
-
   const [mes, meschange] = useState("")
   const [parcelan, parcelanchange] = useState("")
 
@@ -31,35 +30,35 @@ const ComprasNumeroEditar = () => {
 
     e.preventDefault();
 
-    const edtobj = {mes, parcelan }   
+    const edtobj = { mes, parcelan }
 
-          Swal.fire({
-            title: "Deseja salvar ?",
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: "Salvar",
-            denyButtonText: `Não salvar`
-          }).then((result) => {
-    
-            if (result.isConfirmed) {
-    
-              fetch("https://sistemacomercial-fv5g.onrender.com/compras/" + compracod, {
-                method: "PATCH",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(edtobj)
-              }).then((res) => {
-                toast.success('Atualizado com sucesso !')
-                meschange('')
-                parcelanchange('')   
-    
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-            }
-            else if (result.isDenied) {
-              Swal.fire("Nada salvo", "", "info");
-            }
-          })
+    Swal.fire({
+      title: "Deseja salvar ?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Salvar",
+      denyButtonText: `Não salvar`
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+
+        fetch("https://sistemacomercial-fv5g.onrender.com/compras/" + compracod, {
+          method: "PATCH",
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(edtobj)
+        }).then((res) => {
+          toast.success('Atualizado com sucesso !')
+          meschange('')
+          parcelanchange('')
+
+        }).catch((err) => {
+          toast.error('Erro ! :' + err.message)
+        })
+      }
+      else if (result.isDenied) {
+        Swal.fire("Nada salvo", "", "info");
+      }
+    })
 
   }
 
@@ -72,38 +71,21 @@ const ComprasNumeroEditar = () => {
 
 
   return (
-    <div className="container-fluid" style={{ fontFamily: 'arial' }}>
+    <div className="container-fluid">
       <div className="row flex-nowrap">
-        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary" style={{ fontFamily: 'arial', fontSize: '19px' }}>
-          <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-            <Link
-              to=""
-              className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none"
-            >
-              <span className='fs-5 fw-bolder d-none d-sm-inline'>
-                Opções:
-              </span>
-            </Link>
-            <ul
-              className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-              id="menu"
-            >
-              <li className="w-100">
-                <Link
-                  to="/home"
-                  className="nav-link text-white px-0 align-middle"
-                >
-                  <i className="fs-4 bi-speedometer2 ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Painel:</span>
-                </Link>
-              </li>
+        <div className="main-wrapper">
+
+          <nav class="sidebar bg-secondary" style={{ width: '220px', height: 1000, margin: '-12px'  }}>
+            <br />
+            <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+              id="menu">
               <li className="w-100">
                 <Link
                   to="/usuarios"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi-people ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <i class="fs-3 bi bi-person-check"></i>
+                  <span className="ms-2 d-sm-inline">
                     Usuarios:
                   </span>
                 </Link>
@@ -114,7 +96,7 @@ const ComprasNumeroEditar = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-cash-coin ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Vendas:
                   </span>
                 </Link>
@@ -125,7 +107,7 @@ const ComprasNumeroEditar = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-cash ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Compras:
                   </span>
                 </Link>
@@ -136,7 +118,7 @@ const ComprasNumeroEditar = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-coin ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Despesas:
                   </span>
                 </Link>
@@ -147,18 +129,18 @@ const ComprasNumeroEditar = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-box-fill ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                      Produtos e Serviços:
+                  <span className="ms-2 d-sm-inline">
+                    Produtos e Serviços:
                   </span>
                 </Link>
               </li>
-               <li className="w-100">
+              <li className="w-100">
                 <Link
                   to="/transportes"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i class="bi bi-truck-flatbed" style={{margin:'0 8px'}}></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <i class="bi bi-truck-flatbed" style={{ margin: '0 8px' }}></i>
+                  <span className="ms-2 d-sm-inline">
                     Transportes:
                   </span>
                 </Link>
@@ -169,7 +151,7 @@ const ComprasNumeroEditar = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-truck ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Fornecedores:
                   </span>
                 </Link>
@@ -180,7 +162,7 @@ const ComprasNumeroEditar = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-person-square ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Clientes:
                   </span>
                 </Link>
@@ -191,7 +173,7 @@ const ComprasNumeroEditar = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-bank ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Resultados:
                   </span>
                 </Link>
@@ -202,7 +184,7 @@ const ComprasNumeroEditar = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="bi bi-file-earmark-pdf" style={{ fontSize: '26px' }}></i>
-                  <span className="ms-2 d-none d-sm-inline">
+                  <span className="ms-2 d-sm-inline">
                     Orçamentos:
                   </span>
                 </Link>
@@ -212,62 +194,73 @@ const ComprasNumeroEditar = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-power ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Logout</span>
+                  <span className="ms-2 d-sm-inline">Sair:</span>
                 </Link>
               </li>
             </ul>
-          </div>
-        </div>
-        <div className="col p-0 m-0">
-          <div className="p-2 d-flex justify-content-center shadow text-white" style={{ backgroundColor: 'blue' }}>
-            <h4><strong>Sistema de Gestão Comercial:</strong></h4>
-          </div>
-          <Outlet /><br /><br /><br />
-          <div className='d-flex justify-content-center align-items-center' style={{fontFamily:'arial'}}>
-            <div className='bg-white p-4 rounded border' style={{ width: '50%' }}>
-              <form onSubmit={atualizar}> 
-              <label htmlFor="mes" style={{ fontSize: '22px', fontWeight:'bold'}}>Mes:</label>
-              <label htmlFor="parcelan" style={{ fontSize: '22px', margin: '0 150px', fontWeight:'bold'}}>Parcela nº:</label>
-              <select style={{ fontSize: '20px', width: 150, color:'navy', fontWeight:'bold'}} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
-                <option value=""></option>
-                <option value="Janeiro">Janeiro</option>
-                <option value="Fevereiro">Fevereiro</option>
-                <option value="Março">Março</option>
-                <option value="Abril">Abril</option>
-                <option value="Maio">Maio</option>
-                <option value="Junho">Junho</option>
-                <option value="Julho">Julho</option>
-                <option value="Agosto">Agosto</option>
-                <option value="Setembro">Setembro</option>
-                <option value="Outubro">Outubro</option>
-                <option value="Novembro">Novembro</option>
-                <option value="Dezembro">Dezembro</option>
-              </select>
-              <select className="form-control rounded-0" value={parcelan} onChange={e => parcelanchange(e.target.value)} style={{ width: '20%', height: '42px', fontSize: '20px', margin: '0 200px', marginTop: '-42px', fontWeight:'bold', color:'navy'}} id="parcelan" >
-                <option value=""></option>
-                <option value="1ª">1ª</option>
-                <option value="2ª">2ª</option>
-                <option value="3ª">3ª</option>
-                <option value="4ª">4ª</option>
-                <option value="5ª">5ª</option>
-                <option value="6ª">6ª</option>
-                <option value="7ª">7ª</option>
-                <option value="8ª">8ª</option>
-                <option value="9ª">9ª</option>
-                <option value="10ª">10ª</option>
-                <option value="11ª">11ª</option>
-                <option value="12ª">12ª</option>
-              </select><br />
-              <button type="submit" className="btn" style={{ color: 'white', backgroundColor: 'navy', fontSize: '18px', width: 120 }}>Atualizar</button>
-              <ToastContainer/>
-              <Link to="/compras/numero/" className="btn" style={{ fontSize: '18px', width: 120, color:'white', backgroundColor:'orange', margin:'0 200px', marginTop:'-63px'}}>Voltar:</Link>
-              </form>
-
-
-            </div>
-          </div>
+          </nav>
         </div>
       </div>
+      <div className="container" style={{ display: 'flex', margin: '0 130px' }}>
+
+        <form action='' onSubmit={atualizar} style={{ marginTop: '-900px' }}>
+
+          <div className='d-flex'>
+            <label htmlFor="mes" style={{ fontWeight: 'bold', fontSize: '17px', margin: '0 120px' }}>Mes:</label>
+            <label htmlFor='parcelan' style={{ fontSize: '17px', fontWeight: 'bold', margin:'0 20px' }}>Parcela Nº:</label>
+
+          </div>
+      
+          <div className='d-flex'>
+            <select style={{ fontSize: '17px', width: 150, color: 'navy', fontWeight: 'bold', margin:'0 120px' }} name='mes' id='mes' className='form-select rounded-0' value={mes} onChange={e => meschange(e.target.value)}>
+              <option value=""></option>
+              <option value="Janeiro">Janeiro</option>
+              <option value="Fevereiro">Fevereiro</option>
+              <option value="Março">Março</option>
+              <option value="Abril">Abril</option>
+              <option value="Maio">Maio</option>
+              <option value="Junho">Junho</option>
+              <option value="Julho">Julho</option>
+              <option value="Agosto">Agosto</option>
+              <option value="Setembro">Setembro</option>
+              <option value="Outubro">Outubro</option>
+              <option value="Novembro">Novembro</option>
+              <option value="Dezembro">Dezembro</option>
+            </select>
+            <select className="form-control rounded-0" value={parcelan} onChange={e => parcelanchange(e.target.value)} style={{fontSize: '17px', fontWeight: 'bold', color: 'navy', margin:'0 -92px', width: 75 }} id="parcelan" >
+              <option value=""></option>
+              <option value="1ª">1ª</option>
+              <option value="2ª">2ª</option>
+              <option value="3ª">3ª</option>
+              <option value="4ª">4ª</option>
+              <option value="5ª">5ª</option>
+              <option value="6ª">6ª</option>
+              <option value="7ª">7ª</option>
+              <option value="8ª">8ª</option>
+              <option value="9ª">9ª</option>
+              <option value="10ª">10ª</option>
+              <option value="11ª">11ª</option>
+              <option value="12ª">12ª</option>
+            </select>
+
+          </div><br />
+          <div className='d-flex'>
+            <button type='submit' className='btn btn-success border rounded-0' style={{ width: 120, margin: '0 120px', fontSize: '15px' }}>Atualizar:</button>
+            <Link to={"/compras/numero/"} className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 -120px', fontSize: '15px', width: 120 }}>Voltar:</Link>
+      
+
+          </div>
+
+          <ToastContainer />
+
+        </form>
+
+      </div>
+
+      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', color: 'white', textAlign: 'center', zIndex: 1000 }}>
+        <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>
+      </footer>
+
     </div>
 
   )

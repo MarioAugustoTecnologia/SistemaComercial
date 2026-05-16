@@ -9,17 +9,32 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 const CadNovaCompra = () => {
 
   const [nome, nomechange] = useState("")
-  const [custo, custochange] = useState("")
   const [formapag, formapagchange] = useState("")
   const [forname, fornamechange] = useState([])
   const [datacad, datacadchange] = useState("")
   const [qtd, qtdchange] = useState("")
   const [parcelamento, parcelamentochange] = useState("")
   const [parcela, parcelachange] = useState("")
-  const [parcelan, parcelanchange] = useState("") 
+  const [parcelan, parcelanchange] = useState("")
   const [compradata, setCompradata] = useState([])
   const [mescompraatual, setMesCompraAtual] = useState([])
   const [vf, vfchange] = useState("")
+  const [custo, custochange] = useState("")
+
+  const [compras, setCompras] = useState([])
+
+
+  const API_URL = 'https://sistemacomercial-fv5g.onrender.com/compras';
+
+  useEffect(() => {
+
+    fetch(API_URL)
+      .then(response => response.json())
+      .then(data => setCompras(data))
+      .catch(error => console.error('Erro ao buscar os dados:', error));
+
+  }, [])
+
 
   useEffect(() => {
 
@@ -35,7 +50,7 @@ const CadNovaCompra = () => {
       console.log(err.message)
     })
 
-  }, []) 
+  }, [])
 
   useEffect(() => {
 
@@ -70,7 +85,7 @@ const CadNovaCompra = () => {
 
   const [values, setValues] = useState({
     id: ''
-  })  
+  })
 
 
   const isValidate = () => {
@@ -156,6 +171,12 @@ const CadNovaCompra = () => {
 
   }
 
+  function MudaCorFor() {
+
+    document.getElementById('forname').style.borderColor = 'Gainsboro';
+
+  }
+
 
   function calcular() {
 
@@ -202,28 +223,27 @@ const CadNovaCompra = () => {
 
   function totalFrete() {
 
-   if (IsValidate2()) {
+    if (IsValidate2()) {
 
       var total = document.getElementById('total').value;
       var tfrete = (parseFloat(total) + parseFloat(vf)).toFixed(2);
-      document.getElementById('totalfrete').value = tfrete; 
-      document.getElementById('valorpago').value = tfrete;  
+      document.getElementById('totalfrete').value = tfrete;
+      document.getElementById('valorpago').value = tfrete;
       document.getElementById('total').style.borderColor = 'Gainsboro';
 
-    }  
+    }
 
   }
- 
-   const cadastrar = (e) => {
+
+
+  const cadastrar = (e) => {
 
     e.preventDefault();
 
     if (isValidate()) {
 
-
       if (parcelamento === "" || parcelamento === null && parcela === "" || parcela === null && parcelan === "" || parcelan === null) {
 
-        // Um Produto Apenas e com Frete e Valor Pago;
 
         if (document.getElementById('vf').value !== "" && document.getElementById('totalfrete').value !== '' && document.getElementById('valorpago').value !== '') {
 
@@ -264,6 +284,31 @@ const CadNovaCompra = () => {
                 }).then((res) => {
                   toast.success('Cadastrado com Sucesso !')
 
+                }).catch((err) => {
+                  toast.error('Erro ! :' + err.message)
+                })
+
+                const number = document.getElementById('compran').textContent;
+                const id = document.getElementById('id').textContent;
+                console.log(number)
+                console.log(id)
+
+                function AddNumber() {
+                  return parseInt(number) + 1;
+                }
+
+                console.log(AddNumber())
+
+                const numero = AddNumber();
+
+                const edtobj2 = { id, numero }
+
+                fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/" + id, {
+                  method: "PATCH",
+                  headers: { 'content-type': 'application/json' },
+                  body: JSON.stringify(edtobj2)
+                }).then((res) => {
+                  toast.success('Compra Nº Atualizada com Sucesso !')
 
                 }).catch((err) => {
                   toast.error('Erro ! :' + err.message)
@@ -273,10 +318,9 @@ const CadNovaCompra = () => {
                 Swal.fire("Nada salvo", "", "info");
               }
             });
-            
+
           } else
             if (valorpagto === totalfrete) {
-
 
               const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpagto, totalfrete, vf }
 
@@ -298,9 +342,32 @@ const CadNovaCompra = () => {
                       body: JSON.stringify(cadobj)
                     }).then((res) => {
                       toast.success('Cadastrado com Sucesso !')
+                    }).catch((err) => {
+                      toast.error('Erro ! :' + err.message)
+                    })
 
+                    const number = document.getElementById('compran').textContent;
+                    const id = document.getElementById('id').textContent;
+                    console.log(number)
+                    console.log(id)
 
-                      document.getElementById('qtd').style.borderColor = 'Gainsboro';
+                    function AddNumber() {
+                      return parseInt(number) + 1;
+                    }
+
+                    console.log(AddNumber())
+
+                    const numero = AddNumber();
+
+                    const edtobj2 = { id, numero }
+
+                    fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/" + id, {
+                      method: "PATCH",
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(edtobj2)
+                    }).then((res) => {
+                      toast.success('Compra Nº Atualizada com Sucesso !')
+
 
                     }).catch((err) => {
                       toast.error('Erro ! :' + err.message)
@@ -315,7 +382,7 @@ const CadNovaCompra = () => {
 
             }
 
-        }      // Um Produto Apenas e sem Frete e Valor Pago;
+        } 
         else if (document.getElementById('vf').value === "" && document.getElementById('totalfrete').value === '' && document.getElementById('valorpago').value !== '') {
 
           const dataInput = datacad;
@@ -352,8 +419,31 @@ const CadNovaCompra = () => {
                   body: JSON.stringify(cadobj)
                 }).then((res) => {
                   toast.success('Cadastrado com Sucesso !')
+                  const number = document.getElementById('compran').textContent;
+                  const id = document.getElementById('id').textContent;
+                  console.log(number)
+                  console.log(id)
 
+                  function AddNumber() {
+                    return parseInt(number) + 1;
+                  }
 
+                  console.log(AddNumber())
+
+                  const numero = AddNumber();
+
+                  const edtobj2 = { id, numero }
+
+                  fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/" + id, {
+                    method: "PATCH",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(edtobj2)
+                  }).then((res) => {
+                    toast.success('Compra Nº Atualizada com Sucesso !')
+
+                  }).catch((err) => {
+                    toast.error('Erro ! :' + err.message)
+                  })
                 }).catch((err) => {
                   toast.error('Erro ! :' + err.message)
                 })
@@ -365,7 +455,6 @@ const CadNovaCompra = () => {
 
           } else
             if (valorpagto === total) {
-
 
               const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpagto }
 
@@ -387,9 +476,33 @@ const CadNovaCompra = () => {
                       body: JSON.stringify(cadobj)
                     }).then((res) => {
                       toast.success('Cadastrado com Sucesso !')
+                      const number = document.getElementById('compran').textContent;
+                      const id = document.getElementById('id').textContent;
+                      console.log(number)
+                      console.log(id)
+
+                      function AddNumber() {
+                        return parseInt(number) + 1;
+                      }
+
+                      console.log(AddNumber())
+
+                      const numero = AddNumber();
+
+                      const edtobj2 = { id, numero }
+
+                      fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/" + id, {
+                        method: "PATCH",
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(edtobj2)
+                      }).then((res) => {
+                        toast.success('Compra Nº Atualizada com Sucesso !')
 
 
-                      document.getElementById('qtd').style.borderColor = 'Gainsboro';
+                      }).catch((err) => {
+                        toast.error('Erro ! :' + err.message)
+                      })
+
 
                     }).catch((err) => {
                       toast.error('Erro ! :' + err.message)
@@ -488,6 +601,33 @@ const CadNovaCompra = () => {
                   body: JSON.stringify(cadobj)
                 }).then((res) => {
                   toast.success('Cadastrado com Sucesso !')
+                  const number = document.getElementById('compran').textContent;
+                  const id = document.getElementById('id').textContent;
+                  console.log(number)
+                  console.log(id)
+
+                  function AddNumber() {
+                    return parseInt(number) + 1;
+                  }
+
+                  console.log(AddNumber())
+
+                  const numero = AddNumber();
+
+                  const edtobj2 = { id, numero }
+
+                  fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/" + id, {
+                    method: "PATCH",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(edtobj2)
+                  }).then((res) => {
+                       toast.success('Compra Nº Atualizada com Sucesso !')
+
+
+                  }).catch((err) => {
+                    toast.error('Erro ! :' + err.message)
+                  })
+
 
                 }).catch((err) => {
                   toast.error('Erro ! :' + err.message)
@@ -500,7 +640,8 @@ const CadNovaCompra = () => {
 
           }
 
-        }else{
+        } else {
+       
 
           var compran = document.getElementById('compran').innerHTML;
           var mes = document.getElementById('mescompraatual').innerHTML;
@@ -508,7 +649,7 @@ const CadNovaCompra = () => {
           const data = new Date(dataInput);
           const data_cad = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
           const fornecedor = document.getElementById('forname').value;
-          const total = parseFloat(document.getElementById('total').value).toFixed(2);       
+          const total = parseFloat(document.getElementById('total').value).toFixed(2);
           var custo = parseFloat(document.getElementById('custo').value).toFixed(2);
           const valorpagto = (total / parcela).toFixed(2);
 
@@ -532,6 +673,33 @@ const CadNovaCompra = () => {
                   body: JSON.stringify(cadobj)
                 }).then((res) => {
                   toast.success('Cadastrado com Sucesso !')
+                  const number = document.getElementById('compran').textContent;
+                  const id = document.getElementById('id').textContent;
+                  console.log(number)
+                  console.log(id)
+
+                  function AddNumber() {
+                    return parseInt(number) + 1;
+                  }
+
+                  console.log(AddNumber())
+
+                  const numero = AddNumber();
+
+                  const edtobj2 = { id, numero }
+
+                  fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/" + id, {
+                    method: "PATCH",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(edtobj2)
+                  }).then((res) => {
+                      toast.success('Compra Nº Atualizada com Sucesso !')
+
+
+                  }).catch((err) => {
+                    toast.error('Erro ! :' + err.message)
+                  })              
+
 
                 }).catch((err) => {
                   toast.error('Erro ! :' + err.message)
@@ -560,7 +728,8 @@ const CadNovaCompra = () => {
 
 
   return (
-     <div className="container-fluid">
+
+    <div className="container-fluid">
       <div className="row flex-nowrap">
         <div className="main-wrapper">
 
@@ -720,7 +889,7 @@ const CadNovaCompra = () => {
                 {
                   compradata.map(item => (
                     <tr key={item.id}>
-                      <td className="td" hidden='true'>{item.id}</td>
+                      <td className="td" hidden='true' id='id'>{item.id}</td>
                       <td className="td" style={{ fontSize: '17px', fontWeight: 'bold', color: 'navy' }} id='compran'>{item.numero}</td>
                     </tr>
                   ))
@@ -852,7 +1021,7 @@ const CadNovaCompra = () => {
           </div><br />
           <div className='mb-3'>
             <label htmlFor='fornecedor' style={{ fontSize: '17px', margin: '0 120px', fontWeight: 'bold' }}>Fornecedor:</label>
-            <select style={{ fontSize: '17px', width: 340, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} id='forname' className='form-select' onChange={(e) => setValues({ ...values, id: e.target.value })}>
+            <select onClick={MudaCorFor} style={{ fontSize: '17px', width: 340, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} id='forname' className='form-select' onChange={(e) => setValues({ ...values, id: e.target.value })}>
               <option></option>
               {forname.map(val => {
                 return <option value={val.nome}>{val.nome}</option>
@@ -877,8 +1046,8 @@ const CadNovaCompra = () => {
       </footer>
 
     </div>
-
   )
 }
+
 
 export default CadNovaCompra

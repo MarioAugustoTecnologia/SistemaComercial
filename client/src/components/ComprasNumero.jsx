@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Swal from 'sweetalert2';
@@ -56,8 +56,34 @@ const ComprasNumero = () => {
     const [parcelan, parcelanchange] = useState("")
     const [mes, meschange] = useState("")
 
+    const [saidadata, setSaidadata] = useState([])
+    
+      
+        useEffect(() => {
+      
+          fetch("https://sistemacomercial-fv5g.onrender.com/compraatual").then((res) => {
+      
+            return res.json()
+      
+          }).then((resp) => {
+      
+            setSaidadata(resp)
+      
+          }).catch((err) => {
+            console.log(err.message)
+          })
+      
+        }, [])
 
-    const handleDelete = (id) => {
+        const navigate = useNavigate()
+
+        const handleEdit = (id) => {
+
+         navigate("/compras/numero/editar/" + id)
+
+        }    
+
+     const handleDelete = (id) => {
 
         Swal.fire({
             title: "Deseja Excluir ?",
@@ -75,8 +101,7 @@ const ComprasNumero = () => {
 
                 }).then((res) => {
 
-                    window.location.reload();
-                    //toast.success('Excluido com sucesso !')    
+                    window.location.reload();                   
 
                 }).catch((err) => {
                     toast.error('Erro ! :' + err.message)
@@ -90,13 +115,9 @@ const ComprasNumero = () => {
 
     }
 
-    const navigate = useNavigate();
 
-    const handleEdit = (id) => {
 
-        navigate("/compras/numero/editar/" + id);
 
-    }
 
     function formataData() {
         let data = new Date(),
@@ -148,7 +169,7 @@ const ComprasNumero = () => {
             document.getElementById('tf').value = tf.toFixed(2)
             document.getElementById('totalf').innerHTML = "R$" + tf.toFixed(2)
             document.getElementById('tf').style.borderColor = 'gainsboro'
-           // document.getElementById('vp').value = tf.toFixed(2)
+            // document.getElementById('vp').value = tf.toFixed(2)
 
         }
 
@@ -224,8 +245,6 @@ const ComprasNumero = () => {
         return isproceed
     }
 
-
-
     const concluir = (e) => {
 
         e.preventDefault();
@@ -248,10 +267,9 @@ const ComprasNumero = () => {
                     const compran = document.getElementById('compran').value;
                     const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
 
-                    if (Number(valorpagto) > Number(totalfrete)) {
+                    if (Number(valorpagto) > Number(totalfrete)) { 
 
                         const troco = document.getElementById('troco').value
-
 
                         const cadobj = { compran, nome, total, data_cad, formapag, mes, fornecedor, troco, valorpagto, totalfrete, vf }
 
@@ -270,7 +288,33 @@ const ComprasNumero = () => {
                                     headers: { 'content-type': 'application/json' },
                                     body: JSON.stringify(cadobj)
                                 }).then((res) => {
-                                    window.location.reload();
+
+                                    const number = document.getElementById('compn').textContent;
+                                    const id = document.getElementById('id').textContent;
+                                    
+                                    console.log(id)
+                                    console.log(number)
+
+                                    function AddNumber() {
+                                        return parseInt(number) + 1;
+                                    }
+
+                                    console.log(AddNumber())
+
+                                    const numero = AddNumber();
+
+                                    const edtobj2 = { id, numero }
+
+                                    fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/" + id, {
+                                        method: "PATCH",
+                                        headers: { 'content-type': 'application/json' },
+                                        body: JSON.stringify(edtobj2)
+                                    }).then((res) => {
+                                          window.location.reload();
+
+                                    }).catch((err) => {
+                                        toast.error('Erro ! :' + err.message)
+                                    })                           
 
                                 }).catch((err) => {
                                     toast.error('Erro ! :' + err.message)
@@ -283,8 +327,8 @@ const ComprasNumero = () => {
 
                         });
 
-                    } else
-                        if (Number(valorpagto) === Number(totalfrete)) {
+                    } else                      
+                        if (Number(valorpagto) === Number(totalfrete)) { 
 
 
                             const cadobj = { compran, nome, total, data_cad, formapag, mes, fornecedor, valorpagto, totalfrete, vf }
@@ -304,7 +348,35 @@ const ComprasNumero = () => {
                                         headers: { 'content-type': 'application/json' },
                                         body: JSON.stringify(cadobj)
                                     }).then((res) => {
-                                        window.location.reload();
+
+                                        const number = document.getElementById('compn').textContent;
+                                        const id = document.getElementById('id').textContent;
+                                        console.log(number)
+                                        console.log(id)
+
+                                        function AddNumber() {
+                                            return parseInt(number) + 1;
+                                        }
+
+                                        console.log(AddNumber())
+
+                                        const numero = AddNumber();
+
+                                        const edtobj2 = {id, numero }
+
+                                        fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/" + id, {
+                                            method: "PATCH",
+                                            headers: { 'content-type': 'application/json' },
+                                            body: JSON.stringify(edtobj2)
+                                        }).then((res) => {
+                                              window.location.reload();
+
+
+                                        }).catch((err) => {
+                                            toast.error('Erro ! :' + err.message)
+                                        })
+
+                                   
 
                                     }).catch((err) => {
                                         toast.error('Erro ! :' + err.message)
@@ -329,7 +401,7 @@ const ComprasNumero = () => {
                     const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
 
 
-                    if (Number(valorpagto) > Number(total)) {
+                    if (Number(valorpagto) > Number(total)) { 
 
                         const troco = document.getElementById('troco').value;
 
@@ -351,7 +423,35 @@ const ComprasNumero = () => {
                                     headers: { 'content-type': 'application/json' },
                                     body: JSON.stringify(cadobj)
                                 }).then((res) => {
-                                    window.location.reload();
+
+                                    const number = document.getElementById('compn').textContent;
+                                    const id = document.getElementById('id').textContent;
+                                    console.log(number)
+                                    console.log(id)
+
+                                    function AddNumber() {
+                                        return parseInt(number) + 1;
+                                    }
+
+                                    console.log(AddNumber())
+
+                                    const numero = AddNumber();
+
+                                    const edtobj2 = { id, numero }
+
+                                    fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/" + id, {
+                                        method: "PATCH",
+                                        headers: { 'content-type': 'application/json' },
+                                        body: JSON.stringify(edtobj2)
+                                    }).then((res) => {
+                                        window.location.reload();
+
+
+                                    }).catch((err) => {
+                                        toast.error('Erro ! :' + err.message)
+                                    })
+
+                         
 
                                 }).catch((err) => {
                                     toast.error('Erro ! :' + err.message)
@@ -385,7 +485,33 @@ const ComprasNumero = () => {
                                         headers: { 'content-type': 'application/json' },
                                         body: JSON.stringify(cadobj)
                                     }).then((res) => {
-                                        window.location.reload();
+
+                                        const number = document.getElementById('compn').textContent;
+                                        const id = document.getElementById('id').textContent;
+                                        console.log(number)
+                                        console.log(id)
+
+                                        function AddNumber() {
+                                            return parseInt(number) + 1;
+                                        }
+
+                                        console.log(AddNumber())
+
+                                        const numero = AddNumber();
+
+                                        const edtobj2 = { id, numero }
+
+                                        fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/" + id, {
+                                            method: "PATCH",
+                                            headers: { 'content-type': 'application/json' },
+                                            body: JSON.stringify(edtobj2)
+                                        }).then((res) => {
+                                               window.location.reload();
+
+                                        }).catch((err) => {
+                                            toast.error('Erro ! :' + err.message)
+                                        })
+                                  
 
                                     }).catch((err) => {
                                         toast.error('Erro ! :' + err.message)
@@ -401,8 +527,7 @@ const ComprasNumero = () => {
 
                 }
 
-            } else {
-                // Parcela do total do frete ou do total            
+            } else {                         
 
                 const compran = document.getElementById('compran').value
                 const nome = document.getElementById('nome').value;
@@ -414,69 +539,125 @@ const ComprasNumero = () => {
                 const parcelas = document.getElementById("parcelas").value;
                 const formapag = document.getElementById('formapag').value
 
-                if (totalfrete !== '') {                  
+                if (totalfrete !== '') {
 
-                        const valorpagto = (totalfrete / parcelas).toFixed(2);
-                        const cadobj = { compran, nome, fornecedor, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes, totalfrete, vf }
+                    const valorpagto = (totalfrete / parcelas).toFixed(2);
+                    const cadobj = { compran, nome, fornecedor, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes, totalfrete, vf }
 
-                        Swal.fire({
-                            title: "Deseja salvar ?",
-                            showDenyButton: true,
-                            showCancelButton: true,
-                            confirmButtonText: "Salvar",
-                            denyButtonText: `Não salvar`
-                        }).then((result) => {
+                    Swal.fire({
+                        title: "Deseja salvar ?",
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: "Salvar",
+                        denyButtonText: `Não salvar`
+                    }).then((result) => {
 
-                            if (result.isConfirmed) {
+                        if (result.isConfirmed) {
 
-                                fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
-                                    method: "POST",
+                            fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
+                                method: "POST",
+                                headers: { 'content-type': 'application/json' },
+                                body: JSON.stringify(cadobj)
+                            }).then((res) => {
+
+                                const number = document.getElementById('compn').textContent;
+                                const id = document.getElementById('id').textContent;
+                                console.log(number)
+                                console.log(id)
+
+                                function AddNumber() {
+                                    return parseInt(number) + 1;
+                                }
+
+                                console.log(AddNumber())
+
+                                const numero = AddNumber();
+
+                                const edtobj2 = { id, numero }
+
+                                fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/" + id, {
+                                    method: "PATCH",
                                     headers: { 'content-type': 'application/json' },
-                                    body: JSON.stringify(cadobj)
+                                    body: JSON.stringify(edtobj2)
                                 }).then((res) => {
-                                    window.location.reload();
+                                      window.location.reload();
+
 
                                 }).catch((err) => {
                                     toast.error('Erro ! :' + err.message)
                                 })
 
-                            } else if (result.isDenied) {
-                                Swal.fire("Nada salvo", "", "info");
-                            }
+                           
 
-                        });                 
+                            }).catch((err) => {
+                                toast.error('Erro ! :' + err.message)
+                            })
 
-                } else {                 
+                        } else if (result.isDenied) {
+                            Swal.fire("Nada salvo", "", "info");
+                        }
 
-                        const valorpagto = (total / parcelas).toFixed(2);
-                        const cadobj = { compran, nome, fornecedor, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes }
+                    });
 
-                        Swal.fire({
-                            title: "Deseja salvar ?",
-                            showDenyButton: true,
-                            showCancelButton: true,
-                            confirmButtonText: "Salvar",
-                            denyButtonText: `Não salvar`
-                        }).then((result) => {
+                } else {
 
-                            if (result.isConfirmed) {
+                    const valorpagto = (total / parcelas).toFixed(2);
+                    const cadobj = { compran, nome, fornecedor, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes }
 
-                                fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
-                                    method: "POST",
+                    Swal.fire({
+                        title: "Deseja salvar ?",
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: "Salvar",
+                        denyButtonText: `Não salvar`
+                    }).then((result) => {
+
+                        if (result.isConfirmed) {
+
+                            fetch("https://sistemacomercial-fv5g.onrender.com/compras", {
+                                method: "POST",
+                                headers: { 'content-type': 'application/json' },
+                                body: JSON.stringify(cadobj)
+                            }).then((res) => {
+
+                                const number = document.getElementById('compn').textContent;
+                                const id = document.getElementById('id').textContent;
+                                console.log(number)
+                                console.log(id)
+
+                                function AddNumber() {
+                                    return parseInt(number) + 1;
+                                }
+
+                                console.log(AddNumber())
+
+                                const numero = AddNumber();
+
+                                const edtobj2 = { id, numero }
+
+                                fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/" + id, {
+                                    method: "PATCH",
                                     headers: { 'content-type': 'application/json' },
-                                    body: JSON.stringify(cadobj)
+                                    body: JSON.stringify(edtobj2)
                                 }).then((res) => {
-                                    window.location.reload();
+                                      window.location.reload();
+
 
                                 }).catch((err) => {
                                     toast.error('Erro ! :' + err.message)
                                 })
 
-                            } else if (result.isDenied) {
-                                Swal.fire("Nada salvo", "", "info");
-                            }
+                         
 
-                        });                    
+                            }).catch((err) => {
+                                toast.error('Erro ! :' + err.message)
+                            })
+
+                        } else if (result.isDenied) {
+                            Swal.fire("Nada salvo", "", "info");
+                        }
+
+                    });
 
 
                 }
@@ -491,30 +672,7 @@ const ComprasNumero = () => {
     }
 
 
-    function GerarUltima() {
 
-        if (buscanumero === "" || buscanumero === null) {
-            toast.warning('Campo busca por número vazio !')
-            document.getElementById('numero').style.borderColor = 'red';
-
-        }
-        else {
-            const numero = buscanumero;
-            const register = { numero }
-
-            fetch("https://sistemacomercial-fv5g.onrender.com/compraatual/", {
-                method: "POST",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(register)
-            }).then((res) => {
-                //window.location.reload();
-                toast.success('Atualizado com Sucesso !')
-
-            }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-            })
-        }
-    }
 
     function MudaCorCampo() {
         document.getElementById('compran').style.borderColor = 'Gainsboro'
@@ -555,8 +713,8 @@ const ComprasNumero = () => {
         document.getElementById('parcelan').style.borderColor = 'Gainsboro'
 
     }
-      
- 
+
+
 
     const logout = () => {
         localStorage.clear()
@@ -713,11 +871,33 @@ const ComprasNumero = () => {
 
                 <form action='' style={{ marginTop: '-950px' }} onSubmit={concluir}>
                     <div className="mb3" style={{ margin: '0 100px' }}>
-                        <label htmlFor="Numero" className="Numero" style={{ fontFamily: 'arial', fontWeight: 'bold' }}>Buscar Compra nº:</label><br />
+                        <label htmlFor="Numero" className="Numero" style={{ fontFamily: 'arial', fontWeight: 'bold' }}>Buscar Compra nº:</label>
+                        <label htmlFor="compraatual" hidden="true" className="compraatual" style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', margin: '0 15px' }}>Compra Atual:</label>
                         <input type="search" autoFocus='true' onKeyUp={MudaCorCampo} className="form-control rounded-0" value={buscanumero} onChange={(e) => setBuscaNumero(e.target.value)} style={{ fontFamily: 'arial', width: '100px', fontWeight: 'bold', color: 'navy', padding: '2px', fontSize: '19px' }} id="compran" />
-                        <Link to="/compras" className="btn btn-success rounded-0" style={{ width: '140px', height: '37px', margin: '0 150px', marginTop: '-98px' }}>Voltar:</Link>
-                        <Link to="/compras/ultima" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '0 -120px', marginTop: '-98px', height: '36px' }}>Próxima Compra:</Link>
+                        <table className="table" id="table" style={{ fontFamily: 'arial', width: '5%', margin: '0 170px', marginTop: '-42px' }}>
+                            <thead hidden='true'>
+                                <tr>
+                                    <th className="th" scope="col" >Id:</th>
+                                    <th className="th" scope="col">Venda nº:</th>
+                                    <th className="th" scope="col">Ação:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    saidadata.map(item => (
+                                        <tr key={item.id}>
+                                            <td className="td" hidden='true' id="id">{item.id}</td>
+                                            <td className="td" hidden='true' style={{ color: 'blue', fontSize: '18px', margin: '0 120px' }} id="compn">{item.numero}</td>
 
+                                        </tr>
+                                    ))
+
+                                }
+
+                            </tbody>
+
+
+                        </table><br /><br />
                         <div className="d-flex">
 
                             <strong style={{ margin: '0 0px', fontSize: '30px' }}>Total:</strong>

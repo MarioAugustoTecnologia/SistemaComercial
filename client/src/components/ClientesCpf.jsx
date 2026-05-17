@@ -211,7 +211,7 @@ const ClientesCpf = () => {
 
         <div className="mb-3">
 
-          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px' }}>
+          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width:1300 }}>
             <thead>
               <tr>
                 <th className="th" scope="col">Id:</th>

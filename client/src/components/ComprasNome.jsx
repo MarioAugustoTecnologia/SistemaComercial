@@ -10,6 +10,7 @@ const ComprasNome = () => {
 
   const [compradata, setCompradata] = useState([])
   const [buscanome, setBuscaNome] = React.useState("")
+  const [mes, setMes] = React.useState("")
 
   const buscarap = buscanome.toLowerCase()
 
@@ -66,27 +67,38 @@ const ComprasNome = () => {
 
   }
 
+ function somar() {
 
-    function somar() {
+    if (buscanome === '' || buscanome === null) {
+      toast.warning('Campo busca por nome vazio ! ...')
+      document.getElementById('consulta').style.borderColor = 'Red';
 
-    if (buscanome === "" || buscanome === null) {
-      toast.warning("O campo busca por nome está vazio !")
-    } else {   
+    } else {
 
-      let valores = [];
+      let somaTotal = 0;
 
-        table.map(item => {
-          valores.push(item.vp)        
-          
+      const linhas = document.querySelectorAll("#table tbody tr");
+
+      linhas.forEach(linha => {
+
+        const verificames = linha.cells[14].textContent;
+        const total = parseFloat(linha.cells[9].textContent);
+
+        // Verifica a condição
+        if (mes !== "") {
+
+          if (mes.toLowerCase() === verificames.toLowerCase()) {
+            somaTotal += total;
+          } 
+
+        }else{
+        
+           somaTotal += total;
+
         }
-        )
+      });
 
-        let soma = valores.reduce((previous_value, current_value) => {
-              
-          return parseFloat(previous_value) + parseFloat(current_value);
-        })
-        const total = soma.toFixed(2);
-        document.getElementById('total').innerHTML = total; 
+         document.getElementById('total').innerHTML = "R$" + somaTotal.toFixed(2);
 
     }
   }
@@ -105,9 +117,23 @@ const ComprasNome = () => {
 
   }
 
+    function MudaCorMes() {
+    document.getElementById('mes').style.borderColor = 'GainsBoro';
+  }
+
+  function MudaCorBusca() {
+    document.getElementById('consulta').style.borderColor = 'GainsBoro';
+  }
+
+    const voltar = () => {
+
+    navigate('/compras')
+
+  }
+
 
   return (
-   <div className="container-fluid">
+    <div className="container-fluid">
       <div className="row flex-nowrap">
 
         <div className="main-wrapper">
@@ -250,92 +276,94 @@ const ComprasNome = () => {
           </nav>
 
 
-        </div><br /><br />
+        </div>
 
-      </div><br /><br /><br /><br />
+      </div>
+      <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-850px' }}>
 
-      <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-1050px' }}>
 
-        <div className="px-5 mt-5">
-          <div className="mb3">
-            <label htmlFor="Nome" className="Nome" style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold' }}>Busca por nome:</label><br />
-            <input type="search" autoFocus='true' className="consultanome form-control rounded-0" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', width: '250px' }} />
-            <br />
-            <div className="d-flex">
+        <div className="mb3">
 
-              <Link to="/compras" className="btn btn-success rounded-0" style={{ fontSize: '15px', fontFamily: 'arial', width: '140px', margin: '0 20px', height:'35px' }}>Voltar:</Link>
-              <Link onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 25px', fontSize: '15px', height: '35px', width:'150px' }}>Gasto Total:</Link>
-                <strong style={{ fontSize: '30px' }}>Total:</strong>
-                  <strong><span id="total" style={{ color: 'green', fontSize: '30px', margin: '0 10px' }}></span></strong>
-            </div>
-          
-          </div><br />
-      
-          <br />
-          <div className="mt-3" style={{ width: 100 }}>
-            <table className="table" id="table" style={{ margin: '0 -30px', fontFamily: 'arial', fontSize: '17px', width: 3000 }}>
-              <thead>
-                <tr>
-                  <th className="th" scope="col">Id:</th>
-                  <th className="th" scope="col">Compra nº:</th>
-                  <th className="th" scope="col">Nome:</th>
-                  <th className="th" scope="col">Qtd:</th>
-                  <th className="th" scope="col">Custo:</th>
-                  <th className="th" scope="col">Total:</th>
-                  <th className="th" scope="col">Total c/Frete:</th>
-                  <th className="th" scope="col">Saidas:</th>
-                  <th className="th" scope="col">Troco:</th>
-                  <th className="th" scope="col">Gasto Total:</th>
-                  <th className="th" scope="col">Frete:</th>
-                  <th className="th" scope="col">Forma Paga:</th>
-                  <th className="th" scope="col">Parcelas:</th>
-                  <th className="th" scope="col">Parcela:</th>
-                  <th className="th" scope="col">Mês:</th>
-                  <th className="th" scope="col">Data de Cadastro:</th>
-                  <th className="th" scope="col">Fornecedor:</th>
-                  <th className="th" scope="col">Ação:</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  table.map(item => (
-                    <tr key={item.id}>
-                      <td className="td">{item.id}</td>
-                      <td className="td">{item.compran}</td>
-                      <td className="td">{item.nome}</td>
-                      <td className="td">{item.qtd}</td>
-                      <td className="td">{item.custo}</td>
-                      <td className="td">{item.total}</td>
-                      <td className="td">{item.totalfrete}</td>
-                      <td className="td">{item.valorpagto}</td>
-                      <td className="td">{item.troco}</td>
-                      <td className="td">{item.vp}</td>
-                      <td className="td">{item.vf}</td>
-                      <td className="td">{item.formapag}</td>
-                      <td className="td">{item.parcelamento}</td>
-                      <td className="td">{item.parcelan}</td>
-                      <td className="td">{item.mes}</td>
-                      <td className="td">{item.data_cad}</td>
-                      <td className="td">{item.fornecedor}</td>
-                      <td className="td">
-                        <button className="cadastrar" onClick={() => { handleCad(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Cadastrar:</button>
-                        <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
-                      </td>
-                    </tr>
-                  ))
-
-                }
-
-              </tbody>
-              <ToastContainer />
-            </table>
+          <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Saidas:</h4><br /><br />
+          <button type="button" onClick={voltar} style={{ backgroundColor: 'green', color: 'white', width: '120px', margin: '0' }}>Voltar:</button>
+          <button type="button" onClick={somar} style={{ backgroundColor: 'gray', color: 'white', width: '150px', margin: '0 10px' }}>Total Saidas:</button>
+          <strong style={{ fontSize: '30px' }}>Total:<span id="total" style={{ fontWeight: 'bold', color: 'green', margin: '0 10px' }}></span></strong><br /><br />
+          <div className="d-flex">
+            <label htmlFor="busca" style={{ fontWeight: 'bold', fontSize: '17px' }}>Busca por Nome:</label>
+            <label htmlFor="mes" style={{ fontWeight: 'bold', fontSize: '17px', margin: '0 200px' }}>Mês:</label>
           </div>
+          <div className="d-flex">
+            <input type="search" id="consulta" onKeyUp={MudaCorBusca} autoFocus='true' className="form-control rounded-0" value={buscanome} onChange={(e) => setBuscaNome(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', padding: '2px', width: '300px' }} />
+            <input type="text" className='form-control rounded-0' id="mes" onKeyUp={MudaCorMes} value={mes} onChange={(e) => setMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', width: '150px', padding: '2px', margin: '0 33px' }} />
+
+
+          </div>
+          <br /><br />
+          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '2360px' }} id="table">
+            <thead>
+              <tr>
+                <th className="th" scope="col">Id:</th>
+                <th className="th" scope="col">Compra nº:</th>
+                <th className="th" scope="col">Nome:</th>
+                <th className="th" scope="col">Qtd:</th>
+                <th className="th" scope="col">Custo:</th>
+                <th className="th" scope="col">Total:</th>
+                <th className="th" scope="col">Total c/Frete:</th>
+                <th className="th" scope="col">Saidas:</th>
+                <th className="th" scope="col">Troco:</th>
+                <th className="th" scope="col">Gasto Total:</th>
+                <th className="th" scope="col">Frete:</th>
+                <th className="th" scope="col">Forma Paga:</th>
+                <th className="th" scope="col">Parcelas:</th>
+                <th className="th" scope="col">Parcela:</th>
+                <th className="th" scope="col">Mês:</th>
+                <th className="th" scope="col">Data de Cadastro:</th>
+                <th className="th" scope="col">Fornecedor:</th>
+                <th className="th" scope="col">Ação:</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                table.map(item => (
+                  <tr key={item.id}>
+                    <td className="td">{item.id}</td>
+                    <td className="td">{item.compran}</td>
+                    <td className="td">{item.nome}</td>
+                    <td className="td">{item.qtd}</td>
+                    <td className="td">{item.custo}</td>
+                    <td className="td">{item.total}</td>
+                    <td className="td">{item.totalfrete}</td>
+                    <td className="td">{item.valorpagto}</td>
+                    <td className="td">{item.troco}</td>
+                    <td className="td">{item.gastototal}</td>
+                    <td className="td">{item.vf}</td>
+                    <td className="td">{item.formapag}</td>
+                    <td className="td">{item.parcelamento}</td>
+                    <td className="td">{item.parcelan}</td>
+                    <td className="td">{item.mes}</td>
+                    <td className="td">{item.data_cad}</td>
+                    <td className="td">{item.fornecedor}</td>
+                    <td className="td">
+                      <button className="cadastrar" onClick={() => { handleCad(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Cadastrar:</button>
+                      <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                    </td>
+                  </tr>
+                ))
+
+              }
+
+            </tbody>
+
+            <ToastContainer />
+          </table>
 
 
         </div>
 
 
       </div>
+
+
 
       <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000 }}>
         <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>

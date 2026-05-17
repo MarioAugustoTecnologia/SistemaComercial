@@ -244,7 +244,7 @@ const CadNovaCompra = () => {
 
       if (parcelamento === "" || parcelamento === null && parcela === "" || parcela === null && parcelan === "" || parcelan === null) {
 
-
+    
         if (document.getElementById('vf').value !== "" && document.getElementById('totalfrete').value !== '' && document.getElementById('valorpago').value !== '') {
 
           const dataInput = datacad;
@@ -264,8 +264,9 @@ const CadNovaCompra = () => {
             const t = parseFloat((valorpagto - totalfrete).toFixed(2));
             const troco = (t).toFixed(2)
             valorpagto = parseFloat(valorpagto).toFixed(2);
+            var gastototal = valorpagto;
 
-            const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpagto, totalfrete, vf }
+            const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpagto, totalfrete, vf, gastototal }
 
             Swal.fire({
               title: "Deseja salvar ?",
@@ -320,9 +321,11 @@ const CadNovaCompra = () => {
             });
 
           } else
-            if (valorpagto === totalfrete) {
+            if (valorpagto === totalfrete) {//ok
+              
+              gastototal = valorpagto;
 
-              const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpagto, totalfrete, vf }
+              const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpagto, totalfrete, vf, gastototal }
 
               if (isValidate()) {
 
@@ -382,7 +385,7 @@ const CadNovaCompra = () => {
 
             }
 
-        } 
+        }  
         else if (document.getElementById('vf').value === "" && document.getElementById('totalfrete').value === '' && document.getElementById('valorpago').value !== '') {
 
           const dataInput = datacad;
@@ -400,8 +403,9 @@ const CadNovaCompra = () => {
             const t = parseFloat((valorpagto - total).toFixed(2));
             const troco = (t).toFixed(2)
             valorpagto = parseFloat(valorpagto).toFixed(2);
+            gastototal = valorpagto;
 
-            const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpagto }
+            const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, troco, valorpagto, gastototal }
 
             Swal.fire({
               title: "Deseja salvar ?",
@@ -456,7 +460,9 @@ const CadNovaCompra = () => {
           } else
             if (valorpagto === total) {
 
-              const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpagto }
+              gastototal = valorpagto;
+
+              const cadobj = { compran, nome, qtd, custo, total, data_cad, formapag, mes, fornecedor, valorpagto, gastototal }
 
               if (isValidate()) {
 
@@ -517,6 +523,7 @@ const CadNovaCompra = () => {
 
             }
 
+   
         } else if (document.getElementById('vf').value === "" && document.getElementById('totalfrete').value === '' && document.getElementById('valorpago').value === '') {
 
 
@@ -529,8 +536,9 @@ const CadNovaCompra = () => {
           var mes = document.getElementById('mescompraatual').innerHTML;
           var valorpagto = 0;
           var custo = parseFloat(document.getElementById('custo').value).toFixed(2);
+          gastototal = total;
 
-          const cadobj = { compran, nome, qtd, custo, total, data_cad, mes, fornecedor, valorpagto }
+          const cadobj = { compran, nome, qtd, custo, total, data_cad, mes, fornecedor, valorpagto, gastototal }
 
           if (isValidate()) {
 
@@ -566,6 +574,8 @@ const CadNovaCompra = () => {
 
       } else {
 
+      
+
         if (document.getElementById('vf').value !== "" && document.getElementById('totalfrete').value !== '') {
 
           var compran = document.getElementById('compran').innerHTML;
@@ -580,8 +590,9 @@ const CadNovaCompra = () => {
           var custo = parseFloat(document.getElementById('custo').value).toFixed(2);
 
           const valorpagto = (totalfrete / parcela).toFixed(2);
+          gastototal = totalfrete;
 
-          const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes, fornecedor, totalfrete, vf }
+          const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes, fornecedor, totalfrete, vf, gastototal }
 
           if (isValidate()) {
 
@@ -641,7 +652,7 @@ const CadNovaCompra = () => {
           }
 
         } else {
-       
+
 
           var compran = document.getElementById('compran').innerHTML;
           var mes = document.getElementById('mescompraatual').innerHTML;
@@ -652,8 +663,9 @@ const CadNovaCompra = () => {
           const total = parseFloat(document.getElementById('total').value).toFixed(2);
           var custo = parseFloat(document.getElementById('custo').value).toFixed(2);
           const valorpagto = (total / parcela).toFixed(2);
+          gastototal = total;
 
-          const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes, fornecedor }
+          const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes, fornecedor, gastototal }
 
           if (isValidate()) {
 

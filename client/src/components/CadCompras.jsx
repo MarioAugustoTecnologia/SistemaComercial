@@ -732,7 +732,7 @@ const CadCompras = () => {
           var qtd = quant;       
 
           const valorpagto = (totalfrete / parcela).toFixed(2);
-          gastototal = totalfrete;
+          gastototal = valorpagto;
 
 
           const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes, fornecedor, totalfrete, vf, gastototal }
@@ -827,7 +827,7 @@ const CadCompras = () => {
           var custo = parseFloat(document.getElementById('custo').value).toFixed(2);
           const valorpagto = (total / parcela).toFixed(2);
           var qtd = quant;
-          gastototal = total
+          gastototal = valorpagto
     
 
           const cadobj = { compran, nome, qtd, custo, total, data_cad, valorpagto, formapag, parcelamento, parcelan, mes, fornecedor, gastototal }

@@ -88,13 +88,11 @@ const EntradasMes = () => {
 
       linhas.forEach(linha => {
 
-        const forma = linha.cells[9].textContent;
+      
         const total = parseFloat(linha.cells[10].textContent);
 
-        // Verifica a condição
-        if (forma !== "Crédito") {
           somaTotal += total;
-        }
+   
       });
       const nome = 'Total das entradas no mes de  ' + buscames;
       const total = somaTotal.toFixed(2);
@@ -177,7 +175,7 @@ const EntradasMes = () => {
   }
 
   return (
-    <div className="container-fluid">
+     <div className="container-fluid">
       <div className="row flex-nowrap">
         <div className="main-wrapper">
 
@@ -324,7 +322,7 @@ const EntradasMes = () => {
         <form action="" onSubmit={cadastrar}>
 
           <div className="mb3">
-            <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Entradas:</h4><br /><br />
+   
             <div className="d-flex">
               <label htmlFor="busca" style={{ fontWeight: 'bold', fontSize: '17px' }}>Busca por Mês:</label>
               <label htmlFor="mes" style={{ fontWeight: 'bold', fontSize: '17px', margin: '0 332px' }}>Mês Atual:</label>
@@ -332,10 +330,10 @@ const EntradasMes = () => {
             </div>
             <div className="d-flex">
               <input type="search" id="buscames" onKeyUp={CorBuscaMes} autoFocus='true' className="form-control rounded-0" value={buscames} onChange={(e) => setBuscaMes(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold', color: 'navy', padding: '2px', width: '150px', height: '30px' }} />
-              <Link to="/entradas" className="btn btn-success rounded-0" style={{ width: '100px', margin: '0 25px' }} >Voltar:</Link>
-              <Link onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 -22px', width: '150px' }}>Total Entradas:</Link>
+              <Link to="/entradas" className="btn btn-success rounded-0" style={{ width: '100px', margin: '0 25px', height:'35px', padding:'-1px' }} >Voltar:</Link>
+              <Link onClick={somar} className="btn rounded-0" style={{ color: 'white', backgroundColor: 'gray', margin: '0 -22px', width: '150px', height:'35px', padding:'-1px'}}>Total Entradas:</Link>
 
-              <select value={mes} onChange={e => setMes(e.target.value)} style={{ height: '40px', fontSize: '17px', width: 160, margin: '0 49px', fontWeight: 'bold', color: 'navy' }} name='mes' id='mes' className='form-select rounded-0'>
+              <select value={mes} onChange={e => setMes(e.target.value)} style={{ height: '30px', fontSize: '17px', width: 160, margin: '0 49px', fontWeight: 'bold', color: 'navy' }} name='mes' id='mes' className='form-select rounded-0'>
                 <option value=""></option>
                 <option value="Janeiro">Janeiro</option>
                 <option value="Fevereiro">Fevereiro</option>
@@ -350,8 +348,8 @@ const EntradasMes = () => {
                 <option value="Novembro">Novembro</option>
                 <option value="Dezembro">Dezembro</option>
               </select>
-              <button type="submit" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '0 20px', width: '150px' }}>Atualiza Mês:</button>
-              <Link to="/mesatual" className="btn rounded-0" style={{ width: '100px', margin: '0 25px', backgroundColor:'navy', color:'white' }} >Mês atual:</Link>
+              <button type="submit" className="btn rounded-0" style={{ color: 'white', backgroundColor: 'blue', margin: '0 -13px', width: '150px', height:'35px', padding: '-1px'}}>Atualiza Mês:</button>
+              <Link to="/mesatual" className="btn rounded-0" style={{ width: '100px', margin: '0 15px', backgroundColor:'navy', color:'white', height:'35px', padding:'-1px' }} >Mês atual:</Link>
 
             </div><br /><br /><br /><br />
 
@@ -412,10 +410,6 @@ const EntradasMes = () => {
 
 
           </div>
-
-
-
-
 
         </form>
 

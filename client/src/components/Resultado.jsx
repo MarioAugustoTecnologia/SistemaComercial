@@ -10,87 +10,90 @@ const Resultado = () => {
   const [resultado, setResultado] = useState([])
 
   const API_URL = 'https://sistemacomercial-fv5g.onrender.com/resultados';
-   
-     useEffect(() => {
-   
-       fetch(API_URL)
-         .then(response => response.json())
-         .then(data => setResultado(data))
-         .catch(error => console.error('Erro ao buscar os dados:', error));
-   
-     }, [])
 
-      const handleDelete = async (id) => {
-       
-           const result = await Swal.fire({
-             title: "Deseja Excluir ?",
-             showDenyButton: true,
-             showCancelButton: true,
-             confirmButtonText: "Excluir",
-             denyButtonText: `Não Excluir`
-           })
-       
-           if (result.isConfirmed) {
-       
-             fetch('https://sistemacomercial-fv5g.onrender.com/resultados/' + id, {
-       
-               method: "DELETE"
-       
-             }).then((res) => {
-       
-               window.location.reload();
-               //toast.success('Excluido com sucesso !')      
-       
-             }).catch((err) => {
-               toast.error('Erro ! :' + err.message)
-             })
-       
-           } else if (result.isDenied) {
-             Swal.fire("Nada excluido", "", "info");
-           }
-       
-       
-         }
-     
-const deleteall = async () => {
-      
-          const result = await Swal.fire({
-            title: "Deseja Excluir ?",
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: "Excluir",
-            denyButtonText: `Não Excluir`
+  useEffect(() => {
+
+    fetch(API_URL)
+      .then(response => response.json())
+      .then(data => setResultado(data))
+      .catch(error => console.error('Erro ao buscar os dados:', error));
+
+  }, [])
+
+  const handleDelete = async (id) => {
+
+    const result = await Swal.fire({
+      title: "Deseja Excluir ?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Excluir",
+      denyButtonText: `Não Excluir`
+    })
+
+    if (result.isConfirmed) {
+
+      fetch('https://sistemacomercial-fv5g.onrender.com/resultados/' + id, {
+
+        method: "DELETE"
+
+      }).then((res) => {
+
+        window.location.reload();
+        //toast.success('Excluido com sucesso !')      
+
+      }).catch((err) => {
+        toast.error('Erro ! :' + err.message)
+      })
+
+    } else if (result.isDenied) {
+      Swal.fire("Nada excluido", "", "info");
+    }
+
+
+  }
+
+  const deleteall = async () => {
+
+    const result = await Swal.fire({
+      title: "Deseja Excluir ?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Excluir",
+      denyButtonText: `Não Excluir`
+    })
+
+    if (result.isConfirmed) {
+
+      try {
+        // Mapeia o array de vendas para um array de promessas de exclusão
+        const deletePromises = resultado.map(item =>
+          fetch(`${API_URL}/${item.id}`, {
+            method: 'DELETE',
           })
-      
-          if (result.isConfirmed) {
-      
-            try {
-              // Mapeia o array de vendas para um array de promessas de exclusão
-              const deletePromises = resultado.map(item =>
-                fetch(`${API_URL}/${item.id}`, {
-                  method: 'DELETE',
-                })
-              );
-      
-              // Espera que todas as promessas de exclusão sejam resolvidas
-              await Promise.all(deletePromises);
-      
-              // Limpa a lista no estado do React
-              setResultado([]);
-              //console.log('Todos os dados foram excluídos com sucesso!');
-              toast.success('Excluido com sucesso !')  
-      
-            } catch (error) {
-      
-              console.error('Erro ao excluir todos os dados:', error);
-            }    
-            
-          } else if (result.isDenied) {
-            Swal.fire("Nada excluido", "", "info");
-          }
-      
-      
- };
+        );
+
+        // Espera que todas as promessas de exclusão sejam resolvidas
+        await Promise.all(deletePromises);
+
+        // Limpa a lista no estado do React
+        setResultado([]);
+        //console.log('Todos os dados foram excluídos com sucesso!');
+        toast.success('Excluido com sucesso !')
+
+      } catch (error) {
+
+        console.error('Erro ao excluir todos os dados:', error);
+      }
+
+
+    } else if (result.isDenied) {
+      Swal.fire("Nada excluido", "", "info");
+    }
+
+
+  };
+
+
 
   const logout = () => {
     localStorage.clear()
@@ -99,7 +102,8 @@ const deleteall = async () => {
   }
 
   return (
- <div className="container-fluid">
+
+    <div className="container-fluid">
       <div className="row flex-nowrap">
         <div className="main-wrapper">
 
@@ -286,10 +290,10 @@ const deleteall = async () => {
             <ToastContainer />
 
           </table>
-              <Link to="/cadresultado" className="btn rounded-0" style={{ fontSize: '15px', fontFamily: 'arial', color: 'white', backgroundColor: 'green' }}>Novo Resultado:</Link>
-              <Link to="/resultado/gerarpdf" className="btn rounded-0" style={{ fontSize: '15px', fontFamily: 'arial', color: 'white', backgroundColor: 'Crimson', width: '11%', margin: '0 20px' }}>Gerar Pdf:</Link>
-              <Link className="btn rounded-0" style={{ color: 'white', backgroundColor: 'red', margin: '0 5px', fontSize: '15px', fontFamily: 'arial' }} onClick={deleteall}>Excluir Todos:</Link>
-            
+          <Link to="/cadresultado" className="btn rounded-0" style={{ fontSize: '15px', fontFamily: 'arial', color: 'white', backgroundColor: 'green' }}>Novo Resultado:</Link>
+          <Link to="/resultado/gerarpdf" className="btn rounded-0" style={{ fontSize: '15px', fontFamily: 'arial', color: 'white', backgroundColor: 'Crimson', width: '11%', margin: '0 20px' }}>Gerar Pdf:</Link>
+          <Link className="btn rounded-0" style={{ color: 'white', backgroundColor: 'red', margin: '0 5px', fontSize: '15px', fontFamily: 'arial' }} onClick={deleteall}>Excluir Todos:</Link>
+
 
         </div><br /><br />
       </div>

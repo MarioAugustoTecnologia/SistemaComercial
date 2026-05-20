@@ -56,7 +56,7 @@ const CadResultado = () => {
   const isValidate = () => {
     let isproceed = true
     let errormessage = "Campos não podem estar vazio  !"
- 
+
     if (mes === null || mes === '') {
       document.getElementById('mes').style.borderColor = 'red'
       isproceed = false
@@ -64,6 +64,16 @@ const CadResultado = () => {
     }
     if (document.getElementById('resultado').value === null || document.getElementById('resultado').value === '') {
       document.getElementById('resultado').style.borderColor = 'red'
+      isproceed = false
+      // errormessage += 'Email:' 
+    }
+       if (document.getElementById('entradas').value === null || document.getElementById('entradas').value === '') {
+      document.getElementById('entradas').style.borderColor = 'red'
+      isproceed = false
+      // errormessage += 'Email:' 
+    }
+       if (document.getElementById('saidas').value === null || document.getElementById('saidas').value === '') {
+      document.getElementById('saidas').style.borderColor = 'red'
       isproceed = false
       // errormessage += 'Email:' 
     }
@@ -81,24 +91,32 @@ const CadResultado = () => {
   function MostraSaidas() {
     document.getElementById('saidas').style.borderColor = 'GainsBoro'
   }
+    function MostraMes() {
+    document.getElementById('mes').style.borderColor = 'GainsBoro'
+  }
+
+  function MostraResultado() {
+    document.getElementById('resultado').style.borderColor = 'GainsBoro'
+  }
 
 
-    function somar() { 
-  
-  
-        let valores = [];
-  
-        table2.map(item => {
-          valores.push(item.total)
-        })
-  
-        let soma = valores.reduce((previous_value, current_value) => {       // método que faz a soma
-          return parseFloat(previous_value) + parseFloat(current_value);     // converte de string para number
-        }) 
+  function somar() {
 
-        document.getElementById('saidas').value = soma;
-              
-    }
+
+    let valores = [];
+
+    table2.map(item => {
+      valores.push(item.total)
+    })
+
+    let soma = valores.reduce((previous_value, current_value) => {       // método que faz a soma
+      return parseFloat(previous_value) + parseFloat(current_value);     // converte de string para number
+    })
+
+    document.getElementById('saidas').value = soma;
+    MostraSaidas()
+
+  }
 
 
   const cadastrar = (e) => {
@@ -131,7 +149,7 @@ const CadResultado = () => {
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(cadobj)
           }).then((res) => {
-            toast.success('Cadastrado com Sucesso !')             
+            toast.success('Cadastrado com Sucesso !')
 
           }).catch((err) => {
             toast.error('Erro ! :' + err.message)
@@ -151,147 +169,150 @@ const CadResultado = () => {
 
     const saidas = document.getElementById('saidas').value;
     const entradas = document.getElementById('entradas').value;
-    const resultado = (entradas - saidas).toFixed(2);
+    const resultado = Number(entradas - saidas).toFixed(2);
     console.log(resultado)
     document.getElementById('resultado').value = resultado;
+    MostraResultado()
 
   }
 
   const DeleteEntradas = (id) => {
-  
-      Swal.fire({
-        title: "Deseja Excluir ?",
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: "Excluir",
-        denyButtonText: `Não Excluir`
-      }).then((result) => {
-  
-        if (result.isConfirmed) {
-  
-          fetch("https://sistemacomercial-fv5g.onrender.com/entradas/" + id, {
-  
-            method: "DELETE"
-  
-          }).then((res) => {
-  
-            window.location.reload();    
-  
-          }).catch((err) => {
-            toast.error('Erro ! :' + err.message)
-          })
-        } else if (result.isDenied) {
-          Swal.fire("Nada excluido", "", "info");
-        }
-      });
-  
-    }
 
+    Swal.fire({
+      title: "Deseja Excluir ?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Excluir",
+      denyButtonText: `Não Excluir`
+    }).then((result) => {
 
-      const DeleteSaidas = (id) => {
-  
-      Swal.fire({
-        title: "Deseja Excluir ?",
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: "Excluir",
-        denyButtonText: `Não Excluir`
-      }).then((result) => {
-  
-        if (result.isConfirmed) {
-  
-          fetch("https://sistemacomercial-fv5g.onrender.com/saidas/" + id, {
-  
-            method: "DELETE"
-  
-          }).then((res) => {
-  
-            window.location.reload();               
-  
-          }).catch((err) => {
-            toast.error('Erro ! :' + err.message)
-          })
-        } else if (result.isDenied) {
-          Swal.fire("Nada excluido", "", "info");
-        }
-      });
-  
-    }
+      if (result.isConfirmed) {
 
-    const DeleteAllInputs = (id) => {
-    
-        Swal.fire({
-          title: "Deseja Excluir ?",
-          showDenyButton: true,
-          showCancelButton: true,
-          confirmButtonText: "Excluir",
-          denyButtonText: `Não Excluir`
-        }).then((result) => {
-    
-          if (result.isConfirmed) {
-            for (id = 0; id <= entradadata.length; id++) {
-    
-              fetch("https://sistemacomercial-fv5g.onrender.com/entradas/" + id, {
-    
-                method: "DELETE"
-    
-              }).then((res) => {
-    
-                window.location.reload();                  
-    
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-    
-            }
-          } else if (result.isDenied) {
-            Swal.fire("Nada excluido", "", "info");
-          }
-        });
-    
+        fetch("https://sistemacomercial-fv5g.onrender.com/entradas/" + id, {
+
+          method: "DELETE"
+
+        }).then((res) => {
+
+          window.location.reload();
+          //toast.success('Excluido com sucesso !')     
+
+        }).catch((err) => {
+          toast.error('Erro ! :' + err.message)
+        })
+      } else if (result.isDenied) {
+        Swal.fire("Nada excluido", "", "info");
       }
+    });
 
-      const DeleteAllOutputs = (id) => {
-    
-        Swal.fire({
-          title: "Deseja Excluir ?",
-          showDenyButton: true,
-          showCancelButton: true,
-          confirmButtonText: "Excluir",
-          denyButtonText: `Não Excluir`
-        }).then((result) => {
-    
-          if (result.isConfirmed) {
-            for (id = 0; id <= saidadata.length; id++) {
-    
-              fetch("https://sistemacomercial-fv5g.onrender.com/saidas/" + id, {
-    
-                method: "DELETE"
-    
-              }).then((res) => {
-    
-                window.location.reload();
-                //toast.success('Excluido com sucesso !')    
-    
-              }).catch((err) => {
-                toast.error('Erro ! :' + err.message)
-              })
-    
-            }
-          } else if (result.isDenied) {
-            Swal.fire("Nada excluido", "", "info");
-          }
-        });
-    
-      } 
-      
-      
- const handleInsert = () => {
-    
-    document.getElementById('entradas').value = document.getElementById('total').innerHTML;  
+  }
 
-}
-  
+
+  const DeleteSaidas = (id) => {
+
+    Swal.fire({
+      title: "Deseja Excluir ?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Excluir",
+      denyButtonText: `Não Excluir`
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+
+        fetch("https://sistemacomercial-fv5g.onrender.com/saidas/" + id, {
+
+          method: "DELETE"
+
+        }).then((res) => {
+
+          window.location.reload();
+          //toast.success('Excluido com sucesso !')     
+
+        }).catch((err) => {
+          toast.error('Erro ! :' + err.message)
+        })
+      } else if (result.isDenied) {
+        Swal.fire("Nada excluido", "", "info");
+      }
+    });
+
+  }
+
+  const DeleteAllInputs = (id) => {
+
+    Swal.fire({
+      title: "Deseja Excluir ?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Excluir",
+      denyButtonText: `Não Excluir`
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+        for (id = 0; id <= entradadata.length; id++) {
+
+          fetch("https://sistemacomercial-fv5g.onrender.com/entradas/" + id, {
+
+            method: "DELETE"
+
+          }).then((res) => {
+
+            window.location.reload();
+
+          }).catch((err) => {
+            toast.error('Erro ! :' + err.message)
+          })
+
+        }
+      } else if (result.isDenied) {
+        Swal.fire("Nada excluido", "", "info");
+      }
+    });
+
+  }
+
+  const DeleteAllOutputs = (id) => {
+
+    Swal.fire({
+      title: "Deseja Excluir ?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Excluir",
+      denyButtonText: `Não Excluir`
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+        for (id = 0; id <= saidadata.length; id++) {
+
+          fetch("https://sistemacomercial-fv5g.onrender.com/saidas/" + id, {
+
+            method: "DELETE"
+
+          }).then((res) => {
+
+            window.location.reload();
+            //toast.success('Excluido com sucesso !')    
+
+          }).catch((err) => {
+            toast.error('Erro ! :' + err.message)
+          })
+
+        }
+      } else if (result.isDenied) {
+        Swal.fire("Nada excluido", "", "info");
+      }
+    });
+
+  }
+
+
+  const handleInsert = () => {
+
+    document.getElementById('entradas').value = document.getElementById('total').innerHTML;
+    MostraEntradas()
+
+  }
 
   const logout = () => {
     localStorage.clear()
@@ -450,7 +471,7 @@ const CadResultado = () => {
       <div className="container" style={{ display: 'flex', margin: '0 230px', marginTop: '-950px' }}>
 
         <form action='' onSubmit={cadastrar}>
-          <h5><center><strong>Cadastrar novo Resultado:</strong></center></h5><br />
+          <h5 style={{margin:'0 100px'}}><strong>Cadastrar novo Resultado:</strong></h5><br />
           <div className='mb-3'>
             <label htmlFor='entradas' style={{ fontSize: '17px', margin: '0 115px', fontWeight: 'bold' }}>Total de Entradas:</label>
             <input type='decimal' onKeyUp={MostraEntradas} placeholder='Entre com o total:' style={{ fontSize: '17px', width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='entradas' id='entradas' />
@@ -459,7 +480,7 @@ const CadResultado = () => {
             <input type='decimal' onKeyUp={MostraSaidas} placeholder='Entre com o total:' style={{ fontSize: '17px', width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='saidas' id='saidas' />
             <br />
             <label htmlFor='mes' style={{ fontSize: '17px', margin: '0 115px', fontWeight: 'bold' }}>Mes:</label>
-            <select style={{ fontSize: '17px', width: 150, margin: '0 115px', color: 'navy', fontWeight: 'bold' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
+            <select onClick={MostraMes} style={{ fontSize: '17px', width: 150, margin: '0 115px', color: 'navy', fontWeight: 'bold' }} name='mes' id='mes' className='form-select' value={mes} onChange={e => meschange(e.target.value)}>
               <option value=""></option>
               <option value="Janeiro">Janeiro</option>
               <option value="Fevereiro">Fevereiro</option>
@@ -480,7 +501,7 @@ const CadResultado = () => {
           <br />
           <div className='d-flex'>
             <button type='submit' className='btn btn-success border rounded-0' style={{ width: 100, margin: '0 120px', fontSize: '15px' }}>Cadastrar:</button>
-            <button className='btn btn-primary border rounded-0' onClick={calcResult} style={{ width: 100, margin: '0 -100px', fontSize: '15px' }}>Total:</button>
+            <button type='button' className='btn btn-primary border rounded-0' onClick={calcResult} style={{ width: 100, margin: '0 -100px', fontSize: '15px' }}>Total:</button>
             <Link to='/resultado' className="btn border rounded-0" style={{ color: 'white', backgroundColor: 'orange', margin: '0 120px', fontSize: '15px', width: 100 }}>Voltar:</Link><br />
           </div>
           <br /><br />
@@ -494,18 +515,16 @@ const CadResultado = () => {
             <input type='search' value={buscasaida} onChange={e => setBuscaSaida(e.target.value)} style={{ fontFamily: 'arial', fontSize: '17px', width: 200, margin: '0 -80px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='saidas' id='saidas' />
 
           </div><br />
-          <div>
-            <button className='btn order rounded-0' style={{ width: 100, fontSize: '15px', backgroundColor: 'green', color: 'white', margin: '0 115px' }} onClick={somar}>Total:</button>
-          </div><br /><br />
+
           <div className='d-flex'>
             <h5 style={{ color: 'navy', fontWeight: 'bold', margin: '0 5px' }}>Entradas:</h5>
-            <h5 style={{ color: 'navy', fontWeight: 'bold', margin: '0 330px' }}>Saidas:</h5>
+            <h5 style={{ color: 'navy', fontWeight: 'bold', margin: '0 520px' }}>Saidas:</h5>
 
           </div>
 
           <div className='d-flex'>
 
-            <table className="table" id="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '35%', margin: '0 0px' }} >
+            <table className="table" id="table" style={{ fontFamily: 'arial', fontSize: '17px', margin: '0 0px' }} >
               <thead>
                 <tr>
                   <th className="th" scope="col">Nome:</th>
@@ -520,8 +539,8 @@ const CadResultado = () => {
                       <td className="td" style={{ color: 'green', fontWeight: 'bold' }}>{item.nome}</td>
                       <td className="td" style={{ color: 'green', fontWeight: 'bold' }} id='total'>{item.total}</td>
                       <td className="td">
-                        <button className="inserir" onClick={() => { handleInsert(item.total) }} style={{ color: 'white', backgroundColor: 'orange', border: 'none', borderRadius: '5px' }}>Inserir:</button>
-                        <button className="excluir" onClick={() => { DeleteEntradas(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                        <button type='button' className="inserir" onClick={() => { handleInsert(item.total) }} style={{ color: 'white', backgroundColor: 'orange', border: 'none', borderRadius: '5px' }}>Inserir:</button>
+                        <button type='button' className="excluir" onClick={() => { DeleteEntradas(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
                       </td>
                     </tr>
                   ))
@@ -531,7 +550,7 @@ const CadResultado = () => {
               </tbody>
 
             </table>
-            <table className="table" id="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '30%', margin: '0 120px' }} >
+            <table className="table" id="table" style={{ fontFamily: 'arial', fontSize: '17px', margin: '0 120px' }} >
               <thead>
                 <tr>
                   <th className="th" scope="col">Nome:</th>
@@ -546,11 +565,12 @@ const CadResultado = () => {
                       <td className="td" style={{ color: 'red', fontWeight: 'bold' }}>{item.nome}</td>
                       <td className="td" style={{ color: 'red', fontWeight: 'bold' }}>{item.total}</td>
                       <td className="td">
-                        <button className="excluir" onClick={() => { DeleteSaidas(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                        <button type='button' className="excluir" onClick={() => { DeleteSaidas(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
                       </td>
                     </tr>
                   ))
                 }
+
 
               </tbody>
 
@@ -558,17 +578,13 @@ const CadResultado = () => {
 
           </div><br />
           <div className='d-flex'>
-            <button className='btn order rounded-0' onClick={DeleteAllInputs} style={{ width: 120, fontSize: '15px', backgroundColor: 'red', color: 'white', margin: '0 0px' }} >Excluir Tudo:</button>
-            <button className='btn order rounded-0' onClick={DeleteAllOutputs} style={{ width: 120, fontSize: '15px', backgroundColor: 'red', color: 'white', margin: '0 305px' }} >Excluir Tudo:</button>
-
-          </div>
+            <button type='button' className='btn order rounded-0' onClick={DeleteAllInputs} style={{ width: 120, fontSize: '15px', backgroundColor: 'red', color: 'white', margin: '0 0px' }} >Excluir Tudo:</button>
+            <button type='button' className='btn order rounded-0' onClick={DeleteAllOutputs} style={{ width: 120, fontSize: '15px', backgroundColor: 'red', color: 'white', margin: '0 620px' }} >Excluir Tudo:</button>
+            <button type='button' className='btn order rounded-0' style={{ width: 120, fontSize: '15px', backgroundColor: 'navy', color: 'white', margin:'0 -600px'}} onClick={somar}>Total Saidas:</button>
+          </div>     
 
 
         </form><br />
-
-
-
-
 
       </div><br />
       <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000, height: '30px' }}>
@@ -577,6 +593,8 @@ const CadResultado = () => {
 
 
     </div>
+
+
 
 
   )

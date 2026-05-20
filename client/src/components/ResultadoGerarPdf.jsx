@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Link, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import generatePDF, { Margin } from 'react-to-pdf';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -14,11 +14,12 @@ const ResultadoGerarPdf = () => {
     fetch("https://sistemacomercial-fv5g.onrender.com/resultados", {
 
       method: "GET",
-      headers: {'content-type':'application/json'} }
-      
+      headers: { 'content-type': 'application/json' }
+    }
+
     ).then((res) => {
 
-    return res.json()   
+      return res.json()
 
     }).then((resp) => {
 
@@ -26,33 +27,33 @@ const ResultadoGerarPdf = () => {
 
     }).catch((err) => {
       console.log(err.message)
-    }) 
+    })
   }, [])
-  
+
   const GerarPdf = () => document.getElementById('conteudo');
   const personalizacao = {
-     method: 'open',
-     page: {
-    // margin is in MM, default is Margin.NONE = 0
-    margin: Margin.MEDIUM,
-    // default is 'A4'
-    format: 'A4',
-    // default is 'portrait'
-    orientation: 'portrait',
- },
-}
+    method: 'open',
+    page: {
+      // margin is in MM, default is Margin.NONE = 0
+      margin: Margin.MEDIUM,
+      // default is 'A4'
+      format: 'A4',
+      // default is 'portrait'
+      orientation: 'portrait',
+    },
+  }
 
 
 
   const logout = () => {
     localStorage.clear()
     console.clear();
-    
-  } 
 
-  
+  }
+
+
   return (
-     <div className="container-fluid">
+    <div className="container-fluid">
       <div className="row flex-nowrap">
         <div className="main-wrapper">
 
@@ -250,10 +251,10 @@ const ResultadoGerarPdf = () => {
         </div>
 
       </div>
-        <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000, height: '30px' }}>
-           <p className="fw-bolder text-white" style={{ marginTop: '-10px' }}>&copy; Multicompany Solutions</p>
-        </footer>
-    </div> 
+      <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000, height: '30px' }}>
+        <p className="fw-bolder text-white" style={{ marginTop: '-10px' }}>&copy; Multicompany Solutions</p>
+      </footer>
+    </div>
 
   )
 }

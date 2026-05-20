@@ -244,7 +244,7 @@ const Entradas = () => {
           <h5 style={{ fontWeight: 'bold', color: 'blue', margin: '0 800px' }}>Entradas:</h5><br /><br />
           <button type="button" onClick={deleteall} style={{ backgroundColor: 'red', color: 'white', width: '120px', margin: '0' }}>Excluir Tudo:</button>
           <br /><br />
-          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '2100px' }} id="table">
+          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '2300px' }} id="table">
             <thead>
               <tr>
                 <th className="th" scope="col">Id:</th>

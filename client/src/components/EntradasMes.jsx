@@ -118,11 +118,6 @@ const EntradasMes = () => {
       }).catch((err) => {
         toast.error('Erro ! :' + err.message)
       })
-
-
-
-
-
     }
   }
 

@@ -32,12 +32,13 @@ const CadVenda = () => {
   const [formapag, formapagchange] = useState("")
   const [estoque, qtdchange] = useState("")
   const [quant, quantchange] = useState("")
-  const [parcelamento, parcelamentochange] = useState("")
-  const [parcela, parcelachange] = useState("")
-  const [parcelan, parcelanchange] = useState("")
   const [entradadata, setEntradadata] = useState([])
   const [mesatual, setMesAtual] = useState([])
   const [categoria, setCategoria] = useState('')
+  const [parcelamento, parcelamentochange] = useState("")
+  const [parcela, parcelachange] = useState("")
+  const [parcelan, parcelanchange] = useState("")
+
 
   useEffect(() => {
 
@@ -54,6 +55,7 @@ const CadVenda = () => {
     })
 
   }, [])
+
 
 
   useEffect(() => {
@@ -151,6 +153,7 @@ const CadVenda = () => {
       //errormessage += 'Telefone:' 
     }
 
+
     if (!isproceed) {
       toast.warning(errormessage)
     }
@@ -166,9 +169,10 @@ const CadVenda = () => {
       const total = (quant * preco).toFixed(2);
       console.log(total)
       document.getElementById('total').value = total;
+      mudacorTotal()
+
 
     }
-
   }
 
   function desconto() {
@@ -181,10 +185,10 @@ const CadVenda = () => {
       const desconto = parseFloat(desc * total).toFixed(2);
       console.log(desconto)
       const novototal = total - desconto;
-      document.getElementById('totaldesc').value = novototal;
-      document.getElementById('valordesc').value = desconto;
+      document.getElementById('totaldesc').value = parseFloat(novototal).toFixed(2);
+      document.getElementById('valordesc').value = parseFloat(desconto).toFixed(2);
       document.getElementById('desconto').value = (desc * 100) + '%';
-      document.getElementById('valorpago').value = 0;
+      document.getElementById('valorpago').value = parseFloat(novototal).toFixed(2);
 
     }
 
@@ -212,6 +216,7 @@ const CadVenda = () => {
 
       if (parcelamento === "" || parcelamento === null && parcela === "" || parcela === null && parcelan === "" || parcelan === null) {
 
+        //1.  Venda de Um Produto. Total com Desconto: ok
         if (document.getElementById('desconto').value !== "" && document.getElementById('totaldesc').value !== '' && document.getElementById('valorpago').value !== '' && document.getElementById('valordesc').value !== '') {
 
           const data_cad = formataData();
@@ -222,15 +227,15 @@ const CadVenda = () => {
           var valorpagto = parseFloat(document.getElementById('valorpago').value).toFixed(2);
           var desconto = document.getElementById('desconto').value;
           var valordesc = parseFloat(document.getElementById('valordesc').value).toFixed(2);
-          var vp = valorpagto;
+          var ganhototal = valorpagto;
 
-          if (valorpagto > totaldesc) {
+          if (valorpagto > totaldesc) {//ok
 
             const t = parseFloat((valorpagto - totaldesc).toFixed(2));
             const troco = (t).toFixed(2)
             valorpagto = parseFloat(valorpagto).toFixed(2);
 
-            const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, troco, valorpagto, totaldesc, desconto, valordesc, vp }
+            const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, troco, valorpagto, totaldesc, desconto, valordesc, ganhototal }
 
             Swal.fire({
               title: "Deseja salvar ?",
@@ -261,10 +266,44 @@ const CadVenda = () => {
                     body: JSON.stringify(edtobj)
                   }).then((res) => {
                     console.log(qtd);
+                    Swal.fire({
+                      position: "center",
+                      icon: "success",
+                      title: "Estoque Atualizado...",
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
 
                   }).catch((err) => {
                     toast.error('Erro ! :' + err.message)
                   })
+
+                }).catch((err) => {
+                  toast.error('Erro ! :' + err.message)
+                })
+
+                const number = document.getElementById('vendan').textContent;
+                const id = document.getElementById('id').textContent;
+                console.log(number)
+                console.log(id)
+
+                function AddNumber() {
+                  return parseInt(number) + 1;
+                }
+
+                console.log(AddNumber())
+
+                const numero = AddNumber();
+
+                const edtobj2 = { id, numero }
+
+                fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                  method: "PATCH",
+                  headers: { 'content-type': 'application/json' },
+                  body: JSON.stringify(edtobj2)
+                }).then((res) => {
+                  toast.success('Venda Nº Atualizada com Sucesso !')
+
 
                 }).catch((err) => {
                   toast.error('Erro ! :' + err.message)
@@ -275,132 +314,14 @@ const CadVenda = () => {
               }
             });
 
-          } else
-            if (valorpagto == 0) {
+          }
+          else if (valorpagto === totaldesc) {//ok
 
-              vp = totaldesc;
+            ganhototal = valorpagto;
 
-              const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, valorpagto, totaldesc, desconto, valordesc, vp }
+            const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, valorpagto, totaldesc, desconto, valordesc, ganhototal }
 
-              if (isValidate()) {
-
-                Swal.fire({
-                  title: "Deseja salvar ?",
-                  showDenyButton: true,
-                  showCancelButton: true,
-                  confirmButtonText: "Salvar",
-                  denyButtonText: `Não salvar`
-                }).then((result) => {
-
-                  if (result.isConfirmed) {
-
-                    fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                      method: "POST",
-                      headers: { 'content-type': 'application/json' },
-                      body: JSON.stringify(cadobj)
-                    }).then((res) => {
-                      toast.success('Cadastrado com Sucesso !')
-
-                      function Subtract() {
-                        return estoque - quant;
-                      }
-                      const qtd = Subtract();
-                      const edtobj = { id, qtd }
-
-                      fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
-                        method: "PATCH",
-                        headers: { 'content-type': 'application/json' },
-                        body: JSON.stringify(edtobj)
-                      }).then((res) => {
-                        console.log(qtd);
-
-                      }).catch((err) => {
-                        toast.error('Erro ! :' + err.message)
-                      })
-                      navigate('/produtos/codigo')
-                    }).catch((err) => {
-                      toast.error('Erro ! :' + err.message)
-                    })
-
-                  } else if (result.isDenied) {
-                    Swal.fire("Nada salvo", "", "info");
-                  }
-                });
-
-              }
-
-            } else if (valorpagto === totaldesc) {
-
-              vp = totaldesc;
-
-              const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, valorpagto, totaldesc, desconto, valordesc, vp }
-
-              if (isValidate()) {
-
-                Swal.fire({
-                  title: "Deseja salvar ?",
-                  showDenyButton: true,
-                  showCancelButton: true,
-                  confirmButtonText: "Salvar",
-                  denyButtonText: `Não salvar`
-                }).then((result) => {
-
-                  if (result.isConfirmed) {
-
-                    fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                      method: "POST",
-                      headers: { 'content-type': 'application/json' },
-                      body: JSON.stringify(cadobj)
-                    }).then((res) => {
-                      toast.success('Cadastrado com Sucesso !')
-
-                      function Subtract() {
-                        return estoque - quant;
-                      }
-                      const qtd = Subtract();
-                      const edtobj = { id, qtd }
-
-                      fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
-                        method: "PATCH",
-                        headers: { 'content-type': 'application/json' },
-                        body: JSON.stringify(edtobj)
-                      }).then((res) => {
-                        console.log(qtd);
-
-                      }).catch((err) => {
-                        toast.error('Erro ! :' + err.message)
-                      })
-
-                    }).catch((err) => {
-                      toast.error('Erro ! :' + err.message)
-                    })
-
-                  } else if (result.isDenied) {
-                    Swal.fire("Nada salvo", "", "info");
-                  }
-                });
-
-              }
-            }
-
-        } else
-          if (document.getElementById('desconto').value === "" && document.getElementById('totaldesc').value === '' && document.getElementById('valorpago').value !== '' && document.getElementById('valordesc').value === '') {
-
-
-            const data_cad = formataData();
-            var total = parseFloat(document.getElementById('total').value).toFixed(2);
-            var vendan = document.getElementById('vendan').innerHTML;
-            var mes = document.getElementById('mesatual').innerHTML;
-            var valorpagto = parseFloat(document.getElementById('valorpago').value).toFixed(2);
-            vp = valorpagto;
-
-            if (valorpagto > total) {
-
-              const t = parseFloat((valorpagto - total).toFixed(2));
-              const troco = (t).toFixed(2)
-              valorpagto = parseFloat(valorpagto).toFixed(2);
-
-              const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, troco, valorpagto, vp }
+            if (isValidate()) {
 
               Swal.fire({
                 title: "Deseja salvar ?",
@@ -431,6 +352,13 @@ const CadVenda = () => {
                       body: JSON.stringify(edtobj)
                     }).then((res) => {
                       console.log(qtd);
+                      Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Estoque Atualizado...",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
 
                     }).catch((err) => {
                       toast.error('Erro ! :' + err.message)
@@ -440,15 +368,145 @@ const CadVenda = () => {
                     toast.error('Erro ! :' + err.message)
                   })
 
+                  const number = document.getElementById('vendan').textContent;
+                  const id = document.getElementById('id').textContent;
+                  console.log(number)
+                  console.log(id)
+
+                  function AddNumber() {
+                    return parseInt(number) + 1;
+                  }
+
+                  console.log(AddNumber())
+
+                  const numero = AddNumber();
+
+                  const edtobj2 = { id, numero }
+
+                  fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                    method: "PATCH",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(edtobj2)
+                  }).then((res) => {
+                    toast.success('Venda Nº Atualizada com Sucesso !')
+
+
+                  }).catch((err) => {
+                    toast.error('Erro ! :' + err.message)
+                  })
+
+
+                } else if (result.isDenied) {
+                  Swal.fire("Nada salvo", "", "info");
+                }
+              });
+
+            }
+          }
+
+        }      //2.  Venda de Um Produto. Total sem Desconto: ok
+        else
+          if (document.getElementById('desconto').value === "" && document.getElementById('totaldesc').value === '' && document.getElementById('valorpago').value !== '' && document.getElementById('valordesc').value === '') {
+
+            const data_cad = formataData();
+            var total = parseFloat(document.getElementById('total').value).toFixed(2);
+            var vendan = document.getElementById('vendan').innerHTML;
+            var mes = document.getElementById('mesatual').innerHTML;
+            var valorpagto = parseFloat(document.getElementById('valorpago').value).toFixed(2);
+            ganhototal = valorpagto;
+
+            if (valorpagto > total) {//ok
+
+              const t = parseFloat((valorpagto - total).toFixed(2));
+              const troco = (t).toFixed(2)
+              valorpagto = parseFloat(valorpagto).toFixed(2);
+
+              const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, troco, valorpagto, ganhototal }
+
+              Swal.fire({
+                title: "Deseja salvar ?",
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Salvar",
+                denyButtonText: `Não salvar`
+              }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                  fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                    method: "POST",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(cadobj)
+                  }).then((res) => {
+                    toast.success('Cadastrado com Sucesso !')
+
+                    function Subtract() {
+                      return estoque - quant;
+                    }
+                    const qtd = Subtract();
+                    const edtobj = { id, qtd }
+
+                    fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
+                      method: "PATCH",
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(edtobj)
+                    }).then((res) => {
+                      console.log(qtd);
+                      Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Estoque Atualizado...",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+
+                    }).catch((err) => {
+                      toast.error('Erro ! :' + err.message)
+                    })
+
+                  }).catch((err) => {
+                    toast.error('Erro ! :' + err.message)
+                  })
+
+                  const number = document.getElementById('vendan').textContent;
+                  const id = document.getElementById('id').textContent;
+                  console.log(number)
+                  console.log(id)
+
+                  function AddNumber() {
+                    return parseInt(number) + 1;
+                  }
+
+                  console.log(AddNumber())
+
+                  const numero = AddNumber();
+
+                  const edtobj2 = { id, numero }
+
+                  fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                    method: "PATCH",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(edtobj2)
+                  }).then((res) => {
+                    toast.success('Venda Nº Atualizada com Sucesso !')
+
+
+                  }).catch((err) => {
+                    toast.error('Erro ! :' + err.message)
+                  })
+
+
                 } else if (result.isDenied) {
                   Swal.fire("Nada salvo", "", "info");
                 }
               });
 
             } else
-              if (valorpagto === total) {
+              if (valorpagto === total) {//ok
 
-                const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, valorpagto, vp }
+                ganhototal = valorpagto;
+
+                const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, valorpagto, ganhototal }
 
                 if (isValidate()) {
 
@@ -481,6 +539,13 @@ const CadVenda = () => {
                           body: JSON.stringify(edtobj)
                         }).then((res) => {
                           console.log(qtd);
+                          Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Estoque Atualizado...",
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
 
                         }).catch((err) => {
                           toast.error('Erro ! :' + err.message)
@@ -488,6 +553,34 @@ const CadVenda = () => {
                       }).catch((err) => {
                         toast.error('Erro ! :' + err.message)
                       })
+
+                      const number = document.getElementById('vendan').textContent;
+                      const id = document.getElementById('id').textContent;
+                      console.log(number)
+                      console.log(id)
+
+                      function AddNumber() {
+                        return parseInt(number) + 1;
+                      }
+
+                      console.log(AddNumber())
+
+                      const numero = AddNumber();
+
+                      const edtobj2 = { id, numero }
+
+                      fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                        method: "PATCH",
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(edtobj2)
+                      }).then((res) => {
+                        toast.success('Venda Nº Atualizada com Sucesso !')
+
+
+                      }).catch((err) => {
+                        toast.error('Erro ! :' + err.message)
+                      })
+
 
                     } else if (result.isDenied) {
                       Swal.fire("Nada salvo", "", "info");
@@ -498,35 +591,74 @@ const CadVenda = () => {
 
           } else if (document.getElementById('desconto').value === "" && document.getElementById('totaldesc').value === '' && document.getElementById('valorpago').value === '' && document.getElementById('valordesc').value === '') {
 
+            //3.  Lista de Produtos...
 
             var total = parseFloat(document.getElementById('total').value).toFixed(2);
             var vendan = document.getElementById('vendan').innerHTML;
             var mes = document.getElementById('mesatual').innerHTML;
             const data_cad = formataData();
             const valorpagto = 0;
-            vp = total;
+            ganhototal = total;
 
-            const cadobj = { vendan, nome, quant, preco, total, data_cad, mes, valorpagto, vp }
+            if (categoria === "Transporte") {
 
-            if (isValidate()) {
+              var frete = total;
+              total = 0;
 
-              Swal.fire({
-                title: "Deseja salvar ?",
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: "Salvar",
-                denyButtonText: `Não salvar`
-              }).then((result) => {
+              const cadobj = { vendan, nome, quant, preco, total, data_cad, mes, frete, valorpagto }
 
-                if (result.isConfirmed) {
+              if (isValidate()) {
 
-                  fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                    method: "POST",
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(cadobj)
-                  }).then((res) => {
+                Swal.fire({
+                  title: "Deseja salvar ?",
+                  showDenyButton: true,
+                  showCancelButton: true,
+                  confirmButtonText: "Salvar",
+                  denyButtonText: `Não salvar`
+                }).then((result) => {
 
-                    if (categoria === "" || categoria === null) {
+                  if (result.isConfirmed) {
+
+                    fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                      method: "POST",
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(cadobj)
+                    }).then((res) => {
+
+                      navigate('/entradas/numero')
+                    }
+
+                    ).catch((err) => {
+                      toast.error('Erro ! :' + err.message)
+                    })
+
+                  } else if (result.isDenied) {
+                    Swal.fire("Nada salvo", "", "info");
+                  }
+                });
+              }
+
+            } else {
+
+              const cadobj = { vendan, nome, quant, preco, total, data_cad, mes, valorpagto, ganhototal }
+
+              if (isValidate()) {
+
+                Swal.fire({
+                  title: "Deseja salvar ?",
+                  showDenyButton: true,
+                  showCancelButton: true,
+                  confirmButtonText: "Salvar",
+                  denyButtonText: `Não salvar`
+                }).then((result) => {
+
+                  if (result.isConfirmed) {
+
+                    fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                      method: "POST",
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(cadobj)
+                    }).then((res) => {
 
                       function Subtract() {
                         return estoque - quant;
@@ -546,32 +678,32 @@ const CadVenda = () => {
                       })
                       navigate('/produtos/codigo')
 
-                    } else {
-                      navigate('/produtos/codigo')
-                    }
+                    }).catch((err) => {
+                      toast.error('Erro ! :' + err.message)
+                    })
 
-                  }).catch((err) => {
-                    toast.error('Erro ! :' + err.message)
-                  })
+                  } else if (result.isDenied) {
+                    Swal.fire("Nada salvo", "", "info");
+                  }
+                });
+              }
 
-                } else if (result.isDenied) {
-                  Swal.fire("Nada salvo", "", "info");
-                }
-              });
+
             }
+
           }
 
       } else {
-
+        //4.  Venda de Um Produto Parcelado 
         var vendan = document.getElementById('vendan').innerHTML;
         var data_cad = formataData()
         var total = parseFloat(document.getElementById('total').value).toFixed(2);
         var parcelas = parcela;
         var valorpagto = (total / parcelas).toFixed(2);
-        vp = valorpagto;
+        ganhototal = valorpagto;
         var mes = document.getElementById('mesatual').innerHTML;
 
-        const cadobj = { vendan, nome, quant, preco, total, valorpagto, parcelamento, parcelan, formapag, mes, data_cad, vp }
+        const cadobj = { vendan, nome, quant, preco, total, valorpagto, parcelamento, parcelan, formapag, mes, data_cad, ganhototal }
 
         if (isValidate()) {
 
@@ -604,6 +736,13 @@ const CadVenda = () => {
                   body: JSON.stringify(edtobj)
                 }).then((res) => {
                   console.log(qtd);
+                  Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Estoque Atualizado...",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
 
                 }).catch((err) => {
                   toast.error('Erro ! :' + err.message)
@@ -612,6 +751,34 @@ const CadVenda = () => {
               }).catch((err) => {
                 toast.error('Erro ! :' + err.message)
               })
+
+              const number = document.getElementById('vendan').textContent;
+              const id = document.getElementById('id').textContent;
+              console.log(number)
+              console.log(id)
+
+              function AddNumber() {
+                return parseInt(number) + 1;
+              }
+
+              console.log(AddNumber())
+
+              const numero = AddNumber();
+
+              const edtobj2 = { id, numero }
+
+              fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                method: "PATCH",
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(edtobj2)
+              }).then((res) => {
+                toast.success('Venda Nº Atualizada com Sucesso !')
+
+
+              }).catch((err) => {
+                toast.error('Erro ! :' + err.message)
+              })
+
 
             } else if (result.isDenied) {
               Swal.fire("Nada salvo", "", "info");
@@ -625,9 +792,16 @@ const CadVenda = () => {
 
   }
 
+
   function mudacorquant() {
 
     document.getElementById('quant').style.borderColor = 'Gainsboro';
+
+  }
+
+  function mudacorTotal() {
+
+    document.getElementById('total').style.borderColor = 'Gainsboro';
 
   }
 
@@ -639,6 +813,7 @@ const CadVenda = () => {
 
 
   return (
+
     <div className="container-fluid">
       <div className="row flex-nowrap">
         <div className="main-wrapper">
@@ -799,7 +974,7 @@ const CadVenda = () => {
                 {
                   entradadata.map(item => (
                     <tr key={item.id}>
-                      <td className="td" hidden='true'>{item.id}</td>
+                      <td className="td" hidden='true' id='id'>{item.id}</td>
                       <td className="td" style={{ fontWeight: 'bold', color: 'navy' }} id='vendan'>{item.numero}</td>
                     </tr>
                   ))
@@ -813,7 +988,7 @@ const CadVenda = () => {
             <label htmlFor='categoria' style={{ margin: '0 170px', fontWeight: 'bold' }}>Categoria:</label>
           </div>
           <div className='d-flex'>
-            <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ width: 300, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='nome' />
+            <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ width: 300, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='nome' id='nome' />
             <select style={{ width: 166, fontWeight: 'bold', color: 'navy', margin: '0 -80px' }} className='form-select rounded-0' value={categoria} onChange={e => setCategoria(e.target.value)}>
               <option value=""></option>
               <option value="Transporte">Transporte</option>
@@ -828,7 +1003,7 @@ const CadVenda = () => {
           </div>
           <div className='d-flex'>
             <input type='number' autoFocus={true} onSelect={mudacorquant} value={quant} onChange={e => quantchange(e.target.value)} style={{ width: 85, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='qtd' id='quant' />
-            <input type="decimal" value={preco} onChange={e => precochange(e.target.value)} style={{ width: 120, margin: '0 -73px', fontWeight: 'bold', color: 'navy' }} placeholder='Entre com o preço:' className='form-control rounded-0' name='preco' />
+            <input type="decimal" value={preco} onChange={e => precochange(e.target.value)} style={{ width: 120, margin: '0 -73px', fontWeight: 'bold', color: 'navy' }} placeholder='Entre com o preço:' className='form-control rounded-0' name='preco' id='preco' />
             <input type='decimal' style={{ width: 150, margin: '0 160px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='total' id='total' />
 
           </div><br />
@@ -859,6 +1034,58 @@ const CadVenda = () => {
               <option value="Débito">Débito</option>
               <option value="Crédito">Crédito</option>
               <option value="Boleto">Boleto</option>
+            </select>
+          </div><br />
+          <div className='d-flex'>
+            <label htmlFor='parcelamento' style={{ margin: '0 120px', fontWeight: 'bold' }}>Parcelamento:</label>
+            <label htmlFor='parcelas' style={{ margin: '0 -60px', fontWeight: 'bold' }}>Parcelas:</label>
+            <label htmlFor='parcela' style={{ margin: '0 100px', fontWeight: 'bold' }}>Parcela:</label>
+
+          </div>
+          <div className='d-flex'>
+            <select value={parcelamento} onChange={e => parcelamentochange(e.target.value)} style={{ fontSize: '17px', width: 120, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} className='form-select' name='parcela' id='parcela'>
+              <option value=""></option>
+              <option value="2x">2x</option>
+              <option value="3x">3x</option>
+              <option value="4x">4x</option>
+              <option value="5x">5x</option>
+              <option value="6x">6x</option>
+              <option value="7x">7x</option>
+              <option value="8x">8x</option>
+              <option value="9x">9x</option>
+              <option value="10x">10x</option>
+              <option value="11x">11x</option>
+              <option value="12x">12x</option>
+            </select>
+            <select value={parcela} onChange={e => parcelachange(e.target.value)} style={{ fontSize: '17px', width: 80, margin: '0 -72px', fontWeight: 'bold', color: 'navy' }} className='form-select' name='parcela' id='parcela'>
+              <option value=""></option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+
+            <select value={parcelan} onChange={e => parcelanchange(e.target.value)} style={{ fontSize: '17px', width: 120, margin: '0 100px', fontWeight: 'bold', color: 'navy' }} className='form-select' name='parcelan' id='parcela'>
+              <option value=""></option>
+              <option value="1ª">1ª</option>
+              <option value="2ª">2ª</option>
+              <option value="3ª">3ª</option>
+              <option value="4ª">4ª</option>
+              <option value="5ª">5ª</option>
+              <option value="6ª">6ª</option>
+              <option value="7ª">7ª</option>
+              <option value="8ª">8ª</option>
+              <option value="9ª">9ª</option>
+              <option value="10ª">10ª</option>
+              <option value="11ª">11ª</option>
+              <option value="12ª">12ª</option>
             </select>
           </div><br />
           <div className='mb-3'>

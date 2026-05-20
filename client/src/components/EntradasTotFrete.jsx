@@ -18,7 +18,7 @@ const EntradasTotFrete = () => {
 
   useEffect(() => {
 
-    fetch("https://sistemacomercial-fv5g.onrender.com/vendas").then((res) => {
+    fetch("http://localhost:3000/vendas").then((res) => {
 
       return res.json()
 
@@ -47,7 +47,7 @@ const EntradasTotFrete = () => {
       if (result.isConfirmed) {
 
 
-        fetch("https://sistemacomercial-fv5g.onrender.com/vendas" + id, {
+        fetch("http://localhost:3000/vendas/" + id, {
 
           method: "DELETE"
 
@@ -69,68 +69,68 @@ const EntradasTotFrete = () => {
 
   function somar() {
 
-    if(buscanome === '' || buscanome === null){
+    if (buscanome === '' || buscanome === null) {
       toast.warning('Campo busca por nome vazio ! ...')
       document.getElementById('consulta').style.borderColor = 'Red';
     } else {
-      
-    const tabela = document.getElementById("table")
-    const linhas = tabela.getElementsByTagName("tr")
 
-    let somaTotal = 0;
+      const tabela = document.getElementById("table")
+      const linhas = tabela.getElementsByTagName("tr")
 
-    if(vendan !== ''){
+      let somaTotal = 0;
 
-      for (let i = 0; i < linhas.length; i++) {
+      if (vendan !== '') {
 
-            const celulas1 = linhas[i].getElementsByTagName("td");
+        for (let i = 0; i < linhas.length; i++) {
 
-            for (let k = 1; k < celulas1.length; k++) {
+          const celulas1 = linhas[i].getElementsByTagName("td");
 
-              const valorVenda = celulas1[k].innerHTML;
+          for (let k = 1; k < celulas1.length; k++) {
 
-              if (valorVenda === vendan) {
+            const valorVenda = celulas1[k].innerHTML;
 
-                const celulas = linhas[i].getElementsByTagName("td");
+            if (valorVenda === vendan) {
 
-                for (let j = 12; j < celulas.length; j++) {
+              const celulas = linhas[i].getElementsByTagName("td");
 
-                      const valorCelula = celulas[j].innerHTML;
-                      // Converte o valor para número, tratando erros com try/catch
-                      try {
-                        const numero = Number(valorCelula);
+              for (let j = 16; j < celulas.length; j++) {
 
-                        if (!isNaN(numero)) { // Verifica se é um número válido
-                          somaTotal += numero;
-                        } else {
-                          console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
-                        }
-                         } catch (error) {
-                        console.error("Erro ao converter valor para número:", error);
-                        }
-                    }                  
+                const valorCelula = celulas[j].innerHTML;
+                // Converte o valor para número, tratando erros com try/catch
+                try {
+                  const numero = Number(valorCelula);
 
+                  if (!isNaN(numero)) { // Verifica se é um número válido
+                    somaTotal += numero;
+                  } else {
+                    console.warn(`Valor não numérico encontrado na célula: ${valorCelula}`);
+                  }
+                } catch (error) {
+                  console.error("Erro ao converter valor para número:", error);
                 }
+              }
+
             }
+          }
 
         }
-         document.getElementById("total").innerText = "R$" + (somaTotal).toFixed(2);
+        document.getElementById("total").innerText = "R$" + (somaTotal).toFixed(2);
 
-    }else{
-      toast.warning(' Informe a venda ! ')
-      document.getElementById('venda').style.borderColor = 'red';
+      } else {
+        toast.warning(' Informe a venda ! ')
+        document.getElementById('venda').style.borderColor = 'red';
+      }
+
     }
+  }
 
- }
-}
+  function MudaCorVenda() {
+    document.getElementById('venda').style.borderColor = 'GainsBoro';
+  }
 
-function MudaCorVenda(){
-  document.getElementById('venda').style.borderColor = 'GainsBoro';
-}
-
-function MudaCorBusca(){
-  document.getElementById('consulta').style.borderColor = 'GainsBoro';
-}
+  function MudaCorBusca() {
+    document.getElementById('consulta').style.borderColor = 'GainsBoro';
+  }
 
 
   const logout = () => {
@@ -140,7 +140,8 @@ function MudaCorBusca(){
   }
 
   return (
-     <div className="container-fluid">
+
+    <div className="container-fluid">
       <div className="row flex-nowrap">
 
         <div className="main-wrapper">
@@ -334,7 +335,7 @@ function MudaCorBusca(){
                       <td className="td">{item.formapag}</td>
                       <td className="td">{item.valorpagto}</td>
                       <td className="td">{item.troco}</td>
-                      <td className="td" id="vp">{item.vp}</td>
+                      <td className="td" id="vp">{item.ganhototal}</td>
                       <td className="td">{item.parcelamento}</td>
                       <td className="td">{item.parcelan}</td>
                       <td className="td" id="mes">{item.mes}</td>
@@ -357,7 +358,6 @@ function MudaCorBusca(){
         </div>
 
 
-
       </div>
 
       <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', backgroundColor: 'gray', color: 'white', textAlign: 'center', zIndex: 1000 }}>
@@ -366,6 +366,7 @@ function MudaCorBusca(){
 
 
     </div>
+
 
   )
 }

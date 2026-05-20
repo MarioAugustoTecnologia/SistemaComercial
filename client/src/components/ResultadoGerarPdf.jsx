@@ -205,7 +205,7 @@ const ResultadoGerarPdf = () => {
 
           <div id="conteudo">
 
-            <h4 style={{ fontWeight: 'bold', color: 'blue', margin: '0 700px' }}>Resultados:</h4><br /><br />
+            <h5 style={{ fontWeight: 'bold', color: 'blue', margin: '0 700px' }}>Resultados:</h5><br /><br />
             <table className="table" id="table" style={{ margin: '0 300px', fontFamily: 'arial', fontSize: '17px', width: 900 }}>
               <thead>
                 <tr>

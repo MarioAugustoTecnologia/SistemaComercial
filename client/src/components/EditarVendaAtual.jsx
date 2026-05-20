@@ -29,10 +29,9 @@ const EditarVendaAtual = () => {
 
   const editar = (e) => {
 
-    e.preventDefault();
-      
-      var soma = parseInt(number) + 1;
-      const numero = soma;
+    e.preventDefault();      
+
+      const numero = number;
 
       const edtobj = { id, numero }
       //console.log(cadobj)    

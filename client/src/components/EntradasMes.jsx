@@ -393,7 +393,7 @@ const EntradasMes = () => {
                       <td className="td">{item.frete}</td>
                       <td className="td">{item.data_cad}</td>
                       <td className="td" >
-                        <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
+                        <button type="button" className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
                       </td>
                     </tr>
                   ))

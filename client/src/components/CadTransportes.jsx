@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 const CadTransportes = () => {
 
     const [nome, nomechange] = useState("")
-    const [custo, custochange] = useState("")
+    const [preco, precochange] = useState("")
     const [codigo, codigochange] = useState("")
 
 
@@ -18,38 +18,35 @@ const CadTransportes = () => {
         let isproceed = true
         let errormessage = "Campos não podem estar vazio  !"
 
+
         if (nome === null || nome === '') {
             document.getElementById('nome').style.borderColor = 'red';
             isproceed = false
             //errormessage += 'Nome Completo:' 
         }
 
-        if (custo === null || custo === '') {
-            document.getElementById('custo').style.borderColor = 'red';
+        if (preco === null || preco === '') {
+            document.getElementById('preco').style.borderColor = 'red';
             isproceed = false
             // errormessage += 'Email:' 
         }
-           if (codigo === null || codigo === '') {
+        if (codigo === null || codigo === '') {
             document.getElementById('codigo').style.borderColor = 'red';
             isproceed = false
             // errormessage += 'Email:' 
-        
+            if (!isproceed) {
+                toast.warning(errormessage)
 
-
-        if (!isproceed) {
-            toast.warning(errormessage)
-
+            }
         }
-    }
 
 
         return isproceed
     }
 
-    //console.log(data_cadastro);
 
-    function MudaCorCusto() {
-        document.getElementById('custo').style.borderColor = 'Gainsboro'
+    function MudaCorPreco() {
+        document.getElementById('preco').style.borderColor = 'Gainsboro'
     }
 
 
@@ -57,7 +54,7 @@ const CadTransportes = () => {
         document.getElementById('nome').style.borderColor = 'Gainsboro'
     }
 
-      function MudaCorCod() {
+    function MudaCorCod() {
         document.getElementById('codigo').style.borderColor = 'Gainsboro'
     }
 
@@ -65,7 +62,9 @@ const CadTransportes = () => {
 
         e.preventDefault();
 
-        const cadobj = { nome, custo, codigo }
+        var custo = 0
+
+        const cadobj = { nome, preco, codigo, custo }
         //console.log(cadobj)  
 
         if (isValidate()) {
@@ -87,7 +86,7 @@ const CadTransportes = () => {
                     }).then((res) => {
                         toast.success('Cadastrado com Sucesso !')
                         nomechange('')
-                        custochange('')
+                        precochange('')
 
                     }).catch((err) => {
                         toast.error('Erro ! :' + err.message)
@@ -108,7 +107,7 @@ const CadTransportes = () => {
     }
 
     return (
-         <div className="container-fluid">
+        <div className="container-fluid">
             <div className="row flex-nowrap">
                 <div className="main-wrapper">
 
@@ -269,7 +268,7 @@ const CadTransportes = () => {
                     <div className='mb-3'>
                         <label htmlFor='custo' style={{ fontSize: '17px', margin: '0 115px', fontWeight: 'bold' }}>Custo:</label>
 
-                        <input type="decimal" onKeyUp={MudaCorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '17px', width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='custo' id='custo' />
+                        <input type="decimal" onKeyUp={MudaCorPreco} value={preco} onChange={e => precochange(e.target.value)} style={{ fontSize: '17px', width: 200, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='custo' id='preco' />
 
                     </div>
                     <div className='mb-3'>

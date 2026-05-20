@@ -293,7 +293,7 @@ const EntradasNome = () => {
 
           </div>
           <br /><br />
-          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '2100px' }} id="table">
+          <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '2300px' }} id="table">
             <thead>
               <tr>
                 <th className="th" scope="col">Id:</th>

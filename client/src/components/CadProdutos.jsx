@@ -342,12 +342,12 @@ const logout = () => {
             <div className='d-flex'>
               <label htmlFor='estoque' style={{ fontWeight: 'bold', fontSize: '17px' }}>Estoque:</label>
               <label htmlFor='id' style={{ fontSize: '17px', fontWeight: 'bold', margin: '0 40px' }}>Id:</label>
-              <label htmlFor='cod' style={{ fontSize: '17px', fontWeight: 'bold', margin: '0 20px' }}>Codigo de Venda:</label>
+              <label htmlFor='cod' style={{ fontSize: '17px', fontWeight: 'bold', margin: '0 35px' }}>Codigo de Venda:</label>
 
             </div>
             <div className='d-flex'>
               <input type='number' value={qtd} onChange={e => qtdchange(e.target.value)} style={{ fontSize: '17px', width: 80, fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='estoque' />
-              <input type='number' value={id} onChange={e => idchange(e.target.value)} style={{ fontSize: '17px', width: 60, fontWeight: 'bold', color: 'navy', margin: '0 20px' }} className='form-control rounded-0' name='id' />
+              <input type='number' value={id} onChange={e => idchange(e.target.value)} style={{ fontSize: '17px', width: 80, fontWeight: 'bold', color: 'navy', margin: '0 20px' }} className='form-control rounded-0' name='id' />
               <input type='text' onKeyUp={MudaCorCodigo} value={codigo} onChange={e => codigochange(e.target.value)} style={{ fontSize: '17px', width: 100, fontWeight: 'bold', color: 'navy', margin: '0 5px' }} className='form-control rounded-0' name='codigo' id='codigo' />
 
 

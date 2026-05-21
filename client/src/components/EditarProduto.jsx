@@ -8,8 +8,6 @@ const EditarProduto = () => {
 
   const { produtocod } = useParams()
 
-  //const [empdata, empdatachange] = useState({});
-
   useEffect(() => {
     fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + produtocod).then((res) => {
       return res.json();
@@ -19,6 +17,7 @@ const EditarProduto = () => {
       precochange(resp.preco);
       custochange(resp.custo)
       codchange(resp.codigo);
+      qtdchange(resp.qtd);
 
     }).catch((err) => {
       console.log(err.message);
@@ -33,6 +32,7 @@ const EditarProduto = () => {
   const [datacad, datacadchange] = useState("")
   const [codigo, codchange] = useState("")
   const [custo, custochange] = useState("")
+  const [qtd, qtdchange] = useState("")
 
   useEffect(() => {
     fetch("https://sistemacomercial-fv5g.onrender.com/catproduto").then((res) => {
@@ -94,6 +94,11 @@ const EditarProduto = () => {
       isproceed = false
       // errormessage += 'Salario:' 
     }
+    if (qtd === null || qtd === '') {
+       document.getElementById('qtd').style.borderColor = 'red';
+      isproceed = false
+      // errormessage += 'Salario:' 
+    }
     if (!isproceed) {
       toast.warning(errormessage)
     }
@@ -125,6 +130,9 @@ const EditarProduto = () => {
       document.getElementById('nome').style.borderColor = 'gainsboro';
 
   }
+    function MudacorQtd() {
+    document.getElementById('qtd').style.borderColor = 'gainsboro';
+  }
 
 
   const editar = (e) => {
@@ -137,7 +145,7 @@ const EditarProduto = () => {
       const data = new Date(dataInput);
       const data_cadastro = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
       const categoria = document.getElementById('categoria').value; 
-      const edtobj = { id, nome, preco, custo, categoria, data_cadastro, codigo }
+      const edtobj = { id, nome, preco, custo, categoria, data_cadastro, codigo, qtd }
 
       Swal.fire({
         title: "Deseja salvar ?",
@@ -160,6 +168,7 @@ const EditarProduto = () => {
             datacadchange('');
             codchange('');
             custochange('');
+            qtdchange('')
             //categoriachange('')           
 
           }).catch((err) => {
@@ -357,6 +366,10 @@ const EditarProduto = () => {
           <div className='mb-3'>
             <label htmlFor='custo' style={{ margin: '0 115px', fontWeight: 'bold' }}>Custo:</label>
             <input type="decimal" onKeyUp={MudacorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{ width: 170, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} placeholder='Entre com o custo:' className='form-control rounded-0' name='custo' id="custo" />
+          </div>
+            <div className='mb-3'>
+            <label htmlFor='qtd' style={{ margin: '0 115px', fontWeight: 'bold' }}>Quantidade:</label>
+            <input type="decimal" onKeyUp={MudacorQtd} value={qtd} onChange={e => qtdchange(e.target.value)} style={{ width: 170, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='qtd' id="qtd" />
           </div>
 
           <div className='mb-3'>

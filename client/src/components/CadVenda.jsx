@@ -187,8 +187,8 @@ const CadVenda = () => {
       const novototal = total - desconto;
       document.getElementById('totaldesc').value = parseFloat(novototal).toFixed(2);
       document.getElementById('valordesc').value = parseFloat(desconto).toFixed(2);
-      document.getElementById('desconto').value = (desc * 100) + '%';
-      document.getElementById('valorpago').value = parseFloat(novototal).toFixed(2);
+      document.getElementById('desconto').value = (desc * 100).toFixed(2) + '%';
+   
 
     }
 
@@ -404,7 +404,7 @@ const CadVenda = () => {
             }
           }
 
-        }      //2.  Venda de Um Produto. Total sem Desconto: ok
+        }    //2.  Venda de Um Produto. Total sem Desconto: ok
         else
           if (document.getElementById('desconto').value === "" && document.getElementById('totaldesc').value === '' && document.getElementById('valorpago').value !== '' && document.getElementById('valordesc').value === '') {
 
@@ -591,7 +591,7 @@ const CadVenda = () => {
 
           } else if (document.getElementById('desconto').value === "" && document.getElementById('totaldesc').value === '' && document.getElementById('valorpago').value === '' && document.getElementById('valordesc').value === '') {
 
-            //3.  Lista de Produtos...
+            //3.  Lista de Produtos sem Desconto cada Produto...
 
             var total = parseFloat(document.getElementById('total').value).toFixed(2);
             var vendan = document.getElementById('vendan').innerHTML;
@@ -691,10 +691,70 @@ const CadVenda = () => {
 
             }
 
-          }
+            //4.  Lista de Produtos com Desconto cada Produto...
+
+          } else if (document.getElementById('desconto').value !== "" && document.getElementById('totaldesc').value !== '' && document.getElementById('valordesc').value !== '' && document.getElementById('valorpago').value === '') {
+
+            var total = parseFloat(document.getElementById('total').value).toFixed(2);
+            var vendan = document.getElementById('vendan').innerHTML;
+            var mes = document.getElementById('mesatual').innerHTML;
+            const data_cad = formataData();
+            const valorpagto = 0;
+            var totaldesc = parseFloat(document.getElementById('totaldesc').value).toFixed(2)
+            var desconto = document.getElementById('desconto').value;
+            var valordesc = parseFloat(document.getElementById('valordesc').value).toFixed(2);
+            ganhototal = totaldesc;
+
+            const cadobj = { vendan, nome, quant, preco, total, data_cad, mes, valorpagto, ganhototal, totaldesc, desconto, valordesc }
+
+            if (isValidate()) {
+
+              Swal.fire({
+                title: "Deseja salvar ?",
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Salvar",
+                denyButtonText: `Não salvar`
+              }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                  fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                    method: "POST",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(cadobj)
+                  }).then((res) => {
+
+                    function Subtract() {
+                      return estoque - quant;
+                    }
+                    const qtd = Subtract();
+                    const edtobj = { id, qtd }
+
+                    fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
+                      method: "PATCH",
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(edtobj)
+                    }).then((res) => {
+                      console.log(qtd);
+
+                    }).catch((err) => {
+                      toast.error('Erro ! :' + err.message)
+                    })
+                    navigate('/produtos/codigo')
+
+                  }).catch((err) => {
+                    toast.error('Erro ! :' + err.message)
+                  })
+
+                } else if (result.isDenied) {
+                  Swal.fire("Nada salvo", "", "info");
+                }
+              });
+            } }        
 
       } else {
-        //4.  Venda de Um Produto Parcelado 
+        //5.  Venda de Um Produto Parcelado 
         var vendan = document.getElementById('vendan').innerHTML;
         var data_cad = formataData()
         var total = parseFloat(document.getElementById('total').value).toFixed(2);

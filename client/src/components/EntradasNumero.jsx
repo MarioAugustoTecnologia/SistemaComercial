@@ -32,12 +32,9 @@ const EntradasNumero = () => {
 
     const [formapag, formapagchange] = useState("")
     const [mes, meschange] = useState("")
-    //const [frete, fretechange] = useState("")
     const [parcelamento, parcelamentochange] = useState("")
     const [parcelan, parcelanchange] = useState("")
 
-
-    //=> Aqui 
     const [entradadata, setEntradaData] = useState([])
 
 
@@ -57,11 +54,11 @@ const EntradasNumero = () => {
 
     }, [])
 
-     const handleEdit = (id) => {
+    const handleEdit = (id) => {
 
          navigate("/entradas/numero/editar/" + id)
 
-    }    
+        }    
 
 
     const handleDelete = (id) => {
@@ -368,7 +365,6 @@ const EntradasNumero = () => {
 
             if (parcelamento === "" || parcelamento === null && parcelan === "" || parcelan === null) {
 
-  
                 if (document.getElementById('desconto').value !== "" && document.getElementById('td').value !== '' && document.getElementById('vd').value !== '') {
 
                     if (document.getElementById('frete').value === "" || document.getElementById('frete').value === null) {
@@ -943,7 +939,7 @@ const EntradasNumero = () => {
 
                 }
 
-            } else { 
+            } else {   
 
                 const tf = document.getElementById('totfrete').value;
                 const frete = document.getElementById('frete').value

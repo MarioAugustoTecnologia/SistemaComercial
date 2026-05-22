@@ -310,6 +310,7 @@ const EntradasNome = () => {
                 <th className="th" scope="col">Troco:</th>
                 <th className="th" scope="col">Parcelamento:</th>
                 <th className="th" scope="col">Parcela:</th>
+                <th className="th" scope="col">Faturamento:</th>
                 <th className="th" scope="col">Mês:</th>
                 <th className="th" scope="col">Frete:</th>
                 <th className="th" scope="col">Data de Cadastro:</th>
@@ -334,6 +335,7 @@ const EntradasNome = () => {
                     <td className="td">{item.troco}</td>
                     <td className="td">{item.parcelamento}</td>
                     <td className="td">{item.parcelan}</td>
+                    <td className="td">{item.ganhototal}</td>
                     <td className="td">{item.mes}</td>
                     <td className="td">{item.frete}</td>
                     <td className="td">{item.data_cad}</td>

@@ -942,7 +942,7 @@ const EntradasNumero = () => {
             } else {   
 
                 const tf = document.getElementById('totfrete').value;
-                const frete = document.getElementById('frete').value
+                const frete = parseFloat(document.getElementById('frete').value).toFixed(2)
                 console.log(tf)
 
                 if (Number(tf) !== "" && Number(frete) !== "" ) {

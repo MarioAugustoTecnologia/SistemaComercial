@@ -953,7 +953,7 @@ const EntradasNumero = () => {
                     const total = parseFloat(document.getElementById('total').value).toFixed(2);
                     const parcelas = Number(document.getElementById("parcelas").value);
                     const formapag = document.getElementById('formapag').value
-                    const valorpagto = (total / parcelas).toFixed(2);
+                    const valorpagto = (tf / parcelas).toFixed(2);
                     const data_cad = formataData()              
                     const totfrete = tf;
 

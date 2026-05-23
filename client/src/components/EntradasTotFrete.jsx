@@ -18,7 +18,7 @@ const EntradasTotFrete = () => {
 
   useEffect(() => {
 
-    fetch("http://localhost:3000/vendas").then((res) => {
+    fetch("https://sistemacomercial-fv5g.onrender.com/vendas").then((res) => {
 
       return res.json()
 
@@ -47,7 +47,7 @@ const EntradasTotFrete = () => {
       if (result.isConfirmed) {
 
 
-        fetch("http://localhost:3000/vendas/" + id, {
+        fetch("https://sistemacomercial-fv5g.onrender.com/vendas/" + id, {
 
           method: "DELETE"
 

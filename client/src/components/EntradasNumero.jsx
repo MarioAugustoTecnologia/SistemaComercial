@@ -747,7 +747,7 @@ const EntradasNumero = () => {
 
                                     if (result.isConfirmed) {
 
-                                        fetch("vhttps://sistemacomercial-fv5g.onrender.com/vendas", {
+                                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
                                             method: "POST",
                                             headers: { 'content-type': 'application/json' },
                                             body: JSON.stringify(cadobj)

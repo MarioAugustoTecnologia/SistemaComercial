@@ -207,7 +207,7 @@ const CadVenda = () => {
   }
 
 
-  const cadastrar = (e) => {
+ const cadastrar = (e) => {
 
     e.preventDefault();
 
@@ -219,189 +219,202 @@ const CadVenda = () => {
         //1.  Venda de Um Produto. Total com Desconto: ok
         if (document.getElementById('desconto').value !== "" && document.getElementById('totaldesc').value !== '' && document.getElementById('valorpago').value !== '' && document.getElementById('valordesc').value !== '') {
 
-          const data_cad = formataData();
-          var total = parseFloat(document.getElementById('total').value).toFixed(2);
-          var totaldesc = parseFloat(document.getElementById('totaldesc').value).toFixed(2)
-          var vendan = document.getElementById('vendan').innerHTML;
-          var mes = document.getElementById('mesatual').innerHTML;
-          var valorpagto = parseFloat(document.getElementById('valorpago').value).toFixed(2);
-          var desconto = document.getElementById('desconto').value;
-          var valordesc = parseFloat(document.getElementById('valordesc').value).toFixed(2);
-          var ganhototal = valorpagto;
+          if (document.getElementById('formapag').value !== "Crédito") {
 
-          if (valorpagto > totaldesc) {//ok
+            const data_cad = formataData();
+            var total = parseFloat(document.getElementById('total').value).toFixed(2);
+            var totaldesc = parseFloat(document.getElementById('totaldesc').value).toFixed(2)
+            var vendan = document.getElementById('vendan').innerHTML;
+            var mes = document.getElementById('mesatual').innerHTML;
+            var valorpagto = parseFloat(document.getElementById('valorpago').value).toFixed(2);
+            var desconto = document.getElementById('desconto').value;
+            var valordesc = parseFloat(document.getElementById('valordesc').value).toFixed(2);
+            var ganhototal = valorpagto;
 
-            const t = parseFloat((valorpagto - totaldesc).toFixed(2));
-            const troco = (t).toFixed(2)
-            valorpagto = parseFloat(valorpagto).toFixed(2);
+            if (valorpagto > totaldesc) {//ok
 
-            const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, troco, valorpagto, totaldesc, desconto, valordesc, ganhototal }
+              const t = parseFloat((valorpagto - totaldesc).toFixed(2));
+              const troco = (t).toFixed(2)
+              valorpagto = parseFloat(valorpagto).toFixed(2);
+              document.getElementById('troco').style.borderColor = 'gainsboro'
 
-            Swal.fire({
-              title: "Deseja salvar ?",
-              showDenyButton: true,
-              showCancelButton: true,
-              confirmButtonText: "Salvar",
-              denyButtonText: `Não salvar`
-            }).then((result) => {
+              const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, troco, valorpagto, totaldesc, desconto, valordesc, ganhototal }
 
-              if (result.isConfirmed) {
+              if (troco !== "") {
 
-                fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                  method: "POST",
-                  headers: { 'content-type': 'application/json' },
-                  body: JSON.stringify(cadobj)
-                }).then((res) => {
-                  toast.success('Cadastrado com Sucesso !')
+                Swal.fire({
+                  title: "Deseja salvar ?",
+                  showDenyButton: true,
+                  showCancelButton: true,
+                  confirmButtonText: "Salvar",
+                  denyButtonText: `Não salvar`
+                }).then((result) => {
 
-                  function Subtract() {
-                    return estoque - quant;
-                  }
-                  const qtd = Subtract();
-                  const edtobj = { id, qtd }
+                  if (result.isConfirmed) {
 
-                  fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
-                    method: "PATCH",
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(edtobj)
-                  }).then((res) => {
-                    console.log(qtd);
-                    Swal.fire({
-                      position: "center",
-                      icon: "success",
-                      title: "Estoque Atualizado...",
-                      showConfirmButton: false,
-                      timer: 1500
-                    });
-
-                  }).catch((err) => {
-                    toast.error('Erro ! :' + err.message)
-                  })
-
-                }).catch((err) => {
-                  toast.error('Erro ! :' + err.message)
-                })
-
-                const number = document.getElementById('vendan').textContent;
-                const id = document.getElementById('id').textContent;
-                console.log(number)
-                console.log(id)
-
-                function AddNumber() {
-                  return parseInt(number) + 1;
-                }
-
-                console.log(AddNumber())
-
-                const numero = AddNumber();
-
-                const edtobj2 = { id, numero }
-
-                fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
-                  method: "PATCH",
-                  headers: { 'content-type': 'application/json' },
-                  body: JSON.stringify(edtobj2)
-                }).then((res) => {
-                  toast.success('Venda Nº Atualizada com Sucesso !')
-
-
-                }).catch((err) => {
-                  toast.error('Erro ! :' + err.message)
-                })
-
-              } else if (result.isDenied) {
-                Swal.fire("Nada salvo", "", "info");
-              }
-            });
-
-          }
-          else if (valorpagto === totaldesc) {//ok
-
-            ganhototal = valorpagto;
-
-            const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, valorpagto, totaldesc, desconto, valordesc, ganhototal }
-
-            if (isValidate()) {
-
-              Swal.fire({
-                title: "Deseja salvar ?",
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: "Salvar",
-                denyButtonText: `Não salvar`
-              }).then((result) => {
-
-                if (result.isConfirmed) {
-
-                  fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                    method: "POST",
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(cadobj)
-                  }).then((res) => {
-                    toast.success('Cadastrado com Sucesso !')
-
-                    function Subtract() {
-                      return estoque - quant;
-                    }
-                    const qtd = Subtract();
-                    const edtobj = { id, qtd }
-
-                    fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
-                      method: "PATCH",
+                    fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                      method: "POST",
                       headers: { 'content-type': 'application/json' },
-                      body: JSON.stringify(edtobj)
+                      body: JSON.stringify(cadobj)
                     }).then((res) => {
-                      console.log(qtd);
-                      Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: "Estoque Atualizado...",
-                        showConfirmButton: false,
-                        timer: 1500
-                      });
+                      toast.success('Cadastrado com Sucesso !')
+
+                      function Subtract() {
+                        return estoque - quant;
+                      }
+                      const qtd = Subtract();
+                      const edtobj = { id, qtd }
+
+                      fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
+                        method: "PATCH",
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(edtobj)
+                      }).then((res) => {
+                        console.log(qtd);
+                        Swal.fire({
+                          position: "center",
+                          icon: "success",
+                          title: "Estoque Atualizado...",
+                          showConfirmButton: false,
+                          timer: 1500
+                        });
+
+                      }).catch((err) => {
+                        toast.error('Erro ! :' + err.message)
+                      })
 
                     }).catch((err) => {
                       toast.error('Erro ! :' + err.message)
                     })
 
-                  }).catch((err) => {
-                    toast.error('Erro ! :' + err.message)
-                  })
+                    const number = document.getElementById('vendan').textContent;
+                    const id = document.getElementById('id').textContent;
+                    console.log(number)
+                    console.log(id)
 
-                  const number = document.getElementById('vendan').textContent;
-                  const id = document.getElementById('id').textContent;
-                  console.log(number)
-                  console.log(id)
+                    function AddNumber() {
+                      return parseInt(number) + 1;
+                    }
 
-                  function AddNumber() {
-                    return parseInt(number) + 1;
+                    console.log(AddNumber())
+
+                    const numero = AddNumber();
+
+                    const edtobj2 = { id, numero }
+
+                    fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                      method: "PATCH",
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(edtobj2)
+                    }).then((res) => {
+                      toast.success('Venda Nº Atualizada com Sucesso !')
+
+
+                    }).catch((err) => {
+                      toast.error('Erro ! :' + err.message)
+                    })
+
+                  } else if (result.isDenied) {
+                    Swal.fire("Nada salvo", "", "info");
                   }
+                });
 
-                  console.log(AddNumber())
+              }else{
 
-                  const numero = AddNumber();
-
-                  const edtobj2 = { id, numero }
-
-                  fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
-                    method: "PATCH",
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(edtobj2)
-                  }).then((res) => {
-                    toast.success('Venda Nº Atualizada com Sucesso !')
-
-
-                  }).catch((err) => {
-                    toast.error('Erro ! :' + err.message)
-                  })
-
-
-                } else if (result.isDenied) {
-                  Swal.fire("Nada salvo", "", "info");
-                }
-              });
+                toast.warning("Campo Troco Vazio ! ")
+                document.getElementById('troco').style.borderColor = 'red'
+              }
 
             }
+            else if (valorpagto === totaldesc) {//ok
+
+              ganhototal = valorpagto;
+
+              const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, valorpagto, totaldesc, desconto, valordesc, ganhototal }
+
+              if (isValidate()) {
+
+                Swal.fire({
+                  title: "Deseja salvar ?",
+                  showDenyButton: true,
+                  showCancelButton: true,
+                  confirmButtonText: "Salvar",
+                  denyButtonText: `Não salvar`
+                }).then((result) => {
+
+                  if (result.isConfirmed) {
+
+                    fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                      method: "POST",
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(cadobj)
+                    }).then((res) => {
+                      toast.success('Cadastrado com Sucesso !')
+
+                      function Subtract() {
+                        return estoque - quant;
+                      }
+                      const qtd = Subtract();
+                      const edtobj = { id, qtd }
+
+                      fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
+                        method: "PATCH",
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(edtobj)
+                      }).then((res) => {
+                        console.log(qtd);
+                        Swal.fire({
+                          position: "center",
+                          icon: "success",
+                          title: "Estoque Atualizado...",
+                          showConfirmButton: false,
+                          timer: 1500
+                        });
+
+                      }).catch((err) => {
+                        toast.error('Erro ! :' + err.message)
+                      })
+
+                    }).catch((err) => {
+                      toast.error('Erro ! :' + err.message)
+                    })
+
+                    const number = document.getElementById('vendan').textContent;
+                    const id = document.getElementById('id').textContent;
+                    console.log(number)
+                    console.log(id)
+
+                    function AddNumber() {
+                      return parseInt(number) + 1;
+                    }
+
+                    console.log(AddNumber())
+
+                    const numero = AddNumber();
+
+                    const edtobj2 = { id, numero }
+
+                    fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                      method: "PATCH",
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(edtobj2)
+                    }).then((res) => {
+                      toast.success('Venda Nº Atualizada com Sucesso !')
+
+
+                    }).catch((err) => {
+                      toast.error('Erro ! :' + err.message)
+                    })
+
+
+                  } else if (result.isDenied) {
+                    Swal.fire("Nada salvo", "", "info");
+                  }
+                });
+
+              }
+            }
+
           }
 
         }    //2.  Venda de Um Produto. Total sem Desconto: ok
@@ -420,86 +433,95 @@ const CadVenda = () => {
               const t = parseFloat((valorpagto - total).toFixed(2));
               const troco = (t).toFixed(2)
               valorpagto = parseFloat(valorpagto).toFixed(2);
+              document.getElementById('troco').style.borderColor = 'gainsboro'
 
               const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, troco, valorpagto, ganhototal }
 
-              Swal.fire({
-                title: "Deseja salvar ?",
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: "Salvar",
-                denyButtonText: `Não salvar`
-              }).then((result) => {
+              if (troco !== "") {
 
-                if (result.isConfirmed) {
+                Swal.fire({
+                  title: "Deseja salvar ?",
+                  showDenyButton: true,
+                  showCancelButton: true,
+                  confirmButtonText: "Salvar",
+                  denyButtonText: `Não salvar`
+                }).then((result) => {
 
-                  fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                    method: "POST",
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(cadobj)
-                  }).then((res) => {
-                    toast.success('Cadastrado com Sucesso !')
+                  if (result.isConfirmed) {
 
-                    function Subtract() {
-                      return estoque - quant;
-                    }
-                    const qtd = Subtract();
-                    const edtobj = { id, qtd }
-
-                    fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
-                      method: "PATCH",
+                    fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                      method: "POST",
                       headers: { 'content-type': 'application/json' },
-                      body: JSON.stringify(edtobj)
+                      body: JSON.stringify(cadobj)
                     }).then((res) => {
-                      console.log(qtd);
-                      Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: "Estoque Atualizado...",
-                        showConfirmButton: false,
-                        timer: 1500
-                      });
+                      toast.success('Cadastrado com Sucesso !')
+
+                      function Subtract() {
+                        return estoque - quant;
+                      }
+                      const qtd = Subtract();
+                      const edtobj = { id, qtd }
+
+                      fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + pcod, {
+                        method: "PATCH",
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(edtobj)
+                      }).then((res) => {
+                        console.log(qtd);
+                        Swal.fire({
+                          position: "center",
+                          icon: "success",
+                          title: "Estoque Atualizado...",
+                          showConfirmButton: false,
+                          timer: 1500
+                        });
+
+                      }).catch((err) => {
+                        toast.error('Erro ! :' + err.message)
+                      })
 
                     }).catch((err) => {
                       toast.error('Erro ! :' + err.message)
                     })
 
-                  }).catch((err) => {
-                    toast.error('Erro ! :' + err.message)
-                  })
+                    const number = document.getElementById('vendan').textContent;
+                    const id = document.getElementById('id').textContent;
+                    console.log(number)
+                    console.log(id)
 
-                  const number = document.getElementById('vendan').textContent;
-                  const id = document.getElementById('id').textContent;
-                  console.log(number)
-                  console.log(id)
+                    function AddNumber() {
+                      return parseInt(number) + 1;
+                    }
 
-                  function AddNumber() {
-                    return parseInt(number) + 1;
+                    console.log(AddNumber())
+
+                    const numero = AddNumber();
+
+                    const edtobj2 = { id, numero }
+
+                    fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                      method: "PATCH",
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(edtobj2)
+                    }).then((res) => {
+                      toast.success('Venda Nº Atualizada com Sucesso !')
+
+
+                    }).catch((err) => {
+                      toast.error('Erro ! :' + err.message)
+                    })
+
+
+                  } else if (result.isDenied) {
+                    Swal.fire("Nada salvo", "", "info");
                   }
+                });
+              } else {
+                toast.warning("Campo Troco Vazio !")
+                document.getElementById("troco").style.borderColor = "red";
 
-                  console.log(AddNumber())
+              }
 
-                  const numero = AddNumber();
-
-                  const edtobj2 = { id, numero }
-
-                  fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
-                    method: "PATCH",
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(edtobj2)
-                  }).then((res) => {
-                    toast.success('Venda Nº Atualizada com Sucesso !')
-
-
-                  }).catch((err) => {
-                    toast.error('Erro ! :' + err.message)
-                  })
-
-
-                } else if (result.isDenied) {
-                  Swal.fire("Nada salvo", "", "info");
-                }
-              });
 
             } else
               if (valorpagto === total) {//ok
@@ -751,7 +773,8 @@ const CadVenda = () => {
                   Swal.fire("Nada salvo", "", "info");
                 }
               });
-            } }        
+            }
+          }
 
       } else {
         //5.  Venda de Um Produto Parcelado 

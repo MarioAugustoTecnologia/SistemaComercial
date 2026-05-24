@@ -990,7 +990,7 @@ const EntradasNumero = () => {
 
                                 const edtobj2 = { id, numero }
 
-                                fetch("http://localhost:3000/atual/" + id, {
+                                fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
                                     method: "PATCH",
                                     headers: { 'content-type': 'application/json' },
                                     body: JSON.stringify(edtobj2)

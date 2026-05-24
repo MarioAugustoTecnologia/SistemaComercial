@@ -1050,7 +1050,7 @@ const CadVenda = () => {
           <div className='d-flex'>
             <input type='text' placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ width: 300, margin: '0 120px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='nome' id='nome' />
             <select style={{ width: 166, fontWeight: 'bold', color: 'navy', margin: '0 -80px' }} className='form-select rounded-0' value={categoria} onChange={e => setCategoria(e.target.value)}>
-              <option value=""></option>
+              <option value="Produto">Produto</option>
               <option value="Transporte">Transporte</option>
 
             </select>

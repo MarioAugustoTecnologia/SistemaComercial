@@ -942,309 +942,149 @@ const EntradasNumero = () => {
 
             } else {
 
-                if (document.getElementById('desconto').value === "" && document.getElementById('td').value === '' && document.getElementById('vd').value === '') {
+                 const tf = document.getElementById('totfrete').value;
+                const frete = document.getElementById('frete').value
+                console.log(tf)
 
-                    const tf = document.getElementById('totfrete').value;
-                    const frete = document.getElementById('frete').value
-                    console.log(tf)
+                if (Number(tf) !== "" && Number(frete) !== "" ) {//ok
 
-                    if (Number(tf) !== "" && Number(frete) !== "") {
+                    const vendan = document.getElementById('vendan').value
+                    const nome = document.getElementById('nome').value;
+                    const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                    const parcelas = Number(document.getElementById("parcelas").value);
+                    const formapag = document.getElementById('formapag').value
+                    const valorpagto = (total / parcelas).toFixed(2);
+                    const data_cad = formataData()              
+                    const totfrete = tf;
 
-                        const vendan = document.getElementById('vendan').value
-                        const nome = document.getElementById('nome').value;
-                        const total = parseFloat(document.getElementById('total').value).toFixed(2);
-                        const parcelas = Number(document.getElementById("parcelas").value);
-                        const formapag = document.getElementById('formapag').value
-                        const valorpagto = (tf / parcelas).toFixed(2);
-                        const data_cad = formataData()
-                        const totfrete = tf;
+                    const cadobj = { vendan, nome, total, parcelamento, parcelan, formapag, valorpagto, mes, data_cad, frete, totfrete }
 
-                        const cadobj = { vendan, nome, total, parcelamento, parcelan, formapag, valorpagto, mes, data_cad, frete, totfrete }
+                    Swal.fire({
+                        title: "Deseja salvar ?",
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: "Salvar",
+                        denyButtonText: `Não salvar`
+                    }).then((result) => {
 
-                        Swal.fire({
-                            title: "Deseja salvar ?",
-                            showDenyButton: true,
-                            showCancelButton: true,
-                            confirmButtonText: "Salvar",
-                            denyButtonText: `Não salvar`
-                        }).then((result) => {
+                        if (result.isConfirmed) {
 
-                            if (result.isConfirmed) {
+                            fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                method: "POST",
+                                headers: { 'content-type': 'application/json' },
+                                body: JSON.stringify(cadobj)
+                            }).then((res) => {
 
-                                fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                                    method: "POST",
+                                const number = document.getElementById('vendn').textContent;
+                                const id = document.getElementById('id').textContent;
+                                console.log(number)
+                                console.log(id)
+
+                                function AddNumber() {
+                                    return parseInt(number) + 1;
+                                }
+
+                                console.log(AddNumber())
+
+                                const numero = AddNumber();
+
+                                const edtobj2 = { id, numero }
+
+                                fetch("http://localhost:3000/atual/" + id, {
+                                    method: "PATCH",
                                     headers: { 'content-type': 'application/json' },
-                                    body: JSON.stringify(cadobj)
+                                    body: JSON.stringify(edtobj2)
                                 }).then((res) => {
 
-                                    const number = document.getElementById('vendn').textContent;
-                                    const id = document.getElementById('id').textContent;
-                                    console.log(number)
-                                    console.log(id)
-
-                                    function AddNumber() {
-                                        return parseInt(number) + 1;
-                                    }
-
-                                    console.log(AddNumber())
-
-                                    const numero = AddNumber();
-
-                                    const edtobj2 = { id, numero }
-
-                                    fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
-                                        method: "PATCH",
-                                        headers: { 'content-type': 'application/json' },
-                                        body: JSON.stringify(edtobj2)
-                                    }).then((res) => {
-
-                                        window.location.reload();
-
-                                    }).catch((err) => {
-                                        toast.error('Erro ! :' + err.message)
-                                    })
-
+                                    window.location.reload();
 
                                 }).catch((err) => {
                                     toast.error('Erro ! :' + err.message)
                                 })
 
-                            } else if (result.isDenied) {
-                                Swal.fire("Nada salvo", "", "info");
-                            }
 
-                        });
+                            }).catch((err) => {
+                                toast.error('Erro ! :' + err.message)
+                            })
 
+                        } else if (result.isDenied) {
+                            Swal.fire("Nada salvo", "", "info");
+                        }
 
-                    } else {
-
-                        const vendan = document.getElementById('vendan').value
-                        const nome = document.getElementById('nome').value;
-                        const total = parseFloat(document.getElementById('total').value).toFixed(2);
-                        const parcelas = Number(document.getElementById("parcelas").value);
-                        const formapag = document.getElementById('formapag').value
-                        const valorpagto = (total / parcelas).toFixed(2);
-                        const data_cad = formataData()
-                        const frete = 0
-                        const totfrete = 0
-
-                        const cadobj = { vendan, nome, total, parcelamento, parcelan, formapag, valorpagto, mes, data_cad, frete, totfrete }
-
-                        Swal.fire({
-                            title: "Deseja salvar ?",
-                            showDenyButton: true,
-                            showCancelButton: true,
-                            confirmButtonText: "Salvar",
-                            denyButtonText: `Não salvar`
-                        }).then((result) => {
-
-                            if (result.isConfirmed) {
-
-                                fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                                    method: "POST",
-                                    headers: { 'content-type': 'application/json' },
-                                    body: JSON.stringify(cadobj)
-                                }).then((res) => {
-
-                                    const number = document.getElementById('vendn').textContent;
-                                    const id = document.getElementById('id').textContent;
-                                    console.log(number)
-                                    console.log(id)
-
-                                    function AddNumber() {
-                                        return parseInt(number) + 1;
-                                    }
-
-                                    console.log(AddNumber())
-
-                                    const numero = AddNumber();
-
-                                    const edtobj2 = { id, numero }
-
-                                    fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
-                                        method: "PATCH",
-                                        headers: { 'content-type': 'application/json' },
-                                        body: JSON.stringify(edtobj2)
-                                    }).then((res) => {
-
-                                        window.location.reload();
-
-                                    }).catch((err) => {
-                                        toast.error('Erro ! :' + err.message)
-                                    })
-
-
-                                }).catch((err) => {
-                                    toast.error('Erro ! :' + err.message)
-                                })
-
-                            } else if (result.isDenied) {
-                                Swal.fire("Nada salvo", "", "info");
-                            }
-
-                        });
-
-
-
-                    }
+                    });
 
 
                 } else {
 
+                    const vendan = document.getElementById('vendan').value
+                    const nome = document.getElementById('nome').value;
+                    const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                    const parcelas = Number(document.getElementById("parcelas").value);
+                    const formapag = document.getElementById('formapag').value
+                    const valorpagto = (total / parcelas).toFixed(2);
+                    const data_cad = formataData()
+                    const frete = 0
+                    const totfrete = 0                    
 
-                    const tf = document.getElementById('totfrete').value;
-                    const frete = document.getElementById('frete').value
-                    console.log(tf)
+                    const cadobj = { vendan, nome, total, parcelamento, parcelan, formapag, valorpagto, mes, data_cad, frete, totfrete }
 
-                    if (Number(tf) !== "" && Number(frete) !== "") {
+                    Swal.fire({
+                        title: "Deseja salvar ?",
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: "Salvar",
+                        denyButtonText: `Não salvar`
+                    }).then((result) => {
 
-                        const vendan = document.getElementById('vendan').value
-                        const nome = document.getElementById('nome').value;
-                        const total = parseFloat(document.getElementById('total').value).toFixed(2);
-                        const parcelas = Number(document.getElementById("parcelas").value);
-                        const formapag = document.getElementById('formapag').value
-                        const valorpagto = (tf / parcelas).toFixed(2);
-                        const data_cad = formataData()
-                        const totfrete = tf;
-                        const totaldesc = parseFloat(document.getElementById('td').value).toFixed(2);                       
-                        const desconto = document.getElementById('desconto').value;
-                        const valordesc = parseFloat(document.getElementById('vd').value).toFixed(2);
+                        if (result.isConfirmed) {
 
-                        const cadobj = { vendan, nome, total, parcelamento, parcelan, formapag, valorpagto, mes, data_cad, frete, totfrete, totaldesc, desconto, valordesc }
+                            fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                method: "POST",
+                                headers: { 'content-type': 'application/json' },
+                                body: JSON.stringify(cadobj)
+                            }).then((res) => {
 
-                        Swal.fire({
-                            title: "Deseja salvar ?",
-                            showDenyButton: true,
-                            showCancelButton: true,
-                            confirmButtonText: "Salvar",
-                            denyButtonText: `Não salvar`
-                        }).then((result) => {
+                                const number = document.getElementById('vendn').textContent;
+                                const id = document.getElementById('id').textContent;
+                                console.log(number)
+                                console.log(id)
 
-                            if (result.isConfirmed) {
+                                function AddNumber() {
+                                    return parseInt(number) + 1;
+                                }
 
-                                fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                                    method: "POST",
+                                console.log(AddNumber())
+
+                                const numero = AddNumber();
+
+                                const edtobj2 = { id, numero }
+
+                                fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                                    method: "PATCH",
                                     headers: { 'content-type': 'application/json' },
-                                    body: JSON.stringify(cadobj)
+                                    body: JSON.stringify(edtobj2)
                                 }).then((res) => {
 
-                                    const number = document.getElementById('vendn').textContent;
-                                    const id = document.getElementById('id').textContent;
-                                    console.log(number)
-                                    console.log(id)
-
-                                    function AddNumber() {
-                                        return parseInt(number) + 1;
-                                    }
-
-                                    console.log(AddNumber())
-
-                                    const numero = AddNumber();
-
-                                    const edtobj2 = { id, numero }
-
-                                    fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
-                                        method: "PATCH",
-                                        headers: { 'content-type': 'application/json' },
-                                        body: JSON.stringify(edtobj2)
-                                    }).then((res) => {
-
-                                        window.location.reload();
-
-                                    }).catch((err) => {
-                                        toast.error('Erro ! :' + err.message)
-                                    })
-
+                                    window.location.reload();
 
                                 }).catch((err) => {
                                     toast.error('Erro ! :' + err.message)
                                 })
 
-                            } else if (result.isDenied) {
-                                Swal.fire("Nada salvo", "", "info");
-                            }
 
-                        });
+                            }).catch((err) => {
+                                toast.error('Erro ! :' + err.message)
+                            })
 
+                        } else if (result.isDenied) {
+                            Swal.fire("Nada salvo", "", "info");
+                        }
 
-                    } else {
+                    });
 
-                        const vendan = document.getElementById('vendan').value
-                        const nome = document.getElementById('nome').value;
-                        const total = parseFloat(document.getElementById('total').value).toFixed(2);
-                        const parcelas = Number(document.getElementById("parcelas").value);
-                        const formapag = document.getElementById('formapag').value
-                        const totaldesc = parseFloat(document.getElementById('td').value).toFixed(2);                       
-                        const desconto = document.getElementById('desconto').value;
-                        const valordesc = parseFloat(document.getElementById('vd').value).toFixed(2);
-                        const valorpagto = (totaldesc / parcelas).toFixed(2);
-                        const data_cad = formataData()
-                        const frete = 0
-                        const totfrete = 0
-
-                        const cadobj = { vendan, nome, total, parcelamento, parcelan, formapag, valorpagto, mes, data_cad, frete, totfrete, totaldesc, desconto, valordesc }
-
-                        Swal.fire({
-                            title: "Deseja salvar ?",
-                            showDenyButton: true,
-                            showCancelButton: true,
-                            confirmButtonText: "Salvar",
-                            denyButtonText: `Não salvar`
-                        }).then((result) => {
-
-                            if (result.isConfirmed) {
-
-                                fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                                    method: "POST",
-                                    headers: { 'content-type': 'application/json' },
-                                    body: JSON.stringify(cadobj)
-                                }).then((res) => {
-
-                                    const number = document.getElementById('vendn').textContent;
-                                    const id = document.getElementById('id').textContent;
-                                    console.log(number)
-                                    console.log(id)
-
-                                    function AddNumber() {
-                                        return parseInt(number) + 1;
-                                    }
-
-                                    console.log(AddNumber())
-
-                                    const numero = AddNumber();
-
-                                    const edtobj2 = { id, numero }
-
-                                    fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
-                                        method: "PATCH",
-                                        headers: { 'content-type': 'application/json' },
-                                        body: JSON.stringify(edtobj2)
-                                    }).then((res) => {
-
-                                        window.location.reload();
-
-                                    }).catch((err) => {
-                                        toast.error('Erro ! :' + err.message)
-                                    })
-
-
-                                }).catch((err) => {
-                                    toast.error('Erro ! :' + err.message)
-                                })
-
-                            } else if (result.isDenied) {
-                                Swal.fire("Nada salvo", "", "info");
-                            }
-
-                        });
-
-
-
-                    }
 
 
                 }
-
 
             }
 

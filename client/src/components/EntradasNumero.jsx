@@ -355,7 +355,7 @@ const EntradasNumero = () => {
         return isproceed
     }
 
-    const concluir = (e) => {
+   const concluir = (e) => {
 
         e.preventDefault();
 
@@ -365,294 +365,315 @@ const EntradasNumero = () => {
 
             if (parcelamento === "" || parcelamento === null && parcelan === "" || parcelan === null) {
 
-
+                //1. TOTAL COM DESCONTO SEM E COM FRETE: ok
                 if (document.getElementById('desconto').value !== "" && document.getElementById('td').value !== '' && document.getElementById('vd').value !== '') {
 
                     if (document.getElementById('frete').value === "" || document.getElementById('frete').value === null) {
 
-                        const total = parseFloat(document.getElementById('total').value).toFixed(2);
-                        const nome = document.getElementById('nome').value;
-                        const totaldesc = parseFloat(document.getElementById('td').value).toFixed(2);
-                        const vendan = document.getElementById('vendan').value;
-                        const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
-                        const desconto = document.getElementById('desconto').value;
-                        const valordesc = parseFloat(document.getElementById('vd').value).toFixed(2);
-                        const data_cad = formataData();
+                        if (document.getElementById('formapag').value !== 'Crédito') {
 
 
-                        if (Number(valorpagto) > Number(totaldesc)) {
+                            const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                            const nome = document.getElementById('nome').value;
+                            const totaldesc = parseFloat(document.getElementById('td').value).toFixed(2);
+                            const vendan = document.getElementById('vendan').value;
+                            const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
+                            const desconto = document.getElementById('desconto').value;
+                            const valordesc = parseFloat(document.getElementById('vd').value).toFixed(2);
+                            const data_cad = formataData();
 
-                            const troco = document.getElementById('troco').value;
 
-                            if (troco == "") {
-                                toast.error("Campo Troco Vazio !")
-                                document.getElementById('troco').style.borderColor = 'red';
-                            } else {
+                            if (Number(valorpagto) > Number(totaldesc)) {//ok
 
-                                const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, troco, data_cad }
+                                const troco = document.getElementById('troco').value;
 
-                                Swal.fire({
-                                    title: "Deseja salvar ?",
-                                    showDenyButton: true,
-                                    showCancelButton: true,
-                                    confirmButtonText: "Salvar",
-                                    denyButtonText: `Não salvar`
+                                if (troco == "") {
+                                    toast.error("Campo Troco Vazio !")
+                                    document.getElementById('troco').style.borderColor = 'red';
+                                } else {
 
-                                }).then((result) => {
+                                    const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, troco, data_cad }
 
-                                    if (result.isConfirmed) {
+                                    Swal.fire({
+                                        title: "Deseja salvar ?",
+                                        showDenyButton: true,
+                                        showCancelButton: true,
+                                        confirmButtonText: "Salvar",
+                                        denyButtonText: `Não salvar`
 
-                                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                                            method: "POST",
-                                            headers: { 'content-type': 'application/json' },
-                                            body: JSON.stringify(cadobj)
-                                        }).then((res) => {
+                                    }).then((result) => {
 
-                                            const number = document.getElementById('vendn').textContent;
-                                            const id = document.getElementById('id').textContent;
-                                            console.log(number)
-                                            console.log(id)
+                                        if (result.isConfirmed) {
 
-                                            function AddNumber() {
-                                                return parseInt(number) + 1;
-                                            }
-
-                                            console.log(AddNumber())
-
-                                            const numero = AddNumber();
-
-                                            const edtobj2 = { id, numero }
-
-                                            fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
-                                                method: "PATCH",
+                                            fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                                method: "POST",
                                                 headers: { 'content-type': 'application/json' },
-                                                body: JSON.stringify(edtobj2)
+                                                body: JSON.stringify(cadobj)
                                             }).then((res) => {
 
-                                                window.location.reload();
+                                                const number = document.getElementById('vendn').textContent;
+                                                const id = document.getElementById('id').textContent;
+                                                console.log(number)
+                                                console.log(id)
+
+                                                function AddNumber() {
+                                                    return parseInt(number) + 1;
+                                                }
+
+                                                console.log(AddNumber())
+
+                                                const numero = AddNumber();
+
+                                                const edtobj2 = { id, numero }
+
+                                                fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                                                    method: "PATCH",
+                                                    headers: { 'content-type': 'application/json' },
+                                                    body: JSON.stringify(edtobj2)
+                                                }).then((res) => {
+
+                                                    window.location.reload();
+
+                                                }).catch((err) => {
+                                                    toast.error('Erro ! :' + err.message)
+                                                })
 
                                             }).catch((err) => {
                                                 toast.error('Erro ! :' + err.message)
                                             })
 
-                                        }).catch((err) => {
-                                            toast.error('Erro ! :' + err.message)
-                                        })
+                                        } else if (result.isDenied) {
+                                            Swal.fire("Nada salvo", "", "info");
+                                        }
 
-                                    } else if (result.isDenied) {
-                                        Swal.fire("Nada salvo", "", "info");
-                                    }
+                                    });
 
-                                });
-
-                            }
+                                }
 
 
-                        } else
-                            if (Number(valorpagto) === Number(totaldesc)) {
+                            } else
+                                if (Number(valorpagto) === Number(totaldesc)) {//ok
 
-                                const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, data_cad }
+                                    const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, data_cad }
 
-                                Swal.fire({
-                                    title: "Deseja salvar ?",
-                                    showDenyButton: true,
-                                    showCancelButton: true,
-                                    confirmButtonText: "Salvar",
-                                    denyButtonText: `Não salvar`
-                                }).then((result) => {
+                                    Swal.fire({
+                                        title: "Deseja salvar ?",
+                                        showDenyButton: true,
+                                        showCancelButton: true,
+                                        confirmButtonText: "Salvar",
+                                        denyButtonText: `Não salvar`
+                                    }).then((result) => {
 
-                                    if (result.isConfirmed) {
+                                        if (result.isConfirmed) {
 
-                                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                                            method: "POST",
-                                            headers: { 'content-type': 'application/json' },
-                                            body: JSON.stringify(cadobj)
-                                        }).then((res) => {
-
-                                            const number = document.getElementById('vendn').textContent;
-                                            const id = document.getElementById('id').textContent;
-                                            console.log(number)
-                                            console.log(id)
-
-                                            function AddNumber() {
-                                                return parseInt(number) + 1;
-                                            }
-
-                                            console.log(AddNumber())
-
-                                            const numero = AddNumber();
-
-                                            const edtobj2 = { id, numero }
-
-                                            fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
-                                                method: "PATCH",
+                                            fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                                method: "POST",
                                                 headers: { 'content-type': 'application/json' },
-                                                body: JSON.stringify(edtobj2)
+                                                body: JSON.stringify(cadobj)
                                             }).then((res) => {
 
-                                                window.location.reload();
+                                                const number = document.getElementById('vendn').textContent;
+                                                const id = document.getElementById('id').textContent;
+                                                console.log(number)
+                                                console.log(id)
+
+                                                function AddNumber() {
+                                                    return parseInt(number) + 1;
+                                                }
+
+                                                console.log(AddNumber())
+
+                                                const numero = AddNumber();
+
+                                                const edtobj2 = { id, numero }
+
+                                                fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                                                    method: "PATCH",
+                                                    headers: { 'content-type': 'application/json' },
+                                                    body: JSON.stringify(edtobj2)
+                                                }).then((res) => {
+
+                                                    window.location.reload();
+
+                                                }).catch((err) => {
+                                                    toast.error('Erro ! :' + err.message)
+                                                })
 
                                             }).catch((err) => {
                                                 toast.error('Erro ! :' + err.message)
                                             })
 
-                                        }).catch((err) => {
-                                            toast.error('Erro ! :' + err.message)
-                                        })
+                                        } else if (result.isDenied) {
+                                            Swal.fire("Nada salvo", "", "info");
+                                        }
 
-                                    } else if (result.isDenied) {
-                                        Swal.fire("Nada salvo", "", "info");
-                                    }
 
-                                });
-                            }
+                                    });
 
+                                }
+
+                        } else {
+
+                            toast.warning("Forma de Pagamento Invalida !")
+
+                        }
 
                     } else {
 
-                        const total = parseFloat(document.getElementById('total').value).toFixed(2);
-                        const nome = document.getElementById('nome').value;
-                        const totaldesc = parseFloat(document.getElementById('td').value).toFixed(2);
-                        const vendan = document.getElementById('vendan').value;
-                        const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
-                        const desconto = document.getElementById('desconto').value;
-                        const valordesc = parseFloat(document.getElementById('vd').value).toFixed(2);
-                        const data_cad = formataData();
-                        const frete = parseFloat(document.getElementById('frete').value).toFixed(2);
-                        const totfrete = parseFloat(document.getElementById('totfrete').value).toFixed(2);
+                        if (document.getElementById('formapag').value !== 'Crédito') {
+
+                            const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                            const nome = document.getElementById('nome').value;
+                            const totaldesc = parseFloat(document.getElementById('td').value).toFixed(2);
+                            const vendan = document.getElementById('vendan').value;
+                            const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
+                            const desconto = document.getElementById('desconto').value;
+                            const valordesc = parseFloat(document.getElementById('vd').value).toFixed(2);
+                            const data_cad = formataData();
+                            const frete = parseFloat(document.getElementById('frete').value).toFixed(2);
+                            const totfrete = parseFloat(document.getElementById('totfrete').value).toFixed(2);
 
 
-                        if (Number(valorpagto) > Number(totfrete)) {
+                            if (Number(valorpagto) > Number(totfrete)) {//ok
 
-                            const troco = document.getElementById('troco').value;
+                                const troco = document.getElementById('troco').value;
 
-                            if (troco !== "") {
+                                if (troco !== "") {
 
-                                const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, troco, data_cad, frete, totfrete }
+                                    const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, troco, data_cad, frete, totfrete }
 
-                                Swal.fire({
-                                    title: "Deseja salvar ?",
-                                    showDenyButton: true,
-                                    showCancelButton: true,
-                                    confirmButtonText: "Salvar",
-                                    denyButtonText: `Não salvar`
+                                    Swal.fire({
+                                        title: "Deseja salvar ?",
+                                        showDenyButton: true,
+                                        showCancelButton: true,
+                                        confirmButtonText: "Salvar",
+                                        denyButtonText: `Não salvar`
 
-                                }).then((result) => {
+                                    }).then((result) => {
 
-                                    if (result.isConfirmed) {
+                                        if (result.isConfirmed) {
 
-                                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                                            method: "POST",
-                                            headers: { 'content-type': 'application/json' },
-                                            body: JSON.stringify(cadobj)
-                                        }).then((res) => {
-
-                                            const number = document.getElementById('vendn').textContent;
-                                            const id = document.getElementById('id').textContent;
-                                            console.log(number)
-                                            console.log(id)
-
-                                            function AddNumber() {
-                                                return parseInt(number) + 1;
-                                            }
-
-                                            console.log(AddNumber())
-
-                                            const numero = AddNumber();
-
-                                            const edtobj2 = { id, numero }
-
-                                            fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
-                                                method: "PATCH",
+                                            fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                                method: "POST",
                                                 headers: { 'content-type': 'application/json' },
-                                                body: JSON.stringify(edtobj2)
+                                                body: JSON.stringify(cadobj)
                                             }).then((res) => {
 
-                                                window.location.reload();
+                                                const number = document.getElementById('vendn').textContent;
+                                                const id = document.getElementById('id').textContent;
+                                                console.log(number)
+                                                console.log(id)
+
+                                                function AddNumber() {
+                                                    return parseInt(number) + 1;
+                                                }
+
+                                                console.log(AddNumber())
+
+                                                const numero = AddNumber();
+
+                                                const edtobj2 = { id, numero }
+
+                                                fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                                                    method: "PATCH",
+                                                    headers: { 'content-type': 'application/json' },
+                                                    body: JSON.stringify(edtobj2)
+                                                }).then((res) => {
+
+                                                    window.location.reload();
+
+                                                }).catch((err) => {
+                                                    toast.error('Erro ! :' + err.message)
+                                                })
 
                                             }).catch((err) => {
                                                 toast.error('Erro ! :' + err.message)
                                             })
 
-                                        }).catch((err) => {
-                                            toast.error('Erro ! :' + err.message)
-                                        })
+                                        } else if (result.isDenied) {
+                                            Swal.fire("Nada salvo", "", "info");
+                                        }
 
-                                    } else if (result.isDenied) {
-                                        Swal.fire("Nada salvo", "", "info");
-                                    }
-
-                                });
+                                    });
 
 
-                            } else {
+                                } else {
 
-                                toast.warning('Campo Troco Vazio !')
-                                document.getElementById('troco').style.borderColor = "red";
-                            }
+                                    toast.warning('Campo Troco Vazio !')
+                                    document.getElementById('troco').style.borderColor = "red";
+                                }
 
-                        } else
-                            if (Number(valorpagto) === Number(totfrete)) {//ok
+                            } else
+                                if (Number(valorpagto) === Number(totfrete)) {//ok
 
-                                const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, data_cad, frete, totfrete }
+                                    const cadobj = { vendan, total, nome, totaldesc, valorpagto, desconto, valordesc, mes, formapag, data_cad, frete, totfrete }
 
-                                Swal.fire({
-                                    title: "Deseja salvar ?",
-                                    showDenyButton: true,
-                                    showCancelButton: true,
-                                    confirmButtonText: "Salvar",
-                                    denyButtonText: `Não salvar`
-                                }).then((result) => {
+                                    Swal.fire({
+                                        title: "Deseja salvar ?",
+                                        showDenyButton: true,
+                                        showCancelButton: true,
+                                        confirmButtonText: "Salvar",
+                                        denyButtonText: `Não salvar`
+                                    }).then((result) => {
 
-                                    if (result.isConfirmed) {
+                                        if (result.isConfirmed) {
 
-                                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
-                                            method: "POST",
-                                            headers: { 'content-type': 'application/json' },
-                                            body: JSON.stringify(cadobj)
-                                        }).then((res) => {
-
-                                            const number = document.getElementById('vendn').textContent;
-                                            const id = document.getElementById('id').textContent;
-                                            console.log(number)
-                                            console.log(id)
-
-                                            function AddNumber() {
-                                                return parseInt(number) + 1;
-                                            }
-
-                                            console.log(AddNumber())
-
-                                            const numero = AddNumber();
-
-                                            const edtobj2 = { id, numero }
-
-                                            fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
-                                                method: "PATCH",
+                                            fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                                method: "POST",
                                                 headers: { 'content-type': 'application/json' },
-                                                body: JSON.stringify(edtobj2)
+                                                body: JSON.stringify(cadobj)
                                             }).then((res) => {
 
-                                                window.location.reload();
+                                                const number = document.getElementById('vendn').textContent;
+                                                const id = document.getElementById('id').textContent;
+                                                console.log(number)
+                                                console.log(id)
+
+                                                function AddNumber() {
+                                                    return parseInt(number) + 1;
+                                                }
+
+                                                console.log(AddNumber())
+
+                                                const numero = AddNumber();
+
+                                                const edtobj2 = { id, numero }
+
+                                                fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                                                    method: "PATCH",
+                                                    headers: { 'content-type': 'application/json' },
+                                                    body: JSON.stringify(edtobj2)
+                                                }).then((res) => {
+
+                                                    window.location.reload();
+
+                                                }).catch((err) => {
+                                                    toast.error('Erro ! :' + err.message)
+                                                })
 
                                             }).catch((err) => {
                                                 toast.error('Erro ! :' + err.message)
                                             })
 
-                                        }).catch((err) => {
-                                            toast.error('Erro ! :' + err.message)
-                                        })
+                                        } else if (result.isDenied) {
+                                            Swal.fire("Nada salvo", "", "info");
+                                        }
 
-                                    } else if (result.isDenied) {
-                                        Swal.fire("Nada salvo", "", "info");
-                                    }
+                                    });
+                                }
 
-                                });
-                            }
+
+                        }else{
+
+                           toast.warning("Forma de Pagamento Invalida ! ")
+
+                        }
+
+
                     }
 
                 } else {
-
+                    //2. TOTAL SEM DESCONTO SEM E COM FRETE; OK
                     if (document.getElementById('frete').value === "" || document.getElementById('frete').value === null) {
 
                         const total = parseFloat(document.getElementById('total').value).toFixed(2);
@@ -661,7 +682,7 @@ const EntradasNumero = () => {
                         const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
                         const data_cad = formataData();
 
-                        if (Number(valorpagto) > Number(total)) {
+                        if (Number(valorpagto) > Number(total)) {//ok
 
                             const troco = document.getElementById('troco').value;
 
@@ -732,7 +753,7 @@ const EntradasNumero = () => {
                             }
 
                         } else
-                            if (Number(valorpagto) === Number(total)) {
+                            if (Number(valorpagto) === Number(total)) {//ok
 
 
                                 const cadobj = { vendan, total, nome, valorpagto, mes, formapag, data_cad }
@@ -804,7 +825,7 @@ const EntradasNumero = () => {
                         const frete = parseFloat(document.getElementById('frete').value).toFixed(2);
                         const totfrete = parseFloat(document.getElementById('totfrete').value).toFixed(2)
 
-                        if (Number(valorpagto) > Number(totfrete)) {
+                        if (Number(valorpagto) > Number(totfrete)) {//ok
 
                             const troco = document.getElementById('troco').value;
 
@@ -876,7 +897,7 @@ const EntradasNumero = () => {
 
 
                         } else
-                            if (Number(valorpagto) === Number(totfrete)) {
+                            if (Number(valorpagto) === Number(totfrete)) {//ok
 
 
                                 const cadobj = { vendan, total, nome, valorpagto, mes, formapag, data_cad, frete, totfrete }
@@ -940,13 +961,13 @@ const EntradasNumero = () => {
 
                 }
 
-            } else {
+            } else {   //3. PARCELAMENTO DO TOTAL COM FRETE E DO TOTAL ;  PAREI AQUI  ok
 
-                 const tf = document.getElementById('totfrete').value;
+                const tf = document.getElementById('totfrete').value;
                 const frete = document.getElementById('frete').value
                 console.log(tf)
 
-                if (Number(tf) !== "" && Number(frete) !== "" ) {//ok
+                if (Number(tf) !== "" && Number(frete) !== "") {//ok
 
                     const vendan = document.getElementById('vendan').value
                     const nome = document.getElementById('nome').value;
@@ -954,7 +975,7 @@ const EntradasNumero = () => {
                     const parcelas = Number(document.getElementById("parcelas").value);
                     const formapag = document.getElementById('formapag').value
                     const valorpagto = (total / parcelas).toFixed(2);
-                    const data_cad = formataData()              
+                    const data_cad = formataData()
                     const totfrete = tf;
 
                     const cadobj = { vendan, nome, total, parcelamento, parcelan, formapag, valorpagto, mes, data_cad, frete, totfrete }
@@ -1024,7 +1045,7 @@ const EntradasNumero = () => {
                     const valorpagto = (total / parcelas).toFixed(2);
                     const data_cad = formataData()
                     const frete = 0
-                    const totfrete = 0                    
+                    const totfrete = 0
 
                     const cadobj = { vendan, nome, total, parcelamento, parcelan, formapag, valorpagto, mes, data_cad, frete, totfrete }
 
@@ -1081,8 +1102,6 @@ const EntradasNumero = () => {
                         }
 
                     });
-
-
 
                 }
 

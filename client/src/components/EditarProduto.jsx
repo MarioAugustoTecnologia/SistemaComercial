@@ -368,7 +368,7 @@ const EditarProduto = () => {
           </div>
            <div className="mb-3">
             <label htmlFor='codbarras' style={{ margin: '0 115px', fontWeight: 'bold' }}>Codigo de Barras:</label>
-            <input onKeyUp={MudacorCb} type='text' value={cb} onChange={e => cbchange(e.target.value)} style={{ width: 80, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='cb' id="cb" />
+            <input onKeyUp={MudacorCb} type='text' value={cb} onChange={e => cbchange(e.target.value)} style={{ width: 110, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='cb' id="cb" />
           </div>
           <div className='mb-3'>
             <label htmlFor='nome' style={{ margin: '0 115px', fontWeight: 'bold' }}>Nome:</label>

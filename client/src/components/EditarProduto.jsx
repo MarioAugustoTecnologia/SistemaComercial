@@ -19,7 +19,7 @@ const EditarProduto = () => {
       precochange(resp.preco);
       custochange(resp.custo)
       codchange(resp.codigo);
-      codbchange(resp.cb);
+      cbchange(resp.cb);
       qtdchange(resp.qtd);
 
     }).catch((err) => {

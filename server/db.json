@@ -14,48 +14,363 @@
     }
   ],
   
-   "vendas": [
-   
-  ],
+  "vendas": [],
   "atual": [
     {
       "id": 1,
-      "numero": 1
+      "numero": "1"
     }
   ],
   "catproduto": [
-    
+    {
+      "nome": "Medicamentos",
+      "id": 1
+    },
+    {
+      "nome": "Perfumes e Desodorantes",
+      "id": 2
+    },
+    {
+      "nome": "Suplementos Vitaminicos",
+      "id": 3
+    }
   ],
   "produtos": [
-    
+    {
+      "qtd": "300",
+      "nome": "Dipirona Comprimidos 1g ",
+      "custo": "15.00",
+      "categoria": "Medicamentos",
+      "data_cadastro": "25/05/2026",
+      "codigo": "001",
+      "preco": "20.00",
+      "cb": "7896714207551",
+      "id": 1
+    },
+    {
+      "qtd": "250",
+      "nome": "Nimesulida 100mg",
+      "custo": "15.60",
+      "categoria": "Medicamentos",
+      "data_cadastro": "25/05/2026",
+      "codigo": "002",
+      "preco": "18.60",
+      "cb": "7896523212685",
+      "id": 2
+    },
+    {
+      "qtd": "200",
+      "nome": "Oxcarbazepina 300 mg",
+      "custo": "35.00",
+      "categoria": "Medicamentos",
+      "data_cadastro": "25/05/2026",
+      "codigo": "003",
+      "preco": "70.00",
+      "cb": "7897076906038",
+      "id": 3
+    },
+    {
+      "qtd": "100",
+      "nome": "Acnezil Peróxido de Benzoila 5%",
+      "custo": "12.60",
+      "categoria": "Medicamentos",
+      "data_cadastro": "25/05/2026",
+      "codigo": "004",
+      "preco": "18.50",
+      "cb": "7896523208282",
+      "id": 4
+    },
+    {
+      "qtd": "60",
+      "nome": "Propionato de Clobetasol 0.5 mg ",
+      "custo": "25.30",
+      "categoria": "Medicamentos",
+      "data_cadastro": "25/05/2026",
+      "codigo": "005",
+      "preco": "30.30",
+      "cb": "7896004712420",
+      "id": 5
+    },
+    {
+      "qtd": "60",
+      "nome": "Desodorante Axe ",
+      "custo": "12.60",
+      "categoria": "Perfumes e Desodorantes",
+      "data_cadastro": "25/05/2026",
+      "codigo": "006",
+      "preco": "20.06",
+      "cb": "7891150080966",
+      "id": 6
+    },
+    {
+      "nome": "Transporte  ",
+      "preco": "40.00",
+      "codigo": "1111",
+      "cb": "0",
+      "custo": 0,
+      "id": 7
+    }
   ],
   "despesas": [
-    
+    {
+      "nome": "Agua ",
+      "custo": "156.00",
+      "data_pgto": "15/05/2026",
+      "data_cad": "20/05/2026",
+      "total": "156.00",
+      "mes": "Maio",
+      "id": 1
+    },
+    {
+      "nome": "Luz",
+      "custo": "154.65",
+      "data_pgto": "20/05/2026",
+      "data_cad": "20/05/2026",
+      "total": "154.65",
+      "mes": "Maio",
+      "id": 2
+    },
+    {
+      "nome": "Telefone e Internet ",
+      "custo": "100.00",
+      "data_pgto": "20/05/2026",
+      "data_cad": "20/05/2026",
+      "total": "100.00",
+      "mes": "Maio",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "nome": "Outras Despesas de Serviços.",
+      "custo": "1500.00",
+      "data_pgto": "18/05/2026",
+      "total": "1500.00",
+      "data_cad": "20/05/2026",
+      "mes": "Maio"
+    },
+    {
+      "nome": "Total das despesas em: Maio",
+      "total": "1910.65",
+      "custo": null,
+      "data_cad": "20/05/2026",
+      "mes": "Maio",
+      "id": 5
+    }
   ],
   "compras": [
-   
+    {
+      "compran": "1",
+      "nome": "Dipirona Comprimidos 1g ",
+      "qtd": "300",
+      "custo": "15.00",
+      "total": "4500.00",
+      "data_cad": "25/05/2026",
+      "mes": "Maio",
+      "fornecedor": "Medicamentos S/a",
+      "valorpagto": 0,
+      "gastototal": "4500.00",
+      "id": 1
+    },
+    {
+      "compran": "1",
+      "nome": "Nimesulida 100mg",
+      "qtd": "250",
+      "custo": "15.60",
+      "total": "3900.00",
+      "data_cad": "25/05/2026",
+      "mes": "Maio",
+      "fornecedor": "Medicamentos S/a",
+      "valorpagto": 0,
+      "gastototal": "3900.00",
+      "id": 2
+    },
+    {
+      "compran": "1",
+      "nome": "Oxcarbazepina 300 mg",
+      "qtd": "200",
+      "custo": "35.00",
+      "total": "7000.00",
+      "data_cad": "25/05/2026",
+      "mes": "Maio",
+      "fornecedor": "Medicamentos S/a",
+      "valorpagto": 0,
+      "gastototal": "7000.00",
+      "id": 3
+    },
+    {
+      "compran": "1",
+      "nome": "Total da compra nº:1",
+      "total": "15400.00",
+      "data_cad": "25/05/2026",
+      "formapag": "Boleto",
+      "mes": "Maio",
+      "fornecedor": "Medicamentos S/a",
+      "valorpagto": "15460.00",
+      "totalfrete": "15460.00",
+      "vf": "60.00",
+      "id": 4
+    },
+    {
+      "compran": "2",
+      "nome": "Acnezil Peróxido de Benzoila 5%",
+      "qtd": "100",
+      "custo": "12.60",
+      "total": "1260.00",
+      "data_cad": "25/05/2026",
+      "mes": "Maio",
+      "fornecedor": "São Dimas Industria Farmaceutica",
+      "valorpagto": 0,
+      "gastototal": "1260.00",
+      "id": 5
+    },
+    {
+      "compran": "2",
+      "nome": "Propionato de Clobetasol 0.5 mg ",
+      "qtd": "60",
+      "custo": "25.30",
+      "total": "1518.00",
+      "data_cad": "25/05/2026",
+      "mes": "Maio",
+      "fornecedor": "São Dimas Industria Farmaceutica",
+      "valorpagto": 0,
+      "gastototal": "1518.00",
+      "id": 6
+    },
+    {
+      "compran": "2",
+      "nome": "Total da compra nº:2",
+      "fornecedor": "São Dimas Industria Farmaceutica",
+      "total": "2778.00",
+      "data_cad": "25/05/2026",
+      "valorpagto": "473.83",
+      "formapag": "Crédito",
+      "parcelamento": "6x",
+      "parcelan": "1ª",
+      "mes": "Junho",
+      "totalfrete": "2843.00",
+      "vf": "65.00",
+      "id": 7
+    },
+    {
+      "compran": "3",
+      "nome": "Desodorante Axe ",
+      "qtd": "60",
+      "custo": "12.60",
+      "total": "756.00",
+      "data_cad": "25/05/2026",
+      "formapag": "Pix",
+      "mes": "Maio",
+      "fornecedor": "Souza Lima Perfumaria s/a",
+      "valorpagto": "806.00",
+      "totalfrete": "806.00",
+      "vf": "50.00",
+      "gastototal": "806.00",
+      "id": 8
+    }
   ],
   "compraatual": [
     {
       "id": 1,
-      "numero": 1
+      "numero": 5
     }
   ],
   "resultados": [],
   "clientes": [
-   
+    {
+      "id": 1,
+      "nome": "Joel Ribeiro da Silva",
+      "email": "joellima@email.com",
+      "fone": "14 996663325",
+      "bairro": "Vila Paulista",
+      "endereco": "Avenida Dante Delmanto - 500",
+      "cpf": "33555853897",
+      "data_cad": "29/04/2026"
+    },
+    {
+      "id": 2,
+      "nome": "Fernando de Souza Farias Gomes",
+      "email": "fernando@email.com",
+      "fone": "14 333333",
+      "bairro": "Vila Paulista",
+      "endereco": "Rua Jose Thiago Cintra",
+      "cpf": "335556214589",
+      "data_cad": "16/05/2026"
+    },
+    {
+      "nome": "Maria Aparecida Agapto Pisani ",
+      "email": "mariaap@email.com",
+      "fone": "14 996663325",
+      "data_cad": "21/05/2026",
+      "bairro": "Jardim Paraiso ",
+      "endereco": "Rua Cel Antonio Cardodoso do amaral 488",
+      "cpf": "98326171891",
+      "id": 3
+    }
   ],
   "fornecedor": [
-   
+    {
+      "nome": "Medicamentos S/a",
+      "endereco": "Rua Manoel Alves - Bras ",
+      "numero": "200",
+      "cep": "200300569",
+      "cidade": "São Paulo SP",
+      "email": "vendasmed@emaill.com",
+      "fone": "11 3322566",
+      "datacad": "25/05/2026",
+      "catforn": "Medicamentos",
+      "id": 1
+    },
+    {
+      "nome": "Souza Lima Perfumaria s/a",
+      "endereco": "Rua Jose Bueno de Almeida - Centro",
+      "comp": "B 200",
+      "cep": "20300145",
+      "cidade": "Campinas SP",
+      "email": "vendasperfumes@email.com",
+      "fone": "19 33664587",
+      "datacad": "25/05/2026",
+      "catforn": "Perfumes e Desodorantes ",
+      "numero": "",
+      "id": 2
+    },
+    {
+      "nome": "São Dimas Industria Farmaceutica",
+      "endereco": "Rua Leandro Gulart - Centro",
+      "numero": "200",
+      "cep": "1236547",
+      "cidade": "São Paulo SP",
+      "email": "saodimas@email.com",
+      "fone": "11 22556699",
+      "datacad": "25/05/2026",
+      "catforn": "Suplementos Vitaminicos",
+      "id": 3
+    }
   ],
   "catfornecedor": [
-    
+    {
+      "nome": "Medicamentos",
+      "id": 1
+    },
+    {
+      "nome": "Perfumes e Desodorantes ",
+      "id": 2
+    },
+    {
+      "nome": "Suplementos Vitaminicos",
+      "id": 3
+    }
   ],
   "mesatual": [
-   
+    {
+      "mes": "Maio",
+      "id": 1
+    }
   ],
   "mescompraatual": [
-   
+    {
+      "mes": "Maio",
+      "id": 1
+    }
   ],
   "orcvenda": [],
   "entradas": [],

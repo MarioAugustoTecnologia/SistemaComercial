@@ -271,7 +271,7 @@ const ProdutosBarCod = () => {
 
         <div className="mb3" style={{ marginTop: '-50px' }}>
 
-          <label htmlFor="Id" className="Id" style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold' }}>Busca por codigo:</label>
+          <label htmlFor="Id" className="Id" style={{ fontFamily: 'arial', fontSize: '17px', fontWeight: 'bold' }}>Busca por codigo de barras:</label>
  
           <div className="d-flex">
 

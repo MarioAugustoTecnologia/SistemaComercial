@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';//5=> Criação do arquivo de Cadastro de Usuarios:
-import { Link, Outlet, useParams} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';//5=> Criação do arquivo de Cadastro de Usuarios:
+import { Link, Outlet, useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -8,188 +8,200 @@ import Swal from 'sweetalert2';
 
 const CadProdutos = () => {
 
-  const {compracod} = useParams()
+  const { compracod } = useParams()
 
   useEffect(() => {
     fetch("https://sistemacomercial-fv5g.onrender.com/compras/" + compracod).then((res) => {
-        return res.json();
+      return res.json();
     }).then((resp) => {
       idchange(resp.id);
       nomechange(resp.nome);
-      custochange(resp.custo);     
+      custochange(resp.custo);
       qtdchange(resp.qtd);
-       
-    }).catch((err) => {
-        console.log(err.message);
-    })
-}, []);
 
-  
-  const [id, idchange] = useState("") 
-  const [nome, nomechange] = useState("") 
+    }).catch((err) => {
+      console.log(err.message);
+    })
+  }, []);
+
+
+  const [id, idchange] = useState("")
+  const [nome, nomechange] = useState("")
   const [custo, custochange] = useState("")
   const [catprod, catprodchange] = useState([])
   const [datacad, datacadchange] = useState("")
   const [qtd, qtdchange] = useState("")
   const [codigo, codigochange] = useState("")
   const [preco, precochange] = useState("")
+  const [cb, cbchange] = useState("")
 
   useEffect(() => {
     fetch("https://sistemacomercial-fv5g.onrender.com/catproduto").then((res) => {
 
       return res.json()
-  
-      }).then((resp) => {
-  
-        catprodchange(resp)
-  
-      }).catch((err) => {
-        console.log(err.message)
-      }) 
 
-  }, [])  
+    }).then((resp) => {
+
+      catprodchange(resp)
+
+    }).catch((err) => {
+      console.log(err.message)
+    })
+
+  }, [])
 
   const [values, setValues] = useState({
-    id:''            
+    id: ''
   })
 
-  const isValidate = () => {   
+  const isValidate = () => {
 
     let isproceed = true
     let errormessage = "Campos não podem estar vazio  !"
 
-    if(qtd === null || qtd === ''){
+    if (qtd === null || qtd === '') {
       isproceed = false
       //errormessage += 'Nome:' 
     }
-    if(nome === null || nome === ''){
+    if (nome === null || nome === '') {
       document.getElementById('nome').style.borderColor = 'red';
       isproceed = false
       //errormessage += 'Nome Completo:' 
     }
 
-    if(custo === null || custo === ''){
+    if (custo === null || custo === '') {
       document.getElementById('custo').style.borderColor = 'red';
       isproceed = false
-     // errormessage += 'Email:' 
+      // errormessage += 'Email:' 
     }
 
-    if(preco === null || preco === ''){
+    if (preco === null || preco === '') {
       document.getElementById('preco').style.borderColor = 'red';
       isproceed = false
-     // errormessage += 'Email:' 
+      // errormessage += 'Email:' 
     }
-  
-    if(datacad === null || datacad === ''){
+
+    if (datacad === null || datacad === '') {
       isproceed = false
       document.getElementById('datacad').style.borderColor = 'red';
       //errormessage += 'Telefone:' 
     }
-    if(codigo === null || codigo === ''){
+    if (codigo === null || codigo === '') {
       document.getElementById('codigo').style.borderColor = 'red';
       isproceed = false
       //errormessage += 'Telefone:' 
     }
-    if(document.getElementById('categoria').value === null || document.getElementById('categoria').value === ''){
+     if (cb === null || cb === '') {
+      document.getElementById('cb').style.borderColor = 'red';
+      isproceed = false
+      //errormessage += 'Telefone:' 
+    }
+    if (document.getElementById('categoria').value === null || document.getElementById('categoria').value === '') {
       document.getElementById('categoria').style.borderColor = 'red';
       isproceed = false
       //errormessage += 'Telefone:' 
     }
-    if(!isproceed){
+    if (!isproceed) {
       toast.warning(errormessage)
-  
+
     }
-    
-    
+
+
     return isproceed
-   }
+  }
 
-//console.log(data_cadastro);
-function MudaCorCodigo(){
-  document.getElementById('codigo').style.borderColor = 'Gainsboro'
-}
+  //console.log(data_cadastro);
+  function MudaCorCodigo() {
+    document.getElementById('codigo').style.borderColor = 'Gainsboro'
+  }
 
-function MudaCorData(){
-  document.getElementById('datacad').style.borderColor = 'Gainsboro'
-}
+  function MudaCorData() {
+    document.getElementById('datacad').style.borderColor = 'Gainsboro'
+  }
 
-function MudaCorCusto(){
-  document.getElementById('custo').style.borderColor = 'Gainsboro'
-}
+  function MudaCorCusto() {
+    document.getElementById('custo').style.borderColor = 'Gainsboro'
+  }
 
-function MudaCorPreco(){
-  document.getElementById('preco').style.borderColor = 'Gainsboro'
-}
+  function MudaCorPreco() {
+    document.getElementById('preco').style.borderColor = 'Gainsboro'
+  }
 
-function MudaCorNome(){
-  document.getElementById('nome').style.borderColor = 'Gainsboro'
-}
+  function MudaCorNome() {
+    document.getElementById('nome').style.borderColor = 'Gainsboro'
+  }
 
- const cadastrar = (e) => { 
+    function MudaCorCb() {
+    document.getElementById('cb').style.borderColor = 'Gainsboro'
+  }
+    function MudaCorCat() {
+        document.getElementById('categoria').style.borderColor = 'Gainsboro'
+    } 
+  const cadastrar = (e) => {
 
-    e.preventDefault(); 
-   
-      
-      const dataInput = datacad;
-      const data = new Date(dataInput);
-      const data_cadastro = data.toLocaleDateString('pt-BR', {timeZone: 'UTC'}); 
-      const categoria = document.getElementById('categoria').value;
-      const preco = parseFloat(document.getElementById('preco').value).toFixed(2);   
-     
-      const cadobj = {qtd, nome, custo, categoria, data_cadastro, codigo, preco}
+    e.preventDefault();
+
+
+    const dataInput = datacad;
+    const data = new Date(dataInput);
+    const data_cadastro = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+    const categoria = document.getElementById('categoria').value;
+    const preco = parseFloat(document.getElementById('preco').value).toFixed(2);
+
+    const cadobj = { qtd, nome, custo, categoria, data_cadastro, codigo, preco, cb }
     //console.log(cadobj)  
 
-    if(isValidate()){
+    if (isValidate()) {
 
-         Swal.fire({
-                        title: "Deseja salvar ?",
-                        showDenyButton: true,
-                        showCancelButton: true,
-                        confirmButtonText: "Salvar",
-                        denyButtonText: `Não salvar`
-                      }).then((result) => {
-                                
-                        if (result.isConfirmed) {
+      Swal.fire({
+        title: "Deseja salvar ?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Salvar",
+        denyButtonText: `Não salvar`
+      }).then((result) => {
 
-                            fetch("https://sistemacomercial-fv5g.onrender.com/produtos", {
-                              method: "POST",
-                              headers: {'content-type':'application/json'},
-                              body: JSON.stringify(cadobj)
-                              }).then((res) => {        
-                               toast.success('Cadastrado com Sucesso !')      
-                               qtdchange('')
-                               nomechange('')
-                               custochange('')   
-                               datacadchange('') 
-                               codigochange('') 
-                               precochange('')       
-       
-                              }).catch((err) => {
-                              toast.error('Erro ! :' +err.message)
-                          })                                           
-                                                
-                        } else if (result.isDenied) {
-                          Swal.fire("Nada salvo", "", "info");
-                        }
-                      });
-   
-       
-  }      
-} 
+        if (result.isConfirmed) {
 
-const logout = () => {
-  localStorage.clear()
-  console.clear();
-  
-}
+          fetch("https://sistemacomercial-fv5g.onrender.com/produtos", {
+            method: "POST",
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(cadobj)
+          }).then((res) => {
+            toast.success('Cadastrado com Sucesso !')
+            qtdchange('')
+            nomechange('')
+            custochange('')
+            datacadchange('')
+            codigochange('')
+            precochange('')
+            cbchange('')
 
-     
+          }).catch((err) => {
+            toast.error('Erro ! :' + err.message)
+          })
+
+        } else if (result.isDenied) {
+          Swal.fire("Nada salvo", "", "info");
+        }
+      });
+
+
+    }
+  }
+
+  const logout = () => {
+    localStorage.clear()
+    console.clear();
+
+  }
+
+
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">
 
         <div className="main-wrapper">
-
           <nav class="sidebar bg-secondary" style={{ width: '200px', height: 1000, margin: '-12px' }}>
             <br />
             <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
@@ -353,17 +365,22 @@ const logout = () => {
 
             </div><br />
             <div className='mb-3'>
+              <label htmlFor='nome' style={{ fontSize: '17px', fontWeight: 'bold' }}>Codigo de Barras:</label>
+              <input type='text' onKeyUp={MudaCorCb} value={cb} onChange={e => cbchange(e.target.value)} style={{ fontSize: '17px', width: 140, fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='cb' id='cb' />
+
+            </div>
+            <div className='mb-3'>
               <label htmlFor='nome' style={{ fontSize: '17px', fontWeight: 'bold' }}>Nome:</label>
               <input type='text' onKeyUp={MudaCorNome} placeholder='Entre com o nome:' value={nome} onChange={e => nomechange(e.target.value)} style={{ fontSize: '17px', width: 400, fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='nome' id='nome' />
             </div><br />
             <div className='d-flex'>
               <label htmlFor='custo' style={{ fontSize: '17px', fontWeight: 'bold' }}>Custo:</label>
-              <label htmlFor='preco' style={{ fontSize: '17px', fontWeight: 'bold', margin: '0 50px' }}>Preço de Venda:</label>
+              <label htmlFor='preco' style={{ fontSize: '17px', fontWeight: 'bold', margin: '0 60px' }}>Preço de Venda:</label>
 
             </div>
             <div className='d-flex'>
 
-              <input type="decimal" onKeyUp={MudaCorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '17px', width: 70, fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='custo' id='custo' />
+              <input type="decimal" onKeyUp={MudaCorCusto} value={custo} onChange={e => custochange(e.target.value)} style={{ fontSize: '17px', width: 80, fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='custo' id='custo' />
               <input type="decimal" onKeyUp={MudaCorPreco} value={preco} onChange={e => precochange(e.target.value)} style={{ fontSize: '17px', width: 180, fontWeight: 'bold', color: 'navy', margin: '0 30px' }} placeholder='Entre com o preço:' className='form-control rounded-0' name='preco' id='preco' />
 
             </div><br />
@@ -371,7 +388,7 @@ const logout = () => {
               <label htmlFor='categoria' className='form-label' style={{ fontSize: '17px', fontWeight: 'bold' }}>
                 Categoria:
               </label>
-              <select style={{ fontSize: '17px', width: 280, fontWeight: 'bold', color: 'navy' }} name='catprod' id='categoria' className='form-select rounded-0' onChange={(e) => setValues({ ...values, id: e.target.value })}>
+              <select onClick={MudaCorCat} style={{ fontSize: '17px', width: 280, fontWeight: 'bold', color: 'navy' }} name='catprod' id='categoria' className='form-select rounded-0' onChange={(e) => setValues({ ...values, id: e.target.value })}>
                 <option value=""></option>
                 {catprod.map(val => {
                   return <option value={val.nome}>{val.nome}</option>

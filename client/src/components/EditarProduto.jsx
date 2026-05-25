@@ -8,6 +8,8 @@ const EditarProduto = () => {
 
   const { produtocod } = useParams()
 
+  //const [empdata, empdatachange] = useState({});
+
   useEffect(() => {
     fetch("https://sistemacomercial-fv5g.onrender.com/produtos/" + produtocod).then((res) => {
       return res.json();
@@ -17,6 +19,7 @@ const EditarProduto = () => {
       precochange(resp.preco);
       custochange(resp.custo)
       codchange(resp.codigo);
+      codbchange(resp.cb);
       qtdchange(resp.qtd);
 
     }).catch((err) => {
@@ -33,6 +36,7 @@ const EditarProduto = () => {
   const [codigo, codchange] = useState("")
   const [custo, custochange] = useState("")
   const [qtd, qtdchange] = useState("")
+  const [cb, cbchange] = useState("")
 
   useEffect(() => {
     fetch("https://sistemacomercial-fv5g.onrender.com/catproduto").then((res) => {
@@ -99,6 +103,11 @@ const EditarProduto = () => {
       isproceed = false
       // errormessage += 'Salario:' 
     }
+    if (cb === null || cb === '') {
+       document.getElementById('cb').style.borderColor = 'red';
+      isproceed = false
+      // errormessage += 'Salario:' 
+    }
     if (!isproceed) {
       toast.warning(errormessage)
     }
@@ -132,6 +141,9 @@ const EditarProduto = () => {
   }
     function MudacorQtd() {
     document.getElementById('qtd').style.borderColor = 'gainsboro';
+  }
+  function MudacorCb() {
+    document.getElementById('cb').style.borderColor = 'gainsboro';
   }
 
 
@@ -353,6 +365,10 @@ const EditarProduto = () => {
           <div className="mb-3">
             <label htmlFor='cod' style={{ margin: '0 115px', fontWeight: 'bold' }}>Codigo de Venda:</label>
             <input onKeyUp={MudacorCodigo} type='text' value={codigo} onChange={e => codchange(e.target.value)} style={{ width: 80, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='codigo' id="codigo" />
+          </div>
+           <div className="mb-3">
+            <label htmlFor='codbarras' style={{ margin: '0 115px', fontWeight: 'bold' }}>Codigo de Barras:</label>
+            <input onKeyUp={MudacorCb} type='text' value={cb} onChange={e => cbchange(e.target.value)} style={{ width: 80, margin: '0 115px', fontWeight: 'bold', color: 'navy' }} className='form-control rounded-0' name='cb' id="cb" />
           </div>
           <div className='mb-3'>
             <label htmlFor='nome' style={{ margin: '0 115px', fontWeight: 'bold' }}>Nome:</label>

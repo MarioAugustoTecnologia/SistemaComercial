@@ -283,6 +283,8 @@ const LoadEdit = (id) => {
                 <th className="th" scope="col">Data de Cadastro:</th>
                 <th className="th" scope="col">Quantidade:</th>
                 <th className="th" scope="col">Codigo de Venda:</th>
+                <th className="th" scope="col">Codigo de Barras:</th>
+
                 <th className="th" scope="col">Ação:</th>
               </tr>
             </thead>
@@ -298,6 +300,7 @@ const LoadEdit = (id) => {
                     <td className="td">{item.data_cadastro}</td>
                     <td className="td" id="estoque" classname="stock" style={{ color: getColor(item.qtd) }}>{item.qtd}</td>
                     <td className="td">{item.codigo}</td>
+                    <td className="td">{item.cb}</td>
                     <td className="td" >
                       <button className="editar" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Editar:</button>
                       <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>

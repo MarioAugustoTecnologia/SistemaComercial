@@ -63,8 +63,9 @@ const CadTransportes = () => {
         e.preventDefault();
 
         var custo = 0
+          var cb = 0;
 
-        const cadobj = { nome, preco, codigo, custo }
+        const cadobj = { nome, preco, codigo, custo, cb }
         //console.log(cadobj)  
 
         if (isValidate()) {

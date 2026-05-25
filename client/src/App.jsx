@@ -62,6 +62,7 @@ import CadTransportes from './components/CadTransportes';
 import EntradasTotFrete from './components/EntradasTotFrete';
 import EditarVendaAtual from './components/EditarVendaAtual';
 import EditarCompraAtual from './components/EditarCompraAtual';
+import ProdutosBarCod from './components/ProdutosBarCod';
 
 //8=> Criação do json server com o comando: npx json-server db.json
 
@@ -84,6 +85,7 @@ function App() {
     <Route path='/produtos/editar/:produtocod' element={<PrivateRoutes><EditarProduto /></PrivateRoutes>}></Route>
     <Route path='/produtos/nome' element={<PrivateRoutes><ProdutosNome /></PrivateRoutes>}></Route>
     <Route path='/produtos/codigo' element={<PrivateRoutes><ProdutosCodigo /></PrivateRoutes>}></Route>
+    <Route path='/produtos/barcode' element={<PrivateRoutes><ProdutosBarCod /></PrivateRoutes>}></Route>
     <Route path='/produtos/cat' element={<PrivateRoutes><ProdutosCat /></PrivateRoutes>}></Route>
     <Route path='/produto/cadcat' element={<PrivateRoutes><CadCatProd /></PrivateRoutes>}></Route>
     <Route path='/produtos/categoria/lista' element={<PrivateRoutes><CatProdutos/></PrivateRoutes>}></Route>

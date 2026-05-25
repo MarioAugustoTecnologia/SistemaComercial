@@ -5,13 +5,13 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import Swal from 'sweetalert2';
 import useScanDetecion from 'use-scan-detection-react18';
 
-const ProdutosCodigo = () => {
+const ProdutosBarCod = () => {
 
 
   const [produtocod, setProdutoCod] = useState([]);
   const [buscarap, setBuscaRap] = useState('');
 
-  var table = produtocod.filter(item => item.codigo.includes(buscarap))
+  var table = produtocod.filter(item => item.cb.includes(buscarap))
 
 
   const navigate = useNavigate();
@@ -282,7 +282,6 @@ const ProdutosCodigo = () => {
          
           <Link to="/entradas" className="btn" style={{ color: 'white', backgroundColor: 'orange', fontSize: '16px', fontFamily: 'arial', width: '100px' }}>Entradas:</Link>
           <Link to="/compras" className="btn" style={{ color: 'white', backgroundColor: 'green', fontSize: '16px', fontFamily: 'arial', width: '100px', margin: '0 10px' }}>Saidas:</Link>
-          <Link to="/produtos/barcode" className="btn" style={{ color: 'white', backgroundColor: 'blue', fontSize: '16px', fontFamily: 'arial', width: '120px', margin: '0 10px' }}>Cód Barras:</Link><br /><br />
           <br /><br />
 
           <table className="table" style={{ fontFamily: 'arial', fontSize: '17px', width: '1800px' }} id="table">
@@ -295,7 +294,7 @@ const ProdutosCodigo = () => {
                 <th scope="col" className="th">Categoria:</th>
                 <th scope="col" className="th">Data de Cadastro:</th>
                 <th scope="col" className="th">Quantidade:</th>
-                <th scope="col" className="th">Codigo de Venda:</th>                
+                <th scope="col" className="th">Codigo de Barras:</th>
                 <th scope="col" className="th">Ação:</th>
 
               </tr>
@@ -312,7 +311,7 @@ const ProdutosCodigo = () => {
                     <td className="td">{item.categoria}</td>
                     <td className="td">{item.data_cadastro}</td>
                     <td className="td">{item.qtd}</td>
-                    <td className="td">{item.codigo}</td>
+                    <td className="td">{item.cb}</td>
                     <td className="td"  >
                       <button className="editar" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Editar:</button>
                       <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>
@@ -342,4 +341,4 @@ const ProdutosCodigo = () => {
   )
 }
 
-export default ProdutosCodigo
+export default ProdutosBarCod

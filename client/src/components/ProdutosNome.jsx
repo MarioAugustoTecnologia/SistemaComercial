@@ -248,6 +248,7 @@ const logout = () => {
                 <th scope="col" className="th">Data de Cadastro:</th>
                 <th scope="col" className="th">Quantidade:</th>
                 <th className="th" scope="col">Codigo de Venda:</th>
+                <th className="th" scope="col">Codigo de Barras:</th>
                 <th scope="col" className="th">Ação:</th>
               </tr>
             </thead>
@@ -256,13 +257,14 @@ const logout = () => {
                 table.map(item => (
                   <tr key={item.id}>
                     <td className="td">{item.id}</td>
-                    <td className="td" id="nome">{item.nome}</td>
+                    <td className="td">{item.nome}</td>
                     <td className="td">{item.custo}</td>
                     <td className="td">{item.preco}</td>
                     <td className="td">{item.categoria}</td>
                     <td className="td">{item.data_cadastro}</td>
                     <td className="td">{item.qtd}</td>
                     <td className="td">{item.codigo}</td>
+                    <td className="td">{item.cb}</td>
                     <td className="td"  >
                       <button className="editar" onClick={() => { LoadEdit(item.id) }} style={{ color: 'white', backgroundColor: 'blue', border: 'none', borderRadius: '5px' }}>Editar:</button>
                       <button className="excluir" onClick={() => { handleDelete(item.id) }} style={{ color: 'white', backgroundColor: 'red', border: 'none', borderRadius: '5px' }}>Excluir:</button>

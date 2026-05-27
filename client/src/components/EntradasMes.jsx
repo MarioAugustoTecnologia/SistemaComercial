@@ -359,7 +359,7 @@ const EntradasMes = () => {
                   <th className="th" scope="col">Total:</th>
                   <th className="th" scope="col">Desconto:</th>
                   <th className="th" scope="col">Valor Desconto:</th>
-                  <th className="th" scope="col">Total c/Desconto:</th>
+                  <th className="th" scope="col">SubTotal:</th>
                   <th className="th" scope="col">Forma Paga:</th>
                   <th className="th" scope="col">Entradas:</th>
                   <th className="th" scope="col">Troco:</th>

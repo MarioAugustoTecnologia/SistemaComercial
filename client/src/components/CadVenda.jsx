@@ -526,9 +526,9 @@ const CadVenda = () => {
             } else
               if (valorpagto === total) {//ok
 
-                ganhototal = valorpagto;
+                 ganhototal = valorpagto;
 
-                const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, valorpagto, ganhototal }
+                 const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, valorpagto, ganhototal }
 
                 if (isValidate()) {
 
@@ -621,13 +621,14 @@ const CadVenda = () => {
             const data_cad = formataData();
             const valorpagto = 0;
             ganhototal = total;
+            const totaldesc = total;
 
             if (categoria === "Transporte") {
 
               var frete = total;
               total = 0;
 
-              const cadobj = { vendan, nome, quant, preco, total, data_cad, mes, frete, valorpagto }
+              const cadobj = { vendan, nome, quant, preco, total, data_cad, mes, frete, valorpagto, totaldesc }
 
               if (isValidate()) {
 
@@ -662,7 +663,7 @@ const CadVenda = () => {
 
             } else {
 
-              const cadobj = { vendan, nome, quant, preco, total, data_cad, mes, valorpagto, ganhototal }
+              const cadobj = { vendan, nome, quant, preco, total, data_cad, mes, valorpagto, ganhototal, totaldesc }
 
               if (isValidate()) {
 

@@ -84,7 +84,7 @@ const EntradasNome = () => {
       linhas.forEach(linha => {
 
         const verificames = linha.cells[14].textContent;
-        const total = parseFloat(linha.cells[5].textContent);
+        const total = parseFloat(linha.cells[11].textContent);
 
         // Verifica a condição
         if (mes !== "") {

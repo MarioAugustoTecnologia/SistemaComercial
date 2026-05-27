@@ -34,7 +34,7 @@ const EntradasNumero = () => {
     const [mes, meschange] = useState("")
     const [parcelamento, parcelamentochange] = useState("")
     const [parcelan, parcelanchange] = useState("")
-
+   
     const [entradadata, setEntradaData] = useState([])
 
 
@@ -109,6 +109,7 @@ const EntradasNumero = () => {
 
         }
         else {
+
             let valores = [];
 
             table.map(item => {
@@ -131,28 +132,7 @@ const EntradasNumero = () => {
     }
 
 
-    const isValidate2 = () => {
 
-        let isproceed = true
-        let errormessage = "Campos não podem estar vazio  !"
-
-        if (document.getElementById('desconto').value === null || document.getElementById('desconto').value === '') {
-            document.getElementById('desconto').style.borderColor = 'red';
-            isproceed = false
-            //errormessage += 'Nome Completo:' 
-        }
-        if (document.getElementById('total').value === null || document.getElementById('total').value === '') {
-            document.getElementById('total').style.borderColor = 'red';
-            isproceed = false
-            // errormessage += 'Email:' 
-        }
-
-        if (!isproceed) {
-            toast.warning(errormessage)
-        }
-
-        return isproceed
-    }
 
     const isValidate3 = () => {
 
@@ -243,7 +223,7 @@ const EntradasNumero = () => {
 
     function desconto() {
 
-        if (isValidate2()) {
+        if (document.getElementById('desconto').value !== "") {
 
             var total = document.getElementById('total').value;
             var desc = document.getElementById('desconto').value;
@@ -254,8 +234,25 @@ const EntradasNumero = () => {
             document.getElementById('td').value = (novototal).toFixed(2);
             document.getElementById('vd').value = desconto;
             document.getElementById('desconto').value = (desc * 100).toFixed(2) + '%';
-            document.getElementById('totald').innerHTML = "R$" + novototal.toFixed(2)
+            document.getElementById('td').innerHTML = "R$" + novototal.toFixed(2)
             document.getElementById('vp').value = (novototal).toFixed(2);
+
+
+        } else {
+
+
+            let valores = [];
+
+            table.map(item => {
+                valores.push(item.totaldesc)
+            })
+            const soma = valores.reduce((previous_value, current_value) => {       // método que faz a soma
+                return parseFloat(previous_value) + parseFloat(current_value);     // converte de string para number
+            })
+
+            document.getElementById('td').value = (soma).toFixed(2);
+            document.getElementById('totald').innerHTML = "R$" + soma.toFixed(2)
+            document.getElementById('vp').value = (soma).toFixed(2);
 
         }
     }
@@ -355,7 +352,7 @@ const EntradasNumero = () => {
         return isproceed
     }
 
-   const concluir = (e) => {
+    const concluir = (e) => {
 
         e.preventDefault();
 
@@ -663,9 +660,9 @@ const EntradasNumero = () => {
                                 }
 
 
-                        }else{
+                        } else {
 
-                           toast.warning("Forma de Pagamento Invalida ! ")
+                            toast.warning("Forma de Pagamento Invalida ! ")
 
                         }
 
@@ -960,8 +957,300 @@ const EntradasNumero = () => {
                     }
 
                 }
+                //3. TOTAL COM DESCONTO NÃO GERAL ...
+                if (document.getElementById('desconto').value == "" && document.getElementById('td').value !== '' && document.getElementById('vd').value == '') {
 
-            } else {   //3. PARCELAMENTO DO TOTAL COM FRETE E DO TOTAL ;  PAREI AQUI  ok
+                    if (document.getElementById('frete').value === "" || document.getElementById('frete').value === null) {
+
+                        const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                        const nome = document.getElementById('nome').value;
+                        const vendan = document.getElementById('vendan').value;
+                        const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
+                        const totaldesc = parseFloat(document.getElementById('td').value).toFixed(2)
+                        const data_cad = formataData();
+
+                        if (Number(valorpagto) > Number(totaldesc)) {//ok
+
+                            const troco = document.getElementById('troco').value;
+
+                            if (troco !== "") {
+
+                                const cadobj = { vendan, total, nome, valorpagto, mes, formapag, troco, data_cad, totaldesc }
+
+                                Swal.fire({
+                                    title: "Deseja salvar ?",
+                                    showDenyButton: true,
+                                    showCancelButton: true,
+                                    confirmButtonText: "Salvar",
+                                    denyButtonText: `Não salvar`
+                                }).then((result) => {
+
+                                    if (result.isConfirmed) {
+
+                                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                            method: "POST",
+                                            headers: { 'content-type': 'application/json' },
+                                            body: JSON.stringify(cadobj)
+                                        }).then((res) => {
+
+                                            const number = document.getElementById('vendn').textContent;
+                                            const id = document.getElementById('id').textContent;
+                                            console.log(number)
+                                            console.log(id)
+
+                                            function AddNumber() {
+                                                return parseInt(number) + 1;
+                                            }
+
+                                            console.log(AddNumber())
+
+                                            const numero = AddNumber();
+
+                                            const edtobj2 = { id, numero }
+
+                                            fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                                                method: "PATCH",
+                                                headers: { 'content-type': 'application/json' },
+                                                body: JSON.stringify(edtobj2)
+                                            }).then((res) => {
+
+                                                window.location.reload();
+
+                                            }).catch((err) => {
+                                                toast.error('Erro ! :' + err.message)
+                                            })
+
+
+                                        }).catch((err) => {
+                                            toast.error('Erro ! :' + err.message)
+                                        })
+
+                                    } else if (result.isDenied) {
+                                        Swal.fire("Nada salvo", "", "info");
+                                    }
+
+                                });
+
+
+                            } else {
+
+                                toast.warning("Campo Troco Vazio !")
+                                document.getElementById("troco").style.borderColor = "red";
+
+                            }
+
+                        } else
+                            if (Number(valorpagto) === Number(totaldesc)) {//ok
+
+
+                                const cadobj = { vendan, total, nome, valorpagto, mes, formapag, data_cad, totaldesc }
+
+                                Swal.fire({
+                                    title: "Deseja salvar ?",
+                                    showDenyButton: true,
+                                    showCancelButton: true,
+                                    confirmButtonText: "Salvar",
+                                    denyButtonText: `Não salvar`
+                                }).then((result) => {
+
+                                    if (result.isConfirmed) {
+
+                                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                            method: "POST",
+                                            headers: { 'content-type': 'application/json' },
+                                            body: JSON.stringify(cadobj)
+                                        }).then((res) => {
+
+                                            const number = document.getElementById('vendn').textContent;
+                                            const id = document.getElementById('id').textContent;
+                                            console.log(number)
+                                            console.log(id)
+
+                                            function AddNumber() {
+                                                return parseInt(number) + 1;
+                                            }
+
+                                            console.log(AddNumber())
+
+                                            const numero = AddNumber();
+
+                                            const edtobj2 = { id, numero }
+
+                                            fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                                                method: "PATCH",
+                                                headers: { 'content-type': 'application/json' },
+                                                body: JSON.stringify(edtobj2)
+                                            }).then((res) => {
+
+                                                window.location.reload();
+
+                                            }).catch((err) => {
+                                                toast.error('Erro ! :' + err.message)
+                                            })
+
+
+                                        }).catch((err) => {
+                                            toast.error('Erro ! :' + err.message)
+                                        })
+
+                                    } else if (result.isDenied) {
+                                        Swal.fire("Nada salvo", "", "info");
+                                    }
+
+                                });
+
+                            }
+
+
+                    } else {
+
+                        const total = parseFloat(document.getElementById('total').value).toFixed(2);
+                        const nome = document.getElementById('nome').value;
+                        const vendan = document.getElementById('vendan').value;
+                        const valorpagto = parseFloat(document.getElementById('vp').value).toFixed(2);
+                        const data_cad = formataData();
+                        const frete = parseFloat(document.getElementById('frete').value).toFixed(2);
+                        const totfrete = parseFloat(document.getElementById('totfrete').value).toFixed(2)
+                        const totaldesc = parseFloat(document.getElementById('td').value)
+
+                        if (Number(valorpagto) > Number(totfrete)) {//ok
+
+                            const troco = document.getElementById('troco').value;
+
+                            if (troco !== "") {
+
+                                const cadobj = { vendan, total, nome, valorpagto, mes, formapag, troco, data_cad, frete, totfrete, totaldesc}
+
+                                Swal.fire({
+                                    title: "Deseja salvar ?",
+                                    showDenyButton: true,
+                                    showCancelButton: true,
+                                    confirmButtonText: "Salvar",
+                                    denyButtonText: `Não salvar`
+                                }).then((result) => {
+
+                                    if (result.isConfirmed) {
+
+                                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                            method: "POST",
+                                            headers: { 'content-type': 'application/json' },
+                                            body: JSON.stringify(cadobj)
+                                        }).then((res) => {
+
+                                            const number = document.getElementById('vendn').textContent;
+                                            const id = document.getElementById('id').textContent;
+                                            console.log(number)
+                                            console.log(id)
+
+                                            function AddNumber() {
+                                                return parseInt(number) + 1;
+                                            }
+
+                                            console.log(AddNumber())
+
+                                            const numero = AddNumber();
+
+                                            const edtobj2 = { id, numero }
+
+                                            fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                                                method: "PATCH",
+                                                headers: { 'content-type': 'application/json' },
+                                                body: JSON.stringify(edtobj2)
+                                            }).then((res) => {
+
+                                                window.location.reload();
+
+                                            }).catch((err) => {
+                                                toast.error('Erro ! :' + err.message)
+                                            })
+
+
+                                        }).catch((err) => {
+                                            toast.error('Erro ! :' + err.message)
+                                        })
+
+                                    } else if (result.isDenied) {
+                                        Swal.fire("Nada salvo", "", "info");
+                                    }
+
+                                });
+
+
+                            } else {
+
+                                toast.warning("Campo Troco Vazio !")
+                                document.getElementById("troco").style.borderColor = "red";
+                            }
+
+
+
+                        } else
+                            if (Number(valorpagto) === Number(totfrete)) {//ok
+
+
+                                const cadobj = { vendan, total, nome, valorpagto, mes, formapag, data_cad, frete, totfrete, totaldesc }
+
+                                Swal.fire({
+                                    title: "Deseja salvar ?",
+                                    showDenyButton: true,
+                                    showCancelButton: true,
+                                    confirmButtonText: "Salvar",
+                                    denyButtonText: `Não salvar`
+                                }).then((result) => {
+
+                                    if (result.isConfirmed) {
+
+                                        fetch("https://sistemacomercial-fv5g.onrender.com/vendas", {
+                                            method: "POST",
+                                            headers: { 'content-type': 'application/json' },
+                                            body: JSON.stringify(cadobj)
+                                        }).then((res) => {
+                                            const number = document.getElementById('vendn').textContent;
+                                            const id = document.getElementById('id').textContent;
+                                            console.log(number)
+                                            console.log(id)
+
+                                            function AddNumber() {
+                                                return parseInt(number) + 1;
+                                            }
+
+                                            console.log(AddNumber())
+
+                                            const numero = AddNumber();
+
+                                            const edtobj2 = { id, numero }
+
+                                            fetch("https://sistemacomercial-fv5g.onrender.com/atual/" + id, {
+                                                method: "PATCH",
+                                                headers: { 'content-type': 'application/json' },
+                                                body: JSON.stringify(edtobj2)
+                                            }).then((res) => {
+
+                                                window.location.reload();
+
+                                            }).catch((err) => {
+                                                toast.error('Erro ! :' + err.message)
+                                            })
+
+                                        }).catch((err) => {
+                                            toast.error('Erro ! :' + err.message)
+                                        })
+
+                                    } else if (result.isDenied) {
+                                        Swal.fire("Nada salvo", "", "info");
+                                    }
+
+                                });
+
+                            }
+
+
+                    }
+
+                }
+
+
+            } else {   //4. PARCELAMENTO DO TOTAL ;  
 
                 const tf = document.getElementById('totfrete').value;
                 const frete = document.getElementById('frete').value
@@ -1103,7 +1392,10 @@ const EntradasNumero = () => {
 
                     });
 
+
+
                 }
+
 
             }
 
@@ -1464,9 +1756,9 @@ const EntradasNumero = () => {
                                 <th className="th" scope="col">Total:</th>
                                 <th className="th" scope="col">Desconto:</th>
                                 <th className="th" scope="col">Valor Desconto:</th>
-                                <th className="th" scope="col">Total c/Desconto:</th>
-                                <th className="th" scope="col">Frete:</th>
                                 <th className="th" scope="col">SubTotal:</th>
+                                <th className="th" scope="col">Frete:</th>
+                                <th className="th" scope="col">Total c/Frete:</th>
                                 <th className="th" scope="col">Forma Paga:</th>
                                 <th className="th" scope="col">Entradas:</th>
                                 <th className="th" scope="col">Troco:</th>

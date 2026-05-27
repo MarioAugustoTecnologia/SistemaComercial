@@ -189,7 +189,6 @@ const CadVenda = () => {
       document.getElementById('valordesc').value = parseFloat(desconto).toFixed(2);
       document.getElementById('desconto').value = (desc * 100).toFixed(2) + '%';
    
-
     }
 
   }
@@ -207,7 +206,7 @@ const CadVenda = () => {
   }
 
 
- const cadastrar = (e) => {
+   const cadastrar = (e) => {
 
     e.preventDefault();
 
@@ -526,9 +525,9 @@ const CadVenda = () => {
             } else
               if (valorpagto === total) {//ok
 
-                 ganhototal = valorpagto;
+                ganhototal = valorpagto;
 
-                 const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, valorpagto, ganhototal }
+                const cadobj = { vendan, nome, quant, preco, total, data_cad, formapag, mes, valorpagto, ganhototal }
 
                 if (isValidate()) {
 
@@ -621,11 +620,10 @@ const CadVenda = () => {
             const data_cad = formataData();
             const valorpagto = 0;
             ganhototal = total;
-        
+            const totaldesc = total; //subtotal no caso de um produto ter desconto e outro não 
 
             if (categoria === "Transporte") {
-              
-              const totaldesc = 0;
+
               var frete = total;
               total = 0;
 
@@ -663,8 +661,6 @@ const CadVenda = () => {
               }
 
             } else {
-
-                const totaldesc = total
 
               const cadobj = { vendan, nome, quant, preco, total, data_cad, mes, valorpagto, ganhototal, totaldesc }
 

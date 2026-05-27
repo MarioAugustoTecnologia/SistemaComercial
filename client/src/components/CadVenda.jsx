@@ -621,10 +621,11 @@ const CadVenda = () => {
             const data_cad = formataData();
             const valorpagto = 0;
             ganhototal = total;
-            const totaldesc = total;
+        
 
             if (categoria === "Transporte") {
-
+              
+              const totaldesc = 0;
               var frete = total;
               total = 0;
 
@@ -662,6 +663,8 @@ const CadVenda = () => {
               }
 
             } else {
+
+                const totaldesc = total
 
               const cadobj = { vendan, nome, quant, preco, total, data_cad, mes, valorpagto, ganhototal, totaldesc }
 

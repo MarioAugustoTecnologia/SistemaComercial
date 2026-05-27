@@ -619,13 +619,13 @@ const CadVenda = () => {
             var mes = document.getElementById('mesatual').innerHTML;
             const data_cad = formataData();
             const valorpagto = 0;
-            ganhototal = total;
-            const totaldesc = total; //subtotal no caso de um produto ter desconto e outro não 
+            ganhototal = total; 
 
             if (categoria === "Transporte") {
 
               var frete = total;
               total = 0;
+              const totaldesc = 0;
 
               const cadobj = { vendan, nome, quant, preco, total, data_cad, mes, frete, valorpagto, totaldesc }
 
@@ -661,6 +661,8 @@ const CadVenda = () => {
               }
 
             } else {
+
+               const totaldesc = total;
 
               const cadobj = { vendan, nome, quant, preco, total, data_cad, mes, valorpagto, ganhototal, totaldesc }
 

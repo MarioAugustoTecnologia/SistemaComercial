@@ -283,7 +283,14 @@ const CadNovaCompra = () => {
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(cadobj)
                 }).then((res) => {
-                  toast.success('Cadastrado com Sucesso !')
+                  toast.success('Cadastrado com Sucesso !')  
+                   nomechange('')
+                   qtdchange('')
+                   custochange('')
+                   vfchange('')
+                   datacadchange('')
+               
+                   formapag('')          
 
                 }).catch((err) => {
                   toast.error('Erro ! :' + err.message)
@@ -344,7 +351,14 @@ const CadNovaCompra = () => {
                       headers: { 'content-type': 'application/json' },
                       body: JSON.stringify(cadobj)
                     }).then((res) => {
-                      toast.success('Cadastrado com Sucesso !')
+                       toast.success('Cadastrado com Sucesso !')
+                       nomechange('')
+                       qtdchange('')
+                       custochange('')
+                       vfchange('')
+                       datacadchange('')
+               
+                  formapag('')
                     }).catch((err) => {
                       toast.error('Erro ! :' + err.message)
                     })
@@ -423,6 +437,12 @@ const CadNovaCompra = () => {
                   body: JSON.stringify(cadobj)
                 }).then((res) => {
                   toast.success('Cadastrado com Sucesso !')
+                   nomechange('')
+                  qtdchange('')
+                  custochange('')
+                  vfchange('')
+                  datacadchange('')               
+                  formapag('')
                   const number = document.getElementById('compran').textContent;
                   const id = document.getElementById('id').textContent;
                   console.log(number)
@@ -482,6 +502,14 @@ const CadNovaCompra = () => {
                       body: JSON.stringify(cadobj)
                     }).then((res) => {
                       toast.success('Cadastrado com Sucesso !')
+                       nomechange('')
+                       qtdchange('')
+                       custochange('')
+                       vfchange('')
+                       datacadchange('')
+               
+                    formapag('')
+
                       const number = document.getElementById('compran').textContent;
                       const id = document.getElementById('id').textContent;
                       console.log(number)
@@ -706,7 +734,6 @@ const CadNovaCompra = () => {
                     body: JSON.stringify(edtobj2)
                   }).then((res) => {
                       toast.success('Compra Nº Atualizada com Sucesso !')
-
 
                   }).catch((err) => {
                     toast.error('Erro ! :' + err.message)

@@ -449,24 +449,23 @@ const OrcVendas = () => {
           <br /><br /><br />
           <div className="d-flex">
 
-            <button type="button" className="btn border rounded-0" onClick={calcdesc} style={{ width: 105, fontSize: '15px', fontFamily: 'arial', backgroundColor: 'DarkGreen', color: 'white' }}>Desconto:</button>
-            <button type="button" className="btn border rounded-0" onClick={Format} style={{ width: 105, fontSize: '15px', fontFamily: 'arial', backgroundColor: 'navy', color: 'white' }}>Destacar:</button>
-            <button type="button" className="btn btn-success border rounded-0" onClick={somar} style={{ width: 100, fontSize: '15px', fontFamily: 'arial' }}>Somar:</button>
+            <button type="button" className="btn border rounded-0" onClick={calcdesc} style={{ width: 105, fontSize: '15px', fontFamily: 'arial', backgroundColor: 'DarkGreen', color: 'white', height:"35px" }}>Desconto:</button>
+            <button type="button" className="btn border rounded-0" onClick={Format} style={{height:"35px", width: 105, fontSize: '15px', fontFamily: 'arial', backgroundColor: 'navy', color: 'white' }}>Destacar:</button>
+            <button type="button" className="btn btn-success border rounded-0" onClick={somar} style={{height:"35px", width: 100, fontSize: '15px', fontFamily: 'arial' }}>Somar:</button>
             <label htmlFor="desconto" style={{ fontSize: '20px' }}>Desconto:</label>
-            <input type="decimal" value={desconto} onChange={e => setDesconto(e.target.value)} style={{ width: 100, fontSize: '15px', color: 'green', fontWeight: 'bold' }} />
-            <button type="button" className="btn border rounded-0" onClick={DeleteAllOrcs} style={{ width: 100, fontSize: '15px', fontFamily: 'arial', backgroundColor: 'red', color: 'white' }}>Excluir</button>
-            <button type="button" className="btn border rounded-0" onClick={Return} style={{ width: 100, fontSize: '15px', fontFamily: 'arial', backgroundColor: 'orange', color: 'white' }}>Voltar</button>
-            <button type="button" className="btn border" onClick={() => generatePDF(GerarPdf, personalizacao)} style={{ width: 120, fontSize: '15px', fontFamily: 'arial', backgroundColor: 'Crimson', color: 'white' }}>Gerar Pdf:</button><br /><br /><br />
-            <input type="text" value={obs} onChange={e => setObs(e.target.value)} style={{ width: 400, fontSize: '15px', color: 'navy', fontWeight: 'bold' }} />
-            <button type="button" onClick={Obs} className="btn btn-primary rounded-0" style={{ width: 100, fontSize: '15px', fontFamily: 'arial' }}>Obs:</button>
-            <ToastContainer />
+            <input type="decimal" value={desconto} onChange={e => setDesconto(e.target.value)} style={{height:"35px", width: 100, fontSize: '15px', color: 'green', fontWeight: 'bold' }} />
+            <button type="button" className="btn border rounded-0" onClick={DeleteAllOrcs} style={{height:"35px", width: 100, fontSize: '15px', fontFamily: 'arial', backgroundColor: 'red', color: 'white' }}>Excluir</button>
+            <button type="button" className="btn border rounded-0" onClick={Return} style={{height:"35px", width: 100, fontSize: '15px', fontFamily: 'arial', backgroundColor: 'orange', color: 'white' }}>Voltar</button>
+            <button type="button" className="btn border" onClick={() => generatePDF(GerarPdf, personalizacao)} style={{height:"35px", width: 120, fontSize: '15px', fontFamily: 'arial', backgroundColor: 'Crimson', color: 'white' }}>Gerar Pdf:</button><br /><br /><br />
+            <input type="text" value={obs} onChange={e => setObs(e.target.value)} style={{height:"35px", width: 400, fontSize: '15px', color: 'navy', fontWeight: 'bold' }} />
+            <button type="button" onClick={Obs} className="btn btn-primary rounded-0" style={{height:"35px", swidth: 100, fontSize: '15px', fontFamily: 'arial' }}>Obs:</button>
+            <ToastContainer />     
 
           </div>
 
 
         </div>
        </div>
-
 
          <footer class="footer-mobile py-4 bg-secondary d-flex justify-content-center" style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', color: 'white', textAlign: 'center', zIndex: 1000 }}>
            <p className="fw-bolder text-white">&copy; Multicompany Solutions</p>

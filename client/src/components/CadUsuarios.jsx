@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -9,7 +9,8 @@ import bcrypt from 'bcryptjs';
 
 const CadUsuario = () => {
 
-    const [id, setId] = useState('')  
+    const [id, setId] = useState('')
+
     const [senha, setSenha] = useState('')
     const [erro, setErro] = useState('');
     const [categoria, categoriachange] = useState("")
@@ -83,7 +84,7 @@ const CadUsuario = () => {
     }
 
        
- 
+
 
    
 const validarsenha = (valor) => {
@@ -172,12 +173,9 @@ const validarsenha = (valor) => {
             </div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
 
-
             <form className="mobile-form" style={{ margin: '0 100px' }} onSubmit={cadastrar}>
                 <h5>Cadastrar Usuario:</h5>
-                 <div className="form-group">
-                    
-                </div>
+           
 
                 <div className="form-group">
                     <label htmlFor="nome">Nome:</label><br />
@@ -211,7 +209,7 @@ const validarsenha = (valor) => {
                     >
                     <option value=""></option>    
                     <option value="Administrador">Administrador:</option>
-                    <option value="Vendedor">Vendedor:</option>
+                    <option value="Programador">Vendedor:</option>
      
                     </select>
                 </div>

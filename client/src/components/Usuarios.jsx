@@ -218,7 +218,7 @@ const Usuarios = () => {
 
                     <thead>
                         <tr>
-                            <th className="th" scope="col">Id:</th>
+                      
                             <th className="th" scope="col" >Nome:</th>
                             <th className="th" scope="col" >Categoria:</th>
                             <th className="th" scope="col">Ação:</th>
@@ -228,7 +228,7 @@ const Usuarios = () => {
                         {usuariodata &&
                             usuariodata.map(item => (
                                 <tr key={item.id}>
-                                    <td className="td">{item.cod}</td>
+                                
                                     <td className="td">{item.id}</td>
                                     <td className="td">{item.categoria}</td>
                                     <td>

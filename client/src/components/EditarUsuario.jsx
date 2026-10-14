@@ -17,8 +17,7 @@ const EditarUsuario = () => {
         fetch("https://sistemacomercial-fv5g.onrender.com/usuarios/" + usuariocod).then((res) => {
             return res.json();
         }).then((resp) => {
-            idchange(resp.id);
-            codchange(resp.cod);
+            idchange(resp.id);        
             categoriachange(resp.categoria);
 
         }).catch((err) => {
@@ -28,8 +27,7 @@ const EditarUsuario = () => {
 
 
 
-    const [id, idchange] = useState("") //=> Nome de usuario obrigatório campo (id)
-    const [cod, codchange] = useState("") //=> Representa o registro, qual é o usuario.    
+    const [id, idchange] = useState("") //=> Nome de usuario obrigatório campo (id)  
     const [categoria, categoriachange] = useState("")
     const [senha, senhachange] = useState("")
     const [erro, setErro] = useState('');
@@ -46,11 +44,7 @@ const EditarUsuario = () => {
             isproceed = false
             //errormessage += 'Nome:' 
         }
-        if (cod === null || cod === '') {
-            document.getElementById('cod').style.borderColor = 'red'
-            isproceed = false
-            //errormessage += 'Nome Completo:' 
-        }
+  
 
         if (categoria === null || categoria === '') {
             document.getElementById('categoria').style.borderColor = 'red'
@@ -96,7 +90,7 @@ const EditarUsuario = () => {
                 //window.localStorage.clear('Login', JSON.stringify({user, hashedPassword})) 
                 window.localStorage.setItem('Login', JSON.stringify({ user, hashedPassword, categoria }))
                 //console.log(hashedPassword)
-                const edtobj = { id, cod, hashedPassword, categoria }
+                const edtobj = { id, hashedPassword, categoria }
 
                 Swal.fire({
                     title: "Deseja salvar ?",
@@ -114,7 +108,7 @@ const EditarUsuario = () => {
                         }).then((res) => {
                             toast.success('Atualizado com sucesso !')
                             idchange('');
-                            codchange('');
+                        
                             senhachange('');
                             categoriachange('');
 
@@ -137,9 +131,7 @@ const EditarUsuario = () => {
     function MostraNome() {
         document.getElementById('id').style.borderColor = 'GainsBoro';
     }
-    function MostraCod() {
-        document.getElementById('cod').style.borderColor = 'GainsBoro';
-    }
+
 
     function MostraSenha() {
         document.getElementById('senha').style.borderColor = 'GainsBoro';
@@ -346,11 +338,7 @@ const EditarUsuario = () => {
                         <input onKeyUp={MostraNome} type='text' value={id} onChange={e => idchange(e.target.value)} style={{ fontWeight: 'bold', color: 'navy', width: 150, margin: '0 115px' }} className='form-control rounded-0' name='id' id="id" />
 
                     </div>
-                    <div className='mb-3'>
-                        <label htmlFor='cod' style={{ margin: '0 115px', fontWeight: 'bold' }}>Cod:</label>
-                        <input type='decimal' onKeyPress={handleKeyPress} onSelect={MostraCod} value={cod} onChange={e => codchange(e.target.value)} style={{ fontWeight: 'bold', color: 'navy', width: 85, margin: '0 115px' }} className='form-control rounded-0' name='cod' id="cod" />
-
-                    </div>
+                
 
                     <div className='mb-3'>
                         <label htmlFor='senha' style={{ margin: '0 115px', fontWeight: 'bold' }}>Senha:</label>

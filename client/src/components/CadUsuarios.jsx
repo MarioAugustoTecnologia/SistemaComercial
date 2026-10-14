@@ -9,8 +9,7 @@ import bcrypt from 'bcryptjs';
 
 const CadUsuario = () => {
 
-    const [id, setId] = useState('')
-    const [cod, setCod] = useState('')
+    const [id, setId] = useState('')  
     const [senha, setSenha] = useState('')
     const [erro, setErro] = useState('');
     const [categoria, categoriachange] = useState("")
@@ -84,12 +83,7 @@ const CadUsuario = () => {
     }
 
        
-    function MostraCod() {
-
-        document.getElementById('cod').style.borderColor = 'GainsBoro';
-       
-
-    }
+ 
 
    
 const validarsenha = (valor) => {
@@ -182,20 +176,7 @@ const validarsenha = (valor) => {
             <form className="mobile-form" style={{ margin: '0 100px' }} onSubmit={cadastrar}>
                 <h5>Cadastrar Usuario:</h5>
                  <div className="form-group">
-                    <label htmlFor="nome">Cod:</label><br />
-
-                    <input
-                        type="number"
-                        id="cod"
-                        name="cod"
-                        className='form-control'
-                        value={cod}
-                        onChange={e => setCod(e.target.value)}
-                   
-                        onKeyUp={MostraCod}
-                        style={{ width: '80px' }}
-
-                    />
+                    
                 </div>
 
                 <div className="form-group">

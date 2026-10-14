@@ -116,7 +116,7 @@ const validarsenha = (valor) => {
                     const user = id;
                     window.localStorage.setItem('Login', JSON.stringify({ user, categoria, hashedPassword }))
 
-                    const cadobj = {cod, id, categoria, hashedPassword }
+                    const cadobj = {id, categoria, hashedPassword }
                     //console.log(cadobj) 
                     Swal.fire({
                         title: "Deseja salvar ?",

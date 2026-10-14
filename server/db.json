@@ -1,15 +1,6 @@
 {
   "usuarios": [
-     {
-      "id": "Mario",
-      "categoria": "Administrador",
-      "hashedPassword": "$2a$10$19wd8m8TPu5P1FPQB4XNxu6aLgZX7jwLjWLjBJ8aO4jFkk1Wle7Wi"
-    },
-    {
-      "id": "Bruno",
-      "categoria": "Vendedor",
-      "hashedPassword": "$2a$10$nKiRMYlC5ehXrMXf1/dvQeXKZDj2Mv31zwgCIxkMXLADxSWYDCR0q"
-    }
+     
     
   ],
   

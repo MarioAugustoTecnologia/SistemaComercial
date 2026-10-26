@@ -76,6 +76,62 @@ const FornecedorNome = () => {
 
   }
 
+  function ToClickIconUser() {
+
+    const userName = localStorage.getItem('usuario');
+
+    if (userName == 'Mario') {
+
+      window.location.href = '/usuarios'
+
+    } else {
+
+      Swal.fire({
+        icon: "error",
+        title: "Acesso não Permitido !...",
+  
+      });
+    }
+
+  }
+  function ToClickIconUser2() {
+
+    const userName = localStorage.getItem('usuario');
+
+    if (userName == 'Mario') {
+
+      window.location.href = '/despesas'
+
+    } else {
+
+      Swal.fire({
+        icon: "error",
+        title: "Acesso não Permitido !...",
+  
+      });
+    }
+
+  }
+  function ToClickIconUser3() {
+
+    const userName = localStorage.getItem('usuario');
+
+    if (userName == 'Mario') {
+
+      window.location.href = '/resultado'
+
+    } else {
+
+      Swal.fire({
+        icon: "error",
+        title: "Acesso não Permitido !...",
+  
+      });
+    }
+
+  }
+
+
 
   return (
 
@@ -103,7 +159,7 @@ const FornecedorNome = () => {
               </li>
               <li className="w-100">
                 <Link
-                  to="/usuarios"
+                 onClick={ToClickIconUser}
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i class="fs-3 bi bi-person-check"></i>
@@ -137,7 +193,7 @@ const FornecedorNome = () => {
               </li>
               <li className="w-100">
                 <Link
-                  to="/despesas"
+                  onClick={ToClickIconUser2}
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-coin ms-2"></i>
@@ -192,7 +248,7 @@ const FornecedorNome = () => {
               </li>
               <li className="w-100">
                 <Link
-                  to="/resultado"
+                  onClick={ToClickIconUser3}
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi bi-bank ms-2"></i>

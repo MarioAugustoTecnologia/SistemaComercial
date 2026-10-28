@@ -7,9 +7,7 @@ import Swal from 'sweetalert2';
 
 const EditarFornecedor = () => {
 
-    const { forcod } = useParams()
-
-    //const [empdata, empdatachange] = useState({});
+    const { forcod } = useParams()  
 
     useEffect(() => {
         fetch("https://sistemacomercial-fv5g.onrender.com/fornecedor/" + forcod).then((res) => {

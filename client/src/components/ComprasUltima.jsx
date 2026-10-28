@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import "bootstrap-icons/font/bootstrap-icons.css";
-
+import Swal from 'sweetalert2';
 
 const ComprasUltima = () => {
 

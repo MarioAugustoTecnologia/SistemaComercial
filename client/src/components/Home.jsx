@@ -1,5 +1,6 @@
 
 import { Link, Outlet } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 
 //10 => Continuação...

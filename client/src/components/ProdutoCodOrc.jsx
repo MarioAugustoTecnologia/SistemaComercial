@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link, Outlet, useNavigate } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import useScanDetecion from 'use-scan-detection-react18';
+import Swal from 'sweetalert2';
 
 
 const ProdutoCodOrc = () => { 
